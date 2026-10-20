@@ -209,7 +209,7 @@ export class Campus {
     return this.blocks.get(blockKey(x, y, z));
   }
   place(x, y, z, type) {
-    if (y < 0 || y > 150 || this.blocks.size > 250000) return false;
+    if (y < -30 || y > 150 || this.blocks.size > 250000) return false;
     const key = blockKey(x, y, z);
     if (this.blocks.has(key)) return false;
     const batch = this.batches[type];
@@ -253,7 +253,7 @@ export class Campus {
       ),
       n = Math.ceil(radius / BLOCK);
     for (let x = cx - n; x <= cx + n; x++)
-      for (let y = Math.max(0, cy - n); y <= cy + n; y++)
+      for (let y = Math.max(-30, cy - n); y <= cy + n; y++)
         for (let z = cz - n; z <= cz + n; z++) {
           const b = this.get(x, y, z);
           if (

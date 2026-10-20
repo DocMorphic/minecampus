@@ -2,6 +2,20 @@
 
 Research date: 20 October 2026.
 
+## Implemented real-world data source (verified)
+
+The real-world version now defaults to the official Bavarian **DOM-Mesh**, not the earlier OSM reconstruction.
+
+- Official data: https://www.geodaten.bayern.de/odd/m/3/html/datenhinweise/datenhinweise_dommesh.html
+- Official open-data product index: https://geodaten.bayern.de/opengeodata/json/opengeodata_produkte.json
+- Project coverage index: https://geodaten.bayern.de/odd/m/3/daten/DOMMesh/DOM_Mesh_projektgebiete_2026.kml
+- Source: https://download1.bayernwolke.de/p/dom-mesh-slpk/124023_0/DSM_Mesh.slpk
+- License: https://www.geodaten.bayern.de/odd/m/3/html/nutzungsbedingungen.html
+
+The official coverage polygon identifies `124023_0` as covering Garching, with 2024 imagery. HTTP Range access made it possible to extract 273 campus leaf tiles without downloading the entire ~53 GiB archive. The bundled result has 3,005,649 real triangles, with the actual source texture atlases. Browser verification confirmed roof details, trees, streets, vehicles, and terrain. Physical triangle carving replaced shader-only destruction in this default mode.
+
+This source is an aerial-derived **2.5D exterior surface**, not an indoor or street-level survey. The provider documents facade smearing, tree artefacts, and other acquisition limitations. Simulated blast lining and the block character are game assets, clearly distinguished from measured data.
+
 ## Closest public examples
 
 ### MineMaps — Minecraft in Google Maps
@@ -43,14 +57,14 @@ Web searches targeting X and Steve/Minecraft/real-world map demos did not reliab
 
 ## Campus data options
 
-### OpenStreetMap (implemented default)
+### OpenStreetMap (optional stylized mode)
 
 - https://www.openstreetmap.org/copyright
 - Real Garching footprints and road centre-lines, obtained via Overpass. Bundled snapshot: 272 buildings, with geometry in latitude/longitude.
 - Reliable no-key startup, editable geometry, and an open-data source. Approximate/absent heights, no aerial texture, flat terrain, and incomplete multipolygon handling limit fidelity.
 - Snapshot bbox: west 11.659, south 48.257, east 11.682, north 48.273.
 
-### Google Photorealistic 3D Tiles (optional integration)
+### Google Photorealistic 3D Tiles (optional experimental integration)
 
 - https://developers.google.com/maps/documentation/tile/3d-tiles
 - Official documentation requires an API key, Map Tiles API, billing, compatible tile rendering, and attribution. Coverage/account eligibility matter; Google documents EEA-specific conditions as well.
@@ -63,6 +77,8 @@ Web searches targeting X and Steve/Minecraft/real-world map demos did not reliab
 - https://twinview.zv.tum.de/
 - TUM's open-data page points to its TUM2TWIN work, and TwinView presents campus building scans. We did not establish that an openly licensed, complete, browser-ready Garching mesh is available. Some digital twin data concerns the Munich main campus; do not assume it covers Garching.
 
-## Next fidelity improvement
+## Current implementation and remaining source limitations
 
-A licensed Garching photogrammetry/CityGML asset could be used for detailed geometry and voxelization. For the current playable build, open map mode supplies actual campus arrangement and deterministic destruction; optional Google mode supplies streamed visual realism after the user provides an eligible browser key.
+The verified default needs no API key: the campus subset of the CC-BY survey is bundled. Damage edits actual geometry, throws textured fragments, and persists locally. The optional Google mode remains unverified with a live key and retains its shader-cutout implementation; it is not the default real-world scene.
+
+Higher-quality vertical facades or indoor exploration would require a suitable oblique/terrestrial survey or licensed indoor dataset. Those are not present in the official aerial DOM-Mesh and are not represented as finished features.

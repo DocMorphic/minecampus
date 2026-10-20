@@ -651,3 +651,22 @@ body.playing #hotbar button {
     transition: none !important;
   }
 }
+.primary:disabled {
+  opacity: 0.55;
+  cursor: wait;
+  transform: none;
+}
+#target-label {
+  max-width: 65vw;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1.5;
+}
+@media (max-width: 800px) {
+  body:not(.playing) #map-panel {
+    display: none;
+  }
+}
+body.playing #map-panel {
+  bottom: auto;
+}

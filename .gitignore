@@ -6,3 +6,5 @@ dist/
 .DS_Store
 public/data/*.osm
 public/data/*secondary*
+
+.cache/

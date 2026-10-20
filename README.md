@@ -1,78 +1,88 @@
 # minecampus
 
-**Your campus. Your sandbox.** Fly over TUM Garching as a Steve-style block character, build in mid-air, and detonate TNT across a real campus layout.
+**Fly through the real TUM Garching campus as Steve. Build. Mine. Detonate.**
 
-A local-first browser game built with Three.js, Vite, OpenStreetMap, and optional Google Photorealistic 3D Tiles. No Minecraft installation needed.
+The default world is the **actual Bavarian aerial-survey mesh**, with real campus imagery and geometry: 273 textured tiles, 3,005,649 triangles, roofs, trees, terrain, paths, and parked cars. No Google key or external map service is required to play. The campus data is bundled in this repository (~105 MB).
 
 ## Run
 
-Requires Node.js 22+.
+Requires Node.js 22+ and a desktop browser with WebGL.
 
 ```sh
 npm install
 npm run dev
 ```
 
-Open the localhost URL printed by Vite. Desktop keyboard and mouse recommended. WebGL is required.
+Open the localhost URL printed by Vite. The nearest survey tiles load first, followed by the surrounding campus. The first load transfers about 105 MB from the local server; later loads can use the browser cache.
 
 ```sh
-npm test       # coordinate, picking, instance-removal, blast and save tests
-npm run build # production output in dist/
+npm test        # geometry damage, picking, real data integrity, coordinates, saves
+npm run build  # self-contained static output in dist/
 npm run preview
 ```
 
-## Play
+## Controls
 
-| Control           | Action                                                      |
-| ----------------- | ----------------------------------------------------------- |
-| WASD              | Fly horizontally                                            |
-| Space / C         | Rise / descend                                              |
-| Shift             | Boost                                                       |
-| Mouse             | Look around; drag if pointer lock is unavailable            |
-| Arrow keys        | Alternative camera controls                                 |
-| Left click        | Place selected block at the crosshair                       |
-| Right click       | Mine a block                                                |
-| 1–6 / mouse wheel | TNT, grass, stone, oak, brick, glass                        |
-| E                 | Prime placed TNT within 220 m; fuse lasts about 2.5 seconds |
-| V                 | First-person / Steve chase camera                           |
-| R                 | Return to spawn                                             |
-| Escape            | Pause and release the mouse                                 |
+| Control     | Action                                                             |
+| ----------- | ------------------------------------------------------------------ |
+| WASD        | Fly horizontally                                                   |
+| Space / C   | Rise / descend                                                     |
+| Shift       | Boost                                                              |
+| Mouse       | Look; drag to look if pointer lock is unavailable                  |
+| Arrow keys  | Alternative camera controls                                        |
+| Left click  | Place the selected block on a real campus surface or another block |
+| Right click | Mine a placed block or cut the real mesh                           |
+| 1–6 / wheel | TNT, grass, stone, oak, brick, glass                               |
+| E           | Prime TNT within 220 m; fuse lasts about 2.5 seconds               |
+| V           | First-person / Steve chase camera                                  |
+| R           | Return above CIT / Informatik & Mathematik                         |
+| Escape      | Pause and release mouse                                            |
 
-TNT removes blocks in a 16 m sphere and triggers nearby TNT. You can mine and stack blocks, including on roofs. The pause menu freezes fuses. Flight intentionally allows passing through structures. Open map edits save in this browser; settings includes a reset.
+TNT carves a 16 m sphere out of actual mesh geometry, throws textured fragments from the damaged surface, and chain-primes nearby TNT. Damage changes the triangle topology and subsequent raycasts; it is not just a shader mask. Blast cavities get a simulated interior lining, because the survey only contains exterior surfaces. Mining makes smaller cuts.
 
-## Two world modes
+Blocks and survey damage auto-save in this browser and survive reloads. Pausing freezes fuses. Settings includes reset, asset retries, world mode selection, and return to spawn. Creative flight permits passing through structures. Flight bounds keep you within the included campus area.
 
-**Open map campus (default, no key).** Bundled real OpenStreetMap data covers approximately 1.7 × 1.8 km around Garching. It includes 272 building footprints, roads, and mapped land/water areas. Buildings become destructible 3 m shell voxels. Heights use mapped heights or level counts where available, otherwise an estimate. This is a stylized reconstruction of the real layout, not a surveyed model or a photorealistic scan. Roofs and facades are procedural; terrain is flat.
+## What the real assets are
 
-**Photorealistic 3D (optional).** Open settings, select Google photorealistic 3D, and enter a restricted browser API key with **Map Tiles API** enabled and billing configured. See [Google's setup documentation](https://developers.google.com/maps/documentation/tile/3d-tiles). Alternatively copy `.env.example` to `.env` and set `VITE_GOOGLE_MAPS_API_KEY`. Vite variables are browser-visible: use an origin-restricted browser key, never a server secret. The settings input stays in tab memory and is not saved to storage.
+Source: **Bayerische Vermessungsverwaltung – www.geodaten.bayern.de**, official [DOM-Mesh](https://www.geodaten.bayern.de/odd/m/3/html/datenhinweise/datenhinweise_dommesh.html), **2024 aerial survey**, lot `124023_0`, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-This mode streams actual textured geometry into the same local east/up/south coordinate frame. It requires provider coverage, network access, and an eligible Maps account. Ground starts at an estimated 525 m WGS84 ellipsoid elevation; adjust in settings if the camera appears above/below the surface. Photorealistic operation has not been end-to-end verified with a live key.
+The mesh is derived from measured surfaces and aerial photographs, rather than OSM extrusions or generic building textures. It covers approximately 1.6 × 1.7 km around the campus, with extra edge tiles. Heights use the source's DHHN2016 datum, with a local 477 m origin.
 
-In photorealistic mode TNT creates shader cutouts (up to 32 recent blast regions), with block debris. It does not physically fracture the source tile mesh. Mining also creates small cutouts. Block edits and cutouts in this mode are session-only. Source tiles stream in memory without being archived or exported. Attribution is collected from visible tiles and shown on screen. Switch back to open map mode to restore your saved voxel campus.
+The provider describes it as **2.5D**: it captures visible exterior surfaces. Vertical facades and vegetation can appear stretched or blurry, especially close up; there are no surveyed interiors, basements, or full structural physics. These are limitations of the aerial source, not a claim that this is a street-level scan. The character, inventory blocks, particles, and cavity lining are game assets.
 
-## Research
+See [asset attribution and source details](public/realworld/NOTICE.md).
 
-See [RESEARCH.md](RESEARCH.md) for similar projects, source links, architectural decisions, and the investigation of Reverse Engineer Anything. The exact X video the original idea refers to could not be identified reliably.
+## Additional world modes
 
-## Data refresh
+- **Stylized footprint reconstruction**: the earlier OSM-based voxel campus remains available in settings. It has a separate save and is explicitly labeled stylized.
+- **Google photorealistic tiles**: optional experimental streaming integration. It needs a restricted browser key, Map Tiles API, billing, and coverage. See [Google setup](https://developers.google.com/maps/documentation/tile/3d-tiles). You can enter a key in settings or use `.env.example`. The key is browser-visible; restrict it to your origin. This optional mode has not been verified with a live key and uses shader cutouts. It is not needed for the default real-world version.
 
-The default map is bundled, so normal play needs no Overpass service. To deliberately refresh it:
+## Prepare the real assets again
+
+The assets are already included; ordinary development does not require Python or a data download.
+
+The official regional archive is ~53 GiB. The preparation script uses HTTP byte ranges to fetch only its index, spatial pages, and the campus subset. It refuses responses that ignore byte ranges.
 
 ```sh
-node scripts/refresh-campus.mjs
+python3 -m venv .cache/geodata-venv
+.cache/geodata-venv/bin/pip install -r scripts/geodata-requirements.txt
+.cache/geodata-venv/bin/python scripts/prepare-survey.py
 ```
 
-An alternate Overpass interpreter URL can be passed as the first argument. The refresh tool preserves the existing file on HTTP errors or empty data. The data snapshot was retrieved on 20 October 2026.
+It converts I3S into indexed, quantized local triangles with WebP texture atlases. Source downloads stay in ignored `.cache/`; the runtime data and source manifest live in `public/realworld/`. See [ASSETS.md](ASSETS.md) for the binary format.
 
-## Source layout
+Refresh the optional OSM map with `node scripts/refresh-campus.mjs`.
 
-- `src/campus.js` — campus footprint voxelization, instanced blocks, edits, blast damage, saves
-- `src/geo.js` — local projection and voxel ray traversal
-- `src/main.js` — game loop, cameras, input, TNT, particles, minimap, UI
-- `src/photoreal.js` — Google tiles, coordinate transform, attribution, visual cutouts
-- `src/steve.js` / `src/textures.js` — original procedural character and block artwork
-- `public/data/garching-osm.json` — attributed OSM snapshot
+## Architecture
 
-## Licensing
+- `src/survey.js` — real mesh loading, BVH picking, persistence replay, simulated cavity lining
+- `src/mesh-damage.js` — sphere carving with UV-preserving boundary subdivision and textured fragments
+- `src/survey-format.js` — quantized tile decoder and integrity checks
+- `src/main.js` — flight, character, input, inventory, TNT, effects, saves, minimap
+- `src/campus.js` — instanced placeable blocks and optional stylized map
+- `src/photoreal.js` — optional Google tile integration
+- `scripts/prepare-survey.py` — reproducible source extraction and conversion
 
-Original project code is MIT. OpenStreetMap data is © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), available under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/); the data is not relicensed under MIT. Google tiles retain Google's and its providers' terms. See [THIRD_PARTY.md](THIRD_PARTY.md). This is an independent fan experiment, unaffiliated with TUM, Mojang, Microsoft, or Google.
+Research and references: [RESEARCH.md](RESEARCH.md).
+
+Original code is MIT; map/survey data retain their separate licenses. See [THIRD_PARTY.md](THIRD_PARTY.md). Independent fan experiment, unaffiliated with TUM, Mojang, Microsoft, Google, or the Bavarian survey administration.

@@ -5,6 +5,7 @@ import { PALETTE } from "./textures.js";
 import { BLOCK, project, unproject, traceVoxels } from "./geo.js";
 import { createSteve } from "./steve.js";
 import { PhotorealWorld } from "./photoreal.js";
+import { SurveyWorld } from "./survey.js";
 const $ = (id) => document.getElementById(id);
 const canvas = $("world"),
   renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
@@ -50,9 +51,44 @@ try {
   throw Error("Campus data unavailable");
 }
 const original = new Campus(scene, data, saved);
-let campus = original,
+original.group.visible = false;
+base.visible = false;
+let surveySaved = {};
+try {
+  surveySaved = JSON.parse(
+    localStorage.getItem("minecampus-survey-v1") || "{}",
+  );
+} catch {}
+const manifestResponse = await fetch("/realworld/manifest.json");
+if (!manifestResponse.ok)
+  throw Error(
+    "Real campus assets are missing. Run the survey preparation script.",
+  );
+const surveyManifest = await manifestResponse.json();
+let campus = new Campus(scene, { elements: [] }, surveySaved),
   photo = null,
-  mode = "campus";
+  mode = "survey";
+const real = new SurveyWorld(
+  scene,
+  surveyManifest,
+  surveySaved.blasts || [],
+  (loaded, total) => {
+    if (mode === "survey") {
+      $("mode-label").textContent = `REAL CAMPUS · ${loaded} TILES`;
+      $("play").disabled = loaded < 12;
+      $("asset-status").textContent =
+        `${loaded} / ${total} real aerial survey tiles loaded`;
+    }
+  },
+  () => {
+    if (mode === "survey") {
+      $("asset-status").textContent =
+        "Some campus tiles failed. Use Retry assets in settings.";
+    }
+  },
+);
+$("play").disabled = true;
+$("mode-label").textContent = "LOADING REAL CAMPUS";
 const steve = createSteve();
 scene.add(steve.root);
 const player = {
@@ -121,14 +157,19 @@ function toast(message) {
   toastTimer = setTimeout(() => $("toast").classList.remove("visible"), 3000);
 }
 function save() {
-  if (mode !== "campus") return;
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
     try {
-      localStorage.setItem(
-        "minecampus-world-v1",
-        JSON.stringify(original.serialize()),
-      );
+      if (mode === "campus")
+        localStorage.setItem(
+          "minecampus-world-v1",
+          JSON.stringify(original.serialize()),
+        );
+      if (mode === "survey")
+        localStorage.setItem(
+          "minecampus-survey-v1",
+          JSON.stringify({ ...campus.serialize(), blasts: real.serialize() }),
+        );
     } catch {
       toast("Browser storage is full; this session still works.");
     }
@@ -263,18 +304,26 @@ function aimAt() {
         distance: voxel.distance,
       }
     : null;
-  if (photo) {
+  const surface = mode === "survey" ? real : photo;
+  if (surface) {
     raycaster.setFromCamera(center, camera);
     raycaster.far = 260;
-    const ph = photo.raycast(raycaster);
+    const ph = surface.raycast(raycaster);
     if (ph && (!hit || ph.distance < hit.distance)) {
       const n =
         ph.face?.normal.clone().transformDirection(ph.object.matrixWorld) ||
         new THREE.Vector3(0, 1, 0);
-      hit = { point: ph.point, normal: n, distance: ph.distance, photo: true };
+      if (n.dot(forward) > 0) n.negate();
+      hit = {
+        point: ph.point,
+        normal: n,
+        distance: ph.distance,
+        photo: true,
+        simulated: ph.object.userData.simulatedInterior,
+      };
     }
   }
-  if (!hit && forward.y < -0.001) {
+  if (!hit && mode === "campus" && forward.y < -0.001) {
     const t = -o.y / forward.y;
     if (t > 0 && t < 300) {
       const p = o.clone().addScaledVector(forward, t);
@@ -294,9 +343,11 @@ function act(mine) {
       campus.remove(aim.block);
       fuses.delete(aim.block.key);
       save();
-    } else if (photo && aim.photo) {
-      photo.explode(aim.point, 2.5);
+    } else if (aim.photo) {
+      (mode === "survey" ? real : photo).explode(aim.point, 2.5);
+      if (mode === "survey") addRealFragments();
       debris(aim.point, 0x9fa18b, 10);
+      save();
     }
     return;
   }
@@ -387,6 +438,36 @@ function debris(p, color, count = 55) {
     });
   }
 }
+function addRealFragments() {
+  for (const f of real.takeFragments().slice(0, 50)) {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(f.positions, 3),
+    );
+    g.setAttribute("uv", new THREE.Float32BufferAttribute(f.uv, 2));
+    const mesh = new THREE.Mesh(g, f.material);
+    mesh.position.copy(f.center);
+    scene.add(mesh);
+    particles.push({
+      mesh,
+      velocity: f.center
+        .clone()
+        .sub(player.position)
+        .normalize()
+        .multiplyScalar(10)
+        .add(
+          new THREE.Vector3(
+            (Math.random() - 0.5) * 25,
+            12 + Math.random() * 22,
+            (Math.random() - 0.5) * 25,
+          ),
+        ),
+      life: 3 + Math.random() * 2,
+      fragment: true,
+    });
+  }
+}
 function explode(b) {
   fuses.delete(b.key);
   const p = new THREE.Vector3(
@@ -395,7 +476,11 @@ function explode(b) {
     (b.z + 0.5) * BLOCK,
   );
   const removed = campus.explode(p, 16);
-  if (photo) photo.explode(p, 16);
+  let damaged = 0;
+  if (mode === "survey") {
+    damaged = real.explode(p, 16);
+    addRealFragments();
+  } else if (photo) photo.explode(p, 16);
   for (const other of removed)
     if (other.type === "tnt" && other.key !== b.key) {
       const chain = { ...other };
@@ -418,7 +503,11 @@ function explode(b) {
   blasts++;
   boomSound();
   save();
-  toast(`BOOM. ${removed.length} blocks cleared.`);
+  toast(
+    mode === "survey"
+      ? `BOOM. ${damaged.toLocaleString()} real mesh faces hit.`
+      : `BOOM. ${removed.length} blocks cleared.`,
+  );
 }
 function drawMap() {
   const ctx = $("minimap").getContext("2d"),
@@ -482,12 +571,27 @@ function settingsOpen() {
 }
 $("settings-button").onclick = settingsOpen;
 $("api-key").value = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "";
+function saveCurrentImmediately() {
+  if (mode === "survey")
+    localStorage.setItem(
+      "minecampus-survey-v1",
+      JSON.stringify({ ...campus.serialize(), blasts: real.serialize() }),
+    );
+  if (mode === "campus")
+    localStorage.setItem(
+      "minecampus-world-v1",
+      JSON.stringify(original.serialize()),
+    );
+}
 $("apply-settings").onclick = () => {
   const requested = $("world-mode").value;
   if (requested === "google" && !$("api-key").value.trim()) {
     toast("Enter a Google Maps key with Map Tiles API enabled.");
     return;
   }
+  try {
+    saveCurrentImmediately();
+  } catch {}
   if (photo) {
     photo.dispose();
     photo = null;
@@ -495,11 +599,22 @@ $("apply-settings").onclick = () => {
   if (campus !== original) campus.dispose();
   fuses.clear();
   mode = requested;
-  if (mode === "google") {
-    original.group.visible = false;
-    base.visible = false;
+  real.group.visible = mode === "survey";
+  original.group.visible = mode === "campus";
+  base.visible = mode === "campus";
+  $("play").disabled = false;
+  if (mode === "survey") {
+    let state = {};
+    try {
+      state = JSON.parse(localStorage.getItem("minecampus-survey-v1") || "{}");
+    } catch {}
+    campus = new Campus(scene, { elements: [] }, state);
+    $("mode-label").textContent = `REAL CAMPUS · ${real.loaded.size} TILES`;
+    setSurveyCredits();
+    toast("Actual aerial survey mesh restored.");
+  } else if (mode === "google") {
     campus = new Campus(scene, { elements: [] });
-    $("mode-label").textContent = "LOADING PHOTOREALISTIC TILES";
+    $("mode-label").textContent = "LOADING GOOGLE TILES";
     photo = new PhotorealWorld(
       scene,
       renderer,
@@ -507,46 +622,54 @@ $("apply-settings").onclick = () => {
       $("api-key").value.trim(),
       Number($("elevation").value) || 525,
       () => {
-        toast(
-          "3D tiles failed to load. Check key, billing, Map Tiles API, and coverage.",
-        );
-        $("mode-label").textContent = "3D TILES · LOAD ERROR";
+        toast("Google tiles failed. Check key, billing, API, and coverage.");
+        $("mode-label").textContent = "GOOGLE TILES · ERROR";
       },
       () => {
-        $("mode-label").textContent = "PHOTOREALISTIC WORLD";
-        toast("Real-world 3D tiles connected.");
+        $("mode-label").textContent = "GOOGLE PHOTOREALISTIC";
+        toast("Google tiles connected.");
       },
     );
     $("credits").href = "https://www.google.com/intl/en/about/";
     $("credits").textContent = "Google Maps · loading attribution…";
-    toast("Connecting to Google 3D Tiles…");
   } else {
-    original.group.visible = true;
-    base.visible = true;
     campus = original;
-    $("mode-label").textContent = "OPEN MAP WORLD";
+    $("mode-label").textContent = "STYLIZED MAP WORLD";
     $("credits").href = "https://www.openstreetmap.org/copyright";
     $("credits").textContent = "© OpenStreetMap contributors";
-    toast("Open map campus restored.");
   }
   $("settings").close();
   spawn();
 };
+function setSurveyCredits() {
+  $("credits").href =
+    "https://www.geodaten.bayern.de/odd/m/3/html/nutzungsbedingungen.html";
+  $("credits").textContent =
+    "Bayerische Vermessungsverwaltung · CC BY 4.0 · adapted";
+}
+setSurveyCredits();
 $("reset-world").onclick = () => {
   fuses.clear();
-  if (mode === "campus") {
-    for (const b of [...original.placed.values()]) original.remove(b);
-    original.removed.clear(); // Rebuild the campus from its authoritative snapshot after a reset.
+  if (mode === "survey") {
+    localStorage.removeItem("minecampus-survey-v1");
+    location.reload();
+  } else if (mode === "campus") {
     localStorage.removeItem("minecampus-world-v1");
     location.reload();
   } else {
     for (const b of [...campus.placed.values()]) campus.remove(b);
     photo.holes.forEach((h) => h.set(0, -10000, 0, 0));
     photo.count.value = 0;
-    toast("Photorealistic session reset.");
+    toast("Google session reset.");
     $("settings").close();
   }
 };
+$("retry-assets").onclick = () => {
+  real.retry();
+  toast("Retrying campus assets.");
+  $("settings").close();
+};
+
 $("home").onclick = () => {
   spawn();
   $("settings").close();
@@ -585,8 +708,8 @@ function animate(now) {
     player.velocity.lerp(desired, 1 - Math.exp(-dt * 5));
     player.position.addScaledVector(player.velocity, dt);
     player.position.y = THREE.MathUtils.clamp(player.position.y, 4, 450);
-    player.position.x = THREE.MathUtils.clamp(player.position.x, -1400, 1400);
-    player.position.z = THREE.MathUtils.clamp(player.position.z, -1400, 1400);
+    player.position.x = THREE.MathUtils.clamp(player.position.x, -700, 700);
+    player.position.z = THREE.MathUtils.clamp(player.position.z, -750, 750);
     const look = new THREE.Vector3(
       -Math.sin(player.yaw) * Math.cos(player.pitch),
       Math.sin(player.pitch),
@@ -615,7 +738,13 @@ function animate(now) {
         selection.position.set(
           ...[p.x, p.y, p.z].map((v) => (Math.floor(v / BLOCK) + 0.5) * BLOCK),
         );
-        $("target-label").textContent = aim.block?.name || "Click to build";
+        $("target-label").textContent =
+          aim.block?.name ||
+          (mode === "survey"
+            ? aim.simulated
+              ? "Blast cavity · game-generated interior"
+              : "Real campus surface · click to build / right-click to mine"
+            : "Click to build");
       } else $("target-label").textContent = "";
     }
   } else if (initialIntro) {
@@ -658,6 +787,7 @@ function animate(now) {
       if (p.life < 0.4) p.mesh.scale.multiplyScalar(Math.exp(-dt * 5));
       if (p.life <= 0) {
         scene.remove(p.mesh);
+        if (p.fragment) p.mesh.geometry.dispose();
         particles.splice(i, 1);
       }
     }
@@ -674,6 +804,16 @@ function animate(now) {
       }
     }
   }
+  if (mode === "survey")
+    real.update(
+      playing
+        ? player.position
+        : new THREE.Vector3(
+            real.loaded.size < 12 ? -180 : 0,
+            0,
+            real.loaded.size < 12 ? 300 : 0,
+          ),
+    );
   if (photo) {
     photo.update();
     if (frame % 60 === 0) {

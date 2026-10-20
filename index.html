@@ -23,7 +23,7 @@
       <div class="location">
         <span class="live-dot"></span>TUM GARCHING
         <span class="divider">/</span>
-        <span id="mode-label">OPEN MAP WORLD</span>
+        <span id="mode-label">REAL AERIAL SURVEY</span>
       </div>
       <button
         id="settings-button"
@@ -43,11 +43,13 @@
       <button id="play" class="primary">
         ENTER CREATIVE MODE <span>↗</span>
       </button>
-      <div class="start-note">No download. No rules. Just Garching.</div>
+      <div id="asset-status" class="start-note">
+        No API key. Actual Garching. Creative privileges.
+      </div>
       <div class="world-note">
         <span class="tiny-cube"></span>
         <div>
-          <strong>REAL CAMPUS. BLOCKY POSSIBILITIES.</strong><br />Actual
+          <strong>REAL GEOMETRY. REAL IMAGERY.</strong><br />Actual
           OpenStreetMap footprints · reconstructed in 3D
         </div>
       </div>
@@ -61,7 +63,13 @@
         aria-label="Campus minimap"
       ></canvas>
       <div class="map-footer">
-        <span id="coords">48.2650 N / 11.6710 E</span><span>N ↑</span>
+        <span id="coords">48.2650 N / 11.6710 E</span
+        ><a
+          href="https://www.openstreetmap.org/copyright"
+          target="_blank"
+          rel="noreferrer"
+          >© OSM</a
+        ><span>N ↑</span>
       </div>
     </aside>
     <div id="flight-hud" class="hidden">
@@ -103,14 +111,18 @@
       <h2>A different kind<br />of campus tour.</h2>
       <label for="world-mode">World rendering</label
       ><select id="world-mode">
-        <option value="campus">Open map campus · no key needed</option>
+        <option value="survey">
+          Real campus · aerial survey · no key needed
+        </option>
+        <option value="campus">Stylized footprint reconstruction</option>
         <option value="google">
           Google photorealistic 3D · API key needed
         </option>
       </select>
       <p class="detail">
-        Open map mode uses real footprints and estimated heights. Photorealistic
-        mode streams textured real-world geometry from Google's Map Tiles API.
+        Real campus mode uses actual textured terrain, buildings, and trees from
+        the Bavarian 2024 aerial survey. Photorealistic mode streams textured
+        real-world geometry from Google's Map Tiles API.
       </p>
       <label for="api-key">Google Maps browser API key</label
       ><input
@@ -141,7 +153,8 @@
       </button>
       <div class="settings-actions">
         <button id="reset-world" class="secondary">Reset all changes</button
-        ><button id="home" class="secondary">Back to spawn</button>
+        ><button id="retry-assets" class="secondary">Retry assets</button>
+        <button id="home" class="secondary">Back to spawn</button>
       </div>
       <p class="detail">
         Click to place · Right-click to mine · E ignites nearby TNT<br />Mouse

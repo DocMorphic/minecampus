@@ -10,8 +10,9 @@
     "test": "node --test"
   },
   "dependencies": {
+    "3d-tiles-renderer": "^0.4.19",
     "three": "^0.180.0",
-    "3d-tiles-renderer": "^0.4.19"
+    "three-mesh-bvh": "^0.9.16"
   },
   "devDependencies": {
     "vite": "^7.1.7"

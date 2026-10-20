@@ -1,5 +1,9 @@
 # Third-party notices
 
+- **Bayerische Vermessungsverwaltung – www.geodaten.bayern.de**: actual campus geometry and imagery in `public/realworld/`, official 2024 DOM-Mesh lot `124023_0`, CC BY 4.0. [License](https://creativecommons.org/licenses/by/4.0/), [source and modifications](public/realworld/NOTICE.md). These assets are not relicensed under MIT. Attribution appears in real campus mode.
+- **three-mesh-bvh**: MIT, https://github.com/gkjohnson/three-mesh-bvh . Used for real mesh raycasting and blast queries. The dependency retains its package license.
+- Asset preparation uses NumPy, Pillow, and pyproj under their respective package licenses; those tools are development dependencies, not browser runtime code.
+
 - **OpenStreetMap**: the bundled `public/data/garching-osm.json` is © OpenStreetMap contributors, distributed under ODbL 1.0. https://www.openstreetmap.org/copyright and https://opendatacommons.org/licenses/odbl/1-0/ . Attribution is displayed in open map mode. Treat this dataset separately from the project's MIT-licensed code.
 - **Three.js**: MIT, https://github.com/mrdoob/three.js . The dependency retains its package license.
 - **3DTilesRendererJS**: Apache-2.0, https://github.com/NASA-AMMOS/3DTilesRendererJS . The dependency retains its package license.
