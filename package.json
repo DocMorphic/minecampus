@@ -9,7 +9,10 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "node --test",
     "dev:lan": "HOST=0.0.0.0 node server/index.js",
-    "start": "node server/index.js --production"
+    "start": "node server/index.js --production",
+    "minecraft:build": "python3 scripts/minecraft.py build",
+    "minecraft:install": "python3 scripts/minecraft.py install",
+    "minecraft:doctor": "python3 scripts/minecraft.py doctor"
   },
   "dependencies": {
     "3d-tiles-renderer": "^0.4.19",

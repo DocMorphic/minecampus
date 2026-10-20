@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "minecampus",
+  "version": "0.2.0",
+  "name": "Minecampus — TUM Garching",
+  "description": "Garching world preset and vanilla Minecraft starter supplies for RealWorldMC.",
+  "authors": ["DocMorphic"],
+  "environment": "*",
+  "license": "MIT",
+  "depends": {
+    "minecraft": "1.21.1",
+    "fabricloader": ">=0.19.5",
+    "realworldmc": ">=1.0.3"
+  }
+}

@@ -1,3 +1,13 @@
+## Native Minecraft pack (0.2.0)
+
+The `minecraft/` add-on and installer are MIT. The dependency lock references RealWorldMC 1.0.3 (Apache-2.0) and Fabric API (Apache-2.0); upstream JARs carry their notices and licences. Source: https://github.com/Teddy563/realworldmc and https://github.com/FabricMC/fabric.
+
+Minecraft Java itself and its official Steve skins, entity models, block/item textures, and sounds are provided by the user's authenticated official launcher installation. They are not copied into this repository or its modpack. Google/Cesium map imagery is streamed using the user's eligible credentials and is not included in the pack. Provider attribution must remain visible. Native setup and terrain limitations are documented in `minecraft/README.md`.
+
+## Historical browser prototype
+
+The notices below refer to the earlier browser game, including its original procedural imitation assets and bundled Bavarian survey.
+
 # Third-party notices
 
 - **Bayerische Vermessungsverwaltung – www.geodaten.bayern.de**: actual campus geometry and imagery in `public/realworld/`, official 2024 DOM-Mesh lot `124023_0`, CC BY 4.0. [License](https://creativecommons.org/licenses/by/4.0/), [source and modifications](public/realworld/NOTICE.md). These assets are not relicensed under MIT. Attribution appears in real campus mode.

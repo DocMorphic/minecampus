@@ -1,0 +1,12 @@
+{
+  "randomSpawn": false,
+  "latitude": 48.265,
+  "longitude": 11.671,
+  "mapRenderDistance": 3000,
+  "setupComplete": false,
+  "nodeExecutable": "node",
+  "autoSpaceFlight": false,
+  "actionBar": true,
+  "usageHud": true,
+  "controlsHud": true
+}

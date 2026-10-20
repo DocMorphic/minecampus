@@ -9,3 +9,5 @@ public/data/*secondary*
 
 .cache/
 .minecampus/
+dist-minecraft/
+__pycache__/

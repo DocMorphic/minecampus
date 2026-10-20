@@ -1,3 +1,21 @@
+# Native Minecraft correction — 20 October 2026
+
+The requested product is actual Minecraft, rather than a reimplementation. The earlier browser implementation does not satisfy that requirement. The native route now uses Minecraft Java 1.21.1 + Fabric + RealWorldMC 1.0.3.
+
+- **RealWorldMC**: https://github.com/Teddy563/realworldmc. Apache-2.0 source inspected at `6f18d1f3ba5a02dadee4b14bcb96578bf3941d13`. Streams textured Google 3D scenery inside the real client, voxelizes approximate collisions, and cuts the mesh around block excavation/TNT damage. Inspected `EarthChunkGenerator`, `StreetEditsMixin`, `MapDamage`, `MeshCut`, and upstream excavation/TNT test fixtures. Upstream tests are evidence about its implementation, not a completed Garching playtest.
+- **macOS route**: upstream's bundled Node runtime is Windows-only, but `NodeRuntime` supports native Node 22+ on Mac. Both bundled local services were successfully started and health-checked on this arm64 Mac with Node 22.23.3, then stopped through the parent-pipe lifecycle. That test did not make provider requests or render terrain.
+- **Google's official 3D Tiles API**: https://developers.google.com/maps/documentation/tile/3d-tiles. Use the supported streaming service, with attribution, account access and a billing-enabled API key. Campus coverage/detail are not yet measured here.
+- **EEA blocker**: https://developers.google.com/maps/comms/eea/map-tiles explicitly states that new EEA-billed integrations receive HTTP 403 for Photorealistic 3D Tiles. A newly created German-billed Google key alone will not solve this.
+- **Cesium provider**: upstream supports eligible Cesium ion access to Google's asset `2275207`, using an `assets:read` token. An account must actually have access to the asset; a token is not proof. Setup instructions: https://github.com/Teddy563/realworldmc/blob/main/docs/accounts-and-costs.md.
+- **Limits**: https://github.com/Teddy563/realworldmc/blob/main/docs/limitations.md. No measured interiors, no campus ores/structures, approximate scan collision. Public multiplayer is not supplied as a supported ready-made setup. Native LAN, render quality, save/reload and damage need actual client checks.
+- **VoxelEarth**: https://github.com/voxelearth/web-client provides an alternate voxelization/export approach. The formerly linked `ryanhlewis/VoxelEarth` repository returned 404 during this audit; do not build around an assumed available plugin download. The current MIT web client is not itself the actual Minecraft Java game. Not selected as the primary foundation.
+
+The native pack adds a fixed TUM Garching preset, real vanilla starter supplies and helper functions. It does not fabricate Steve, Minecraft's inventory or its sounds. Game assets stay in the official installation. The installer pins and verifies downloadable mods, creates an isolated game folder, and preserves existing launcher profiles and local configuration.
+
+The material below documents the earlier browser prototype and is retained for provenance; its architecture is not the native implementation.
+
+---
+
 # Research and implementation notes
 
 Research date: 20 October 2026.
