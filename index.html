@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#101713" />
     <meta
       name="description"
-      content="Your campus. Your sandbox. Fly through TUM Garching, build, and make a little chaos."
+      content="Survive the real TUM Garching campus. Mine, craft, build and face the night."
     />
-    <title>Minecampus — Garching, with creative privileges</title>
+    <title>Minecampus — survive Garching</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header>
       <a class="brand" href="/" aria-label="Minecampus home"
         ><span class="brand-block">m</span>minecampus<span class="alpha"
-          >ALPHA 02</span
+          >ALPHA 03</span
         ></a
       >
       <div class="location">
@@ -26,7 +26,9 @@
         <span id="mode-label">REAL AERIAL SURVEY</span>
       </div>
       <nav class="header-actions" aria-label="Campus tools">
-        <button
+        <button id="inventory-button" class="tool-button">E · Inventory</button
+        ><button id="night-button" class="tool-button">N · Night</button
+        ><button
           id="explore-button"
           class="tool-button"
           aria-label="Explore campus"
@@ -53,14 +55,12 @@
       <div class="eyebrow"><span></span>48.2650° N &nbsp; 11.6710° E</div>
       <h1>Your campus.<br />Your <em>sandbox.</em></h1>
       <p>
-        Office hours are over.<br />Take to the skies. Build something.<br />Or
-        make a little chaos.
+        Office hours are over.<br />Gather. Craft. Build something.<br />Or make
+        a little chaos.
       </p>
-      <button id="play" class="primary">
-        ENTER CREATIVE MODE <span>↗</span>
-      </button>
+      <button id="play" class="primary">ENTER SURVIVAL <span>↗</span></button>
       <div id="asset-status" class="start-note">
-        No API key. Actual Garching. Creative privileges.
+        Actual Garching. Gather by day. Survive the night.
       </div>
       <div class="world-note">
         <span class="tiny-cube"></span>
@@ -91,11 +91,16 @@
     <div id="flight-hud" class="hidden">
       <div id="crosshair">+</div>
       <div class="telemetry">
-        <span>CREATIVE FLIGHT</span
+        <span><span id="game-mode-label">SURVIVAL</span></span
         ><strong id="altitude">42<span> m</span></strong
         ><small id="speed">0 M/S</small><small id="nearby-place"></small>
       </div>
       <div id="target-label"></div>
+      <progress id="mine-progress" max="1" value="0"></progress>
+      <div id="survival-hud">
+        <span id="health"></span><span id="hunger"></span
+        ><span id="world-clock"></span>
+      </div>
       <button id="pause" class="secondary">ESC &nbsp; PAUSE</button>
     </div>
     <div id="toast" role="status"></div>
@@ -161,14 +166,15 @@
     </dialog>
     <footer>
       <div class="controls">
-        <span><kbd>W A S D</kbd> Fly</span
-        ><span><kbd>SPACE</kbd> Up <kbd>C</kbd> Down</span
-        ><span><kbd>SHIFT</kbd> Boost</span><span><kbd>V</kbd> Camera</span
-        ><span><kbd>E</kbd> Detonate</span><span><kbd>Q</kbd> Drop TNT</span>
+        <span
+          >WASD move · Space jump · Shift sprint · Left hold mine / hit · Right
+          use / place · E inventory · F eat · Q drop · N night · V camera</span
+        >
       </div>
+      <div id="held-name"></div>
       <div id="hotbar" role="toolbar" aria-label="Block inventory"></div>
       <div class="footer-line">
-        <span>CREATIVE PRIVILEGES: <b>GRANTED</b></span
+        <span>GATHER · CRAFT · BUILD · SURVIVE</span
         ><span id="stats">BUILD · EXPLORE · REPEAT</span
         ><a
           id="credits"
@@ -185,7 +191,16 @@
       </form>
       <div class="eyebrow">WORLD SETTINGS</div>
       <h2>A different kind<br />of campus tour.</h2>
-      <label for="world-mode">World rendering</label
+      <label for="game-mode">Play mode</label
+      ><select id="game-mode">
+        <option value="survival">Survival · gather, craft, eat, survive</option>
+        <option value="creative">
+          Creative · unlimited blocks and flight
+        </option></select
+      ><label class="toggle-option"
+        ><input id="day-cycle" type="checkbox" checked /> Day / night cycle (10
+        minutes)</label
+      ><label for="world-mode">World rendering</label
       ><select id="world-mode">
         <option value="survey">
           Real campus · aerial survey · no key needed
@@ -233,16 +248,67 @@
         explosions</label
       >
       <div class="settings-actions">
-        <button id="reset-world" class="secondary">Reset all changes</button
+        <button id="reset-world" class="secondary">
+          New game / reset changes</button
         ><button id="retry-assets" class="secondary">Retry assets</button>
         <button id="home" class="secondary">Back to spawn</button>
       </div>
       <p class="detail">
-        Click to place · Right-click to mine · E ignites nearby TNT<br />Mouse
-        to look · Arrow keys also turn · Esc releases mouse<br />Q drops TNT · M
-        explores · P opens photo mode<br />Blocks and real-campus damage
-        auto-save locally.
+        Left-click and hold to mine or hit. Right-click to place, eat, or use a
+        station. E opens inventory. Place a crafting table for 3 × 3 recipes.
+        Fuel a furnace, close it, and let it cook. At night, watch for zombies
+        and creepers. Night lighting is simulated from daytime survey imagery.
       </p>
+    </dialog>
+    <dialog id="inventory">
+      <button id="close-inventory" class="close" aria-label="Close inventory">
+        ×
+      </button>
+      <div class="eyebrow">
+        E TO RETURN · RIGHT CLICK TO SPLIT · SHIFT CLICK TO TRANSFER
+      </div>
+      <h2 id="inventory-title">Inventory</h2>
+      <div class="inventory-layout">
+        <section>
+          <div id="armor-slots"></div>
+          <div id="craft-panel">
+            <h3 id="craft-size"></h3>
+            <div class="craft-row">
+              <div id="craft-grid"></div>
+              <span>→</span
+              ><button id="craft-result" class="inventory-slot"></button>
+            </div>
+          </div>
+          <div id="station-panel" class="hidden">
+            <div id="station-slots"></div>
+            <progress id="furnace-progress" max="1"></progress>
+            <p id="furnace-note" class="detail"></p>
+          </div>
+          <h3>BACKPACK & HOTBAR</h3>
+          <div id="player-slots"></div>
+        </section>
+        <section>
+          <h3 id="recipe-heading">RECIPE BOOK</h3>
+          <input
+            id="recipe-search"
+            placeholder="Find a recipe"
+            aria-label="Search recipes"
+          />
+          <div id="recipe-list"></div>
+          <p class="detail">
+            Select a recipe to arrange ingredients. Click the output, then an
+            empty slot to collect. Tools and armor wear down with use.
+          </p>
+        </section>
+      </div>
+      <div id="carried-item" class="inventory-slot hidden"></div>
+    </dialog>
+
+    <dialog id="death">
+      <div class="eyebrow">GARCHING CLAIMS ANOTHER</div>
+      <h2>You died.</h2>
+      <p>Your items remain where you fell.</p>
+      <button id="respawn" class="primary">RESPAWN ↗</button>
     </dialog>
     <script type="module" src="/src/main.js"></script>
   </body>

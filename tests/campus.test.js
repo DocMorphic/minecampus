@@ -22,7 +22,7 @@ test("swap-removing instances preserves remaining blocks and placement transform
   const matrix = new THREE.Matrix4();
   c.batches.stone.mesh.getMatrixAt(1, matrix);
   const p = new THREE.Vector3().setFromMatrixPosition(matrix);
-  assert.deepEqual(p.toArray(), [7.5, 1.5, 1.5]);
+  assert.deepEqual(p.toArray(), [2.5, 0.5, 0.5]);
   assert.equal(c.get(0, 0, 0), a);
   c.dispose();
 });

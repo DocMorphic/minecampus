@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { BLOCK, project, insidePolygon, blockKey } from "./geo.js";
+import { ITEMS } from "./items.js";
 import { texture } from "./textures.js";
 const cube = new THREE.BoxGeometry(BLOCK, BLOCK, BLOCK),
   dummy = new THREE.Object3D();
@@ -155,11 +156,34 @@ export class Campus {
       "stone",
       "wood",
       "brick",
+      ...Object.keys(ITEMS).filter(
+        (id) =>
+          ITEMS[id].block &&
+          ![
+            "concrete",
+            "glass",
+            "roof",
+            "tnt",
+            "grass",
+            "stone",
+            "wood",
+            "brick",
+          ].includes(id),
+      ),
     ]) {
       const list = lists[type] || [],
         mesh = new THREE.InstancedMesh(
-          cube,
-          new THREE.MeshLambertMaterial({ map: texture(type) }),
+          type === "torch"
+            ? new THREE.BoxGeometry(0.14, 0.8, 0.14)
+            : type === "wheat_crop"
+              ? new THREE.BoxGeometry(0.7, 0.7, 0.7)
+              : cube,
+          new THREE.MeshLambertMaterial({
+            map: texture(type),
+            ...(type === "torch"
+              ? { emissive: 0xff871a, emissiveIntensity: 0.7 }
+              : {}),
+          }),
           list.length + 12000,
         );
       mesh.count = 0;
@@ -209,7 +233,7 @@ export class Campus {
     return this.blocks.get(blockKey(x, y, z));
   }
   place(x, y, z, type) {
-    if (y < -30 || y > 150 || this.blocks.size > 250000) return false;
+    if (y < -30 || y > 150 || this.blocks.size > 1500000) return false;
     const key = blockKey(x, y, z);
     if (this.blocks.has(key)) return false;
     const batch = this.batches[type];
@@ -221,7 +245,7 @@ export class Campus {
       z,
       type,
       key,
-      name: type === "tnt" ? "TNT · E to ignite" : type,
+      name: ITEMS[type]?.name || type,
       base: false,
     };
     this.blocks.set(key, b);
@@ -272,7 +296,8 @@ export class Campus {
   }
   serialize() {
     return {
-      version: 1,
+      version: 2,
+      blockSize: BLOCK,
       removed: [...this.removed],
       placed: [...this.placed.values()].map(({ x, y, z, type }) => ({
         x,

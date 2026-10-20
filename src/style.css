@@ -933,3 +933,197 @@ body.photo-mode #photo-credit {
   text-overflow: ellipsis;
   z-index: 2;
 }
+
+#inventory {
+  width: min(940px, 94vw);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 32px;
+}
+.inventory-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 28px;
+}
+#player-slots {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 4px;
+}
+#armor-slots {
+  display: flex;
+  gap: 5px;
+  margin: 12px 0;
+}
+#craft-grid {
+  display: grid;
+  gap: 4px;
+}
+.craft-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 12px 0;
+}
+.inventory-slot {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  min-width: 0;
+  padding: 2px;
+  background: #293a2d;
+  border: 1px solid #66755b;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  display: inline-grid;
+  place-items: center;
+}
+.inventory-slot:hover {
+  background: #526344;
+}
+.item-glyph {
+  font-size: 27px;
+  line-height: 1;
+}
+.stack-count {
+  position: absolute;
+  right: 3px;
+  bottom: 1px;
+  font: 12px monospace;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+.durability {
+  position: absolute;
+  bottom: 1px;
+  left: 3px;
+  right: 3px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    #a4d65e var(--durability),
+    #151a16 var(--durability)
+  );
+}
+#hotbar .inventory-slot {
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  display: inline-grid;
+}
+#hotbar {
+  display: flex;
+  gap: 4px;
+}
+#hotbar small {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font: 10px monospace;
+}
+#hotbar .selected {
+  border: 2px solid #e4f58f;
+  background: #4b5940;
+}
+#held-name {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+#survival-hud {
+  position: absolute;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+  white-space: nowrap;
+  font-size: 14px;
+  text-shadow: 1px 1px #000;
+}
+#health {
+  color: #ff8585;
+}
+#hunger {
+  color: #efbe7f;
+}
+#mine-progress {
+  position: absolute;
+  top: 57%;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 6px;
+  display: none;
+}
+#recipe-list {
+  max-height: 340px;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 10px;
+}
+.recipe-button {
+  text-align: left;
+  padding: 8px;
+  background: #293a2d;
+  border: 1px solid #53634a;
+  color: #eef1e5;
+  font-size: 11px;
+}
+.recipe-button span {
+  margin-right: 5px;
+}
+.recipe-button:disabled {
+  opacity: 0.4;
+}
+#carried-item {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  background: transparent;
+  border: 0;
+}
+.chest-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 46px);
+  gap: 4px;
+}
+.furnace-grid {
+  display: flex;
+  gap: 12px;
+}
+#inventory h3 {
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin: 15px 0 8px;
+}
+#inventory input {
+  width: 100%;
+}
+#inventory::backdrop {
+  background: #061009c9;
+}
+#death {
+  text-align: center;
+}
+@media (max-width: 800px) {
+  .inventory-layout {
+    grid-template-columns: 1fr;
+  }
+  .inventory-slot {
+    width: 36px;
+    height: 40px;
+  }
+  #hotbar .inventory-slot {
+    width: 38px;
+    height: 44px;
+  }
+  .header-actions .tool-button {
+    font-size: 10px;
+  }
+  .controls {
+    display: none;
+  }
+}

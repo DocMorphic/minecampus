@@ -10,6 +10,22 @@ import { campusLandmarks, nearestLandmark } from "./landmarks.js";
 import { AirTNT } from "./air-tnt.js";
 import { BlastEffects } from "./blast-effects.js";
 import { exportPhoto } from "./photo.js";
+import { Survival, migrateWorldSave } from "./survival.js";
+import { ITEMS, makeStack } from "./items.js";
+import { miningTime, canHarvest } from "./items.js";
+import { InventoryUI } from "./survival-ui.js";
+import { stepWalker } from "./physics.js";
+import { Environment } from "./environment.js";
+import { HeldItem } from "./held-item.js";
+import { Life } from "./life.js";
+let resetting = false;
+let playerSaved = {};
+try {
+  playerSaved = JSON.parse(
+    localStorage.getItem("minecampus-player-v1") || "{}",
+  );
+} catch {}
+const survival = new Survival(playerSaved);
 const $ = (id) => document.getElementById(id);
 const canvas = $("world"),
   renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
@@ -27,10 +43,13 @@ const camera = new THREE.PerspectiveCamera(
   0.15,
   5000,
 );
-scene.add(new THREE.HemisphereLight(0xe5f5ff, 0x546d38, 2.5));
+const hemi = new THREE.HemisphereLight(0xe5f5ff, 0x546d38, 2.5);
+scene.add(hemi);
 const sun = new THREE.DirectionalLight(0xffedc6, 3);
 sun.position.set(-400, 650, 250);
 scene.add(sun);
+scene.add(camera);
+const heldView = new HeldItem(camera);
 const base = new THREE.Mesh(
   new THREE.PlaneGeometry(6000, 6000),
   new THREE.MeshLambertMaterial({ color: 0x8aa571 }),
@@ -54,8 +73,8 @@ try {
   );
   throw Error("Campus data unavailable");
 }
-const original = new Campus(scene, data, saved);
-original.group.visible = false;
+saved = migrateWorldSave(saved);
+let original = null;
 base.visible = false;
 let surveySaved = {};
 try {
@@ -69,6 +88,7 @@ if (!manifestResponse.ok)
     "Real campus assets are missing. Run the survey preparation script.",
   );
 const surveyManifest = await manifestResponse.json();
+surveySaved = migrateWorldSave(surveySaved);
 let campus = new Campus(scene, { elements: [] }, surveySaved),
   photo = null,
   mode = "survey";
@@ -91,6 +111,9 @@ const real = new SurveyWorld(
     }
   },
 );
+const environment = new Environment(scene, sun, hemi, survival);
+real.environment = environment;
+environment.apply(real.craterMaterial);
 $("play").disabled = true;
 $("mode-label").textContent = "LOADING REAL CAMPUS";
 const steve = createSteve();
@@ -100,10 +123,14 @@ const player = {
   yaw: 0,
   pitch: -0.45,
   velocity: new THREE.Vector3(),
+  grounded: false,
+  height: 1.8,
+  radius: 0.3,
+  fallFrom: 0,
 };
 let playing = false,
-  selected = 0,
-  firstPerson = false,
+  selected = survival.selected,
+  firstPerson = true,
   lastTime = performance.now(),
   elapsed = 0,
   aim = null,
@@ -171,14 +198,14 @@ function updatePlayerCamera() {
     -Math.sin(player.yaw),
   );
   if (firstPerson) {
-    camera.position.copy(player.position).add(new THREE.Vector3(0, 4.8, 0));
+    camera.position.copy(player.position).add(new THREE.Vector3(0, 1.62, 0));
     steve.root.visible = false;
   } else {
     camera.position
       .copy(player.position)
-      .addScaledVector(look, -17)
-      .addScaledVector(side, 5);
-    camera.position.y += 6;
+      .addScaledVector(look, -6)
+      .addScaledVector(side, 1.5);
+    camera.position.y += 2.5;
     steve.root.visible = true;
   }
   camera.lookAt(camera.position.clone().addScaledVector(look, 100));
@@ -196,6 +223,7 @@ function teleport(place) {
   $("explore").close();
   initialIntro = false;
   player.position.set(...place.spawn);
+  if (survival.mode === "survival") pendingSpawn = true;
   player.yaw = place.yaw;
   player.pitch = place.pitch;
   player.velocity.setScalar(0);
@@ -339,26 +367,95 @@ function dropTNT() {
     toast("TNT away. Impact lights the fuse.");
   } else toast("Give the last charge a moment.");
 }
-const hotbar = $("hotbar");
-PALETTE.forEach((b, i) => {
-  const btn = document.createElement("button");
-  btn.innerHTML = `<small>${i + 1}</small><div class="block-icon ${b.id === "tnt" ? "tnt-icon" : ""}" style="--block:${b.color}">${b.id === "tnt" ? "TNT" : ""}</div>${b.name}`;
-  btn.title = `${i + 1}: ${b.name}`;
-  btn.setAttribute("aria-label", `Select ${b.name}`);
-  btn.onclick = () => {
-    selected = i;
+const inventoryUI = new InventoryUI(survival, {
+  changed: () => {
     updateHotbar();
-    if (playing) toast(`${b.name} selected`);
-  };
-  hotbar.append(btn);
+    savePlayer();
+  },
+  select: (i) => {
+    selected = i;
+    survival.selected = i;
+    updateHotbar();
+  },
+  drop: (stack) => life.drop(stack, player.position),
+  toast,
 });
+const life = new Life(
+  scene,
+  survival,
+  {
+    trace: terrainSegment,
+    player: () => player.position,
+    night: () => environment.night,
+    damage: (n) => survival.damage(n),
+    explosion: (p, r) => detonateAt(p, null, r),
+    pickup: () => {
+      updateHotbar();
+      savePlayer();
+    },
+  },
+  playerSaved.life,
+);
+let pendingSpawn = false,
+  mining = false,
+  mineWork = null,
+  autoSave = 0;
 function updateHotbar() {
-  [...hotbar.children].forEach((b, i) => {
-    b.classList.toggle("selected", i === selected);
-    b.setAttribute("aria-pressed", String(i === selected));
-  });
+  survival.selected = selected;
+  inventoryUI.renderHotbar();
 }
-updateHotbar();
+function savePlayer() {
+  try {
+    localStorage.setItem(
+      "minecampus-player-v1",
+      JSON.stringify({ ...survival.serialize(), life: life.serialize() }),
+    );
+  } catch {}
+}
+function openInventory(station) {
+  if (playing) pause();
+  inventoryUI.open(station);
+}
+function closeInventory() {
+  inventoryUI.close();
+  enter();
+}
+$("inventory-button").onclick = () => openInventory();
+$("close-inventory").onclick = closeInventory;
+$("inventory").addEventListener("cancel", (e) => {
+  e.preventDefault();
+  closeInventory();
+});
+$("night-button").onclick = () => {
+  environment.toggle();
+  toast(
+    environment.night ? "Nightfall: keep a torch close." : "Morning on campus.",
+  );
+  savePlayer();
+};
+$("game-mode").value = survival.mode;
+$("game-mode").onchange = () => {
+  survival.mode = $("game-mode").value;
+  spawn();
+  savePlayer();
+};
+$("day-cycle").checked = survival.cycle;
+$("day-cycle").onchange = () => {
+  survival.cycle = $("day-cycle").checked;
+  savePlayer();
+};
+$("respawn").onclick = () => {
+  survival.health = 20;
+  survival.hunger = 20;
+  survival.saturation = 5;
+  $("death").close();
+  spawn();
+  enter();
+  savePlayer();
+};
+window.addEventListener("beforeunload", () => {
+  if (!resetting) savePlayer();
+});
 function toast(message) {
   $("toast").textContent = message;
   $("toast").classList.add("visible");
@@ -385,12 +482,19 @@ function save() {
   }, 400);
 }
 function spawn() {
-  player.position.set(-180, 55, 380);
-  player.yaw = 0;
-  player.pitch = -0.45;
   player.velocity.setScalar(0);
+  player.grounded = false;
+  player.yaw = -1.3;
+  player.pitch = -0.05;
+  if (survival.mode === "survival") {
+    player.position.set(...(survival.respawn || [-100, 30, 350]));
+    pendingSpawn = true;
+    survival.invulnerable = 3;
+  } else {
+    player.position.set(-180, 55, 380);
+    pendingSpawn = false;
+  }
   updatePlayerCamera();
-  toast("Back above Garching. Creative privileges granted.");
 }
 async function enter() {
   if (initialIntro) spawn();
@@ -407,19 +511,21 @@ async function enter() {
   }
   if (!hasPointer)
     toast(
-      "Drag to look · click to place · right-click to mine · E ignites TNT",
+      "Drag to look · hold left to mine · right to use / place · E inventory",
     );
 }
 function pause() {
   if (photoMode) setPhotoMode(false, true);
   playing = false;
+  mining = false;
+  mineWork = null;
   keys.clear();
   player.velocity.setScalar(0);
   document.exitPointerLock?.();
   document.body.classList.remove("playing");
   $("welcome").classList.remove("hidden");
   $("flight-hud").classList.add("hidden");
-  $("play").innerHTML = "RESUME CREATIVE MODE <span>↗</span>";
+  $("play").innerHTML = "RESUME CAMPUS <span>↗</span>";
   selection.visible = false;
 }
 $("play").onclick = enter;
@@ -427,31 +533,40 @@ $("pause").onclick = pause;
 document.addEventListener("pointerlockchange", () => {
   const was = hasPointer;
   hasPointer = document.pointerLockElement === canvas;
-  if (was && !hasPointer && playing && !photoMode) pause();
+  if (was && !hasPointer && playing && !photoMode && !$("inventory").open)
+    pause();
 });
 canvas.addEventListener("pointerdown", (e) => {
   if (!playing) return;
   if (!hasPointer && e.button === 0) {
     dragging = true;
     canvas.dataset.dragged = "false";
+    if (!photoMode) mining = true;
   } else if (hasPointer) {
-    if (!photoMode) act(e.button === 2);
+    if (!photoMode) {
+      if (e.button === 0) mining = true;
+      else act(false);
+    }
   }
 });
 window.addEventListener("pointerup", (e) => {
+  mining = false;
+  mineWork = null;
   if (dragging && e.button === 0) {
-    if (canvas.dataset.dragged !== "true" && playing && !photoMode) act(false);
     dragging = false;
   }
 });
 canvas.addEventListener("contextmenu", (e) => {
   e.preventDefault();
-  if (playing && !hasPointer && !photoMode) act(true);
+  if (playing && !hasPointer && !photoMode) act(false);
 });
 window.addEventListener("mousemove", (e) => {
   if (!playing || (!hasPointer && !dragging)) return;
-  if (dragging && Math.abs(e.movementX) + Math.abs(e.movementY) > 1)
+  if (dragging && Math.abs(e.movementX) + Math.abs(e.movementY) > 1) {
     canvas.dataset.dragged = "true";
+    mining = false;
+    mineWork = null;
+  }
   player.yaw -= e.movementX * 0.0025;
   player.pitch = THREE.MathUtils.clamp(
     player.pitch - e.movementY * 0.002,
@@ -460,7 +575,17 @@ window.addEventListener("mousemove", (e) => {
   );
 });
 window.addEventListener("keydown", (e) => {
-  if ($("settings").open || $("explore").open || $("photo-review").open) return;
+  if ($("inventory").open) {
+    if (e.code === "KeyE" && !e.repeat) closeInventory();
+    return;
+  }
+  if (
+    $("settings").open ||
+    $("explore").open ||
+    $("photo-review").open ||
+    $("death").open
+  )
+    return;
   if (e.code === "KeyM" && !e.repeat) {
     exploreCampus();
     return;
@@ -495,7 +620,7 @@ window.addEventListener("keydown", (e) => {
   if (!playing) return;
   keys.add(e.code);
   if (e.repeat) return;
-  if (/^Digit[1-6]$/.test(e.code)) {
+  if (/^Digit[1-9]$/.test(e.code)) {
     selected = Number(e.code.at(-1)) - 1;
     updateHotbar();
   }
@@ -503,8 +628,20 @@ window.addEventListener("keydown", (e) => {
     firstPerson = !firstPerson;
     toast(firstPerson ? "First-person camera" : "Steve chase camera");
   }
-  if (e.code === "KeyE" && !photoMode) igniteNearby();
-  if (e.code === "KeyQ") dropTNT();
+  if (e.code === "KeyE" && !photoMode) openInventory();
+  if (e.code === "KeyF") survival.beginEating();
+  if (e.code === "KeyN") $("night-button").click();
+  if (e.code === "KeyG" && survival.mode === "creative") igniteNearby();
+  if (e.code === "KeyB" && survival.mode === "creative") dropTNT();
+  if (e.code === "KeyQ" && survival.held) {
+    life.drop(
+      { ...survival.held, count: 1 },
+      player.position.clone().addScaledVector(forward, 2.5),
+    );
+    survival.consume();
+    updateHotbar();
+    savePlayer();
+  }
   if (e.code === "KeyR") spawn();
 });
 window.addEventListener("keyup", (e) => keys.delete(e.code));
@@ -528,8 +665,7 @@ canvas.addEventListener(
       $("photo-fov-value").value = `${camera.fov}°`;
       return;
     }
-    selected =
-      (selected + (e.deltaY > 0 ? 1 : -1) + PALETTE.length) % PALETTE.length;
+    selected = (selected + (e.deltaY > 0 ? 1 : -1) + 9) % 9;
     updateHotbar();
   },
   { passive: false },
@@ -537,7 +673,13 @@ canvas.addEventListener(
 function aimAt() {
   camera.getWorldDirection(forward);
   const o = camera.position;
-  const voxel = traceVoxels(o, forward, (x, y, z) => campus.get(x, y, z), 260);
+  const reach = survival.mode === "survival" ? 5 : 260;
+  const voxel = traceVoxels(
+    o,
+    forward,
+    (x, y, z) => campus.get(x, y, z),
+    reach,
+  );
   let hit = voxel
     ? {
         cell: voxel.cell,
@@ -550,7 +692,7 @@ function aimAt() {
   const surface = mode === "survey" ? real : photo;
   if (surface) {
     raycaster.setFromCamera(center, camera);
-    raycaster.far = 260;
+    raycaster.far = reach;
     const ph = surface.raycast(raycaster);
     if (ph && (!hit || ph.distance < hit.distance)) {
       const n =
@@ -575,42 +717,125 @@ function aimAt() {
   }
   return hit;
 }
-function act(mine) {
+function mineTick(dt) {
+  if (photoMode || pendingSpawn) return;
   aim = aimAt();
-  if (!aim) {
-    toast("Aim at a roof, a block, or the ground.");
-    return;
-  }
-  if (mine) {
-    if (aim.block) {
-      campus.remove(aim.block);
-      fuses.delete(aim.block.key);
-      save();
-    } else if (aim.photo) {
-      (mode === "survey" ? real : photo).explode(aim.point, 2.5);
-      if (mode === "survey") addRealFragments();
-      debris(aim.point, 0x9fa18b, 10);
-      save();
+  camera.getWorldDirection(forward);
+  const ray = new THREE.Ray(camera.position, forward),
+    mob = life.target(ray, survival.mode === "survival" ? 5 : 260);
+  if (mob && (!aim || mob.distance < aim.distance)) {
+    if (survival.attackCooldown <= 0) {
+      life.hit(mob.mob, ITEMS[survival.held?.id]?.damage || 1, player.position);
+      survival.attackCooldown = 0.5;
+      survival.wear();
+      survival.exhaustion += 0.1;
+      updateHotbar();
     }
     return;
   }
-  const p = aim.point.clone();
+  if (!aim) return;
+  const id = aim.block?.type || (aim.normal.y > 0.65 ? "dirt" : "stone");
+  const key = aim.block?.key || aim.point.toArray().map(Math.floor).join(",");
+  if (mineWork?.key !== key) mineWork = { key, progress: 0 };
+  const total =
+    survival.mode === "creative" ? 0.05 : miningTime(id, survival.held);
+  mineWork.progress += dt / total;
+  $("mine-progress").style.display = "block";
+  $("mine-progress").value = mineWork.progress;
+  if (mineWork.progress < 1) return;
+  mineWork = null;
   if (aim.block) {
+    const b = aim.block;
+    campus.remove(b);
+    fuses.delete(b.key);
+    if (survival.mode === "survival" && canHarvest(id, survival.held)) {
+      if (id === "wheat_crop") {
+        life.drop(makeStack("seeds", 2), aim.point);
+        if ((survival.crops[b.key] || 0) >= 90)
+          life.drop(makeStack("wheat"), aim.point);
+        delete survival.crops[b.key];
+      } else life.drop(makeStack(ITEMS[id]?.drop || id), aim.point);
+      if (id === "leaves" && Math.random() < 0.4)
+        life.drop(makeStack("apple"), aim.point);
+    }
+    for (const container of [survival.chests, survival.furnaces]) {
+      const c = container[b.key];
+      if (c) {
+        for (const stack of c.slots || c)
+          if (stack) life.drop(stack, aim.point);
+        delete container[b.key];
+      }
+    }
+  } else if (aim.photo) {
+    (mode === "survey" ? real : photo).explode(aim.point, 0.7);
+    if (survival.mode === "survival" && canHarvest(id, survival.held))
+      life.drop(makeStack(id), aim.point);
+  }
+  survival.wear();
+  survival.exhaustion += 0.05;
+  updateHotbar();
+  save();
+  savePlayer();
+}
+function act() {
+  aim = aimAt();
+  const held = survival.held,
+    def = ITEMS[held?.id];
+  if (def?.food) {
+    if (!survival.beginEating()) toast("Your hunger bar is full.");
+    return;
+  }
+  if (!aim) return;
+  if (aim.block && !keys.has("KeyC")) {
+    const b = aim.block;
+    if (["crafting_table", "furnace", "chest"].includes(b.type)) {
+      openInventory({ type: b.type, key: b.key });
+      return;
+    }
+    if (b.type === "bed") {
+      survival.respawn = [b.x + 2, b.y + 1, b.z];
+      if (environment.night) survival.time = 8;
+      toast("Respawn point set.");
+      savePlayer();
+      return;
+    }
+    if (b.type === "tnt" && held?.id === "flint_steel") {
+      fuses.set(b.key, { b, time: 2.5 });
+      survival.wear();
+      updateHotbar();
+      return;
+    }
+  }
+  if (def?.part) {
+    const old = survival.armor[def.part];
+    survival.armor[def.part] = held;
+    survival.inventory[selected] = old;
+    updateHotbar();
+    savePlayer();
+    return;
+  }
+  if (!def?.block && held?.id !== "seeds") return;
+  const p = aim.point.clone();
+  if (aim.block)
     p.set(
       ...aim.cell.map((v, i) => (v + 0.5 + aim.normal.getComponent(i)) * BLOCK),
     );
-  } else p.addScaledVector(aim.normal, BLOCK * 0.55);
-  const cell = [p.x, p.y, p.z].map((v) => Math.floor(v / BLOCK));
-  if (aim.ground) cell[1] = 0;
-  const b = campus.place(...cell, PALETTE[selected].id);
-  if (!b) {
-    toast("That space is occupied or outside the build area.");
+  else p.addScaledVector(aim.normal, 0.55);
+  const cell = p.toArray().map(Math.floor);
+  if (
+    Math.abs(cell[0] + 0.5 - player.position.x) < 0.8 &&
+    Math.abs(cell[2] + 0.5 - player.position.z) < 0.8 &&
+    cell[1] < player.position.y + 1.8 &&
+    cell[1] + 1 > player.position.y
+  )
     return;
-  }
+  const b = campus.place(...cell, held.id === "seeds" ? "wheat_crop" : held.id);
+  if (!b) return;
+  if (held.id === "seeds") survival.crops[b.key] = 0;
+  survival.consume();
+  updateHotbar();
   save();
-  if (b.type === "tnt") toast("TNT placed. Press E to light the fuse.");
-  else if (campus.placed.size === 1)
-    toast("First block down. Make yourself at home.");
+  savePlayer();
 }
 function igniteNearby() {
   primeAudio();
@@ -729,18 +954,26 @@ function explode(b) {
     b.key,
   );
 }
-function detonateAt(p, sourceKey = null) {
-  airTNT.primeNearby(p, 16);
+function detonateAt(
+  p,
+  sourceKey = null,
+  radius = survival.mode === "survival" ? 6 : 16,
+) {
+  life.blast(p, radius);
+  survival.damage(
+    Math.max(0, 1 - player.position.distanceTo(p) / (radius * 1.5)) * 18,
+  );
+  airTNT.primeNearby(p, radius);
   effects.burst(p);
   cameraShake = Math.min(
     1.2,
     cameraShake + Math.max(0, 1 - player.position.distanceTo(p) / 180) * 0.8,
   );
-  const removed = campus.explode(p, 16);
+  const removed = campus.explode(p, radius);
   if (mode === "survey") {
-    real.explode(p, 16);
+    real.explode(p, radius);
     addRealFragments();
-  } else if (photo) photo.explode(p, 16);
+  } else if (photo) photo.explode(p, radius);
   for (const other of removed)
     if (other.type === "tnt" && other.key !== sourceKey) {
       const chain = { ...other };
@@ -876,7 +1109,7 @@ $("apply-settings").onclick = () => {
   cameraShake = 0;
   mode = requested;
   real.group.visible = mode === "survey";
-  original.group.visible = mode === "campus";
+  if (original) original.group.visible = mode === "campus";
   base.visible = mode === "campus";
   $("play").disabled = false;
   if (mode === "survey") {
@@ -909,6 +1142,8 @@ $("apply-settings").onclick = () => {
     $("credits").href = "https://www.google.com/intl/en/about/";
     $("credits").textContent = "Google Maps · loading attribution…";
   } else {
+    original ??= new Campus(scene, data, saved);
+    original.group.visible = true;
     campus = original;
     $("mode-label").textContent = "STYLIZED MAP WORLD";
     $("credits").href = "https://www.openstreetmap.org/copyright";
@@ -925,6 +1160,10 @@ function setSurveyCredits() {
 }
 setSurveyCredits();
 $("reset-world").onclick = () => {
+  if (mode !== "google") {
+    resetting = true;
+    localStorage.removeItem("minecampus-player-v1");
+  }
   fuses.clear();
   if (mode === "survey") {
     localStorage.removeItem("minecampus-survey-v1");
@@ -974,16 +1213,40 @@ function animate(now) {
     if (keys.has("KeyS")) desired.sub(forward);
     if (keys.has("KeyD")) desired.add(right);
     if (keys.has("KeyA")) desired.sub(right);
-    if (keys.has("Space")) desired.y++;
-    if (keys.has("KeyC") || keys.has("ControlLeft")) desired.y--;
-    desired
-      .normalize()
-      .multiplyScalar(
-        keys.has("ShiftLeft") || keys.has("ShiftRight") ? 85 : 30,
-      );
-    player.velocity.lerp(desired, 1 - Math.exp(-dt * 5));
-    player.position.addScaledVector(player.velocity, dt);
-    player.position.y = THREE.MathUtils.clamp(player.position.y, 4, 450);
+    if (survival.mode === "survival" && !photoMode) {
+      if (pendingSpawn) {
+        const h = terrainSegment(
+          new THREE.Vector3(player.position.x, 120, player.position.z),
+          new THREE.Vector3(0, -1, 0),
+          200,
+        );
+        if (h) {
+          player.position.y = h.point.y + 0.02;
+          player.fallFrom = player.position.y;
+          pendingSpawn = false;
+          life.seedResources(campus);
+          save();
+        }
+      } else {
+        const sprint = keys.has("ShiftLeft") && survival.hunger > 6;
+        const motion = stepWalker(
+          player,
+          dt,
+          { move: desired, sprint, jump: keys.has("Space") },
+          terrainSegment,
+        );
+        if (motion.landed > 3) survival.damage(motion.landed - 3);
+        survival.tick(dt, { distance: motion.distance, sprint });
+        if (player.position.y < -40) survival.health = 0;
+      }
+    } else {
+      if (keys.has("Space")) desired.y++;
+      if (keys.has("KeyC")) desired.y--;
+      desired.normalize().multiplyScalar(keys.has("ShiftLeft") ? 85 : 15);
+      player.velocity.lerp(desired, 1 - Math.exp(-dt * 5));
+      player.position.addScaledVector(player.velocity, dt);
+      if (!photoMode) survival.tick(dt);
+    }
     player.position.x = THREE.MathUtils.clamp(player.position.x, -700, 700);
     player.position.z = THREE.MathUtils.clamp(player.position.z, -750, 750);
     updatePlayerCamera();
@@ -1004,7 +1267,7 @@ function animate(now) {
           (mode === "survey"
             ? aim.simulated
               ? "Blast cavity · game-generated interior"
-              : "Real campus surface · click to build / right-click to mine"
+              : "Real campus · hold left to mine · right to place"
             : "Click to build");
       } else $("target-label").textContent = "";
     }
@@ -1034,6 +1297,31 @@ function animate(now) {
   steve.animate(elapsed, player.velocity.length() > 3 || !playing);
   // Photo mode freezes charges and effects while the camera remains free to fly.
   if (playing && !photoMode) {
+    if (!pendingSpawn) life.update(dt, campus);
+    if (mining) mineTick(dt);
+    else $("mine-progress").style.display = "none";
+    if (survival.health <= 0 && !$("death").open) {
+      for (let i = 0; i < 36; i++) {
+        if (survival.inventory[i])
+          life.drop(survival.inventory[i], player.position);
+        survival.inventory[i] = null;
+      }
+      for (const part of Object.keys(survival.armor)) {
+        if (survival.armor[part])
+          life.drop(survival.armor[part], player.position);
+        survival.armor[part] = null;
+      }
+      pause();
+      $("death").showModal();
+      savePlayer();
+      updateHotbar();
+    }
+    autoSave += dt;
+    if (autoSave > 2) {
+      autoSave = 0;
+      savePlayer();
+      updateHotbar();
+    }
     cameraShake *= Math.exp(-dt * 6);
     airTNT.update(dt);
     effects.update(dt);
@@ -1102,6 +1390,29 @@ function animate(now) {
     $("stats").textContent =
       `${campus.placed.size} BLOCKS / ${blasts} BLASTS / ${airTNT.charges.length} AIRBORNE`;
   }
+  environment.update(
+    playing && !photoMode ? dt : 0,
+    player.position,
+    [...campus.placed.values()]
+      .filter((b) => b.type === "torch")
+      .map((b) => new THREE.Vector3(b.x + 0.5, b.y + 0.8, b.z + 0.5)),
+    survival.held?.id === "torch",
+  );
+  if (frame % 12 === 0) {
+    $("health").textContent = `♥ ${Math.ceil(survival.health)} / 20`;
+    $("hunger").textContent =
+      `🍗 ${Math.ceil(survival.hunger)} / 20${survival.eating ? " · Eating…" : ""}`;
+    $("world-clock").textContent =
+      `${environment.label} · ${life.mobs.length} mobs`;
+    $("game-mode-label").textContent = survival.mode.toUpperCase();
+  }
+  heldView.update(
+    survival.held?.id,
+    elapsed,
+    mining || survival.attackCooldown > 0.25,
+    !!survival.eating,
+    playing && firstPerson && !photoMode,
+  );
   renderer.render(scene, camera);
 }
 spawn();

@@ -36,14 +36,14 @@ test("voxel picking returns the nearest surface and correct placement normal", (
     ["0,0,-3", { name: "far" }],
   ]);
   const hit = traceVoxels(
-    { x: 1.5, y: 1.5, z: 20 },
+    { x: 0.5, y: 0.5, z: 20 },
     { x: 0, y: 0, z: -1 },
     (x, y, z) => blocks.get(blockKey(x, y, z)),
   );
   assert.equal(hit.block.name, "near");
   assert.deepEqual(hit.normal, [0, 0, 1]);
   assert.deepEqual(hit.cell, [0, 0, 0]);
-  assert.equal(hit.distance, 17);
+  assert.equal(hit.distance, 19);
 });
 test("negative coordinates, vertical rays and max reach are handled", () => {
   const get = (x, y, z) =>

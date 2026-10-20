@@ -77,6 +77,7 @@ export class SurveyWorld {
           toneMapped: false,
         }),
         mesh = new THREE.Mesh(g, material);
+      this.environment?.apply(material);
       mesh.name = "Survey tile " + meta.id;
       mesh.raycast = acceleratedRaycast;
       mesh.userData.tile = meta;

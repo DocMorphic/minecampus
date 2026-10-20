@@ -1,5 +1,5 @@
 export const ORIGIN = { lat: 48.265, lon: 11.671 };
-export const BLOCK = 3;
+export const BLOCK = 1;
 export function project(lat, lon) {
   return [
     (lon - ORIGIN.lon) * 111320 * Math.cos((ORIGIN.lat * Math.PI) / 180),

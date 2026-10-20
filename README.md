@@ -1,6 +1,6 @@
 # minecampus
 
-**Fly through the real TUM Garching campus as Steve. Build. Mine. Detonate.**
+**Survive the real TUM Garching campus as Steve. Gather. Craft. Build. Face the night.**
 
 The default world is the **actual Bavarian aerial-survey mesh**, with real campus imagery and geometry: 273 textured tiles, 3,005,649 triangles, roofs, trees, terrain, paths, and parked cars. No Google key or external map service is required to play. The campus data is bundled in this repository (~105 MB).
 
@@ -21,36 +21,48 @@ npm run build  # self-contained static output in dist/
 npm run preview
 ```
 
-## Controls
+## Survival and creative play
 
-| Control            | Action                                                             |
-| ------------------ | ------------------------------------------------------------------ |
-| WASD               | Fly horizontally                                                   |
-| Space / C          | Rise / descend                                                     |
-| Shift              | Boost                                                              |
-| Mouse              | Look; drag to look if pointer lock is unavailable                  |
-| Arrow keys         | Alternative camera controls                                        |
-| Left click         | Place the selected block on a real campus surface or another block |
-| Right click        | Mine a placed block or cut the real mesh                           |
-| 1–6 / wheel        | TNT, grass, stone, oak, brick, glass                               |
-| E                  | Prime TNT within 220 m; fuse lasts about 2.5 seconds               |
-| Q                  | Drop TNT while flying                                              |
-| M                  | Landmark menu and fast travel                                      |
-| P                  | Photo mode                                                         |
-| Enter (photo mode) | Capture photo for preview and PNG export                           |
-| V                  | First-person / Steve chase camera                                  |
-| R                  | Return above CIT / Informatik & Mathematik                         |
-| Escape             | Pause and release mouse                                            |
+Survival is the default. Walk and jump on the measured campus surface, mine blocks and small chunks of the survey mesh, gather dropped items, craft tools and shelter, and keep your health and hunger up. A starter kit and game-generated resource patches near the spawn help you get going. Game resources are additions to the surveyed world.
 
-TNT carves a 16 m sphere out of actual mesh geometry, throws textured fragments from the damaged surface, and chain-primes nearby TNT. Damage changes the triangle topology and subsequent raycasts; it is not just a shader mask. Blast cavities get a simulated interior lining, because the survey only contains exterior surfaces. Mining makes smaller cuts.
+- 36 inventory slots, nine hotbar slots, finite stacks, drag-and-drop, right-click stack splitting, and shift-click transfers.
+- Personal 2 × 2 crafting and placeable 3 × 3 crafting tables. The recipe book arranges available ingredients; collect the output to complete crafting.
+- Wood, stone, and iron tools with mining speeds, harvest requirements, combat damage, and durability. Equip crafted iron armor through the inventory.
+- Usable chests and fuel-consuming furnaces: cook meat, smelt iron ore, and turn sand into glass. Furnaces run while the game is playing; menus pause the world.
+- Food consumption, hunger, saturation, sprint exhaustion, regeneration, fall damage, death, dropped possessions, and respawning. Beds set spawn and skip nighttime.
+- Wheat seeds can be planted; crops mature after 90 seconds of playing. Harvest mature crops for wheat and seeds.
+- Pigs, cows, and sheep wander the campus and drop food/materials when killed. Zombies chase and attack after dark; creepers approach, fuse, and blast actual geometry. Attacks require line of sight. Nearby torches suppress new hostile spawns.
+- A ten-minute day/night cycle, stars, moon, held torches and placed torch illumination. **Night is simulated lighting on daytime survey imagery, not a separate nighttime scan.** N toggles day/night immediately; the cycle can be disabled in settings.
 
-Blocks and survey damage auto-save in this browser and survive reloads. Pausing freezes fuses. Settings includes reset, asset retries, world mode selection, and return to spawn. Creative flight permits passing through structures. Flight bounds keep you within the included campus area.
+Choose Creative in settings for free flight, unlimited block placement, an item catalog, and immunity to damage. This is an original Minecraft-inspired browser survival sandbox, not the complete Minecraft game: multiplayer, redstone, liquids, dimensions, and the full vanilla recipe/mob catalog are not implemented. The real surface remains a triangle mesh with simulated excavated interiors; placed blocks use a one-metre voxel grid.
+
+| Control          | Action                                                                    |
+| ---------------- | ------------------------------------------------------------------------- |
+| WASD             | Walk; fly in Creative or Photo mode                                       |
+| Space / Shift    | Jump / sprint; rise / boost in Creative                                   |
+| C                | Descend in flight; bypass station interaction when placing                |
+| Mouse / arrows   | Look; drag if pointer lock is unavailable                                 |
+| Hold left mouse  | Mine or attack                                                            |
+| Right mouse      | Place, eat, open a station, use a bed, or ignite TNT with flint and steel |
+| E                | Open / close inventory                                                    |
+| 1–9 / wheel      | Select hotbar slot                                                        |
+| F                | Eat held food                                                             |
+| Q                | Drop one held item                                                        |
+| N                | Toggle day / night                                                        |
+| B / G (Creative) | Air-drop TNT / remotely prime nearby TNT                                  |
+| M / P / V        | Explore / Photo mode / camera view                                        |
+| Enter (Photo)    | Capture attributed PNG                                                    |
+| R / Escape       | Return to spawn / pause                                                   |
+
+TNT carves a 6 m sphere in Survival, or 16 m in Creative, from actual geometry. It throws textured fragments and chain-primes nearby charges. Damage changes triangle topology and raycasts. Cavities get simulated lining because the survey only contains exterior surfaces. Mining makes smaller cuts.
+
+World edits, inventory, health, hunger, equipment, containers, crops, clock, mobs, and pickups auto-save locally. Legacy three-metre block edits are migrated to one-metre coordinates. Settings includes world reset, asset retries, and rendering mode selection.
 
 ## Campus explorer and photo mode
 
 Open **Explore** or press **M** to jump to Informatik & Mathematik, StudiTUM, the campus U6 stop, the Institute for Advanced Study, or the Oskar von Miller tower. The viewpoints use coordinates from the bundled real map data. Letters A–E on the minimap are also clickable shortcuts; telemetry shows the nearest landmark.
 
-Press **Q** while flying to drop a TNT charge. It inherits your motion, falls under gravity, and sweeps its path against actual campus geometry to avoid passing through roofs. Impact starts a short fuse. Nearby explosions also prime falling charges. At most 12 can be active, with a short cooldown. Dropped charges pause with the game; they are temporary and clear when switching world modes. Their resulting damage auto-saves normally.
+Press **B** in Creative while flying to drop a TNT charge. It inherits your motion, falls under gravity, and sweeps its path against actual campus geometry to avoid passing through roofs. Impact starts a short fuse. Nearby explosions also prime falling charges. At most 12 can be active, with a short cooldown. Dropped charges pause with the game; they are temporary and clear when switching world modes. Their resulting damage auto-saves normally.
 
 Explosions include flash, rising smoke, textured fragments, and nearby camera shake. You can turn off shake in settings; it defaults off when the browser requests reduced motion.
 
@@ -92,7 +104,12 @@ Refresh the optional OSM map with `node scripts/refresh-campus.mjs`.
 - `src/survey.js` — real mesh loading, BVH picking, persistence replay, simulated cavity lining
 - `src/mesh-damage.js` — sphere carving with UV-preserving boundary subdivision and textured fragments
 - `src/survey-format.js` — quantized tile decoder and integrity checks
-- `src/main.js` — flight, character, input, inventory, TNT, effects, saves, minimap
+- `src/main.js` — survival/creative orchestration, character, input, TNT, saves, minimap
+- `src/items.js`, `src/crafting.js` — stack operations, item definitions, recipes, smelting
+- `src/survival.js`, `src/survival-ui.js` — player state, hunger, equipment, inventory and stations
+- `src/physics.js` — ground movement, swept wall/floor checks, jumping and falling
+- `src/life.js`, `src/environment.js` — animals, hostiles, pickups, resources, sky and torch lighting
+- `src/held-item.js` — animated first-person hand and held item
 - `src/landmarks.js` — map-derived landmark viewpoints and proximity
 - `src/air-tnt.js` — falling charges, swept collision, impact fuses, chain priming
 - `src/blast-effects.js` — flash and smoke effects

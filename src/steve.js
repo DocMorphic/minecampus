@@ -80,7 +80,7 @@ export function createSteve() {
     leg.add(shoe);
     limbs.push(leg);
   }
-  root.scale.setScalar(2);
+  root.scale.setScalar(.64);
   return {
     root,
     animate(t, moving) {

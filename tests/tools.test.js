@@ -39,7 +39,7 @@ test("fast falling TNT sweeps its path and rests above a surface before detonati
       : null;
   };
   assert.equal(stepCharge(c, 0.05, terrain), "landed");
-  assert.equal(c.position.y, 1.3);
+  assert.equal(c.position.y, 0.45);
   assert.equal(c.settled, true);
   assert.ok(c.fuse > 0.8);
   let state;

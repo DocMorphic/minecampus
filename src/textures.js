@@ -11,6 +11,18 @@ export function texture(kind) {
     stone: ["#969e96", "#858f87", "#acb4a8"],
     wood: ["#ad8b55", "#9a7644", "#c6a36a"],
     brick: ["#b77f63", "#ce9877", "#a56c51"],
+    planks: ["#b49a60", "#917846", "#c5ae76"],
+    dirt: ["#836247", "#71513c", "#a47b55"],
+    sand: ["#d7c990", "#c7b880", "#eadca8"],
+    leaves: ["#4e843e", "#36682c", "#70a554"],
+    coal_ore: ["#858b84", "#252a26", "#454b43"],
+    iron_ore: ["#8e9289", "#bc9270", "#d4b398"],
+    crafting_table: ["#9e7447", "#553f2b", "#c19a63"],
+    furnace: ["#787f78", "#3a423d", "#a1a69c"],
+    chest: ["#ad803e", "#6b512a", "#c69b51"],
+    bed: ["#bb4439", "#dfded0", "#90372f"],
+    torch: ["#bc8a48", "#ffd36c", "#ff9b2c"],
+    wheat_crop: ["#b6a846", "#7c9134", "#d5c968"],
     tnt: ["#c95036", "#e26545", "#b13f2d"],
   };
   const colors = palettes[kind] || palettes.concrete;
@@ -48,7 +60,7 @@ export function texture(kind) {
       for (let x = y % 16 ? 8 : 0; x < 32; x += 16) ctx.fillRect(x, y, 1, 8);
     }
   }
-  if (kind === "wood") {
+  if (["wood", "planks", "crafting_table", "chest"].includes(kind)) {
     ctx.fillStyle = "#735735";
     for (let y = 7; y < 32; y += 8) ctx.fillRect(0, y, 32, 1);
   }
@@ -60,6 +72,18 @@ export function texture(kind) {
     ctx.fillText("TNT", 4, 21);
     ctx.fillStyle = "#f2b481";
     ctx.fillRect(0, 0, 32, 3);
+  }
+  if (["crafting_table", "furnace", "chest"].includes(kind)) {
+    ctx.strokeStyle = "#382f24";
+    ctx.lineWidth = 2;
+    ctx.strokeRect?.(2, 2, 28, 28);
+    ctx.fillStyle = kind === "furnace" ? "#252c28" : "#d3b77a";
+    ctx.fillRect(
+      kind === "furnace" ? 7 : 14,
+      kind === "furnace" ? 13 : 12,
+      kind === "furnace" ? 18 : 4,
+      kind === "furnace" ? 12 : 8,
+    );
   }
   const t = new THREE.CanvasTexture(c);
   t.magFilter = THREE.NearestFilter;

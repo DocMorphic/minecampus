@@ -29,7 +29,7 @@ export function stepCharge(charge, dt, raycast) {
   if (hit && hit.distance <= length) {
     const normal = hit.normal?.clone() || new THREE.Vector3(0, 1, 0);
     if (normal.dot(segment) > 0) normal.negate();
-    charge.position.copy(hit.point).addScaledVector(normal, 1.3);
+    charge.position.copy(hit.point).addScaledVector(normal, 0.45);
     charge.velocity.setScalar(0);
     charge.settled = true;
     charge.fuse = Math.min(charge.fuse ?? Infinity, 0.9);
@@ -46,7 +46,7 @@ export class AirTNT {
     this.onDetonate = onDetonate;
     this.charges = [];
     this.cooldown = 0;
-    this.geometry = new THREE.BoxGeometry(2.5, 2.5, 2.5);
+    this.geometry = new THREE.BoxGeometry(.85, .85, .85);
   }
   drop(position, velocity) {
     if (this.charges.length >= 12 || this.cooldown > 0) return false;
