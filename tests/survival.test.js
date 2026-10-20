@@ -235,12 +235,18 @@ test("hostile mobs spawn at night, zombies attack, and creepers detonate", () =>
     });
   life.update(2, campus);
   assert.equal(
-    life.mobs.some((m) => ["creeper", "zombie"].includes(m.kind)),
+    life.mobs.some((m) =>
+      ["creeper", "zombie", "skeleton", "spider"].includes(m.kind),
+    ),
     false,
   );
   night = true;
   life.update(0.1, campus);
-  assert.ok(life.mobs.some((m) => ["creeper", "zombie"].includes(m.kind)));
+  assert.ok(
+    life.mobs.some((m) =>
+      ["creeper", "zombie", "skeleton", "spider"].includes(m.kind),
+    ),
+  );
   const zombie = life.spawn("zombie", new THREE.Vector3(1, 0, 0));
   life.update(0.1, campus);
   assert.ok(damage >= 3);

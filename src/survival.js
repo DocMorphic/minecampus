@@ -39,6 +39,9 @@ export class Survival {
         "sand",
         "stone",
         "coal",
+        "bow",
+        "arrow",
+        "shield",
       ].forEach(
         (id, i) =>
           (this.inventory[i] = makeStack(
@@ -53,9 +56,15 @@ export class Survival {
               sand: 8,
               stone: 8,
               coal: 4,
+              arrow: 16,
             }[id] || 1,
           )),
       );
+    }
+    if (saved.inventory && (saved.version || 1) < 2) {
+      this.add("bow");
+      this.add("arrow", 16);
+      this.add("shield");
     }
     this.health = Math.max(
       0,
@@ -69,7 +78,7 @@ export class Survival {
     this.exhaustion = 0;
     this.selected = Math.max(0, Math.min(8, saved.selected || 0));
     this.armor = {};
-    for (const part of ["helmet", "chestplate", "leggings", "boots"])
+    for (const part of ["helmet", "chestplate", "leggings", "boots", "offhand"])
       this.armor[part] = validStack(saved.armor?.[part]);
     this.cursor = validStack(saved.cursor);
     this.grid = Array.from({ length: 9 }, (_, i) =>
@@ -104,10 +113,14 @@ export class Survival {
     return true;
   }
   wear(index = this.selected) {
-    if (this.mode === "creative") return false;
-    const s = this.inventory[index];
-    if (!s || !ITEMS[s.id].durability) return false;
-    if (--s.durability <= 0) {
+    return this.wearStack(this.inventory[index]);
+  }
+  wearStack(stack) {
+    if (this.mode === "creative" || !stack || !ITEMS[stack.id].durability)
+      return false;
+    const index = this.inventory.indexOf(stack);
+    if (index < 0) return false;
+    if (--stack.durability <= 0) {
       this.inventory[index] = null;
       return true;
     }
@@ -189,7 +202,7 @@ export class Survival {
   }
   serialize() {
     return {
-      version: 1,
+      version: 2,
       mode: this.mode,
       inventory: this.inventory,
       health: this.health,

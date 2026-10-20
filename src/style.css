@@ -1127,3 +1127,77 @@ body.photo-mode #photo-credit {
     display: none;
   }
 }
+
+#combat-status {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #e4f58f;
+  font-size: 12px;
+}
+#multiplayer {
+  width: min(540px, 92vw);
+  max-height: 90vh;
+  overflow: auto;
+}
+#multiplayer input {
+  width: 100%;
+  min-width: 0;
+}
+#multiplayer .room-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 14px 0;
+}
+.room-actions .primary {
+  margin: 0;
+  white-space: nowrap;
+}
+.room-actions input {
+  flex: 1;
+}
+#room-status {
+  color: #e4f58f;
+}
+#room-players {
+  font: 12px monospace;
+  line-height: 2;
+  margin: 16px 0;
+}
+#online-count {
+  color: #e4f58f;
+}
+#armor-slots {
+  flex-wrap: wrap;
+}
+#sound-volume,
+#mob-volume,
+#step-volume {
+  padding: 0;
+  height: 25px;
+  accent-color: #e4f58f;
+}
+.room-actions button {
+  white-space: nowrap;
+}
+@media (max-width: 800px) {
+  header {
+    padding: 16px 12px;
+  }
+  .brand {
+    font-size: 17px;
+  }
+  .brand-block {
+    width: 27px;
+    height: 29px;
+  }
+  .header-actions {
+    gap: 3px;
+  }
+  .header-actions .tool-button {
+    padding: 8px 5px;
+    font-size: 9px;
+  }
+}

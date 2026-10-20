@@ -43,3 +43,15 @@ test("blast radius removes nearby blocks and leaves distant edits; state round-t
   c.dispose();
   copy.dispose();
 });
+test("an occupied shared station survives a blast until its editor releases it", () => {
+  const c = new Campus(new THREE.Scene(), { elements: [] }),
+    chest = c.place(0, 0, 0, "chest"),
+    stone = c.place(1, 0, 0, "stone"),
+    locks = new Map([[chest.key, "friend"]]);
+  c.explode(new THREE.Vector3(0.5, 0.5, 0.5), 3, locks);
+  assert.equal(c.get(0, 0, 0), chest);
+  assert.equal(c.get(1, 0, 0), undefined);
+  locks.clear();
+  c.explode(new THREE.Vector3(0.5, 0.5, 0.5), 3, locks);
+  assert.equal(c.get(0, 0, 0), undefined);
+});

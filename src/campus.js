@@ -270,7 +270,7 @@ export class Campus {
     if (b.base) this.removed.add(b.key);
     else this.placed.delete(b.key);
   }
-  explode(position, radius) {
+  explode(position, radius, protectedKeys = new Set()) {
     const removed = [];
     const [cx, cy, cz] = [position.x, position.y, position.z].map((v) =>
         Math.floor(v / BLOCK),
@@ -282,6 +282,7 @@ export class Campus {
           const b = this.get(x, y, z);
           if (
             b &&
+            !protectedKeys.has(b.key) &&
             Math.hypot(
               (x + 0.5) * BLOCK - position.x,
               (y + 0.5) * BLOCK - position.y,

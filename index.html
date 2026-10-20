@@ -17,7 +17,7 @@
     <header>
       <a class="brand" href="/" aria-label="Minecampus home"
         ><span class="brand-block">m</span>minecampus<span class="alpha"
-          >ALPHA 03</span
+          >ALPHA 04</span
         ></a
       >
       <div class="location">
@@ -26,7 +26,9 @@
         <span id="mode-label">REAL AERIAL SURVEY</span>
       </div>
       <nav class="header-actions" aria-label="Campus tools">
-        <button id="inventory-button" class="tool-button">E · Inventory</button
+        <button id="multiplayer-button" class="tool-button">
+          Co-op · <span id="online-count">Solo</span></button
+        ><button id="inventory-button" class="tool-button">E · Inventory</button
         ><button id="night-button" class="tool-button">N · Night</button
         ><button
           id="explore-button"
@@ -96,6 +98,7 @@
         ><small id="speed">0 M/S</small><small id="nearby-place"></small>
       </div>
       <div id="target-label"></div>
+      <div id="combat-status"></div>
       <progress id="mine-progress" max="1" value="0"></progress>
       <div id="survival-hud">
         <span id="health"></span><span id="hunger"></span
@@ -168,7 +171,8 @@
       <div class="controls">
         <span
           >WASD move · Space jump · Shift sprint · Left hold mine / hit · Right
-          use / place · E inventory · F eat · Q drop · N night · V camera</span
+          use / place · E inventory · F eat · Q drop · Hold F or right mouse for
+          bow · Right hold shield · N night · V camera</span
         >
       </div>
       <div id="held-name"></div>
@@ -191,6 +195,29 @@
       </form>
       <div class="eyebrow">WORLD SETTINGS</div>
       <h2>A different kind<br />of campus tour.</h2>
+      <label for="sound-volume">Sound volume</label
+      ><input
+        id="sound-volume"
+        type="range"
+        min="0"
+        max="100"
+        value="65"
+      /><label for="mob-volume">Mob volume</label
+      ><input id="mob-volume" type="range" min="0" max="100" value="60" /><label
+        for="step-volume"
+        >Footstep volume</label
+      ><input
+        id="step-volume"
+        type="range"
+        min="0"
+        max="100"
+        value="50"
+      /><label class="toggle-option"
+        ><input id="sound-muted" type="checkbox" /> Mute audio</label
+      ><button id="sound-test" class="secondary">Test sound</button>
+      <p id="sound-status" class="detail">
+        Sound starts after you enter the game.
+      </p>
       <label for="game-mode">Play mode</label
       ><select id="game-mode">
         <option value="survival">Survival · gather, craft, eat, survive</option>
@@ -304,6 +331,50 @@
       <div id="carried-item" class="inventory-slot hidden"></div>
     </dialog>
 
+    <dialog id="multiplayer">
+      <form method="dialog">
+        <button class="close" aria-label="Close multiplayer">×</button>
+      </form>
+      <div class="eyebrow">GARCHING IS BETTER TOGETHER</div>
+      <h2>Bring your<br />blockmates.</h2>
+      <p class="detail">
+        Up to 8 players. Shared campus, builds, mobs and explosions. Everyone
+        keeps their own inventory. Menus do not pause a co-op world. Friendly
+        fire is off.
+      </p>
+      <label for="player-name">Your name</label
+      ><input id="player-name" maxlength="20" placeholder="Steve" />
+      <div class="room-actions">
+        <button id="create-room" class="primary">HOST CAMPUS ↗</button>
+      </div>
+      <label for="room-code">Room code</label>
+      <div class="room-actions">
+        <input
+          id="room-code"
+          maxlength="8"
+          placeholder="8-character code"
+          autocomplete="off"
+        /><button id="join-room" class="secondary">JOIN</button>
+      </div>
+      <p id="room-status" role="status" class="detail">
+        Host your current real-campus world, or join a friend's room on this
+        server.
+      </p>
+      <div id="room-connected" class="hidden">
+        <label for="invite-url">Invite link</label
+        ><input id="invite-url" readonly />
+        <div class="room-actions">
+          <button id="copy-invite" class="secondary">COPY INVITE</button
+          ><button id="leave-room" class="secondary">LEAVE ROOM</button>
+        </div>
+        <div id="room-players"></div>
+      </div>
+      <p class="detail">
+        For friends on the same Wi-Fi, start the server with
+        <code>npm run dev:lan</code> and share its LAN address. Internet play
+        needs a reachable server. Your solo save stays separate.
+      </p>
+    </dialog>
     <dialog id="death">
       <div class="eyebrow">GARCHING CLAIMS ANOTHER</div>
       <h2>You died.</h2>

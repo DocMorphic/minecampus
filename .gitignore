@@ -8,3 +8,4 @@ public/data/*.osm
 public/data/*secondary*
 
 .cache/
+.minecampus/

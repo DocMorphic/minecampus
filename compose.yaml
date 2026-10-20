@@ -1,0 +1,10 @@
+services:
+  minecampus:
+    build: .
+    ports:
+      - "5173:8080"
+    volumes:
+      - campus-rooms:/app/.minecampus
+    restart: unless-stopped
+volumes:
+  campus-rooms:

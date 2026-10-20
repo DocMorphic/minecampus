@@ -21,6 +21,49 @@ npm run build  # self-contained static output in dist/
 npm run preview
 ```
 
+## Multiplayer co-op
+
+**Host Campus** creates an invite-only-by-code room for up to eight players. Share its invite link, or join with the eight-character room code on the same server. Avatars and names, blocks, terrain destruction, TNT fuses, arrows, mobs, pickups, containers, crops, and the clock are shared. Every player keeps a separate inventory and health. Friendly fire from player arrows/melee is off; explosions remain dangerous to everyone. Menus do not pause a room.
+
+The host controls the room play mode and clock. The first player hosts the world simulation in their browser. The WebSocket server routes validated actions and stores snapshots, and another connected player takes over when the host disconnects. Keep a host browser open: if nobody is connected, the saved world stops simulating. Shared chests and furnaces allow one editor at a time; furnaces pause while being edited, and stations in use are protected from explosions. Mining yields are resolved once by the host. These are cooperative rooms for friends, with client-controlled inventories and movement, not a competitive anti-cheat server.
+
+### Same Wi-Fi
+
+```sh
+npm install
+npm run dev:lan
+```
+
+Open `http://YOUR_COMPUTER_LAN_IP:5173` on each device. Create a room using that address and share the resulting invite. `localhost` links only work on the computer running the server. Development normally binds to loopback; `dev:lan` exposes the game to your LAN. `PORT=5175 npm run dev:lan` selects another port if needed.
+
+### Production and internet play
+
+```sh
+npm run build
+npm start
+# Or: HOST=127.0.0.1 PORT=8080 npm start
+```
+
+The production Node server serves both the built game and `/multiplayer` WebSockets on one port. Static hosting or `npm run preview` supports solo play but cannot host rooms. Internet play requires deploying this server on a reachable host with HTTPS, WebSocket upgrades, and the original Host header preserved; no internet deployment is included in this repository. A Dockerfile and Compose configuration are supplied:
+
+```sh
+docker compose up --build
+```
+
+Compose publishes port 5173 and stores rooms in a named volume. The Docker configuration is provided for deployment; it has not been run as part of the local browser playtest.
+
+Room snapshots and per-player profiles persist under ignored `.minecampus/rooms/`; retain that directory or mount `/app/.minecampus` in a container. A player's room identity is stored in their browser under the room code and chosen name. Reuse the same browser, origin, and name to resume that inventory. Solo saves remain separate, including when you leave a room or lose the connection. Rooms support up to 12,000 placed blocks and 2,048 mesh edits. Run one server instance for a given room-storage directory. `/health` provides a readiness check.
+
+## Combat, mobs and sound
+
+Night spawns include **zombies, creepers, skeletons, and spiders**. Skeletons keep their distance and fire physical arrows; zombies and spiders chase and strike; creepers fuse and destroy the surveyed geometry. Zombies and skeletons burn after sunrise. Pigs, cows, sheep, and chickens wander and drop food and crafting materials.
+
+**Bows:** hold right mouse or **F** to draw, release to fire. Longer draws increase arrow speed and damage. Arrows use swept collision against mobs, players, and real campus surfaces. Ammunition and bow durability are consumed; skeletons drop arrows and bones, spiders drop string, and chickens drop feathers. The recipe book includes bows, arrows, and shields. New players receive a bow, 16 arrows, and a shield in their backpack; older solo saves receive this kit once on upgrade.
+
+**Shields:** hold right mouse with a shield, or with a sword and a shield equipped in the inventory's offhand slot. Frontal damage is reduced, rear attacks remain exposed, and the shield wears down. Switch back to a tool to mine.
+
+Original synthesized, Minecraft-inspired effects cover steps by material, jumping/landing, block placement/mining/breaking, crafting, stations, pickups, bow shots and arrow impacts, swinging/hits/hurt, shields, eating, death, mob calls, TNT fuses, and layered bass explosions. Positional effects use distance falloff and stereo panning. Settings has separate master, mob, and footstep volumes, mute, and an audio test. Sound begins after a user gesture. These are original effects, not bundled Mojang sound recordings.
+
 ## Survival and creative play
 
 Survival is the default. Walk and jump on the measured campus surface, mine blocks and small chunks of the survey mesh, gather dropped items, craft tools and shelter, and keep your health and hunger up. A starter kit and game-generated resource patches near the spawn help you get going. Game resources are additions to the surveyed world.
@@ -28,13 +71,13 @@ Survival is the default. Walk and jump on the measured campus surface, mine bloc
 - 36 inventory slots, nine hotbar slots, finite stacks, drag-and-drop, right-click stack splitting, and shift-click transfers.
 - Personal 2 × 2 crafting and placeable 3 × 3 crafting tables. The recipe book arranges available ingredients; collect the output to complete crafting.
 - Wood, stone, and iron tools with mining speeds, harvest requirements, combat damage, and durability. Equip crafted iron armor through the inventory.
-- Usable chests and fuel-consuming furnaces: cook meat, smelt iron ore, and turn sand into glass. Furnaces run while the game is playing; menus pause the world.
+- Usable chests and fuel-consuming furnaces: cook meat, smelt iron ore, and turn sand into glass. Solo menus pause the world. Co-op keeps running and pauses only a furnace being edited.
 - Food consumption, hunger, saturation, sprint exhaustion, regeneration, fall damage, death, dropped possessions, and respawning. Beds set spawn and skip nighttime.
 - Wheat seeds can be planted; crops mature after 90 seconds of playing. Harvest mature crops for wheat and seeds.
-- Pigs, cows, and sheep wander the campus and drop food/materials when killed. Zombies chase and attack after dark; creepers approach, fuse, and blast actual geometry. Attacks require line of sight. Nearby torches suppress new hostile spawns.
+- Pigs, cows, sheep, and chickens wander the campus and drop food/materials when killed. Zombies and spiders chase and attack after dark; skeletons fire arrows, and creepers approach, fuse, and blast actual geometry. Attacks require line of sight. Nearby torches suppress new hostile spawns.
 - A ten-minute day/night cycle, stars, moon, held torches and placed torch illumination. **Night is simulated lighting on daytime survey imagery, not a separate nighttime scan.** N toggles day/night immediately; the cycle can be disabled in settings.
 
-Choose Creative in settings for free flight, unlimited block placement, an item catalog, and immunity to damage. This is an original Minecraft-inspired browser survival sandbox, not the complete Minecraft game: multiplayer, redstone, liquids, dimensions, and the full vanilla recipe/mob catalog are not implemented. The real surface remains a triangle mesh with simulated excavated interiors; placed blocks use a one-metre voxel grid.
+Choose Creative in settings for free flight, unlimited block placement, an item catalog, and immunity to damage. This is an original Minecraft-inspired browser survival sandbox, not the complete Minecraft game: redstone, liquids, dimensions, and the full vanilla recipe/mob catalog are not implemented. The real surface remains a triangle mesh with simulated excavated interiors; placed blocks use a one-metre voxel grid.
 
 | Control          | Action                                                                    |
 | ---------------- | ------------------------------------------------------------------------- |
@@ -46,7 +89,7 @@ Choose Creative in settings for free flight, unlimited block placement, an item 
 | Right mouse      | Place, eat, open a station, use a bed, or ignite TNT with flint and steel |
 | E                | Open / close inventory                                                    |
 | 1–9 / wheel      | Select hotbar slot                                                        |
-| F                | Eat held food                                                             |
+| F                | Eat held food; hold/release to draw/fire a bow                            |
 | Q                | Drop one held item                                                        |
 | N                | Toggle day / night                                                        |
 | B / G (Creative) | Air-drop TNT / remotely prime nearby TNT                                  |
@@ -66,7 +109,7 @@ Press **B** in Creative while flying to drop a TNT charge. It inherits your moti
 
 Explosions include flash, rising smoke, textured fragments, and nearby camera shake. You can turn off shake in settings; it defaults off when the browser requests reduced motion.
 
-Press **P** or choose **Photo** for a clean view. TNT, smoke, and debris freeze while you fly and frame the scene. Use the lens slider or scroll over the scene to change field of view; **V** toggles Steve's camera. **Enter** / **Take photo** creates a PNG and opens its preview with an explicit download link. The image has no game HUD and includes location and source attribution. Press **P** or Escape to return to play. The original lens setting is restored. PNG export is available for the bundled real-campus and stylized modes, not the optional Google integration.
+Photo mode is available in solo play. Press **P** or choose **Photo** for a clean view. TNT, smoke, and debris freeze while you fly and frame the scene. Use the lens slider or scroll over the scene to change field of view; **V** toggles Steve's camera. **Enter** / **Take photo** creates a PNG and opens its preview with an explicit download link. The image has no game HUD and includes location and source attribution. Press **P** or Escape to return to play. The original lens setting is restored. PNG export is available for the bundled real-campus and stylized modes, not the optional Google integration.
 
 ## What the real assets are
 
@@ -108,6 +151,8 @@ Refresh the optional OSM map with `node scripts/refresh-campus.mjs`.
 - `src/items.js`, `src/crafting.js` — stack operations, item definitions, recipes, smelting
 - `src/survival.js`, `src/survival-ui.js` — player state, hunger, equipment, inventory and stations
 - `src/physics.js` — ground movement, swept wall/floor checks, jumping and falling
+- `src/multiplayer.js`, `src/room-actions.js`, `server/` — co-op client, host action validation, routing and persistent rooms
+- `src/projectiles.js`, `src/game-audio.js` — arrows, directional shields and original spatial sound
 - `src/life.js`, `src/environment.js` — animals, hostiles, pickups, resources, sky and torch lighting
 - `src/held-item.js` — animated first-person hand and held item
 - `src/landmarks.js` — map-derived landmark viewpoints and proximity

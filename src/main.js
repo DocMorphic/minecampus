@@ -18,6 +18,74 @@ import { stepWalker } from "./physics.js";
 import { Environment } from "./environment.js";
 import { HeldItem } from "./held-item.js";
 import { Life } from "./life.js";
+import { GameAudio, materialSound } from "./game-audio.js";
+import { Multiplayer } from "./multiplayer.js";
+import { Projectiles, bowShot, shieldDamage } from "./projectiles.js";
+import { addStack } from "./items.js";
+import { createRoomAuthority } from "./room-actions.js";
+const audioFX = new GameAudio();
+let publishTimer = 0,
+  profileTimer = 0;
+let networkSession = false,
+  network = null,
+  projectiles = null,
+  bowCharge = null,
+  rightHeld = false,
+  stepDistance = 0,
+  networkTimer = 0,
+  shotTimer = 0;
+const stationLocks = new Map();
+function emitSound(name, position = null) {
+  audioFX.play(name, position);
+  if (network?.connected && position)
+    network.send({ type: "sound", sound: name, position: position.toArray() });
+}
+function takeDamage(amount, from = null) {
+  const blocked = shieldDamage(
+    survival,
+    amount,
+    from,
+    player.position,
+    player.yaw,
+  );
+  const actual = survival.damage(blocked);
+  if (actual) {
+    emitSound(blocked < amount ? "shield" : "hurt", player.position);
+    if (from) {
+      const push = player.position.clone().sub(from);
+      push.y = 0;
+      if (push.length()) player.velocity.addScaledVector(push.normalize(), 3);
+    }
+    updateHotbar();
+  }
+  return actual;
+}
+function gamePlayers() {
+  if (!network?.connected)
+    return [
+      {
+        id: "solo",
+        local: true,
+        active: playing && !photoMode,
+        health: survival.health,
+        position: player.position.clone(),
+      },
+    ];
+  return [...network.players.values()].map((p) => ({
+    ...p,
+    local: p.id === network.id,
+    position:
+      p.id === network.id
+        ? player.position.clone()
+        : new THREE.Vector3(...p.position),
+    health: p.id === network.id ? survival.health : p.health,
+    active:
+      p.id === network.id
+        ? !initialIntro && !pendingSpawn && survival.health > 0
+        : p.active,
+  }));
+}
+
 let resetting = false;
 let playerSaved = {};
 try {
@@ -92,7 +160,7 @@ surveySaved = migrateWorldSave(surveySaved);
 let campus = new Campus(scene, { elements: [] }, surveySaved),
   photo = null,
   mode = "survey";
-const real = new SurveyWorld(
+let real = new SurveyWorld(
   scene,
   surveyManifest,
   surveySaved.blasts || [],
@@ -254,6 +322,10 @@ function setPhotoMode(enabled, quiet = false) {
   }
 }
 async function startPhoto() {
+  if (network?.connected) {
+    toast("Photo mode is available in solo play.");
+    return;
+  }
   if (!playing) await enter();
   setPhotoMode(true);
 }
@@ -349,6 +421,10 @@ function terrainSegment(origin, direction, length) {
   return hit;
 }
 function dropTNT() {
+  if (network?.connected && !network.isHost) {
+    toast("Use placed TNT and flint and steel in co-op.");
+    return;
+  }
   if (!playing || photoMode) return;
   const direction = new THREE.Vector3(
     -Math.sin(player.yaw),
@@ -369,6 +445,8 @@ function dropTNT() {
 }
 const inventoryUI = new InventoryUI(survival, {
   changed: () => {
+    emitSound("craft", player.position);
+    syncStation();
     updateHotbar();
     savePlayer();
   },
@@ -377,7 +455,7 @@ const inventoryUI = new InventoryUI(survival, {
     survival.selected = i;
     updateHotbar();
   },
-  drop: (stack) => life.drop(stack, player.position),
+  drop: (stack) => dropItem(stack, player.position),
   toast,
 });
 const life = new Life(
@@ -387,9 +465,31 @@ const life = new Life(
     trace: terrainSegment,
     player: () => player.position,
     night: () => environment.night,
-    damage: (n) => survival.damage(n),
+    damage: (n, from, id) => {
+      if (id === "solo" || id === network?.id) takeDamage(n, from);
+      else network?.target(id, "damage", { amount: n, from: from?.toArray() });
+    },
+    players: gamePlayers,
+    sound: emitSound,
+    resourceChanged: save,
+    remotePickup: (id, stack) => network.target(id, "loot", { stack }),
+    shoot: (mob, target) => {
+      const origin = mob.position.clone().add(new THREE.Vector3(0, 1.45, 0));
+      const direction = target.position
+        .clone()
+        .add(new THREE.Vector3(0, 1.1, 0))
+        .sub(origin);
+      direction.y += direction.length() * 0.055;
+      projectiles.fire(
+        origin,
+        direction.normalize().multiplyScalar(24),
+        `mob-${mob.id}`,
+        4,
+      );
+    },
     explosion: (p, r) => detonateAt(p, null, r),
     pickup: () => {
+      emitSound("pickup", player.position);
       updateHotbar();
       savePlayer();
     },
@@ -405,6 +505,11 @@ function updateHotbar() {
   inventoryUI.renderHotbar();
 }
 function savePlayer() {
+  if (networkSession) {
+    if (network?.connected)
+      network.send({ type: "profile", profile: profileState() });
+    return;
+  }
   try {
     localStorage.setItem(
       "minecampus-player-v1",
@@ -412,12 +517,63 @@ function savePlayer() {
     );
   } catch {}
 }
-function openInventory(station) {
+async function openInventory(station) {
+  if (networkSession && !network?.connected) {
+    toast("Disconnected. Leave the room to return to solo.");
+    return;
+  }
+  if (
+    network?.connected &&
+    station &&
+    ["chest", "furnace"].includes(station.type)
+  ) {
+    try {
+      const result = await requestAction({ kind: "station_open", ...station });
+      const map =
+        station.type === "chest" ? survival.chests : survival.furnaces;
+      map[station.key] = result.value;
+    } catch (e) {
+      toast(e.message);
+      return;
+    }
+  }
   if (playing) pause();
+  emitSound(
+    station?.type === "chest"
+      ? "chest"
+      : station?.type === "furnace"
+        ? "furnace"
+        : "craft",
+    player.position,
+  );
   inventoryUI.open(station);
 }
+function syncStation() {
+  const st = inventoryUI?.station;
+  if (
+    network?.connected &&
+    $("inventory").open &&
+    st &&
+    ["chest", "furnace"].includes(st.type)
+  ) {
+    const value = (st.type === "chest" ? survival.chests : survival.furnaces)[
+      st.key
+    ];
+    requestAction({
+      kind: "station_write",
+      ...st,
+      value: structuredClone(value),
+    }).catch((e) => toast(e.message));
+  }
+}
 function closeInventory() {
+  syncStation();
+  const st = inventoryUI.station;
   inventoryUI.close();
+  if (network?.connected && st && ["chest", "furnace"].includes(st.type))
+    requestAction({ kind: "station_close", ...st }).catch((e) =>
+      toast(e.message),
+    );
   enter();
 }
 $("inventory-button").onclick = () => openInventory();
@@ -427,6 +583,10 @@ $("inventory").addEventListener("cancel", (e) => {
   closeInventory();
 });
 $("night-button").onclick = () => {
+  if (network?.connected && !network.isHost) {
+    toast("The host controls the shared clock.");
+    return;
+  }
   environment.toggle();
   toast(
     environment.night ? "Nightfall: keep a torch close." : "Morning on campus.",
@@ -435,12 +595,22 @@ $("night-button").onclick = () => {
 };
 $("game-mode").value = survival.mode;
 $("game-mode").onchange = () => {
+  if (network?.connected && !network.isHost) {
+    $("game-mode").value = survival.mode;
+    toast("The host chooses the room play mode.");
+    return;
+  }
   survival.mode = $("game-mode").value;
   spawn();
   savePlayer();
 };
 $("day-cycle").checked = survival.cycle;
 $("day-cycle").onchange = () => {
+  if (network?.connected && !network.isHost) {
+    $("day-cycle").checked = survival.cycle;
+    toast("The host controls the clock.");
+    return;
+  }
   survival.cycle = $("day-cycle").checked;
   savePlayer();
 };
@@ -463,6 +633,7 @@ function toast(message) {
   toastTimer = setTimeout(() => $("toast").classList.remove("visible"), 3000);
 }
 function save() {
+  if (networkSession) return;
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
     try {
@@ -497,6 +668,11 @@ function spawn() {
   updatePlayerCamera();
 }
 async function enter() {
+  if (networkSession && !network?.connected) {
+    toast("Leave the disconnected room to return to solo.");
+    return;
+  }
+  audioFX.unlock();
   if (initialIntro) spawn();
   playing = true;
   initialIntro = false;
@@ -518,6 +694,9 @@ function pause() {
   if (photoMode) setPhotoMode(false, true);
   playing = false;
   mining = false;
+  bowCharge = null;
+  survival.blocking = false;
+  rightHeld = false;
   mineWork = null;
   keys.clear();
   player.velocity.setScalar(0);
@@ -537,29 +716,33 @@ document.addEventListener("pointerlockchange", () => {
     pause();
 });
 canvas.addEventListener("pointerdown", (e) => {
-  if (!playing) return;
-  if (!hasPointer && e.button === 0) {
+  if (!playing || (networkSession && !network?.connected)) return;
+  audioFX.unlock();
+  if (e.button === 2) {
+    rightHeld = true;
+    act();
+    return;
+  }
+  if (e.button !== 0) return;
+  if (!hasPointer) {
     dragging = true;
     canvas.dataset.dragged = "false";
-    if (!photoMode) mining = true;
-  } else if (hasPointer) {
-    if (!photoMode) {
-      if (e.button === 0) mining = true;
-      else act(false);
-    }
   }
+  if (!photoMode) mining = true;
 });
 window.addEventListener("pointerup", (e) => {
-  mining = false;
-  mineWork = null;
-  if (dragging && e.button === 0) {
+  if (e.button === 2) {
+    rightHeld = false;
+    survival.blocking = false;
+    if (bowCharge !== null) releaseBow();
+  }
+  if (e.button === 0) {
+    mining = false;
+    mineWork = null;
     dragging = false;
   }
 });
-canvas.addEventListener("contextmenu", (e) => {
-  e.preventDefault();
-  if (playing && !hasPointer && !photoMode) act(false);
-});
+canvas.addEventListener("contextmenu", (e) => e.preventDefault());
 window.addEventListener("mousemove", (e) => {
   if (!playing || (!hasPointer && !dragging)) return;
   if (dragging && Math.abs(e.movementX) + Math.abs(e.movementY) > 1) {
@@ -583,6 +766,7 @@ window.addEventListener("keydown", (e) => {
     $("settings").open ||
     $("explore").open ||
     $("photo-review").open ||
+    $("multiplayer").open ||
     $("death").open
   )
     return;
@@ -629,12 +813,17 @@ window.addEventListener("keydown", (e) => {
     toast(firstPerson ? "First-person camera" : "Steve chase camera");
   }
   if (e.code === "KeyE" && !photoMode) openInventory();
-  if (e.code === "KeyF") survival.beginEating();
+  if (e.code === "KeyF") {
+    if (survival.held?.id === "bow") {
+      bowCharge = 0;
+      emitSound("bow", player.position);
+    } else if (survival.beginEating()) emitSound("eat", player.position);
+  }
   if (e.code === "KeyN") $("night-button").click();
   if (e.code === "KeyG" && survival.mode === "creative") igniteNearby();
   if (e.code === "KeyB" && survival.mode === "creative") dropTNT();
   if (e.code === "KeyQ" && survival.held) {
-    life.drop(
+    dropItem(
       { ...survival.held, count: 1 },
       player.position.clone().addScaledVector(forward, 2.5),
     );
@@ -644,7 +833,10 @@ window.addEventListener("keydown", (e) => {
   }
   if (e.code === "KeyR") spawn();
 });
-window.addEventListener("keyup", (e) => keys.delete(e.code));
+window.addEventListener("keyup", (e) => {
+  keys.delete(e.code);
+  if (e.code === "KeyF" && bowCharge !== null) releaseBow();
+});
 window.addEventListener("blur", () => {
   keys.clear();
   if (playing) pause();
@@ -723,9 +915,20 @@ function mineTick(dt) {
   camera.getWorldDirection(forward);
   const ray = new THREE.Ray(camera.position, forward),
     mob = life.target(ray, survival.mode === "survival" ? 5 : 260);
+  if (survival.held?.id === "bow" || survival.blocking) return;
   if (mob && (!aim || mob.distance < aim.distance)) {
     if (survival.attackCooldown <= 0) {
-      life.hit(mob.mob, ITEMS[survival.held?.id]?.damage || 1, player.position);
+      if (network?.connected)
+        requestAction({ kind: "attack", id: mob.mob.id }).catch((e) =>
+          toast(e.message),
+        );
+      else
+        life.hit(
+          mob.mob,
+          ITEMS[survival.held?.id]?.damage || 1,
+          player.position,
+        );
+      emitSound("swing", player.position);
       survival.attackCooldown = 0.5;
       survival.wear();
       survival.exhaustion += 0.1;
@@ -740,10 +943,32 @@ function mineTick(dt) {
   const total =
     survival.mode === "creative" ? 0.05 : miningTime(id, survival.held);
   mineWork.progress += dt / total;
+  if (Math.floor(mineWork.progress * 5) !== mineWork.sound) {
+    mineWork.sound = Math.floor(mineWork.progress * 5);
+    emitSound("mine_" + materialSound(id), aim.point);
+  }
   $("mine-progress").style.display = "block";
   $("mine-progress").value = mineWork.progress;
   if (mineWork.progress < 1) return;
   mineWork = null;
+  if (network?.connected) {
+    const toolStack = survival.held;
+    requestAction({
+      kind: "mine",
+      key: aim.block?.key,
+      point: aim.point.toArray(),
+      normal: aim.normal.toArray(),
+    })
+      .then(() => {
+        survival.wearStack(toolStack);
+        survival.exhaustion += 0.05;
+        updateHotbar();
+        savePlayer();
+      })
+      .catch((e) => toast(e.message));
+    return;
+  }
+  emitSound("break", aim.point);
   if (aim.block) {
     const b = aim.block;
     campus.remove(b);
@@ -770,6 +995,8 @@ function mineTick(dt) {
     (mode === "survey" ? real : photo).explode(aim.point, 0.7);
     if (survival.mode === "survival" && canHarvest(id, survival.held))
       life.drop(makeStack(id), aim.point);
+    if (id === "stone" && Math.random() < 0.12)
+      life.drop(makeStack("flint"), aim.point);
   }
   survival.wear();
   survival.exhaustion += 0.05;
@@ -781,8 +1008,27 @@ function act() {
   aim = aimAt();
   const held = survival.held,
     def = ITEMS[held?.id];
+  if (held?.id === "bow") {
+    if (bowCharge === null) {
+      bowCharge = 0;
+      emitSound("bow", player.position);
+    }
+    return;
+  }
+  if (
+    held?.id === "shield" ||
+    (survival.armor.offhand?.id === "shield" &&
+      !def?.block &&
+      !def?.food &&
+      held?.id !== "seeds")
+  ) {
+    survival.blocking = true;
+    return;
+  }
+
   if (def?.food) {
     if (!survival.beginEating()) toast("Your hunger bar is full.");
+    else emitSound("eat", player.position);
     return;
   }
   if (!aim) return;
@@ -793,6 +1039,16 @@ function act() {
       return;
     }
     if (b.type === "bed") {
+      if (network?.connected) {
+        requestAction({ kind: "sleep", key: b.key })
+          .then(() => {
+            survival.respawn = [b.x + 2, b.y + 1, b.z];
+            savePlayer();
+            toast("Respawn point set.");
+          })
+          .catch((e) => toast(e.message));
+        return;
+      }
       survival.respawn = [b.x + 2, b.y + 1, b.z];
       if (environment.night) survival.time = 8;
       toast("Respawn point set.");
@@ -800,7 +1056,18 @@ function act() {
       return;
     }
     if (b.type === "tnt" && held?.id === "flint_steel") {
+      if (network?.connected) {
+        const flint = survival.held;
+        requestAction({ kind: "ignite", key: b.key })
+          .then(() => {
+            survival.wearStack(flint);
+            updateHotbar();
+          })
+          .catch((e) => toast(e.message));
+        return;
+      }
       fuses.set(b.key, { b, time: 2.5 });
+      emitSound("fuse", aim.point);
       survival.wear();
       updateHotbar();
       return;
@@ -829,8 +1096,28 @@ function act() {
     cell[1] + 1 > player.position.y
   )
     return;
+  if (network?.connected) {
+    const index = selected,
+      item = held.id;
+    const finite = survival.mode !== "creative";
+    survival.consume(index);
+    updateHotbar();
+    requestAction({
+      kind: "place",
+      cell,
+      type: item === "seeds" ? "wheat_crop" : item,
+    })
+      .then(() => savePlayer())
+      .catch((e) => {
+        if (finite) survival.add(item);
+        updateHotbar();
+        toast(e.message);
+      });
+    return;
+  }
   const b = campus.place(...cell, held.id === "seeds" ? "wheat_crop" : held.id);
   if (!b) return;
+  emitSound("place_" + materialSound(b.type), new THREE.Vector3(...cell));
   if (held.id === "seeds") survival.crops[b.key] = 0;
   survival.consume();
   updateHotbar();
@@ -838,6 +1125,10 @@ function act() {
   savePlayer();
 }
 function igniteNearby() {
+  if (network?.connected && !network.isHost) {
+    toast("Use flint and steel on a TNT block.");
+    return;
+  }
   primeAudio();
   let count = 0;
   for (const b of campus.placed.values())
@@ -859,35 +1150,11 @@ function igniteNearby() {
       : "Place TNT first, then press E within 220 m.",
   );
 }
-let audio;
 function primeAudio() {
-  try {
-    audio ??= new AudioContext();
-    audio.resume().catch(() => {});
-  } catch {}
+  audioFX.unlock();
 }
-function boomSound() {
-  try {
-    audio ??= new AudioContext();
-    audio.resume();
-    const buffer = audio.createBuffer(
-        1,
-        audio.sampleRate * 0.8,
-        audio.sampleRate,
-      ),
-      ch = buffer.getChannelData(0);
-    for (let i = 0; i < ch.length; i++)
-      ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / ch.length, 3);
-    const s = audio.createBufferSource(),
-      gain = audio.createGain(),
-      filter = audio.createBiquadFilter();
-    s.buffer = buffer;
-    filter.type = "lowpass";
-    filter.frequency.value = 200;
-    gain.gain.value = 0.25;
-    s.connect(filter).connect(gain).connect(audio.destination);
-    s.start();
-  } catch {}
+function boomSound(position) {
+  emitSound("explosion", position);
 }
 const particleGeo = new THREE.BoxGeometry(1, 1, 1),
   particleMats = [0xc1c0aa, 0x727c6b, 0xf6b14f, 0xe96a35].map(
@@ -960,16 +1227,27 @@ function detonateAt(
   radius = survival.mode === "survival" ? 6 : 16,
 ) {
   life.blast(p, radius);
-  survival.damage(
-    Math.max(0, 1 - player.position.distanceTo(p) / (radius * 1.5)) * 18,
-  );
+  for (const target of gamePlayers()) {
+    const damage =
+      Math.max(0, 1 - target.position.distanceTo(p) / (radius * 1.5)) * 18;
+    if (target.local || target.id === "solo") takeDamage(damage, p);
+    else if (network?.isHost)
+      network.target(target.id, "damage", {
+        amount: damage,
+        from: p.toArray(),
+      });
+  }
+  if (networkSession && real.edits.length >= 2048) {
+    toast("This room has reached its terrain edit limit.");
+    return;
+  }
   airTNT.primeNearby(p, radius);
   effects.burst(p);
   cameraShake = Math.min(
     1.2,
     cameraShake + Math.max(0, 1 - player.position.distanceTo(p) / 180) * 0.8,
   );
-  const removed = campus.explode(p, radius);
+  const removed = campus.explode(p, radius, stationLocks);
   if (mode === "survey") {
     real.explode(p, radius);
     addRealFragments();
@@ -994,7 +1272,7 @@ function detonateAt(
   scene.add(ring);
   shockwaves.push({ mesh: ring, life: 0.5 });
   blasts++;
-  boomSound();
+  boomSound(p);
   save();
   toast(
     mode === "survey"
@@ -1090,6 +1368,10 @@ function saveCurrentImmediately() {
     );
 }
 $("apply-settings").onclick = () => {
+  if (networkSession) {
+    toast("Leave the multiplayer room before changing world rendering.");
+    return;
+  }
   const requested = $("world-mode").value;
   if (requested === "google" && !$("api-key").value.trim()) {
     toast("Enter a Google Maps key with Map Tiles API enabled.");
@@ -1160,6 +1442,10 @@ function setSurveyCredits() {
 }
 setSurveyCredits();
 $("reset-world").onclick = () => {
+  if (networkSession) {
+    toast("Leave the room to reset your solo world.");
+    return;
+  }
   if (mode !== "google") {
     resetting = true;
     localStorage.removeItem("minecampus-player-v1");
@@ -1194,9 +1480,448 @@ window.addEventListener("resize", () => {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
 });
+function profileState() {
+  const s = survival.serialize();
+  for (const key of [
+    "furnaces",
+    "chests",
+    "crops",
+    "resourceAreas",
+    "time",
+    "cycle",
+  ])
+    delete s[key];
+  return s;
+}
+function currentPose() {
+  return {
+    position: player.position.toArray(),
+    yaw: player.yaw,
+    pitch: player.pitch,
+    health: survival.health,
+    held: survival.held?.id || null,
+    mode: survival.mode,
+    blocking: !!survival.blocking,
+    active: !initialIntro && !pendingSpawn && survival.health > 0,
+  };
+}
+function requestAction(action) {
+  network.pose(currentPose());
+  return network.request(action);
+}
+function dropItem(stack, position) {
+  if (!stack) return;
+  if (network?.connected) {
+    requestAction({
+      kind: "drop",
+      stack: { ...stack },
+      point: position.toArray(),
+    }).catch((e) => {
+      addStack(survival.inventory, stack);
+      updateHotbar();
+      toast(e.message);
+    });
+  } else if (!networkSession) life.drop(stack, position);
+}
+function tickPlayer(dt, move = {}) {
+  const eating = !!survival.eating;
+  const furnaces = survival.furnaces,
+    crops = survival.crops;
+  if (network?.connected && !network.isHost) {
+    survival.furnaces = {};
+    survival.crops = {};
+  }
+  survival.tick(dt, move);
+  if (network?.connected && !network.isHost) {
+    survival.furnaces = furnaces;
+    survival.crops = crops;
+  }
+  if (eating && !survival.eating) {
+    emitSound("burp", player.position);
+    updateHotbar();
+    savePlayer();
+  }
+}
+function releaseBow() {
+  const charge = bowCharge;
+  bowCharge = null;
+  if (charge === null || charge < 0.12 || survival.held?.id !== "bow") return;
+  const ammo = survival.inventory.findIndex((s) => s?.id === "arrow");
+  if (survival.mode !== "creative" && ammo < 0) {
+    toast("You need arrows.");
+    return;
+  }
+  const bow = survival.held;
+  const shot = bowShot(charge),
+    direction = new THREE.Vector3();
+  camera.getWorldDirection(direction);
+  const origin = player.position
+    .clone()
+    .add(new THREE.Vector3(0, 1.5, 0))
+    .addScaledVector(direction, 0.7);
+  if (survival.mode !== "creative") survival.consume(ammo);
+  const fire = network?.connected
+    ? requestAction({ kind: "shoot", charge, direction: direction.toArray() })
+    : Promise.resolve(
+        projectiles.fire(
+          origin,
+          direction.multiplyScalar(shot.speed),
+          "solo",
+          shot.damage,
+        ),
+      );
+  fire
+    .then(() => {
+      survival.wearStack(bow);
+      if ($("inventory").open) inventoryUI.render();
+      emitSound("bow", player.position);
+      updateHotbar();
+      savePlayer();
+    })
+    .catch((e) => {
+      if (survival.mode !== "creative") survival.add("arrow");
+      toast(e.message);
+      updateHotbar();
+    });
+}
+function worldSnapshot() {
+  return {
+    version: ++shotTimer,
+    placed: campus.serialize().placed,
+    blasts: real.serialize(),
+    life: life.serialize(),
+    arrows: projectiles.serialize(),
+    fuses: [...fuses.values()].map((f) => ({ key: f.b.key, time: f.time })),
+    air: airTNT.charges.map((c) => ({
+      position: c.position.toArray(),
+      velocity: c.velocity.toArray(),
+      age: c.age,
+      fuse: c.fuse,
+      settled: c.settled,
+    })),
+    time: survival.time,
+    cycle: survival.cycle,
+    mode: survival.mode,
+    shared: {
+      chests: survival.chests,
+      furnaces: survival.furnaces,
+      crops: survival.crops,
+      resourceAreas: survival.resourceAreas,
+    },
+  };
+}
+function receiveSnapshot(snapshot, initial = false) {
+  if (!snapshot) return;
+  if (initial) {
+    campus.dispose();
+    campus = new Campus(
+      scene,
+      { elements: [] },
+      { blockSize: 1, placed: snapshot.placed },
+    );
+    const old = real;
+    real = new SurveyWorld(
+      scene,
+      surveyManifest,
+      snapshot.blasts,
+      old.onProgress,
+      old.onError,
+    );
+    real.environment = environment;
+    environment.apply(real.craterMaterial);
+    old.dispose();
+    fuses.clear();
+    airTNT.clear();
+    effects.clear();
+  } else {
+    const desired = new Map(
+      snapshot.placed.map((b) => [`${b.x},${b.y},${b.z}`, b]),
+    );
+    for (const b of [...campus.placed.values()])
+      if (desired.get(b.key)?.type !== b.type) campus.remove(b);
+    for (const [key, b] of desired)
+      if (!campus.get(b.x, b.y, b.z)) campus.place(b.x, b.y, b.z, b.type);
+    const previous = real.edits.length;
+    for (let i = previous; i < snapshot.blasts.length; i++) {
+      const b = snapshot.blasts[i],
+        p = new THREE.Vector3(...b.position);
+      real.explode(p, b.radius);
+      if (b.radius > 2) {
+        effects.burst(p);
+        cameraShake = Math.min(
+          0.5,
+          20 / Math.max(20, player.position.distanceTo(p)),
+        );
+      }
+    }
+    real.takeFragments?.();
+  }
+  blasts = snapshot.blasts.filter((b) => b.radius > 2).length;
+  survival.time = snapshot.time;
+  survival.cycle = snapshot.cycle;
+  survival.mode = snapshot.mode || "survival";
+  $("game-mode").value = survival.mode;
+  $("day-cycle").checked = survival.cycle;
+  const ownStation = $("inventory").open ? inventoryUI.station : null;
+  for (const name of ["chests", "furnaces", "crops"]) {
+    const preserved =
+      ownStation &&
+      ((name === "chests" && ownStation.type === "chest") ||
+        (name === "furnaces" && ownStation.type === "furnace"))
+        ? survival[name][ownStation.key]
+        : null;
+    survival[name] = structuredClone(snapshot.shared?.[name] || {});
+    if (preserved) survival[name][ownStation.key] = preserved;
+  }
+  survival.resourceAreas = snapshot.shared?.resourceAreas || [];
+  life.applySnapshot(snapshot.life);
+  projectiles.applySnapshot(snapshot.arrows || []);
+  fuses.clear();
+  for (const f of snapshot.fuses || []) {
+    const b = campus.blocks.get(f.key);
+    if (b?.type === "tnt") fuses.set(f.key, { b, time: f.time });
+  }
+  const charges = snapshot.air || [];
+  while (airTNT.charges.length > charges.length)
+    airTNT.remove(airTNT.charges.at(-1));
+  charges.forEach((r, i) => {
+    if (!airTNT.charges[i]) {
+      airTNT.cooldown = 0;
+      airTNT.drop(new THREE.Vector3(...r.position), new THREE.Vector3());
+    }
+    const c = airTNT.charges[i];
+    if (c) {
+      c.position.set(...r.position);
+      c.velocity.set(...r.velocity);
+      c.age = r.age;
+      c.fuse = r.fuse;
+      c.settled = r.settled;
+      c.mesh.position.copy(c.position);
+    }
+  });
+}
+function setupOnline() {
+  const hostAction = createRoomAuthority({
+    context: () => ({
+      survival,
+      campus,
+      real,
+      life,
+      projectiles,
+      stationLocks,
+      fuses,
+    }),
+    localId: () => network?.id,
+    localPosition: () => player.position,
+    gamePlayers,
+    emitSound,
+    terrainSegment,
+  });
+  projectiles = new Projectiles(scene, {
+    trace: terrainSegment,
+    mobs: () => life.mobs,
+    players: gamePlayers,
+    hitMob: (m, n, p) => life.hit(m, n, p),
+    hitPlayer: (id, n, p) => {
+      if (id === "solo" || id === network?.id) takeDamage(n, p);
+      else network?.target(id, "damage", { amount: n, from: p.toArray() });
+    },
+    sound: emitSound,
+  });
+  network = new Multiplayer(scene, {
+    welcome: (m) => {
+      networkSession = true;
+      const roomUrl = new URL(location.href);
+      roomUrl.searchParams.set("room", m.code);
+      history.replaceState(null, "", roomUrl);
+      clearTimeout(saveTimer);
+      if (m.profile) {
+        Object.assign(survival, new Survival(m.profile));
+        selected = survival.selected;
+      } else if (m.snapshot) {
+        Object.assign(survival, new Survival());
+        selected = survival.selected;
+      }
+      if (m.snapshot) receiveSnapshot(m.snapshot, true);
+      else for (const f of Object.values(survival.furnaces)) f.paused = false;
+      stationLocks.clear();
+      if (network.isHost) network.publish(worldSnapshot());
+      $("multiplayer").close();
+      $("room-status").textContent = `Room ${m.code} is ready.`;
+      initialIntro = false;
+      spawn();
+      enter();
+      updateHotbar();
+    },
+    snapshot: (s) => receiveSnapshot(s),
+    action: hostAction,
+    target: (event, data) => {
+      if (event === "damage")
+        takeDamage(
+          data.amount,
+          data.from ? new THREE.Vector3(...data.from) : null,
+        );
+      if (event === "loot") {
+        const left = addStack(survival.inventory, data.stack);
+        emitSound("pickup", player.position);
+        if (left)
+          dropItem(
+            { ...data.stack, count: left },
+            player.position.clone().add(new THREE.Vector3(3, 0, 0)),
+          );
+        updateHotbar();
+        savePlayer();
+      }
+    },
+    sound: (name, p) => audioFX.play(name, new THREE.Vector3(...p)),
+    status: (message) => {
+      const online = network.connected;
+      $("online-count").textContent = online
+        ? `${network.players.size}/8`
+        : "Solo";
+      $("room-connected").classList.toggle("hidden", !online);
+      $("create-room").disabled = online;
+      $("join-room").disabled = online;
+      if (message) $("room-status").textContent = message;
+      else if (online)
+        $("room-status").textContent =
+          `Room ${network.code} · ${network.players.size} player${network.players.size === 1 ? "" : "s"} · ${network.isHost ? "You are hosting" : "Co-op connected"}`;
+      if (online) {
+        const invite = new URL(location.href);
+        invite.searchParams.set("room", network.code);
+        $("invite-url").value = invite.href;
+        $("room-players").replaceChildren(
+          ...[...network.players.values()].map((p) => {
+            const div = document.createElement("div");
+            div.textContent = `${p.id === network.host ? "♛ " : ""}${p.name}${p.id === network.id ? " (you)" : ""}`;
+            return div;
+          }),
+        );
+      } else if (networkSession) {
+        pause();
+        toast(message || "Disconnected from the room.");
+      }
+    },
+    departed: (id) => {
+      for (const [key, owner] of stationLocks)
+        if (owner === id) {
+          stationLocks.delete(key);
+          if (survival.furnaces[key]) survival.furnaces[key].paused = false;
+        }
+    },
+    authority: (s) => {
+      if (s) receiveSnapshot(s);
+      stationLocks.clear();
+      for (const f of Object.values(survival.furnaces)) f.paused = false;
+      toast("The previous host left. You are now hosting.");
+    },
+  });
+  $("player-name").value =
+    sessionStorage.getItem("minecampus-name") ||
+    localStorage.getItem("minecampus-name") ||
+    `Steve-${Math.floor(Math.random() * 90 + 10)}`;
+  const invite = new URL(location.href).searchParams.get("room");
+  if (invite) $("room-code").value = invite.toUpperCase();
+  $("multiplayer-button").onclick = () => {
+    if (playing) pause();
+    $("multiplayer").showModal();
+  };
+  async function connect(create) {
+    if (mode !== "survey") {
+      toast("Switch to the real campus before joining co-op.");
+      return;
+    }
+    const name = $("player-name").value.trim() || "Steve";
+    localStorage.setItem("minecampus-name", name);
+    sessionStorage.setItem("minecampus-name", name);
+    $("create-room").disabled = $("join-room").disabled = true;
+    $("room-status").textContent = create
+      ? "Starting your campus room…"
+      : "Connecting to campus…";
+    audioFX.unlock();
+    try {
+      await network.connect({
+        create,
+        code: $("room-code").value.trim().toUpperCase(),
+        name,
+      });
+    } catch (e) {
+      $("room-status").textContent = e.message;
+      $("create-room").disabled = $("join-room").disabled = false;
+    }
+  }
+  $("create-room").onclick = () => connect(true);
+  $("join-room").onclick = () => connect(false);
+  $("copy-invite").onclick = async () => {
+    try {
+      await navigator.clipboard.writeText($("invite-url").value);
+      $("room-status").textContent = "Invite link copied.";
+    } catch {
+      $("invite-url").select();
+      $("room-status").textContent = "Select and copy the invite link.";
+    }
+  };
+  $("leave-room").onclick = () => {
+    savePlayer();
+    network.socket?.close();
+    location.href = location.pathname;
+  };
+  for (const [id, key] of [
+    ["sound-volume", "volume"],
+    ["mob-volume", "mobs"],
+    ["step-volume", "steps"],
+  ]) {
+    $(id).value = audioFX.settings[key] * 100;
+    $(id).oninput = () => {
+      audioFX.settings[key] = Number($(id).value) / 100;
+      audioFX.save();
+    };
+  }
+  $("sound-muted").checked = audioFX.settings.muted;
+  $("sound-muted").onchange = () => {
+    audioFX.settings.muted = $("sound-muted").checked;
+    audioFX.save();
+  };
+  $("sound-test").onclick = () => {
+    audioFX.unlock();
+    audioFX.context?.resume().then(() => {
+      audioFX.play("explosion");
+      $("sound-status").textContent =
+        `Audio ${audioFX.context.state} · ${audioFX.context.sampleRate} Hz · original spatial effects`;
+    });
+  };
+  if (invite) $("multiplayer").showModal();
+}
+function tickNetwork(dt) {
+  if (!network) return;
+  if (networkSession && !network.connected) {
+    for (const a of network.avatars.values()) a.root.visible = false;
+    return;
+  }
+  if (!network.connected) return;
+  network.update(dt, elapsed);
+  if (!network.isHost) {
+    life.interpolate(dt);
+  }
+  publishTimer += dt;
+  profileTimer += dt;
+  networkTimer += dt;
+  if (networkTimer < 0.1) return;
+  networkTimer = 0;
+  network.pose(currentPose());
+  if (network.isHost && publishTimer >= 0.2) {
+    publishTimer = 0;
+    network.publish(worldSnapshot());
+  }
+  if (profileTimer >= 2) {
+    profileTimer = 0;
+    savePlayer();
+  }
+}
+
 let frame = 0;
-function animate(now) {
-  requestAnimationFrame(animate);
+function animate(now, manual = false) {
+  if (!manual) requestAnimationFrame(animate);
   const dt = Math.min((now - lastTime) / 1000, 0.05);
   lastTime = now;
   elapsed += dt;
@@ -1224,19 +1949,40 @@ function animate(now) {
           player.position.y = h.point.y + 0.02;
           player.fallFrom = player.position.y;
           pendingSpawn = false;
-          life.seedResources(campus);
+          if (!networkSession || network?.isHost) life.seedResources(campus);
           save();
         }
       } else {
         const sprint = keys.has("ShiftLeft") && survival.hunger > 6;
+        const wasGrounded = player.grounded;
         const motion = stepWalker(
           player,
           dt,
           { move: desired, sprint, jump: keys.has("Space") },
           terrainSegment,
         );
-        if (motion.landed > 3) survival.damage(motion.landed - 3);
-        survival.tick(dt, { distance: motion.distance, sprint });
+        if (
+          (wasGrounded && !player.grounded && keys.has("Space")) ||
+          (!wasGrounded && player.grounded)
+        )
+          emitSound("step_stone", player.position);
+        if (motion.landed > 3) takeDamage(motion.landed - 3);
+        if (player.grounded) {
+          stepDistance += motion.distance;
+          if (stepDistance > (sprint ? 1.65 : 1.9)) {
+            stepDistance = 0;
+            const surface = terrainSegment(
+              player.position.clone().add(new THREE.Vector3(0, 0.2, 0)),
+              new THREE.Vector3(0, -1, 0),
+              0.6,
+            );
+            emitSound(
+              "step_" + materialSound(surface?.block?.type || "stone"),
+              player.position,
+            );
+          }
+        }
+        tickPlayer(dt, { distance: motion.distance, sprint });
         if (player.position.y < -40) survival.health = 0;
       }
     } else {
@@ -1245,7 +1991,7 @@ function animate(now) {
       desired.normalize().multiplyScalar(keys.has("ShiftLeft") ? 85 : 15);
       player.velocity.lerp(desired, 1 - Math.exp(-dt * 5));
       player.position.addScaledVector(player.velocity, dt);
-      if (!photoMode) survival.tick(dt);
+      if (!photoMode) tickPlayer(dt);
     }
     player.position.x = THREE.MathUtils.clamp(player.position.x, -700, 700);
     player.position.z = THREE.MathUtils.clamp(player.position.z, -750, 750);
@@ -1296,19 +2042,32 @@ function animate(now) {
   } else steve.root.rotation.y = player.yaw + Math.PI;
   steve.animate(elapsed, player.velocity.length() > 3 || !playing);
   // Photo mode freezes charges and effects while the camera remains free to fly.
-  if (playing && !photoMode) {
-    if (!pendingSpawn) life.update(dt, campus);
+  if (network?.connected && !playing) tickPlayer(dt);
+  if ((playing && !photoMode) || network?.connected) {
+    if (!pendingSpawn && (!networkSession || network?.isHost)) {
+      life.update(dt, campus);
+      projectiles.update(dt);
+    }
+
     if (mining) mineTick(dt);
     else $("mine-progress").style.display = "none";
     if (survival.health <= 0 && !$("death").open) {
+      if ($("inventory").open) {
+        syncStation();
+        const st = inventoryUI.station;
+        inventoryUI.close();
+        if (network?.connected && st)
+          requestAction({ kind: "station_close", ...st }).catch(() => {});
+      }
+      emitSound("death", player.position);
       for (let i = 0; i < 36; i++) {
         if (survival.inventory[i])
-          life.drop(survival.inventory[i], player.position);
+          dropItem(survival.inventory[i], player.position);
         survival.inventory[i] = null;
       }
       for (const part of Object.keys(survival.armor)) {
         if (survival.armor[part])
-          life.drop(survival.armor[part], player.position);
+          dropItem(survival.armor[part], player.position);
         survival.armor[part] = null;
       }
       pause();
@@ -1323,10 +2082,19 @@ function animate(now) {
       updateHotbar();
     }
     cameraShake *= Math.exp(-dt * 6);
-    airTNT.update(dt);
+    if (!networkSession || network?.isHost) airTNT.update(dt);
     effects.update(dt);
-    for (const [key, f] of [...fuses]) {
+    for (const [key, f] of !networkSession || network?.isHost
+      ? [...fuses]
+      : []) {
       f.time -= dt;
+      if (Math.floor(f.time * 2) !== f.beat) {
+        f.beat = Math.floor(f.time * 2);
+        emitSound(
+          "fuse",
+          new THREE.Vector3(f.b.x + 0.5, f.b.y + 0.5, f.b.z + 0.5),
+        );
+      }
       if (f.time <= 0) explode(f.b);
     }
     for (let i = particles.length - 1; i >= 0; i--) {
@@ -1391,7 +2159,7 @@ function animate(now) {
       `${campus.placed.size} BLOCKS / ${blasts} BLASTS / ${airTNT.charges.length} AIRBORNE`;
   }
   environment.update(
-    playing && !photoMode ? dt : 0,
+    (!networkSession ? playing && !photoMode : network?.isHost) ? dt : 0,
     player.position,
     [...campus.placed.values()]
       .filter((b) => b.type === "torch")
@@ -1406,6 +2174,19 @@ function animate(now) {
       `${environment.label} · ${life.mobs.length} mobs`;
     $("game-mode-label").textContent = survival.mode.toUpperCase();
   }
+  tickNetwork(dt);
+  if (bowCharge !== null) {
+    if (!playing || survival.held?.id !== "bow") bowCharge = null;
+    else bowCharge = Math.min(1, bowCharge + dt);
+  }
+  $("combat-status").textContent =
+    bowCharge !== null
+      ? `BOW · ${Math.round(bowCharge * 100)}%`
+      : survival.blocking
+        ? "SHIELD RAISED"
+        : "";
+  audioFX.listener = player.position;
+  audioFX.yaw = player.yaw;
   heldView.update(
     survival.held?.id,
     elapsed,
@@ -1413,7 +2194,15 @@ function animate(now) {
     !!survival.eating,
     playing && firstPerson && !photoMode,
   );
-  renderer.render(scene, camera);
+  if (!manual) renderer.render(scene, camera);
 }
 spawn();
+setupOnline();
+// Keep room simulation moving when the browser reduces background animation frames.
+setInterval(() => {
+  if (network?.isHost && performance.now() - lastTime > 250) {
+    const steps = Math.min(20, Math.floor((performance.now() - lastTime) / 50));
+    for (let i = 0; i < steps; i++) animate(lastTime + 50, true);
+  }
+}, 250);
 requestAnimationFrame(animate);

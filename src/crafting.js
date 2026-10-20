@@ -34,6 +34,15 @@ recipe("helmet", ["III", "I I"], { I: "iron" }, "iron_helmet");
 recipe("chestplate", ["I I", "III", "III"], { I: "iron" }, "iron_chestplate");
 recipe("leggings", ["III", "I I", "I I"], { I: "iron" }, "iron_leggings");
 recipe("boots", ["I I", "I I"], { I: "iron" }, "iron_boots");
+recipe("bow", [" ST", "S T", " ST"], { S: "stick", T: "string" }, "bow");
+recipe(
+  "arrows",
+  ["F", "S", "W"],
+  { F: "flint", S: "stick", W: "feather" },
+  "arrow",
+  4,
+);
+recipe("shield", ["PIP", "PPP", " P "], { P: "planks", I: "iron" }, "shield");
 function trim(grid, size) {
   let minX = size,
     minY = size,
@@ -119,11 +128,13 @@ export function fillRecipe(slots, grid, size, recipe) {
 export const SMELTING = {
   raw_beef: "cooked_beef",
   raw_pork: "cooked_pork",
+  raw_chicken: "cooked_chicken",
   sand: "glass",
   iron_ore: "iron",
 };
 export const FUELS = { coal: 80, wood: 15, planks: 15, stick: 5 };
 export function tickFurnace(f, dt) {
+  if (f.paused) return;
   f.burn = Math.max(0, (f.burn || 0) - dt);
   const input = f.slots[0],
     result = SMELTING[input?.id],

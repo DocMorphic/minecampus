@@ -117,6 +117,27 @@ export const ITEMS = {
   raw_pork: { name: "Raw pork", icon: "🥓", food: 3, saturation: 1.8 },
   cooked_pork: { name: "Cooked pork", icon: "🍗", food: 8, saturation: 12.8 },
 };
+Object.assign(ITEMS, {
+  bow: { name: "Bow", icon: "🏹", stack: 1, durability: 192 },
+  arrow: { name: "Arrow", icon: "➶" },
+  shield: {
+    name: "Shield",
+    icon: "🛡",
+    stack: 1,
+    durability: 240,
+    part: "offhand",
+  },
+  string: { name: "String", icon: "〰" },
+  bone: { name: "Bone", icon: "🦴" },
+  feather: { name: "Feather", icon: "🪶" },
+  raw_chicken: { name: "Raw chicken", icon: "🍗", food: 2, saturation: 1 },
+  cooked_chicken: {
+    name: "Cooked chicken",
+    icon: "🍗",
+    food: 6,
+    saturation: 7.2,
+  },
+});
 for (const [material, tier, durability, speed, damage] of [
   ["wooden", 1, 59, 2, 4],
   ["stone", 2, 131, 4, 5],

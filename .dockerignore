@@ -1,0 +1,8 @@
+node_modules
+dist
+.git
+.cache
+.minecampus
+.env
+.env.*
+docs

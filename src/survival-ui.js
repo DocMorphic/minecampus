@@ -209,25 +209,27 @@ export class InventoryUI {
         "Input · Fuel · Output. Cooking takes 8 seconds while playing.";
     }
     $("armor-slots").replaceChildren(
-      ...["helmet", "chestplate", "leggings", "boots"].map((part) => {
-        const b = document.createElement("button");
-        b.className = "inventory-slot";
-        b.innerHTML = itemMarkup(state.armor[part]) || "🛡";
-        b.title = part;
-        b.setAttribute(
-          "aria-label",
-          `Armor ${part}: ${state.armor[part] ? ITEMS[state.armor[part].id].name : "empty"}`,
-        );
-        b.onclick = () => {
-          const old = state.armor[part];
-          if (state.cursor && ITEMS[state.cursor.id].part !== part) return;
-          state.armor[part] = state.cursor;
-          state.cursor = old;
-          this.changed();
-          this.render();
-        };
-        return b;
-      }),
+      ...["helmet", "chestplate", "leggings", "boots", "offhand"].map(
+        (part) => {
+          const b = document.createElement("button");
+          b.className = "inventory-slot";
+          b.innerHTML = itemMarkup(state.armor[part]) || "🛡";
+          b.title = part;
+          b.setAttribute(
+            "aria-label",
+            `Armor ${part}: ${state.armor[part] ? ITEMS[state.armor[part].id].name : "empty"}`,
+          );
+          b.onclick = () => {
+            const old = state.armor[part];
+            if (state.cursor && ITEMS[state.cursor.id].part !== part) return;
+            state.armor[part] = state.cursor;
+            state.cursor = old;
+            this.changed();
+            this.render();
+          };
+          return b;
+        },
+      ),
     );
     this.renderRecipes();
     this.renderCursor();
