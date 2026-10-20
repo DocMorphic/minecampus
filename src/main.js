@@ -1,11 +1,15 @@
 import * as THREE from "three";
 import "./style.css";
 import { Campus } from "./campus.js";
-import { PALETTE } from "./textures.js";
+import { PALETTE, texture } from "./textures.js";
 import { BLOCK, project, unproject, traceVoxels } from "./geo.js";
 import { createSteve } from "./steve.js";
 import { PhotorealWorld } from "./photoreal.js";
 import { SurveyWorld } from "./survey.js";
+import { campusLandmarks, nearestLandmark } from "./landmarks.js";
+import { AirTNT } from "./air-tnt.js";
+import { BlastEffects } from "./blast-effects.js";
+import { exportPhoto } from "./photo.js";
 const $ = (id) => document.getElementById(id);
 const canvas = $("world"),
   renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
@@ -109,7 +113,12 @@ let playing = false,
   blasts = 0,
   hasPointer = false,
   dragging = false,
-  initialIntro = true;
+  initialIntro = true,
+  photoMode = false,
+  previousFov = 62,
+  captureBusy = false,
+  photoResult = null,
+  cameraShake = 0;
 const keys = new Set(),
   fuses = new Map(),
   particles = [],
@@ -130,6 +139,206 @@ const selection = new THREE.Mesh(
 );
 scene.add(selection);
 selection.visible = false;
+const landmarks = campusLandmarks(data.elements);
+const effects = new BlastEffects(scene);
+const airTNT = new AirTNT(
+  scene,
+  new THREE.MeshLambertMaterial({ map: texture("tnt") }),
+  terrainSegment,
+  (position) => detonateAt(position),
+);
+const reducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
+$("camera-shake").checked = !reducedMotion;
+for (const place of landmarks) {
+  const button = document.createElement("button");
+  button.className = "landmark-card";
+  button.innerHTML = `<span class="landmark-letter">${place.marker}</span><span><strong>${place.name}</strong><small>${place.detail}</small></span><span class="travel-arrow">↗</span>`;
+  button.setAttribute("aria-label", `Fly to ${place.name}`);
+  button.onclick = () => teleport(place);
+  $("landmark-list").append(button);
+}
+function updatePlayerCamera() {
+  const look = new THREE.Vector3(
+    -Math.sin(player.yaw) * Math.cos(player.pitch),
+    Math.sin(player.pitch),
+    -Math.cos(player.yaw) * Math.cos(player.pitch),
+  );
+  const side = new THREE.Vector3(
+    Math.cos(player.yaw),
+    0,
+    -Math.sin(player.yaw),
+  );
+  if (firstPerson) {
+    camera.position.copy(player.position).add(new THREE.Vector3(0, 4.8, 0));
+    steve.root.visible = false;
+  } else {
+    camera.position
+      .copy(player.position)
+      .addScaledVector(look, -17)
+      .addScaledVector(side, 5);
+    camera.position.y += 6;
+    steve.root.visible = true;
+  }
+  camera.lookAt(camera.position.clone().addScaledVector(look, 100));
+  if (!photoMode && $("camera-shake").checked && cameraShake > 0.005) {
+    camera.position.x += Math.sin(elapsed * 91) * cameraShake;
+    camera.position.y += Math.cos(elapsed * 73) * cameraShake * 0.7;
+    camera.rotateZ(Math.sin(elapsed * 53) * cameraShake * 0.005);
+  }
+}
+function exploreCampus() {
+  if (playing) pause();
+  $("explore").showModal();
+}
+function teleport(place) {
+  $("explore").close();
+  initialIntro = false;
+  player.position.set(...place.spawn);
+  player.yaw = place.yaw;
+  player.pitch = place.pitch;
+  player.velocity.setScalar(0);
+  cameraShake = 0;
+  updatePlayerCamera();
+  enter();
+  toast(`Now above ${place.short}. Have a look around.`);
+}
+function setPhotoMode(enabled, quiet = false) {
+  if (enabled === photoMode) return;
+  photoMode = enabled;
+  keys.clear();
+  player.velocity.setScalar(0);
+  document.body.classList.toggle("photo-mode", enabled);
+  $("photo-tools").classList.toggle("hidden", !enabled);
+  selection.visible = false;
+  if (enabled) {
+    previousFov = camera.fov;
+    $("photo-credit").textContent = $("credits").textContent;
+    $("photo-credit").href = $("credits").href;
+    $("photo-fov").value = camera.fov;
+    $("photo-fov-value").value = `${Math.round(camera.fov)}°`;
+    document.exitPointerLock?.();
+  } else {
+    camera.fov = previousFov;
+    camera.updateProjectionMatrix();
+    if (!quiet) toast("Back to creative mode.");
+  }
+}
+async function startPhoto() {
+  if (!playing) await enter();
+  setPhotoMode(true);
+}
+async function capturePhoto() {
+  if (!photoMode || captureBusy) return;
+  if (mode === "google") {
+    toast("PNG export is available in the bundled campus modes.");
+    return;
+  }
+  captureBusy = true;
+  $("take-photo").disabled = true;
+  try {
+    const result = await exportPhoto(renderer, scene, camera, {
+      coordinates: unproject(player.position.x, player.position.z),
+      credit:
+        mode === "survey"
+          ? "Bayerische Vermessungsverwaltung – www.geodaten.bayern.de · CC BY 4.0 · adapted"
+          : "© OpenStreetMap contributors · ODbL · adapted",
+    });
+    if (photoResult) URL.revokeObjectURL(photoResult.url);
+    photoResult = result;
+    $("photo-preview").src = result.url;
+    $("download-photo").href = result.url;
+    $("download-photo").download = result.filename;
+    $("photo-review").showModal();
+    toast("Photo ready. Preview it, then download the PNG.");
+  } catch {
+    toast("Photo could not be saved. Try again in this browser.");
+  } finally {
+    captureBusy = false;
+    $("take-photo").disabled = false;
+  }
+}
+$("explore-button").onclick = exploreCampus;
+$("photo-button").onclick = startPhoto;
+$("exit-photo").onclick = () => setPhotoMode(false);
+$("take-photo").onclick = capturePhoto;
+$("photo-fov").oninput = () => {
+  camera.fov = Number($("photo-fov").value);
+  camera.updateProjectionMatrix();
+  $("photo-fov-value").value = `${camera.fov}°`;
+};
+$("minimap").onclick = (event) => {
+  const rect = $("minimap").getBoundingClientRect(),
+    x = ((event.clientX - rect.left) / rect.width) * 240,
+    z = ((event.clientY - rect.top) / rect.height) * 210;
+  const nearest = nearestLandmark(
+    landmarks,
+    (x - 120) / 0.15,
+    (z - 105) / 0.15,
+  );
+  if (nearest && nearest.distance < 75) teleport(nearest.place);
+  else exploreCampus();
+};
+function terrainSegment(origin, direction, length) {
+  let hit = null;
+  const voxel = traceVoxels(
+    origin,
+    direction,
+    (x, y, z) => campus.get(x, y, z),
+    length,
+  );
+  if (voxel)
+    hit = {
+      distance: voxel.distance,
+      point: origin.clone().addScaledVector(direction, voxel.distance),
+      normal: new THREE.Vector3(...voxel.normal),
+    };
+  const surface = mode === "survey" ? real : photo;
+  if (surface) {
+    const ray = new THREE.Raycaster(origin, direction, 0, length);
+    const h = surface.raycast(ray);
+    if (h && (!hit || h.distance < hit.distance)) {
+      const normal =
+        h.face?.normal.clone().transformDirection(h.object.matrixWorld) ||
+        new THREE.Vector3(0, 1, 0);
+      if (normal.dot(direction) > 0) normal.negate();
+      hit = { point: h.point, distance: h.distance, normal };
+    }
+  } else if (direction.y < 0) {
+    const distance = -origin.y / direction.y;
+    if (
+      distance >= 0 &&
+      distance <= length &&
+      (!hit || distance < hit.distance)
+    )
+      hit = {
+        distance,
+        point: origin.clone().addScaledVector(direction, distance),
+        normal: new THREE.Vector3(0, 1, 0),
+      };
+  }
+  return hit;
+}
+function dropTNT() {
+  if (!playing || photoMode) return;
+  const direction = new THREE.Vector3(
+    -Math.sin(player.yaw),
+    0,
+    -Math.cos(player.yaw),
+  );
+  const position = player.position.clone().addScaledVector(direction, 5);
+  position.y += 1;
+  if (
+    airTNT.drop(
+      position,
+      player.velocity.clone().addScaledVector(direction, 12),
+    )
+  ) {
+    primeAudio();
+    toast("TNT away. Impact lights the fuse.");
+  } else toast("Give the last charge a moment.");
+}
 const hotbar = $("hotbar");
 PALETTE.forEach((b, i) => {
   const btn = document.createElement("button");
@@ -180,7 +389,7 @@ function spawn() {
   player.yaw = 0;
   player.pitch = -0.45;
   player.velocity.setScalar(0);
-  camera.position.copy(player.position).add(new THREE.Vector3(0, 8, 25));
+  updatePlayerCamera();
   toast("Back above Garching. Creative privileges granted.");
 }
 async function enter() {
@@ -202,6 +411,7 @@ async function enter() {
     );
 }
 function pause() {
+  if (photoMode) setPhotoMode(false, true);
   playing = false;
   keys.clear();
   player.velocity.setScalar(0);
@@ -217,7 +427,7 @@ $("pause").onclick = pause;
 document.addEventListener("pointerlockchange", () => {
   const was = hasPointer;
   hasPointer = document.pointerLockElement === canvas;
-  if (was && !hasPointer && playing) pause();
+  if (was && !hasPointer && playing && !photoMode) pause();
 });
 canvas.addEventListener("pointerdown", (e) => {
   if (!playing) return;
@@ -225,18 +435,18 @@ canvas.addEventListener("pointerdown", (e) => {
     dragging = true;
     canvas.dataset.dragged = "false";
   } else if (hasPointer) {
-    act(e.button === 2);
+    if (!photoMode) act(e.button === 2);
   }
 });
 window.addEventListener("pointerup", (e) => {
   if (dragging && e.button === 0) {
-    if (canvas.dataset.dragged !== "true" && playing) act(false);
+    if (canvas.dataset.dragged !== "true" && playing && !photoMode) act(false);
     dragging = false;
   }
 });
 canvas.addEventListener("contextmenu", (e) => {
   e.preventDefault();
-  if (playing && !hasPointer) act(true);
+  if (playing && !hasPointer && !photoMode) act(true);
 });
 window.addEventListener("mousemove", (e) => {
   if (!playing || (!hasPointer && !dragging)) return;
@@ -250,7 +460,27 @@ window.addEventListener("mousemove", (e) => {
   );
 });
 window.addEventListener("keydown", (e) => {
-  if ($("settings").open) return;
+  if ($("settings").open || $("explore").open || $("photo-review").open) return;
+  if (e.code === "KeyM" && !e.repeat) {
+    exploreCampus();
+    return;
+  }
+  if (e.code === "KeyP" && !e.repeat) {
+    if (photoMode) setPhotoMode(false);
+    else startPhoto();
+    return;
+  }
+  if (photoMode && e.code === "Enter") {
+    e.preventDefault();
+    if (!e.repeat) capturePhoto();
+    return;
+  }
+  if (
+    photoMode &&
+    e.target === $("photo-fov") &&
+    ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.code)
+  )
+    return;
   if (
     ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(
       e.code,
@@ -258,7 +488,8 @@ window.addEventListener("keydown", (e) => {
   )
     e.preventDefault();
   if (e.code === "Escape") {
-    if (playing) pause();
+    if (photoMode) setPhotoMode(false);
+    else if (playing) pause();
     return;
   }
   if (!playing) return;
@@ -272,7 +503,8 @@ window.addEventListener("keydown", (e) => {
     firstPerson = !firstPerson;
     toast(firstPerson ? "First-person camera" : "Steve chase camera");
   }
-  if (e.code === "KeyE") igniteNearby();
+  if (e.code === "KeyE" && !photoMode) igniteNearby();
+  if (e.code === "KeyQ") dropTNT();
   if (e.code === "KeyR") spawn();
 });
 window.addEventListener("keyup", (e) => keys.delete(e.code));
@@ -285,6 +517,17 @@ canvas.addEventListener(
   (e) => {
     if (!playing) return;
     e.preventDefault();
+    if (photoMode) {
+      camera.fov = THREE.MathUtils.clamp(
+        camera.fov + (e.deltaY > 0 ? 2 : -2),
+        35,
+        90,
+      );
+      camera.updateProjectionMatrix();
+      $("photo-fov").value = camera.fov;
+      $("photo-fov-value").value = `${camera.fov}°`;
+      return;
+    }
     selected =
       (selected + (e.deltaY > 0 ? 1 : -1) + PALETTE.length) % PALETTE.length;
     updateHotbar();
@@ -370,6 +613,7 @@ function act(mine) {
     toast("First block down. Make yourself at home.");
 }
 function igniteNearby() {
+  primeAudio();
   let count = 0;
   for (const b of campus.placed.values())
     if (
@@ -391,6 +635,12 @@ function igniteNearby() {
   );
 }
 let audio;
+function primeAudio() {
+  try {
+    audio ??= new AudioContext();
+    audio.resume().catch(() => {});
+  } catch {}
+}
 function boomSound() {
   try {
     audio ??= new AudioContext();
@@ -470,19 +720,29 @@ function addRealFragments() {
 }
 function explode(b) {
   fuses.delete(b.key);
-  const p = new THREE.Vector3(
-    (b.x + 0.5) * BLOCK,
-    (b.y + 0.5) * BLOCK,
-    (b.z + 0.5) * BLOCK,
+  detonateAt(
+    new THREE.Vector3(
+      (b.x + 0.5) * BLOCK,
+      (b.y + 0.5) * BLOCK,
+      (b.z + 0.5) * BLOCK,
+    ),
+    b.key,
+  );
+}
+function detonateAt(p, sourceKey = null) {
+  airTNT.primeNearby(p, 16);
+  effects.burst(p);
+  cameraShake = Math.min(
+    1.2,
+    cameraShake + Math.max(0, 1 - player.position.distanceTo(p) / 180) * 0.8,
   );
   const removed = campus.explode(p, 16);
-  let damaged = 0;
   if (mode === "survey") {
-    damaged = real.explode(p, 16);
+    real.explode(p, 16);
     addRealFragments();
   } else if (photo) photo.explode(p, 16);
   for (const other of removed)
-    if (other.type === "tnt" && other.key !== b.key) {
+    if (other.type === "tnt" && other.key !== sourceKey) {
       const chain = { ...other };
       fuses.set(chain.key, { b: chain, time: 0.15 + Math.random() * 0.35 });
     }
@@ -548,6 +808,19 @@ function drawMap() {
       ctx.stroke();
     }
   }
+  for (const place of landmarks) {
+    const x = w / 2 + place.x * scale,
+      y = h / 2 + place.z * scale;
+    ctx.fillStyle = "#e4f58f";
+    ctx.beginPath();
+    ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#17291c";
+    ctx.font = "bold 5px monospace";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(place.marker, x, y);
+  }
   const x = w / 2 + player.position.x * scale,
     y = h / 2 + player.position.z * scale;
   ctx.save();
@@ -598,6 +871,9 @@ $("apply-settings").onclick = () => {
   }
   if (campus !== original) campus.dispose();
   fuses.clear();
+  airTNT.clear();
+  effects.clear();
+  cameraShake = 0;
   mode = requested;
   real.group.visible = mode === "survey";
   original.group.visible = mode === "campus";
@@ -710,27 +986,12 @@ function animate(now) {
     player.position.y = THREE.MathUtils.clamp(player.position.y, 4, 450);
     player.position.x = THREE.MathUtils.clamp(player.position.x, -700, 700);
     player.position.z = THREE.MathUtils.clamp(player.position.z, -750, 750);
-    const look = new THREE.Vector3(
-      -Math.sin(player.yaw) * Math.cos(player.pitch),
-      Math.sin(player.pitch),
-      -Math.cos(player.yaw) * Math.cos(player.pitch),
-    );
-    if (firstPerson) {
-      camera.position.copy(player.position).add(new THREE.Vector3(0, 4.8, 0));
-      steve.root.visible = false;
-    } else {
-      const offset = look.clone().multiplyScalar(-17);
-      offset.y += 6;
-      offset.addScaledVector(right, 5);
-      camera.position.copy(player.position).add(offset);
-      steve.root.visible = true;
-    }
-    camera.lookAt(camera.position.clone().addScaledVector(look, 100));
+    updatePlayerCamera();
     aimTime += dt;
     if (aimTime > 0.08) {
       aimTime = 0;
       aim = aimAt();
-      selection.visible = !!aim;
+      selection.visible = !!aim && !photoMode;
       if (aim) {
         const p = aim.block
           ? new THREE.Vector3(...aim.cell.map((v) => (v + 0.5) * BLOCK))
@@ -771,8 +1032,11 @@ function animate(now) {
     steve.root.rotation.y = -0.3;
   } else steve.root.rotation.y = player.yaw + Math.PI;
   steve.animate(elapsed, player.velocity.length() > 3 || !playing);
-  // Fuse timers advance only in active play; pausing does not destroy your work.
-  if (playing) {
+  // Photo mode freezes charges and effects while the camera remains free to fly.
+  if (playing && !photoMode) {
+    cameraShake *= Math.exp(-dt * 6);
+    airTNT.update(dt);
+    effects.update(dt);
     for (const [key, f] of [...fuses]) {
       f.time -= dt;
       if (f.time <= 0) explode(f.b);
@@ -827,8 +1091,16 @@ function animate(now) {
     $("coords").textContent = `${g.lat.toFixed(4)} N / ${g.lon.toFixed(4)} E`;
     $("altitude").innerHTML = `${Math.round(player.position.y)}<span> m</span>`;
     $("speed").textContent = `${Math.round(player.velocity.length())} M/S`;
+    const nearby = nearestLandmark(
+      landmarks,
+      player.position.x,
+      player.position.z,
+    );
+    $("nearby-place").textContent = nearby
+      ? `${nearby.place.short} · ${Math.round(nearby.distance)} m`
+      : "";
     $("stats").textContent =
-      `${campus.placed.size} BLOCKS PLACED / ${blasts} BLASTS`;
+      `${campus.placed.size} BLOCKS / ${blasts} BLASTS / ${airTNT.charges.length} AIRBORNE`;
   }
   renderer.render(scene, camera);
 }

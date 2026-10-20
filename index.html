@@ -17,7 +17,7 @@
     <header>
       <a class="brand" href="/" aria-label="Minecampus home"
         ><span class="brand-block">m</span>minecampus<span class="alpha"
-          >ALPHA 01</span
+          >ALPHA 02</span
         ></a
       >
       <div class="location">
@@ -25,13 +25,29 @@
         <span class="divider">/</span>
         <span id="mode-label">REAL AERIAL SURVEY</span>
       </div>
-      <button
-        id="settings-button"
-        class="icon-button"
-        aria-label="World settings"
-      >
-        ⚙
-      </button>
+      <nav class="header-actions" aria-label="Campus tools">
+        <button
+          id="explore-button"
+          class="tool-button"
+          aria-label="Explore campus"
+        >
+          <kbd>M</kbd> Explore
+        </button>
+        <button
+          id="photo-button"
+          class="tool-button"
+          aria-label="Open photo mode"
+        >
+          <kbd>P</kbd> Photo
+        </button>
+        <button
+          id="settings-button"
+          class="icon-button"
+          aria-label="World settings"
+        >
+          ⚙
+        </button>
+      </nav>
     </header>
     <main id="welcome">
       <div class="eyebrow"><span></span>48.2650° N &nbsp; 11.6710° E</div>
@@ -49,8 +65,8 @@
       <div class="world-note">
         <span class="tiny-cube"></span>
         <div>
-          <strong>REAL GEOMETRY. REAL IMAGERY.</strong><br />Actual
-          OpenStreetMap footprints · reconstructed in 3D
+          <strong>REAL GEOMETRY. REAL IMAGERY.</strong><br />Actual textured
+          campus mesh · Bavarian aerial survey
         </div>
       </div>
     </main>
@@ -77,18 +93,78 @@
       <div class="telemetry">
         <span>CREATIVE FLIGHT</span
         ><strong id="altitude">42<span> m</span></strong
-        ><small id="speed">0 M/S</small>
+        ><small id="speed">0 M/S</small><small id="nearby-place"></small>
       </div>
       <div id="target-label"></div>
       <button id="pause" class="secondary">ESC &nbsp; PAUSE</button>
     </div>
     <div id="toast" role="status"></div>
+    <div id="photo-tools" class="hidden" aria-label="Photo mode controls">
+      <div class="photo-heading">
+        PHOTO MODE <span>WASD fly · drag to look · V toggle Steve</span>
+      </div>
+      <div class="photo-options">
+        <label for="photo-fov"
+          >LENS <output id="photo-fov-value">62°</output></label
+        ><input
+          type="range"
+          id="photo-fov"
+          min="35"
+          max="90"
+          value="62"
+          aria-label="Photo field of view"
+        /><button id="take-photo" class="primary">
+          TAKE PHOTO <span>↗</span></button
+        ><button id="exit-photo" class="secondary">P · EXIT</button>
+      </div>
+      <small
+        >TNT and effects are frozen. Enter captures a photo with
+        attribution.</small
+      >
+    </div>
+    <a
+      id="photo-credit"
+      href="https://www.geodaten.bayern.de/odd/m/3/html/nutzungsbedingungen.html"
+      target="_blank"
+      rel="noreferrer"
+    ></a>
+    <dialog id="photo-review">
+      <form method="dialog">
+        <button class="close" aria-label="Close photo preview">×</button>
+      </form>
+      <div class="eyebrow">A LITTLE POSTCARD FROM GARCHING</div>
+      <h2>Good view.</h2>
+      <img
+        id="photo-preview"
+        alt="Your campus photo with location and survey attribution"
+      />
+      <a id="download-photo" class="primary" download
+        >DOWNLOAD PNG <span>↓</span></a
+      >
+      <p class="detail">
+        Includes source attribution. Close this preview to keep framing.
+      </p>
+    </dialog>
+    <dialog id="explore">
+      <form method="dialog">
+        <button class="close" aria-label="Close campus explorer">×</button>
+      </form>
+      <div class="eyebrow">FIVE PLACES. ENDLESS POSSIBILITIES.</div>
+      <h2>Where to<br />next?</h2>
+      <p class="detail">
+        Choose a landmark to jump into a new view of the real campus.
+      </p>
+      <div id="landmark-list"></div>
+      <p class="detail">
+        M opens this menu. Click a letter on the minimap to travel there.
+      </p>
+    </dialog>
     <footer>
       <div class="controls">
         <span><kbd>W A S D</kbd> Fly</span
         ><span><kbd>SPACE</kbd> Up <kbd>C</kbd> Down</span
         ><span><kbd>SHIFT</kbd> Boost</span><span><kbd>V</kbd> Camera</span
-        ><span><kbd>E</kbd> Detonate</span>
+        ><span><kbd>E</kbd> Detonate</span><span><kbd>Q</kbd> Drop TNT</span>
       </div>
       <div id="hotbar" role="toolbar" aria-label="Block inventory"></div>
       <div class="footer-line">
@@ -152,6 +228,10 @@
       /><button id="apply-settings" class="primary">
         APPLY WORLD <span>↗</span>
       </button>
+      <label class="toggle-option"
+        ><input type="checkbox" id="camera-shake" checked /> Camera shake near
+        explosions</label
+      >
       <div class="settings-actions">
         <button id="reset-world" class="secondary">Reset all changes</button
         ><button id="retry-assets" class="secondary">Retry assets</button>
@@ -159,8 +239,9 @@
       </div>
       <p class="detail">
         Click to place · Right-click to mine · E ignites nearby TNT<br />Mouse
-        to look · Arrow keys also turn · Esc releases mouse<br />Blocks and
-        real-campus damage auto-save locally.
+        to look · Arrow keys also turn · Esc releases mouse<br />Q drops TNT · M
+        explores · P opens photo mode<br />Blocks and real-campus damage
+        auto-save locally.
       </p>
     </dialog>
     <script type="module" src="/src/main.js"></script>
