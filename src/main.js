@@ -505,7 +505,7 @@ function explode(b) {
   save();
   toast(
     mode === "survey"
-      ? `BOOM. ${damaged.toLocaleString()} real mesh faces hit.`
+      ? "BOOM. Campus reshaped."
       : `BOOM. ${removed.length} blocks cleared.`,
   );
 }
