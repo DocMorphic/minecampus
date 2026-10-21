@@ -26,7 +26,17 @@ The fixed campus origin is **48.265° N, 11.671° E**. You receive real Minecraf
 
 ## Verification status
 
-The pack builds, pinned mod downloads pass integrity checks, the official-launcher profile installs, and the upstream terrain/photo services start on macOS arm64 with Node 22. Garching's live Google terrain, close-up visual quality, native mining/TNT and two-client multiplayer still need in-game checks with working account/provider access. **This is not yet a verified, finished campus playthrough.**
+### First walkable building: Mensa
+
+A separate native Minecraft Mensa study now reconstructs the mapped footprint, courtyard, ground-floor café/foyer, main stair, upper dining hall and serving islands. It uses normal Minecraft blocks and food containers. It is a reference-based architectural approximation, not a scanned interior or a seamless replacement of the campus mesh.
+
+```sh
+python3 scripts/mensa.py install
+```
+
+Save and Quit to Title, reopen the campus world, then run `/function minecampus_mensa:visit`. `/function minecampus_mensa:back` returns to your saved campus position. The existing campus terrain is untouched. [Mensa details, sources and limits](minecraft/mensa/README.md).
+
+The pack builds, pinned mod downloads pass integrity checks, the official-launcher profile installs, and the upstream terrain/photo services start on macOS arm64 with Node 22. The user has loaded the streamed Garching campus and reported improved detail after the local-quality settings. The Mensa preview has separate native Minecraft template, interaction, collision-clearance and travel checks. Campus mining/TNT and two-client multiplayer still need end-to-end checks. **This is not yet a verified, finished campus playthrough.**
 
 RealWorldMC's collision terrain approximates its photo mesh. Scanned buildings have no measured interiors, vanilla ores/caves are not generated in the campus dimension, and night dims daytime imagery. Starter materials support crafting and farming; the Nether and End use vanilla generation. Upstream public streamed-world hosting is not ready-made. LAN play is a test path, not a verified feature of this pack yet.
 

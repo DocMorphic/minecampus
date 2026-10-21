@@ -54,6 +54,8 @@ API requests can incur charges. Budget alerts are notifications, not a hard spen
 
 ## Multiplayer and visual limits
 
+The [walkable Mensa study](mensa/README.md) is an optional, separate Minecraft dimension. Install with `python3 scripts/mensa.py install`, reopen the existing campus save, and use `/function minecampus_mensa:visit` and `/function minecampus_mensa:back`. It does not overwrite the campus mesh or chunks, and uses no map streaming while inside its own dimension.
+
 If the scenery looks coarse, save your world, then run `python3 scripts/minecraft.py quality` and fully quit/relaunch Minecraft. This prioritizes the local campus: a 2-pixel screen-error target, a 1.5 km map radius, a 1,200-tile budget and a 1440-pixel selection viewport. It preserves provider credentials and existing collision terrain, and backs up the old service config privately. It may use more GPU memory and download more nearby detail; monitor your free streaming allowance. This is a tuning option, not a promise of better source imagery. Stay still briefly while detail streams; pausing the world can also pause the view-selection updates.
 
 Minecraft itself provides multiplayer. For same-network play, **Esc → Open to LAN**, then friends join through Multiplayer with the same pack and their own map access. However, upstream does **not** support public streamed-world hosting as a ready-made setup, and this campus pack's LAN flow has not yet been playtested. The browser prototype's room codes do not apply to this version. Do not advertise native campus multiplayer as verified until two actual clients have joined and shared edits have been checked.

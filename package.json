@@ -12,7 +12,9 @@
     "start": "node server/index.js --production",
     "minecraft:build": "python3 scripts/minecraft.py build",
     "minecraft:install": "python3 scripts/minecraft.py install",
-    "minecraft:doctor": "python3 scripts/minecraft.py doctor"
+    "minecraft:doctor": "python3 scripts/minecraft.py doctor",
+    "mensa:build": "python3 scripts/mensa.py build",
+    "mensa:install": "python3 scripts/mensa.py install"
   },
   "dependencies": {
     "3d-tiles-renderer": "^0.4.19",

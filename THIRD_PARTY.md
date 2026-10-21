@@ -1,5 +1,7 @@
 ## Native Minecraft pack (0.2.0)
 
+The Mensa study additionally uses a small derived building/courtyard footprint from OpenStreetMap relation 7726478, © OpenStreetMap contributors (ODbL 1.0). Its original block model is a rounded interpretation; architectural plans and photographs on meck architekten's project page were consulted as references, not redistributed as model textures or assets. Provenance and reconstruction limits are in `minecraft/mensa/references.json` and `minecraft/mensa/README.md`.
+
 The `minecraft/` add-on and installer are MIT. The dependency lock references RealWorldMC 1.0.3 (Apache-2.0) and Fabric API (Apache-2.0); upstream JARs carry their notices and licences. Source: https://github.com/Teddy563/realworldmc and https://github.com/FabricMC/fabric.
 
 Minecraft Java itself and its official Steve skins, entity models, block/item textures, and sounds are provided by the user's authenticated official launcher installation. They are not copied into this repository or its modpack. Google/Cesium map imagery is streamed using the user's eligible credentials and is not included in the pack. Provider attribution must remain visible. Native setup and terrain limitations are documented in `minecraft/README.md`.
