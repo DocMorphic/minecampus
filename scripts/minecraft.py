@@ -110,6 +110,25 @@ def atomic_json(path, value):
     temporary.replace(path)
 
 
+def quality():
+    """Prioritize local scan detail without touching credentials or saved collision chunks."""
+    path = INSTANCE / 'realworldmc-service/config.json'
+    config = json.loads(path.read_text()) if path.exists() else {}
+    if path.exists():
+        backup = path.with_name('config.before-campus-quality.json')
+        if not backup.exists():
+            shutil.copy2(path, backup)
+            backup.chmod(0o600)
+    config['render'] = {
+        **config.get('render', {}),
+        **json.loads((ROOT / 'minecraft/config/terrain-quality.json').read_text()),
+    }
+    atomic_json(path, config)
+    print('Applied local-detail terrain settings: 2px error target, 1.5 km radius, 1,200 tile budget.')
+    print('Saved collision geometry and provider credentials are preserved. No provider requests made.')
+    print('Fully quit Minecraft and relaunch the Minecampus installation to apply. Keep your existing world.')
+
+
 def install(launcher):
     campus = build()
     INSTANCE.mkdir(parents=True, exist_ok=True)
@@ -183,7 +202,7 @@ def doctor(launcher):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['build', 'install', 'doctor'])
+    parser.add_argument('action', choices=['build', 'install', 'doctor', 'quality'])
     parser.add_argument('--launcher-dir', type=Path, default=launcher_directory())
     args = parser.parse_args()
     try:
@@ -191,6 +210,8 @@ if __name__ == '__main__':
             build()
         elif args.action == 'install':
             install(args.launcher_dir.expanduser().resolve())
+        elif args.action == 'quality':
+            quality()
         else:
             doctor(args.launcher_dir.expanduser().resolve())
     except (OSError, ValueError, RuntimeError, StopIteration) as error:

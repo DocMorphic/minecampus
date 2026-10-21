@@ -15,6 +15,24 @@ spec.loader.exec_module(installer)
 
 
 class NativePackTests(unittest.TestCase):
+    def test_quality_preserves_credentials_collision_settings_and_private_backup(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(installer, 'INSTANCE', Path(folder)):
+            path = Path(folder) / 'realworldmc-service/config.json'
+            path.parent.mkdir()
+            original = {'cesiumToken': 'SYNTHETIC_TEST_TOKEN', 'collisionError': 1.0,
+                        'water': False, 'render': {'custom': True, 'maxSse': 12}}
+            path.write_text(json.dumps(original))
+            installer.quality()
+            updated = json.loads(path.read_text())
+            self.assertEqual(updated['cesiumToken'], original['cesiumToken'])
+            self.assertEqual(updated['collisionError'], 1.0)
+            self.assertFalse(updated['water'])
+            self.assertTrue(updated['render']['custom'])
+            self.assertEqual(updated['render']['maxSse'], 2)
+            backup = path.with_name('config.before-campus-quality.json')
+            self.assertEqual(json.loads(backup.read_text()), original)
+            self.assertEqual(backup.stat().st_mode & 0o777, 0o600)
+
     def test_pack_is_importable_and_has_no_game_assets_or_credentials(self):
         # Exercise the real archive writer with the verified downloaded dependencies.
         with tempfile.TemporaryDirectory() as folder, patch.object(installer, 'OUTPUT', Path(folder)):
