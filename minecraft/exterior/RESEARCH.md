@@ -24,3 +24,15 @@ The fully loaded source scene reached approximately 3.6 million triangles with n
 The release therefore combines DGM1 terrain, DOP20 imagery, two LoD2 Galileo components reconstructed using a CC0 façade reference, and three surveyed promenade roof structures. Official GCG2016 geoid heights align these meshes with the existing world. It retains Google's photographic mesh during elevated flight and uses the reconstruction near ground, with transition hysteresis. A nearest-child-first download experiment caused missing coverage and was rejected; the original coverage-first order remains. Snapping photographic walls to survey planes was also rejected after producing holes.
 
 See [validation](VALIDATION.md) for the actual packaged Minecraft ground/aerial captures, walking, TNT and preservation checks. No source found in this research supplies an unrestricted, measured street-level scan of every Garching façade. Remaining scan artifacts are an explicit limitation.
+
+## Walking-quality preview research
+
+BVV DOM20 surface heights, paired with DGM1/DOP20, support inferred canopy locations and dimensions. The top-envelope check is conservative; it is not proof of exact tree trunk locations or species. All intersecting building envelopes are retained at the 600 m boundary. The near-ground outdoor layer is now supplied by survey/reconstructed assets, with building/roof footprints protecting the original architectural mesh.
+
+Poly Haven supplies CC0 leaf/bark and concrete/grass colour/normal atlases. The installed game uses bundled copies, without live Poly Haven API calls. Source URLs and hashes are recorded in the vegetation/material manifests.
+
+The [Graduate School architect reference](https://www.hkarchitekten.at/en/project/tum-exzellenzzentrum/) informs the building's projecting coloured bands and red supports. The architect's photographs are used as references and are not bundled. MW material/reference photography is the separately licensed Renardo la vulpo Commons image; its metadata describes the adaptation.
+
+A public [KartaView location query](https://kartaview.org/doc/faq) for the campus with a 500 m radius returned an empty result in this research. This does not establish absence of imagery across the wider region. No KartaView imagery is bundled. It did not supply a replacement street-level campus scan.
+
+A source backface-culling experiment did not resolve the outdoor fragment problem and was reverted. The final preview retains the source's two-sided rendering. Roof/overlap and outdoor classification repair, rather than more tile requests, are the relevant corrections. The unreconstructed source-façade inspection remains below the requested realism target.

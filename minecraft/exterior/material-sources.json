@@ -1,0 +1,41 @@
+{
+  "materials": [
+    {
+      "name": "concrete_diff",
+      "asset": "concrete_wall_007",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_007/concrete_wall_007_diff_1k.jpg",
+      "sha256": "1a5ff668a66e147d9fb795d8407ca67a144a1ca010779a5b8386137a4917a086",
+      "license": "CC0 1.0",
+      "assetPage": "https://polyhaven.com/a/concrete_wall_007",
+      "resourceSha256": "0ab64bdb2506911012a74a2f06c57bc444c7e0d0895be6553731a84fab68dac1"
+    },
+    {
+      "name": "concrete_normal",
+      "asset": "concrete_wall_007",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_007/concrete_wall_007_nor_gl_1k.jpg",
+      "sha256": "cccb1841908ced8b89b65b5de97c1926f717dab63a14559264703a99639c291f",
+      "license": "CC0 1.0",
+      "assetPage": "https://polyhaven.com/a/concrete_wall_007",
+      "resourceSha256": "cbd27f6dbd350eae1bb49203712d8ddd583248e9ddb8eff1416378c860db140a"
+    },
+    {
+      "name": "grass_diff",
+      "asset": "grass_ground",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/grass_ground/grass_ground_diff_1k.jpg",
+      "sha256": "a79cc5ed65af0f80261b39a383b64a8c5272c5144d724deb43dbc29f0e4cd19b",
+      "license": "CC0 1.0",
+      "assetPage": "https://polyhaven.com/a/grass_ground",
+      "resourceSha256": "51bd8c833b04644cd38dd0d8598a71732d0e748fbc83effdc13a3b1a2bbb55af"
+    },
+    {
+      "name": "grass_normal",
+      "asset": "grass_ground",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/grass_ground/grass_ground_nor_gl_1k.jpg",
+      "sha256": "7000e2ccd479bb7b66dcdf4faef7b47554324566886314ca620cbf03e274e826",
+      "license": "CC0 1.0",
+      "assetPage": "https://polyhaven.com/a/grass_ground",
+      "resourceSha256": "ee92208d811e4f4267f805d5c60024cbda8e2270ca7138354bdc04566fe8bfcb"
+    }
+  ],
+  "changes": "JPEG converted to PNG for the Minecraft resource loader; sampled as repeating colour detail and tangent-space normals."
+}

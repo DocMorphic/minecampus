@@ -1,5 +1,5 @@
 diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
-index 53d3868..94fc587 100644
+index 53d3868..2393556 100644
 --- a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
 +++ b/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
 @@ -43,6 +43,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
@@ -38,8 +38,11 @@ index 53d3868..94fc587 100644
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -424,15 +439,30 @@ public final class MapRenderer {
+@@ -422,17 +437,39 @@ public final class MapRenderer {
+ 		RenderSystem.depthMask(true);
+ 		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
++        if(current!=null&&Math.abs(current.latitude()-48.265)<1e-7&&Math.abs(current.longitude()-11.671)<1e-7&&!space&&campusGroundShader!=null)CampusMaterials.bind();
  
  		for (MapTile t : tiles) {
 +            // Minecampus reserves these 36 ids for its 100m surveyed ground tiles.
@@ -59,9 +62,15 @@ index 53d3868..94fc587 100644
  			for (int i = 0; i < t.partCount(); i++) {
  				if (t.isEmpty(i)) continue;
 +                if(campus && t.data.id>=1_000_000_100 && t.data.id<1_000_000_102)
-+                    tileShader.safeGetUniform("MaterialDetail").set(i==1?2f:(i==0||i==2?3f:0f));
++                    tileShader.safeGetUniform("MaterialDetail").set(i==1?2f:(i==0||i==2?3f:9f));
 +                if(campus && t.data.id>=1_000_000_200 && t.data.id<1_000_000_203)
-+                    tileShader.safeGetUniform("MaterialDetail").set(i==0?3f:1f);
++                    tileShader.safeGetUniform("MaterialDetail").set(i==0?8f:1f);
++                if(campus && t.data.id>=1_000_010_000 && t.data.id<1_000_020_000)
++                    tileShader.safeGetUniform("MaterialDetail").set(i==0?5f:4f);
++                if(campus && t.data.id>=1_000_030_000 && t.data.id<1_000_040_000)
++                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==2?7f:9f));
++                if(campus && t.data.id==1_000_030_003)
++                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==4?11f:(i==2?3f:9f)));
  				RenderSystem.setShaderTexture(0, t.textureId(i));
  				VertexBuffer vb = t.buffer(i);
  				vb.bind();

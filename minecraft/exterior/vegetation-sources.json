@@ -1,0 +1,45 @@
+{
+  "inputs": [
+    {
+      "cachePath": "32698_5349_20_DOM.tif",
+      "url": "https://download1.bayernwolke.de/a/dom20/DOM/32698_5349_20_DOM.tif",
+      "sha256": "a16ad045851ad19fdcae31cee1b035e5b79f2d2015f4cba3edddf9816b1ca874",
+      "size": 37212439,
+      "license": "CC BY 4.0",
+      "attribution": "\u00a9 Bayerische Vermessungsverwaltung"
+    },
+    {
+      "cachePath": "32697_5349_20_DOM.tif",
+      "url": "https://download1.bayernwolke.de/a/dom20/DOM/32697_5349_20_DOM.tif",
+      "sha256": "748cce13b9aac9a2b1a7986a70cd9d33a87c2bf2230f6a0cce39d649479a18a3",
+      "size": 25674829,
+      "license": "CC BY 4.0",
+      "attribution": "\u00a9 Bayerische Vermessungsverwaltung"
+    },
+    {
+      "cachePath": "tree-source/textures/jacaranda_tree_leaves_diff_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/jacaranda_tree/jacaranda_tree_leaves_diff_1k.jpg",
+      "sha256": "6fe80c1f514ef690cccefb90b7e559fbd1aa9c8935fdc02523cc8ab83c22f7c2",
+      "size": 533896,
+      "license": "CC0 1.0",
+      "attribution": "Poly Haven jacaranda_tree; artistic foliage reconstruction, not measured species identification"
+    },
+    {
+      "cachePath": "tree-source/textures/jacaranda_tree_trunk_diff_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/jacaranda_tree/jacaranda_tree_trunk_diff_1k.jpg",
+      "sha256": "e5582fba664a9255252d1ee8088f75ad557f07360aa7f4513f2b2f1577e90be9",
+      "size": 896938,
+      "license": "CC0 1.0",
+      "attribution": "Poly Haven jacaranda_tree; artistic foliage reconstruction, not measured species identification"
+    },
+    {
+      "cachePath": "tree-source/textures/jacaranda_tree_leaves_alpha_1k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/jacaranda_tree/jacaranda_tree_leaves_alpha_1k.png",
+      "sha256": "c708a7e928a2e4d26981b021a22deeefc0ebb0e467f60b53cfa636a7e24d68f7",
+      "size": 506043,
+      "license": "CC0 1.0",
+      "attribution": "Poly Haven jacaranda_tree; artistic foliage reconstruction, not measured species identification"
+    }
+  ],
+  "assetPage": "https://polyhaven.com/a/jacaranda_tree"
+}

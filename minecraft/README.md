@@ -13,7 +13,7 @@ python3 scripts/minecraft.py doctor
 
 This adds **Minecampus — TUM Garching** under the launcher's **Installations** tab. It uses the separate `.minecampus/java/` game directory. Existing installations and worlds are preserved. The first profile edit is backed up beside the launcher's profile file. Enable **Modded** in the launcher's installation filters if the profile is hidden.
 
-For another launcher: `python3 scripts/minecraft.py build` creates `dist-minecraft/Minecampus-0.3.0-mc1.21.1.mrpack`, importable into Prism or Modrinth. macOS needs Node.js 22+ installed independently; the upstream embedded runtime is for Windows. The Mac installer sets the absolute Node path so Finder's limited PATH is not a problem.
+For another launcher: `python3 scripts/minecraft.py build` creates `dist-minecraft/Minecampus-0.4.0-mc1.21.1.mrpack`, importable into Prism or Modrinth. macOS needs Node.js 22+ installed independently; the upstream embedded runtime is for Windows. The Mac installer sets the absolute Node path so Finder's limited PATH is not a problem.
 
 ## Set up the world
 
@@ -59,18 +59,20 @@ If the scenery looks coarse, save your world, then run `python3 scripts/minecraf
 
 Minecraft itself provides multiplayer. For same-network play, **Esc → Open to LAN**, then friends join through Multiplayer with the same pack and their own map access. However, upstream does **not** support public streamed-world hosting as a ready-made setup, and this campus pack's LAN flow has not yet been playtested. The browser prototype's room codes do not apply to this version. Do not advertise native campus multiplayer as verified until two actual clients have joined and shared edits have been checked.
 
-RealWorldMC displays textured 3D scenery over approximate collision blocks. Mining/TNT edits cut the scanned surface and expose Minecraft materials. This is aerial photogrammetry: building interiors are inferred, close surfaces may stretch, and daytime photos dim at night rather than becoming measured nighttime photography. Garching coverage and street-level detail still require a live provider and in-game visual check. There is no silent fallback to the older Bavarian mesh.
+RealWorldMC displays textured 3D scenery over approximate collision blocks. Mining/TNT edits cut the scanned surface and expose Minecraft materials. This is aerial photogrammetry: scanned building interiors are not reconstructed, close surfaces may stretch, and daytime photos dim at night rather than becoming measured nighttime photography. Garching coverage and street-level detail still require a live provider and in-game visual check. There is no silent fallback to the older Bavarian mesh.
 
 ## Build and dependencies
 
-`python3 scripts/minecraft.py build` packages the resource-only Fabric add-on and an importable `.mrpack`. Downloads are pinned in `minecraft/dependencies.json` and checked by SHA-256/SHA-512 before use. The pack references upstream downloads; it does not redistribute Minecraft game code, skins, textures or sounds. Those come from the official authenticated game installation.
+`python3 scripts/minecraft.py build` packages the resource-only Fabric add-on and an importable `.mrpack`. Downloads are pinned in `minecraft/dependencies.json` and checked by SHA-256/SHA-512 before use. The pack references pinned renderer and Fabric API downloads; it does not redistribute Minecraft game code, skins, textures or sounds. Those come from the official authenticated game installation.
 
 RealWorldMC 1.0.3: [source](https://github.com/Teddy563/realworldmc), Apache-2.0; source inspected at `6f18d1f3ba5a02dadee4b14bcb96578bf3941d13`. Fabric API uses Apache-2.0. The Minecampus add-on and setup script use the [MIT license](LICENSE). Map imagery has separate provider terms.
 
-## Exterior upgrade (0.3.0)
+## Walking-quality preview (0.4.0)
 
-The native pack now includes [surveyed exterior meshes](exterior/README.md). A 600 × 600 m central area uses official 20 cm aerial imagery and surveyed terrain. Two Galileo building components have reconstructed recessed windows and glass/metal shading; three grass-roof promenade structures use their surveyed roof geometry. Elevated flight retains the original photo mesh. The renderer automatically changes detail near the ground.
+This preview includes [surveyed exterior meshes](exterior/README.md), 20 cm aerial imagery, reconstructed vegetation, detailed Galileo/MW components and projecting colour bands on the Graduate School. The near-ground outdoor layer replaces the noisy original ground and free-standing scan remnants. Surveyed building and roof coverage protects architecture that is still supplied by the photo service. Elevated flight retains the original photographic mesh.
 
-Existing Garching saves receive local collision alignment while keeping ordinary player-built blocks and recorded mining/TNT edits. Old mod JARs are moved to `retired-mods/` outside Fabric's mod folder. The installer retains provider configuration, inventory, other profiles and saved worlds. `quality` applies the local-detail preset and disables square clouds in this isolated installation.
+The original save and its recorded excavation/builds are retained. Existing nearby chunks receive collision alignment while preserving ordinary player blocks and edit-journal positions. Old owned mod JARs are retained under `retired-mods/`. Inventory and provider configuration remain local.
 
-For an undamaged campus, create a new **TUM Garching — Minecampus** world. Existing damage remains in existing worlds. Native TNT excavation, walking, save/reload and edit preservation have been checked in the packaged release on macOS arm64. Full evidence and source limits are in the [validation report](exterior/VALIDATION.md). Interiors remain outside this exterior update.
+For a fresh campus, create a **TUM Garching — Minecampus** world. On the development machine, the separately prepared **Minecampus Garching — Ground Detail 0.4** save offers a clean walking preview; it is not distributed with the pack. The original world and the earlier preview remain available.
+
+**The realism goal remains unfinished.** Reconstructed façade repetition, auditorium roof details and inferred vegetation are not a complete as-built scan. Other building façades still have major photogrammetry limits; the validation gallery intentionally includes an unreconstructed inspection view. Interiors, two-client LAN and optional shader packs are outside these checks. See the [quality goal](exterior/QUALITY-GOAL.md) and [validation report](exterior/VALIDATION.md).

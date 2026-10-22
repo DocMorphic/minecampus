@@ -9,13 +9,16 @@ ROOT=Path(__file__).resolve().parents[1];SOURCE=ROOT/'minecraft/exterior';CACHE=
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--java-home',default=os.environ.get('JAVA_HOME'));args=parser.parse_args()
 if not args.java_home:raise SystemExit('Supply --java-home with a JDK 21 installation.')
 subprocess.run(['python3',str(ROOT/'scripts/validate-exterior.py')],check=True)
+for item in json.loads((SOURCE/'material-sources.json').read_text())['materials']:
+ p=SOURCE/'assets/textures/campus'/(item['name']+'.png')
+ if hashlib.sha256(p.read_bytes()).hexdigest()!=item['resourceSha256']:raise SystemExit('Material resource checksum mismatch: '+item['name'])
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
  req=urllib.request.Request(spec['url'],headers={'User-Agent':'Minecampus/0.3 (https://github.com/DocMorphic/minecampus)'})
  release.write_bytes(urllib.request.urlopen(req,timeout=120).read())
 if release.stat().st_size!=spec['size'] or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:raise SystemExit('Upstream release integrity check failed.')
-inputs=[SOURCE/'patches/realworldmc-exterior.patch',*sorted((SOURCE/'native').glob('*.java')),*sorted((SOURCE/'shaders').glob('*'))]
+inputs=[SOURCE/'patches/realworldmc-exterior.patch',*sorted((SOURCE/'native').glob('*.java')),*sorted((SOURCE/'shaders').glob('*')),*sorted((SOURCE/'client').glob('*.java')),*sorted((SOURCE/'assets').rglob('*.png'))]
 fingerprint=hashlib.sha256(upstream['commit'].encode()+b''.join(p.read_bytes() for p in inputs)).hexdigest()[:16]
 work=CACHE/fingerprint
 if not work.exists():
@@ -29,6 +32,9 @@ if not (work/'.minecampus-build').exists() or (work/'.minecampus-build').read_te
 if subprocess.check_output(['git','-C',str(work),'rev-parse','HEAD'],text=True).strip()!=upstream['commit']:raise SystemExit('Build source commit mismatch.')
 subprocess.run(['git','-C',str(work),'apply','--reverse','--check',str(inputs[0])],check=True)
 for p in (SOURCE/'native').glob('*.java'):shutil.copy2(p,work/'mod/src/main/java/dev/realworldmc'/p.name)
+for p in (SOURCE/'client').glob('*.java'):shutil.copy2(p,work/'mod/src/client/java/dev/realworldmc/client'/p.name)
+for p in (SOURCE/'assets').rglob('*.png'):
+ target=work/'mod/src/main/resources/assets/realworldmc'/p.relative_to(SOURCE/'assets');target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,target)
 shader=work/'mod/src/main/resources/assets/realworldmc/shaders/core';shader.mkdir(parents=True,exist_ok=True)
 for p in (SOURCE/'shaders').glob('*'):shutil.copy2(p,shader/p.name)
 env=dict(os.environ,JAVA_HOME=str(Path(args.java_home).resolve()))
@@ -53,6 +59,20 @@ Galileo facade photograph by MaxEmanuel, 18 August 2021 (CC0 1.0).
 https://commons.wikimedia.org/wiki/File:Galileo_Garching_Nordende.jpg
 Rectified photograph strip; approximate repetition and recessed window reconstruction.
 https://creativecommons.org/publicdomain/zero/1.0/
+
+MW concrete photographic material: Renardo la vulpo (CC BY-SA 4.0).
+https://commons.wikimedia.org/wiki/File:Garching,_Eberhard-von-Kuenheim-Bau,_2.jpeg
+https://creativecommons.org/licenses/by-sa/4.0/
+Cropped concrete surface; window and louvre layout reconstructed on BVV survey envelopes.
+The combined MW mesh/material adaptation is supplied under CC BY-SA 4.0.
+
+Vegetation positions/heights: BVV DOM20/DGM1/DOP20 (CC BY 4.0).
+Ground/concrete micro-material colour/normal maps: Poly Haven concrete_wall_007 and grass_ground (CC0 1.0).
+https://polyhaven.com/a/concrete_wall_007
+https://polyhaven.com/a/grass_ground
+Leaf and bark atlases: Poly Haven jacaranda_tree (CC0 1.0).
+https://polyhaven.com/a/jacaranda_tree
+Reconstructed branch placement and artistic foliage, not surveyed tree species.
 
 Google scenery is streamed by the user's own configured service. No Google tile
 content, Minecraft assets, credentials or saved worlds are included in this build.
@@ -92,17 +112,18 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/manifest.json',(DATA/'manifest.json').read_bytes())
   write(target,'src/minecampus-exterior/NOTICE.txt',notices.encode())
   write(target,'src/minecampus-exterior/sources.json',(SOURCE/'sources.json').read_bytes())
+  write(target,'src/minecampus-exterior/vegetation-sources.json',(SOURCE/'vegetation-sources.json').read_bytes())
   for asset in manifest['tiles']:
    name=asset['file'];assert Path(name).name==name and name.endswith('.ect')
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
  bundle=patched.getvalue()
- target=OUT/'RealWorldMC-Minecampus-Exterior-0.3.0-mc1.21.1.jar'
+ target=OUT/'RealWorldMC-Minecampus-Exterior-0.4.0-mc1.21.1.jar'
  with zipfile.ZipFile(compiled) as code,zipfile.ZipFile(target,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
   for entry in code.infolist():
    if entry.filename in ['realworldmc-service.zip','realworldmc-service.sha256']:continue
    data=code.read(entry.filename)
    if entry.filename=='fabric.mod.json':
-    d=json.loads(data);d['version']='1.0.3+minecampus.exterior.1';d['name']='RealWorldMC — Minecampus Exterior';data=json.dumps(d,indent=2).encode()
+    d=json.loads(data);d['version']='1.0.3+minecampus.exterior.2';d['name']='RealWorldMC — Minecampus Exterior';data=json.dumps(d,indent=2).encode()
    write(z,entry.filename,data)
   write(z,'realworldmc-service.zip',bundle);write(z,'realworldmc-service.sha256',hashlib.sha256(bundle).hexdigest().encode())
   write(z,'LICENSES/Minecampus-exterior-notices.txt',notices.encode())

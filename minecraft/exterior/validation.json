@@ -1,22 +1,29 @@
 {
   "release": {
-    "file": "RealWorldMC-Minecampus-Exterior-0.3.0-mc1.21.1.jar",
-    "size": 78612047,
-    "sha256": "ae8a61bb8b5da512a2bb6431c62990591cb6b4dc3bf428350dfa110c128a3a4a",
+    "file": "RealWorldMC-Minecampus-Exterior-0.4.0-mc1.21.1.jar",
+    "size": 177897974,
+    "sha256": "dfb3bc81c9d01726f2b3b7ca11d28d135c02b31326c8e07ce38c33ae164cf105",
     "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
-    "sourcePatchSha256": "a9cc9d8cff0f61daabffb84c7ca2cfbb556a0cc7f85290961d4dcab9ac042e86",
-    "bundleSha256": "d155d4a8cb98cfaa8e624ccb6e93ba809ffd7bd2b5361a72c77b86e8e4fd4740",
-    "tiles": 41
+    "sourcePatchSha256": "fb1c7ca38b4c04dd40752eef3557ccaadd82a67e0c61eedcd4deb91b3b6236fa",
+    "bundleSha256": "489918b1d479103c76c4cdf2179b66b3421a178c3f6bc14b0b3e1eb01fb741ba",
+    "tiles": 81
   },
   "minecraft": "1.21.1",
+  "goalComplete": false,
   "checks": {
-    "client": "PASS: ground, aerial and TNT native frames captured after full streaming readiness",
-    "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+    "client": "PASS: ground, aerial, TNT and three promenade route frames captured after full streaming readiness",
+    "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=81",
     "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0"
   },
   "geometry": {
-    "tiles": 41,
-    "triangles": 224331,
-    "textureBytes": 40508316
+    "renderTiles": 81,
+    "triangles": 1500384,
+    "textureBytes": 240760448,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 6,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 734,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
   }
 }

@@ -17,12 +17,12 @@ SPEC = json.loads((ROOT / 'minecraft/dependencies.json').read_text())
 OUTPUT = ROOT / 'dist-minecraft'
 CACHE = ROOT / '.cache/native-downloads'
 INSTANCE = ROOT / '.minecampus/java'
-PACK_VERSION = SPEC.get('pack-version', '0.3.0')
+PACK_VERSION = SPEC.get('pack-version', '0.4.0')
 PROFILE_ID = f"fabric-loader-{SPEC['fabric-loader']}-{SPEC['minecraft']}"
 
 
 def fetch(url):
-    request = urllib.request.Request(url, headers={'User-Agent': 'Minecampus/0.3.0 (DocMorphic/minecampus)'})
+    request = urllib.request.Request(url, headers={'User-Agent': 'Minecampus/0.4.0 (DocMorphic/minecampus)'})
     with urllib.request.urlopen(request, timeout=90) as response:
         return response.read()
 

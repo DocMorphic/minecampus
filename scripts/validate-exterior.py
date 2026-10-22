@@ -22,7 +22,11 @@ for spec in manifest['tiles']:
    assert all(spec['bounds'][0][c]-.01<=p[c]<=spec['bounds'][1][c]+.01 for c in range(3)),(spec['file'],p,spec['bounds'])
  assert offset==len(data),(spec['file'],offset,len(data))
 assert sum(t['kind']=='ground' for t in manifest['tiles'])==36
-assert sum(t['kind']=='reconstruction' for t in manifest['tiles'])==5
-assert len(manifest['buildings'])==106
-result={'renderTiles':len(manifest['tiles']),'triangles':triangles,'textureBytes':texture_bytes,'surveyedBuildingGuides':len(manifest['buildings']),'detailedBuildings':2,'landscapeStructures':3,'status':'PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage'}
+assert sum(t['kind']=='reconstruction' for t in manifest['tiles'])>=5
+assert len(manifest.get('vegetation',{}).get('trees',[]))>100
+assert len(manifest['buildings'])>=106
+surface=manifest['surfaceGuide'];assert surface['width']==manifest['terrainGuide']['width'] and surface['height']==manifest['terrainGuide']['height']
+assert len(surface['heights'])==surface['width']*surface['height'] and all(math.isfinite(v) for v in surface['heights'])
+assert all(top>=point[1]-.01 for top,point in zip(surface['heights'],manifest['terrainGuide']['points']))
+result={'renderTiles':len(manifest['tiles']),'triangles':triangles,'textureBytes':texture_bytes,'surveyedBuildingGuides':len(manifest['buildings']),'detailedBuildings':2+len(manifest.get('architecture',{}).get('buildings',[])),'landscapeStructures':3,'vegetationGroups':sum(t['kind']=='vegetation' for t in manifest['tiles']),'trees':len(manifest['vegetation']['trees']),'status':'PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage'}
 (folder/'validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

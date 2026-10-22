@@ -24,13 +24,13 @@ python3 -m unittest discover -s minecraft/tests
 
 The fixed campus origin is **48.265° N, 11.671° E**. You receive real Minecraft starter supplies; `/function minecampus:help` lists mode, time, kit and animal commands. Use normal Minecraft controls and F5 for third person.
 
-## Verification status
+## Walking-quality preview — goal unfinished
 
-The 0.3.0 exterior upgrade combines the streamed campus with surveyed terrain, 20 cm aerial imagery, detailed Galileo components and three grass-roof structures. It keeps the photographic mesh for elevated flight and uses local survey geometry near the ground. [Exterior detail and sources](minecraft/exterior/README.md).
+Version 0.4.0 is a playable preview toward a better walking-height campus. Its 600 × 600 m survey layer combines DGM1 terrain, DOP20 aerial imagery, inferred tree/canopy instances, and six detailed building components covering Galileo, the main MW structures and the colourful Graduate School. The promenade's three grass-roof structures remain. Elevated flight retains the photographic mesh.
 
-The packaged release has passed native Minecraft ground/aerial rendering, TNT excavation, walking, and preservation checks for player blocks and recorded damage. Two-client LAN remains unverified. [Validation and actual game captures](minecraft/exterior/VALIDATION.md).
+The packaged preview passed native Minecraft captures, terrain TNT excavation, gravity/landing and preservation checks for player blocks and recorded damage. **Those checks do not establish a finished photorealistic campus.** Unreconstructed façades and vegetation attached to their protected photo meshes still show substantial source artifacts. Window, roof and vegetation details are approximations. [Quality goal and remaining work](minecraft/exterior/QUALITY-GOAL.md) · [Actual captures and validation](minecraft/exterior/VALIDATION.md).
 
-![Native Minecraft Java campus capture](docs/screenshots/campus-exterior-aerial.jpg)
+![Native Minecraft walking-quality preview](docs/screenshots/campus-ground-detail-north.jpg)
 
 RealWorldMC's collision terrain approximates its photo mesh. Scanned buildings have no measured interiors, vanilla ores/caves are not generated in the campus dimension, and night dims daytime imagery. Starter materials support crafting and farming; the Nether and End use vanilla generation. Upstream public streamed-world hosting is not ready-made. LAN play is a test path, not a verified feature of this pack yet.
 

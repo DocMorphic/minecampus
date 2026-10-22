@@ -1,15 +1,17 @@
 # Garching exterior meshes
 
-This is a native Minecraft Java 1.21.1 upgrade. The surrounding campus remains Google's textured 3D photogrammetry, streamed through the user's configured provider. Near the ground, the central campus adds:
+This is a native Minecraft Java 1.21.1 upgrade. The surrounding campus remains Google's textured 3D photogrammetry, streamed through the user's configured provider. The 0.4.0 walking-quality preview adds near the ground:
 
 - A 600 × 600 m surveyed terrain mesh, with official DGM1 heights and DOP20 aerial imagery at 20 cm per pixel.
 - Two Galileo building components with surveyed footprints/roof geometry, recessed window geometry, glass reflections and shaded metal panels.
 - Three surveyed grass-roof promenade structures, including their sloping roof surfaces.
-- Fine ground material detail and atmospheric distance fading.
+- Three reconstructed main MW components and the Graduate School, using surveyed envelopes with photo-informed façade modules, recessed glazing and projecting colour bands.
+- Inferred canopy/tree instances with photographed CC0 leaf/bark atlases and reconstructed branches.
+- Mipmapped CC0 grass/concrete colour and normal maps, plus atmospheric distance fading.
 
 Elevated flight uses the photographic mesh; the detailed ground scene activates on descent, with hysteresis to prevent repeated switching near the transition. An explicit loading message remains while geometry streams.
 
-The Galileo window pattern is reconstructed from a CC0 photograph and repeated across the surveyed walls. It is an architectural approximation. Other façades, trees and street objects retain the quality limits of the original scan. There are no reconstructed interiors in this update.
+The Galileo window pattern is reconstructed from a CC0 photograph and repeated across the surveyed walls. It is an architectural approximation. Unreconstructed façades and vegetation attached to their protected scan surfaces retain the source limits. Other noisy free-standing outdoor photo objects are retired with the old outdoor layer; they have not all been replaced with individual surveyed props. **This is a preview; the realism goal remains unfinished.** There are no reconstructed interiors in this update.
 
 ## Play
 
@@ -19,7 +21,7 @@ Create a **TUM Garching — Minecampus** world for an undamaged campus. Existing
 
 ## How collisions and damage work
 
-Both new chunks and existing nearby Garching chunks receive proxy blocks voxelized from the same survey surfaces. The migration keeps ordinary Minecraft blocks and positions in the authoritative edit journal. It suppresses recording of its own repairs, and stores completed chunks so the operation survives save/reload. Actual player mining, placement and TNT continue through Minecraft and RealWorldMC's damage system.
+Both new chunks and existing nearby Garching chunks receive proxy blocks voxelized from the survey surfaces and reconstructed tree wood. Leaf cards are visual geometry, not a complete Minecraft leaf-block simulation. The migration keeps ordinary Minecraft blocks and positions in the authoritative edit journal. It suppresses recording of its own repairs, and stores completed chunks so the operation survives save/reload. Actual player mining, placement and TNT continue through Minecraft and RealWorldMC's damage system.
 
 The collision grid remains Minecraft's one-metre block grid. A sloping photographic surface and its supporting block tops can differ by up to approximately half a block. A repeated application must preserve edits, rather than infer player damage from a changed terrain LOD.
 
@@ -39,4 +41,4 @@ The downloader fetches only the public inputs pinned in [sources.json](sources.j
 
 The release builder checks the upstream JAR and embedded service hashes, checks out the pinned Apache-2.0 source into a generated cache directory, applies [the patch](patches/realworldmc-exterior.patch), compiles it and adds the open-data meshes to the existing portable service. It preserves the upstream runtime/licenses and adds asset notices. No Minecraft assets or Google tile files are bundled.
 
-[Research](RESEARCH.md) · [Native validation](VALIDATION.md) · [Third-party notices](../../THIRD_PARTY.md)
+[Quality goal](QUALITY-GOAL.md) · [Research](RESEARCH.md) · [Native validation](VALIDATION.md) · [Third-party notices](../../THIRD_PARTY.md)

@@ -24,12 +24,14 @@ for kind,names in [('lod2',['campus-east.gml','campus-west.gml']),('dgm1',['camp
  entries=sorted(SPEC[kind],key=lambda entry:entry['name']) if kind!='lod2' else SPEC[kind]
  inputs.extend(zip(entries,names))
 inputs.append((SPEC['geoid'],SPEC['geoid']['name']))
+vegetation_spec=json.loads((ROOT/'minecraft/exterior/vegetation-sources.json').read_text())
+inputs.extend((item,item['cachePath']) for item in vegetation_spec['inputs'])
 if args.download:
  for entry,name in inputs:
-  target=CACHE/name
+  target=CACHE/name;target.parent.mkdir(parents=True,exist_ok=True)
   if target.exists() and target.stat().st_size==entry['size'] and hashlib.sha256(target.read_bytes()).hexdigest()==entry['sha256']:continue
-  print('Downloading public input:',entry['name'],flush=True)
-  req=urllib.request.Request(entry['url'],headers={'User-Agent':'Minecampus/0.3 (https://github.com/DocMorphic/minecampus)'})
+  print('Downloading public input:',entry.get('name',name),flush=True)
+  req=urllib.request.Request(entry['url'],headers={'User-Agent':'Minecampus/0.4 (https://github.com/DocMorphic/minecampus)'})
   with urllib.request.urlopen(req,timeout=120) as response,tempfile.NamedTemporaryFile(dir=CACHE,delete=False) as out:
    temporary=Path(out.name);digest=hashlib.sha256();size=0
    while chunk:=response.read(1024*1024):out.write(chunk);digest.update(chunk);size+=len(chunk)
@@ -86,7 +88,7 @@ for name in ['campus-east.gml','campus-west.gml']:
   ground=[r[0] for t,r in surfaces if t=='GroundSurface']
   if not ground:continue
   points=np.concatenate(ground);c=points.mean(axis=0)
-  if not(BOUNDS[0]<c[0]<BOUNDS[2] and BOUNDS[1]<c[1]<BOUNDS[3]):continue
+  if points[:,0].max()<BOUNDS[0] or points[:,0].min()>BOUNDS[2] or points[:,1].max()<BOUNDS[1] or points[:,1].min()>BOUNDS[3]:continue
   buildings.append((b.get('{'+NS['g']+'}id'),surfaces))
 
 # A real, CC0 Galileo facade photograph by MaxEmanuel (Wikimedia Commons).
@@ -239,8 +241,12 @@ for bid,surfaces in buildings:
 # low, melted source fragments here while testing the above-ground reconstruction.
 walk=mc(np.array([(698235,5349110,473),(698275,5349110,473),(698275,5349380,473),(698235,5349380,473)]))
 metadata['replacements'].append({'ring':walk[:,[0,2]].tolist(),'y0':0,'y1':100})
-metadata['attribution']='© BVV / geodaten.bayern.de; GeoBasis-DE / BKG (CC BY 4.0); MaxEmanuel (CC0)'
+metadata['attribution']='© BVV / geodaten.bayern.de; GeoBasis-DE / BKG (CC BY 4.0); MaxEmanuel / Poly Haven (CC0); MW: Renardo la vulpo (CC BY-SA 4.0)'
 for stale in OUT.glob('DEBY_LOD2_*.ect'):
  if stale.name not in {t['file'] for t in metadata['tiles']}:stale.unlink()
+from exterior_architecture import build as build_architecture
+build_architecture(globals())
+from exterior_vegetation import build as build_vegetation
+build_vegetation(globals())
 (OUT/'manifest.json').write_text(json.dumps(metadata,separators=(',',':')))
-print(f'Built trial: {len(buildings)} surveyed building guides, {len(metadata["tiles"])} render tiles, two detailed Galileo buildings and three surveyed landscape structures. Native visual validation required.')
+print(f'Built: {len(buildings)} survey guides, {len(metadata["tiles"])} render tiles, {len(metadata["architecture"]["buildings"])+2} detailed building components, 3 landscape structures and {len(metadata["vegetation"]["trees"])} reconstructed trees. Native visual validation required.')

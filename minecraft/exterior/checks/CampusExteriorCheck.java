@@ -14,16 +14,20 @@ import java.nio.file.Path;
 public final class CampusExteriorCheck implements ClientModInitializer {
     private boolean opened, moved, walkingStarted;
     private volatile boolean gameplayVerified;
-    private int ticks, stage, total, readyTicks;
+    private int ticks, stage=Boolean.getBoolean("minecampus.inspectOnly")?3:0, total, readyTicks;
     private volatile Throwable failure;
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
-        "38 73 -59 -135 50"
+        "38 73 -59 -135 50",
+        "35 65 -40 90 0",
+        "35 65 100 180 0",
+        "50 65 -190 0 0",
+        "150 65 -220 -90 0"
     };
 
     @Override public void onInitializeClient() {
@@ -62,7 +66,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
             }
             if (mc.player==null || mc.getSingleplayerServer()==null || mc.getOverlay()!=null) return;
-            if(stage==3){
+            if(stage==NAMES.length){
                 if(!walkingStarted){
                     walkingStarted=true;ticks=0;
                     mc.getSingleplayerServer().execute(()->{
@@ -93,7 +97,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     });
                     return;
                 }
-                Files.writeString(Path.of("campus-client-result.txt"),"PASS: ground, aerial and TNT native frames captured after full streaming readiness");mc.stop();return;
+                Files.writeString(Path.of("campus-client-result.txt"),"PASS: ground, aerial, TNT and three promenade route frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
@@ -155,7 +159,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 var shown=(java.util.List<Integer>)d.get(renderer);
                 long triangles=0;int fine=0;var ids=new com.google.gson.JsonArray();
                 for(int id:shown){ids.add(id);var t=loaded.get(id);if(t!=null){if(t.data.fine)fine++;for(var part:t.data.parts)triangles+=part.triangleCount();}}
-                data.addProperty("fineDisplayed",fine);data.addProperty("triangles",triangles);data.add("displayedIds",ids);
+                data.addProperty("fps",mc.getFps());data.addProperty("camera",CAMERAS[stage]);data.addProperty("fineDisplayed",fine);data.addProperty("triangles",triangles);data.add("displayedIds",ids);
                 Files.writeString(Path.of("campus-metrics-"+stage+"-"+ticks+".json"),data.toString());
             }
             var renderer=MapRenderer.INSTANCE;
@@ -194,14 +198,32 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 return;
             }
-            if(stage==0){
+            if(stage==0||stage==3||stage==5){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
-                for(float[] pixel:new float[][]{{.81f,.435f},{.38f,.443f}}){
+                var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
+                double actualFov=((Number)fovMethod.invoke(mc.gameRenderer,camera,1.0f,true)).doubleValue();
+                float tanHalf=(float)Math.tan(Math.toRadians(actualFov)*.5);
+                float[][] pixelsToPick=new float[][]{{.81f,.435f},{.38f,.443f}};
+                if(stage==3||stage==5){
+                    try(var frameImage=Screenshot.takeScreenshot(mc.getMainRenderTarget())){
+                        var candidates=new java.util.ArrayList<int[]>();int width=frameImage.getWidth(),height=frameImage.getHeight();long sumX=0,sumY=0;
+                        for(int y=(int)(height*(stage==3?.14:.01));y<(int)(height*(stage==3?.25:.15));y+=2)for(int x=(int)(width*(stage==3?.85:.70));x<(int)(width*(stage==3?.92:.82));x+=2){
+                            int rgba=frameImage.getPixelRGBA(x,y),red=rgba&255,green=(rgba>>>8)&255,blue=(rgba>>>16)&255;
+                            if(stage==3?(red>100&&red>green*.9&&red>blue*.85):(red<90&&green<100&&blue<110)){candidates.add(new int[]{x,y});sumX+=x;sumY+=y;}
+                        }
+                        if(!candidates.isEmpty()){
+                            double cx=(double)sumX/candidates.size(),cy=(double)sumY/candidates.size();int[] best=candidates.get(0);double distance=Double.POSITIVE_INFINITY;
+                            for(var point:candidates){double d=Math.pow(point[0]-cx,2)+Math.pow(point[1]-cy,2);if(d<distance){distance=d;best=point;}}
+                            pixelsToPick=new float[][]{{(best[0]+.5f)/width,(best[1]+.5f)/height}};
+                        }
+                    }
+                }
+                for(float[] pixel:pixelsToPick){
                     var forward=new org.joml.Vector3f(camera.getLookVector());
                     var right=new org.joml.Vector3f(forward).cross(0,1,0).normalize();
                     var up=new org.joml.Vector3f(right).cross(forward).normalize();
-                    var ray=new org.joml.Vector3f(forward).add(right.mul((pixel[0]*2-1)*.700208f*16/9)).add(up.mul((1-pixel[1]*2)*.700208f)).normalize();
+                    var ray=new org.joml.Vector3f(forward).add(right.mul((pixel[0]*2-1)*tanHalf*16/9)).add(up.mul((1-pixel[1]*2)*tanHalf)).normalize();
                     var eye=camera.getPosition();float nearest=10000;int hit=-1;
                     for(var item:loaded.values()){
                         var tile=(MapTile)item;var data=tile.data;
@@ -213,13 +235,14 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                             }
                         }
                     }
-                    var pick=new com.google.gson.JsonObject();pick.addProperty("tile",hit);pick.addProperty("x",eye.x+ray.x*nearest);pick.addProperty("y",eye.y+ray.y*nearest);pick.addProperty("z",eye.z+ray.z*nearest);picks.add(pick);
+                    var pick=new com.google.gson.JsonObject();var region=dev.realworldmc.EarthRegions.at((int)Math.floor(eye.x),(int)Math.floor(eye.z));if(region!=null)pick.addProperty("frameGroundHeight",region.groundHeight());pick.addProperty("u",pixel[0]);pick.addProperty("v",pixel[1]);pick.addProperty("fov",actualFov);pick.addProperty("tile",hit);pick.addProperty("x",eye.x+ray.x*nearest);pick.addProperty("y",eye.y+ray.y*nearest);pick.addProperty("z",eye.z+ray.z*nearest);picks.add(pick);
                 }
-                Files.writeString(Path.of("campus-fragment-picks.json"),picks.toString());
+                Files.writeString(Path.of("campus-fragment-picks-"+stage+".json"),picks.toString());
             }
             try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
                 image.writeToFile(Path.of(NAMES[stage]));
             }
+            if(Boolean.getBoolean("minecampus.inspectOnly")){Files.writeString(Path.of("campus-inspection-result.txt"),"PASS: isolated inspection frame");mc.stop();return;}
             ++stage;
             moved=false;
         } catch(Throwable error) { fail(mc,error); }

@@ -1,34 +1,38 @@
-# Native exterior validation
+# Walking-quality preview validation — 0.4.0
 
-Validated on macOS arm64 with Minecraft Java 1.21.1, Fabric Loader 0.19.5, Fabric API 0.116.17+1.21.1, JDK 21 and Node.js 22.23.3.
+**The realism goal remains unfinished.** This preview improves selected central walking routes. Substantial artifacts remain on unreconstructed photographic façades.
 
-## Evidence
+## Exact packaged game
 
-The release JAR was loaded as a mod dependency in a separate Fabric client project, without the development RealWorldMC classes. Its own embedded Node service was extracted and started through the managed runtime. Provider credentials were copied only into an ignored private test directory. A copy of the campus save was used throughout.
+Minecraft Java 1.21.1, Fabric Loader 0.19.5, Fabric API 0.116.17+1.21.1, JDK 21 and Node.js 22.23.3 on macOS arm64. The final release JAR was loaded as a mod dependency in an isolated Fabric client, without development RealWorldMC classes. Its embedded Node service started through the managed runtime. Credentials stayed in ignored local configuration. Testing used a separate copy of the save.
 
-The client waits for zero pending tile-tree expansions, all requested tiles loaded, and a complete displayed view before capturing. Test assertions are checked independently of the Java process's exit status; a missing or failed result fails Gradle.
+Seven native framebuffer captures waited for zero pending expansions, all requested tiles loaded and a stable complete view. Missing or failed assertion files fail the check independently of Minecraft's exit code.
 
-- **Rendering:** ground, elevated flight and post-explosion native framebuffer captures completed.
-- **World preservation:** an ordinary diamond block and an explicitly recorded excavation survived collision migration; the migration added no player-damage records. An initial cold migration aligned 15,469 proxy blocks. Repeated migration in the packaged build made no additional changes.
-- **TNT:** a real `PrimedTnt` entity excavated the surveyed terrain and recorded damage. Its original block states were then restored in the isolated test save.
-- **Walking:** the player fell under Minecraft gravity and landed on the corrected surface at Y = 65.0.
-- **Geometry:** 41 render tiles, 224,331 added triangles and 40,508,316 texture bytes pass binary-length, finite-coordinate, UV-range and bounds checks.
-- **Installer:** integrity/importability, preserved profiles/world files/credentials, and safe retirement of old owned mod JARs are covered by the native pack tests.
+- Ground, aerial, TNT and three promenade routes plus a source-limit view were captured.
+- A player diamond block and recorded excavation survived migration; migration added no damage records. The final check aligned 81 proxies.
+- Native primed TNT excavated the surveyed mesh. Test damage was then restored. The player fell under gravity and landed at Y = 65.0.
+- 81 render tiles, 1,500,384 triangles and 240,760,448 texture bytes passed binary, finite-coordinate, UV and bounds validation.
+- 117 source building guides protect coverage; only six building components and three landscape structures receive detailed reconstruction. There are 734 inferred canopy instances across 36 groups.
+- Twelve service tests and three native-pack installer tests passed, including preservation and integrity checks.
 
-The test scene temporarily fixes daylight/weather and disables mob spawning. Existing recorded edits are restored only in the isolated clean-scene copy. Test fixtures are removed after their preservation assertions. These scene controls are not installed into the user's original save.
+The original save, its inventory and recorded edits were preserved. A separate local Ground Detail 0.4 save uses clean tested terrain and the original inventory. Test-only fixed daylight and disabled mob spawning were not copied into its game rules.
 
-### Packaged Minecraft captures
+## Actual Minecraft captures
 
-![Elevated photographic campus view](../../docs/screenshots/campus-exterior-aerial.jpg)
+![North walking route](../../docs/screenshots/campus-ground-detail-north.jpg)
 
-![Surveyed ground and detailed structures](../../docs/screenshots/campus-exterior-ground.jpg)
+![MW walking route](../../docs/screenshots/campus-ground-detail-mw.jpg)
 
-![Minecraft TNT excavation of the new surface](../../docs/screenshots/campus-exterior-tnt.jpg)
+![Close ground](../../docs/screenshots/campus-ground-detail.jpg)
 
-## Scope and limits
+![Aerial view](../../docs/screenshots/campus-ground-detail-aerial.jpg)
 
-The source comparison confirmed that local Google leaf tiles have approximately 2 m geometric error. Raising detail settings to a fully loaded 3.6-million-triangle scene did not repair the melted walking-height surfaces. The open-data reconstruction adds targeted detail; it does not turn the entire source scan into a measured street-level digital twin.
+![Native TNT excavation](../../docs/screenshots/campus-ground-detail-tnt.jpg)
 
-Only the two Galileo components and three promenade structures are reconstructed. The 106 building guides in the preparation manifest are source coverage/provenance, not 106 finished detailed buildings. Window repetition, material reflection and close ground grain are reconstruction/rendering choices. The official geoid grid aligns survey heights with the streamed mesh; it does not improve the source survey's own accuracy.
+### Remaining source quality — not fixed
 
-Two-client LAN, optional shader-pack interoperability and scanned interiors are outside these validation results. Night still shades imagery captured during daylight.
+![Unreconstructed source façades](../../docs/screenshots/campus-source-limit.jpg)
+
+Functional checks do not establish photorealism. Window repetition, roof simplification, inferred trees and photographic/analytic glazing are reconstruction choices. Leaf cards do not implement full native leaf-block behaviour. Building-attached scan fragments and missing outdoor props remain. Night shades daylight imagery; interiors, two-client LAN and optional shader packs are outside this validation. See [the unfinished quality goal](QUALITY-GOAL.md).
+
+Release checksums, counts and assertion results are recorded in [validation.json](validation.json). Full-frame captures retain provider attribution.

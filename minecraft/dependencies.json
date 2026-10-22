@@ -3,10 +3,10 @@
   "fabric-loader": "0.19.5",
   "files": [
     {
-      "path": "mods/RealWorldMC-Minecampus-Exterior-0.3.0-mc1.21.1.jar",
-      "url": "https://github.com/DocMorphic/minecampus/releases/download/exterior-0.3.0/RealWorldMC-Minecampus-Exterior-0.3.0-mc1.21.1.jar",
-      "sha256": "ae8a61bb8b5da512a2bb6431c62990591cb6b4dc3bf428350dfa110c128a3a4a",
-      "size": 78612047
+      "path": "mods/RealWorldMC-Minecampus-Exterior-0.4.0-mc1.21.1.jar",
+      "url": "https://github.com/DocMorphic/minecampus/releases/download/exterior-0.4.0-preview/RealWorldMC-Minecampus-Exterior-0.4.0-mc1.21.1.jar",
+      "sha256": "dfb3bc81c9d01726f2b3b7ca11d28d135c02b31326c8e07ce38c33ae164cf105",
+      "size": 177897974
     },
     {
       "path": "mods/fabric-api-0.116.17+1.21.1.jar",
@@ -15,5 +15,5 @@
       "size": 2452735
     }
   ],
-  "pack-version": "0.3.0"
+  "pack-version": "0.4.0"
 }
