@@ -22,3 +22,15 @@ The notices below refer to the earlier browser game, including its original proc
 - **Google Maps**: optional streamed map content is owned by Google and its data providers and subject to their terms. It is not bundled in this repository. Visible-tile copyright attribution is collected dynamically.
 - **Fonts**: DM Sans, Barlow Condensed, and Space Mono are requested from Google Fonts. Fonts are not bundled; local CSS fallbacks apply if unavailable.
 - The block character and block textures are original procedural art. No Minecraft game textures, skin files, or proprietary game code are bundled. Minecraft and Steve are associated with Mojang/Microsoft; this project is unaffiliated.
+
+## Native exterior update
+
+The modified RealWorldMC 1.0.3 renderer/service is based on Apache-2.0 source commit `6f18d1f3ba5a02dadee4b14bcb96578bf3941d13`. The patch, original license and build recipe are in `minecraft/exterior/`.
+
+Terrain DGM1, orthophotos DOP20 and CityGML LoD2 are © Bayerische Vermessungsverwaltung, [official open-data catalogue](https://geodaten.bayern.de/opengeodata/), licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Derived meshes crop and reproject these datasets, triangulate surfaces and combine them with reconstructed window detail.
+
+Vertical coordinates use the [GCG2016 grid distributed by PROJ](https://cdn.proj.org/de_bkg_gcg2016.tif), derived from © GeoBasis-DE / BKG 2023, CC BY 4.0. Bilinear grid interpolation converts DHHN2016 heights to ellipsoid heights.
+
+The Galileo façade strip is derived from [Galileo Garching Nordende](https://commons.wikimedia.org/wiki/File:Galileo_Garching_Nordende.jpg) by MaxEmanuel (18 August 2021), released as [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). It is rectified and repeated; individual window placement is a reconstruction. The reference image and metadata are in `minecraft/exterior/photos/`.
+
+Input URLs and SHA-256 hashes are pinned in `minecraft/exterior/sources.json`. Release assets contain open-data derivatives and code; Google tile content, provider credentials and Minecraft game assets are excluded. Game screenshots retain provider attribution.

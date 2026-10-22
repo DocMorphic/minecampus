@@ -17,11 +17,12 @@ SPEC = json.loads((ROOT / 'minecraft/dependencies.json').read_text())
 OUTPUT = ROOT / 'dist-minecraft'
 CACHE = ROOT / '.cache/native-downloads'
 INSTANCE = ROOT / '.minecampus/java'
+PACK_VERSION = SPEC.get('pack-version', '0.3.0')
 PROFILE_ID = f"fabric-loader-{SPEC['fabric-loader']}-{SPEC['minecraft']}"
 
 
 def fetch(url):
-    request = urllib.request.Request(url, headers={'User-Agent': 'Minecampus/0.2.0 (DocMorphic/minecampus)'})
+    request = urllib.request.Request(url, headers={'User-Agent': 'Minecampus/0.3.0 (DocMorphic/minecampus)'})
     with urllib.request.urlopen(request, timeout=90) as response:
         return response.read()
 
@@ -54,7 +55,7 @@ def zip_bytes(archive, name, payload):
 
 def addon():
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    target = OUTPUT / 'minecampus-0.2.0.jar'
+    target = OUTPUT / f'minecampus-{PACK_VERSION}.jar'
     source = ROOT / 'minecraft/campus'
     with zipfile.ZipFile(target, 'w') as archive:
         for file in sorted(source.rglob('*')):
@@ -76,17 +77,18 @@ def build():
             'downloads': [spec['url']], 'env': {'client': 'required', 'server': 'required'},
         })
     index = {
-        'formatVersion': 1, 'game': 'minecraft', 'versionId': '0.2.0',
+        'formatVersion': 1, 'game': 'minecraft', 'versionId': PACK_VERSION,
         'name': 'Minecampus — actual Minecraft at TUM Garching',
         'summary': 'Minecraft Java 1.21.1 + Fabric + RealWorldMC. Own game account and map access required.',
         'dependencies': {key: SPEC[key] for key in ('minecraft', 'fabric-loader')},
         'files': index_files,
     }
-    target = OUTPUT / 'Minecampus-0.2.0-mc1.21.1.mrpack'
+    target = OUTPUT / f'Minecampus-{PACK_VERSION}-mc1.21.1.mrpack'
     with zipfile.ZipFile(target, 'w') as archive:
         zip_bytes(archive, 'modrinth.index.json', json.dumps(index, indent=2).encode())
         zip_bytes(archive, 'overrides/mods/' + campus.name, campus.read_bytes())
         zip_bytes(archive, 'overrides/config/realworldmc.json', (ROOT / 'minecraft/config/realworldmc.json').read_bytes())
+        zip_bytes(archive, 'overrides/options.txt', b'renderClouds:"false"\n')
         zip_bytes(archive, 'overrides/MINECAMPUS-README.md', (ROOT / 'minecraft/README.md').read_bytes())
     digest = hashlib.sha256(target.read_bytes()).hexdigest()
     target.with_suffix('.mrpack.sha256').write_text(f'{digest}  {target.name}\n')
@@ -124,7 +126,12 @@ def quality():
         **json.loads((ROOT / 'minecraft/config/terrain-quality.json').read_text()),
     }
     atomic_json(path, config)
-    print('Applied local-detail terrain settings: 2px error target, 1.5 km radius, 1,200 tile budget.')
+    options=INSTANCE/'options.txt'
+    lines=options.read_text().splitlines() if options.exists() else []
+    lines=[line for line in lines if not line.startswith('renderClouds:')]
+    lines.append('renderClouds:"false"')
+    options.write_text('\n'.join(lines)+'\n')
+    print('Applied local-detail terrain settings: 2px error target, 1 km radius, 1,200 tile budget; clear campus sky.')
     print('Saved collision geometry and provider credentials are preserved. No provider requests made.')
     print('Fully quit Minecraft and relaunch the Minecampus installation to apply. Keep your existing world.')
 
@@ -132,11 +139,32 @@ def quality():
 def install(launcher):
     campus = build()
     INSTANCE.mkdir(parents=True, exist_ok=True)
-    for spec in SPEC['files']:
-        target = INSTANCE / spec['path']
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(dependency(spec), target)
-    shutil.copy2(campus, INSTANCE / 'mods' / campus.name)
+    mods=INSTANCE/'mods';mods.mkdir(parents=True,exist_ok=True)
+    prepared=[(dependency(spec),INSTANCE/spec['path']) for spec in SPEC['files']]+[(campus,mods/campus.name)]
+    expected={target for _,target in prepared}
+    def retire(file):
+        import uuid
+        backup=INSTANCE/'retired-mods';backup.mkdir(exist_ok=True)
+        name=hashlib.sha256(file.read_bytes()).hexdigest()[:12]+'-'+file.name
+        target=backup/name
+        if target.exists():target=backup/(uuid.uuid4().hex[:8]+'-'+name)
+        file.replace(target)
+    # Prepare all new files before retiring either of the two owned mod ids.
+    staged=[]
+    for source,target in prepared:
+        target.parent.mkdir(parents=True,exist_ok=True)
+        if target.exists() and hashlib.sha256(target.read_bytes()).digest()==hashlib.sha256(source.read_bytes()).digest():continue
+        temporary=target.with_suffix('.jar.pending');shutil.copy2(source,temporary);staged.append((temporary,target))
+    for file in mods.glob('*.jar'):
+        if file in expected:continue
+        try:
+            with zipfile.ZipFile(file) as archive:mod=json.loads(archive.read('fabric.mod.json')).get('id')
+        except (OSError,zipfile.BadZipFile,KeyError,ValueError):continue
+        if mod in {'realworldmc','minecampus'}:retire(file)
+    for temporary,target in staged:
+        if target.exists():retire(target)
+        temporary.replace(target)
+    if not (INSTANCE/'options.txt').exists():(INSTANCE/'options.txt').write_text('renderClouds:"false"\n')
     config_path = INSTANCE / 'config/realworldmc.json'
     if not config_path.exists():
         config = json.loads((ROOT / 'minecraft/config/realworldmc.json').read_text())
@@ -189,8 +217,9 @@ def doctor(launcher):
     checks = {
         'official launcher profiles': (launcher / 'launcher_profiles.json').exists(),
         'Fabric version metadata': (launcher / 'versions' / PROFILE_ID / f'{PROFILE_ID}.json').exists(),
-        'campus add-on installed': (INSTANCE / 'mods/minecampus-0.2.0.jar').exists(),
+        'campus add-on installed': (INSTANCE / f'mods/minecampus-{PACK_VERSION}.jar').exists(),
         'Node.js available': bool(shutil.which('node')),
+        'exterior renderer installed': (INSTANCE/SPEC['files'][0]['path']).exists() and hashlib.sha256((INSTANCE/SPEC['files'][0]['path']).read_bytes()).hexdigest()==SPEC['files'][0]['sha256'],
     }
     path = INSTANCE / 'realworldmc-service/config.json'
     config = json.loads(path.read_text()) if path.exists() else {}
@@ -198,6 +227,7 @@ def doctor(launcher):
     for name, ready in checks.items():
         print(f"{'OK' if ready else 'MISSING'}  {name}")
     print('A configured credential is not a live coverage test. Use Test connection inside Minecraft.')
+    return all(checks.values())
 
 
 if __name__ == '__main__':
@@ -213,9 +243,9 @@ if __name__ == '__main__':
         elif args.action == 'quality':
             quality()
         else:
-            doctor(args.launcher_dir.expanduser().resolve())
+            sys.exit(0 if doctor(args.launcher_dir.expanduser().resolve()) else 1)
     except (OSError, ValueError, RuntimeError, StopIteration) as error:
         # Network exception URLs can contain credentials in other programs. This script only
-        # fetches the public URLs above and deliberately never reads provider credentials here.
+        # fetches public URLs only; locally inspected provider credentials are never printed or sent.
         print(f'Minecampus setup failed: {error}', file=sys.stderr)
         sys.exit(1)

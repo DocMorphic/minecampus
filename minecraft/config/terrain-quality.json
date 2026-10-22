@@ -3,7 +3,7 @@
   "falloff": 600,
   "viewportHeight": 1440,
   "fovDeg": 70,
-  "far": 1500,
-  "fineRadius": 200,
+  "far": 1000,
+  "fineRadius": 250,
   "maxTiles": 1200
 }

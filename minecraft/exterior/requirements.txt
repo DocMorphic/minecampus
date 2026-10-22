@@ -1,0 +1,8 @@
+# Isolated geometry/data preparation; not needed by the installed game.
+numpy==2.0.2
+Pillow==11.3.0
+pyproj==3.6.1
+rasterio==1.4.3
+shapely==2.0.7
+mapbox-earcut==2.1.0
+nbtlib==2.0.4

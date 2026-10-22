@@ -13,7 +13,7 @@ python3 scripts/minecraft.py doctor
 
 This adds **Minecampus — TUM Garching** under the launcher's **Installations** tab. It uses the separate `.minecampus/java/` game directory. Existing installations and worlds are preserved. The first profile edit is backed up beside the launcher's profile file. Enable **Modded** in the launcher's installation filters if the profile is hidden.
 
-For another launcher: `python3 scripts/minecraft.py build` creates `dist-minecraft/Minecampus-0.2.0-mc1.21.1.mrpack`, importable into Prism or Modrinth. macOS needs Node.js 22+ installed independently; the upstream embedded runtime is for Windows. The Mac installer sets the absolute Node path so Finder's limited PATH is not a problem.
+For another launcher: `python3 scripts/minecraft.py build` creates `dist-minecraft/Minecampus-0.3.0-mc1.21.1.mrpack`, importable into Prism or Modrinth. macOS needs Node.js 22+ installed independently; the upstream embedded runtime is for Windows. The Mac installer sets the absolute Node path so Finder's limited PATH is not a problem.
 
 ## Set up the world
 
@@ -55,7 +55,7 @@ API requests can incur charges. Budget alerts are notifications, not a hard spen
 ## Multiplayer and visual limits
 
 
-If the scenery looks coarse, save your world, then run `python3 scripts/minecraft.py quality` and fully quit/relaunch Minecraft. This prioritizes the local campus: a 2-pixel screen-error target, a 1.5 km map radius, a 1,200-tile budget and a 1440-pixel selection viewport. It preserves provider credentials and existing collision terrain, and backs up the old service config privately. It may use more GPU memory and download more nearby detail; monitor your free streaming allowance. This is a tuning option, not a promise of better source imagery. Stay still briefly while detail streams; pausing the world can also pause the view-selection updates.
+If the scenery looks coarse, save your world, then run `python3 scripts/minecraft.py quality` and fully quit/relaunch Minecraft. This prioritizes the local campus: a 2-pixel screen-error target, a 1 km map radius, a 1,200-tile budget and a 1440-pixel selection viewport. It preserves provider credentials and existing collision terrain, and backs up the old service config privately. It may use more GPU memory and download more nearby detail; monitor your free streaming allowance. This is a tuning option, not a promise of better source imagery. Stay still briefly while detail streams; pausing the world can also pause the view-selection updates.
 
 Minecraft itself provides multiplayer. For same-network play, **Esc → Open to LAN**, then friends join through Multiplayer with the same pack and their own map access. However, upstream does **not** support public streamed-world hosting as a ready-made setup, and this campus pack's LAN flow has not yet been playtested. The browser prototype's room codes do not apply to this version. Do not advertise native campus multiplayer as verified until two actual clients have joined and shared edits have been checked.
 
@@ -66,3 +66,11 @@ RealWorldMC displays textured 3D scenery over approximate collision blocks. Mini
 `python3 scripts/minecraft.py build` packages the resource-only Fabric add-on and an importable `.mrpack`. Downloads are pinned in `minecraft/dependencies.json` and checked by SHA-256/SHA-512 before use. The pack references upstream downloads; it does not redistribute Minecraft game code, skins, textures or sounds. Those come from the official authenticated game installation.
 
 RealWorldMC 1.0.3: [source](https://github.com/Teddy563/realworldmc), Apache-2.0; source inspected at `6f18d1f3ba5a02dadee4b14bcb96578bf3941d13`. Fabric API uses Apache-2.0. The Minecampus add-on and setup script use the [MIT license](LICENSE). Map imagery has separate provider terms.
+
+## Exterior upgrade (0.3.0)
+
+The native pack now includes [surveyed exterior meshes](exterior/README.md). A 600 × 600 m central area uses official 20 cm aerial imagery and surveyed terrain. Two Galileo building components have reconstructed recessed windows and glass/metal shading; three grass-roof promenade structures use their surveyed roof geometry. Elevated flight retains the original photo mesh. The renderer automatically changes detail near the ground.
+
+Existing Garching saves receive local collision alignment while keeping ordinary player-built blocks and recorded mining/TNT edits. Old mod JARs are moved to `retired-mods/` outside Fabric's mod folder. The installer retains provider configuration, inventory, other profiles and saved worlds. `quality` applies the local-detail preset and disables square clouds in this isolated installation.
+
+For an undamaged campus, create a new **TUM Garching — Minecampus** world. Existing damage remains in existing worlds. Native TNT excavation, walking, save/reload and edit preservation have been checked in the packaged release on macOS arm64. Full evidence and source limits are in the [validation report](exterior/VALIDATION.md). Interiors remain outside this exterior update.

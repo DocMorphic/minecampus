@@ -37,7 +37,7 @@ class NativePackTests(unittest.TestCase):
         # Exercise the real archive writer with the verified downloaded dependencies.
         with tempfile.TemporaryDirectory() as folder, patch.object(installer, 'OUTPUT', Path(folder)):
             installer.build()
-            with zipfile.ZipFile(Path(folder) / 'Minecampus-0.2.0-mc1.21.1.mrpack') as pack:
+            with zipfile.ZipFile(Path(folder) / f'Minecampus-{installer.PACK_VERSION}-mc1.21.1.mrpack') as pack:
                 index = json.loads(pack.read('modrinth.index.json'))
                 self.assertEqual(index['dependencies']['minecraft'], '1.21.1')
                 for item, locked in zip(index['files'], installer.SPEC['files']):
@@ -45,7 +45,7 @@ class NativePackTests(unittest.TestCase):
                     self.assertEqual(item['hashes']['sha512'], hashlib.sha512(payload).hexdigest())
                     self.assertEqual(item['fileSize'], len(payload))
                 self.assertFalse(any('service/config.json' in name or 'saves/' in name for name in pack.namelist()))
-                with zipfile.ZipFile(io.BytesIO(pack.read('overrides/mods/minecampus-0.2.0.jar'))) as addon:
+                with zipfile.ZipFile(io.BytesIO(pack.read(f'overrides/mods/minecampus-{installer.PACK_VERSION}.jar'))) as addon:
                     self.assertFalse(any(name.endswith(('.png', '.ogg', '.class')) for name in addon.namelist()))
                     preset = json.loads(addon.read('data/minecampus/worldgen/world_preset/garching.json'))
                     generator = preset['dimensions']['minecraft:overworld']['generator']
@@ -64,6 +64,10 @@ class NativePackTests(unittest.TestCase):
             launcher.mkdir()
             instance.mkdir()
             (instance / 'config').mkdir()
+            (instance/'mods').mkdir()
+            with zipfile.ZipFile(instance/'mods/old-realworldmc.jar','w') as z:z.writestr('fabric.mod.json','{"id":"realworldmc"}')
+            with zipfile.ZipFile(instance/'mods/old-minecampus.jar','w') as z:z.writestr('fabric.mod.json','{"id":"minecampus"}')
+            with zipfile.ZipFile(instance/'mods/personal-mod.jar','w') as z:z.writestr('fabric.mod.json','{"id":"personal"}')
             config = {'nodeExecutable': '/my/local/node', 'setupComplete': True, 'customSetting': 123}
             (instance / 'config/realworldmc.json').write_text(json.dumps(config))
             (instance / 'realworldmc-service').mkdir()
@@ -95,6 +99,10 @@ class NativePackTests(unittest.TestCase):
             self.assertEqual(json.loads((instance / 'config/realworldmc.json').read_text()), config)
             self.assertEqual(private_path.read_text(), '{"cesiumToken":"SYNTHETIC_TEST_TOKEN"}')
             self.assertEqual((world / 'keep.mca').read_bytes(), b'existing world')
+            self.assertFalse((instance/'mods/old-realworldmc.jar').exists())
+            self.assertFalse((instance/'mods/old-minecampus.jar').exists())
+            self.assertTrue((instance/'mods/personal-mod.jar').exists())
+            self.assertEqual(len(list((instance/'retired-mods').glob('*.jar'))),2)
 
 
 if __name__ == '__main__':

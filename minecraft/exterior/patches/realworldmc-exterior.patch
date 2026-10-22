@@ -1,0 +1,123 @@
+diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
+index 53d3868..94fc587 100644
+--- a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
++++ b/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
+@@ -43,6 +43,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
+  */
+ public final class MapRenderer {
+ 	public static final MapRenderer INSTANCE = new MapRenderer();
++    private static ShaderInstance campusGroundShader;
++    public static void registerCampusShader() {
++        net.fabricmc.fabric.api.client.rendering.v1.CoreShaderRegistrationCallback.EVENT.register(context ->
++            context.register(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("realworldmc", "campus_ground"),
++                com.mojang.blaze3d.vertex.DefaultVertexFormat.POSITION_TEX, shader -> campusGroundShader=shader));
++    }
+ 
+ 	private static final int MAX_UPLOADS_PER_FRAME = 3;
+ 	private static final int MAX_REFRESH_PER_FRAME = 4;
+@@ -108,6 +114,14 @@ public final class MapRenderer {
+ 	private int tickCounter;
+ 
+ 	public volatile String status = "";
++    public volatile int pendingTileSelection;
++    public String campusLoading() {
++        var region=current;
++        if(region==null || Math.abs(region.latitude()-48.265)>1e-7 || Math.abs(region.longitude()-11.671)>1e-7 || !status.isEmpty())return "";
++        var targets=wanted;boolean ready=!targets.isEmpty()&&pendingTileSelection==0&&uploadQueue.isEmpty();
++        synchronized(loaded){for(var target:targets)if(!loaded.containsKey(target.id()))ready=false;}
++        return ready?"":"Loading campus detail…";
++    }
+ 	public volatile String attributionText = "Google, RealWorldMC";
+ 
+ 	public void setRegions(RegionsPayload payload) {
+@@ -198,6 +212,7 @@ public final class MapRenderer {
+ 				String q = String.format(Locale.ROOT, "/render/select?%s&x=%.2f&y=%.2f&z=%.2f&space=%d&aheadX=%.2f&aheadZ=%.2f",
+ 					ServiceClient.originQuery(o.latitude(), o.longitude(), o.groundHeight()), cam.x, cam.y, cam.z, space ? 1 : 0, lookAhead.x, lookAhead.z);
+ 				JsonObject res = ServiceClient.getJson(q, Duration.ofSeconds(30));
++                pendingTileSelection=res.has("pending")?res.get("pending").getAsInt():0;
+ 				if (myEpoch != epoch) return;
+ 				List<Want> list = new ArrayList<>();
+ 				for (JsonElement e : res.getAsJsonArray("tiles")) {
+@@ -424,15 +439,30 @@ public final class MapRenderer {
+ 		RenderSystem.disableCull();
+ 
+ 		for (MapTile t : tiles) {
++            // Minecampus reserves these 36 ids for its 100m surveyed ground tiles.
++            boolean surveyed=t!=null && t.data.id>=1_000_000_000 && t.data.id<1_000_000_036 && campusGroundShader!=null;
++            boolean campus=current!=null && Math.abs(current.latitude()-48.265)<1e-7 && Math.abs(current.longitude()-11.671)<1e-7 && !space && campusGroundShader!=null;
++            ShaderInstance tileShader=campus ? campusGroundShader : shader;
++            if(campus && t!=null) {
++                tileShader.safeGetUniform("TileAnchor").set((float)t.data.anchorX,(float)t.data.anchorY,(float)t.data.anchorZ);
++                tileShader.safeGetUniform("MaterialDetail").set(surveyed?1f:0f);
++                tileShader.safeGetUniform("CameraPosition").set((float)cam.x,(float)cam.y,(float)cam.z);
++                float[] fog=RenderSystem.getShaderFogColor();
++                tileShader.safeGetUniform("CampusFogColor").set(fog[0],fog[1],fog[2]);
++            }
+ 			if (t == null || (frustum != null && !frustum.isVisible(t.bounds))) continue;
+ 			Matrix4f mv = new Matrix4f(view).translate(
+ 				(float) (t.data.anchorX - cam.x), (float) (t.data.anchorY - cam.y), (float) (t.data.anchorZ - cam.z));
+ 			for (int i = 0; i < t.partCount(); i++) {
+ 				if (t.isEmpty(i)) continue;
++                if(campus && t.data.id>=1_000_000_100 && t.data.id<1_000_000_102)
++                    tileShader.safeGetUniform("MaterialDetail").set(i==1?2f:(i==0||i==2?3f:0f));
++                if(campus && t.data.id>=1_000_000_200 && t.data.id<1_000_000_203)
++                    tileShader.safeGetUniform("MaterialDetail").set(i==0?3f:1f);
+ 				RenderSystem.setShaderTexture(0, t.textureId(i));
+ 				VertexBuffer vb = t.buffer(i);
+ 				vb.bind();
+-				vb.drawWithShader(mv, proj, shader);
++				vb.drawWithShader(mv, proj, tileShader);
+ 			}
+ 		}
+ 		VertexBuffer.unbind();
+diff --git a/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java b/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java
+index d246af9..4693653 100644
+--- a/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java
++++ b/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java
+@@ -14,6 +14,7 @@ public class RealWorldMCClient implements ClientModInitializer {
+ 	@Override
+ 	public void onInitializeClient() {
+         SetupScreen.register();
++        MapRenderer.registerCampusShader();
+         HelpScreen.register();
+         ClientTickEvents.END_CLIENT_TICK.register(dev.realworldmc.client.map.OsmTileCache::tick);
+ 
+@@ -58,8 +59,11 @@ public class RealWorldMCClient implements ClientModInitializer {
+ 			// Attribution required by the Google Map Tiles API terms.
+ 			String attr = SpaceFlight.body()==CelestialBody.EARTH ? renderer.attributionText : SpaceFlight.body().credits;
+ 			int color = dev.realworldmc.CreditFade.HUD.color(mc.screen instanceof net.minecraft.client.gui.screens.ChatScreen);
+-			graphics.drawString(font, attr, 4, h - 12, color, true);
+-            ActionBar.render(graphics,h-25,ActionBar.flightControls());
++			var credits=font.split(net.minecraft.network.chat.Component.literal(attr),graphics.guiWidth()-8);
++            for(int i=0;i<credits.size();i++)graphics.drawString(font,credits.get(i),4,h-12-(credits.size()-1-i)*font.lineHeight,color,true);
++            ActionBar.render(graphics,h-25-(credits.size()-1)*font.lineHeight,ActionBar.flightControls());
++            String loading=renderer.campusLoading();
++            if(!loading.isEmpty())graphics.drawString(font,loading,4,h-40-(credits.size()-1)*font.lineHeight,0xFFFFDE8A,true);
+             SpaceDestinations.hud(graphics);
+ 		});
+ 	}
+diff --git a/mod/src/main/java/dev/realworldmc/MapEdits.java b/mod/src/main/java/dev/realworldmc/MapEdits.java
+index c699a58..5388439 100644
+--- a/mod/src/main/java/dev/realworldmc/MapEdits.java
++++ b/mod/src/main/java/dev/realworldmc/MapEdits.java
+@@ -20,7 +20,7 @@ public final class MapEdits {
+         return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(StreetEdits.Storage::new,StreetEdits.Storage::load,null),"realworldmc_map_edits");
+     }
+     public static void changed(ServerLevel level,BlockPos pos,BlockState before,BlockState after) {
+-        if(!level.dimension().equals(Level.OVERWORLD) || before==after)return;
++        if(CampusCollision.applying() || !level.dimension().equals(Level.OVERWORLD) || before==after)return;
+         boolean placement=before.isAir() && after.canOcclude() && level.getChunkSource().getGenerator() instanceof EarthChunkGenerator;
+         if(!EarthBlocks.isMapBlock(before) && !placement)return;
+         var data=storage(level);data.record(pos,before);
+diff --git a/mod/src/main/java/dev/realworldmc/RealWorldMC.java b/mod/src/main/java/dev/realworldmc/RealWorldMC.java
+index f22e08c..5af6d03 100644
+--- a/mod/src/main/java/dev/realworldmc/RealWorldMC.java
++++ b/mod/src/main/java/dev/realworldmc/RealWorldMC.java
+@@ -53,6 +53,7 @@ public class RealWorldMC implements ModInitializer {
+ 	public void onInitialize() {
+ 		EarthConfig.get();
+ 		EarthBlocks.init();
++        CampusCollision.register();
+ 		Registry.register(BuiltInRegistries.CHUNK_GENERATOR, id("earth"), EarthChunkGenerator.CODEC);
+ 		Registry.register(BuiltInRegistries.CHUNK_GENERATOR, id("streetworld"), StreetChunkGenerator.CODEC);
+ 		PayloadTypeRegistry.playS2C().register(RegionsPayload.TYPE, RegionsPayload.CODEC);

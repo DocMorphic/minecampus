@@ -1,0 +1,56 @@
+{
+  "licence": "CC BY 4.0",
+  "attribution": "\u00a9 Bayerische Vermessungsverwaltung \u2014 geodaten.bayern.de",
+  "retrieved": "2026-10-22",
+  "lod2": [
+    {
+      "name": "698_5348.gml",
+      "size": 9865649,
+      "sha256": "a0b6db38424bec366b494ed539191941f48173bad8c7be546d070ca57cb6a3e2",
+      "url": "https://download1.bayernwolke.de/a/lod2/citygml/698_5348.gml"
+    },
+    {
+      "name": "696_5348.gml",
+      "size": 11920673,
+      "sha256": "958be6835080f8d6455f6d3f295df0dc9a50421559c0058cc4d6e3b2c6690f18",
+      "url": "https://download1.bayernwolke.de/a/lod2/citygml/696_5348.gml"
+    }
+  ],
+  "dgm1": [
+    {
+      "name": "697_5349.tif",
+      "size": 2644168,
+      "sha256": "2ce5487ce6c4bd96a64e396cf17acda3fa42d72c08fbbe80bb3337f7732184d2",
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/697_5349.tif"
+    },
+    {
+      "name": "698_5349.tif",
+      "size": 2680170,
+      "sha256": "949f653cfb93f056f134c8285f3a515d5bde29e47beb88075f024bcdc67ff32e",
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/698_5349.tif"
+    }
+  ],
+  "dop20": [
+    {
+      "name": "32697_5349.tif",
+      "size": 62499350,
+      "sha256": "035b3ada6b919fb6eaa48318e011f837d593188b4d42c882f9ea20b409a3c3cc",
+      "url": "https://download1.bayernwolke.de/a/dop20/data/32697_5349.tif"
+    },
+    {
+      "name": "32698_5349.tif",
+      "size": 65916935,
+      "sha256": "8a78e3fc301332e607e514b8bca545d64e3b1a956ecf02a723301b0982ab0dae",
+      "url": "https://download1.bayernwolke.de/a/dop20/data/32698_5349.tif"
+    }
+  ],
+  "geoid": {
+    "name": "de_bkg_gcg2016.tif",
+    "url": "https://cdn.proj.org/de_bkg_gcg2016.tif",
+    "size": 995647,
+    "sha256": "598f18324dea7f8e72421d18add7ac6228259adf91eeb335cc9c27d98484f7ac",
+    "licence": "CC BY 4.0",
+    "attribution": "\u00a9 GeoBasis-DE / BKG 2023",
+    "source": "https://www.bkg.bund.de/SharedDocs/Produktinformationen/BKG/DE/P-2023/230705_GCG2016_OpenData.html"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/Teddy563/realworldmc",
+  "commit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+  "release": {
+    "path": "mods/RealWorldMC-1.0.3-mc1.21.1.jar",
+    "url": "https://github.com/Teddy563/realworldmc/releases/download/v1.0.3/RealWorldMC-1.0.3-mc1.21.1.jar",
+    "sha256": "424ca319ad9b3285190ff5f4345cc78e552a5e202f10c5b920eb7a48ed8c23f3",
+    "size": 51543552
+  }
+}

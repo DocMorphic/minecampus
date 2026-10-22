@@ -26,7 +26,11 @@ The fixed campus origin is **48.265° N, 11.671° E**. You receive real Minecraf
 
 ## Verification status
 
-The pack builds, pinned mod downloads pass integrity checks, the official-launcher profile installs, and the upstream terrain/photo services start on macOS arm64 with Node 22. The user has loaded the streamed Garching campus and reported improved detail after the local-quality settings. Campus mining/TNT and two-client multiplayer still need end-to-end checks. **This is not yet a verified, finished campus playthrough.**
+The 0.3.0 exterior upgrade combines the streamed campus with surveyed terrain, 20 cm aerial imagery, detailed Galileo components and three grass-roof structures. It keeps the photographic mesh for elevated flight and uses local survey geometry near the ground. [Exterior detail and sources](minecraft/exterior/README.md).
+
+The packaged release has passed native Minecraft ground/aerial rendering, TNT excavation, walking, and preservation checks for player blocks and recorded damage. Two-client LAN remains unverified. [Validation and actual game captures](minecraft/exterior/VALIDATION.md).
+
+![Native Minecraft Java campus capture](docs/screenshots/campus-exterior-aerial.jpg)
 
 RealWorldMC's collision terrain approximates its photo mesh. Scanned buildings have no measured interiors, vanilla ores/caves are not generated in the campus dimension, and night dims daytime imagery. Starter materials support crafting and farming; the Nether and End use vanilla generation. Upstream public streamed-world hosting is not ready-made. LAN play is a test path, not a verified feature of this pack yet.
 
