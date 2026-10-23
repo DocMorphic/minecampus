@@ -40,3 +40,14 @@ A source backface-culling experiment did not resolve the outdoor fragment proble
 ## IAS exterior — 23 October 2026
 
 The [architect's IAS project](https://fritsch-tschaidse.de/en/projects/tu-munich-institute-for-advanced-study.html) documents the raised terrace, glazed entrance storey, recessed terraces/atrium and expanded-metal cladding with folding sun screens. The [High Contrast photograph](https://commons.wikimedia.org/wiki/File:TU_M%C3%BCnchen_Garching_-_Institute_for_Advanced_Study.jpg), licensed CC BY 3.0 DE, supplies material crops and a south-façade reference. BVV component `DEBY_LOD2_8486677` supplies the measured outer envelope and roof form. Recess, stair and panel dimensions are reconstructed, not newly measured. The new native camera faces the IAS from the promenade and must be checked before claiming improvement.
+
+
+## UYA exterior reference for the next façade pass
+
+The coarse pilot façade `DEBY_LOD2_5284443` matches OSM way 23316555, named UYA. Its survey envelope is approximately 51 × 32 m with two narrow roof courts. The official [FRM II campus overview](https://indico.frm2.tum.de/event/444/attachments/944/1604/2022_FRM_II-Uebersicht_ueber_die_Gesamtanlage.pdf) identifies UYA as the Betriebs-/Laborgebäude. The [Bavarian building inventory](https://www.bayern.landtag.de/www/ElanTextAblage_WP18/Drucksachen/Schriftliche%20Anfragen/18_0007901.pdf) lists it as TUM 5209, built in 1965. The extract's OSM `ref=5213` conflicts with that official listing and is not used for identity.
+
+[ESO's 2017 campus photograph](https://www.eso.org/public/ireland/images/170818035-cc/) provides a much clearer exterior reference than the streamed texture. The two roof courts and outer envelope match the survey; pale upper walls, individual window frames, glazed lower bays and tan lower panels are visible. The photograph predates the current scene and cannot establish later changes or hidden elevations.
+
+![UYA exterior and roof courts, cropped from the 2017 campus photograph](../../docs/screenshots/campus-uya-reference.jpg)
+
+Credit: **Ernst A. Graf/ESO**, [CC BY 4.0 under ESO's usage terms](https://www.eso.org/public/outreach/copyright/). Cropped for reference; not used as a runtime texture. [Pinned source, crop and identity metadata](photos/uya-eso-reference.json). Next work should fit the visible façade structure to the surveyed envelope, retaining the actual roof courts and distinguishing measured dimensions from inferred window detail.

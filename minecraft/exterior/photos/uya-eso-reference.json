@@ -1,0 +1,54 @@
+{
+  "role": "Exterior architectural reference only; not a runtime texture",
+  "buildingId": "DEBY_LOD2_5284443",
+  "osmWay": 23316555,
+  "name": "UYA \u2014 Betriebs-/Laborgeb\u00e4ude",
+  "tumBuildingNumber": 5209,
+  "boundsMC": [
+    [
+      173.2709297833079,
+      63.98387639610155,
+      -211.47778817331624
+    ],
+    [
+      229.0106285764666,
+      72.68687502301239,
+      -171.07445313080981
+    ]
+  ],
+  "sourcePage": "https://www.eso.org/public/ireland/images/170818035-cc/",
+  "sourceImage": "https://cdn.eso.org/images/large/170818035-cc.jpg",
+  "sourceSha256": "3c57f12dea0b7dec4e81e477406949b55abb83b6ac3252f69809263b046e3555",
+  "sourceSize": 4891538,
+  "sourceDimensions": [
+    4608,
+    3456
+  ],
+  "sourceDate": "2017-11-03",
+  "credit": "Ernst A. Graf/ESO",
+  "license": "CC BY 4.0",
+  "licensePage": "https://www.eso.org/public/outreach/copyright/",
+  "cropPixels": [
+    3260,
+    1690,
+    4350,
+    2270
+  ],
+  "cropFile": "docs/screenshots/campus-uya-reference.jpg",
+  "cropSha256": "08a9950991bb3293bf5bc8e0ff77688222e9d23175db1290bfee57b251456d21",
+  "observations": [
+    "Two long narrow roof courts matching the survey footprint.",
+    "Pale upper facade with individually framed rectangular windows.",
+    "Ground floor has glazing and tan/ochre wall panels.",
+    "Outer roof edge is higher than the central roof surfaces."
+  ],
+  "limitations": [
+    "Photograph is from 2017, not a current condition survey.",
+    "Window dimensions and obscured elevations need fitting and additional references.",
+    "OSM ref=5213 conflicts with the official 5209 building listing; use footprint and official identity, not that ref."
+  ],
+  "identityReferences": [
+    "https://indico.frm2.tum.de/event/444/attachments/944/1604/2022_FRM_II-Uebersicht_ueber_die_Gesamtanlage.pdf",
+    "https://www.bayern.landtag.de/www/ElanTextAblage_WP18/Drucksachen/Schriftliche%20Anfragen/18_0007901.pdf"
+  ]
+}
