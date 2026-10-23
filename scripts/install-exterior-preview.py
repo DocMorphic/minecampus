@@ -2,14 +2,17 @@
 """Install the native-verified exterior preview alongside an existing Minecampus.
 
 Copies saves and local setup into a new private instance; never upgrades the source.
+--update replaces only the recorded preview mod, preserving its saves/settings.
 Requires an existing official-launcher Minecampus installation. No network requests.
 """
 import argparse
 import contextlib
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
+import subprocess
 import tempfile
 import zipfile
 
@@ -28,11 +31,90 @@ def snapshot(folder):
     return {str(p.relative_to(folder)): digest(p) for p in folder.rglob('*') if p.is_file()}
 
 
-def install(source, destination, launcher, jar):
-    evidence = json.loads((ROOT / 'minecraft/exterior/uya-development-validation.json').read_text())
+def verify_artifact(jar):
+    evidence = json.loads((ROOT / 'minecraft/exterior/road-development-validation.json').read_text())
     expected = evidence['artifact']
     if jar.stat().st_size != expected['size'] or digest(jar) != expected['sha256']:
         raise RuntimeError('Preview JAR does not match the native-verified artifact.')
+    return expected
+
+
+def update(destination, jar):
+    """Replace only the recorded preview mod; preserve saves and private setup."""
+    expected = verify_artifact(jar)
+    report_path = destination / 'preview-installation.json'
+    report_bytes = report_path.read_bytes()
+    report = json.loads(report_bytes)
+    if destination != Path(report['previewInstance']).resolve():
+        raise RuntimeError('Preview installation record does not match this directory.')
+    # A menu-only client has no world lock; check its instance argument too.
+    processes = subprocess.check_output(['ps', '-axo', 'comm=,args='], text=True)
+    if any('java' in line.lower().split()[0] and str(destination) in line
+           for line in processes.splitlines() if line.split()):
+        raise RuntimeError('Quit the Exterior Preview Minecraft client before updating.')
+    for name in ['mods', 'saves', 'config', 'realworldmc-service', 'artifact-backups']:
+        path = destination / name
+        if path.is_symlink() or any(p.is_symlink() for p in path.rglob('*')):
+            raise RuntimeError('Preview contains a symbolic link: ' + name)
+    owned = []
+    for path in (destination / 'mods').glob('*.jar'):
+        with zipfile.ZipFile(path) as archive:
+            if 'fabric.mod.json' in archive.namelist() and json.loads(archive.read('fabric.mod.json')).get('id') == 'realworldmc':
+                owned.append(path)
+    if len(owned) != 1 or digest(owned[0]) != report['artifactSha256']:
+        raise RuntimeError('Preview mod differs from its installation record; no files changed.')
+    old = owned[0]
+    if report['artifactSha256'] == expected['sha256']:
+        print('Exterior Preview already has this verified snapshot.')
+        return
+    import fcntl
+    with contextlib.ExitStack() as locks:
+        for path in (destination / 'saves').glob('*/session.lock'):
+            stream = locks.enter_context(path.open('rb'))
+            try:
+                fcntl.lockf(stream, fcntl.LOCK_SH | fcntl.LOCK_NB)
+            except BlockingIOError:
+                raise RuntimeError('Quit Minecraft before updating an open world.') from None
+        before = snapshot(destination / 'saves')
+        private = [destination / 'config/realworldmc.json', destination / 'realworldmc-service/config.json',
+                   destination / 'realworldmc-service/streetview.config.json', destination / 'options.txt']
+        settings = {p: digest(p) for p in private if p.is_file()}
+        backup = destination / 'artifact-backups' / report['artifactSha256']
+        backup.mkdir(parents=True, exist_ok=True, mode=0o700)
+        shutil.copy2(old, backup / old.name)
+        (backup / 'preview-installation.json').write_bytes(report_bytes)
+        with tempfile.NamedTemporaryFile(prefix='.preview-mod-', suffix='.pending', dir=old.parent) as temp:
+            shutil.copyfile(jar, temp.name)
+            if digest(Path(temp.name)) != expected['sha256']:
+                raise RuntimeError('Staged preview artifact checksum mismatch.')
+            if snapshot(destination / 'saves') != before or any(digest(p) != value for p, value in settings.items()):
+                raise RuntimeError('Preview saves/settings changed during preparation; no mod replaced.')
+            # Copy to a sibling then replace atomically; the open temp file can
+            # be removed normally by its context manager after the replacement.
+            staged = old.with_suffix('.jar.pending')
+            if staged.exists():
+                raise RuntimeError('A pending mod update already exists; no mod replaced.')
+            shutil.copy2(temp.name, staged)
+            os.replace(staged, old)
+        report['previousArtifactSha256'] = report['artifactSha256']
+        report['artifactSha256'] = expected['sha256']
+        report['updateSaveFilesVerified'] = len(before)
+        report['updateSavesAndSettingsUnchanged'] = (snapshot(destination / 'saves') == before
+                                                    and all(digest(p) == value for p, value in settings.items()))
+        if not report['updateSavesAndSettingsUnchanged']:
+            shutil.copy2(backup / old.name, old)
+            raise RuntimeError('Preview changed during update; previous mod restored.')
+        try:
+            atomic_json(report_path, report)
+        except OSError:
+            shutil.copy2(backup / old.name, old)
+            raise
+    print(f'Updated Exterior Preview; verified {len(before)} unchanged save files and preserved local settings.')
+    print('Launch Minecampus — Exterior Preview 0.5. The previous mod is retained in artifact-backups.')
+
+
+def install(source, destination, launcher, jar):
+    verify_artifact(jar)
     if destination.exists():
         raise RuntimeError('Preview directory already exists; keeping its saves and settings untouched.')
     if source == destination or source in destination.parents or destination in source.parents:
@@ -120,8 +202,12 @@ if __name__ == '__main__':
     parser.add_argument('--destination', type=Path, default=ROOT / '.minecampus/exterior-preview-0.5')
     parser.add_argument('--launcher-dir', type=Path, default=launcher_directory())
     parser.add_argument('--jar', type=Path, default=ROOT / 'dist-minecraft/RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar')
+    parser.add_argument('--update', action='store_true', help='Update only the mod in an existing recorded preview; keep its saves/settings.')
     args = parser.parse_args()
     try:
-        install(*(p.expanduser().resolve() for p in (args.source, args.destination, args.launcher_dir, args.jar)))
+        if args.update:
+            update(args.destination.expanduser().resolve(), args.jar.expanduser().resolve())
+        else:
+            install(*(p.expanduser().resolve() for p in (args.source, args.destination, args.launcher_dir, args.jar)))
     except (OSError, ValueError, RuntimeError, zipfile.BadZipFile) as error:
         raise SystemExit(str(error)) from None

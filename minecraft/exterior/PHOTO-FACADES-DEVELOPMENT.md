@@ -245,3 +245,10 @@ The material uses [Poly Haven Asphalt 04](https://polyhaven.com/a/asphalt_04), p
 The sharper road makes the untreated pale sidewalks and uneven-looking margins more apparent. Those remain quality failures; this pass does not reconstruct curbs or complete path coverage. The previously exposed northern structures and terrace details also remain unfinished.
 
 All fourteen native captures and eleven gameplay/geometry checks passed. Twelve material-control samples pass, including centres and outside-width points on three paths. Derived strips have less than 0.001 m² numerical overlap with existing mapped areas. All 246 packaged mesh files are byte-identical to the warehouse build; collision v8 remains, with zero proxy changes in this run. All 46 original backed-up save files are unchanged. The installed/public preview remains `exterior-0.5.0-dev.1` until these accumulated changes are published and installed as the next snapshot.
+
+
+## Playable snapshot `exterior-0.5.0-dev.2`
+
+The road-pass artifact `3aa5bec2…` is the next public development preview. It includes the preceding UYE and warehouse improvements. The separate installed **Minecampus — Exterior Preview 0.5** now uses this exact artifact; its 121 existing save files and local settings were verified unchanged. The old UYA artifact is retained in the instance's `artifact-backups` directory. The original 0.4 installation remains separate. [Play/install/update instructions](PREVIEW-0.5.md).
+
+The update does not establish completion of the overall quality goal. Sidewalks, curbs, untreated northern structures and terrace detail still need work.
