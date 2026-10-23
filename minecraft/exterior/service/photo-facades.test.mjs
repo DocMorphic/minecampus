@@ -22,6 +22,19 @@ test('survey openings are excluded from coverage and remain transparent',()=>{
  assert.equal(b.coverage,1);assert.equal(b.wanted,192);assert.equal(b.data[(8*b.width+8)*4+3],0);
 });
 
+test('coverage excludes surveyed buried foundations while still rejecting missing material above ground',()=>{
+ const upper={...mesh(.1,[70,80,90]),mc:new Float64Array([0,2,.1,4,2,.1,4,4,.1,0,4,.1])};
+ const visible={...wall,groundProfile:[[0,2.15],[4,2.15]]};
+ const original=bakeWall(wall,[upper],options),b=bakeWall(visible,[upper],options);
+ assert.equal(original.coverage,.5);assert.equal(acceptsFacade([original]),false);
+ assert.equal(b.wanted,128);assert.equal(b.coverage,1);assert.ok(acceptsFacade([b]));
+ assert.equal(b.data[(15*b.width+8)*4+3],0);
+ const sloping=bakeWall({...wall,groundProfile:[[0,.15],[4,4.15]]},[upper],options);
+ assert.equal(acceptsFacade([sloping]),false);
+ const buried=bakeWall({...wall,groundProfile:[[0,5],[4,5]]},[upper],options);
+ assert.equal(buried.wanted,0);assert.equal(acceptsFacade([buried]),false);
+});
+
 test('source ownership preserves an unsupported nearby wall and courtyard while replacing accepted walls and roof',async()=>{
  const {retiresPhotoSurface}=await import('./photo-facades.mjs');
  const front={...wall,accepted:true},back={...wall,anchor:[0,0,3],accepted:false};

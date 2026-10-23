@@ -80,8 +80,13 @@ def build(ctx):
    if not shape.is_empty and shape.area>.01:roofShapes.append((shape,float(max(r[:,2].max()for r in rings))))
  roofElevation=rasterize(sorted(roofShapes,key=lambda x:x[1]),out_shape=(h,w),transform=transform,dtype='float32')
  roofElevation=np.maximum(roofElevation,dem)
- overhang=foliage&(dom-roofElevation>2.5)&(canopy>4)
- overhang=ndimage.maximum_filter(overhang,size=3)
+ # Shadowed crowns can have nearly equal green/blue channels. This broader
+ # colour test applies only above measured roofs, not to tree placement.
+ shadedFoliage=(g>red*1.05)&(g>=b)&(g>35)&(g<175)
+ overhang=(foliage|shadedFoliage)&(dom-roofElevation>2.5)&(canopy>4)
+ # Cover each 2m guide cell before downsampling the 0.5m mask. Point sampling
+ # missed narrow canopy edges and left isolated scan triangles above terraces.
+ overhang=ndimage.maximum_filter(overhang,size=5)
  ceiling=ndimage.maximum_filter(roofElevation-dem,size=7)
  maskBytes=[];roofCeilings=[]
  for j in range(301):

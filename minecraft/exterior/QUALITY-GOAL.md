@@ -35,3 +35,11 @@ The next pass projects the existing provider photography onto BVV survey walls a
 The canopy detector now also recognizes brown foliage. The source-limit camera identified an autumn tree missed by the previous green-only detector, leaving a floating remnant of the original scan. Roof-aware retirement protects the measured building below the canopy. Building-corner retirement uses finite wall distance so scan triangles cannot survive simply because they fall beyond a wall endpoint.
 
 The source photography still limits detail, especially on shaded façades. The goal remains open: straight geometry and functional tests do not establish a consistently realistic campus. See [photographic façade development evidence](PHOTO-FACADES-DEVELOPMENT.md).
+
+## Visible-wall and fresh-generation follow-up
+
+Coverage now excludes the portion of survey walls buried beneath DGM terrain, using a sampled terrain profile along each wall. Each visible face must independently meet the same 80% observed-photography and two-metre fill limit. A valid face no longer depends on the coverage of the building’s other faces. Unsupported faces still retain their source geometry. This recovers the former Mensa’s usable walls without claiming that the whole building has been reconstructed.
+
+The former Mensa approach is now an explicit tenth native camera. A fresh isolated world exposed visible vanilla dirt filler along a steep, protected terrain margin; newly generated chunks now use invisible, mineable map material for this filler. Existing ordinary blocks remain protected by the migration policy. The vegetation overhang mask also covers complete guide cells before downsampling, avoiding missed narrow edges.
+
+The new close-up remains a failing visual-quality case: coarse scan fragments and blurry material are still present around the approach. Ground-level reference photography should guide the next exterior reconstruction. TUM’s [April 2025 report and exterior photograph](https://www.ed.tum.de/ed/news-single-view-start/article/tum-ed-bezieht-alte-mensa-in-garching-nach-umbau/) show the renovated former Mensa, including its concrete frame, glazing and terrace artwork; that image is reference material, not a bundled texture. The newer Mensa at Boltzmannstraße 19 is a different building.

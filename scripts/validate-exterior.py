@@ -47,5 +47,10 @@ for plan in photo_spec['plans']:
   assert wall['indices'] and len(wall['indices'])%3==0
   assert all(0<=i<len(wall['vertices']) for i in wall['indices'])
   assert all(hi>lo for lo,hi in zip(*wall['bounds']))
+  if 'groundProfile' in wall:
+   profile=wall['groundProfile'];assert len(profile)>=2
+   assert all(math.isfinite(v) for p in profile for v in p)
+   assert all(a[0]<b[0] for a,b in zip(profile,profile[1:]))
+   assert abs(profile[0][0]-wall['bounds'][0][0])<1e-6 and abs(profile[-1][0]-wall['bounds'][1][0])<1e-6
 result={'renderTiles':len(manifest['tiles']),'photoFacadeCandidates':len(photo_spec['plans']),'triangles':triangles,'textureBytes':texture_bytes,'auxiliaryTriangles':aux_triangles,'auxiliaryTextureBytes':aux_bytes,'surveyedBuildingGuides':len(manifest['buildings']),'detailedBuildings':2+len(manifest.get('architecture',{}).get('buildings',[])),'landscapeStructures':3,'vegetationGroups':sum(t['kind']=='vegetation' for t in manifest['tiles']),'trees':len(manifest['vegetation']['trees']),'status':'PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage'}
 (folder/'validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

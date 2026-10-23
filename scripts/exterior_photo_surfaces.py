@@ -15,6 +15,12 @@ EXCLUDED={'DEBY_LOD2_5284450','DEBY_LOD2_5323135'}
 def build(ctx):
  out,meta,buildings,mc,triangulate,photo_uv,photo,w,h,encode=[ctx[k]for k in ['OUT','metadata','buildings','mc','triangulate','photo_uv','photo','w','h','encode']]
  plans=[]
+ terrain=meta['terrainGuide'];grid=np.asarray(terrain['points']).reshape(terrain['height'],terrain['width'],3)
+ a=grid[0,0];inverse=np.linalg.inv(np.column_stack(((grid[0,1]-a)[[0,2]],(grid[1,0]-a)[[0,2]])))
+ def terrain_y(x,z):
+  s,t=inverse@(np.array([x,z])-a[[0,2]])
+  s=np.clip(s,0,terrain['width']-1.000001);t=np.clip(t,0,terrain['height']-1.000001);i,j=int(s),int(t);fx,fz=s-i,t-j
+  return float((grid[j,i,1]*(1-fx)+grid[j,i+1,1]*fx)*(1-fz)+(grid[j+1,i,1]*(1-fx)+grid[j+1,i+1,1]*fx)*fz)
  manual=set(meta['architecture']['buildings'])|{'DEBY_LOD2_107614322','DEBY_LOD2_107614323','DEBY_LOD2_5284521','DEBY_LOD2_5284523','DEBY_LOD2_104552957'}
  protected=unary_union([Polygon(mc(r[0])[:,[0,2]])for bid,surfaces in buildings if bid in manual for typ,r in surfaces if typ=='GroundSurface'])
  for bid,surfaces in sorted(buildings,key=lambda b:(b[0]!=PILOT,b[0])):
@@ -37,7 +43,10 @@ def build(ctx):
    planrings=[]
    for ring in rings:
     v=mc(ring);planrings.append(np.column_stack(((v-anchor)@direction,v[:,1])).tolist())
-   walls.append({'anchor':anchor.tolist(),'direction':direction.tolist(),'normal':normal.tolist(),'bounds':[lo.tolist(),hi.tolist()],'rings':planrings,'vertices':q.tolist(),'indices':indices.reshape(-1).tolist()})
+   profile=[]
+   for along in np.linspace(lo[0],hi[0],max(2,int(np.ceil((hi[0]-lo[0])/.5))+1)):
+    point=anchor+direction*along;profile.append([float(along),terrain_y(point[0],point[2])])
+   walls.append({'anchor':anchor.tolist(),'direction':direction.tolist(),'normal':normal.tolist(),'bounds':[lo.tolist(),hi.tolist()],'rings':planrings,'vertices':q.tolist(),'indices':indices.reshape(-1).tolist(),'groundProfile':profile})
   if not walls or not roofs:continue
   roof=np.array(roofs);uv=roof[:,3:5];low=np.maximum(0,np.floor(uv.min(axis=0)*[w,h]).astype(int)-2);high=np.minimum([w,h],np.ceil(uv.max(axis=0)*[w,h]).astype(int)+2)
   if np.any(high<=low)or uv.min()<0 or uv.max()>1:continue

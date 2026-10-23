@@ -12,6 +12,7 @@ import java.nio.file.Path;
 
 /** Hidden, isolated native-client captures; not included in the distributed datapack. */
 public final class CampusExteriorCheck implements ClientModInitializer {
+    private static final String WORLD=System.getProperty("minecampus.checkWorld","campus-check");
     private boolean opened, moved, walkingStarted;
     private volatile boolean gameplayVerified, terraceVerified;
     private boolean terraceStarted, terraceCheckQueued;
@@ -24,7 +25,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -34,13 +35,15 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "50 65 -190 0 0",
         "150 65 -220 -90 0",
         "65 65 -157 -166 -8",
-        "205 65 -238 0 0"
+        "205 65 -238 0 0",
+        "0 64.25 -216 180 -5"
     };
 
     @Override public void onInitializeClient() {
         ClientLifecycleEvents.CLIENT_STARTED.register(mc -> {
             org.lwjgl.glfw.GLFW.glfwHideWindow(mc.getWindow().getWindow());
             if(!Path.of("").toAbsolutePath().getFileName().toString().equals("run-campus-check"))throw new AssertionError("QA must run only in its isolated directory");
+            if(!WORLD.matches("campus-check(-[a-z0-9]+)*"))throw new AssertionError("QA save must have an explicit campus-check name");
             EarthConfig.get().setupComplete = true;
             EarthConfig.get().autoSpaceFlight = false;
             mc.options.pauseOnLostFocus = false;
@@ -59,7 +62,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if (failure != null) throw new AssertionError("Integrated server check failed", failure);
             if (!opened && mc.getOverlay()==null) {
                 opened=true;
-                mc.createWorldOpenFlows().openWorld("campus-check", () -> fail(mc, new AssertionError("QA save did not open")));
+                mc.createWorldOpenFlows().openWorld(WORLD, () -> fail(mc, new AssertionError("QA save did not open")));
             }
             if (mc.screen instanceof net.minecraft.client.gui.screens.ConfirmScreen
                 || mc.screen instanceof net.minecraft.client.gui.screens.BackupConfirmScreen) {
@@ -154,7 +157,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         return;
                     }
                 }
-                Files.writeString(Path.of("campus-client-result.txt"),"PASS: nine ground, aerial, TNT, promenade, source-limit, IAS and photographic facade frames captured after full streaming readiness");mc.stop();return;
+                Files.writeString(Path.of("campus-client-result.txt"),"PASS: ten ground, aerial, TNT, promenade, source-limit, IAS, photographic facade and former Mensa frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
@@ -229,6 +232,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if(((java.util.List<?>)df.get(renderer)).size()!=want.size())ready=false;
             readyTicks=ready?readyTicks+1:0;
             if(ticks<200 || readyTicks<40)return;
+            if(stage==9&&Boolean.getBoolean("minecampus.requireVisibleFacade")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_050_038))throw new AssertionError("Visible former Mensa facade was not accepted/displayed");
             if(stage==6&&Boolean.getBoolean("minecampus.requirePhotographicFacade")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_050_000))throw new AssertionError("Photographic facade was not accepted/displayed");
             if(stage==0&&!collisionVerified){
                 if(!collisionProofQueued){
@@ -256,7 +260,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 return;
             }
-            if(stage==0||stage==3||stage==5||stage==6){
+            if(stage==0||stage==3||stage==5||stage==6||stage==9){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
                 var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
@@ -264,6 +268,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 float tanHalf=(float)Math.tan(Math.toRadians(actualFov)*.5);
                 float[][] pixelsToPick=new float[][]{{.81f,.435f},{.38f,.443f}};
                 if(stage==6)pixelsToPick=new float[][]{{.75f,.46f},{.8f,.5f},{.9f,.45f},{.38f,.38f},{.37f,.43f},{.766f,.55f}};
+                if(stage==9)pixelsToPick=new float[][]{{.78f,.35f},{.84f,.43f},{.96f,.40f},{.265f,.58f},{.51f,.59f},{.65f,.48f},{.745f,.615f}};
                 if(stage==3||stage==5){
                     try(var frameImage=Screenshot.takeScreenshot(mc.getMainRenderTarget())){
                         var candidates=new java.util.ArrayList<int[]>();int width=frameImage.getWidth(),height=frameImage.getHeight();long sumX=0,sumY=0;
@@ -294,7 +299,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                             }
                         }
                     }
-                    var pick=new com.google.gson.JsonObject();var region=dev.realworldmc.EarthRegions.at((int)Math.floor(eye.x),(int)Math.floor(eye.z));if(region!=null)pick.addProperty("frameGroundHeight",region.groundHeight());pick.addProperty("u",pixel[0]);pick.addProperty("v",pixel[1]);pick.addProperty("fov",actualFov);pick.addProperty("tile",hit);pick.addProperty("x",eye.x+ray.x*nearest);pick.addProperty("y",eye.y+ray.y*nearest);pick.addProperty("z",eye.z+ray.z*nearest);picks.add(pick);
+                    var pick=new com.google.gson.JsonObject();var region=dev.realworldmc.EarthRegions.at((int)Math.floor(eye.x),(int)Math.floor(eye.z));if(region!=null)pick.addProperty("frameGroundHeight",region.groundHeight());pick.addProperty("u",pixel[0]);pick.addProperty("v",pixel[1]);pick.addProperty("fov",actualFov);pick.addProperty("tile",hit);pick.addProperty("x",eye.x+ray.x*nearest);pick.addProperty("y",eye.y+ray.y*nearest);pick.addProperty("z",eye.z+ray.z*nearest);var blockHit=mc.level.clip(new net.minecraft.world.level.ClipContext(eye,eye.add(ray.x*256,ray.y*256,ray.z*256),net.minecraft.world.level.ClipContext.Block.OUTLINE,net.minecraft.world.level.ClipContext.Fluid.NONE,mc.player));
+                    var pos=blockHit.getBlockPos();pick.addProperty("block",net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(mc.level.getBlockState(pos).getBlock()).toString());pick.addProperty("blockPosition",pos.toShortString());picks.add(pick);
                 }
                 Files.writeString(Path.of("campus-fragment-picks-"+stage+".json"),picks.toString());
             }

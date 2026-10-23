@@ -98,7 +98,8 @@ test('the reconstructed outdoor layer retires high scan remnants while retaining
 test('photographic replacement switches ids only after readiness, preserves old tiles and uses save datum without mutating source',async t=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-photo-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
  const wall={anchor:[3,4,5],direction:[1,0,0],normal:[0,0,1],bounds:[[0,4],[4,8]],rings:[[[0,4],[4,4],[4,8],[0,8]]],vertices:[[3,4,5],[7,4,5],[7,8,5],[3,8,5]],indices:[0,1,2,0,2,3]};
- const plan={id:'test-building',runtimeId:1_000_050_000,roofFile:'roof.ect',bounds:[[3,4,5],[7,8,7]],walls:[wall],retirement:[{ring:[[2,4],[8,4],[8,8],[2,8]],holes:[]}]};
+ const occluded={...wall,anchor:[3,4,15],bounds:[[0,4],[4,24]],rings:[[[0,4],[4,4],[4,24],[0,24]]],vertices:[[3,4,15],[7,4,15],[7,24,15],[3,24,15]]};
+ const plan={id:'test-building',runtimeId:1_000_050_000,roofFile:'roof.ect',bounds:[[3,4,5],[7,24,17]],walls:[wall,occluded],retirement:[{ring:[[2,4],[8,4],[8,18],[2,18]],holes:[]}]};
  fs.writeFileSync(path.join(dir,'photo-facades.json'),JSON.stringify({plans:[plan]}));fs.writeFileSync(path.join(dir,'roof.ect'),tile([[3,8,5],[7,8,5],[3,8,7]]));
  const points=[];for(let z=0;z<=20;z+=10)for(let x=0;x<=20;x+=10)points.push([x,0,z]);
  fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify({origin:Object.values(origin),attribution:'survey',tiles:[],terrainGuide:{width:3,height:3,points},photoFacades:{file:'photo-facades.json'}}));
@@ -112,6 +113,8 @@ test('photographic replacement switches ids only after readiness, preserves old 
  for(let i=0;i<30;i++){await new Promise(r=>setTimeout(r,5));result=await service.renderSelect(frame,[5,6,6]);if(result.pending===0)break;}
  assert.equal(result.pending,0);assert.ok(result.tiles.some(t=>t.id===1_000_050_000));assert.ok(result.tiles.some(t=>t.id===1_200_000_007));assert.ok(result.attribution.includes('test provider'));
  assert.deepEqual(positions,snapshot);
+ // Only one sixth of the building's wall area is observed. Its good face must
+ // still appear; the larger occluded face must not be synthesized.
  const baked=await service.renderTile(frame,1_000_050_000);assert.equal(baked.readFloatLE(52),6);assert.equal(baked.readInt32LE(4),2);
  assert.equal((await service.renderTile(frame,1_200_000_007)).readInt32LE(32),0);
  assert.deepEqual(await service.renderTile(frame,1_100_000_007),source);
@@ -129,4 +132,19 @@ test('photographic canopy overhang is retired above a surveyed roof without eras
  assert.equal((await building.service.renderTile(origin,1_100_000_007)).readInt32LE(32),3);
  const noEvidence=fixture(t,tile([[10,12,5],[11,13,5],[10,12,6]]),{...extra,vegetationOverhang:{...vegetationOverhang,mask:Buffer.alloc(9).toString('base64')}});
  assert.equal((await noEvidence.service.renderTile(origin,1_100_000_007)).readInt32LE(32),3);
+});
+
+test('fresh survey chunks hide source filler even in protected margins, without changing other materials or regions',async t=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-filler-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+ const points=[];for(let z=0;z<=20;z+=10)for(let x=0;x<=20;x+=10)points.push([x,10,z]);
+ fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify({origin:Object.values(origin),attribution:'survey',tiles:[],terrainGuide:{width:3,height:3,points}}));
+ const source=new Uint8Array(16*16*4);for(let y=0;y<4;y++)source.fill([20,21,22,23][y],y*256,(y+1)*256);
+ const service={renderSelect:async()=>({tiles:[],attribution:[]}),renderTile:async()=>null,chunk:async()=>source};
+ attachSurveySurface(service,dir,{voxelizeArea:()=>{throw Error('no collision assets needed for filler normalization');}});
+ const result=await service.chunk(origin,0,0,-10,4);
+ for(let y=0;y<4;y++)assert.equal(result[y*256+8*16+8],[3,4,22,23][y]);
+ assert.equal(result[0],20); // Outside the covered guide's inner margin.
+ assert.deepEqual(await service.chunk({...origin,lat:49},0,0,-10,4),source);
+ assert.deepEqual(await service.chunk(origin,5,5,-10,4),source);
+ assert.equal(source[8*16+8],20); // Do not mutate cached source voxel bytes.
 });

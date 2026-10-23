@@ -1,0 +1,599 @@
+{
+  "date": "2026-10-23",
+  "status": "Functional development pass verified; former Mensa visual quality still fails the overall realism target",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 187944463,
+    "sha256": "d1c03a6e379c0cf0aa2351bd702c31a3465ef740980e827726025bd9d7c98150",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "8a809d31ed8fd826049afcc83f9665b8524616c5783166c1d6b67d35881d75d7",
+    "bundleSha256": "2b2edd5336adced55f3cdb180001bffe63bd6974ba06ec8dd798dd935bf740d5",
+    "tiles": 82
+  },
+  "geometry": {
+    "renderTiles": 82,
+    "photoFacadeCandidates": 80,
+    "triangles": 1512369,
+    "textureBytes": 241268996,
+    "auxiliaryTriangles": 5356,
+    "auxiliaryTextureBytes": 13530024,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 740,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "runtime": {
+    "candidateBuildings": 80,
+    "buildingsWithAcceptedFaces": 79,
+    "note": "Each face independently requires 80% observed visible-area coverage and at most two metres of fill. A ready building can still contain unsupported original faces. Coverage excludes buried foundations.",
+    "coverage": [
+      {
+        "id": "DEBY_LOD2_5284443",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 87.7
+      },
+      {
+        "id": "DEBY_LOD2_104552964",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 94.4
+      },
+      {
+        "id": "DEBY_LOD2_104553068",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 81.9
+      },
+      {
+        "id": "DEBY_LOD2_104553085",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 88.7
+      },
+      {
+        "id": "DEBY_LOD2_105263801",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 97.6
+      },
+      {
+        "id": "DEBY_LOD2_107614250",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 88.7
+      },
+      {
+        "id": "DEBY_LOD2_107614301",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 88.5
+      },
+      {
+        "id": "DEBY_LOD2_107629746",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 86.8
+      },
+      {
+        "id": "DEBY_LOD2_107650547",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 46.7
+      },
+      {
+        "id": "DEBY_LOD2_108180785",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 93.3
+      },
+      {
+        "id": "DEBY_LOD2_108180786",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 87.3
+      },
+      {
+        "id": "DEBY_LOD2_108180787",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 82.3
+      },
+      {
+        "id": "DEBY_LOD2_108180804",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 98.7
+      },
+      {
+        "id": "DEBY_LOD2_108180813",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 90.0
+      },
+      {
+        "id": "DEBY_LOD2_108698294",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 90.3
+      },
+      {
+        "id": "DEBY_LOD2_108698307",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 54.8
+      },
+      {
+        "id": "DEBY_LOD2_108698313",
+        "accepted": false,
+        "visibleSourceCoveragePercent": 2.7
+      },
+      {
+        "id": "DEBY_LOD2_108698321",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 85.6
+      },
+      {
+        "id": "DEBY_LOD2_108698323",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 86.3
+      },
+      {
+        "id": "DEBY_LOD2_108698333",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 84.2
+      },
+      {
+        "id": "DEBY_LOD2_108698338",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 96.0
+      },
+      {
+        "id": "DEBY_LOD2_108698339",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 70.0
+      },
+      {
+        "id": "DEBY_LOD2_108698340",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 97.5
+      },
+      {
+        "id": "DEBY_LOD2_31360854",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 86.9
+      },
+      {
+        "id": "DEBY_LOD2_31360858",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 84.0
+      },
+      {
+        "id": "DEBY_LOD2_41731141",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 30.4
+      },
+      {
+        "id": "DEBY_LOD2_41731337",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 29.6
+      },
+      {
+        "id": "DEBY_LOD2_41731339",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 30.1
+      },
+      {
+        "id": "DEBY_LOD2_41731341",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 35.0
+      },
+      {
+        "id": "DEBY_LOD2_41731343",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 35.8
+      },
+      {
+        "id": "DEBY_LOD2_41731345",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 33.7
+      },
+      {
+        "id": "DEBY_LOD2_41731347",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 35.2
+      },
+      {
+        "id": "DEBY_LOD2_41731351",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 98.8
+      },
+      {
+        "id": "DEBY_LOD2_41731353",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 69.5
+      },
+      {
+        "id": "DEBY_LOD2_41731367",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 38.7
+      },
+      {
+        "id": "DEBY_LOD2_52738490",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 93.1
+      },
+      {
+        "id": "DEBY_LOD2_52738492",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 88.6
+      },
+      {
+        "id": "DEBY_LOD2_52738494",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 95.6
+      },
+      {
+        "id": "DEBY_LOD2_5284422",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 84.5
+      },
+      {
+        "id": "DEBY_LOD2_5284423",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 77.2
+      },
+      {
+        "id": "DEBY_LOD2_5284424",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 83.8
+      },
+      {
+        "id": "DEBY_LOD2_5284429",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 86.5
+      },
+      {
+        "id": "DEBY_LOD2_5284430",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 92.6
+      },
+      {
+        "id": "DEBY_LOD2_5284433",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 86.2
+      },
+      {
+        "id": "DEBY_LOD2_5284435",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 84.5
+      },
+      {
+        "id": "DEBY_LOD2_5284436",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 87.6
+      },
+      {
+        "id": "DEBY_LOD2_5284437",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 84.1
+      },
+      {
+        "id": "DEBY_LOD2_5284438",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 79.4
+      },
+      {
+        "id": "DEBY_LOD2_5284439",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 44.6
+      },
+      {
+        "id": "DEBY_LOD2_5284441",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 79.3
+      },
+      {
+        "id": "DEBY_LOD2_5284444",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 38.7
+      },
+      {
+        "id": "DEBY_LOD2_5284445",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 71.2
+      },
+      {
+        "id": "DEBY_LOD2_5284446",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 79.3
+      },
+      {
+        "id": "DEBY_LOD2_5284449",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 82.7
+      },
+      {
+        "id": "DEBY_LOD2_5284452",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 88.5
+      },
+      {
+        "id": "DEBY_LOD2_5284457",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 62.1
+      },
+      {
+        "id": "DEBY_LOD2_5284465",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 76.6
+      },
+      {
+        "id": "DEBY_LOD2_5284467",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 80.7
+      },
+      {
+        "id": "DEBY_LOD2_5284468",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 88.1
+      },
+      {
+        "id": "DEBY_LOD2_5284470",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 84.2
+      },
+      {
+        "id": "DEBY_LOD2_5284471",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 80.2
+      },
+      {
+        "id": "DEBY_LOD2_5284472",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 81.5
+      },
+      {
+        "id": "DEBY_LOD2_5284482",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 81.0
+      },
+      {
+        "id": "DEBY_LOD2_5284483",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 80.4
+      },
+      {
+        "id": "DEBY_LOD2_5284484",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 77.2
+      },
+      {
+        "id": "DEBY_LOD2_5284491",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 64.3
+      },
+      {
+        "id": "DEBY_LOD2_5284492",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 77.9
+      },
+      {
+        "id": "DEBY_LOD2_5284496",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 64.7
+      },
+      {
+        "id": "DEBY_LOD2_5284513",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 57.8
+      },
+      {
+        "id": "DEBY_LOD2_5284514",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 67.5
+      },
+      {
+        "id": "DEBY_LOD2_5284515",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 65.4
+      },
+      {
+        "id": "DEBY_LOD2_5284516",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 96.9
+      },
+      {
+        "id": "DEBY_LOD2_5284517",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 68.4
+      },
+      {
+        "id": "DEBY_LOD2_5284518",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 93.6
+      },
+      {
+        "id": "DEBY_LOD2_5284526",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 57.1
+      },
+      {
+        "id": "DEBY_LOD2_5284527",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 36.5
+      },
+      {
+        "id": "DEBY_LOD2_5284531",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 89.5
+      },
+      {
+        "id": "DEBY_LOD2_5284532",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 86.2
+      },
+      {
+        "id": "DEBY_LOD2_62020",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 78.4
+      },
+      {
+        "id": "DEBY_LOD2_8486669",
+        "accepted": true,
+        "visibleSourceCoveragePercent": 84.3
+      }
+    ]
+  },
+  "serviceTests": {
+    "passed": 21,
+    "failed": 0
+  },
+  "native": {
+    "world": "campus-check-margin",
+    "freshChunks": true,
+    "checks": {
+      "client": "PASS: ten ground, aerial, TNT, promenade, source-limit, IAS, photographic facade and former Mensa frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0"
+    },
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "e4d7eee5d19c969e6912f38a09cbc03ab3fc185bedad42dfd3a83a741968c713"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "e11006806dc92f3f03e885fca4b697ed77f3921571c99070abf2d6000543785f"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "d73c1dade95e3b9fb258166a79b403091de645768de89ce204be26154b7a18d0"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "19e8a38620c9052083dcdb06678ce7b7824fc59f5d8d65e48849c4478e14a88a"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "075533d6f40ea52b5b3e997c0266b43cfde73723b75bca784f3f4555effa6e57"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "d9f39a388642b9393ad2e5d51dea9773ddf547268e89254f473af0d4088d993c"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "34baadfa453111f83f85ada8b5642320b0df93bf296387663a9c43aacf0fe3fa"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "baed4a21a48c6c0479f0a9cd890970baf6802f38f59e4afd5269810e48dda777"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "1439cf0ba5a07b2aa120372697787b2b881355a11a12a8733cd52ead3328dcf9"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "16bf1fb087a0e2915be3e77f6c449eb7355749c2995639c72e2facccd81f7b08"
+      }
+    ],
+    "formerMensaPicks": [
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.78,
+        "v": 0.35,
+        "fov": 76.99999332427979,
+        "tile": 1000010022,
+        "x": 9.698186874389648,
+        "y": 69.64357161521912,
+        "z": -226.8295602798462,
+        "block": "minecraft:void_air",
+        "blockPosition": "156, 129, -408"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.84,
+        "v": 0.43,
+        "fov": 76.99999332427979,
+        "tile": 1200002243,
+        "x": 16.734905242919922,
+        "y": 69.21447086334229,
+        "z": -232.15522956848145,
+        "block": "minecraft:void_air",
+        "blockPosition": "177, 102, -397"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.96,
+        "v": 0.4,
+        "fov": 76.99999332427979,
+        "tile": -1,
+        "x": 7891.9560546875,
+        "y": 1555.8535203933716,
+        "z": -6174.0966796875,
+        "block": "minecraft:void_air",
+        "blockPosition": "202, 104, -369"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.265,
+        "v": 0.58,
+        "fov": 76.99999332427979,
+        "tile": 1000050038,
+        "x": -31.38515281677246,
+        "y": 63.96879768371582,
+        "z": -263.8237953186035,
+        "block": "earthcraft:map_wood",
+        "blockPosition": "-4, 65, -222"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.51,
+        "v": 0.59,
+        "fov": 76.99999332427979,
+        "tile": 1000000022,
+        "x": 1.4289594292640686,
+        "y": 64.04775512218475,
+        "z": -248.63125610351562,
+        "block": "earthcraft:map_stone",
+        "blockPosition": "1, 64, -235"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.65,
+        "v": 0.48,
+        "fov": 76.99999332427979,
+        "tile": 1000050038,
+        "x": 13.402740478515625,
+        "y": 69.4848084449768,
+        "z": -245.714262008667,
+        "block": "earthcraft:map_stone",
+        "blockPosition": "13, 69, -246"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.745,
+        "v": 0.615,
+        "fov": 76.99999332427979,
+        "tile": 1000000022,
+        "x": 11.612102508544922,
+        "y": 64.34492707252502,
+        "z": -231.7314853668213,
+        "block": "earthcraft:map_dirt",
+        "blockPosition": "10, 64, -231"
+      }
+    ],
+    "limitations": [
+      "Fresh-world migration reports zero changed proxies; player-edit fixture assertions still passed. Historical existing-world migration evidence remains in earlier reports.",
+      "Ordinary blocks in existing saves are preserved; fresh generation filler normalization does not remove old vanilla blocks."
+    ]
+  },
+  "originalSave": {
+    "backup": ".minecampus/backups/ground-detail-0.4-original.zip",
+    "filesChecked": 46,
+    "unchanged": true,
+    "changedFiles": []
+  },
+  "remainingVisualFailures": [
+    "Floating scan fragments remain at the former Mensa approach.",
+    "Rejected faces retain coarse source geometry.",
+    "Source photography is visibly blurry at walking height."
+  ],
+  "comparison": {
+    "beforeArtifactSha256": "ca7be18089e2dcc0472837500c916de1bbefd11f224b2e2a1ebb2dce36e40a37",
+    "beforeRawSha256": "acd4a7552c0cd237c3d8c8186ea2a5a0038f037d930d59f3a07ddb3adc3e5f89",
+    "afterRawSha256": "16bf1fb087a0e2915be3e77f6c449eb7355749c2995639c72e2facccd81f7b08",
+    "camera": "0 64.25 -216 180 -5",
+    "note": "Both captures use newly generated isolated worlds. Comparison isolates canopy-mask and source-filler changes after independent visible-face acceptance."
+  }
+}

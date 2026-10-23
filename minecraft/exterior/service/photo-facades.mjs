@@ -13,9 +13,22 @@ export function bakeWall(wall,primitives,{pixelsPerMetre=10,maxProjectionDistanc
  const w=Math.max(1,Math.min(2048,Math.ceil((right-left)*pixelsPerMetre))),h=Math.max(1,Math.min(1024,Math.ceil((top-bottom)*pixelsPerMetre)));
  const sx=w/(right-left),sy=h/(top-bottom),data=Buffer.alloc(w*h*4),depth=new Float32Array(w*h).fill(Infinity),mask=new Uint8Array(w*h);
  const [a,d,n]=[wall.anchor,wall.direction,wall.normal];let wanted=0;
+ // LoD2 foundations may sit several metres below the surrounding terrain.
+ // Exclude only the measured buried area from coverage, without relaxing the
+ // observed-material requirement for the wall visible above ground.
+ const floors=new Float64Array(w).fill(-Infinity),profile=wall.groundProfile;
+ if(profile?.length>=2){
+  let segment=0;
+  for(let x=0;x<w;x++){
+   const X=left+(x+.5)/sx;
+   while(segment<profile.length-2&&profile[segment+1][0]<X)segment++;
+   const [p,q]=[profile[segment],profile[segment+1]],fraction=Math.max(0,Math.min(1,(X-p[0])/(q[0]-p[0])));
+   floors[x]=p[1]*(1-fraction)+q[1]*fraction-.15;
+  }
+ }
  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
   const X=left+(x+.5)/sx,Y=top-(y+.5)/sy;
-  if(inside(X,Y,wall.rings[0])&&!wall.rings.slice(1).some(r=>inside(X,Y,r))){mask[y*w+x]=1;wanted++;}
+  if(Y>=floors[x]&&inside(X,Y,wall.rings[0])&&!wall.rings.slice(1).some(r=>inside(X,Y,r))){mask[y*w+x]=1;wanted++;}
  }
  const targetMin=[Infinity,Infinity,Infinity],targetMax=[-Infinity,-Infinity,-Infinity];
  for(const p of wall.vertices)for(let k=0;k<3;k++){targetMin[k]=Math.min(targetMin[k],p[k]-maxProjectionDistance);targetMax[k]=Math.max(targetMax[k],p[k]+maxProjectionDistance);}
@@ -102,7 +115,11 @@ export async function preparePhotographicFacades(service,directory,frame,origin,
    for(const wall of plan.walls){bakes.push(bakeWall(wall,primitives,{...spec,sampleColor:deps.sampleColor}));await new Promise(setImmediate);}
    const wanted=bakes.reduce((n,b)=>n+b.wanted,0),observed=bakes.reduce((n,b)=>n+b.observed,0);
    const usable=bakes.map(b=>acceptsFacade([b],spec.minimumCoverage??.8)&&b.maxFillDistance<=2);
-   const accepted=wanted>0&&bakes.reduce((n,b,i)=>n+(usable[i]?b.wanted:0),0)>=wanted*.5;
+   // Each accepted wall is independently backed by observed photography. Do not
+   // discard a well-supported face because another side of the building is
+   // occluded; that other side stays on the original source mesh. The public
+   // surveyed roof does not depend on photographic wall coverage.
+   const accepted=usable.some(Boolean);
    metrics.push({id:plan.id,accepted,acceptedWalls:usable.filter(Boolean).length,totalWalls:bakes.length,coverage:observed/wanted,walls:bakes.map(b=>({coverage:b.coverage,maxFillDistance:b.maxFillDistance,unfilled:b.unfilled}))});
    console.log(`[campus-photo] ${plan.id}: ${accepted?'ready':'original retained'}, coverage=${(100*observed/wanted).toFixed(1)}%`);
    if(!accepted)continue;

@@ -190,7 +190,21 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     const chunk=service.chunk.bind(service);
     service.chunk=async(frame,cx,cz,minY,span)=>{
       const original=await chunk(frame,cx,cz,minY,span),patch=service.campusCollision(frame,cx,cz,minY,span);
-      const output=Uint8Array.from(original);for(let i=0;i<output.length;i++)if(patch[i]!==255)output[i]=patch[i];return output;
+      const output=Uint8Array.from(original);
+      if(matches(frame))for(let z=0;z<16;z++)for(let x=0;x<16;x++){
+        if(terrain(cx*16+x+.5,cz*16+z+.5)===null)continue;
+        // Source voxelization uses visible vanilla filler under its mesh. At
+        // steep survey banks or protected footprint margins that filler can
+        // protrude through the replacement terrain. Normalize newly generated
+        // filler to invisible, mineable map material. Existing saves and player
+        // blocks still use the conservative migration path above.
+        for(let y=0;y<span;y++){
+          const i=(y*16+z)*16+x;
+          if(output[i]===20)output[i]=3;
+          else if(output[i]===21)output[i]=4;
+        }
+      }
+      for(let i=0;i<output.length;i++)if(patch[i]!==255)output[i]=patch[i];return output;
     };
   }
   return {manifest,renderTiles:ids.size,stats:()=>({removedSourceTriangles:removed})};
