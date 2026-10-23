@@ -92,3 +92,10 @@ The two street-level views now make UYA recognizable, but the adjacent UYE/gateh
 ## Playable development snapshot
 
 The exact UYA-tested artifact is now installed in **Minecampus — Exterior Preview 0.5**, alongside the original installation. All 121 source save files were copied and hash-verified; the 46 original backed-up world files remain byte-identical. Local map setup was copied privately and pointed at the preview's own service directory. The installer refuses an existing destination or profile and checks open-world locks before copying. [Play and download instructions](PREVIEW-0.5.md). This makes the accumulated improvements available for play while the remaining exterior work continues; the overall goal remains active.
+
+
+## UYE foreground replacement
+
+Two visible UYE elevations now use a pale roof fascia and recessed framed glazing on the survey envelope. The exact model passed twelve native viewpoints and ten checks, including a ray that verifies replacement of the previous foreground fragment. The original save remains unchanged. West/south elevations retain photography, and exact framing remains inferred. [UYE evidence](uye-development-validation.json).
+
+The warehouse on the opposite side of the same route still has poor photographic walls. Path surfaces also remain inconsistent: the current mask uses closed polygons, while the OSM snapshot contains many linear paths with useful material tags. Those structures and path coverage are next; the goal remains active. The installed 0.5 preview is unchanged until the next tested snapshot.

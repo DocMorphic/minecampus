@@ -394,6 +394,17 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     if(confirmed!=2)throw new AssertionError("Missing canopy diagnostic rays");
                     Files.writeString(Path.of("campus-canopy-result.txt"),"PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage");
                 }
+                if(stage==6&&Boolean.getBoolean("minecampus.requireUyeExterior")){
+                    boolean found=false;
+                    for(var entry:picks){var pick=entry.getAsJsonObject();
+                        if(Math.abs(pick.get("u").getAsFloat()-.9f)<.001){
+                            if(pick.get("structureBehindVegetation").getAsInt()!=1_000_030_007)throw new AssertionError("UYE foreground ray still hits old photographic wall");
+                            found=true;
+                        }
+                    }
+                    if(!found)throw new AssertionError("Missing UYE foreground diagnostic ray");
+                    Files.writeString(Path.of("campus-uye-result.txt"),"PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope");
+                }
                 Files.writeString(Path.of("campus-fragment-picks-"+stage+".json"),picks.toString());
             }
             try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {

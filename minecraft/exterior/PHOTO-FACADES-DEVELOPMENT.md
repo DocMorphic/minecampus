@@ -194,3 +194,16 @@ The neighboring photographic walls remain conspicuously coarse. UYE/gatehouse `D
 The roof file is byte-identical to the preceding package, preserving both courtyard openings. Eight inner courtyard faces retain their photographic treatment. Collision migration v6 replaces old proxy geometry while retaining ordinary blocks and recorded edits. Both UYA viewpoints require the new tile to be loaded. All twelve route captures, nine native gameplay/geometry checks, 21 service tests and binary geometry validation passed; the original save's 46 backed-up files remain unchanged. [Exact artifact and validation](uya-development-validation.json).
 
 The installed/public preview remains 0.4.0. The broader realism goal stays open for the remaining coarse structures, paths, terrace detail and courtyard detail.
+
+
+## UYE visible elevations: `2159712d…`
+
+The UYE footprint and single skylight match the building behind UYA in the ESO aerial and the BVV orthophoto. The architect's exterior reference shows a pale projecting fascia and dark framed glazing. Its 160 m² project area does not establish a complete glazing schedule for the roughly 448 m² survey envelope. Only the east/north faces visible beneath the fascia in the aerial are reconstructed; the west/south photographic faces remain. [Source qualifications](photos/uye-architect-reference.json).
+
+The 29.04 m east face and 15.43 m north face now have a continuous pale fascia, recessed glazing and separate mullions/transoms. Pane counts, horizontal divisions and a 0.50 m recess are estimates. The roof itself is byte-identical to the preceding artifact. There is no interior.
+
+![UYE's foreground fascia and framed glazing in Minecraft](../../docs/screenshots/campus-uye-exterior-after.jpg)
+
+Compare the [previous same-camera view](../../docs/screenshots/campus-uya-west-after.jpg). The right foreground wall is now legible, while the small warehouse on the left remains conspicuously blurred. Twelve native viewpoints and ten gameplay/geometry checks passed. A fixed foreground ray must hit the new UYE tile, preventing a loaded-but-hidden replacement from passing. Collision migration v7 changed 242 proxies during the route while preservation checks passed. All 46 original backed-up world files remain byte-identical. [Exact artifact and native evidence](uye-development-validation.json).
+
+The installed/public preview remains `exterior-0.5.0-dev.1` with UYA; this UYE pass is development work for the next snapshot. Remaining coarse structures, path materials and terrace detail keep the overall quality goal open.

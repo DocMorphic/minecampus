@@ -1,0 +1,155 @@
+{
+  "date": "2026-10-23",
+  "status": "UYE east/north elevations native-verified; overall realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 187339536,
+    "sha256": "2159712d8626341b1701242e24a5a929a72808f3fb69d43b46ce604ef725777e",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "a48977c62b172a0138172c402cf376cda1d407c264ecca659fd35a09fe4c6491",
+    "rendererSourceFingerprint": "51fb6a14e6e187c3",
+    "bundleSha256": "91d7f5f3bd3b7b60f38ad0307bb1a8490a2fd4cd13e05b73d02ef96e9aebc8ae",
+    "tiles": 85
+  },
+  "geometry": {
+    "renderTiles": 85,
+    "photoFacadeCandidates": 80,
+    "triangles": 1871229,
+    "textureBytes": 241924380,
+    "auxiliaryTriangles": 5246,
+    "auxiliaryTextureBytes": 13530024,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "uye": {
+    "building": "DEBY_LOD2_31360854",
+    "reference": "https://seifert-hugues.de/projekte/projekt-objekte/empfangsgebaeude-frm2.html&categorie=gewerbe-verwaltung",
+    "faces": [
+      {
+        "surfaceIndex": 0,
+        "lengthMetres": 29.035747142084535,
+        "bays": 22,
+        "baseY": 64.06690744334227,
+        "topY": 67.93482646713188,
+        "recessMetres": 0.5
+      },
+      {
+        "surfaceIndex": 1,
+        "lengthMetres": 15.433851268668358,
+        "bays": 12,
+        "baseY": 64.06690744334227,
+        "topY": 67.9344660517529,
+        "recessMetres": 0.5
+      }
+    ],
+    "note": "East/north exterior only. BVV envelope and roof retained; facade vocabulary from the architect photo and ESO aerial. Pane counts, divisions and 0.50 m recess are inferred. West/south retain photography. No interior."
+  },
+  "roofPreservation": {
+    "byteIdenticalToPreviousArtifact": true,
+    "sha256": "97605bb9e054209afd320b28f016c77b3ad37e824de14b2cce88b96b79f4e15a",
+    "unchangedWallIndices": [
+      2,
+      3
+    ]
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: twelve ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa and paving-detail frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope"
+    },
+    "migrationVersion": 7,
+    "changedProxiesAcrossRun": 242,
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "090e54fe0646a1e04514dcd92f52a5780f28f3c9d95ae9c5a039736ac1847af6"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "2cbb766b0921b2ad141745051d071092bb01ccf64c2da9f197f9848d8e6bc1c9"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "647f021a4762c951ba90017a5ea2fe52557f568229c756431a16fee80403ce8c"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "257f35f9db3c0be8f97dd8868c71064974b33e287f249bf2c17f9a5118b88a6a"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "92052ea13f44ab588a66e5a9b1e657054cac2761e38b10c09ec2f6647919bdde"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "4119e97b2a9bc8e012ed6d58a852a1cade8c443364aebc17ced2c7860f07d4bb"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "958c3a53242a978b68d819ae5029db1a32aae6b109dfe0e5a9c22abe75abc440"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "b3a34e28e5411351679f0adc395f5947989f98f17222edfee2107b818389abd5"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "742f43a46e4d5fc300fc3afef294987a7813e10d203b419efb516c948fab6e61"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "3ef37f950e34c2cd705384b7e0d617ae07f44907eb335532506e942b1bd50773"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "c5d6903c1afa9d11b8cc63180463ab8c1fbd6dbe56e36d5a725ac984b658d5fb"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "c20ce2d9985be865348ac6523cebaf77a05cf69a148876284e3e597715f5c02f"
+      }
+    ],
+    "foregroundRay": {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.9,
+      "v": 0.45,
+      "fov": 76.99999332427979,
+      "tile": 1000030007,
+      "x": 162.60064220428467,
+      "y": 67.582528591156,
+      "z": -205.81070613861084,
+      "block": "earthcraft:map_plaster",
+      "blockPosition": "161, 67, -207",
+      "structureBehindVegetation": 1000030007,
+      "structureDistance": 18.29614
+    }
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "b0ecb5ad0479312fc734d56b8892ca2c917f936ee014c4c65021badc03f54212",
+    "camera": "150 65 -220 -90 0",
+    "beforeImage": "../../docs/screenshots/campus-uya-west-after.jpg",
+    "afterImage": "../../docs/screenshots/campus-uye-exterior-after.jpg"
+  },
+  "remaining": [
+    "Small warehouse DEBY_LOD2_52738492 still has visibly blurred photographic walls.",
+    "UYE west/south elevations remain photographic; exact glazing divisions on reconstructed faces are inferred.",
+    "Path material coverage, terrace detail and broader campus quality remain unfinished."
+  ],
+  "installedPreview": "exterior-0.5.0-dev.1 (b0ecb5ad); this UYE development pass is not installed"
+}

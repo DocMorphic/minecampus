@@ -1,5 +1,4 @@
 {
-  "buildingCandidate": "DEBY_LOD2_31360854",
   "name": "UYE exterior / FRM II reception building",
   "sourcePage": "https://seifert-hugues.de/projekte/projekt-objekte/empfangsgebaeude-frm2.html&categorie=gewerbe-verwaltung",
   "publisher": "seifert hugues architekten gmbh",
@@ -14,6 +13,9 @@
     "Horizontal glazing divisions",
     "Recessed glazing beneath the overhang"
   ],
-  "identityQualification": "Image filename explicitly identifies UYE. Project page gives 160 square metres; the current rectangular survey envelope covers approximately 448 square metres. Determine which frontage belongs to the renovation before applying its glazing pattern to the whole survey envelope.",
-  "nextStep": "Match the visible external frontage and roof to BVV and the licensed ESO aerial reference. Preserve the surveyed roof. Do not infer unobserved elevations or interiors from this one exterior photograph."
+  "identityQualification": "UYE is confirmed by its OSM footprint and the single skylight/roof outline matching BVV, DOP20 and the ESO aerial. The architect reports 160 square metres for the renovation/extension project; that does not establish the treatment of the entire approximately 448 square metre envelope. The exterior photograph informs material and framing vocabulary, not a complete glazing schedule.",
+  "buildingId": "DEBY_LOD2_31360854",
+  "aerialReference": "https://www.eso.org/public/ireland/images/170818035-cc/",
+  "aerialReferenceMetadata": "uya-eso-reference.json",
+  "reconstructionScope": "Two outer survey faces: east (29.04 m) and north (15.43 m), visible below the pale roof edge in the ESO aerial. Exact mullion rhythm, horizontal divisions and 0.50 m recess are inferred. West/south elevations retain source photography."
 }

@@ -24,3 +24,6 @@ For a material performance comparison, compile `CampusMaterialBenchmark.java` al
 
 
 For the UYA outer-façade reconstruction, set `minecampus.requireUyaExterior=true`. Both existing UYA viewpoints (indices 6 and 8) must display its dedicated reconstruction tile. Keep the photographic-roof check enabled: the public surveyed roof and two courtyard openings still belong to the existing roof tile. The standard roof-gravity and migration checks remain required. Viewport tile presence is only a loading gate; visually inspect the short and long elevations and verify the roof bytes against the preceding package.
+
+
+The UYE development pass enables `minecampus.requireUyeExterior=true`. At source-limit camera 6, the existing diagnostic ray at normalized `(0.9, 0.45)` must hit reconstruction tile `1_000_030_007` behind any foliage. `campus-uye-result.txt` is an additional required PASS file alongside the previous nine. Collision storage advances to v7. The exact native run and roof-preservation check are recorded in `uye-development-validation.json`.

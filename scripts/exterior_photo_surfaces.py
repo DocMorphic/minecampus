@@ -57,6 +57,8 @@ def build(ctx):
   build_mensa_front(ctx,bid,walls)
   from exterior_uya import build as build_uya
   build_uya(ctx,bid,walls)
+  from exterior_uye import build as build_uye
+  build_uye(ctx,bid,walls)
   collisionName=bid+'-photo-collision.ect'
   vertices=[[*wall['vertices'][i],0,0]for wall in walls if not wall.get('reconstructed') for i in wall['indices']]
   (out/collisionName).write_bytes(encode([(vertices,Image.new('RGBA',(1,1),(150,150,145,255))),(roof,photo.crop((*low,*high)))]))
