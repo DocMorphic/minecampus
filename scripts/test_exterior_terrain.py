@@ -3,7 +3,7 @@ import unittest
 import numpy as np
 from rasterio.io import MemoryFile
 from rasterio.transform import from_origin
-from exterior_terrain import ElevationSampler,SiteGradedElevation,terrain_axis
+from exterior_terrain import ElevationSampler,SiteGradedElevation,PlanarApronElevation,terrain_axis
 
 class TerrainSamplingTest(unittest.TestCase):
  def make(self,left,values):
@@ -34,5 +34,15 @@ class TerrainSamplingTest(unittest.TestCase):
   xy=np.array([[5,5],[5,-4],[5,-6],[5,-8],[5,-9],[13,5],[11.5,5]])
   np.testing.assert_allclose(grade.sample(xy),[4,4,7,10,10,10,10])
   self.assertEqual(grade(5,-4),4)
+
+class ApronGradingTest(unittest.TestCase):
+ def test_smooth_plane_blends_to_ground_and_excludes_neighbours(self):
+  from shapely.geometry import box
+  class Source:
+   def sample(self,xy):return np.full(len(xy),5.)
+  grade=PlanarApronElevation(Source(),box(0,0,10,10),[0,0],[0,1],2,.1/2,[box(4,4,6,6)],2)
+  xy=np.array([[2,5],[5,5],[5,11],[5,12],[5,-1]])
+  np.testing.assert_allclose(grade.sample(xy),[2.25,5,3.775,5,3.5])
+  self.assertAlmostEqual(grade(2,5),2.25)
 
 if __name__=='__main__':unittest.main()

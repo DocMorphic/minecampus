@@ -133,3 +133,10 @@ The goal remains open. COS still needs convincing ground materials, site objects
 The dev.4 snapshot adds ten bounded material patches, two mapped bench lines and ten inferred bicycle stands. Nineteen native views, seventeen checks and 26 service tests pass. Terrain tiles and existing mapped material pixels remain unchanged; native gravity verifies the bench collider. [Site evidence](cos-site-development-validation.json).
 
 The corrected forecourt view is outside Siemensbau's surveyed footprint; the exploratory `(162,-262)` camera was inside it and is excluded. The current ground view still shows pale old construction imagery between mapped patches. Next, resolve these margins with source-informed planting/paving rather than assuming that every unmapped region is paved. Improve the nearby coarse facade once sufficient reference evidence exists. The quality goal remains active.
+
+
+## COS landscape infill and apron
+
+Dev.5 replaces a bounded portion of the old construction imagery with inferred forecourt paving, a soil bed and north lawn. Low bed edging follows a smooth apron grade anchored to the facade and DGM driveway. The close visual review caught and corrected the previous radial grading hump; native gravity distinguishes the corrected ground proxy from the old one. Twenty-one route captures, nineteen native checks, 26 service tests and five terrain tests pass. [Evidence](cos-landscape-development-validation.json).
+
+The goal remains active. The west-side margins and eastern parking still need believable surfaces; the broader campus needs consistent curbs, ground detail and better coarse facades. Reconstructed planting and facade details are approximate. Aerial ground retains older photography. Continue from these visible limitations rather than equating a tested checkpoint with completion.

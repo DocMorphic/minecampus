@@ -17,13 +17,13 @@ def build(ctx,mapped,existing_paths):
  buildings=unary_union([Polygon(np.asarray(r[0])[:,:2],[np.asarray(h)[:,:2]for h in r[1:]]).buffer(0)for _,surfaces in ctx['buildings']for kind,r in surfaces if kind=='GroundSurface'])
  mapped_area=unary_union([transform(to_utm,shape(f['geometry'])).buffer(0)for f in mapped['features']+existing_paths])
  exclusion=buildings.union(mapped_area);claimed=exclusion;features=[];stats=[]
- def add(key,geom,material,qualification):
+ def add(key,geom,material,qualification,**details):
   nonlocal claimed
   geom=geom.intersection(limit).difference(claimed)
   if geom.is_empty:return
   claimed=claimed.union(geom);way=ways[key]
-  features.append({'type':'Feature','properties':{'osmWay':key,'version':way['version'],'timestamp':way['timestamp'],'tags':way['tags'],'material':material,'qualification':qualification},'geometry':mapping(transform(to_geo,geom))})
-  stats.append({'osmWay':key,'material':material,'areaSquareMetres':round(geom.area,2),'qualification':qualification})
+  features.append({'type':'Feature','properties':{'osmWay':key,'version':way['version'],'timestamp':way['timestamp'],'tags':way['tags'],'material':material,'qualification':qualification,**details},'geometry':mapping(transform(to_geo,geom))})
+  stats.append({'osmWay':key,'material':material,'areaSquareMetres':round(geom.area,2),'qualification':qualification,**details})
  # This closed mapped walk surrounds the completed building. The current photo
  # supports infilling the apron between its outer half-width and the facade.
  add(1489202329,Polygon(xy[1489202329]).buffer(est['perimeterWalkWidthMetres']/2,join_style=2),'paving','Mapped perimeter centre-line plus estimated outer half-width; facade apron infilled from current exterior reference.')
@@ -31,6 +31,13 @@ def build(ctx,mapped,existing_paths):
   material='asphalt'if ways[key]['tags']['surface']=='asphalt'else'paving'
   add(key,LineString(xy[key]).buffer(width/2,cap_style=2,join_style=2),material,f'Mapped centre-line and surface; estimated {width:g}m width, bounded to COS surroundings.')
  add(1489202325,Polygon(xy[1489202325]),'paving','Mapped bicycle-parking boundary; paving inferred from finished forecourt context.')
+ # Plan-informed infill uses the surveyed south edge as its local frame.
+ # Existing mapped polygons, paths and building footprints retain precedence.
+ ring=np.asarray(meta['siteGrading']['footprintUtm']);anchor=ring[4];east=ring[1]-anchor;east/=np.linalg.norm(east);outward=np.array([east[1],-east[0]])
+ assert np.linalg.norm(ring[1]-anchor)>28
+ for feature in spec['inferredLandscape']['surfaces']:
+  polygon=Polygon([anchor+east*x+outward*y for x,y in feature['ring']])
+  add(feature['relatedOsmWay'],polygon,feature['material'],feature['qualification'],inferred=True,reconstructionId=feature['id'])
  result={'type':'FeatureCollection','license':'ODbL-1.0','attribution':'© OpenStreetMap contributors','qualification':est['note'],'features':features}
  surface_file=out/'cos-site-surfaces.geojson';surface_file.write_text(json.dumps(result,separators=(',',':')))
  assert unary_union([transform(to_utm,shape(f['geometry']))for f in features]).intersection(exclusion).area<.001
@@ -39,7 +46,7 @@ def build(ctx,mapped,existing_paths):
  ref=json.loads((root/'minecraft/exterior/photos/cos-reference.json').read_text());photo=root/'minecraft/exterior/photos/cos-reference.webp'
  assert hashlib.sha256(photo.read_bytes()).hexdigest()==ref['sha256']
  timber=Image.open(photo).convert('RGBA').transform((384,256),Image.Transform.QUAD,ref['timberQuad'],Image.Resampling.BICUBIC).crop((64,0,80,256))
- textures=[timber,Image.new('RGBA',(1,1),(176,178,170,255)),Image.new('RGBA',(1,1),(137,148,151,255))];parts=[[],[],[]]
+ textures=[timber,Image.new('RGBA',(1,1),(176,178,170,255)),Image.new('RGBA',(1,1),(137,148,151,255)),Image.new('RGBA',(1,1),(176,178,170,255))];parts=[[],[],[],[]]
  def quad(p,part):
   for i in [0,1,2,0,2,3]:parts[part].append([*p[i],*[(0,1),(1,1),(1,0),(0,0)][i]])
  def extrude(poly,bottom,top,part):
@@ -78,9 +85,21 @@ def build(ctx,mapped,existing_paths):
   footprint_xy=np.array([pos+v*s for s,_ in path]);base=float(ground(np.array([pos]))[0,1]);q=mc(np.column_stack((footprint_xy,np.full(len(path),ctx['height'](*pos)))));q[:,1]=base+np.array([h for _,h in path])
   for a,b in zip(q,q[1:]):tube(a,b)
   stands.append(q[4].tolist())
+ # Follow the sloping ground with short curb sections, leaving gaps where
+ # the mapped benches already bound the bed. Thin edging is render-only.
+ bed=next(transform(to_utm,shape(f['geometry']))for f in features if f['properties'].get('reconstructionId')=='entrance-planting-bed')
+ occupied=unary_union([LineString(xy[k]).buffer(est['benchWidthMetres']/2+.08)for k in [1489202327,1489202328]])
+ border=bed.boundary.difference(occupied);curb=spec['inferredLandscape']['curb'];curb_targets=[]
+ for line in ([border]if border.geom_type=='LineString'else border.geoms):
+  for lo,hi in zip(np.arange(0,line.length,.5),np.minimum(np.arange(0,line.length,.5)+.5,line.length)):
+   a=np.array(line.interpolate(lo).coords[0]);b=np.array(line.interpolate(hi).coords[0]);direction=b-a;direction/=np.linalg.norm(direction);normal=np.array([-direction[1],direction[0]])*curb['widthMetres']/2
+   xy4=np.array([a-normal,b-normal,b+normal,a+normal]);bottom=ground(xy4);bottom[:,1]-=.025;top=bottom.copy();top[:,1]+=curb['heightMetres']+.025
+   quad(top,3)
+   for i,j in [(0,1),(1,2),(2,3),(3,0)]:quad([bottom[i],bottom[j],top[j],top[i]],3)
+   curb_targets.append(top.mean(0).tolist())
  vertices=np.concatenate([np.asarray(p)[:,:3]for p in parts]);name='cos-site-furniture.ect';(out/name).write_bytes(encode(list(zip(parts,textures))))
  meta['tiles'].append({'file':name,'kind':'reconstruction','profile':'cos-site','runtimeId':1_000_030_011,'bounds':[vertices.min(0).tolist(),vertices.max(0).tolist()],'collisionParts':[0,1]})
- data={'sourceFile':source.name,'sourceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'derivedFile':surface_file.name,'derivedSha256':hashlib.sha256((out/'cos-site-surfaces.geojson').read_bytes()).hexdigest(),'surfaces':stats,'benches':benches,'bicycleStands':len(stands),'rackTargetsMC':stands,'note':est['note']+' Thin rack tubes are decorative and do not create metre-wide invisible collision barriers; benches retain collision.'}
+ data={'sourceFile':source.name,'sourceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'derivedFile':surface_file.name,'derivedSha256':hashlib.sha256((out/'cos-site-surfaces.geojson').read_bytes()).hexdigest(),'surfaces':stats,'benches':benches,'bicycleStands':len(stands),'rackTargetsMC':stands,'curbLengthMetres':border.length,'curbTargetsMC':curb_targets,'note':est['note']+' Thin rack tubes are decorative and do not create metre-wide invisible collision barriers; benches retain collision.'}
  meta['architecture']['cosSite']=data
  print('COS site:',len(features),'surface patches, two mapped benches and',len(stands),'inferred bicycle stands',flush=True)
  return features,data

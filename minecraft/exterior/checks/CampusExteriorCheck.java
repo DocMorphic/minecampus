@@ -32,12 +32,15 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private boolean cosBenchStarted;
     private volatile boolean cosBenchVerified,cosBenchQueued;
     private int cosBenchTicks;
+    private boolean apronStarted;
+    private volatile boolean apronVerified,apronQueued;
+    private int apronTicks;
     private int ticks, stage=Boolean.getBoolean("minecampus.inspectOnly")?Integer.getInteger("minecampus.inspectStage",3):0, total, readyTicks;
     private volatile Throwable failure;
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -57,7 +60,9 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "128 65 -267 -140 -13",
         "190 65 -270 140 -15",
         "125 120 -240 -145 31",
-        "162 64 -270 -171 14"
+        "162 64 -270 -171 14",
+        "154 64 -272 180 20",
+        "178 64 -337 0 12"
     };
 
     @Override public void onInitializeClient() {
@@ -262,7 +267,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                                     if(!dev.realworldmc.CampusCollision.aligned(world,9,-18)){cosBenchQueued=false;return;}
                                     var player=mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
                                     if(!player.onGround()||Math.abs(player.getY()-64)>.01)throw new AssertionError("COS bench collider mismatch: "+player.getY());
-                                    Files.writeString(Path.of("campus-cos-bench-result.txt"),"PASS: native gravity landed player on the bench proxy at Y="+player.getY()+"; visible seat top Y=63.84");
+                                    Files.writeString(Path.of("campus-cos-bench-result.txt"),"PASS: native gravity landed player on the bench proxy at Y="+player.getY()+"; visible seat top Y=63.89");
                                     cosBenchVerified=true;
                                 }catch(Throwable error){failure=error;}
                             });
@@ -270,7 +275,35 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         return;
                     }
                 }
-                if(!Boolean.getBoolean("minecampus.bankOnly"))Files.writeString(Path.of("campus-client-result.txt"),"PASS: nineteen ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail, Telefonzentrale and COS frames captured after full streaming readiness");mc.stop();return;
+                if(Boolean.getBoolean("minecampus.requireCosLandscape")){
+                    if(!apronStarted){
+                        apronStarted=true;
+                        mc.getSingleplayerServer().execute(()->{
+                            var player=mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
+                            player.setGameMode(GameType.CREATIVE);player.getAbilities().flying=false;player.onUpdateAbilities();
+                            mc.getSingleplayerServer().getCommands().performPrefixedCommand(player.createCommandSourceStack().withPermission(4),"tp @s 163.5 68 -276.5 180 0");
+                        });
+                        return;
+                    }
+                    if(++apronTicks<120)return;
+                    if(!apronVerified){
+                        if(!apronQueued){
+                            apronQueued=true;
+                            mc.getSingleplayerServer().execute(()->{
+                                try{
+                                    var world=mc.getSingleplayerServer().overworld();
+                                    if(!dev.realworldmc.CampusCollision.aligned(world,10,-18)){apronQueued=false;return;}
+                                    var player=mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
+                                    if(!player.onGround()||Math.abs(player.getY()-63)>.01)throw new AssertionError("Smooth COS apron collider mismatch: "+player.getY());
+                                    Files.writeString(Path.of("campus-cos-apron-result.txt"),"PASS: native gravity landed on the smooth apron proxy at Y="+player.getY()+" (mesh Y=63.46271), replacing the previous Y=64 proxy");
+                                    apronVerified=true;
+                                }catch(Throwable error){failure=error;}
+                            });
+                        }
+                        return;
+                    }
+                }
+                if(!Boolean.getBoolean("minecampus.bankOnly"))Files.writeString(Path.of("campus-client-result.txt"),"PASS: twenty-one ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail, Telefonzentrale and COS frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
@@ -400,7 +433,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
                 image.writeToFile(Path.of(NAMES[stage]));
             }
-            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12||stage==14||stage==15||stage==16||stage==17||stage==18){
+            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12||stage==14||stage==15||stage==16||stage==17||stage==18||stage==19){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
                 var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
@@ -422,12 +455,13 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 if(stage==10)pixelsToPick=new float[][]{{.15f,.55f},{.5f,.55f},{.85f,.55f}};
                 if(stage==9)pixelsToPick=new float[][]{{.78f,.35f},{.84f,.43f},{.96f,.40f},{.265f,.58f},{.51f,.59f},{.65f,.48f},{.745f,.615f},{.1f,.6f},{.18f,.55f},{.35f,.58f},{.58f,.56f},{.7f,.55f},{.82f,.41f}};
-                if(stage==15||stage==16||stage==17||stage==18){
+                if(stage==15||stage==16||stage==17||stage==18||stage==19){
                     double[][] targets=new double[3][3];
                     if(stage==15){double[] along={2.5,19.599,36.699};for(int i=0;i<3;i++)targets[i]=new double[]{152.840612+.1777*along[i],73.1068,-284.946-.9841*along[i]};}
                     else if(stage==16){double[] along={9.2,14,24};for(int i=0;i<3;i++)targets[i]=new double[]{152.840612+.9841*along[i],i==0?64.7568:72.9318,-284.946+.1777*along[i]};}
                     else if(stage==17)targets=new double[][]{{162.13979,83.53372,-300.74671}};
-                    else targets=new double[][]{{156.18109484376183,63.82040067328171,-281.5609138476498},{159.19933780854143,63.8523613415077,-279.42591742014946},{169.88380594700354,64.39648748330059,-275.68385071571225}};
+                    else if(stage==18)targets=new double[][]{{156.18110002,63.86805525,-281.56091937},{159.19933975,63.87231641,-279.42592084},{169.88380222,64.25619879,-275.68384465}};
+                    else targets=new double[][]{{154.04,63.4430609,-278.63},{155.10681093,63.69976512,-275.54448472}};
                     var eye=camera.getPosition();var forward=new org.joml.Vector3f(camera.getLookVector());var right=new org.joml.Vector3f(forward).cross(0,1,0).normalize();var up=new org.joml.Vector3f(right).cross(forward).normalize();pixelsToPick=new float[targets.length][2];
                     for(int i=0;i<targets.length;i++){var q=targets[i];var target=new org.joml.Vector3f((float)(q[0]-eye.x),(float)(q[1]-eye.y),(float)(q[2]-eye.z));float depth=target.dot(forward);pixelsToPick[i]=new float[]{(float)(.5+.5*target.dot(right)/(depth*tanHalf*16/9)),(float)(.5-.5*target.dot(up)/(depth*tanHalf))};
                         if(depth<=0||pixelsToPick[i][0]<=0||pixelsToPick[i][0]>=1||pixelsToPick[i][1]<=0||pixelsToPick[i][1]>=1)throw new AssertionError("COS target outside verification frame");
@@ -528,6 +562,25 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     if(picks.size()!=3)throw new AssertionError("Missing COS furniture diagnostic rays");
                     for(var entry:picks)if(entry.getAsJsonObject().get("tile").getAsInt()!=1_000_030_011)throw new AssertionError("COS furniture ray does not reach the visible reconstruction");
                     Files.writeString(Path.of("campus-cos-site-result.txt"),"PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer");
+                }
+                if(Boolean.getBoolean("minecampus.requireCosLandscape")&&stage==19){
+                    if(picks.size()!=2)throw new AssertionError("Missing COS landscape rays");
+                    var soil=picks.get(0).getAsJsonObject();int tile=soil.get("tile").getAsInt();
+                    if(tile<1_000_000_000||tile>=1_000_000_036)throw new AssertionError("Planting-bed ray does not reach surveyed ground");
+                    var curb=picks.get(1).getAsJsonObject();
+                    if(curb.get("tile").getAsInt()!=1_000_030_011||Math.abs(curb.get("y").getAsDouble()-63.69977)>.03)throw new AssertionError("Planting-bed edging ray does not reach the low curb");
+                    var maskLocation=net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("realworldmc","textures/campus/ground_surfaces.png");
+                    try(var stream=mc.getResourceManager().getResourceOrThrow(maskLocation).open();var mask=com.mojang.blaze3d.platform.NativeImage.read(stream)){
+                        int x=(int)((soil.get("x").getAsDouble()+352)/672*4096),y=(int)((256-soil.get("z").getAsDouble())/672*4096);
+                        if(mask.getPixelRGBA(x,y)!=0)throw new AssertionError("Native soil ray misses the inverse-alpha soil material mask");
+                    }
+                    try(var frame=Screenshot.takeScreenshot(mc.getMainRenderTarget())){
+                        int x=(int)(soil.get("u").getAsFloat()*frame.getWidth()),y=(int)(soil.get("v").getAsFloat()*frame.getHeight());double red=0,green=0,blue=0;
+                        for(int dy=-2;dy<=2;dy++)for(int dx=-2;dx<=2;dx++){int pixel=frame.getPixelRGBA(x+dx,y+dy);red+=pixel&255;green+=(pixel>>>8)&255;blue+=(pixel>>>16)&255;}
+                        red/=25*255.;green/=25*255.;blue/=25*255.;
+                        if((red+green+blue)/3>.55||red<blue*1.05)throw new AssertionError("Soil still renders as pale construction imagery: "+red+","+green+","+blue);
+                        Files.writeString(Path.of("campus-cos-landscape-result.txt"),"PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB "+red+","+green+","+blue+"); exposed curb ray reaches its 12cm edging");
+                    }
                 }
                 if(Boolean.getBoolean("minecampus.requireTelefonzentraleExterior")&&stage==14){
                     if(picks.size()!=4)throw new AssertionError("Missing Telefonzentrale window rays");

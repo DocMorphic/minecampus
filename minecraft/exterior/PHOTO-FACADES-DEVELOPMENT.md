@@ -321,3 +321,26 @@ From the forecourt at walking height:
 Artifact `8541badba7723d5eb381ddd29366be7deab9a9777d435e4d3318b297e1024325` passed nineteen native captures, seventeen native checks and 26 service tests. New checks verify direct visibility of both benches and a stand, plus gravity landing on a bench proxy at Y=64 above the visible seat at about Y=63.84. All 360,000 terrain samples and 22 material controls pass. [Validation](cos-site-development-validation.json). The separate playable preview is `exterior-0.5.0-dev.4`.
 
 Remaining: unmapped margins still show pale construction imagery; exact curbs, planting beds and furniture designs are unfinished. Aerial surroundings keep the older photographic ground, and site furniture/materials currently appear in walking mode. The adjoining Siemensbau and other coarse facades still need work. This is an incremental improvement, not completion of the quality goal.
+
+
+## COS planting and smooth forecourt
+
+The [landscape architect's 2021 design context](https://www.wankner-und-fischer.de/projekte/neubau-forschungsgebaeude-cos-garching/) includes paved approaches, planting beds and a north lawn. Current mapped paths and bench positions anchor three explicitly inferred surface patches: about 134 m² of paving, 21 m² of soil and 169 m² of lawn. These are approximate finished-site reconstructions, not an as-built survey. Existing mapped material pixels remain unchanged. The eastern parking area is excluded pending its grass-paver treatment.
+
+The bed follows the inside of the mapped L-shaped bench. Its exposed sides have about 14.35 m of low concrete edging (estimated 14 cm width and 12 cm height). The edging remains render-only to avoid oversized collision barriers. The soil uses Rob Tuytel's [Brown Mud Leaves 01](https://polyhaven.com/a/brown_mud_leaves_01), CC0, at its 1.3 m repeat scale; it is not a scan of the actual bed. Diffuse and normal maps are pinned in [material provenance](material-sources.json).
+
+Before and after from the same forecourt camera:
+
+![Before landscape infill](../../docs/screenshots/campus-cos-landscape-before.jpg)
+
+![After landscape infill](../../docs/screenshots/campus-cos-landscape-after.jpg)
+
+![Planting bed, smooth slope and low edging](../../docs/screenshots/campus-cos-planting.jpg)
+
+![North lawn and COS facade](../../docs/screenshots/campus-cos-north-lawn.jpg)
+
+The first close capture exposed an uneven radial grade under the curb. A bounded plane now joins the surveyed facade base plus 0.12 m to the median of six DGM1 driveway samples, rising about 4.8% toward the drive. A 1.5 m blend joins surrounding terrain, with neighbouring building footprints and one-metre margins excluded. Only one of 36 terrain tiles changes; its imagery is unchanged, and every changed vertex lies inside the apron or blend. This is an inferred surface between known anchors, not new elevation survey data.
+
+Artifact `eadcc39e997b167b209ddd91e1ecac2e90a743f0c612736600744c911da2ba09` passed a full 21-view route run, with nineteen native checks, 26 service tests, five terrain tests and 25 material controls. The native bed test checks a ground hit, the packaged soil mask and brown rendered pixels; a second ray reaches the low edging. Gravity lands on the apron at proxy Y=63 where the previous build used Y=64. All 360,000 source samples are checked against DGM plus the documented reconstruction, with identical shared tile edges. Twelve texture samplers have usable mip levels. [Validation](cos-landscape-development-validation.json).
+
+The playable checkpoint is `exterior-0.5.0-dev.5`. Coarse neighbouring facades, pale west-side margins, eastern parking, exact planting/furniture design and old aerial imagery remain unfinished. The overall quality goal remains open.

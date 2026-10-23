@@ -375,5 +375,120 @@
         ]
       ]
     }
-  ]
+  ],
+  "inferredLandscape": {
+    "reference": "https://www.wankner-und-fischer.de/projekte/neubau-forschungsgebaeude-cos-garching/",
+    "basis": "2021 landscape design context, reconciled with current OSM paths and bench positions. Approximate reconstruction; not an as-built survey.",
+    "frame": "Metres east along the surveyed south facade from its southwest corner, then outward perpendicular to the facade.",
+    "surfaces": [
+      {
+        "id": "entrance-planting-bed",
+        "relatedOsmWay": 1489202327,
+        "material": "soil",
+        "ring": [
+          [
+            0.45,
+            3.15
+          ],
+          [
+            4.15,
+            3.15
+          ],
+          [
+            4.15,
+            8.85
+          ],
+          [
+            0.45,
+            8.85
+          ]
+        ],
+        "qualification": "Inferred planting bed inside the mapped L-shaped bench and north of the driveway, following landscape-plan context."
+      },
+      {
+        "id": "entrance-forecourt",
+        "relatedOsmWay": 1489202326,
+        "material": "paving",
+        "ring": [
+          [
+            -1.5,
+            2.0
+          ],
+          [
+            22.6,
+            2.0
+          ],
+          [
+            22.6,
+            10.65
+          ],
+          [
+            -1.5,
+            10.65
+          ]
+        ],
+        "qualification": "Inferred paving joins the mapped entrance, benches and bicycle parking to the driveway. Eastern vehicle-parking area excluded pending a grass-paver reconstruction."
+      },
+      {
+        "id": "north-lawn",
+        "relatedOsmWay": 1489202329,
+        "material": "grass",
+        "ring": [
+          [
+            -1.6,
+            -48.0
+          ],
+          [
+            31,
+            -48
+          ],
+          [
+            31,
+            -42.8
+          ],
+          [
+            -1.6,
+            -42.8
+          ]
+        ],
+        "qualification": "Inferred north lawn between the mapped perimeter walk and drive, following landscape-plan context."
+      }
+    ],
+    "curb": {
+      "widthMetres": 0.14,
+      "heightMetres": 0.12,
+      "qualification": "Low concrete edging around exposed planting-bed sides; position follows the inferred bed, profile and dimensions are estimates. Render-only to avoid oversized voxel collision."
+    },
+    "grading": {
+      "ring": [
+        [
+          -1.5,
+          0
+        ],
+        [
+          22.6,
+          0
+        ],
+        [
+          22.6,
+          13
+        ],
+        [
+          -1.5,
+          13
+        ]
+      ],
+      "drivewayDistanceMetres": 13,
+      "drivewaySamplesAlongFacadeMetres": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "blendMetres": 1.5,
+      "qualification": "Inferred plane from surveyed facade base plus 0.12m to median DGM1 driveway height. Removes the artificial radial grading hump under the new forecourt, without claiming an as-built level survey."
+    }
+  }
 }

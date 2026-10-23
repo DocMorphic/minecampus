@@ -105,6 +105,7 @@ def build(ctx,bid,walls):
  # Retire low construction debris and its old collision proxies over the graded
  # site. Neighbouring surveyed envelopes remain protected by an explicit gap.
  grade=meta['siteGrading'];site=Polygon(grade['footprintUtm']).buffer(grade['outerMetres'])
+ if grade.get('apron'):site=site.union(Polygon(grade['apron']['footprintUtm']).buffer(grade['apron']['blendMetres']))
  neighbours=unary_union([Polygon(p)for p in grade['excludedNeighbourFootprintsUtm']]).buffer(grade['neighbourBufferMetres'])
  site=site.difference(neighbours)
  def projected(ring):

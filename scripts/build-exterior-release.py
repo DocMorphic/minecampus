@@ -93,6 +93,12 @@ https://polyhaven.com/a/asphalt_04
 The material is approximate; it is not a scan of the campus roads.
 The derived surface database/mask is available under ODbL 1.0; material grain
 and paving joints are approximate reconstructions, not measured paving units.
+Planting-bed soil: Poly Haven brown_mud_leaves_01 by Rob Tuytel (CC0 1.0).
+https://polyhaven.com/a/brown_mud_leaves_01
+Approximate leaf/soil material; not a scan of the campus planting bed.
+COS landscape infill follows 2021 design context and current mapped anchors;
+its boundaries are inferred, not an as-built survey. Source qualifications
+are included in cos-site.json.
 Warehouse masonry: Poly Haven brick_wall_001 by Dimitrios Savva and Rob Tuytel (CC0 1.0).
 https://polyhaven.com/a/brick_wall_001
 Colour and repeat scale adapted; an approximate material, not the actual building surface.

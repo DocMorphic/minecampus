@@ -63,6 +63,9 @@ assert site_union.intersection(Polygon(m['siteGrading']['footprintUtm'])).area<.
 for feature,polygon in zip(features,polygons):
  point=polygon.representative_point()
  x,z=np.array([point.x-middle[0],point.y-middle[1],1])@coeff
- check('COS '+str(feature['properties']['osmWay']),x,z,[0,255,0]if feature['properties']['material']=='paving'else[0,0,255])
+ material=feature['properties']['material']
+ check('COS '+str(feature['properties'].get('reconstructionId',feature['properties']['osmWay'])),x,z,{'paving':[0,255,0],'asphalt':[0,0,255],'grass':[255,0,0],'soil':[0,0,0]}[material])
+ row=int((256-z)/672*4096);col=int((x+352)/672*4096)
+ assert a[row,col,3]==(0 if material=='soil'else 255),(material,'soil mask alpha',a[row,col,3])
 result={'cosSiteOverlapSquareMetres':site_overlap,'cosSiteSurfacePatches':len(features),'status':'PASS: ground material alignment, explicit-width edges and mapped-area exclusions','pathOverlapWithMappedAreasSquareMetres':overlap,'samples':samples}
 (out/'ground-surfaces-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

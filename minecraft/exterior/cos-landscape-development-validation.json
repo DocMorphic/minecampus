@@ -1,0 +1,1214 @@
+{
+  "date": "2026-10-23",
+  "status": "Inferred COS planting bed, paving infill and north lawn verified in native Minecraft; overall quality goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 234250524,
+    "sha256": "eadcc39e997b167b209ddd91e1ecac2e90a743f0c612736600744c911da2ba09",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "6955949b28567ca89ae4006f2c1b8168004b128bc31f2b8a5ac724b7b74ec9db",
+    "rendererSourceFingerprint": "25720cea4e3af561",
+    "bundleSha256": "1a94b93c1a6dd0f09e1f5c5d7ef11b61c8ed39782083d742bfdf1c6ace05cfe1",
+    "tiles": 89
+  },
+  "geometry": {
+    "renderTiles": 89,
+    "photoFacadeCandidates": 80,
+    "triangles": 1891029,
+    "textureBytes": 259331656,
+    "auxiliaryTriangles": 5186,
+    "auxiliaryTextureBytes": 13530016,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "cosSite": {
+    "sourceFile": "cos-site.json",
+    "sourceSha256": "9d266bbc08e9e076fcbf2ba78ebb4d400efcd8f380e990b08c09778c300a29ee",
+    "derivedFile": "cos-site-surfaces.geojson",
+    "derivedSha256": "684cd45b0207423e8c35ae0b156d8a1b71812b0cc094d4c4f0b81681c020fd47",
+    "surfaces": [
+      {
+        "osmWay": 1489202329,
+        "material": "paving",
+        "areaSquareMetres": 425.74,
+        "qualification": "Mapped perimeter centre-line plus estimated outer half-width; facade apron infilled from current exterior reference."
+      },
+      {
+        "osmWay": 28038705,
+        "material": "paving",
+        "areaSquareMetres": 300.54,
+        "qualification": "Mapped centre-line and surface; estimated 4.5m width, bounded to COS surroundings."
+      },
+      {
+        "osmWay": 1365740003,
+        "material": "asphalt",
+        "areaSquareMetres": 298.77,
+        "qualification": "Mapped centre-line and surface; estimated 5m width, bounded to COS surroundings."
+      },
+      {
+        "osmWay": 172828680,
+        "material": "paving",
+        "areaSquareMetres": 155.09,
+        "qualification": "Mapped centre-line and surface; estimated 2.5m width, bounded to COS surroundings."
+      },
+      {
+        "osmWay": 1489202326,
+        "material": "paving",
+        "areaSquareMetres": 16.09,
+        "qualification": "Mapped centre-line and surface; estimated 2m width, bounded to COS surroundings."
+      },
+      {
+        "osmWay": 1489202330,
+        "material": "paving",
+        "areaSquareMetres": 32.8,
+        "qualification": "Mapped centre-line and surface; estimated 2m width, bounded to COS surroundings."
+      },
+      {
+        "osmWay": 1365740352,
+        "material": "asphalt",
+        "areaSquareMetres": 3.27,
+        "qualification": "Mapped centre-line and surface; estimated 1.8m width, bounded to COS surroundings."
+      },
+      {
+        "osmWay": 1365740353,
+        "material": "asphalt",
+        "areaSquareMetres": 3.72,
+        "qualification": "Mapped centre-line and surface; estimated 1.8m width, bounded to COS surroundings."
+      },
+      {
+        "osmWay": 1365740354,
+        "material": "asphalt",
+        "areaSquareMetres": 3.99,
+        "qualification": "Mapped centre-line and surface; estimated 1.8m width, bounded to COS surroundings."
+      },
+      {
+        "osmWay": 1489202325,
+        "material": "paving",
+        "areaSquareMetres": 23.41,
+        "qualification": "Mapped bicycle-parking boundary; paving inferred from finished forecourt context."
+      },
+      {
+        "osmWay": 1489202327,
+        "material": "soil",
+        "areaSquareMetres": 21.09,
+        "qualification": "Inferred planting bed inside the mapped L-shaped bench and north of the driveway, following landscape-plan context.",
+        "inferred": true,
+        "reconstructionId": "entrance-planting-bed"
+      },
+      {
+        "osmWay": 1489202326,
+        "material": "paving",
+        "areaSquareMetres": 134.11,
+        "qualification": "Inferred paving joins the mapped entrance, benches and bicycle parking to the driveway. Eastern vehicle-parking area excluded pending a grass-paver reconstruction.",
+        "inferred": true,
+        "reconstructionId": "entrance-forecourt"
+      },
+      {
+        "osmWay": 1489202329,
+        "material": "grass",
+        "areaSquareMetres": 169.46,
+        "qualification": "Inferred north lawn between the mapped perimeter walk and drive, following landscape-plan context.",
+        "inferred": true,
+        "reconstructionId": "north-lawn"
+      }
+    ],
+    "benches": [
+      {
+        "osmWay": 1489202327,
+        "lengthMetres": 7.009278260323958,
+        "seatTopY": 63.88805524907874,
+        "baseGroundYRange": [
+          63.28534606199008,
+          63.42805524907874
+        ],
+        "rayTargetMC": [
+          156.1811000218853,
+          63.868055249078736,
+          -281.56091936568026
+        ],
+        "note": "Mapped backless wooden bench line; slats, concrete support and dimensions inferred."
+      },
+      {
+        "osmWay": 1489202328,
+        "lengthMetres": 2.962048008735464,
+        "seatTopY": 63.892316413801375,
+        "baseGroundYRange": [
+          63.2901797552083,
+          63.432316413801374
+        ],
+        "rayTargetMC": [
+          159.19933974694965,
+          63.87231641380137,
+          -279.42592084262674
+        ],
+        "note": "Mapped backless wooden bench line; slats, concrete support and dimensions inferred."
+      }
+    ],
+    "bicycleStands": 10,
+    "rackTargetsMC": [
+      [
+        173.281793944182,
+        64.25174090163985,
+        -275.1622284422351
+      ],
+      [
+        172.60219560377604,
+        64.25263262856491,
+        -275.2665516815235
+      ],
+      [
+        171.9225972608341,
+        64.25352428035116,
+        -275.37087492250134
+      ],
+      [
+        171.2429989154354,
+        64.25441585853831,
+        -275.4751981618774
+      ],
+      [
+        170.56340056788235,
+        64.2553073617773,
+        -275.5795214034145
+      ],
+      [
+        169.8838022176397,
+        64.25619879213731,
+        -275.68384464613456
+      ],
+      [
+        169.20420386528235,
+        64.25709014834759,
+        -275.78816788843994
+      ],
+      [
+        168.52460551025516,
+        64.2579814310554,
+        -275.89249113157047
+      ],
+      [
+        167.84500715288522,
+        64.25887263922208,
+        -275.9968143743215
+      ],
+      [
+        167.16540879315275,
+        64.25976377220907,
+        -276.1011376182908
+      ]
+    ],
+    "curbLengthMetres": 14.348214589692164,
+    "curbTargetsMC": [
+      [
+        155.1068109319827,
+        63.69976512216569,
+        -275.5444847168716
+      ],
+      [
+        154.6147611007916,
+        63.69978217199938,
+        -275.6332871483693
+      ],
+      [
+        154.12271126846014,
+        63.69979918310294,
+        -275.7220895795632
+      ],
+      [
+        153.63066143500575,
+        63.69981615519316,
+        -275.8108920114705
+      ],
+      [
+        153.13861160042717,
+        63.69983308796884,
+        -275.89969444477845
+      ],
+      [
+        152.64656176463268,
+        63.699849981988514,
+        -275.9884968774619
+      ],
+      [
+        152.15451192768177,
+        63.699866836389894,
+        -276.0772993104875
+      ],
+      [
+        151.83671759381713,
+        63.6926732171737,
+        -276.287075689232
+      ],
+      [
+        151.8093490999647,
+        63.67346216898563,
+        -276.69847530779134
+      ],
+      [
+        151.89815094257568,
+        63.64944412416749,
+        -277.1905242187995
+      ],
+      [
+        151.98695278574522,
+        63.62542603960736,
+        -277.68257312574167
+      ],
+      [
+        152.07575462932218,
+        63.60140791629595,
+        -278.17462202890613
+      ],
+      [
+        152.16455647335476,
+        63.57738975438268,
+        -278.66667092777567
+      ],
+      [
+        152.2533583178232,
+        63.553371552853335,
+        -279.1587198220883
+      ],
+      [
+        152.34216016286882,
+        63.52935331177378,
+        -279.6507687128194
+      ],
+      [
+        152.43096200841106,
+        63.50533503173332,
+        -280.1428176003576
+      ],
+      [
+        152.5197638543569,
+        63.48131671264175,
+        -280.63486648305536
+      ],
+      [
+        152.60856570088112,
+        63.45729835412742,
+        -281.12691536132905
+      ],
+      [
+        152.68369799874984,
+        63.4369771893247,
+        -281.5432215973459
+      ],
+      [
+        154.62379514690073,
+        63.42600927770792,
+        -281.4237157846467
+      ],
+      [
+        155.11584495499267,
+        63.42599230800837,
+        -281.3349133434141
+      ],
+      [
+        155.60789476179684,
+        63.42597529965301,
+        -281.24611090214415
+      ],
+      [
+        156.0732140653502,
+        63.42595917940428,
+        -281.16213263518216
+      ],
+      [
+        155.85127562387922,
+        63.564944353596616,
+        -278.26192695577345
+      ],
+      [
+        155.76247379606917,
+        63.588962534581874,
+        -277.7698780656036
+      ],
+      [
+        155.67367196870237,
+        63.61298067767576,
+        -277.27782917034244
+      ],
+      [
+        155.5848701419003,
+        63.63699878210364,
+        -276.7857802708583
+      ],
+      [
+        155.4960683155465,
+        63.66101684655247,
+        -276.29373136792367
+      ],
+      [
+        155.40726648966083,
+        63.685034871341486,
+        -275.8016824611805
+      ],
+      [
+        155.35785071207343,
+        63.6984002307244,
+        -275.52787075413596
+      ]
+    ],
+    "note": "Widths, furniture dimensions, supports and rack arrangement inferred from source context; positions/paths and 20-bicycle capacity are mapped. No claim of surveyed curbs or exact furniture design. Thin rack tubes are decorative and do not create metre-wide invisible collision barriers; benches retain collision."
+  },
+  "inferredLandscape": {
+    "reference": "https://www.wankner-und-fischer.de/projekte/neubau-forschungsgebaeude-cos-garching/",
+    "basis": "2021 landscape design context, reconciled with current OSM paths and bench positions. Approximate reconstruction; not an as-built survey.",
+    "frame": "Metres east along the surveyed south facade from its southwest corner, then outward perpendicular to the facade.",
+    "surfaces": [
+      {
+        "id": "entrance-planting-bed",
+        "relatedOsmWay": 1489202327,
+        "material": "soil",
+        "ring": [
+          [
+            0.45,
+            3.15
+          ],
+          [
+            4.15,
+            3.15
+          ],
+          [
+            4.15,
+            8.85
+          ],
+          [
+            0.45,
+            8.85
+          ]
+        ],
+        "qualification": "Inferred planting bed inside the mapped L-shaped bench and north of the driveway, following landscape-plan context."
+      },
+      {
+        "id": "entrance-forecourt",
+        "relatedOsmWay": 1489202326,
+        "material": "paving",
+        "ring": [
+          [
+            -1.5,
+            2.0
+          ],
+          [
+            22.6,
+            2.0
+          ],
+          [
+            22.6,
+            10.65
+          ],
+          [
+            -1.5,
+            10.65
+          ]
+        ],
+        "qualification": "Inferred paving joins the mapped entrance, benches and bicycle parking to the driveway. Eastern vehicle-parking area excluded pending a grass-paver reconstruction."
+      },
+      {
+        "id": "north-lawn",
+        "relatedOsmWay": 1489202329,
+        "material": "grass",
+        "ring": [
+          [
+            -1.6,
+            -48.0
+          ],
+          [
+            31,
+            -48
+          ],
+          [
+            31,
+            -42.8
+          ],
+          [
+            -1.6,
+            -42.8
+          ]
+        ],
+        "qualification": "Inferred north lawn between the mapped perimeter walk and drive, following landscape-plan context."
+      }
+    ],
+    "curb": {
+      "widthMetres": 0.14,
+      "heightMetres": 0.12,
+      "qualification": "Low concrete edging around exposed planting-bed sides; position follows the inferred bed, profile and dimensions are estimates. Render-only to avoid oversized voxel collision."
+    },
+    "grading": {
+      "ring": [
+        [
+          -1.5,
+          0
+        ],
+        [
+          22.6,
+          0
+        ],
+        [
+          22.6,
+          13
+        ],
+        [
+          -1.5,
+          13
+        ]
+      ],
+      "drivewayDistanceMetres": 13,
+      "drivewaySamplesAlongFacadeMetres": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "blendMetres": 1.5,
+      "qualification": "Inferred plane from surveyed facade base plus 0.12m to median DGM1 driveway height. Removes the artificial radial grading hump under the new forecourt, without claiming an as-built level survey."
+    }
+  },
+  "terrainValidation": {
+    "status": "PASS: encoded terrain matches DGM1 plus explicit site grading, with adjoining tile seams preserved",
+    "sourceSampleCount": 360000,
+    "unalteredDgmSamples": 357397,
+    "inferredSiteGradingSamples": 2603,
+    "apronGradingSamples": 433,
+    "maximumPositionErrorMetres": 2.1800125178386423e-05,
+    "maximumTileSeamErrorMetres": 0,
+    "note": "Source representation accuracy only; not a claim of millimetre real-world survey accuracy. Explicit site grading is approximate finished terrain, not measured DGM.",
+    "nativeBankProbe": {
+      "positionMC": [
+        14.5,
+        -228.5
+      ],
+      "meshHeight": 62.37845813883744,
+      "expectedProxyTop": 62,
+      "toleranceMetres": 0.51
+    },
+    "nativeCosGroundProbe": {
+      "positionMC": [
+        186.5,
+        -288.5
+      ],
+      "meshHeight": 63.153159852418085,
+      "expectedProxyTop": 63,
+      "toleranceMetres": 0.51
+    },
+    "nativeApronProbe": {
+      "positionMC": [
+        163.5,
+        -276.5
+      ],
+      "meshHeight": 63.462705894935304,
+      "expectedProxyTop": 63,
+      "previousMeshHeight": 63.56278362,
+      "previousProxyTop": 64
+    },
+    "nativePlantingProbe": {
+      "positionMC": [
+        154.04,
+        -278.63
+      ],
+      "meshHeight": 63.44306091824002,
+      "note": "Rendered soil probe uses the same smooth apron plane."
+    }
+  },
+  "groundMaterialsValidation": {
+    "cosSiteOverlapSquareMetres": 1.0395193086312413e-09,
+    "cosSiteSurfacePatches": 13,
+    "status": "PASS: ground material alignment, explicit-width edges and mapped-area exclusions",
+    "pathOverlapWithMappedAreasSquareMetres": 1.1646685151565396e-08,
+    "samples": [
+      {
+        "name": "Mensa bank terrain hit",
+        "positionMC": [
+          11.612,
+          -231.731
+        ],
+        "channelsRGB": [
+          255,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "MW mapped paving",
+        "positionMC": [
+          25,
+          -125
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "Southern mapped asphalt",
+        "positionMC": [
+          -32,
+          122
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "Boltzmann road centre (330587895)",
+        "positionMC": [
+          34.464,
+          -97.081
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "Beyond Boltzmann road width",
+        "positionMC": [
+          31.022,
+          -97.715
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Eastern footway centre (983606070)",
+        "positionMC": [
+          107.705,
+          -168.459
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "Beyond eastern footway width",
+        "positionMC": [
+          107.455,
+          -166.98
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Western paving path centre (1289405426)",
+        "positionMC": [
+          -294.368,
+          -253.75
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "Western path adjacent lawn",
+        "positionMC": [
+          -294.638,
+          -252.275
+        ],
+        "channelsRGB": [
+          255,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "basketball 479320868",
+        "positionMC": [
+          -198.652,
+          164.384
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "beachvolleyball 479320872",
+        "positionMC": [
+          -228.657,
+          168.948
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "beachvolleyball 479320873",
+        "positionMC": [
+          -226.561,
+          157.244
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "COS 1489202329",
+        "positionMC": [
+          188.294,
+          -308.772
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "COS 28038705",
+        "positionMC": [
+          184.878,
+          -330.401
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "COS 1365740003",
+        "positionMC": [
+          162.807,
+          -270.052
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "COS 172828680",
+        "positionMC": [
+          148.049,
+          -340.282
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "COS 1489202326",
+        "positionMC": [
+          157.67,
+          -277.551
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "COS 1489202330",
+        "positionMC": [
+          195.689,
+          -293.263
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "COS 1365740352",
+        "positionMC": [
+          150.912,
+          -268.633
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "COS 1365740353",
+        "positionMC": [
+          173.585,
+          -264.629
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "COS 1365740354",
+        "positionMC": [
+          189.226,
+          -261.881
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "COS 1489202325",
+        "positionMC": [
+          170.191,
+          -275.418
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "COS entrance-planting-bed",
+        "positionMC": [
+          154.038,
+          -278.634
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "COS entrance-forecourt",
+        "positionMC": [
+          162.566,
+          -275.683
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "COS north-lawn",
+        "positionMC": [
+          175.373,
+          -327.028
+        ],
+        "channelsRGB": [
+          255,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "preservation": {
+    "terrainTilesByteIdentical": 35,
+    "changedTerrainTiles": [
+      "ground-698300-5349400.ect"
+    ],
+    "terrainTextureBytesUnchanged": true,
+    "changedVertexOccurrencesOutsideApronAndBlend": 0,
+    "changedMaterialPixels": 12064,
+    "allPreviouslyMappedMaterialPixelsUnchanged": true,
+    "soilPixels": 784
+  },
+  "textureSampling": {
+    "shaderSha256": "4bccae0f793201669b902f713fe41891c920f6439c63455eee198961eacb9015",
+    "samplers": [
+      {
+        "maxLevel": 8,
+        "maxLod": 8.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 8,
+        "maxLod": 8.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 12,
+        "maxLod": 12.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 2
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 2
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 2
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      }
+    ]
+  },
+  "serviceChecks": {
+    "passed": 26,
+    "collisionPolicy": "Benches retain collision; thin stand tubes and curb edging remain render-only. The forecourt apron has an explicit local grade and collision migration; other ground remains unchanged."
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: twenty-one ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail, Telefonzentrale and COS frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "telefonzentrale": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "cos": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "cos-ground": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "texture": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted",
+      "cos-site": "PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer",
+      "cos-bench": "PASS: native gravity landed player on the bench proxy at Y=64.0; visible seat top Y=63.89",
+      "cos-landscape": "PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB 0.35874509803921567,0.3236078431372549,0.17615686274509804); exposed curb ray reaches its 12cm edging",
+      "cos-apron": "PASS: native gravity landed on the smooth apron proxy at Y=63.0 (mesh Y=63.46271), replacing the previous Y=64 proxy"
+    },
+    "migrationVersion": 13,
+    "voxelProbe": [
+      {
+        "version": "before",
+        "x": 161.5,
+        "z": -276.5,
+        "top": 64,
+        "topCodes": [
+          [
+            61,
+            3
+          ],
+          [
+            62,
+            10
+          ],
+          [
+            63,
+            6
+          ]
+        ]
+      },
+      {
+        "version": "before",
+        "x": 162.5,
+        "z": -276.5,
+        "top": 64,
+        "topCodes": [
+          [
+            61,
+            3
+          ],
+          [
+            62,
+            6
+          ],
+          [
+            63,
+            6
+          ]
+        ]
+      },
+      {
+        "version": "before",
+        "x": 163.5,
+        "z": -276.5,
+        "top": 64,
+        "topCodes": [
+          [
+            61,
+            3
+          ],
+          [
+            62,
+            4
+          ],
+          [
+            63,
+            4
+          ]
+        ]
+      },
+      {
+        "version": "before",
+        "x": 164.5,
+        "z": -276.5,
+        "top": 64,
+        "topCodes": [
+          [
+            61,
+            3
+          ],
+          [
+            62,
+            4
+          ],
+          [
+            63,
+            4
+          ]
+        ]
+      },
+      {
+        "version": "after",
+        "x": 161.5,
+        "z": -276.5,
+        "top": 64,
+        "topCodes": [
+          [
+            61,
+            3
+          ],
+          [
+            62,
+            6
+          ],
+          [
+            63,
+            6
+          ]
+        ]
+      },
+      {
+        "version": "after",
+        "x": 162.5,
+        "z": -276.5,
+        "top": 63,
+        "topCodes": [
+          [
+            60,
+            3
+          ],
+          [
+            61,
+            3
+          ],
+          [
+            62,
+            6
+          ]
+        ]
+      },
+      {
+        "version": "after",
+        "x": 163.5,
+        "z": -276.5,
+        "top": 63,
+        "topCodes": [
+          [
+            60,
+            3
+          ],
+          [
+            61,
+            3
+          ],
+          [
+            62,
+            4
+          ]
+        ]
+      },
+      {
+        "version": "after",
+        "x": 164.5,
+        "z": -276.5,
+        "top": 63,
+        "topCodes": [
+          [
+            60,
+            3
+          ],
+          [
+            61,
+            3
+          ],
+          [
+            62,
+            4
+          ]
+        ]
+      }
+    ],
+    "captureRuns": {
+      "fullRouteCaptures": 21
+    },
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "2aee85ce9beab3bd933e6862f649eff3fd59711146fcbe9c6b63a3a751b151e3"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "8e865a6911954b807d81d696f24612c4f485aaed2b07927086eb01dd66dc3293"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "9e3cde2f305f8caa80b01c7c231f9542b902f550032931893543c40f2e27ef84"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "b903bbf46cb29b31c0dd7230c2cb9e7d0c4d29bb3d5d80eab285e480229423ab"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "007fe1314194586743811428622cc1aeaeb60500ced0ec43d27d747eb7da57d6"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "89516a0e1f7904756d82e179b3919dc950b8985a6d0998ec901faacf9749513f"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "05a3c19f4faa4c2b3aeaee03097e3a85a71703e7966881068f024d210315b475"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "264ed6ffec8e16cdac81ecf2b3b98ed549b61da2a13b7f826a2294a97773bf46"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "25dbddd285f56fabe0f1e794eced15dacfd9d092130615d4c95d2f656ac7dd75"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "680bff6bb390eaa65fe99371bea6e561d51e9532928f550e7b9a4ef7b83b9524"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "0de737566927a7324b91f74a1604dc770f72473483dfb991012710cc45da14f9"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "5f6d13b662a495bf0fe3fde44eea899f93c8f731d73b3f4f0965ef759bceb497"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "aa73397efe218b7cd71dd37f116ba57b79ab2d214c6b3dbbc194b7d5443c82fb"
+      },
+      {
+        "file": "campus-road-detail.png",
+        "sha256": "7c0f03100e8996df559087982563c090c34c93dfb524b594208992b41f35b237"
+      },
+      {
+        "file": "campus-telefonzentrale-west.png",
+        "sha256": "65445e855cd39cad756ac80c9b9beb1411b749978b734748e92fd787996f2c02"
+      },
+      {
+        "file": "campus-cos-southwest.png",
+        "sha256": "b36171d5639f21f45d019c0a26ac69528446e5808a129d940f1126ab97f176a9"
+      },
+      {
+        "file": "campus-cos-south.png",
+        "sha256": "1a96c991ae8915b8447d1cbf14ceccb0bbfa20fcfe973583df3b1200d83ba311"
+      },
+      {
+        "file": "campus-cos-aerial.png",
+        "sha256": "d3fa37e5430d702e03b96829e14c27735d7b0148513919a16d04aab7cbf0344b"
+      },
+      {
+        "file": "campus-cos-forecourt.png",
+        "sha256": "3221cc89d0e8d8c93b5f16bb6e8812ec6f5bee4c345ca4a8aeca75001514c420"
+      },
+      {
+        "file": "campus-cos-planting.png",
+        "sha256": "c3e645c54849645d02bb31aa2cacd7762ba7da367b5ebc257b012acde34ad2ee"
+      },
+      {
+        "file": "campus-cos-north.png",
+        "sha256": "62c2547136eeb6c39c61f9f066b43cf56404a5f91204b0745df1e47f02310ac2"
+      }
+    ],
+    "plantingCamera": "154 64 -272 180 20",
+    "plantingActualPosition": [
+      154.5,
+      64,
+      -271.5
+    ],
+    "plantingBuildingClearanceMetres": 4.360147067209801
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "8541badba7723d5eb381ddd29366be7deab9a9777d435e4d3318b297e1024325",
+    "sameCamera": true,
+    "camera": "162 64 -270 -171 14",
+    "beforeImage": "../../docs/screenshots/campus-cos-landscape-before.jpg",
+    "afterImage": "../../docs/screenshots/campus-cos-landscape-after.jpg"
+  },
+  "remaining": [
+    "Landscape boundaries follow 2021 design context and current mapped anchors; they are approximate, not as-built measurements.",
+    "Eastern parking and other unmapped margins retain old pale construction imagery.",
+    "Aerial surroundings retain older photographic imagery; site furniture/materials are walking-mode layers.",
+    "Nearby Siemensbau and several wider campus facades remain coarse."
+  ],
+  "installedPreview": {
+    "artifactSha256": "eadcc39e997b167b209ddd91e1ecac2e90a743f0c612736600744c911da2ba09",
+    "saveFilesVerified": 121,
+    "savesAndSettingsUnchanged": true,
+    "previousModBackedUp": true,
+    "launcherProfile": "Minecampus \u2014 Exterior Preview 0.5"
+  }
+}

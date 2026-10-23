@@ -8,6 +8,8 @@ uniform sampler2D Sampler5;
 uniform sampler2D Sampler6;
 uniform sampler2D Sampler7;
 uniform sampler2D Sampler8;
+uniform sampler2D Sampler9;
+uniform sampler2D Sampler10;
 uniform vec4 ColorModulator;
 uniform vec3 CampusFogColor;
 uniform vec3 CameraPosition;
@@ -69,9 +71,10 @@ void main() {
         // Mapped land cover provides a sharp material boundary independently
         // of tree shadows and canopy colours baked into the aerial photograph.
         vec2 surfaceUv=vec2(worldPosition.x+352.0,256.0-worldPosition.z)/672.0;
-        vec3 mapped=texture(Sampler5,clamp(surfaceUv,0.0,1.0)).rgb;
-        if(any(lessThan(surfaceUv,vec2(0)))||any(greaterThan(surfaceUv,vec2(1))))mapped=vec3(0);
-        float mappedTotal=mapped.r+mapped.g+mapped.b;
+        vec4 surfaceMask=texture(Sampler5,clamp(surfaceUv,0.0,1.0));
+        vec3 mapped=surfaceMask.rgb;float soil=1.0-surfaceMask.a;
+        if(any(lessThan(surfaceUv,vec2(0)))||any(greaterThan(surfaceUv,vec2(1)))){mapped=vec3(0);soil=0.0;}
+        float mappedTotal=mapped.r+mapped.g+mapped.b+soil;
         float mappedAmount=clamp(mappedTotal,0.0,1.0);
         float materialRange=1.0-smoothstep(35.0,110.0,viewDistance);
         vec3 aerial=texture(Sampler0,texCoord0).rgb;
@@ -99,7 +102,11 @@ void main() {
             vec3 asphalt=groundTexture(Sampler7,worldPosition*.25,weights);
             asphaltColor=asphalt*clamp(aerialLum/.55,.4,1.2);
         }
-        vec3 material=(mapped.r*lawnColor+mapped.g*pavingColor+mapped.b*asphaltColor)/max(mappedTotal,.0001);
+        // The inferred planting bed uses a scanned leaf/soil material. Old
+        // construction highlights must not wash this new surface white.
+        vec3 soilColor=vec3(0);
+        if(soil>.001)soilColor=groundTexture(Sampler9,worldPosition/1.3,weights)*.92;
+        vec3 material=(mapped.r*lawnColor+mapped.g*pavingColor+mapped.b*asphaltColor+soil*soilColor)/max(mappedTotal,.0001);
         color.rgb=mix(color.rgb,material,mappedAmount*materialRange);
         grass=mix(grass,mapped.r/max(mappedTotal,.0001),mappedAmount);
         if(proximity>0.0){
@@ -109,6 +116,7 @@ void main() {
                 vec3 asphaltNormal=groundNormalDetail(Sampler8,worldPosition*.25,weights);
                 detail=mix(detail,asphaltNormal,clamp(mapped.b,0.0,1.0));
             }
+            if(soil>.001)detail=mix(detail,groundNormalDetail(Sampler10,worldPosition/1.3,weights),soil);
             detail-=geometric*dot(detail,geometric);
             vec3 n=normalize(geometric+detail*.35);
             vec3 sun=normalize(vec3(-.5,.8,-.3));

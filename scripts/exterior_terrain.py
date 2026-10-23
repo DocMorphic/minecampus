@@ -57,3 +57,28 @@ class SiteGradedElevation:
    result[ids]+=weight*(self.base-result[ids])
   return result
  def __call__(self,e,n):return float(self.sample([[e,n]])[0])
+
+class PlanarApronElevation:
+ """Inferred smooth grade between a finished facade and a surveyed driveway.
+
+ The inner polygon follows one plane; a narrow blend returns to the underlying
+ ground. Neighbour footprints and their one-metre margins stay untouched.
+ """
+ def __init__(self,source,footprint,origin,direction,base,slope,neighbours,blend=1.5):
+  from shapely.ops import unary_union
+  if blend<=0 or abs(slope)>.08:raise ValueError('Invalid apron grading parameters')
+  self.source,self.footprint,self.origin=source,footprint,np.asarray(origin,dtype=float)
+  self.direction=np.asarray(direction,dtype=float);self.direction/=np.linalg.norm(self.direction)
+  self.base,self.slope,self.blend=float(base),float(slope),float(blend)
+  self.neighbours=unary_union(neighbours).buffer(1)
+ def sample(self,points):
+  from shapely import points as make_points,distance,intersects
+  xy=np.asarray(points,dtype=float);result=self.source.sample(xy);lo,bot,hi,top=self.footprint.bounds
+  ids=np.flatnonzero((xy[:,0]>=lo-self.blend)&(xy[:,0]<=hi+self.blend)&(xy[:,1]>=bot-self.blend)&(xy[:,1]<=top+self.blend))
+  if len(ids):
+   p=make_points(xy[ids]);t=np.clip(distance(p,self.footprint)/self.blend,0,1);weight=1-t*t*(3-2*t)
+   weight[intersects(p,self.neighbours)]=0
+   target=self.base+self.slope*np.maximum(0,(xy[ids]-self.origin)@self.direction)
+   result[ids]+=weight*(target-result[ids])
+  return result
+ def __call__(self,e,n):return float(self.sample([[e,n]])[0])
