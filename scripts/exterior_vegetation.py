@@ -51,6 +51,12 @@ def build(ctx):
  occupied=rasterize([(p,1) for p in footprints],out_shape=(h,w),transform=transform,dtype='uint8')>0
  rgb=np.array(Image.open(out/'campus-orthophoto.jpg').resize((w,h))).astype(float)
  green=(rgb[:,:,1]>rgb[:,:,0]*1.025)&(rgb[:,:,1]>rgb[:,:,2]+2)
+ # The survey contains brown autumn crowns as well as green trees. Requiring
+ # height above surveyed roofs below prevents brown roof materials becoming
+ # canopy; the tree-placement pass also excludes building footprints.
+ red,g,b=rgb[:,:,0],rgb[:,:,1],rgb[:,:,2]
+ autumn=(red>g*1.04)&(red<g*1.5)&(g>b*1.08)&(g<b*1.7)&(g>35)&(g<175)
+ foliage=green|autumn
  canopy=dom-dem
  # Conservative DOM20 top envelope, in the same 2m ENU grid as the terrain.
  # A small maximum neighbourhood retains roof edges and canopy overhangs;
@@ -62,7 +68,29 @@ def build(ctx):
   for i in range(301):
    col=min(1199,max(0,i*4));tops.append(round(float(terrainPoints[j*301+i][1]+upper[row,col]),3))
  metadata['surfaceGuide']={'width':301,'height':301,'heights':tops,'tolerance':3.0,'source':'BVV DOM20 top envelope; maximum 3.5m neighbourhood, compared only in the local survey footprint'}
- mask=(canopy>3)&green&~occupied
+ # Detect photographed foliage overhanging low roofs and footprint buffers.
+ # Keep the actual building below the surveyed roof ceiling, while allowing the
+ # old scan canopy above it to be retired alongside the reconstructed trees.
+ roofShapes=[]
+ for bid,surfaces in buildings:
+  for typ,rings in surfaces:
+   if typ!='RoofSurface':continue
+   shape=Polygon(rings[0][:,:2],[r[:,:2]for r in rings[1:]])
+   if not shape.is_valid:shape=shape.buffer(0)
+   if not shape.is_empty and shape.area>.01:roofShapes.append((shape,float(max(r[:,2].max()for r in rings))))
+ roofElevation=rasterize(sorted(roofShapes,key=lambda x:x[1]),out_shape=(h,w),transform=transform,dtype='float32')
+ roofElevation=np.maximum(roofElevation,dem)
+ overhang=foliage&(dom-roofElevation>2.5)&(canopy>4)
+ overhang=ndimage.maximum_filter(overhang,size=3)
+ ceiling=ndimage.maximum_filter(roofElevation-dem,size=7)
+ maskBytes=[];roofCeilings=[]
+ for j in range(301):
+  row=min(1199,max(0,1199-j*4))
+  for i in range(301):
+   col=min(1199,max(0,i*4));maskBytes.append(int(overhang[row,col]));roofCeilings.append(round(float(terrainPoints[j*301+i][1]+ceiling[row,col]),3))
+ metadata['vegetationOverhang']={'width':301,'height':301,'mask':base64.b64encode(bytes(maskBytes)).decode(),'roofCeilings':roofCeilings,'source':'BVV DOP20 green or brown foliage pixels with DOM20 at least 2.5m above the LoD2 roof; conservative local roof maximum'}
+
+ mask=(canopy>3)&foliage&~occupied
  mask=ndimage.binary_closing(mask,iterations=2)&~occupied
  labels,n=ndimage.label(mask)
  counts=np.bincount(labels.ravel());mask&=counts[labels]>=10

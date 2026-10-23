@@ -248,6 +248,8 @@ from exterior_architecture import build as build_architecture
 build_architecture(globals())
 from exterior_ias import build as build_ias
 build_ias(globals())
+from exterior_photo_surfaces import build as build_photo_surfaces
+build_photo_surfaces(globals())
 from exterior_vegetation import build as build_vegetation
 build_vegetation(globals())
 (OUT/'manifest.json').write_text(json.dumps(metadata,separators=(',',':')))

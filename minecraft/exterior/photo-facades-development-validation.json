@@ -1,0 +1,558 @@
+{
+  "date": "2026-10-23",
+  "status": "Development verified; full realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 187582140,
+    "sha256": "7ebdfa0f3b8f05f6a1a476a30ced82d9effb7703b2b1f34f0fcfcbfda56616ea",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "8a809d31ed8fd826049afcc83f9665b8524616c5783166c1d6b67d35881d75d7",
+    "bundleSha256": "88546c185779463e2f23ae662b88d6aa788dded90101d1543a4ae44401c00933",
+    "tiles": 82
+  },
+  "geometry": {
+    "renderTiles": 82,
+    "photoFacadeCandidates": 80,
+    "triangles": 1512369,
+    "textureBytes": 241268996,
+    "auxiliaryTriangles": 5356,
+    "auxiliaryTextureBytes": 13530024,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 740,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "runtime": {
+    "candidateBuildings": 80,
+    "acceptedBuildings": 56,
+    "originalRetainedBuildings": 24,
+    "coverage": [
+      {
+        "id": "DEBY_LOD2_5284443",
+        "accepted": true,
+        "sourceCoveragePercent": 87.7
+      },
+      {
+        "id": "DEBY_LOD2_104552964",
+        "accepted": true,
+        "sourceCoveragePercent": 94.4
+      },
+      {
+        "id": "DEBY_LOD2_104553068",
+        "accepted": true,
+        "sourceCoveragePercent": 78.9
+      },
+      {
+        "id": "DEBY_LOD2_104553085",
+        "accepted": true,
+        "sourceCoveragePercent": 88.7
+      },
+      {
+        "id": "DEBY_LOD2_105263801",
+        "accepted": true,
+        "sourceCoveragePercent": 95.5
+      },
+      {
+        "id": "DEBY_LOD2_107614250",
+        "accepted": true,
+        "sourceCoveragePercent": 88.8
+      },
+      {
+        "id": "DEBY_LOD2_107614301",
+        "accepted": true,
+        "sourceCoveragePercent": 88.5
+      },
+      {
+        "id": "DEBY_LOD2_107629746",
+        "accepted": true,
+        "sourceCoveragePercent": 55.7
+      },
+      {
+        "id": "DEBY_LOD2_107650547",
+        "accepted": false,
+        "sourceCoveragePercent": 38.8
+      },
+      {
+        "id": "DEBY_LOD2_108180785",
+        "accepted": true,
+        "sourceCoveragePercent": 93.3
+      },
+      {
+        "id": "DEBY_LOD2_108180786",
+        "accepted": true,
+        "sourceCoveragePercent": 87.3
+      },
+      {
+        "id": "DEBY_LOD2_108180787",
+        "accepted": true,
+        "sourceCoveragePercent": 82.3
+      },
+      {
+        "id": "DEBY_LOD2_108180804",
+        "accepted": true,
+        "sourceCoveragePercent": 98.7
+      },
+      {
+        "id": "DEBY_LOD2_108180813",
+        "accepted": true,
+        "sourceCoveragePercent": 90.0
+      },
+      {
+        "id": "DEBY_LOD2_108698294",
+        "accepted": true,
+        "sourceCoveragePercent": 90.3
+      },
+      {
+        "id": "DEBY_LOD2_108698307",
+        "accepted": false,
+        "sourceCoveragePercent": 54.8
+      },
+      {
+        "id": "DEBY_LOD2_108698313",
+        "accepted": false,
+        "sourceCoveragePercent": 3.2
+      },
+      {
+        "id": "DEBY_LOD2_108698321",
+        "accepted": true,
+        "sourceCoveragePercent": 85.8
+      },
+      {
+        "id": "DEBY_LOD2_108698323",
+        "accepted": true,
+        "sourceCoveragePercent": 86.3
+      },
+      {
+        "id": "DEBY_LOD2_108698333",
+        "accepted": true,
+        "sourceCoveragePercent": 84.2
+      },
+      {
+        "id": "DEBY_LOD2_108698338",
+        "accepted": true,
+        "sourceCoveragePercent": 96.0
+      },
+      {
+        "id": "DEBY_LOD2_108698339",
+        "accepted": true,
+        "sourceCoveragePercent": 70.0
+      },
+      {
+        "id": "DEBY_LOD2_108698340",
+        "accepted": true,
+        "sourceCoveragePercent": 97.5
+      },
+      {
+        "id": "DEBY_LOD2_31360854",
+        "accepted": true,
+        "sourceCoveragePercent": 86.9
+      },
+      {
+        "id": "DEBY_LOD2_31360858",
+        "accepted": true,
+        "sourceCoveragePercent": 84.0
+      },
+      {
+        "id": "DEBY_LOD2_41731141",
+        "accepted": false,
+        "sourceCoveragePercent": 30.4
+      },
+      {
+        "id": "DEBY_LOD2_41731337",
+        "accepted": false,
+        "sourceCoveragePercent": 29.6
+      },
+      {
+        "id": "DEBY_LOD2_41731339",
+        "accepted": false,
+        "sourceCoveragePercent": 30.1
+      },
+      {
+        "id": "DEBY_LOD2_41731341",
+        "accepted": false,
+        "sourceCoveragePercent": 35.0
+      },
+      {
+        "id": "DEBY_LOD2_41731343",
+        "accepted": false,
+        "sourceCoveragePercent": 35.8
+      },
+      {
+        "id": "DEBY_LOD2_41731345",
+        "accepted": false,
+        "sourceCoveragePercent": 33.7
+      },
+      {
+        "id": "DEBY_LOD2_41731347",
+        "accepted": false,
+        "sourceCoveragePercent": 35.2
+      },
+      {
+        "id": "DEBY_LOD2_41731351",
+        "accepted": true,
+        "sourceCoveragePercent": 98.8
+      },
+      {
+        "id": "DEBY_LOD2_41731353",
+        "accepted": true,
+        "sourceCoveragePercent": 69.5
+      },
+      {
+        "id": "DEBY_LOD2_41731367",
+        "accepted": false,
+        "sourceCoveragePercent": 32.5
+      },
+      {
+        "id": "DEBY_LOD2_52738490",
+        "accepted": true,
+        "sourceCoveragePercent": 93.1
+      },
+      {
+        "id": "DEBY_LOD2_52738492",
+        "accepted": true,
+        "sourceCoveragePercent": 88.6
+      },
+      {
+        "id": "DEBY_LOD2_52738494",
+        "accepted": true,
+        "sourceCoveragePercent": 92.6
+      },
+      {
+        "id": "DEBY_LOD2_5284422",
+        "accepted": false,
+        "sourceCoveragePercent": 63.8
+      },
+      {
+        "id": "DEBY_LOD2_5284423",
+        "accepted": false,
+        "sourceCoveragePercent": 72.6
+      },
+      {
+        "id": "DEBY_LOD2_5284424",
+        "accepted": true,
+        "sourceCoveragePercent": 79.4
+      },
+      {
+        "id": "DEBY_LOD2_5284429",
+        "accepted": true,
+        "sourceCoveragePercent": 86.4
+      },
+      {
+        "id": "DEBY_LOD2_5284430",
+        "accepted": true,
+        "sourceCoveragePercent": 92.5
+      },
+      {
+        "id": "DEBY_LOD2_5284433",
+        "accepted": true,
+        "sourceCoveragePercent": 86.2
+      },
+      {
+        "id": "DEBY_LOD2_5284435",
+        "accepted": false,
+        "sourceCoveragePercent": 84.5
+      },
+      {
+        "id": "DEBY_LOD2_5284436",
+        "accepted": true,
+        "sourceCoveragePercent": 85.1
+      },
+      {
+        "id": "DEBY_LOD2_5284437",
+        "accepted": true,
+        "sourceCoveragePercent": 84.1
+      },
+      {
+        "id": "DEBY_LOD2_5284438",
+        "accepted": true,
+        "sourceCoveragePercent": 79.3
+      },
+      {
+        "id": "DEBY_LOD2_5284439",
+        "accepted": false,
+        "sourceCoveragePercent": 44.6
+      },
+      {
+        "id": "DEBY_LOD2_5284441",
+        "accepted": true,
+        "sourceCoveragePercent": 79.2
+      },
+      {
+        "id": "DEBY_LOD2_5284444",
+        "accepted": false,
+        "sourceCoveragePercent": 38.7
+      },
+      {
+        "id": "DEBY_LOD2_5284445",
+        "accepted": true,
+        "sourceCoveragePercent": 71.2
+      },
+      {
+        "id": "DEBY_LOD2_5284446",
+        "accepted": false,
+        "sourceCoveragePercent": 79.0
+      },
+      {
+        "id": "DEBY_LOD2_5284449",
+        "accepted": true,
+        "sourceCoveragePercent": 79.7
+      },
+      {
+        "id": "DEBY_LOD2_5284452",
+        "accepted": true,
+        "sourceCoveragePercent": 88.5
+      },
+      {
+        "id": "DEBY_LOD2_5284457",
+        "accepted": false,
+        "sourceCoveragePercent": 62.1
+      },
+      {
+        "id": "DEBY_LOD2_5284465",
+        "accepted": true,
+        "sourceCoveragePercent": 75.4
+      },
+      {
+        "id": "DEBY_LOD2_5284467",
+        "accepted": true,
+        "sourceCoveragePercent": 80.7
+      },
+      {
+        "id": "DEBY_LOD2_5284468",
+        "accepted": true,
+        "sourceCoveragePercent": 83.9
+      },
+      {
+        "id": "DEBY_LOD2_5284470",
+        "accepted": true,
+        "sourceCoveragePercent": 77.8
+      },
+      {
+        "id": "DEBY_LOD2_5284471",
+        "accepted": true,
+        "sourceCoveragePercent": 80.3
+      },
+      {
+        "id": "DEBY_LOD2_5284472",
+        "accepted": true,
+        "sourceCoveragePercent": 80.6
+      },
+      {
+        "id": "DEBY_LOD2_5284482",
+        "accepted": true,
+        "sourceCoveragePercent": 81.0
+      },
+      {
+        "id": "DEBY_LOD2_5284483",
+        "accepted": false,
+        "sourceCoveragePercent": 75.9
+      },
+      {
+        "id": "DEBY_LOD2_5284484",
+        "accepted": false,
+        "sourceCoveragePercent": 76.9
+      },
+      {
+        "id": "DEBY_LOD2_5284491",
+        "accepted": true,
+        "sourceCoveragePercent": 60.1
+      },
+      {
+        "id": "DEBY_LOD2_5284492",
+        "accepted": true,
+        "sourceCoveragePercent": 76.4
+      },
+      {
+        "id": "DEBY_LOD2_5284496",
+        "accepted": true,
+        "sourceCoveragePercent": 63.0
+      },
+      {
+        "id": "DEBY_LOD2_5284513",
+        "accepted": false,
+        "sourceCoveragePercent": 39.4
+      },
+      {
+        "id": "DEBY_LOD2_5284514",
+        "accepted": true,
+        "sourceCoveragePercent": 67.5
+      },
+      {
+        "id": "DEBY_LOD2_5284515",
+        "accepted": false,
+        "sourceCoveragePercent": 65.4
+      },
+      {
+        "id": "DEBY_LOD2_5284516",
+        "accepted": true,
+        "sourceCoveragePercent": 96.9
+      },
+      {
+        "id": "DEBY_LOD2_5284517",
+        "accepted": true,
+        "sourceCoveragePercent": 68.6
+      },
+      {
+        "id": "DEBY_LOD2_5284518",
+        "accepted": true,
+        "sourceCoveragePercent": 94.0
+      },
+      {
+        "id": "DEBY_LOD2_5284526",
+        "accepted": false,
+        "sourceCoveragePercent": 56.6
+      },
+      {
+        "id": "DEBY_LOD2_5284527",
+        "accepted": false,
+        "sourceCoveragePercent": 36.5
+      },
+      {
+        "id": "DEBY_LOD2_5284531",
+        "accepted": true,
+        "sourceCoveragePercent": 89.6
+      },
+      {
+        "id": "DEBY_LOD2_5284532",
+        "accepted": true,
+        "sourceCoveragePercent": 86.2
+      },
+      {
+        "id": "DEBY_LOD2_62020",
+        "accepted": true,
+        "sourceCoveragePercent": 78.0
+      },
+      {
+        "id": "DEBY_LOD2_8486669",
+        "accepted": true,
+        "sourceCoveragePercent": 84.3
+      }
+    ]
+  },
+  "nativeChecks": {
+    "client": "PASS: nine ground, aerial, TNT, promenade, source-limit, IAS and photographic facade frames captured after full streaming readiness",
+    "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+    "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+    "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+    "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0"
+  },
+  "runtimeTests": {
+    "passed": 19,
+    "failed": 0
+  },
+  "captures": [
+    {
+      "file": "campus-final-ground.png",
+      "sha256": "11da538dd8ab3e16be7f6bb451b5a764a5ac019671fe20553bbd40d7ee8c6a17"
+    },
+    {
+      "file": "campus-final-aerial.png",
+      "sha256": "72f995891f6435bb3d5a4c558ae0bc73433693e835abd474da3a051561d1735c"
+    },
+    {
+      "file": "campus-tnt.png",
+      "sha256": "29cc355c75baada2ffcd7625778085a5e31bd51530536cb58bfd8312e272c660"
+    },
+    {
+      "file": "campus-route-west.png",
+      "sha256": "3ec8f6cf7856ba052a9aa2ef9e37c99f294e48ef14db0ca89db4d942d985b46d"
+    },
+    {
+      "file": "campus-route-south.png",
+      "sha256": "d80470bfa6c006200820f52afd1623bc26bdb62b96aa321f1b0cabca01d4841d"
+    },
+    {
+      "file": "campus-route-north.png",
+      "sha256": "d06089ddb3adc2d1a09138acbfcc51a0bc31f420f02180413a18850c5d190e9e"
+    },
+    {
+      "file": "campus-source-check.png",
+      "sha256": "b3a106e5e1fa37f0736a7166158e1ef0c371892dba778f7610c63462b8e5c591"
+    },
+    {
+      "file": "campus-ias.png",
+      "sha256": "75ff01438e179043509086dba0a0b349a7b6fd98fb04b61f92aa9e74f36944c3"
+    },
+    {
+      "file": "campus-photo-north.png",
+      "sha256": "fc937784a0bae15bd65faf6dc5e381d6d74d06ab55c6777830b6182fdbfb1305"
+    }
+  ],
+  "sourceViewPicks": [
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.75,
+      "v": 0.46,
+      "fov": 76.99999332427979,
+      "tile": 1000050000,
+      "x": 176.95157051086426,
+      "y": 68.30324172973633,
+      "z": -200.79730987548828
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.8,
+      "v": 0.5,
+      "fov": 76.99999332427979,
+      "tile": 1000050000,
+      "x": 176.37661933898926,
+      "y": 66.61999988555908,
+      "z": -197.5445957183838
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.9,
+      "v": 0.45,
+      "fov": 76.99999332427979,
+      "tile": 1000050023,
+      "x": 162.6167287826538,
+      "y": 67.58380818367004,
+      "z": -205.79250812530518
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.38,
+      "v": 0.38,
+      "fov": 76.99999332427979,
+      "tile": 1000010028,
+      "x": 170.008150100708,
+      "y": 70.34419560432434,
+      "z": -226.12079238891602
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.37,
+      "v": 0.43,
+      "fov": 76.99999332427979,
+      "tile": 1000010028,
+      "x": 170.39481353759766,
+      "y": 68.8355062007904,
+      "z": -226.814688205719
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.766,
+      "v": 0.55,
+      "fov": 76.99999332427979,
+      "tile": 1000050000,
+      "x": 176.76476669311523,
+      "y": 64.53080582618713,
+      "z": -199.740873336792
+    }
+  ],
+  "originalPreservation": {
+    "filesByteEqual": 46,
+    "ignoredEphemeralFiles": [
+      "session.lock"
+    ]
+  },
+  "installedPreview": "0.4.0",
+  "limitations": [
+    "Shaded source photography remains blurry; planar envelopes do not add measured window recesses.",
+    "Unsupported faces keep original scan artifacts.",
+    "Vegetation is inferred geometry and approximate species appearance.",
+    "The 0.5.0-dev artifact has not replaced the normal installed/published preview."
+  ]
+}

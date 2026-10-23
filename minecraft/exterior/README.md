@@ -19,7 +19,7 @@ Run `python3 scripts/minecraft.py install`, then launch **Minecampus — TUM Gar
 
 Create a **TUM Garching — Minecampus** world for an undamaged campus. Existing saves retain their player builds and recorded excavation/TNT damage. The deleted Mensa interior preview is no longer included.
 
-The current source build also includes the next IAS development pass; it produces a `0.5.0-dev` JAR. The normal installer remains pinned to the published 0.4.0 preview until the next release. See [IAS development evidence](IAS-DEVELOPMENT.md).
+The current source build produces a `0.5.0-dev` JAR. It includes the IAS reconstruction and survey-aligned photographic façades: 80 candidate envelopes use existing provider photography at runtime, accepting adequately covered walls and retaining unsupported source faces. Roof geometry and imagery come from the public survey. Provider pixels stay in memory and are not included in the package. Brown foliage is also recognized by the canopy detector. The normal installer remains pinned to the published 0.4.0 preview until the next release. See [IAS evidence](IAS-DEVELOPMENT.md) and [photographic façade evidence](PHOTO-FACADES-DEVELOPMENT.md).
 
 ## How collisions and damage work
 

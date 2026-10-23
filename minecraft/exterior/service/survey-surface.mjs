@@ -2,12 +2,26 @@
 // Provider photo meshes remain transient and retain their original attribution.
 import fs from 'node:fs';
 import path from 'node:path';
+import {preparePhotographicFacades,retiresPhotoSurface} from './photo-facades.mjs';
 
 /** Replaces noisy ground with surveyed terrain and substitutes explicit photo-textured
  * reconstructions only where their survey footprint is known. */
-export function attachSurveySurface(service, directory, {voxelizeArea}={}) {
+export function attachSurveySurface(service, directory, {voxelizeArea,collectRegionTiles,mcPositions,sampleColor}={}) {
   const manifest=JSON.parse(fs.readFileSync(path.join(directory,'manifest.json'),'utf8'));
   const ground=manifest.tiles.filter(t=>t.kind==='ground'||t.kind==='reconstruction'||t.kind==='vegetation');
+  const collisionGround=[...ground,...(manifest.photoFacades?.collisionTiles??[])];
+  const photoCollisionGrid=new Map(),photoCollisionCache=new Map();
+  for(const r of manifest.photoFacades?.collisionRetirement??[]){
+    const bounds=[Math.min(...r.ring.map(p=>p[0])),Math.min(...r.ring.map(p=>p[1])),Math.max(...r.ring.map(p=>p[0])),Math.max(...r.ring.map(p=>p[1]))];
+    for(let x=Math.floor(bounds[0]/20);x<=Math.floor(bounds[2]/20);x++)for(let z=Math.floor(bounds[1]/20);z<=Math.floor(bounds[3]/20);z++){
+      const key=x+','+z;if(!photoCollisionGrid.has(key))photoCollisionGrid.set(key,[]);photoCollisionGrid.get(key).push(r);
+    }
+  }
+  function photoCollisionAt(x,y,z){
+    const key=(Math.floor(x)+2048)*4096+Math.floor(z)+2048;let intervals=photoCollisionCache.get(key);
+    if(!intervals){intervals=(photoCollisionGrid.get(Math.floor(x/20)+','+Math.floor(z/20))??[]).filter(r=>inside(x,z,r.ring)&&!r.holes.some(h=>inside(x,z,h))).map(r=>[r.y0,r.y1]);photoCollisionCache.set(key,intervals);}
+    return intervals.some(([a,b])=>y>=a&&y<=b);
+  }
   const matches=frame=>Math.abs(frame.lat-manifest.origin[0])<1e-7 && Math.abs(frame.lon-manifest.origin[1])<1e-7;
   const ids=new Map(ground.map((t,i)=>[t.runtimeId??1_000_000_000+i,t]));
   const replacements=(manifest.replacements??[]).map(p=>({...p,bounds:[Math.min(...p.ring.map(v=>v[0])),Math.min(...p.ring.map(v=>v[1])),Math.max(...p.ring.map(v=>v[0])),Math.max(...p.ring.map(v=>v[1]))]}));
@@ -48,8 +62,16 @@ export function attachSurveySurface(service, directory, {voxelizeArea}={}) {
     const i=Math.floor(s),j=Math.floor(t),fx=s-i,fz=t-j,p=top.heights;
     return (p[j*width+i]*(1-fx)+p[j*width+i+1]*fx)*(1-fz)+(p[(j+1)*width+i]*(1-fx)+p[(j+1)*width+i+1]*fx)*fz;
   }
+  const overhang=manifest.vegetationOverhang,overhangMask=overhang?Buffer.from(overhang.mask,'base64'):null;
+  function oldCanopy(x,y,z){
+    if(!overhangMask)return false;
+    const dx=x-a[0],dz=z-a[2],s=(dx*vz-dz*vx)/det,t=(ux*dz-uz*dx)/det,i=Math.floor(s),j=Math.floor(t);
+    if(i<0||j<0||i>=width-1||j>=height-1)return false;
+    const p=j*width+i,q=p+width,c=overhang.roofCeilings;
+    return Boolean(overhangMask[p]|overhangMask[p+1]|overhangMask[q]|overhangMask[q+1])&&y>Math.max(c[p],c[p+1],c[q],c[q+1])+.5;
+  }
   let removed=0;
-  function correct(bytes,shift=0){
+  function correct(bytes,shift=0,photo=null){
     const input=Buffer.isBuffer(bytes)?bytes:Buffer.from(bytes);if(input.toString('ascii',0,4)!=='ECT1')throw Error('Unsupported terrain format');
     const count=input.readInt32LE(4),ax=input.readDoubleLE(8),ay=input.readDoubleLE(16),az=input.readDoubleLE(24);
     const output=Buffer.allocUnsafe(input.length);input.copy(output,0,0,32);let read=32,write=32;
@@ -69,6 +91,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea}={}) {
           // leaves floating branches above paths. Building/roof masks protect
           // original architecture that has not been reconstructed.
           retire=Boolean(protectedPixels)&&!protectedAt(x,z);
+          if(!retire)retire=oldCanopy(x,y-shift,z);
           const top=surface(x,z);if(!retire&&top!==null&&y-shift>top+(manifest.surfaceGuide.tolerance??3))retire=true;
           if(!retire&&y-floor-shift<1.5){
             const a=terrain(x1,z1),b=terrain(x2,z2),c=terrain(x3,z3);
@@ -76,6 +99,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea}={}) {
           }
           if(!retire)retire=replaced([x,y-shift,z])||replaced([x1,y1-shift,z1])||replaced([x2,y2-shift,z2])||replaced([x3,y3-shift,z3]);
         }
+        if(!retire&&photo)retire=retiresPhotoSurface(photo,x,y-shift,z);
         if(retire){removed++;continue;}
         input.copy(output,write,at,at+60);write+=60;kept+=3;
       }
@@ -84,7 +108,8 @@ export function attachSurveySurface(service, directory, {voxelizeArea}={}) {
     }
     return output.subarray(0,write);
   }
-  const CLIPPED_OFFSET=1_100_000_000;
+  const CLIPPED_OFFSET=1_100_000_000,PHOTO_OFFSET=1_200_000_000;
+  const photographic=new WeakMap();
   const modes=new WeakMap();
   const select=service.renderSelect.bind(service),tile=service.renderTile.bind(service);
   service.renderSelect=async(frame,cam,...args)=>{
@@ -97,7 +122,18 @@ export function attachSurveySurface(service, directory, {voxelizeArea}={}) {
     if(detailed&&altitude>52)detailed=false;else if(!detailed&&altitude<35)detailed=true;
     modes.set(frame,detailed);
     if(detailed){
-      selected.tiles=selected.tiles.map(t=>({...t,id:t.id+CLIPPED_OFFSET,parent:t.parent?t.parent+CLIPPED_OFFSET:0,chain:t.chain.map(id=>id+CLIPPED_OFFSET)}));
+      let state=photographic.get(frame);
+      if(manifest.photoFacades&&collectRegionTiles&&!state){
+        state={ready:false,result:null};photographic.set(frame,state);
+        state.promise=preparePhotographicFacades(service,directory,frame,manifest.origin,{collectRegionTiles,mcPositions,sampleColor})
+          .then(result=>{state.result=result;state.ready=true;})
+          .catch(()=>{state.ready=true;console.warn('[campus-photo] preparation unavailable; original retained');});
+      }
+      if(state&&!state.ready)selected.pending=(selected.pending??0)+1;
+      const photo=state?.result,offset=photo?.tiles.length?PHOTO_OFFSET:CLIPPED_OFFSET;
+      selected.tiles=selected.tiles.map(t=>({...t,id:t.id+offset,parent:t.parent?t.parent+offset:0,chain:t.chain.map(id=>id+offset)}));
+      if(photo){selected.tiles.unshift(...photo.tiles);selected.attribution.push(...photo.copyright);}
+
       for(const [id]of ids)selected.tiles.unshift({id,fine:true,parent:0,chain:[]});
     }
     selected.attribution.push(manifest.attribution);
@@ -106,9 +142,11 @@ export function attachSurveySurface(service, directory, {voxelizeArea}={}) {
   service.renderTile=async(frame,id)=>{
     if(!matches(frame))return tile(frame,id);
     const shift=manifest.origin[2]-frame.h0;
+    const photo=photographic.get(frame)?.result;
+    if(photo?.bytes.has(id))return photo.bytes.get(id);
     if(ids.has(id)){const b=Buffer.from(await fs.promises.readFile(path.join(directory,ids.get(id).file)));b.writeDoubleLE(b.readDoubleLE(16)+shift,16);return b;}
     if(id<CLIPPED_OFFSET)return tile(frame,id);
-    const bytes=await tile(frame,id-CLIPPED_OFFSET);return bytes?correct(bytes,shift):bytes;
+    const enhanced=id>=PHOTO_OFFSET,bytes=await tile(frame,id-(enhanced?PHOTO_OFFSET:CLIPPED_OFFSET));return bytes?correct(bytes,shift,enhanced?photo:null):bytes;
   };
   const decodedAssets=new Map();
   function assetMeshes(frame,spec) {
@@ -133,7 +171,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea}={}) {
       const output=new Uint8Array(16*16*span);output.fill(255);
       if(!matches(frame))return output;
       const shift=manifest.origin[2]-frame.h0,x0=cx*16,z0=cz*16;
-      const assets=ground.filter(t=>t.bounds[0][0]<=x0+17&&t.bounds[1][0]>=x0-1&&t.bounds[0][2]<=z0+17&&t.bounds[1][2]>=z0-1);
+      const assets=collisionGround.filter(t=>t.bounds[0][0]<=x0+17&&t.bounds[1][0]>=x0-1&&t.bounds[0][2]<=z0+17&&t.bounds[1][2]>=z0-1);
       if(!assets.length)return output;
       const {vox}=voxelizeArea(frame,assets.map(t=>assetMeshes(frame,t)),x0,z0,16,minY,span,{fallbackGround:63,water:[]});
       for(let z=0;z<16;z++)for(let x=0;x<16;x++){
@@ -141,7 +179,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea}={}) {
         const level=base+shift;
         for(let y=0;y<span;y++){
           const wy=y+minY;if(wy<level-4)continue;
-          if(protectedAt(px,pz)&&wy>level+1.25&&!replaced([px,wy+.5-shift,pz])&&!(top!==null&&wy>top+shift+(manifest.surfaceGuide.tolerance??3)))continue;
+          if(protectedAt(px,pz)&&wy>level+1.25&&!replaced([px,wy+.5-shift,pz])&&!photoCollisionAt(px,wy+.5-shift,pz)&&!oldCanopy(px,wy+.5-shift,pz)&&!(top!==null&&wy>top+shift+(manifest.surfaceGuide.tolerance??3)))continue;
           const i=(y*16+z)*16+x;let code=vox[i];
           if(code===2)code=1;if(code===20)code=3;if(code===21||code===22)code=4;
           output[i]=code;

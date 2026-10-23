@@ -27,3 +27,11 @@ The IAS exterior has been reconstructed from BVV component `DEBY_LOD2_8486677`, 
 The same native camera was captured before/after. The new gravity check landed the player on the IAS terrace at Y=67; all eight native views and the TNT/ground/preservation checks passed. Development evidence is recorded separately so the published preview’s validation remains attributable to its exact JAR. Remaining coarse neighbouring façades are still open work.
 
 [IAS development comparison and validation](IAS-DEVELOPMENT.md)
+
+## Photographic façade development
+
+The next pass projects the existing provider photography onto BVV survey walls and uses surveyed roof geometry with DOP20 imagery. This straightens building edges while retaining actual photographed material. Eighty envelopes are candidates; coverage checks decide which faces can be used. Unsupported faces keep their original mesh. These are measured envelopes with photographic surfaces, not eighty completed detailed architectural reconstructions.
+
+The canopy detector now also recognizes brown foliage. The source-limit camera identified an autumn tree missed by the previous green-only detector, leaving a floating remnant of the original scan. Roof-aware retirement protects the measured building below the canopy. Building-corner retirement uses finite wall distance so scan triangles cannot survive simply because they fall beyond a wall endpoint.
+
+The source photography still limits detail, especially on shaded façades. The goal remains open: straight geometry and functional tests do not establish a consistently realistic campus. See [photographic façade development evidence](PHOTO-FACADES-DEVELOPMENT.md).

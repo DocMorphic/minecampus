@@ -16,12 +16,15 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile boolean gameplayVerified, terraceVerified;
     private boolean terraceStarted, terraceCheckQueued;
     private int terraceTicks;
+    private boolean roofStarted, roofCheckQueued;
+    private volatile boolean roofVerified;
+    private int roofTicks;
     private int ticks, stage=Boolean.getBoolean("minecampus.inspectOnly")?Integer.getInteger("minecampus.inspectStage",3):0, total, readyTicks;
     private volatile Throwable failure;
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -30,7 +33,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "35 65 100 180 0",
         "50 65 -190 0 0",
         "150 65 -220 -90 0",
-        "65 65 -157 -166 -8"
+        "65 65 -157 -166 -8",
+        "205 65 -238 0 0"
     };
 
     @Override public void onInitializeClient() {
@@ -123,7 +127,34 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     }
                     return;
                 }
-                Files.writeString(Path.of("campus-client-result.txt"),"PASS: eight ground, aerial, TNT, promenade, source-limit and IAS frames captured after full streaming readiness");mc.stop();return;
+                if(Boolean.getBoolean("minecampus.requirePhotographicFacade")) {
+                    if(!roofStarted){
+                        roofStarted=true;
+                        mc.getSingleplayerServer().execute(()->{
+                            var player=mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
+                            mc.getSingleplayerServer().getCommands().performPrefixedCommand(player.createCommandSourceStack().withPermission(4),"tp @s 205.5 85 -203.5");
+                        });
+                        return;
+                    }
+                    if(++roofTicks<120)return;
+                    if(!roofVerified){
+                        if(!roofCheckQueued){
+                            roofCheckQueued=true;
+                            mc.getSingleplayerServer().execute(()->{
+                                try{
+                                    var player=mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
+                                    // Surveyed roof at this X/Z is Y=72.264896.
+                                    // Native proxy blocks should match within half a block.
+                                    if(!player.onGround()||Math.abs(player.getY()-72.264896)>.51)throw new AssertionError("Photographic building roof collider mismatch: "+player.getY());
+                                    Files.writeString(Path.of("campus-roof-result.txt"),"PASS: native gravity landed player on survey roof supporting the photographic facade at Y="+player.getY());
+                                    roofVerified=true;
+                                }catch(Throwable error){failure=error;}
+                            });
+                        }
+                        return;
+                    }
+                }
+                Files.writeString(Path.of("campus-client-result.txt"),"PASS: nine ground, aerial, TNT, promenade, source-limit, IAS and photographic facade frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
@@ -198,6 +229,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if(((java.util.List<?>)df.get(renderer)).size()!=want.size())ready=false;
             readyTicks=ready?readyTicks+1:0;
             if(ticks<200 || readyTicks<40)return;
+            if(stage==6&&Boolean.getBoolean("minecampus.requirePhotographicFacade")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_050_000))throw new AssertionError("Photographic facade was not accepted/displayed");
             if(stage==0&&!collisionVerified){
                 if(!collisionProofQueued){
                     collisionProofQueued=true;
@@ -224,13 +256,14 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 return;
             }
-            if(stage==0||stage==3||stage==5){
+            if(stage==0||stage==3||stage==5||stage==6){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
                 var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
                 double actualFov=((Number)fovMethod.invoke(mc.gameRenderer,camera,1.0f,true)).doubleValue();
                 float tanHalf=(float)Math.tan(Math.toRadians(actualFov)*.5);
                 float[][] pixelsToPick=new float[][]{{.81f,.435f},{.38f,.443f}};
+                if(stage==6)pixelsToPick=new float[][]{{.75f,.46f},{.8f,.5f},{.9f,.45f},{.38f,.38f},{.37f,.43f},{.766f,.55f}};
                 if(stage==3||stage==5){
                     try(var frameImage=Screenshot.takeScreenshot(mc.getMainRenderTarget())){
                         var candidates=new java.util.ArrayList<int[]>();int width=frameImage.getWidth(),height=frameImage.getHeight();long sumX=0,sumY=0;

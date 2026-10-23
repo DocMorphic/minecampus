@@ -99,11 +99,12 @@ with zipfile.ZipFile(release) as original:
     s=s.replace(defaults,'render: { maxSse: 2, falloff: 600, viewportHeight: 1440, fovDeg: 70, far: 1000, fineRadius: 250, maxTiles: 1200 }')
     needle='  const service = new EarthService(cfg);'
     assert s.count(needle)==1
+    s=s.replace("import { TileClient } from './tiles.mjs';","import { TileClient, sampleColor } from './tiles.mjs';")
     s=s.replace(needle,needle+'''
   const exteriorDir=path.join(here,'minecampus-exterior');
   if(fs.existsSync(path.join(exteriorDir,'manifest.json'))){
     const {attachSurveySurface}=await import('./minecampus-survey.mjs');
-    attachSurveySurface(service,exteriorDir,{voxelizeArea});
+    attachSurveySurface(service,exteriorDir,{voxelizeArea,collectRegionTiles,mcPositions,sampleColor});
   }''')
     needle="        case '/render/tile': {";assert s.count(needle)==1
     s=s.replace(needle,'''        case '/campus/collision': {
@@ -115,6 +116,11 @@ with zipfile.ZipFile(release) as original:
 '''+needle);data=s.encode()
    write(target,entry.filename,data)
   write(target,'src/minecampus-survey.mjs',(SOURCE/'service/survey-surface.mjs').read_bytes())
+  write(target,'src/photo-facades.mjs',(SOURCE/'service/photo-facades.mjs').read_bytes())
+  if manifest.get('photoFacades'):
+   for name in [manifest['photoFacades']['file'],*manifest['photoFacades']['roofFiles'],*[t['file']for t in manifest['photoFacades']['collisionTiles']]]:
+    assert Path(name).name==name
+    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/manifest.json',(DATA/'manifest.json').read_bytes())
   write(target,'src/minecampus-exterior/NOTICE.txt',notices.encode())
   write(target,'src/minecampus-exterior/sources.json',(SOURCE/'sources.json').read_bytes())
