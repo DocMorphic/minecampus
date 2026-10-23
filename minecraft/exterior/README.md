@@ -29,6 +29,8 @@ The current source also adds 19 road/path strips from explicitly tagged OSM widt
 
 UYA now has four reconstructed outer façades with recessed windows and lower panels, fitted to the BVV envelope using an ESO exterior reference. Its surveyed roof and courtyard openings are unchanged; inner courtyard walls retain photography. Exact source qualifications and native captures are in [UYA validation](uya-development-validation.json).
 
+Telefonzentrale (TUM 5130) now has a reconstructed four-window west end on its own BVV envelope. The adjoining Siemensbau (5103) retains photography. The opening count and wall treatment follow ground references; exact sizes, recess depth and the continuation of the fascia are approximate. The survey roof and connecting passage are preserved. This source change is newer than the installed `dev.2` preview.
+
 ## How collisions and damage work
 
 Development terrain now retains every DGM1 sample at its one-metre pixel centre. The sampler interpolates across the source-file boundary, and adjoining 100 m render tiles share identical boundary vertices. The two-metre guide remains for source-mesh filtering; rendered terrain and its voxelized collision use the finer mesh. See [terrain validation](terrain-development-validation.json) for source-representation checks and native gameplay evidence.

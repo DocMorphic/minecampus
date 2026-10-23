@@ -61,6 +61,8 @@ def build(ctx):
   build_uye(ctx,bid,walls)
   from exterior_warehouse import build as build_warehouse
   build_warehouse(ctx,bid,walls)
+  from exterior_telefonzentrale import build as build_telefonzentrale
+  build_telefonzentrale(ctx,bid,walls)
   collisionName=bid+'-photo-collision.ect'
   vertices=[[*wall['vertices'][i],0,0]for wall in walls if not wall.get('reconstructed') for i in wall['indices']]
   collisionParts=[(vertices,Image.new('RGBA',(1,1),(150,150,145,255)))]if vertices else []

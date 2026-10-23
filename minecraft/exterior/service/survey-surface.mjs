@@ -34,10 +34,17 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     let intervals=replacementCache.get(key);
     if(intervals===undefined){
       const x=ix+.5,z=iz+.5;
-      intervals=(replacementGrid.get(Math.floor(x/20)+','+Math.floor(z/20))??[]).filter(r=>x>=r.bounds[0]&&z>=r.bounds[1]&&x<=r.bounds[2]&&z<=r.bounds[3]&&(r.kind!=='architecture-fringe'||!protectedAt(x,z))&&inside(x,z,r.ring)&&!(r.holes??[]).some(h=>inside(x,z,h))).map(r=>[r.y0,r.y1]);
+      intervals=(replacementGrid.get(Math.floor(x/20)+','+Math.floor(z/20))??[]).filter(r=>r.kind!=='architecture-band'&&x>=r.bounds[0]&&z>=r.bounds[1]&&x<=r.bounds[2]&&z<=r.bounds[3]&&(r.kind!=='architecture-fringe'||!protectedAt(x,z))&&inside(x,z,r.ring)&&!(r.holes??[]).some(h=>inside(x,z,h))).map(r=>[r.y0,r.y1]);
       replacementCache.set(key,intervals);
     }
     return intervals.some(([min,max])=>p[1]>=min&&p[1]<=max);
+  }
+  function containedBand(points){
+    const x=(points[0][0]+points[1][0]+points[2][0])/3,z=(points[0][2]+points[1][2]+points[2][2])/3;
+    // Bands are convex rectangles with no holes. An intersecting vertex is
+    // insufficient: removing that triangle could erase an unsupported wall
+    // extending below a roof-only reconstruction.
+    return (replacementGrid.get(Math.floor(x/20)+','+Math.floor(z/20))??[]).some(r=>r.kind==='architecture-band'&&!(r.holes??[]).length&&points.every(([x,y,z])=>y>=r.y0&&y<=r.y1&&inside(x,z,r.ring)));
   }
   const guide=manifest.terrainGuide,{width,height,points}=guide;
   const a=points[0],u=points[1],v=points[width];
@@ -99,6 +106,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           }
           if(!retire)retire=replaced([x,y-shift,z])||replaced([x1,y1-shift,z1])||replaced([x2,y2-shift,z2])||replaced([x3,y3-shift,z3]);
         }
+        if(!retire)retire=containedBand([[x1,y1-shift,z1],[x2,y2-shift,z2],[x3,y3-shift,z3]]);
         if(!retire&&photo)retire=retiresPhotoSurface(photo,x,y-shift,z);
         if(retire){removed++;continue;}
         input.copy(output,write,at,at+60);write+=60;kept+=3;

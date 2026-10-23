@@ -160,3 +160,16 @@ test('fresh survey chunks hide source filler even in protected margins, without 
  assert.deepEqual(await service.chunk(origin,5,5,-10,4),source);
  assert.equal(source[8*16+8],20); // Do not mutate cached source voxel bytes.
 });
+
+test('roof-only replacement removes contained fragments without erasing a wall crossing its band',async t=>{
+ const extra={replacements:[{kind:'architecture-band',ring:[[3,3],[8,3],[8,8],[3,8]],holes:[],y0:6,y1:8}]};
+ const fragment=fixture(t,tile([[4,6.5,4],[5,7.5,4],[4,7,5]]),extra);
+ assert.equal((await fragment.service.renderTile(origin,1_100_000_007)).readInt32LE(32),0);
+ for(const points of [[[4,3,4],[5,7.5,4],[4,7,5]],[[2,6.5,4],[5,7.5,4],[4,7,5]]]){
+  const original=tile(points),wall=fixture(t,original,extra);
+  assert.deepEqual(await wall.service.renderTile(origin,1_100_000_007),original);
+ }
+ const shifted=tile([[4,6.5,4],[5,7.5,4],[4,7,5]]);shifted.writeDoubleLE(2,16);
+ const other=fixture(t,shifted,extra);
+ assert.equal((await other.service.renderTile({...origin,h0:origin.h0-2},1_100_000_007)).readInt32LE(32),0);
+});

@@ -106,3 +106,16 @@ The warehouse on the opposite side of the same route still has poor photographic
 The blurred warehouse wall is replaced with survey-aligned masonry, a pale roof edge and an estimated east opening. A new close-up accompanies the existing route camera. Thirteen native views and eleven checks passed; the original save remains unchanged. The close-up reveals additional untreated structures farther north, and hidden warehouse openings remain unknown. [Warehouse evidence](warehouse-development-validation.json).
 
 The next broad improvement is road/path material coverage. The current OSM XML contains nineteen eligible asphalt/paving ways with explicit widths, totaling 1,343.8 m within the campus. Their buffered candidate surfaces cover 7,179.14 m². An aerial overlay follows the main roads and intersects only 15.85 m² of mapped lawn, with no mapped water/court exclusions touched. These are derived candidates, not rendered surfaces or measured curbs. Check building intersections and edge transitions, then add close-range material coverage and verify the walking routes. The goal remains active.
+
+## Road coverage and second playable snapshot
+
+The nineteen explicit-width road/path strips are now built and native-verified. They add 7,163.29 m² of material coverage after building/mapped-area exclusions. Fourteen viewpoints, eleven native gameplay/geometry checks and twelve material controls passed. The exact artifact is published as `exterior-0.5.0-dev.2` and installed in the separate preview, with all 121 preview save files and private settings verified unchanged. The original installation is unchanged. [Road evidence](road-development-validation.json).
+
+The sharper road exposes the remaining coarse sidewalks and margins. Curbs, northern building detail, terrace artwork and broader route fidelity remain unfinished. The warehouse-east camera identifies the next building as BVV `DEBY_LOD2_5284457`, TUM building 5103 (Betriebsgebäude II / Verwaltung). Ground photos beside the Nobel steles show the smaller adjacent Telefonzentrale (5130), not Siemensbau itself; the native camera and distinct survey envelopes establish that distinction. Siemensbau does not yet have a verified opening schedule. The goal remains active.
+
+
+## Telefonzentrale identity and west façade
+
+The four-window reconstruction is now on the correct Telefonzentrale envelope (5130), verified by four native window rays and a matching before/after camera. The unverified Siemensbau windows were removed before recording the final artifact. Fifteen frames, twelve native checks and 22 service tests pass; the original save is unchanged. [Evidence](telefonzentrale-development-validation.json). The installed preview remains dev.2.
+
+The new view exposes poor neighboring façades and missing site detail. A useful next source candidate is the [Center for Organoid Systems, TUM 5132](https://nav.tum.de/building/cos): NavigaTUM supplies Alexander Pach's exterior photograph under CC BY 4.0. Its address matches OSM way 1275027418, and that footprint overlaps the convex outer BVV envelope `DEBY_LOD2_108698313` with 0.933 intersection-over-union. Verify the visible wall orientation and current geometry before reconstructing it; this research does not establish that every degraded background surface belongs to COS. The realism goal remains open.

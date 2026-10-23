@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-23",
+  "status": "Telefonzentrale west end/roof-edge native-verified; overall realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 228902734,
+    "sha256": "3c0d8f3744ffb38f0e082a7bd25d6529b44664367d6071a26e81ee1c79314b77",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "d3c08db04b3cc8781176da51ee940eb64c9041fe0222ab7cc6bcb9dcefac8a3d",
+    "rendererSourceFingerprint": "27cd6917ab9961a1",
+    "bundleSha256": "973f1f12b3e735b901cc14961e3c52eb6c120af2018f831cba9758607e0dbccd",
+    "tiles": 87
+  },
+  "geometry": {
+    "renderTiles": 87,
+    "photoFacadeCandidates": 80,
+    "triangles": 1872051,
+    "textureBytes": 258767152,
+    "auxiliaryTriangles": 5234,
+    "auxiliaryTextureBytes": 13530020,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "telefonzentrale": {
+    "building": "DEBY_LOD2_8486669",
+    "tumBuilding": "5130",
+    "westLengthMetres": 12.529847506464941,
+    "westSurveyFaces": [
+      2
+    ],
+    "windows": [
+      {
+        "centreFromNorthMetres": 2.45,
+        "widthMetres": 1.24,
+        "heightMetres": 1.45,
+        "recessMetres": 0.18
+      },
+      {
+        "centreFromNorthMetres": 4.7,
+        "widthMetres": 1.24,
+        "heightMetres": 1.45,
+        "recessMetres": 0.18
+      },
+      {
+        "centreFromNorthMetres": 7.55,
+        "widthMetres": 1.24,
+        "heightMetres": 1.45,
+        "recessMetres": 0.18
+      },
+      {
+        "centreFromNorthMetres": 9.8,
+        "widthMetres": 1.24,
+        "heightMetres": 1.45,
+        "recessMetres": 0.18
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.flickr.com/photos/26095468@N04/44227697504/",
+        "author": "Heinz Theuerkauf",
+        "date": "2018-09-27",
+        "license": "All rights reserved; visual reference only, not redistributed",
+        "observed": "Full west elevation: four windows, grey render, horizontal joint beneath thin dark roof trim."
+      },
+      {
+        "url": "https://www.flickr.com/photos/26095468@N04/43135332700/",
+        "author": "Heinz Theuerkauf",
+        "date": "2018-09-27",
+        "license": "All rights reserved; visual reference only, not redistributed",
+        "observed": "Oblique west elevation confirms four separate recessed openings and sills."
+      },
+      {
+        "url": "https://commons.wikimedia.org/wiki/File:Garching,_Forschungszentrum_(Campus),_moderne_Kunst.jpg",
+        "author": "Bayreuth2009",
+        "date": "2014",
+        "license": "CC BY 3.0",
+        "observed": "Partial west end at right of sculpture photograph, grey rendered wall, recessed window, sill and roof joint."
+      }
+    ],
+    "note": "Four west windows and grey render observed; exact opening sizes, recess and colour inferred. Roof-edge continuation on other faces inferred. Other facade areas retain photography; survey roof unchanged; no interior."
+  },
+  "roofPreservation": {
+    "file": "DEBY_LOD2_8486669-photo-roof.ect",
+    "sha256": "7a4b30dd79ea7e579631fc48e7357f23295d0ed98b86131f03866fc8278e4a4b",
+    "byteIdentical": true
+  },
+  "serviceChecks": {
+    "passed": 22,
+    "roofBandPolicy": "Retires only complete triangles inside a convex roof band; preserves unsupported walls crossing its limits."
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: fifteen ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail and Telefonzentrale frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "telefonzentrale": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope"
+    },
+    "migrationVersion": 9,
+    "changedProxiesAcrossRun": 119,
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "4a9a665e00170beca6fcb07aadbccaed126704b854aeb33a4c98bf281315bb88"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "53402fca70ecfd77aeb159b3b79b83cb4374da9fab6115d6b71a69853e4e5c2b"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "05270904147b52c931a000f86a6ad8166ea07d1b1cb5cebebe04f851086e5fd5"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "4657093c896ef121a44f98761ee34a0b1a7156e3d5fc18e0147cfdc9695e20af"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "56b035b944dcac2937242652fd1701ee639216c285a8fc4c94610aca20cabe79"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "1800fa922471613ff6c264fbc82ed00eaf8a5b1d4c59b5132631c8479bc4221f"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "0ee93ad7e925657cc617b33bcf4bbe5a9f3f70264575dbcdb7274fc392a6da7d"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "18edb2feaf704e19bfb3d07cdd0de96f2809022651ea2c861e766524760bdf69"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "f99518b3202a53354d4de80e4212d756318b4815928f245b95c9eea292a207a5"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "3ef37f950e34c2cd705384b7e0d617ae07f44907eb335532506e942b1bd50773"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "45cb89b3555460e76e3b2ce3b996472106abe62389b75b6dd78e739923657cda"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "de86f6452f1dcc269c0e963dae5d3d6ceb0773fe1edc0fe7d14d04dfff91578e"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "d7be5bbb1d83d39872932f3fd3a2a6cbd84b657e89b7b9fdfbd4358e5c7e5f13"
+      },
+      {
+        "file": "campus-road-detail.png",
+        "sha256": "91cb7790611f65821a46ca13e44436947decd24578ab2bf1ec097129c913787d"
+      },
+      {
+        "file": "campus-telefonzentrale-west.png",
+        "sha256": "e9424fe36dabb9d4f8616a59cf053852153232fd9114d3d19825bb612ef85d9f"
+      }
+    ]
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "3aa5bec24c5c9287f33188124fb99fb89f9b755bbd2e258dee0041d709c25f68",
+    "routeCamera": "183 65 -231.5 90 3.5",
+    "endCamera": "130 65 -269 -65 5",
+    "beforeImage": "../../docs/screenshots/campus-telefonzentrale-west-before.jpg",
+    "afterImage": "../../docs/screenshots/campus-telefonzentrale-west-after.jpg",
+    "beforeCaptureSha256": "a56f92292415f43bb2b439f908aa97070c416f7a811d7447b8b9e401d0aa8734",
+    "sameCamera": true,
+    "baselineInspectionPassed": true
+  },
+  "remaining": [
+    "Other Telefonzentrale elevations and the adjoining Siemensbau retain coarse photography; their opening layout is not established.",
+    "The four Nobel laureate steles, site paving and other small exterior details are absent.",
+    "Unmapped sidewalks, curbs, terrace detail and other untreated structures remain unfinished."
+  ],
+  "installedPreview": "exterior-0.5.0-dev.2 (3aa5bec2); this development pass is not installed"
+}

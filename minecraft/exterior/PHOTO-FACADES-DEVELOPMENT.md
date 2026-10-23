@@ -252,3 +252,20 @@ All fourteen native captures and eleven gameplay/geometry checks passed. Twelve 
 The road-pass artifact `3aa5bec2…` is the next public development preview. It includes the preceding UYE and warehouse improvements. The separate installed **Minecampus — Exterior Preview 0.5** now uses this exact artifact; its 121 existing save files and local settings were verified unchanged. The old UYA artifact is retained in the instance's `artifact-backups` directory. The original 0.4 installation remains separate. [Play/install/update instructions](PREVIEW-0.5.md).
 
 The update does not establish completion of the overall quality goal. Sidewalks, curbs, untreated northern structures and terrace detail still need work.
+
+
+## Telefonzentrale west end: `3c0d8f37…`
+
+The smaller western building at Boltzmannstraße 10a is Telefonzentrale (TUM 5130, BVV `DEBY_LOD2_8486669`), connected to Siemensbau (5103) by a passage. Ground photographs beside the four Nobel steles show this building's four-window west end. Its single west survey face now has recessed openings, sills, grey render and a narrow roof joint. Exact opening dimensions, recess and colours are estimates. The roof fascia continues around the outer faces as an inference; other walls retain photography. The connecting passage and survey roof are preserved. [Reference provenance](photos/telefonzentrale-reference.json).
+
+Before, using the installed `dev.2` artifact in a separate QA instance:
+
+![Telefonzentrale west end before reconstruction](../../docs/screenshots/campus-telefonzentrale-west-before.jpg)
+
+After, from the same camera:
+
+![Telefonzentrale west end with four recessed windows](../../docs/screenshots/campus-telefonzentrale-west-after.jpg)
+
+All fifteen native views and twelve gameplay/geometry checks passed, including rays through all four window centres hitting the replacement. Roof-band retirement removes only fully contained triangles, preserving unsupported walls crossing the band. All 22 service tests pass. Collision migration v9 changed 119 proxies across the full route; preservation and journal checks passed. All 46 backed-up original world files remain unchanged. The exact artifact is recorded in [validation](telefonzentrale-development-validation.json).
+
+The neighboring Siemensbau still has coarse photographic walls. The four steles, path margins, curbs and other visible structures remain unfinished. The installed/public preview remains `exterior-0.5.0-dev.2`; this pass is a tested source build for the next snapshot. The overall goal remains active.

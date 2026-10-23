@@ -63,3 +63,8 @@ The warehouse reference crop is Ernst A. Graf/ESO, [CC BY 4.0](https://creativec
 Explicit-width road/path centre-lines in `minecraft/exterior/path-widths.json` are © OpenStreetMap contributors, [ODbL 1.0](https://www.openstreetmap.org/copyright). The release includes derived strips as `path-surfaces.geojson`; these exclude BVV building footprints and previously mapped ground surfaces. Buffer edges are estimates from tagged widths, not surveyed curbs.
 
 [Poly Haven Asphalt 04](https://polyhaven.com/a/asphalt_04), photographed by Sergej Majboroda and processed by Jenelle van Heerden, supplies the 2K diffuse and OpenGL normal maps under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The decoded RGB maps are converted to PNG without recolouring and repeat at the source's stated four-metre scale. This is an approximate road material, not a scan of Garching's roads. Source/resource hashes are in `minecraft/exterior/material-sources.json`.
+
+
+## Telefonzentrale exterior reference
+
+The west end of TUM building 5130 is informed by Heinz Theuerkauf's [2018 front view](https://www.flickr.com/photos/26095468@N04/44227697504/) and [oblique view](https://www.flickr.com/photos/26095468@N04/43135332700/), plus Bayreuth2009's [2014 campus sculpture photograph](https://commons.wikimedia.org/wiki/File:Garching,_Forschungszentrum_(Campus),_moderne_Kunst.jpg), CC BY 3.0. These photographs are visual references only; none of their pixels are bundled. The model uses the BVV envelope, existing CC0 concrete grain and original approximate glass/trim materials. Opening sizes, recess depth and continuation of the roof fascia are inferred. The reference metadata identifies the smaller Telefonzentrale separately from the adjacent Siemensbau.

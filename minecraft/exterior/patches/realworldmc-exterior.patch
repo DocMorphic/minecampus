@@ -73,7 +73,7 @@ index 53d3868..ef48082 100644
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1||i==4?6f:(i==0||i==2?3f:9f));
 +                if(campus && t.data.id==1_000_030_006)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:7f);
-+                if(campus && t.data.id==1_000_030_007)
++                if(campus && (t.data.id==1_000_030_007 || t.data.id==1_000_030_009))
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:7f);
 +                if(campus && t.data.id==1_000_030_008)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?12f:(i==2?6f:7f));

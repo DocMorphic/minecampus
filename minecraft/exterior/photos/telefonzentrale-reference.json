@@ -1,0 +1,37 @@
+{
+  "building": "DEBY_LOD2_8486669",
+  "tumBuilding": "5130",
+  "identity": "Telefonzentrale, Boltzmannstr. 10a",
+  "identitySource": "https://nav.tum.de/building/5130",
+  "references": [
+    {
+      "url": "https://www.flickr.com/photos/26095468@N04/44227697504/",
+      "author": "Heinz Theuerkauf",
+      "date": "2018-09-27",
+      "license": "All rights reserved; visual reference only, not redistributed",
+      "observed": "Full west elevation: four windows, grey render, horizontal joint beneath thin dark roof trim."
+    },
+    {
+      "url": "https://www.flickr.com/photos/26095468@N04/43135332700/",
+      "author": "Heinz Theuerkauf",
+      "date": "2018-09-27",
+      "license": "All rights reserved; visual reference only, not redistributed",
+      "observed": "Oblique west elevation confirms four separate recessed openings and sills."
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Garching,_Forschungszentrum_(Campus),_moderne_Kunst.jpg",
+      "author": "Bayreuth2009",
+      "date": "2014",
+      "license": "CC BY 3.0",
+      "observed": "Partial west end at right of sculpture photograph, grey rendered wall, recessed window, sill and roof joint."
+    }
+  ],
+  "qualifications": [
+    "Ground references precede the current survey; no claim of an as-built 2026 facade schedule.",
+    "Exact opening dimensions and roof-edge continuation are inferred.",
+    "Other facade window/door arrangement is not established; existing photography is retained below fascia.",
+    "The photographed west end is the smaller western building, not the adjoining 5103 Siemensbau. Their BVV survey envelopes are distinct and joined by a passage."
+  ],
+  "geometry": "BVV CityGML LoD2 envelope; roof preserved",
+  "osmWay": "https://www.openstreetmap.org/way/389673325"
+}

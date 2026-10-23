@@ -31,7 +31,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -46,7 +46,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "0 68 -238 180 0",
         "25 65 -125 90 25",
         "183 65 -231.5 90 3.5",
-        "51 65 -190 0 40"
+        "51 65 -190 0 40",
+        "130 65 -269 -65 5"
     };
 
     @Override public void onInitializeClient() {
@@ -203,7 +204,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         return;
                     }
                 }
-                if(!Boolean.getBoolean("minecampus.bankOnly"))Files.writeString(Path.of("campus-client-result.txt"),"PASS: fourteen ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse and road-detail frames captured after full streaming readiness");mc.stop();return;
+                if(!Boolean.getBoolean("minecampus.bankOnly"))Files.writeString(Path.of("campus-client-result.txt"),"PASS: fifteen ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail and Telefonzentrale frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
@@ -329,7 +330,10 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 return;
             }
-            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12){
+            try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
+                image.writeToFile(Path.of(NAMES[stage]));
+            }
+            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12||stage==14){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
                 var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
@@ -337,7 +341,18 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 float tanHalf=(float)Math.tan(Math.toRadians(actualFov)*.5);
                 float[][] pixelsToPick=new float[][]{{.81f,.435f},{.38f,.443f}};
                 if(stage==6)pixelsToPick=new float[][]{{.75f,.46f},{.8f,.5f},{.9f,.45f},{.38f,.38f},{.37f,.43f},{.766f,.55f},{.12f,.6f},{.22f,.56f}};
-                if(stage==12)pixelsToPick=new float[][]{{.5f,.5f}};
+                if(stage==12)pixelsToPick=new float[][]{{.5f,.5f},{.80f,.49f},{.88f,.48f},{.93f,.43f}};
+                if(stage==14){
+                    var eye=camera.getPosition();var forward=new org.joml.Vector3f(camera.getLookVector());
+                    var right=new org.joml.Vector3f(forward).cross(0,1,0).normalize();var up=new org.joml.Vector3f(right).cross(forward).normalize();
+                    float[] centres={2.45f,4.70f,7.55f,9.80f};pixelsToPick=new float[4][2];
+                    for(int i=0;i<centres.length;i++){
+                        double x=146.5033-.1784054*centres[i]+.9839571*.18,z=-268.4920+.9839571*centres[i]+.1784054*.18;
+                        var target=new org.joml.Vector3f((float)(x-eye.x),(float)(65.71065-eye.y),(float)(z-eye.z));float depth=target.dot(forward);
+                        pixelsToPick[i]=new float[]{(float)(.5+.5*target.dot(right)/(depth*tanHalf*16/9)),(float)(.5-.5*target.dot(up)/(depth*tanHalf))};
+                        if(pixelsToPick[i][0]<=0||pixelsToPick[i][0]>=1||pixelsToPick[i][1]<=0||pixelsToPick[i][1]>=1)throw new AssertionError("Telefonzentrale window outside verification frame");
+                    }
+                }
                 if(stage==10)pixelsToPick=new float[][]{{.15f,.55f},{.5f,.55f},{.85f,.55f}};
                 if(stage==9)pixelsToPick=new float[][]{{.78f,.35f},{.84f,.43f},{.96f,.40f},{.265f,.58f},{.51f,.59f},{.65f,.48f},{.745f,.615f},{.1f,.6f},{.18f,.55f},{.35f,.58f},{.58f,.56f},{.7f,.55f},{.82f,.41f}};
                 if(stage==3||stage==5){
@@ -359,7 +374,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     var right=new org.joml.Vector3f(forward).cross(0,1,0).normalize();
                     var up=new org.joml.Vector3f(right).cross(forward).normalize();
                     var ray=new org.joml.Vector3f(forward).add(right.mul((pixel[0]*2-1)*tanHalf*16/9)).add(up.mul((1-pixel[1]*2)*tanHalf)).normalize();
-                    var eye=camera.getPosition();float nearest=10000,nearestStructure=10000;int hit=-1,structureHit=-1;
+                    var eye=camera.getPosition();float nearest=10000,nearestStructure=10000;int hit=-1,structureHit=-1;double[] structureTriangle=null;
                     for(var item:loaded.values()){
                         var tile=(MapTile)item;var data=tile.data;
                         if(!((java.util.List<?>)df.get(renderer)).contains(data.id))continue;
@@ -367,13 +382,14 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                             for(int o=0;o<v.length;o+=15){
                                 float t=org.joml.Intersectionf.intersectRayTriangle((float)(eye.x-data.anchorX),(float)(eye.y-data.anchorY),(float)(eye.z-data.anchorZ),ray.x,ray.y,ray.z,v[o],v[o+1],v[o+2],v[o+5],v[o+6],v[o+7],v[o+10],v[o+11],v[o+12],1e-6f);
                                 if(t>0&&t<nearest){nearest=t;hit=data.id;}
-                                if(t>0&&t<nearestStructure&&(data.id<1_000_010_000||data.id>=1_000_020_000)){nearestStructure=t;structureHit=data.id;}
+                                if(t>0&&t<nearestStructure&&(data.id<1_000_010_000||data.id>=1_000_020_000)){nearestStructure=t;structureHit=data.id;structureTriangle=new double[]{v[o]+data.anchorX,v[o+1]+data.anchorY,v[o+2]+data.anchorZ,v[o+5]+data.anchorX,v[o+6]+data.anchorY,v[o+7]+data.anchorZ,v[o+10]+data.anchorX,v[o+11]+data.anchorY,v[o+12]+data.anchorZ};}
                             }
                         }
                     }
                     var pick=new com.google.gson.JsonObject();var region=dev.realworldmc.EarthRegions.at((int)Math.floor(eye.x),(int)Math.floor(eye.z));if(region!=null)pick.addProperty("frameGroundHeight",region.groundHeight());pick.addProperty("u",pixel[0]);pick.addProperty("v",pixel[1]);pick.addProperty("fov",actualFov);pick.addProperty("tile",hit);pick.addProperty("x",eye.x+ray.x*nearest);pick.addProperty("y",eye.y+ray.y*nearest);pick.addProperty("z",eye.z+ray.z*nearest);var blockHit=mc.level.clip(new net.minecraft.world.level.ClipContext(eye,eye.add(ray.x*256,ray.y*256,ray.z*256),net.minecraft.world.level.ClipContext.Block.OUTLINE,net.minecraft.world.level.ClipContext.Fluid.NONE,mc.player));
-                    var pos=blockHit.getBlockPos();pick.addProperty("block",net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(mc.level.getBlockState(pos).getBlock()).toString());pick.addProperty("blockPosition",pos.toShortString());pick.addProperty("structureBehindVegetation",structureHit);pick.addProperty("structureDistance",nearestStructure);picks.add(pick);
+                    var pos=blockHit.getBlockPos();pick.addProperty("block",net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(mc.level.getBlockState(pos).getBlock()).toString());pick.addProperty("blockPosition",pos.toShortString());pick.addProperty("structureBehindVegetation",structureHit);pick.addProperty("structureDistance",nearestStructure);if(structureTriangle!=null){var triangle=new com.google.gson.JsonArray();for(double value:structureTriangle)triangle.add(value);pick.add("structureTriangle",triangle);}picks.add(pick);
                 }
+                Files.writeString(Path.of("campus-fragment-picks-"+stage+".json"),picks.toString());
                 if(stage==9&&Boolean.getBoolean("minecampus.requireMensaRetaining")){
                     int confirmed=0;
                     for(var element:picks){var pick=element.getAsJsonObject();float u=pick.get("u").getAsFloat();
@@ -412,21 +428,22 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 if(Boolean.getBoolean("minecampus.requireWarehouseExterior")&&(stage==6||stage==12)){
                     int confirmed=0;
                     for(var entry:picks){var pick=entry.getAsJsonObject();float u=pick.get("u").getAsFloat();
-                        if(stage==12||Math.abs(u-.12f)<.001||Math.abs(u-.22f)<.001){
+                        if((stage==12&&Math.abs(u-.5f)<.001)||(stage==6&&(Math.abs(u-.12f)<.001||Math.abs(u-.22f)<.001))){
                             if(pick.get("structureBehindVegetation").getAsInt()!=1_000_030_008)throw new AssertionError("Warehouse ray still hits old source geometry at stage="+stage+" u="+u);
                             confirmed++;
                         }
                     }
                     if(stage==6){if(confirmed!=2)throw new AssertionError("Missing warehouse route rays");warehouseFrontVerified=true;}
                     else{
-                        if(!warehouseFrontVerified||confirmed!=1)throw new AssertionError("Warehouse route/east view incomplete");
+                        if((!warehouseFrontVerified&&!Boolean.getBoolean("minecampus.inspectOnly"))||confirmed!=1)throw new AssertionError("Warehouse route/east view incomplete");
                         Files.writeString(Path.of("campus-warehouse-result.txt"),"PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction");
                     }
                 }
-                Files.writeString(Path.of("campus-fragment-picks-"+stage+".json"),picks.toString());
-            }
-            try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
-                image.writeToFile(Path.of(NAMES[stage]));
+                if(Boolean.getBoolean("minecampus.requireTelefonzentraleExterior")&&stage==14){
+                    if(picks.size()!=4)throw new AssertionError("Missing Telefonzentrale window rays");
+                    for(var entry:picks)if(entry.getAsJsonObject().get("structureBehindVegetation").getAsInt()!=1_000_030_009)throw new AssertionError("Telefonzentrale window ray does not hit its reconstructed facade");
+                    Files.writeString(Path.of("campus-telefonzentrale-result.txt"),"PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope");
+                }
             }
             if(Boolean.getBoolean("minecampus.inspectOnly")){Files.writeString(Path.of("campus-inspection-result.txt"),"PASS: isolated inspection frame");mc.stop();return;}
             ++stage;
