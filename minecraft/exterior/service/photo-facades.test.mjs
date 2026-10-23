@@ -60,3 +60,16 @@ test('complete manual roof/envelope skips obsolete photography and avoids a dupl
  assert.equal(retiresPhotoSurface(result,2,2,2),true,'old debris beside a rebuilt wall is retired');
  assert.equal(retiresPhotoSurface(result,2,2,7),false,'unrelated surroundings stay intact');
 });
+
+test('bounded source retirement protects adjacent walls and roofs, including boundary holes',async()=>{
+ const {retiresPhotoSurface}=await import('./photo-facades.mjs');
+ const patch={bounds:[[0,0,0],[4,4,4]],walls:[{...wall,accepted:true}],roofTriangles:[[[0,4,0],[4,4,0],[0,4,1]],[[4,4,0],[4,4,1],[0,4,1]]],roofCache:new Map()};
+ const unbounded={patches:[patch]};
+ const bounded={patches:[{...patch,retirementBoundary:[{ring:[[-.5,-.5],[4.5,-.5],[4.5,.8],[-.5,.8]],holes:[[[1,.2],[2,.2],[2,.6],[1,.6]]]}]}]};
+ for(const [x,y,z] of [[5,2,.3],[1.5,2,.4],[2,4,.9],[1.5,4,.4]]){
+  assert.equal(retiresPhotoSurface(unbounded,x,y,z),true,'legacy cleanup would remove the surface');
+  assert.equal(retiresPhotoSurface(bounded,x,y,z),false,'neighbour or hole remains intact');
+ }
+ assert.equal(retiresPhotoSurface(bounded,3,2,.4),true,'owned wall is removed');
+ assert.equal(retiresPhotoSurface(bounded,3,4,.4),true,'owned roof is removed');
+});

@@ -365,3 +365,24 @@ Same camera before and after:
 Artifact `284c05a0404e807403d418528b283e58eab0d2b701d1e50b456fde83abe76b24` passed a full 23-view native route and twenty-one checks, including three rays on each new facade view. All 26 service tests pass. All 89 existing render tiles and the other 79 facade plans remain unchanged; collision migration advances to v14 while preserving the native player-edit fixture. Original save files remain byte-identical to their backup. [Validation](grs-development-validation.json).
 
 Development snapshot `exterior-0.5.0-dev.6` remains unfinished: adjacent GRS wings/tower and Siemensbau retain coarse imagery; ground margins and parking need further work, and glazing uses an approximate sky/ground reflection rather than reflecting nearby buildings. The full campus-quality goal remains active.
+
+
+## GRS stair tower and connecting bridges
+
+Dev.7 reconstructs the octagonal tower (`DEBY_LOD2_5284470`), west bridge (`DEBY_LOD2_104553225`) and short south junction (`DEBY_LOD2_104553232`). Their BVV envelopes and embedded orthophoto roofs are retained. Recessed glass strips, pale diagonal faces, fine frames, top louvres and the courtyard door follow the [architect's historical project photographs](https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching). Dimensions, colour, door placement and connector glazing remain estimates. No interiors are added. [Source qualifications](photos/grs-connectors-reference.json).
+
+Source removal now respects explicit boundaries around these small structures, including holes and exclusions around neighbouring buildings. This prevents their wall cleanup radius from erasing the adjoining GRS wing. All 90 earlier render tiles, 79 other existing facade plans and previous runtime IDs remain unchanged. Both small links are appended explicitly to the facade inventory. Collision migration advances to v15 and preserves the native player-edit fixtures.
+
+![Before tower and bridge reconstruction](../../docs/screenshots/campus-grs-connectors-before.jpg)
+
+![Same view after reconstruction](../../docs/screenshots/campus-grs-connectors-after.jpg)
+
+![Tower courtyard view](../../docs/screenshots/campus-grs-tower-courtyard.jpg)
+
+![Tower and bridge north view](../../docs/screenshots/campus-grs-tower-north.jpg)
+
+![All three additions and adjoining roof](../../docs/screenshots/campus-grs-connectors-aerial.jpg)
+
+Artifact `c33930d72e6097b082b32e37b3b1da772bbfcb37cc0a2baa7d4e6b7c5ac7ac92` passes 26 native views, 24 native checks and 27 service tests. Ground rays reach the tower and west bridge; aerial structural rays reach all three additions and the retained neighbouring roof behind any foliage. Each new component embeds its survey roof byte-for-byte. Original save files remain unchanged. [Validation](grs-connectors-development-validation.json).
+
+The campus-quality goal remains active: the neighbouring GRS main/south wings and Siemensbau still have coarse photographic surfaces. Ground margins, older aerial imagery, inferred window details and approximate reflections continue to limit realism.

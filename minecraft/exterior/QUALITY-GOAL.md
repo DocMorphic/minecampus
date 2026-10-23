@@ -147,3 +147,10 @@ The goal remains active. The west-side margins and eastern parking still need be
 Dev.6 replaces the distorted long GRS wing beside COS with a survey-aligned facade informed by the architect's photographs. Recessed glazing, frame divisions, fascia and braces establish the building's characteristic structure. The roof, all 89 prior render tiles and the other 79 facade plans remain unchanged. Twenty-three native route views and twenty-one checks verify this package. [Evidence](grs-development-validation.json).
 
 The goal remains active. The neighbouring GRS wings/tower and Siemensbau still need exterior treatment. Approximate glazing reflections, pale ground margins, older aerial imagery and some repetitive vegetation limit overall realism. Current reconstruction dimensions and colours remain explicit estimates.
+
+
+## GRS stair tower and connecting bridges
+
+Dev.7 adds the surveyed octagonal tower, west bridge and short south junction, with reference-informed exterior details and exact embedded survey roofs. Cleanup boundaries exclude adjacent buildings. All 90 preceding render tiles and 79 other facade plans remain unchanged. Twenty-six native views and twenty-four checks verify the package, including preservation of the neighbouring roof. [Evidence](grs-connectors-development-validation.json).
+
+The goal remains active. Courtyard camera 24 exposes a broad stretched source surface overhead beside the tower; identify its native hit tile and survey ownership before editing it. It may be a valid roof exposed by missing or unsupported west-wall photography, so do not assume the roof itself is wrong. The main/south GRS wings and Siemensbau remain visibly coarse; parking and ground margins still need treatment. Reconstructed colours and opening dimensions are estimates, and the wider campus does not yet meet the requested realism standard.

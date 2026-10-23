@@ -129,6 +129,12 @@ https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude
 Colours, frame dimensions and less-visible elevations are inferred.
 Source qualifications are supplied as grs-reference.json.
 
+GRS stair tower and connectors: BVV survey envelopes and orthophoto roofs,
+with glazing, pale walls, louvres and a courtyard door informed by the same
+historical architect reference. Dimensions, colours, door placement and bridge
+glazing are inferred. No interiors or reference photographs are included.
+Source qualifications are supplied as grs-connectors-reference.json.
+
 Google scenery is streamed by the user's own configured service. No Google tile
 content, Minecraft assets, credentials or saved worlds are included in this build.
 '''
@@ -174,6 +180,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/NOTICE.txt',notices.encode())
   write(target,'src/minecampus-exterior/cos-reference.json',(SOURCE/'photos/cos-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-reference.json',(SOURCE/'photos/grs-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/grs-connectors-reference.json',(SOURCE/'photos/grs-connectors-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site.json',(SOURCE/'cos-site.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site-surfaces.geojson',(DATA/'cos-site-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/sources.json',(SOURCE/'sources.json').read_bytes())

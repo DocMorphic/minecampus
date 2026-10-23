@@ -23,10 +23,12 @@ def build(ctx):
   return float((grid[j,i,1]*(1-fx)+grid[j,i+1,1]*fx)*(1-fz)+(grid[j+1,i,1]*(1-fx)+grid[j+1,i+1,1]*fx)*fz)
  manual=set(meta['architecture']['buildings'])|{'DEBY_LOD2_107614322','DEBY_LOD2_107614323','DEBY_LOD2_5284521','DEBY_LOD2_5284523','DEBY_LOD2_104552957'}
  protected=unary_union([Polygon(mc(r[0])[:,[0,2]])for bid,surfaces in buildings if bid in manual for typ,r in surfaces if typ=='GroundSurface'])
- for bid,surfaces in sorted(buildings,key=lambda b:(b[0]!=PILOT,b[0])):
+ small_links={'DEBY_LOD2_104553225','DEBY_LOD2_104553232'}
+ # Append explicitly supported small links; retain every existing runtime ID.
+ for bid,surfaces in sorted(buildings,key=lambda b:(b[0]in small_links,b[0]!=PILOT,b[0])):
   if bid in manual or bid in EXCLUDED:continue
   grounds=[mc(r[0])for typ,r in surfaces if typ=='GroundSurface'];foot=unary_union([Polygon(q[:,[0,2]])for q in grounds]);walls=[];roofs=[];allq=[]
-  if foot.area<20 or foot.intersection(protected).area>foot.area*.1:continue
+  if (foot.area<20 and bid not in small_links) or foot.intersection(protected).area>foot.area*.1:continue
   survey=np.concatenate([r[0]for typ,r in surfaces]);xmin,ymin,xmax,ymax=meta['boundsUtm']
   if survey[:,0].min()<xmin or survey[:,0].max()>xmax or survey[:,1].min()<ymin or survey[:,1].max()>ymax:continue
   for typ,rings in surfaces:
@@ -67,11 +69,16 @@ def build(ctx):
   build_cos(ctx,bid,walls)
   from exterior_grs import build as build_grs
   build_grs(ctx,bid,walls)
+  from exterior_grs_connectors import build as build_grs_connectors
+  retirement_boundary=build_grs_connectors(ctx,bid,walls)
+  if retirement_boundary:rings=retirement_boundary
   collisionName=bid+'-photo-collision.ect'
   vertices=[[*wall['vertices'][i],0,0]for wall in walls if not wall.get('reconstructed') for i in wall['indices']]
   collisionParts=[(vertices,Image.new('RGBA',(1,1),(150,150,145,255)))]if vertices else []
   (out/collisionName).write_bytes(encode(collisionParts+[(roof,photo.crop((*low,*high)))]))
-  plans.append({'manualRoof':bid in {'DEBY_LOD2_108698313','DEBY_LOD2_5284468'},'collisionFile':collisionName,'id':bid,'runtimeId':1_000_050_000+len(plans),'roofFile':name,'bounds':[points.min(axis=0).tolist(),points.max(axis=0).tolist()],'walls':walls,'roofTriangles':[roof[i:i+3,:3].tolist()for i in range(0,len(roof),3)],'retirement':rings})
+  plan={'manualRoof':bid in {'DEBY_LOD2_108698313','DEBY_LOD2_5284468'} or bool(retirement_boundary),'collisionFile':collisionName,'id':bid,'runtimeId':1_000_050_000+len(plans),'roofFile':name,'bounds':[points.min(axis=0).tolist(),points.max(axis=0).tolist()],'walls':walls,'roofTriangles':[roof[i:i+3,:3].tolist()for i in range(0,len(roof),3)],'retirement':rings}
+  if retirement_boundary:plan['retirementBoundary']=retirement_boundary
+  plans.append(plan)
  (out/'photo-facades.json').write_text(json.dumps({'pixelsPerMetre':10,'maxProjectionDistance':6,'minimumCoverage':.80,'plans':plans},separators=(',',':')))
  meta['photoFacades']={'file':'photo-facades.json','roofFiles':[p['roofFile']for p in plans],'collisionTiles':[{'file':p['collisionFile'],'bounds':p['bounds'],'kind':'reconstruction'}for p in plans],'collisionRetirement':[dict(r,y0=p['bounds'][0][1]-2,y1=p['bounds'][1][1]+5)for p in plans for r in p['retirement']],'buildings':[p['id']for p in plans],'note':'Provider material is reprojected in memory at runtime; public package contains survey geometry and orthophoto roofs only.'}
  print('Transient photo facade candidates:',len(plans),flush=True)

@@ -148,6 +148,7 @@ export function retiresPhotoSurface(photo,x,y,z){
  for(const patch of photo.grid?(photo.grid.get(Math.floor(x/20)+','+Math.floor(z/20))??[]):(photo.patches??[])){
   const [lo,hi]=patch.bounds;
   if(x<lo[0]-6||x>hi[0]+6||z<lo[2]-6||z>hi[2]+6||y<lo[1]-2||y>hi[1]+3)continue;
+  if(patch.retirementBoundary&&!patch.retirementBoundary.some(p=>inside(x,z,p.ring)&&!(p.holes??[]).some(h=>inside(x,z,h))))continue;
   // Roof ownership uses the exact surveyed triangles rather than a building
   // bounding rectangle: courtyards and roof-height changes remain open.
   const key=Math.floor(x*2)+','+Math.floor(z*2);

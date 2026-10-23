@@ -1,6 +1,6 @@
 # Exterior Preview 0.5
 
-This playable development snapshot adds the IAS exterior, survey-aligned photographic walls, the former Mensa terrace frontage and retaining walls, UYA's outer façades, UYE's east/north glazing, the masonry warehouse exterior, width-mapped road materials, the Telefonzentrale west end, the COS exterior, approximate finished-site grading, mapped site paving, benches, bicycle stands, an inferred planting bed, a smooth forecourt grade and the GRS north-wing facade, survey-fitted tree crowns, mapped ground materials and full DGM1 terrain sampling. It runs inside Minecraft Java 1.21.1 with the existing Minecampus add-on and Fabric setup.
+This playable development snapshot adds the IAS exterior, survey-aligned photographic walls, the former Mensa terrace frontage and retaining walls, UYA's outer façades, UYE's east/north glazing, the masonry warehouse exterior, width-mapped road materials, the Telefonzentrale west end, the COS exterior, approximate finished-site grading, mapped site paving, benches, bicycle stands, an inferred planting bed, a smooth forecourt grade and the GRS north wing, stair tower and connecting bridges, survey-fitted tree crowns, mapped ground materials and full DGM1 terrain sampling. It runs inside Minecraft Java 1.21.1 with the existing Minecampus add-on and Fabric setup.
 
 The campus is still unfinished: several neighboring walls remain blurry, paths have inconsistent detail, and reconstructed window divisions/materials are approximate. Interiors are outside this pass. The public default installer remains on 0.4.0.
 
@@ -13,7 +13,7 @@ Allow the map to finish streaming before judging geometry. The photographic faç
 ## Install the same snapshot alongside an existing setup
 
 1. Quit Minecraft and its launcher.
-2. Download `RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar` from the [0.5 development preview release](https://github.com/DocMorphic/minecampus/releases/tag/exterior-0.5.0-dev.6) into this repository's `dist-minecraft/` directory.
+2. Download `RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar` from the [0.5 development preview release](https://github.com/DocMorphic/minecampus/releases/tag/exterior-0.5.0-dev.7) into this repository's `dist-minecraft/` directory.
 3. On macOS/Linux, run `python3 scripts/install-exterior-preview.py` from the repository root. This requires the normal Minecampus installation and its map setup to exist already. It verifies the artifact hash, checks world locks, copies saves into a separate instance, verifies every copied save file, and adds the preview launcher profile. For an existing preview, use `python3 scripts/install-exterior-preview.py --update` instead. This verifies the recorded mod, refuses an open world, backs up the old mod, and replaces only that mod while verifying that saves and local settings stay unchanged.
 4. Restart the launcher and follow the play instructions above.
 
@@ -21,8 +21,8 @@ The installer uses the current user's local map configuration, stored privately 
 
 ## Evidence
 
-The released JAR is the exact native-tested artifact: SHA-256 `284c05a0404e807403d418528b283e58eab0d2b701d1e50b456fde83abe76b24`. Twenty-three native views, twenty-one native checks, 26 service tests and binary geometry validation passed. All 89 previous render tiles, including the terrain, remain byte-identical to dev.5; its five terrain-sampling tests remain applicable. Terrain verification checks all 360,000 samples: 357,397 retain the DGM heights and 2,603 use explicitly documented COS site grading. The grade is inferred from the current reference photo and surveyed base, not a new terrain survey. Three updater tests verify save/settings preservation, rejection of modified mods, and rejection of locked worlds. See [the validation record](grs-development-validation.json) and [in-game comparisons](PHOTO-FACADES-DEVELOPMENT.md#grs-north-wing).
+The released JAR is the exact native-tested artifact: SHA-256 `c33930d72e6097b082b32e37b3b1da772bbfcb37cc0a2baa7d4e6b7c5ac7ac92`. Twenty-six native views, twenty-four native checks, 27 service tests and binary geometry validation passed. All 90 previous render tiles, including the terrain, remain byte-identical to dev.6; the five terrain-sampling tests remain applicable. Terrain verification checks all 360,000 samples: 357,397 retain the DGM heights and 2,603 use explicitly documented COS site grading. The grade is inferred from the current reference photo and surveyed base, not a new terrain survey. Three updater tests verify save/settings preservation, rejection of modified mods, and rejection of locked worlds. See [the validation record](grs-connectors-development-validation.json) and [in-game comparisons](PHOTO-FACADES-DEVELOPMENT.md#grs-stair-tower-and-connecting-bridges).
 
-![GRS north wing in the tested Minecraft build](../../docs/screenshots/campus-grs-north.jpg)
+![GRS stair tower in the tested Minecraft build](../../docs/screenshots/campus-grs-tower-courtyard.jpg)
 
 The broader visual-quality goal remains open. Functional checks establish playability of the tested cases, not completion of the campus reconstruction.

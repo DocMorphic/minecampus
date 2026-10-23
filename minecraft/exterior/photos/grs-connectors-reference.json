@@ -1,0 +1,10 @@
+{
+  "buildings": {"tower": "DEBY_LOD2_5284470", "westLink": "DEBY_LOD2_104553225", "southJunction": "DEBY_LOD2_104553232"},
+  "architectReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching",
+  "architect": "Detlef Schreiber Architektur und Stadtplanung GmbH",
+  "referencePeriod": "1986–1989 project; historical photographs and plan",
+  "referenceUse": "Visual reference only; photographs and drawings are not redistributed.",
+  "observations": ["Octagonal stair/elevator tower, pale solid diagonal faces, tall glazed strips, top ventilation louvres and a courtyard door.", "Narrow links connect the tower to the two office wings; their separate survey footprints match the published plan."],
+  "geometry": "BVV LoD2 footprints, facade planes and roofs retained; small links admitted explicitly rather than dropping the general 20-square-metre threshold.",
+  "inferences": ["Opening dimensions, louvre spacing, door placement within the southwest face and colour are estimated.", "The west link is treated as single-level; the taller south junction repeats the adjacent two-level glazing arrangement.", "Below-grade foundation geometry is retained. No interior spaces or precise current as-built facade schedule are claimed."]
+}
