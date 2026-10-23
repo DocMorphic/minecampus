@@ -61,3 +61,25 @@ The overhang mask now includes shadowed green foliage and covers the whole guide
 The exposed dirt patch is gone. At screen coordinate `(0.745, 0.615)`, native block picking changes from `minecraft:dirt` to invisible `earthcraft:map_dirt` at the same block `(10, 64, -231)`. At `(0.96, 0.40)`, the removed scan triangle now gives a sky miss. Other triangles remain, including the one hit at `(0.84, 0.43)`. This view still fails the realism goal and is deliberately retained as evidence of unfinished work.
 
 The packaged follow-up passed all ten captures, all five native assertions, 21 service tests and geometry validation. All 46 backed-up original world files remain unchanged. The fresh-world collision migration changed zero proxies, so this run does not replace historical proof of migration on existing chunks. Exact artifact/frame hashes, coverage records, ray picks and native results are in [visible-facades-development-validation.json](visible-facades-development-validation.json). The installed/public preview remains 0.4.0.
+
+## Former Mensa structural frontage: `cb804d81…`
+
+The next close-up showed that a straight photographic sheet still failed to express the building’s concrete frame and recessed glazing. Five surveyed terrace faces now have eleven reference-informed concrete bays, with piers, beams, a shallow exterior apron, recessed glass divisions, low opaque panels and a rooftop maintenance railing. The broad face measures 43.03 m in BVV geometry and is divided into six bays; four stepped faces add five bays. The envelope lengths and elevations are surveyed. Pier dimensions, pane divisions and the 1.1 m recess are estimates from the [TUM exterior reference](https://www.ed.tum.de/ed/news-single-view-start/article/tum-ed-bezieht-alte-mensa-in-garching-nach-umbau/), photographed by Susanne Höcht. No interior is generated.
+
+The TUM photograph is not packaged as a texture. Concrete uses the existing CC0 Poly Haven material, neutralized and brightened; glass is an original approximate material with the existing runtime reflection shader. These are reconstructed materials, not new site photography. This is a partial frontage and does not increase the complete detailed-building count.
+
+At the new native terrace camera, `0 68 -238`, yaw/pitch `180 0`, the previous build:
+
+![Former Mensa frontage before structural reconstruction](../../docs/screenshots/campus-mensa-front-before.jpg)
+
+The reconstructed frontage, after correcting gaps between the recessed glazing and columns:
+
+![Concrete frame and recessed glazing in actual Minecraft](../../docs/screenshots/campus-mensa-front-after.jpg)
+
+The wider approach remains visibly unfinished:
+
+![Unresolved source fragments around the former Mensa approach](../../docs/screenshots/campus-mensa-front-approach.jpg)
+
+The photographic pipeline omits a face once its structural replacement owns it, preventing an old flat sheet from covering the new recess. The auxiliary collision surface also omits that old face. A new native assertion verifies air at the former wall position `(5,68,-247)`, solid recessed glazing at `(5,68,-249)` and the overhead canopy at `(5,70,-247)` after collision migration. The exact packaged artifact completed eleven viewpoints and all six native assertions; all 21 service tests pass. All 46 backed-up original save files remain unchanged.
+
+[Exact artifact, native captures, source qualifications and validation](mensa-front-development-validation.json). The overall goal remains open. Remaining work includes the approach’s scan fragments, terrace artwork and pavement, untreated elevations, roof detail and campus-wide fidelity. The installed/public preview is still 0.4.0.

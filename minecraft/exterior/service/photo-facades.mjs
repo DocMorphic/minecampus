@@ -114,18 +114,18 @@ export async function preparePhotographicFacades(service,directory,frame,origin,
    const bakes=[];
    for(const wall of plan.walls){bakes.push(bakeWall(wall,primitives,{...spec,sampleColor:deps.sampleColor}));await new Promise(setImmediate);}
    const wanted=bakes.reduce((n,b)=>n+b.wanted,0),observed=bakes.reduce((n,b)=>n+b.observed,0);
-   const usable=bakes.map(b=>acceptsFacade([b],spec.minimumCoverage??.8)&&b.maxFillDistance<=2);
+   const usable=bakes.map((b,i)=>!plan.walls[i].reconstructed&&acceptsFacade([b],spec.minimumCoverage??.8)&&b.maxFillDistance<=2);
    // Each accepted wall is independently backed by observed photography. Do not
    // discard a well-supported face because another side of the building is
    // occluded; that other side stays on the original source mesh. The public
    // surveyed roof does not depend on photographic wall coverage.
-   const accepted=usable.some(Boolean);
-   metrics.push({id:plan.id,accepted,acceptedWalls:usable.filter(Boolean).length,totalWalls:bakes.length,coverage:observed/wanted,walls:bakes.map(b=>({coverage:b.coverage,maxFillDistance:b.maxFillDistance,unfilled:b.unfilled}))});
+   const accepted=usable.some(Boolean)||plan.walls.some(w=>w.reconstructed);
+   metrics.push({id:plan.id,accepted,acceptedWalls:usable.filter(Boolean).length,reconstructedWalls:plan.walls.filter(w=>w.reconstructed).length,totalWalls:bakes.length,coverage:observed/wanted,walls:bakes.map(b=>({coverage:b.coverage,maxFillDistance:b.maxFillDistance,unfilled:b.unfilled}))});
    console.log(`[campus-photo] ${plan.id}: ${accepted?'ready':'original retained'}, coverage=${(100*observed/wanted).toFixed(1)}%`);
    if(!accepted)continue;
    bytes.set(plan.runtimeId,encode({...plan,walls:plan.walls.filter((w,i)=>usable[i])},bakes.filter((b,i)=>usable[i]),await fs.promises.readFile(path.join(directory,plan.roofFile)),shift));
    tiles.push({id:plan.runtimeId,fine:true,parent:0,chain:[]});
-   patches.push({...plan,walls:plan.walls.map((w,i)=>({...w,accepted:usable[i]})),roofCache:new Map()});
+   patches.push({...plan,walls:plan.walls.map((w,i)=>({...w,accepted:usable[i]||Boolean(w.reconstructed)})),roofCache:new Map()});
   }catch(error){console.warn(`[campus-photo] ${plan.id}: source unavailable; original retained`);metrics.push({id:plan.id,accepted:false,reason:'source unavailable'});}
  }
  const grid=new Map();

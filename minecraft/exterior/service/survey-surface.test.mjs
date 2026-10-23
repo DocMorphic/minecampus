@@ -118,6 +118,18 @@ test('photographic replacement switches ids only after readiness, preserves old 
  const baked=await service.renderTile(frame,1_000_050_000);assert.equal(baked.readFloatLE(52),6);assert.equal(baked.readInt32LE(4),2);
  assert.equal((await service.renderTile(frame,1_200_000_007)).readInt32LE(32),0);
  assert.deepEqual(await service.renderTile(frame,1_100_000_007),source);
+ // A structural facade replaces the only photographed wall. It must not get
+ // a second flat photographic sheet across its newly recessed glazing, while
+ // retaining source retirement and the public roof even with no usable faces.
+ wall.reconstructed=true;
+ fs.writeFileSync(path.join(dir,'photo-facades.json'),JSON.stringify({plans:[plan]}));
+ const manualService={client:{},meshesFor:async()=>[{copyright:'test provider',primitives:[prim]}],renderSelect:async()=>({tiles:[{id:7,parent:0,chain:[],fine:true}],pending:0,attribution:[]}),renderTile:async()=>source};
+ attachSurveySurface(manualService,dir,{collectRegionTiles:async()=>[{}],mcPositions:(frame,p)=>p.positions,sampleColor:(p,u,v,out)=>out.splice(0,3,60,90,120)});
+ await manualService.renderSelect(frame,[5,6,6]);
+ for(let i=0;i<30;i++){await new Promise(r=>setTimeout(r,5));result=await manualService.renderSelect(frame,[5,6,6]);if(result.pending===0)break;}
+ assert.equal(result.pending,0);assert.ok(result.tiles.some(t=>t.id===1_000_050_000));
+ assert.equal((await manualService.renderTile(frame,1_000_050_000)).readInt32LE(4),1);
+ assert.equal((await manualService.renderTile(frame,1_200_000_007)).readInt32LE(32),0);
 });
 
 test('photographic canopy overhang is retired above a surveyed roof without erasing the building underneath',async t=>{

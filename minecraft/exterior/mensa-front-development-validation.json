@@ -1,0 +1,199 @@
+{
+  "date": "2026-10-23",
+  "status": "Partial former Mensa frontage verified; overall realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 188006449,
+    "sha256": "cb804d81575290525c04db1d1bdc67b90f04dcfa4a84c2584c771940dc6a327b",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "8a809d31ed8fd826049afcc83f9665b8524616c5783166c1d6b67d35881d75d7",
+    "bundleSha256": "8112d8daeafeee1209d86bca05c2a9c252c3d1db8ba687a8335aafc580c0035e",
+    "tiles": 83
+  },
+  "geometry": {
+    "renderTiles": 83,
+    "photoFacadeCandidates": 80,
+    "triangles": 1515817,
+    "textureBytes": 241662224,
+    "auxiliaryTriangles": 5338,
+    "auxiliaryTextureBytes": 13530024,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 740,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "frontage": {
+    "building": "DEBY_LOD2_5284422",
+    "reference": "https://www.ed.tum.de/ed/news-single-view-start/article/tum-ed-bezieht-alte-mensa-in-garching-nach-umbau/",
+    "faces": [
+      {
+        "surfaceIndex": 49,
+        "bays": 6,
+        "lengthMetres": 43.03311004585828,
+        "baseY": 67.41026901910557,
+        "roofY": 71.14055129464364,
+        "glazingRecessMetres": 1.1
+      },
+      {
+        "surfaceIndex": 48,
+        "bays": 1,
+        "lengthMetres": 7.477688924043846,
+        "baseY": 67.41051322995429,
+        "roofY": 70.95056862596392,
+        "glazingRecessMetres": 1.1
+      },
+      {
+        "surfaceIndex": 11,
+        "bays": 1,
+        "lengthMetres": 7.491660331086807,
+        "baseY": 67.40990928706647,
+        "roofY": 70.95002408303125,
+        "glazingRecessMetres": 1.1
+      },
+      {
+        "surfaceIndex": 41,
+        "bays": 1,
+        "lengthMetres": 6.430147635036641,
+        "baseY": 67.40952679643472,
+        "roofY": 70.94963259391704,
+        "glazingRecessMetres": 1.1
+      },
+      {
+        "surfaceIndex": 6,
+        "bays": 2,
+        "lengthMetres": 14.43148056578518,
+        "baseY": 67.4090025668116,
+        "roofY": 70.9492636760913,
+        "glazingRecessMetres": 1.1
+      }
+    ],
+    "note": "Partial exterior reconstruction. Survey fixes envelope and bay lengths; columns, recess depth, pane divisions and material tones are reference-informed estimates. No reference photograph bundled; glass is an original approximate material. Other faces retain runtime photography."
+  },
+  "sourceReference": {
+    "url": "https://www.ed.tum.de/ed/news-single-view-start/article/tum-ed-bezieht-alte-mensa-in-garching-nach-umbau/",
+    "photoCredit": "Susanne H\u00f6cht / TUM",
+    "photoUsage": "Visual architectural reference only; not bundled or used as a texture",
+    "concrete": "Poly Haven concrete_wall_007, CC0, neutralized and brightened for this frontage",
+    "glazing": "Original approximate material; not site photography"
+  },
+  "serviceTests": {
+    "passed": 21,
+    "failed": 0,
+    "newCoverage": "Structurally reconstructed wall is not covered by photographic sheet; source retirement and public roof remain active even when no other wall is usable."
+  },
+  "native": {
+    "world": "campus-check-margin",
+    "checks": {
+      "client": "PASS: eleven ground, aerial, TNT, promenade, source-limit, IAS, photographic facade and former Mensa frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision"
+    },
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "7d747c844d2c64b659236382aa1b0ae5a919bf5780c321b6b8d7dfb659ec6030"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "55be4b9611d0df6820c1479ce39cc81a0b2a486a0be66b184384bc88b50071ec"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "e0d0469aab1f8a7d65a25f34f5ce441fbc2c45f50d847eb5d45ccec82c86dae0"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "19e8a38620c9052083dcdb06678ce7b7824fc59f5d8d65e48849c4478e14a88a"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "48793010105f9a42136f61606659ec7f4f946be8c476016bff0a9b2bba093c1c"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "ba085dd4785a212fdfc468eda3f909e4626ec746de5e4a1d98d1233bc55c4829"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "00872fc10b09c29ef83cf4b29e97e3f5253cada5237d808b011e596913f2d177"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "4cc3ab4296003eeff6dfc42f4e466207064662e8fcdd7157427de47b050aa8e9"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "d231ea780b9072dc29c705ee318c4914e1bfff43615add1b82c8a63524212135"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "e73631b8a4f98a22308138799ab157b31805d1aa0a867e6fb609139801d48072"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "5d8db4876c4016ae2d6fa6df22a92c7c7662ecf74c02391773b50306faa0f639"
+      }
+    ],
+    "terracePicks": [
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.15,
+        "v": 0.55,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": -12.226938247680664,
+        "y": 68.59729933738708,
+        "z": -250.35710334777832,
+        "block": "earthcraft:map_stone",
+        "blockPosition": "-13, 68, -251"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.5,
+        "v": 0.55,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": 0.4999979667804837,
+        "y": 68.69501441717148,
+        "z": -249.12865924835205,
+        "block": "earthcraft:map_grass",
+        "blockPosition": "0, 68, -250"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.85,
+        "v": 0.55,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": 10.28637981414795,
+        "y": 68.83359408378601,
+        "z": -247.386474609375,
+        "block": "earthcraft:map_stone",
+        "blockPosition": "8, 68, -247"
+      }
+    ]
+  },
+  "comparison": {
+    "camera": "0 68 -238 180 0",
+    "beforeArtifactSha256": "d1c03a6e379c0cf0aa2351bd702c31a3465ef740980e827726025bd9d7c98150",
+    "beforeRawSha256": "cd16e1bdf0254b6e5d818dd4323034c190f52934eefb9e490f2a029e7add4f8f",
+    "afterRawSha256": "5d8db4876c4016ae2d6fa6df22a92c7c7662ecf74c02391773b50306faa0f639",
+    "note": "Complete native framebuffer, noon, full streaming readiness. Broader approach remains in the capture set as a failing visual-quality case."
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "remaining": [
+    "Large source fragments remain around the approach, below and beside the terrace.",
+    "Five faces are reconstructed; other elevations and roof equipment remain source/survey geometry.",
+    "Pier dimensions, panes and recess are reference-informed estimates, not measured as-built details.",
+    "Pavement detail, terrace sculptures and broader campus fidelity remain unfinished."
+  ],
+  "installedRelease": "0.4.0; this exact artifact is a local source-buildable development preview"
+}

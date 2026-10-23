@@ -14,7 +14,8 @@ import java.nio.file.Path;
 public final class CampusExteriorCheck implements ClientModInitializer {
     private static final String WORLD=System.getProperty("minecampus.checkWorld","campus-check");
     private boolean opened, moved, walkingStarted;
-    private volatile boolean gameplayVerified, terraceVerified;
+    private volatile boolean gameplayVerified, terraceVerified, frontageVerified;
+    private volatile boolean frontageQueued;
     private boolean terraceStarted, terraceCheckQueued;
     private int terraceTicks;
     private boolean roofStarted, roofCheckQueued;
@@ -25,7 +26,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -36,7 +37,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "150 65 -220 -90 0",
         "65 65 -157 -166 -8",
         "205 65 -238 0 0",
-        "0 64.25 -216 180 -5"
+        "0 64.25 -216 180 -5",
+        "0 68 -238 180 0"
     };
 
     @Override public void onInitializeClient() {
@@ -157,7 +159,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         return;
                     }
                 }
-                Files.writeString(Path.of("campus-client-result.txt"),"PASS: ten ground, aerial, TNT, promenade, source-limit, IAS, photographic facade and former Mensa frames captured after full streaming readiness");mc.stop();return;
+                Files.writeString(Path.of("campus-client-result.txt"),"PASS: eleven ground, aerial, TNT, promenade, source-limit, IAS, photographic facade and former Mensa frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
@@ -232,8 +234,22 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if(((java.util.List<?>)df.get(renderer)).size()!=want.size())ready=false;
             readyTicks=ready?readyTicks+1:0;
             if(ticks<200 || readyTicks<40)return;
+            if(stage==10&&Boolean.getBoolean("minecampus.requireMensaFront")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_030_005))throw new AssertionError("Former Mensa structural frontage was not displayed");
             if(stage==9&&Boolean.getBoolean("minecampus.requireVisibleFacade")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_050_038))throw new AssertionError("Visible former Mensa facade was not accepted/displayed");
             if(stage==6&&Boolean.getBoolean("minecampus.requirePhotographicFacade")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_050_000))throw new AssertionError("Photographic facade was not accepted/displayed");
+            if(stage==10&&Boolean.getBoolean("minecampus.requireMensaFront")&&!Boolean.getBoolean("minecampus.inspectOnly")&&!frontageVerified){
+                if(!frontageQueued){frontageQueued=true;mc.getSingleplayerServer().execute(()->{
+                    try{
+                        var world=mc.getSingleplayerServer().overworld();
+                        if(!dev.realworldmc.CampusCollision.aligned(world,0,-16)){frontageQueued=false;return;}
+                        if(!world.getBlockState(new net.minecraft.core.BlockPos(5,68,-247)).isAir())throw new AssertionError("Old flat collision wall still blocks the Mensa glazing recess");
+                        if(!dev.realworldmc.EarthBlocks.isMapBlock(world.getBlockState(new net.minecraft.core.BlockPos(5,68,-249))))throw new AssertionError("Recessed Mensa glazing has no collision");
+                        if(!dev.realworldmc.EarthBlocks.isMapBlock(world.getBlockState(new net.minecraft.core.BlockPos(5,70,-247))))throw new AssertionError("Mensa canopy beam has no collision");
+                        Files.writeString(Path.of("campus-frontage-result.txt"),"PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision");frontageVerified=true;
+                    }catch(Throwable error){failure=error;}
+                });}
+                return;
+            }
             if(stage==0&&!collisionVerified){
                 if(!collisionProofQueued){
                     collisionProofQueued=true;
@@ -260,7 +276,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 return;
             }
-            if(stage==0||stage==3||stage==5||stage==6||stage==9){
+            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
                 var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
@@ -268,6 +284,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 float tanHalf=(float)Math.tan(Math.toRadians(actualFov)*.5);
                 float[][] pixelsToPick=new float[][]{{.81f,.435f},{.38f,.443f}};
                 if(stage==6)pixelsToPick=new float[][]{{.75f,.46f},{.8f,.5f},{.9f,.45f},{.38f,.38f},{.37f,.43f},{.766f,.55f}};
+                if(stage==10)pixelsToPick=new float[][]{{.15f,.55f},{.5f,.55f},{.85f,.55f}};
                 if(stage==9)pixelsToPick=new float[][]{{.78f,.35f},{.84f,.43f},{.96f,.40f},{.265f,.58f},{.51f,.59f},{.65f,.48f},{.745f,.615f}};
                 if(stage==3||stage==5){
                     try(var frameImage=Screenshot.takeScreenshot(mc.getMainRenderTarget())){

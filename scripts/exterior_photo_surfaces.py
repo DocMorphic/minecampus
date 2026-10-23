@@ -53,8 +53,10 @@ def build(ctx):
   roof[:,3:5]=(uv*[w,h]-low)/(high-low);name=bid+'-photo-roof.ect';(out/name).write_bytes(encode([(roof,photo.crop((*low,*high)))]))
   points=np.array(allq);shape=foot.buffer(2.75)
   rings=[{'ring':list(p.exterior.coords),'holes':[list(r.coords)for r in p.interiors]}for p in ([shape]if shape.geom_type=='Polygon'else shape.geoms)if p.geom_type=='Polygon']
+  from exterior_mensa_front import build as build_mensa_front
+  build_mensa_front(ctx,bid,walls)
   collisionName=bid+'-photo-collision.ect'
-  vertices=[[*wall['vertices'][i],0,0]for wall in walls for i in wall['indices']]
+  vertices=[[*wall['vertices'][i],0,0]for wall in walls if not wall.get('reconstructed') for i in wall['indices']]
   (out/collisionName).write_bytes(encode([(vertices,Image.new('RGBA',(1,1),(150,150,145,255))),(roof,photo.crop((*low,*high)))]))
   plans.append({'collisionFile':collisionName,'id':bid,'runtimeId':1_000_050_000+len(plans),'roofFile':name,'bounds':[points.min(axis=0).tolist(),points.max(axis=0).tolist()],'walls':walls,'roofTriangles':[roof[i:i+3,:3].tolist()for i in range(0,len(roof),3)],'retirement':rings})
  (out/'photo-facades.json').write_text(json.dumps({'pixelsPerMetre':10,'maxProjectionDistance':6,'minimumCoverage':.80,'plans':plans},separators=(',',':')))
