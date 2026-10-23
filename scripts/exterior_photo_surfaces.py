@@ -59,9 +59,12 @@ def build(ctx):
   build_uya(ctx,bid,walls)
   from exterior_uye import build as build_uye
   build_uye(ctx,bid,walls)
+  from exterior_warehouse import build as build_warehouse
+  build_warehouse(ctx,bid,walls)
   collisionName=bid+'-photo-collision.ect'
   vertices=[[*wall['vertices'][i],0,0]for wall in walls if not wall.get('reconstructed') for i in wall['indices']]
-  (out/collisionName).write_bytes(encode([(vertices,Image.new('RGBA',(1,1),(150,150,145,255))),(roof,photo.crop((*low,*high)))]))
+  collisionParts=[(vertices,Image.new('RGBA',(1,1),(150,150,145,255)))]if vertices else []
+  (out/collisionName).write_bytes(encode(collisionParts+[(roof,photo.crop((*low,*high)))]))
   plans.append({'collisionFile':collisionName,'id':bid,'runtimeId':1_000_050_000+len(plans),'roofFile':name,'bounds':[points.min(axis=0).tolist(),points.max(axis=0).tolist()],'walls':walls,'roofTriangles':[roof[i:i+3,:3].tolist()for i in range(0,len(roof),3)],'retirement':rings})
  (out/'photo-facades.json').write_text(json.dumps({'pixelsPerMetre':10,'maxProjectionDistance':6,'minimumCoverage':.80,'plans':plans},separators=(',',':')))
  meta['photoFacades']={'file':'photo-facades.json','roofFiles':[p['roofFile']for p in plans],'collisionTiles':[{'file':p['collisionFile'],'bounds':p['bounds'],'kind':'reconstruction'}for p in plans],'collisionRetirement':[dict(r,y0=p['bounds'][0][1]-2,y1=p['bounds'][1][1]+5)for p in plans for r in p['retirement']],'buildings':[p['id']for p in plans],'note':'Provider material is reprojected in memory at runtime; public package contains survey geometry and orthophoto roofs only.'}

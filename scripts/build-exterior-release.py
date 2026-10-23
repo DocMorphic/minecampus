@@ -78,6 +78,10 @@ https://www.openstreetmap.org/copyright
 Selected mapped polygons and their tags are included as ground-surfaces.geojson.
 The derived surface database/mask is available under ODbL 1.0; material grain
 and paving joints are approximate reconstructions, not measured paving units.
+Warehouse masonry: Poly Haven brick_wall_001 by Dimitrios Savva and Rob Tuytel (CC0 1.0).
+https://polyhaven.com/a/brick_wall_001
+Colour and repeat scale adapted; an approximate material, not the actual building surface.
+
 Leaf and bark atlases: Poly Haven jacaranda_tree (CC0 1.0).
 https://polyhaven.com/a/jacaranda_tree
 Reconstructed branch placement and artistic foliage, not surveyed tree species.

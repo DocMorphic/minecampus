@@ -33,7 +33,7 @@ public final class CampusCollision {
         ServerTickEvents.END_SERVER_TICK.register(CampusCollision::tick);
         ServerLifecycleEvents.SERVER_STOPPED.register(server->{epoch++;inFlight.clear();unavailable=false;changedBlocks=0;});
     }
-    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v7");}
+    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v8");}
     private static void tick(MinecraftServer server){
         if(unavailable||server.getTickCount()%10!=0)return;
         var level=server.overworld();

@@ -27,3 +27,6 @@ For the UYA outer-façade reconstruction, set `minecampus.requireUyaExterior=tru
 
 
 The UYE development pass enables `minecampus.requireUyeExterior=true`. At source-limit camera 6, the existing diagnostic ray at normalized `(0.9, 0.45)` must hit reconstruction tile `1_000_030_007` behind any foliage. `campus-uye-result.txt` is an additional required PASS file alongside the previous nine. Collision storage advances to v7. The exact native run and roof-preservation check are recorded in `uye-development-validation.json`.
+
+
+The warehouse pass enables `minecampus.requireWarehouseExterior=true`. Source-limit camera 6 checks two formerly blurred foreground rays at `(0.12, 0.60)` and `(0.22, 0.56)`. New camera 12 (`183 65 -231.5 90 3.5`) checks the central east-opening ray. All three must hit tile `1_000_030_008`; `campus-warehouse-result.txt` is the eleventh required PASS file. The route now captures thirteen frames, and collision storage advances to v8. See `warehouse-development-validation.json`.

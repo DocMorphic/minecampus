@@ -5,6 +5,7 @@ uniform sampler2D Sampler2;
 uniform sampler2D Sampler3;
 uniform sampler2D Sampler4;
 uniform sampler2D Sampler5;
+uniform sampler2D Sampler6;
 uniform vec4 ColorModulator;
 uniform vec3 CampusFogColor;
 uniform vec3 CameraPosition;
@@ -95,6 +96,23 @@ void main() {
             vec3 sun=normalize(vec3(-.5,.8,-.3));
             color.rgb*=mix(1.0,(.55+.45*max(dot(n,sun),0.0))/.91,proximity);
         }
+    }
+    if(abs(MaterialDetail-12.0)<.1) {
+        vec3 dx=dFdx(worldPosition),dy=dFdy(worldPosition);
+        vec2 ux=dFdx(texCoord0),uy=dFdy(texCoord0);
+        vec3 n=normalize(cross(dx,dy));
+        if(dot(n,CameraPosition-worldPosition)<0.0)n=-n;
+        float determinant=ux.x*uy.y-ux.y*uy.x;
+        if(abs(determinant)>1e-12&&viewDistance<50.0){
+            vec3 tangent=(dx*uy.y-dy*ux.y)/determinant;
+            vec3 bitangent=(-dx*uy.x+dy*ux.x)/determinant;
+            tangent=normalize(tangent-n*dot(n,tangent));
+            bitangent=normalize(bitangent-n*dot(n,bitangent));
+            vec3 detail=texture(Sampler6,texCoord0).xyz*2.0-1.0;
+            float strength=.45*(1.0-smoothstep(20.0,50.0,viewDistance));
+            n=normalize(n+strength*(tangent*detail.x+bitangent*detail.y));
+        }
+        color.rgb*=.65+.35*max(dot(n,normalize(vec3(-.5,.8,-.3))),0.0);
     }
     if(abs(MaterialDetail-9.0)<.1) {
         vec3 roofN=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));

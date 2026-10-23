@@ -23,6 +23,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private int roofTicks;
     private boolean bankStarted;
     private boolean benchmarkStarted;
+    private boolean warehouseFrontVerified;
     private volatile boolean bankVerified,bankCheckQueued;
     private int bankTicks;
     private int ticks, stage=Boolean.getBoolean("minecampus.inspectOnly")?Integer.getInteger("minecampus.inspectStage",3):0, total, readyTicks;
@@ -30,7 +31,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -43,7 +44,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "205 65 -238 0 0",
         "0 64.25 -216 180 -5",
         "0 68 -238 180 0",
-        "25 65 -125 90 25"
+        "25 65 -125 90 25",
+        "183 65 -231.5 90 3.5"
     };
 
     @Override public void onInitializeClient() {
@@ -200,7 +202,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         return;
                     }
                 }
-                if(!Boolean.getBoolean("minecampus.bankOnly"))Files.writeString(Path.of("campus-client-result.txt"),"PASS: twelve ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa and paving-detail frames captured after full streaming readiness");mc.stop();return;
+                if(!Boolean.getBoolean("minecampus.bankOnly"))Files.writeString(Path.of("campus-client-result.txt"),"PASS: thirteen ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail and warehouse frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
@@ -326,14 +328,15 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 return;
             }
-            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10){
+            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
                 var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
                 double actualFov=((Number)fovMethod.invoke(mc.gameRenderer,camera,1.0f,true)).doubleValue();
                 float tanHalf=(float)Math.tan(Math.toRadians(actualFov)*.5);
                 float[][] pixelsToPick=new float[][]{{.81f,.435f},{.38f,.443f}};
-                if(stage==6)pixelsToPick=new float[][]{{.75f,.46f},{.8f,.5f},{.9f,.45f},{.38f,.38f},{.37f,.43f},{.766f,.55f}};
+                if(stage==6)pixelsToPick=new float[][]{{.75f,.46f},{.8f,.5f},{.9f,.45f},{.38f,.38f},{.37f,.43f},{.766f,.55f},{.12f,.6f},{.22f,.56f}};
+                if(stage==12)pixelsToPick=new float[][]{{.5f,.5f}};
                 if(stage==10)pixelsToPick=new float[][]{{.15f,.55f},{.5f,.55f},{.85f,.55f}};
                 if(stage==9)pixelsToPick=new float[][]{{.78f,.35f},{.84f,.43f},{.96f,.40f},{.265f,.58f},{.51f,.59f},{.65f,.48f},{.745f,.615f},{.1f,.6f},{.18f,.55f},{.35f,.58f},{.58f,.56f},{.7f,.55f},{.82f,.41f}};
                 if(stage==3||stage==5){
@@ -404,6 +407,20 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     }
                     if(!found)throw new AssertionError("Missing UYE foreground diagnostic ray");
                     Files.writeString(Path.of("campus-uye-result.txt"),"PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope");
+                }
+                if(Boolean.getBoolean("minecampus.requireWarehouseExterior")&&(stage==6||stage==12)){
+                    int confirmed=0;
+                    for(var entry:picks){var pick=entry.getAsJsonObject();float u=pick.get("u").getAsFloat();
+                        if(stage==12||Math.abs(u-.12f)<.001||Math.abs(u-.22f)<.001){
+                            if(pick.get("structureBehindVegetation").getAsInt()!=1_000_030_008)throw new AssertionError("Warehouse ray still hits old source geometry at stage="+stage+" u="+u);
+                            confirmed++;
+                        }
+                    }
+                    if(stage==6){if(confirmed!=2)throw new AssertionError("Missing warehouse route rays");warehouseFrontVerified=true;}
+                    else{
+                        if(!warehouseFrontVerified||confirmed!=1)throw new AssertionError("Warehouse route/east view incomplete");
+                        Files.writeString(Path.of("campus-warehouse-result.txt"),"PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction");
+                    }
                 }
                 Files.writeString(Path.of("campus-fragment-picks-"+stage+".json"),picks.toString());
             }

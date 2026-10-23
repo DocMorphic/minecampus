@@ -49,3 +49,10 @@ High Contrast, “TU München Garching - Institute for Advanced Study.jpg” (20
 ### UYA architectural reference
 
 Ernst A. Graf/ESO, [“A view of the Garching research campus”](https://www.eso.org/public/ireland/images/170818035-cc/), published 3 November 2017, [CC BY 4.0 under ESO's usage terms](https://www.eso.org/public/outreach/copyright/). The cropped reference in `docs/screenshots/campus-uya-reference.jpg` is credited beside the image and pinned in `minecraft/exterior/photos/uya-eso-reference.json`. It informs the exterior window rhythm and materials; it is not included as a game texture. The runtime envelope/roof comes from BVV, with original approximate wall, glass and infill materials. Opposite elevations and lower bay divisions are inferred rather than individually photographed.
+
+
+## Warehouse masonry material
+
+The development exterior uses [Poly Haven Brick Wall 001](https://polyhaven.com/a/brick_wall_001), photographed by Dimitrios Savva and processed by Rob Tuytel, under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The 2K diffuse map is warmed by RGB multipliers 1.18/1.20/1.10; the matching OpenGL normal map is retained. The texture repeats at an inferred 1.5 m scale, adapted from the source's stated 3 m span. This approximates masonry appearance and is not a scanned material from the Garching warehouse. Source and converted-resource hashes are pinned in `minecraft/exterior/material-sources.json`.
+
+The warehouse reference crop is Ernst A. Graf/ESO, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), from the [2017 campus aerial](https://www.eso.org/public/ireland/images/170818035-cc/). It is a documented reference rather than a runtime texture.

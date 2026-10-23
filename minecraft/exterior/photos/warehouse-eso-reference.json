@@ -23,5 +23,22 @@
     "2017 aerial reference, partially occluded by trees.",
     "The source-limit game camera sees the opposite sides; this photograph does not establish their openings.",
     "Brick scale, roof-edge dimensions and unobserved elevations need explicit inference or further evidence."
-  ]
+  ],
+  "reconstruction": {
+    "surveyFaces": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "observedOpeningFace": 0,
+    "openingDimensionsMetres": [
+      0.8,
+      0.8
+    ],
+    "openingLocationQualification": "East face, position and dimensions estimated from the aerial.",
+    "unseenElevations": "Masonry repeats on west/south sides; additional doors/windows are unknown and omitted.",
+    "material": "Poly Haven brick_wall_001, CC0; colour and repeat scale adapted, not the actual building material."
+  }
 }

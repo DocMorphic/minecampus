@@ -12,8 +12,8 @@ import org.lwjgl.opengl.EXTTextureFilterAnisotropic;
 
 /** Shared, mipmapped CC0 micro-materials; no service/network dependency at runtime. */
 public final class CampusMaterials {
-    private static final String[] NAMES={"concrete_diff","concrete_normal","grass_diff","grass_normal","ground_surfaces"};
-    private static final int[] prepared={-1,-1,-1,-1,-1};
+    private static final String[] NAMES={"concrete_diff","concrete_normal","grass_diff","grass_normal","ground_surfaces","brick_normal"};
+    private static final int[] prepared={-1,-1,-1,-1,-1,-1};
     private CampusMaterials(){}
     public static void bind(){
         var manager=Minecraft.getInstance().getTextureManager();

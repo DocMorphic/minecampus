@@ -207,3 +207,20 @@ The 29.04 m east face and 15.43 m north face now have a continuous pale fascia, 
 Compare the [previous same-camera view](../../docs/screenshots/campus-uya-west-after.jpg). The right foreground wall is now legible, while the small warehouse on the left remains conspicuously blurred. Twelve native viewpoints and ten gameplay/geometry checks passed. A fixed foreground ray must hit the new UYE tile, preventing a loaded-but-hidden replacement from passing. Collision migration v7 changed 242 proxies during the route while preservation checks passed. All 46 original backed-up world files remain byte-identical. [Exact artifact and native evidence](uye-development-validation.json).
 
 The installed/public preview remains `exterior-0.5.0-dev.1` with UYA; this UYE pass is development work for the next snapshot. Remaining coarse structures, path materials and terrace detail keep the overall quality goal open.
+
+
+## Warehouse masonry and roof edge: `2e5824e6…`
+
+The low warehouse `DEBY_LOD2_52738492` was the large blurred wall on the left of the UYA/UYE route. The BVV footprint and roof are retained. Its five survey wall sections now use a physically scaled masonry material, pale roof edge and an estimated recessed east opening guided by the [ESO reference](photos/warehouse-eso-reference.json). The west/south opening layout is unknown; those sides are approximate continuous masonry. This is not an as-built reconstruction.
+
+![Warehouse replacing the blurred foreground wall](../../docs/screenshots/campus-warehouse-route-after.jpg)
+
+Compare the [previous route capture](../../docs/screenshots/campus-uye-exterior-after.jpg). The material is [Poly Haven Brick Wall 001](https://polyhaven.com/a/brick_wall_001), CC0, by Dimitrios Savva and Rob Tuytel. Colour and repeat scale are adapted to approximate the reference. Its matching normal map uses the surface UV basis and fades with distance; it is not a scan of the actual building.
+
+A thirteenth native viewpoint now checks the east elevation and opening:
+
+![Warehouse east elevation and surrounding unfinished structures](../../docs/screenshots/campus-warehouse-east-after.jpg)
+
+The new view exposes further untreated structures to the north; those remain a quality failure. All thirteen views and eleven native checks passed, including two foreground rays and the east-opening ray hitting the warehouse replacement. Collision migration v8 changed 135 proxies on the route while preservation checks passed. The roof is byte-identical to the preceding artifact, and all 46 original backed-up world files are unchanged. The exporter now omits empty auxiliary wall sections when all faces have been reconstructed. [Exact artifact and validation](warehouse-development-validation.json).
+
+The installed/public preview remains `exterior-0.5.0-dev.1`. This development pass will join the next tested snapshot. Path/road materials, untreated nearby structures and terrace detail keep the goal open.

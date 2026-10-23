@@ -1,0 +1,214 @@
+{
+  "date": "2026-10-23",
+  "status": "Warehouse exterior native-verified; overall realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 211867592,
+    "sha256": "2e5824e69b26e36372a73186c34565a673e7e782912bcf5c0c795d378d90956f",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "4f452a549e5b07f4623f6b1e7252aa278e18d194b5665664302b5163567010f6",
+    "rendererSourceFingerprint": "605b4162e4b6029e",
+    "bundleSha256": "6939a9751e42890e37334c8ba6a0babf90d6fd78c095e4b28926393ad164ba97",
+    "tiles": 86
+  },
+  "geometry": {
+    "renderTiles": 86,
+    "photoFacadeCandidates": 80,
+    "triangles": 1871629,
+    "textureBytes": 258701608,
+    "auxiliaryTriangles": 5236,
+    "auxiliaryTextureBytes": 13530020,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "warehouse": {
+    "building": "DEBY_LOD2_52738492",
+    "reference": "https://www.eso.org/public/ireland/images/170818035-cc/",
+    "faces": [
+      {
+        "surfaceIndex": 0,
+        "lengthMetres": 9.244833537582359,
+        "baseY": 63.975754319985526,
+        "topY": 67.10610593901193,
+        "eastOpening": true
+      },
+      {
+        "surfaceIndex": 1,
+        "lengthMetres": 12.438060814831402,
+        "baseY": 63.975754319985526,
+        "topY": 67.10620970533758,
+        "eastOpening": false
+      },
+      {
+        "surfaceIndex": 2,
+        "lengthMetres": 4.606211580912479,
+        "baseY": 63.97638729628275,
+        "topY": 67.10656055644493,
+        "eastOpening": false
+      },
+      {
+        "surfaceIndex": 3,
+        "lengthMetres": 4.635915453595372,
+        "baseY": 63.976209708375436,
+        "topY": 67.10638729336712,
+        "eastOpening": false
+      },
+      {
+        "surfaceIndex": 4,
+        "lengthMetres": 12.418267102371392,
+        "baseY": 63.976105941879084,
+        "topY": 67.10656055644493,
+        "eastOpening": false
+      }
+    ],
+    "note": "Survey envelope and roof retained. East opening and warm masonry informed by ESO 2017; exact opening dimensions, fascia and unseen elevations inferred. CC0 brick texture is an approximation, not a photograph of this building. No interior."
+  },
+  "roofPreservation": {
+    "byteIdenticalToPreviousArtifact": true,
+    "sha256": "64ccd9f1cabe58a147b684e207c9a8d831c288a9beb62685f6c48539e5217eb0"
+  },
+  "material": {
+    "source": "https://polyhaven.com/a/brick_wall_001",
+    "license": "CC0-1.0",
+    "sourceRepeatMetres": 3,
+    "adaptedRepeatMetres": 1.5,
+    "qualification": "Colour and scale are estimates; this texture is not a scan of the actual warehouse.",
+    "normalMapping": "Matching OpenGL normal texture, with UV-derived tangent basis and near-distance fade."
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: thirteen ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail and warehouse frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction"
+    },
+    "migrationVersion": 8,
+    "changedProxiesAcrossRun": 135,
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "822dfb1aa19665ea558ba94e486cc3bd811fea643936e28f566b924ceda236f9"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "70b474fd31acd40b8f294f43d4392b589f05f718eb27789d771e87c5cf6ea50b"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "8b974be144a03da16ea4c711d9fa1f5e053be2fe16084d5a8ff34763eb88ef41"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "32000bfa1d6c2ef38d963e0d797b5d24e7b4ddd94787b9b2aa1d737a1b9b16d2"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "9a43795295a1d36cb15f6cf35082c97cb8b0dbbd40c396f6d3287fc51780c69e"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "85693e1da5c11dc2cb61a4dc36228599a10178754726526ae312e4cdf5754403"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "588df27f782ab6833ee88033b2569a1838c530f699cc83733690e8ceaf366798"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "cc1a3ac04d06afa8255365e7e9d743d6d8dbe73f9aa3f785b0ab37b40aa78127"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "2c3c5b4f7ccc1159bac3f6bd46cb458c740cbe6a12d99c89071a18c285b9fa4e"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "3ef37f950e34c2cd705384b7e0d617ae07f44907eb335532506e942b1bd50773"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "45cb89b3555460e76e3b2ce3b996472106abe62389b75b6dd78e739923657cda"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "4cb54586b488acba3e1f1d62a868834f326d0667d70066813c35306dd7dc9cd0"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "4e3c93faa930c265f4a194068f4f8aed33f4e414664a6b51b756603918bcff1f"
+      }
+    ],
+    "eastOpeningRay": {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.5,
+      "v": 0.5,
+      "fov": 76.99999332427979,
+      "tile": 1000030008,
+      "x": 169.269606590271,
+      "y": 65.74963176250458,
+      "z": -231.5,
+      "block": "earthcraft:map_wood",
+      "blockPosition": "169, 65, -232",
+      "structureBehindVegetation": 1000030008,
+      "structureDistance": 14.256984
+    },
+    "routeRays": [
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.12,
+        "v": 0.6,
+        "fov": 76.99999332427979,
+        "tile": 1000030008,
+        "x": 159.147723197937,
+        "y": 65.24425768852234,
+        "z": -228.79390048980713,
+        "block": "earthcraft:map_brick",
+        "blockPosition": "158, 65, -229",
+        "structureBehindVegetation": 1000030008,
+        "structureDistance": 12.769196
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.22,
+        "v": 0.56,
+        "fov": 76.99999332427979,
+        "tile": 1000030008,
+        "x": 161.66273021697998,
+        "y": 65.55449163913727,
+        "z": -228.33977222442627,
+        "block": "earthcraft:map_brick",
+        "blockPosition": "161, 65, -229",
+        "structureBehindVegetation": 1000030008,
+        "structureDistance": 14.278775
+      }
+    ]
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "2159712d8626341b1701242e24a5a929a72808f3fb69d43b46ce604ef725777e",
+    "routeCamera": "150 65 -220 -90 0",
+    "eastCamera": "183 65 -231.5 90 3.5",
+    "beforeImage": "../../docs/screenshots/campus-uye-exterior-after.jpg",
+    "afterImage": "../../docs/screenshots/campus-warehouse-route-after.jpg"
+  },
+  "remaining": [
+    "The warehouse west/south opening layout is unknown; those elevations are approximate masonry.",
+    "The new east-facing view exposes untreated coarse structures farther north.",
+    "Road/path materials, terrace detail and wider campus coverage remain unfinished."
+  ],
+  "installedPreview": "exterior-0.5.0-dev.1 (b0ecb5ad); this development pass is not installed"
+}

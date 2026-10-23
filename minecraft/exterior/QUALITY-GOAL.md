@@ -99,3 +99,10 @@ The exact UYA-tested artifact is now installed in **Minecampus — Exterior Prev
 Two visible UYE elevations now use a pale roof fascia and recessed framed glazing on the survey envelope. The exact model passed twelve native viewpoints and ten checks, including a ray that verifies replacement of the previous foreground fragment. The original save remains unchanged. West/south elevations retain photography, and exact framing remains inferred. [UYE evidence](uye-development-validation.json).
 
 The warehouse on the opposite side of the same route still has poor photographic walls. Path surfaces also remain inconsistent: the current mask uses closed polygons, while the OSM snapshot contains many linear paths with useful material tags. Those structures and path coverage are next; the goal remains active. The installed 0.5 preview is unchanged until the next tested snapshot.
+
+
+## Warehouse route and next ground coverage
+
+The blurred warehouse wall is replaced with survey-aligned masonry, a pale roof edge and an estimated east opening. A new close-up accompanies the existing route camera. Thirteen native views and eleven checks passed; the original save remains unchanged. The close-up reveals additional untreated structures farther north, and hidden warehouse openings remain unknown. [Warehouse evidence](warehouse-development-validation.json).
+
+The next broad improvement is road/path material coverage. The current OSM XML contains nineteen eligible asphalt/paving ways with explicit widths, totaling 1,343.8 m within the campus. Their buffered candidate surfaces cover 7,179.14 m². An aerial overlay follows the main roads and intersects only 15.85 m² of mapped lawn, with no mapped water/court exclusions touched. These are derived candidates, not rendered surfaces or measured curbs. Check building intersections and edge transitions, then add close-range material coverage and verify the walking routes. The goal remains active.
