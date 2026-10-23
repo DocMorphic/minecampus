@@ -1,0 +1,380 @@
+{
+  "date": "2026-10-23",
+  "status": "GRS north-wing facade checkpoint; overall campus-quality goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 234345911,
+    "sha256": "284c05a0404e807403d418528b283e58eab0d2b701d1e50b456fde83abe76b24",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "738e0725d01a3d8cd82955bab3f6c853ae6b198e01e02fb238bf524c0f0ff234",
+    "rendererSourceFingerprint": "a4a06dcff36b025e",
+    "bundleSha256": "15462dc13ad54104c1b5a9f53e3a038bbd5de03cb8ad19fef2e2b62e921bfd34",
+    "tiles": 90
+  },
+  "geometry": {
+    "renderTiles": 90,
+    "photoFacadeCandidates": 80,
+    "triangles": 1898831,
+    "textureBytes": 259432268,
+    "auxiliaryTriangles": 5176,
+    "auxiliaryTextureBytes": 13530016,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "grsExterior": {
+    "building": "DEBY_LOD2_5284468",
+    "faces": [
+      {
+        "surveyFace": 0,
+        "lengthMetres": 5.330543735288793,
+        "bays": 4,
+        "baySpacingMetres": 1.3326359338221982,
+        "windowBandsY": [
+          [
+            64.96929049846533,
+            67.56929049846532
+          ],
+          [
+            68.66929049846533,
+            71.16929049846533
+          ]
+        ]
+      },
+      {
+        "surveyFace": 1,
+        "lengthMetres": 47.518291941374436,
+        "bays": 38,
+        "baySpacingMetres": 1.2504813668782746,
+        "windowBandsY": [
+          [
+            64.96929049846533,
+            67.56929049846532
+          ],
+          [
+            68.66929049846533,
+            71.16929049846533
+          ]
+        ]
+      },
+      {
+        "surveyFace": 2,
+        "lengthMetres": 12.42100459494537,
+        "bays": 10,
+        "baySpacingMetres": 1.2421004594945368,
+        "windowBandsY": [
+          [
+            64.96929049846533,
+            67.56929049846532
+          ],
+          [
+            68.66929049846533,
+            71.16929049846533
+          ]
+        ]
+      },
+      {
+        "surveyFace": 3,
+        "lengthMetres": 47.516009092813924,
+        "bays": 38,
+        "baySpacingMetres": 1.250421291916156,
+        "windowBandsY": [
+          [
+            64.96929049846533,
+            67.56929049846532
+          ],
+          [
+            68.66929049846533,
+            71.16929049846533
+          ]
+        ]
+      },
+      {
+        "surveyFace": 5,
+        "lengthMetres": 5.330533213221968,
+        "bays": 4,
+        "baySpacingMetres": 1.332633303305492,
+        "windowBandsY": [
+          [
+            64.96929049846533,
+            67.56929049846532
+          ],
+          [
+            68.66929049846533,
+            71.16929049846533
+          ]
+        ]
+      }
+    ],
+    "source": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching",
+    "note": "Survey envelope and roof preserved. Historical photographic facade rhythm; dimensions, colours and less-visible elevation details inferred. Bridge junction retained; no interiors."
+  },
+  "reference": {
+    "building": "DEBY_LOD2_5284468",
+    "identity": "GRS north office/laboratory wing, Boltzmannstra\u00dfe 14, Garching",
+    "identitySources": [
+      "https://www.grs.de/de/ueber-uns/standorte",
+      "https://www.openstreetmap.org/way/172828677"
+    ],
+    "architectReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching",
+    "architect": "Detlef Schreiber Architektur und Stadtplanung GmbH",
+    "referencePeriod": "1986\u20131989 project; historical photographs, not a current measured facade survey",
+    "referenceUse": "Visual reference only. Architect photographs and drawings are not embedded or redistributed.",
+    "observations": [
+      "Two occupied levels with continuous glazing, pale horizontal fascia/spandrels and slender dark frames.",
+      "Upper-level projecting vertical members and diagonal braces; lower level has metal curtain-wall framing.",
+      "The long wing joins an octagonal stair tower through a narrow bridge at its east end; matching separate survey envelopes establish orientation."
+    ],
+    "geometry": "BVV LoD2 envelope: approximately 47.52 by 12.42 metres, roof retained unchanged.",
+    "inferences": [
+      "Facade bay spacing, frame sections, glazing heights, brace thickness and recess are estimated from photographs within the surveyed envelope.",
+      "Pale grey finish and blue-grey opaque glazing are approximate; historical reference photographs are monochrome.",
+      "The observed modular rhythm is continued on less-visible elevations. The east bridge junction is retained as an opening.",
+      "No interiors, current facade survey, or exact as-built claim."
+    ]
+  },
+  "preservation": {
+    "unchangedExistingTiles": 89,
+    "unchangedOtherFacadePlans": 79,
+    "surveyRoofByteIdentical": true,
+    "terrainGroundAndSurfaceGuidesUnchanged": true,
+    "newGeometry": {
+      "building": "DEBY_LOD2_5284468",
+      "faces": [
+        {
+          "surveyFace": 0,
+          "lengthMetres": 5.330543735288793,
+          "bays": 4,
+          "baySpacingMetres": 1.3326359338221982,
+          "windowBandsY": [
+            [
+              64.96929049846533,
+              67.56929049846532
+            ],
+            [
+              68.66929049846533,
+              71.16929049846533
+            ]
+          ]
+        },
+        {
+          "surveyFace": 1,
+          "lengthMetres": 47.518291941374436,
+          "bays": 38,
+          "baySpacingMetres": 1.2504813668782746,
+          "windowBandsY": [
+            [
+              64.96929049846533,
+              67.56929049846532
+            ],
+            [
+              68.66929049846533,
+              71.16929049846533
+            ]
+          ]
+        },
+        {
+          "surveyFace": 2,
+          "lengthMetres": 12.42100459494537,
+          "bays": 10,
+          "baySpacingMetres": 1.2421004594945368,
+          "windowBandsY": [
+            [
+              64.96929049846533,
+              67.56929049846532
+            ],
+            [
+              68.66929049846533,
+              71.16929049846533
+            ]
+          ]
+        },
+        {
+          "surveyFace": 3,
+          "lengthMetres": 47.516009092813924,
+          "bays": 38,
+          "baySpacingMetres": 1.250421291916156,
+          "windowBandsY": [
+            [
+              64.96929049846533,
+              67.56929049846532
+            ],
+            [
+              68.66929049846533,
+              71.16929049846533
+            ]
+          ]
+        },
+        {
+          "surveyFace": 5,
+          "lengthMetres": 5.330533213221968,
+          "bays": 4,
+          "baySpacingMetres": 1.332633303305492,
+          "windowBandsY": [
+            [
+              64.96929049846533,
+              67.56929049846532
+            ],
+            [
+              68.66929049846533,
+              71.16929049846533
+            ]
+          ]
+        }
+      ],
+      "source": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching",
+      "note": "Survey envelope and roof preserved. Historical photographic facade rhythm; dimensions, colours and less-visible elevation details inferred. Bridge junction retained; no interiors."
+    }
+  },
+  "serviceChecks": {
+    "passed": 26
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: twenty-three ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail, Telefonzentrale and COS frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "telefonzentrale": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "cos": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "cos-ground": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "texture": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted",
+      "cos-site": "PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer",
+      "cos-bench": "PASS: native gravity landed player on the bench proxy at Y=64.0; visible seat top Y=63.89",
+      "cos-landscape": "PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB 0.35874509803921567,0.3236078431372549,0.17615686274509804); exposed curb ray reaches its 12cm edging",
+      "cos-apron": "PASS: native gravity landed on the smooth apron proxy at Y=63.0 (mesh Y=63.46271), replacing the previous Y=64 proxy",
+      "grs-north": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "grs-west": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness"
+    },
+    "migrationVersion": 14,
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "c333fd133659cb85fc6ebbff32beb3b440fe2792c061f51055e6d0aea6220895"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "d71ce443da54a8a9660361e908a5215c9b00a78965890e18e03b634f05b66d94"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "402daa0756c78bea0c843a744652f25e1c8421ab87b5027e398bafcb6e584b61"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "941fa1491172f09b295471bf19babe9ac3d81a58a63ad0193da94dace6e78c75"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "5acf0c019fa57aa9e59b05d66a9bad0c69a252c59702b713e14da7023ccc703f"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "a722b40271529a259ee6ef05edf418efda546a9ca1eda2e71e235a103e2cd2a1"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "1302488fdc42dd9fc1e82ea9a79fbb308aab9b59db6d1245feacc06b028e1c19"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "dca198c304744eb07e454ae8ae1a697f7d968ba96d8bcbdc3fa35f0889c395dd"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "095e38cbd1db5e65c2906d05fcf86d29e3e76873b113f7e400ba73bedef30aff"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "680bff6bb390eaa65fe99371bea6e561d51e9532928f550e7b9a4ef7b83b9524"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "0de737566927a7324b91f74a1604dc770f72473483dfb991012710cc45da14f9"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "8b62203491f1fe181aa426fd1fcf1330506c8b14d02f55f85a1070aa56c8bde2"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "388e404c5973c7808dabb89c87c02edf0b12a004b4c26b31029de7f68ff5485e"
+      },
+      {
+        "file": "campus-road-detail.png",
+        "sha256": "ad646969884508e62931209b68fde2eb355633cf382a80dbff75c0c0482df9ea"
+      },
+      {
+        "file": "campus-telefonzentrale-west.png",
+        "sha256": "71cdcfaf4152bbbb9898281f3e75bbc78387521743776860671031346f941f3f"
+      },
+      {
+        "file": "campus-cos-southwest.png",
+        "sha256": "b36171d5639f21f45d019c0a26ac69528446e5808a129d940f1126ab97f176a9"
+      },
+      {
+        "file": "campus-cos-south.png",
+        "sha256": "3068da9ac7dac05ad081cf88dc0afcaffc7277ea1e11597b8e4537eedaffff5b"
+      },
+      {
+        "file": "campus-cos-aerial.png",
+        "sha256": "526967885474c98145f8153255b03c90ed6e92e1a3541f292365c11b161c2c33"
+      },
+      {
+        "file": "campus-cos-forecourt.png",
+        "sha256": "bc35a2c1481ea81a379e381ecf5204d186be7919355dd5e5cdd85a2668a661cc"
+      },
+      {
+        "file": "campus-cos-planting.png",
+        "sha256": "7d832ebf5b1c527885026954ee17fd21c9636c03335abe1b8829fa03f1088576"
+      },
+      {
+        "file": "campus-cos-north.png",
+        "sha256": "b926024d7fcd3b04f3368e322a07c2c7cc35c2f1153997f7ef26d86f2faf216c"
+      },
+      {
+        "file": "campus-grs-north.png",
+        "sha256": "8c7f18300eef163894fe2ad9f0250e4014bd3e0b37e09e284cc534ef0356f7b4"
+      },
+      {
+        "file": "campus-grs-west.png",
+        "sha256": "dcc16283cfc46988363969c01eb52f2fcbb8967b7c8050ec5dcb55fe4fccfea0"
+      }
+    ],
+    "northCamera": "214 64 -342 -15 -10",
+    "westCamera": "191 63 -314 -90 -20"
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "eadcc39e997b167b209ddd91e1ecac2e90a743f0c612736600744c911da2ba09",
+    "sameCamera": true,
+    "camera": "178 64 -337 0 12",
+    "beforeImage": "../../docs/screenshots/campus-grs-before.jpg",
+    "afterImage": "../../docs/screenshots/campus-grs-after.jpg"
+  },
+  "remaining": [
+    "Colours, frame dimensions and less-visible elevations are estimated from historical references.",
+    "The adjacent GRS tower, other wings and Siemensbau retain coarse photographic surfaces.",
+    "Ground margins and parking retain some old construction imagery; campus realism remains unfinished."
+  ],
+  "installedPreview": {
+    "artifactSha256": "284c05a0404e807403d418528b283e58eab0d2b701d1e50b456fde83abe76b24",
+    "saveFilesVerified": 121,
+    "savesAndSettingsUnchanged": true,
+    "previousModBackedUp": true,
+    "launcherProfile": "Minecampus \u2014 Exterior Preview 0.5"
+  }
+}

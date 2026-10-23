@@ -344,3 +344,24 @@ The first close capture exposed an uneven radial grade under the curb. A bounded
 Artifact `eadcc39e997b167b209ddd91e1ecac2e90a743f0c612736600744c911da2ba09` passed a full 21-view route run, with nineteen native checks, 26 service tests, five terrain tests and 25 material controls. The native bed test checks a ground hit, the packaged soil mask and brown rendered pixels; a second ray reaches the low edging. Gravity lands on the apron at proxy Y=63 where the previous build used Y=64. All 360,000 source samples are checked against DGM plus the documented reconstruction, with identical shared tile edges. Twelve texture samplers have usable mip levels. [Validation](cos-landscape-development-validation.json).
 
 The playable checkpoint is `exterior-0.5.0-dev.5`. Coarse neighbouring facades, pale west-side margins, eastern parking, exact planting/furniture design and old aerial imagery remain unfinished. The overall quality goal remains open.
+
+
+## GRS north wing
+
+The distorted building east of COS in the north-lawn view is the GRS north office/laboratory wing at Boltzmannstraße 14, BVV `DEBY_LOD2_5284468`. It is distinct from Siemensbau to the south. The [architect's historical project photographs and plans](https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching) identify the long two-storey wing and its bridge to the octagonal stair tower. The [GRS location page](https://www.grs.de/de/ueber-uns/standorte) and mapped footprint establish the site. [Reference qualifications](photos/grs-reference.json).
+
+Its approximately 47.52 × 12.42 m surveyed envelope now carries recessed glazing, slender frames, pale fascia/spandrels and projecting upper braces. Bay spacing, colours and exact sections are estimated; the reference photographs are monochrome and historical. The observed rhythm continues on less-visible elevations. Reference photographs/drawings are not embedded. The surveyed roof is byte-identical, the east bridge junction remains untouched, and no interiors are added.
+
+Same camera before and after:
+
+![Before GRS reconstruction](../../docs/screenshots/campus-grs-before.jpg)
+
+![After GRS reconstruction](../../docs/screenshots/campus-grs-after.jpg)
+
+![GRS north facade](../../docs/screenshots/campus-grs-north.jpg)
+
+![GRS west facade](../../docs/screenshots/campus-grs-west.jpg)
+
+Artifact `284c05a0404e807403d418528b283e58eab0d2b701d1e50b456fde83abe76b24` passed a full 23-view native route and twenty-one checks, including three rays on each new facade view. All 26 service tests pass. All 89 existing render tiles and the other 79 facade plans remain unchanged; collision migration advances to v14 while preserving the native player-edit fixture. Original save files remain byte-identical to their backup. [Validation](grs-development-validation.json).
+
+Development snapshot `exterior-0.5.0-dev.6` remains unfinished: adjacent GRS wings/tower and Siemensbau retain coarse imagery; ground margins and parking need further work, and glazing uses an approximate sky/ground reflection rather than reflecting nearby buildings. The full campus-quality goal remains active.

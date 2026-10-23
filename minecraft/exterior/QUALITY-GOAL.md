@@ -140,3 +140,10 @@ The corrected forecourt view is outside Siemensbau's surveyed footprint; the exp
 Dev.5 replaces a bounded portion of the old construction imagery with inferred forecourt paving, a soil bed and north lawn. Low bed edging follows a smooth apron grade anchored to the facade and DGM driveway. The close visual review caught and corrected the previous radial grading hump; native gravity distinguishes the corrected ground proxy from the old one. Twenty-one route captures, nineteen native checks, 26 service tests and five terrain tests pass. [Evidence](cos-landscape-development-validation.json).
 
 The goal remains active. The west-side margins and eastern parking still need believable surfaces; the broader campus needs consistent curbs, ground detail and better coarse facades. Reconstructed planting and facade details are approximate. Aerial ground retains older photography. Continue from these visible limitations rather than equating a tested checkpoint with completion.
+
+
+## GRS north-wing facade
+
+Dev.6 replaces the distorted long GRS wing beside COS with a survey-aligned facade informed by the architect's photographs. Recessed glazing, frame divisions, fascia and braces establish the building's characteristic structure. The roof, all 89 prior render tiles and the other 79 facade plans remain unchanged. Twenty-three native route views and twenty-one checks verify this package. [Evidence](grs-development-validation.json).
+
+The goal remains active. The neighbouring GRS wings/tower and Siemensbau still need exterior treatment. Approximate glazing reflections, pale ground margins, older aerial imagery and some repetitive vegetation limit overall realism. Current reconstruction dimensions and colours remain explicit estimates.

@@ -57,3 +57,10 @@ Camera 20 (`178 64 -337 0 12`) supplies the north-lawn view. The full route incl
 Five terrain tests cover source sampling, bounded radial grading and the smooth apron with neighbour exclusions. The full terrain verifier independently reconstructs both grading functions, checks all 360,000 samples and shared edges, and checks the native apron probe. Ground-material validation includes the soil channel (`1 - alpha`) and existing mapped-area exclusions. All twelve native texture samplers must have usable mip levels.
 
 The apron probe uses packaged voxel output rather than rounding a single terrain-centre height. At `(161.5,-276.5)`, a sloping triangle crosses the half-height threshold within the one-metre cell, so both versions correctly produce a Y=64 top. That exploratory assertion was invalid. Independent before/after voxelization establishes `(163.5,-276.5)` as a stable Y=64 → Y=63 control, which native gravity verifies. The renderer's block-sized collision remains an approximation of fractional mesh heights.
+
+
+## GRS north wing
+
+The GRS pass adds north and west facade cameras 21–22 (`214 64 -342 -15 -10` and `191 63 -314 -90 -20`). With `minecampus.requireGrsExterior=true`, three projected world-space rays on each elevation must hit tile `1_000_030_012`. Require `campus-grs-north-result.txt` and `campus-grs-west-result.txt` alongside the previous nineteen results. The full route has twenty-three captures. Existing camera 20 provides a direct comparison with the distorted building beside COS. Collision migration advances to v14.
+
+Binary preservation checks compare all 89 previous render tiles and the other 79 photographic-facade plans byte-for-byte or structurally. The new component embeds the byte-identical surveyed roof, and the east bridge junction remains outside the reconstructed facade strips. Historical architect photographs establish the facade character; exact frame sizes, colours and less-visible elevations remain estimates.

@@ -1,0 +1,21 @@
+{
+  "building": "DEBY_LOD2_5284468",
+  "identity": "GRS north office/laboratory wing, Boltzmannstraße 14, Garching",
+  "identitySources": ["https://www.grs.de/de/ueber-uns/standorte", "https://www.openstreetmap.org/way/172828677"],
+  "architectReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching",
+  "architect": "Detlef Schreiber Architektur und Stadtplanung GmbH",
+  "referencePeriod": "1986–1989 project; historical photographs, not a current measured facade survey",
+  "referenceUse": "Visual reference only. Architect photographs and drawings are not embedded or redistributed.",
+  "observations": [
+    "Two occupied levels with continuous glazing, pale horizontal fascia/spandrels and slender dark frames.",
+    "Upper-level projecting vertical members and diagonal braces; lower level has metal curtain-wall framing.",
+    "The long wing joins an octagonal stair tower through a narrow bridge at its east end; matching separate survey envelopes establish orientation."
+  ],
+  "geometry": "BVV LoD2 envelope: approximately 47.52 by 12.42 metres, roof retained unchanged.",
+  "inferences": [
+    "Facade bay spacing, frame sections, glazing heights, brace thickness and recess are estimated from photographs within the surveyed envelope.",
+    "Pale grey finish and blue-grey opaque glazing are approximate; historical reference photographs are monochrome.",
+    "The observed modular rhythm is continued on less-visible elevations. The east bridge junction is retained as an opening.",
+    "No interiors, current facade survey, or exact as-built claim."
+  ]
+}
