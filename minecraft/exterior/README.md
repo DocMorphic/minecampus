@@ -15,6 +15,8 @@ The Galileo window pattern is reconstructed from a CC0 photograph and repeated a
 
 ## Play
 
+For the accumulated development improvements, use [Exterior Preview 0.5](PREVIEW-0.5.md). Its installer creates a separate launcher installation and verified copy of your existing saves. The standard installation instructions below still use 0.4.0.
+
 Run `python3 scripts/minecraft.py install`, then launch **Minecampus — TUM Garching** from the official Minecraft Launcher. An existing provider configuration is retained. A fresh installation still needs the masked provider setup described in the [native guide](../README.md).
 
 Create a **TUM Garching — Minecampus** world for an undamaged campus. Existing saves retain their player builds and recorded excavation/TNT damage. The deleted Mensa interior preview is no longer included.

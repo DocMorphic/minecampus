@@ -26,6 +26,8 @@ The fixed campus origin is **48.265° N, 11.671° E**. You receive real Minecraf
 
 ## Walking-quality preview — goal unfinished
 
+The newer [Exterior Preview 0.5](minecraft/exterior/PREVIEW-0.5.md) is available as a separate installation. It adds IAS and UYA exterior detail, the former Mensa terrace frontage, photographic survey walls, finer terrain and ground materials. The normal installer below remains on 0.4.0; the preview installer copies your existing world into its own game directory.
+
 Version 0.4.0 is a playable preview toward a better walking-height campus. Its 600 × 600 m survey layer combines DGM1 terrain, DOP20 aerial imagery, inferred tree/canopy instances, and six detailed building components covering Galileo, the main MW structures and the colourful Graduate School. The promenade's three grass-roof structures remain. Elevated flight retains the photographic mesh.
 
 The packaged preview passed native Minecraft captures, terrain TNT excavation, gravity/landing and preservation checks for player blocks and recorded damage. **Those checks do not establish a finished photorealistic campus.** Unreconstructed façades and vegetation attached to their protected photo meshes still show substantial source artifacts. Window, roof and vegetation details are approximations. [Quality goal and remaining work](minecraft/exterior/QUALITY-GOAL.md) · [Actual captures and validation](minecraft/exterior/VALIDATION.md).
