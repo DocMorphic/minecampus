@@ -74,3 +74,10 @@ This improves surface readability without changing terrain geometry or player co
 The development mesh now preserves all 360,000 DGM1 interior samples with continuous tile boundaries. Bilinear sampling uses pixel centres and crosses the merged source-file seam. This removes the previous two-metre terrain simplification and corrects the half-pixel sampling offset. The Mensa bank's diagonal edge is visibly cleaner. Collision migration v5 uses the finer mesh while retaining ordinary player blocks and the edit journal.
 
 Source-encoding accuracy does not establish the accuracy or currency of the survey. The ground remains a heightfield, Minecraft collision remains a block grid, and source-filtering guides remain two-metre samples. Steep-face material stretching, unmapped paths, terrace detail and untreated façades still prevent completion of the realism goal. [Terrain evidence](terrain-development-validation.json); installed/public release remains 0.4.0.
+
+
+## Steep-ground material correction
+
+Three-axis ground material projection removes the prominent vertical stretch on the Mensa bank. The exact development package passed twelve native viewpoints and nine gameplay/geometry checks. A loaded-scene shader comparison did not demonstrate a frame-rate regression, but system load and changing daylight limit that measurement. The original save remains unchanged. [Material evidence](slope-material-development-validation.json).
+
+The next substantial gap is the coarse UYA façade visible in the source-limit and north-facing cameras. A pinned ESO reference identifies its two roof courts, pale upper walls, individual windows and contrasting lower panels. Fit those features to the BVV envelope while distinguishing measured geometry from inferred divisions. The goal remains open.

@@ -22,6 +22,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile boolean roofVerified;
     private int roofTicks;
     private boolean bankStarted;
+    private boolean benchmarkStarted;
     private volatile boolean bankVerified,bankCheckQueued;
     private int bankTicks;
     private int ticks, stage=Boolean.getBoolean("minecampus.inspectOnly")?Integer.getInteger("minecampus.inspectStage",3):0, total, readyTicks;
@@ -212,6 +213,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         var source=player.createCommandSourceStack().withPermission(4);
                         server.getCommands().performPrefixedCommand(source, "execute in minecraft:overworld run tp @s " + camera);
                         server.getCommands().performPrefixedCommand(source, "time set noon");
+                        server.getCommands().performPrefixedCommand(source, "gamerule doDaylightCycle false");
                         server.getCommands().performPrefixedCommand(source, "gamerule doMobSpawning false");
                         server.getCommands().performPrefixedCommand(source, "gamerule doMobLoot false");
                         server.getCommands().performPrefixedCommand(source, "kill @e[type=!minecraft:player]");
@@ -274,6 +276,13 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if(((java.util.List<?>)df.get(renderer)).size()!=want.size())ready=false;
             readyTicks=ready?readyTicks+1:0;
             if(ticks<200 || readyTicks<40)return;
+            if(Boolean.getBoolean("minecampus.materialBenchmark")){
+                // Streaming and the controlled comparison each get their own
+                // bounded interval; slow provider loading must not consume
+                // the last comparison phase's time budget.
+                if(!benchmarkStarted){benchmarkStarted=true;total=0;}
+                CampusMaterialBenchmark.tick(mc);return;
+            }
             if(stage==10&&Boolean.getBoolean("minecampus.requireMensaFront")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_030_005))throw new AssertionError("Former Mensa structural frontage was not displayed");
             if(stage==9&&Boolean.getBoolean("minecampus.requireVisibleFacade")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_050_038))throw new AssertionError("Visible former Mensa facade was not accepted/displayed");
             if(stage==6&&Boolean.getBoolean("minecampus.requirePhotographicFacade")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_050_000))throw new AssertionError("Photographic facade was not accepted/displayed");

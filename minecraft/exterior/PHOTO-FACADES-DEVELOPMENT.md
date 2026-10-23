@@ -156,3 +156,16 @@ At the same Mensa approach camera:
 Compare the [previous two-metre capture](../../docs/screenshots/campus-mensa-ground-after.jpg). The diagonal bank edge is cleaner. Steep-face texture stretch, approximate materials and untreated façades remain visible; this is not final campus-quality evidence.
 
 The native bank probe originally assumed a landing at Y=63 and failed at Y=62. Independent triangle interpolation established the actual rendered surface at Y=62.378458, so the probe now checks that measured height with the existing half-block tolerance. Collision migration advances to v5 to realign previous proxy blocks, retaining the existing protections for ordinary blocks and recorded edits. Exact artifact hashes, source checks, native results and original-save verification are recorded in [terrain-development-validation.json](terrain-development-validation.json). The installed/public preview remains 0.4.0 and the overall goal remains open.
+
+
+## Slope-correct material projection: `ed108ef3…`
+
+The finer Mensa bank still stretched its ground material vertically because every microtexture used a downward X/Z projection. Ground materials now blend three world-space projections according to the surveyed surface normal. Near-vertical mapped lawns also reduce stretched aerial shading, retaining material grain and geometric lighting. Ordinary flat ground retains its top projection; negligible axes and distant detail are skipped to avoid unnecessary texture sampling.
+
+![Mensa bank after correcting stretched material projection](../../docs/screenshots/campus-mensa-slope-material-after.jpg)
+
+Compare the [previous full-resolution terrain pass](../../docs/screenshots/campus-mensa-terrain-after.jpg). All twelve native route captures and nine gameplay/geometry checks passed, and all 46 backed-up original save files remain unchanged. The mesh and service bundle are identical to the previous terrain-validated build.
+
+Separate runs reported highly variable frame rates, so a development-only resource-pack comparison switched baseline/candidate/baseline in one loaded scene. Its median readings were 41.5, 42 and 35 FPS. This does not demonstrate a slowdown from the candidate, but concurrent system load and advancing daylight limit the comparison; it is not a universal performance guarantee. The first comparison exhausted its timeout after slow streaming, so the harness now gives loading and measurement separate bounded intervals. Future runs also freeze daylight.
+
+[Exact artifact, captures, checks and comparison data](slope-material-development-validation.json). Untreated façades, unmapped paths and terrace detail remain unfinished. The next structural reference is [UYA](RESEARCH.md#uya-exterior-reference-for-the-next-façade-pass). The installed/public preview is still 0.4.0; the overall goal remains open.
