@@ -55,6 +55,8 @@ def build(ctx):
   rings=[{'ring':list(p.exterior.coords),'holes':[list(r.coords)for r in p.interiors]}for p in ([shape]if shape.geom_type=='Polygon'else shape.geoms)if p.geom_type=='Polygon']
   from exterior_mensa_front import build as build_mensa_front
   build_mensa_front(ctx,bid,walls)
+  from exterior_uya import build as build_uya
+  build_uya(ctx,bid,walls)
   collisionName=bid+'-photo-collision.ect'
   vertices=[[*wall['vertices'][i],0,0]for wall in walls if not wall.get('reconstructed') for i in wall['indices']]
   (out/collisionName).write_bytes(encode([(vertices,Image.new('RGBA',(1,1),(150,150,145,255))),(roof,photo.crop((*low,*high)))]))

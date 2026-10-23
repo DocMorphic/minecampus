@@ -286,6 +286,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if(stage==10&&Boolean.getBoolean("minecampus.requireMensaFront")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_030_005))throw new AssertionError("Former Mensa structural frontage was not displayed");
             if(stage==9&&Boolean.getBoolean("minecampus.requireVisibleFacade")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_050_038))throw new AssertionError("Visible former Mensa facade was not accepted/displayed");
             if(stage==6&&Boolean.getBoolean("minecampus.requirePhotographicFacade")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_050_000))throw new AssertionError("Photographic facade was not accepted/displayed");
+            if((stage==6||stage==8)&&Boolean.getBoolean("minecampus.requireUyaExterior")&&!((java.util.List<?>)df.get(renderer)).contains(1_000_030_006))throw new AssertionError("UYA exterior reconstruction was not displayed");
             if(stage==10&&Boolean.getBoolean("minecampus.requireMensaFront")&&!Boolean.getBoolean("minecampus.inspectOnly")&&!frontageVerified){
                 if(!frontageQueued){frontageQueued=true;mc.getSingleplayerServer().execute(()->{
                     try{

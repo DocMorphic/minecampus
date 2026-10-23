@@ -44,3 +44,8 @@ Input URLs and SHA-256 hashes are pinned in `minecraft/exterior/sources.json`. R
 ### IAS exterior development
 
 High Contrast, “TU München Garching - Institute for Advanced Study.jpg” (2013), [CC BY 3.0 DE](https://creativecommons.org/licenses/by/3.0/de/), [source](https://commons.wikimedia.org/wiki/File:TU_M%C3%BCnchen_Garching_-_Institute_for_Advanced_Study.jpg). Metal and glazing crops are resized and applied to reconstructed geometry. The image and checksum metadata are in `minecraft/exterior/photos/ias.*`. The IAS building envelope comes from BVV LoD2; its atrium, panel repetition, folded screens and entrance terrace are reference-informed approximations. [Fritsch + Tschaidse's project](https://fritsch-tschaidse.de/en/projects/tu-munich-institute-for-advanced-study.html) supplies architectural reference only; its photographs are not redistributed.
+
+
+### UYA architectural reference
+
+Ernst A. Graf/ESO, [“A view of the Garching research campus”](https://www.eso.org/public/ireland/images/170818035-cc/), published 3 November 2017, [CC BY 4.0 under ESO's usage terms](https://www.eso.org/public/outreach/copyright/). The cropped reference in `docs/screenshots/campus-uya-reference.jpg` is credited beside the image and pinned in `minecraft/exterior/photos/uya-eso-reference.json`. It informs the exterior window rhythm and materials; it is not included as a game texture. The runtime envelope/roof comes from BVV, with original approximate wall, glass and infill materials. Opposite elevations and lower bay divisions are inferred rather than individually photographed.

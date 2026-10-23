@@ -1,0 +1,173 @@
+{
+  "date": "2026-10-23",
+  "status": "UYA outer facade reconstruction verified; overall realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 187332221,
+    "sha256": "b0ecb5ad0479312fc734d56b8892ca2c917f936ee014c4c65021badc03f54212",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "25262056653685f29faab58c53bafaec15aba6298acb4dc0890476a89265267c",
+    "rendererSourceFingerprint": "4d75e9c736405fa3",
+    "bundleSha256": "cb69ff9586a363e5baf6296b67362c4f2b800db6be162a80b9e3cd351c9c09c0",
+    "tiles": 84
+  },
+  "geometry": {
+    "renderTiles": 84,
+    "photoFacadeCandidates": 80,
+    "triangles": 1870641,
+    "textureBytes": 241858836,
+    "auxiliaryTriangles": 5250,
+    "auxiliaryTextureBytes": 13530024,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "uya": {
+    "building": "DEBY_LOD2_5284443",
+    "reference": "https://www.eso.org/public/ireland/images/170818035-cc/",
+    "faces": [
+      {
+        "surfaceIndex": 3,
+        "lengthMetres": 31.996854343481115,
+        "upperWindows": 11,
+        "lowerBays": 4,
+        "baseY": 63.98387639610155,
+        "upperFloorY": 67.83387639610154,
+        "windowBottomY": 69.00387639610155,
+        "windowTopY": 71.18387639610155,
+        "recessMetres": 0.18
+      },
+      {
+        "surfaceIndex": 6,
+        "lengthMetres": 50.866581064258874,
+        "upperWindows": 24,
+        "lowerBays": 6,
+        "baseY": 63.9849214699596,
+        "upperFloorY": 67.8349214699596,
+        "windowBottomY": 69.0049214699596,
+        "windowTopY": 71.1849214699596,
+        "recessMetres": 0.18
+      },
+      {
+        "surfaceIndex": 9,
+        "lengthMetres": 31.98415928885105,
+        "upperWindows": 11,
+        "lowerBays": 4,
+        "baseY": 63.98610224609219,
+        "upperFloorY": 67.83610224609218,
+        "windowBottomY": 69.00610224609218,
+        "windowTopY": 71.18610224609219,
+        "recessMetres": 0.18
+      },
+      {
+        "surfaceIndex": 11,
+        "lengthMetres": 50.955638179098464,
+        "upperWindows": 24,
+        "lowerBays": 6,
+        "baseY": 63.98387639610155,
+        "upperFloorY": 67.83387639610154,
+        "windowBottomY": 69.00387639610155,
+        "windowTopY": 71.18387639610155,
+        "recessMetres": 0.18
+      }
+    ],
+    "note": "Four outer facades on surveyed envelope. Roof and two courts retained. Visible photo rhythm is 24/11 upper windows; opposite elevations repeat that rhythm by inference. Lower subdivisions, window dimensions, recesses and materials are estimates. Inner courtyard walls retain source photography. No interior."
+  },
+  "roofPreservation": {
+    "byteIdenticalToPreviousArtifact": true,
+    "sha256": "3ad30fa34b1b02d3a6da162a2aad2cead22a1d22cc76a4b74957d1f45a3451b6",
+    "retainedInnerCourtyardFaces": 8
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: twelve ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa and paving-detail frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0"
+    },
+    "requiredReconstructionViewpoints": [
+      6,
+      8
+    ],
+    "migrationVersion": 6,
+    "changedProxiesAcrossRun": 888,
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "add8c905e262e1d977143b03d46e1259dae3264bb207406e3f1a8583fcf12d62"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "6047ab51c9690cec3be4fb7d016ba98b1247bf8a2e00b35b76486f45493d4741"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "9eee86083e60a3874db154c6e80e90f25cc98d43f5d80fd18e4208c286c89b17"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "31d622c04ed0a18e81c46b38e358e0853526b3db00a26885d3914b667ca12569"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "8f8da4ee4b61577884deb58f98d2e8de08eb06005c2b41fcb34b70da48ecc011"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "b6a661c0c56403908dc4d2aeec999109e79cb99a680a3818655e37c0144b589f"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "95af18d39cd2cac18625141c5db1b4fe16bdc5d8b866f398899bfa21e1bd937e"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "afc3b2934f801b642738a7fc8062f270dfc45ec3d8e16093abf7db61411379f1"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "3a5978e777f426d2757031741d52c7cdee246fbe386d5a20349600218b7d556c"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "3ef37f950e34c2cd705384b7e0d617ae07f44907eb335532506e942b1bd50773"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "45cb89b3555460e76e3b2ce3b996472106abe62389b75b6dd78e739923657cda"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "3aa2ffe00086edee6ddd45b256dbe90939a071327a66bdd1deb28330443b08f0"
+      }
+    ]
+  },
+  "serviceTests": {
+    "passed": 21,
+    "failed": 0
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "ed108ef38ff4368f2794f21baacd76fa888cec315667a4fec3f01d77e918b44c",
+    "northCamera": "205 65 -238 0 0",
+    "westCamera": "150 65 -220 -90 0"
+  },
+  "sourceReference": "photos/uya-eso-reference.json",
+  "remaining": [
+    "UYE/gatehouse DEBY_LOD2_31360854 retains coarse photographic walls in the foreground.",
+    "Small warehouse DEBY_LOD2_52738492 and other untreated elevations remain coarse.",
+    "Unmapped paths, terrace detail and courtyard wall detail remain unfinished."
+  ],
+  "installedRelease": "0.4.0"
+}

@@ -81,3 +81,10 @@ Source-encoding accuracy does not establish the accuracy or currency of the surv
 Three-axis ground material projection removes the prominent vertical stretch on the Mensa bank. The exact development package passed twelve native viewpoints and nine gameplay/geometry checks. A loaded-scene shader comparison did not demonstrate a frame-rate regression, but system load and changing daylight limit that measurement. The original save remains unchanged. [Material evidence](slope-material-development-validation.json).
 
 The next substantial gap is the coarse UYA façade visible in the source-limit and north-facing cameras. A pinned ESO reference identifies its two roof courts, pale upper walls, individual windows and contrasting lower panels. Fit those features to the BVV envelope while distinguishing measured geometry from inferred divisions. The goal remains open.
+
+
+## UYA exterior reconstruction
+
+The four outer UYA walls now have recessed windows, frames, sills and separate lower infill/glazing on the BVV envelope. The visible ESO reference supports 24/11 upper-window rhythms; opposite elevations and exact divisions remain inferred. The survey roof and both courtyard openings are byte-identical to the preceding package, with eight inner faces still using photography. Twelve native viewpoints and nine gameplay/geometry checks passed. [UYA evidence](uya-development-validation.json).
+
+The two street-level views now make UYA recognizable, but the adjacent UYE/gatehouse (`DEBY_LOD2_31360854`) and small warehouse (`DEBY_LOD2_52738492`) remain conspicuously coarse. Those foreground structures and unmapped path surfaces are the next gaps in a consistently convincing route. The overall goal remains open; a playable preview should expose the accumulated development improvements without modifying the user's original save.

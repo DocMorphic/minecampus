@@ -169,3 +169,28 @@ Compare the [previous full-resolution terrain pass](../../docs/screenshots/campu
 Separate runs reported highly variable frame rates, so a development-only resource-pack comparison switched baseline/candidate/baseline in one loaded scene. Its median readings were 41.5, 42 and 35 FPS. This does not demonstrate a slowdown from the candidate, but concurrent system load and advancing daylight limit the comparison; it is not a universal performance guarantee. The first comparison exhausted its timeout after slow streaming, so the harness now gives loading and measurement separate bounded intervals. Future runs also freeze daylight.
 
 [Exact artifact, captures, checks and comparison data](slope-material-development-validation.json). Untreated façades, unmapped paths and terrace detail remain unfinished. The next structural reference is [UYA](RESEARCH.md#uya-exterior-reference-for-the-next-façade-pass). The installed/public preview is still 0.4.0; the overall goal remains open.
+
+
+## UYA outer façades: `b0ecb5ad…`
+
+The pilot photographic building, BVV `DEBY_LOD2_5284443`, is UYA. Its streamed walls remained too blurred to read at walking height. The [pinned ESO reference](photos/uya-eso-reference.json) shows two narrow roof courts, pale upper walls, 24 upper windows on the long elevation and 11 on the short elevation, with contrasting glazing and ochre lower panels. The roof and footprint match the public survey. [Reference image, attribution and identity evidence](RESEARCH.md#uya-exterior-reference-for-the-next-façade-pass).
+
+Four outer faces now use the surveyed wall polygons with recessed windows, frames, sills, lower glazed bays and infill. The long faces measure 50.87/50.96 m and the short faces 32.00/31.98 m. The short elevations' eaves dip below their outer corners; the common window heads stay below that measured dip. Window dimensions, 0.18 m recesses, lower divisions and materials are estimates. Opposite elevations repeat the observed upper-window pattern by inference. No interior is added.
+
+The existing north-facing camera, before:
+
+![UYA's previously blurred long elevation](../../docs/screenshots/campus-uya-north-before.jpg)
+
+After:
+
+![UYA with recessed upper windows and separate lower panels in Minecraft](../../docs/screenshots/campus-uya-north-after.jpg)
+
+The approach from the west also shows the short elevation:
+
+![UYA's rebuilt outer façade beside neighboring untreated buildings](../../docs/screenshots/campus-uya-west-after.jpg)
+
+The neighboring photographic walls remain conspicuously coarse. UYE/gatehouse `DEBY_LOD2_31360854` is the right foreground fragment in the west view; diagnostic rays now hit UYA's reconstruction on its own outer walls. The small warehouse `DEBY_LOD2_52738492` also needs treatment. This pass does not establish a finished route.
+
+The roof file is byte-identical to the preceding package, preserving both courtyard openings. Eight inner courtyard faces retain their photographic treatment. Collision migration v6 replaces old proxy geometry while retaining ordinary blocks and recorded edits. Both UYA viewpoints require the new tile to be loaded. All twelve route captures, nine native gameplay/geometry checks, 21 service tests and binary geometry validation passed; the original save's 46 backed-up files remain unchanged. [Exact artifact and validation](uya-development-validation.json).
+
+The installed/public preview remains 0.4.0. The broader realism goal stays open for the remaining coarse structures, paths, terrace detail and courtyard detail.
