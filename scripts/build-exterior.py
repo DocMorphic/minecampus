@@ -252,5 +252,7 @@ from exterior_photo_surfaces import build as build_photo_surfaces
 build_photo_surfaces(globals())
 from exterior_vegetation import build as build_vegetation
 build_vegetation(globals())
+from exterior_ground_surfaces import build as build_ground_surfaces
+build_ground_surfaces(globals())
 (OUT/'manifest.json').write_text(json.dumps(metadata,separators=(',',':')))
 print(f'Built: {len(buildings)} survey guides, {len(metadata["tiles"])} render tiles, {len(metadata["architecture"]["buildings"])+2} detailed building components, 3 landscape structures and {len(metadata["vegetation"]["trees"])} reconstructed trees. Native visual validation required.')

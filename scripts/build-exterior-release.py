@@ -9,6 +9,9 @@ ROOT=Path(__file__).resolve().parents[1];SOURCE=ROOT/'minecraft/exterior';CACHE=
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--java-home',default=os.environ.get('JAVA_HOME'));args=parser.parse_args()
 if not args.java_home:raise SystemExit('Supply --java-home with a JDK 21 installation.')
 subprocess.run(['python3',str(ROOT/'scripts/validate-exterior.py')],check=True)
+surface=json.loads((DATA/'manifest.json').read_text())['groundSurfaces']
+for path,key in [(SOURCE/'ground-surfaces.geojson','sourceSha256'),(SOURCE/'assets/textures/campus/ground_surfaces.png','maskSha256')]:
+ if hashlib.sha256(path.read_bytes()).hexdigest()!=surface[key]:raise SystemExit('Ground material provenance mismatch: '+path.name)
 for item in json.loads((SOURCE/'material-sources.json').read_text())['materials']:
  p=SOURCE/'assets/textures/campus'/(item['name']+'.png')
  if hashlib.sha256(p.read_bytes()).hexdigest()!=item['resourceSha256']:raise SystemExit('Material resource checksum mismatch: '+item['name'])
@@ -70,6 +73,11 @@ Vegetation positions/heights: BVV DOM20/DGM1/DOP20 (CC BY 4.0).
 Ground/concrete micro-material colour/normal maps: Poly Haven concrete_wall_007 and grass_ground (CC0 1.0).
 https://polyhaven.com/a/concrete_wall_007
 https://polyhaven.com/a/grass_ground
+Ground surface boundaries: © OpenStreetMap contributors (ODbL 1.0).
+https://www.openstreetmap.org/copyright
+Selected mapped polygons and their tags are included as ground-surfaces.geojson.
+The derived surface database/mask is available under ODbL 1.0; material grain
+and paving joints are approximate reconstructions, not measured paving units.
 Leaf and bark atlases: Poly Haven jacaranda_tree (CC0 1.0).
 https://polyhaven.com/a/jacaranda_tree
 Reconstructed branch placement and artistic foliage, not surveyed tree species.
@@ -125,6 +133,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/NOTICE.txt',notices.encode())
   write(target,'src/minecampus-exterior/sources.json',(SOURCE/'sources.json').read_bytes())
   write(target,'src/minecampus-exterior/vegetation-sources.json',(SOURCE/'vegetation-sources.json').read_bytes())
+  write(target,'src/minecampus-exterior/ground-surfaces.geojson',(SOURCE/'ground-surfaces.geojson').read_bytes())
   for asset in manifest['tiles']:
    name=asset['file'];assert Path(name).name==name and name.endswith('.ect')
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
@@ -139,5 +148,5 @@ with zipfile.ZipFile(release) as original:
    write(z,entry.filename,data)
   write(z,'realworldmc-service.zip',bundle);write(z,'realworldmc-service.sha256',hashlib.sha256(bundle).hexdigest().encode())
   write(z,'LICENSES/Minecampus-exterior-notices.txt',notices.encode())
-report={'file':target.name,'size':target.stat().st_size,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'sourceCommit':upstream['commit'],'sourcePatchSha256':hashlib.sha256(inputs[0].read_bytes()).hexdigest(),'bundleSha256':hashlib.sha256(bundle).hexdigest(),'tiles':len(manifest['tiles'])}
+report={'file':target.name,'size':target.stat().st_size,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'sourceCommit':upstream['commit'],'sourcePatchSha256':hashlib.sha256(inputs[0].read_bytes()).hexdigest(),'rendererSourceFingerprint':fingerprint,'bundleSha256':hashlib.sha256(bundle).hexdigest(),'tiles':len(manifest['tiles'])}
 (OUT/'exterior-release.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

@@ -26,7 +26,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -38,7 +38,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "65 65 -157 -166 -8",
         "205 65 -238 0 0",
         "0 64.25 -216 180 -5",
-        "0 68 -238 180 0"
+        "0 68 -238 180 0",
+        "25 65 -125 90 25"
     };
 
     @Override public void onInitializeClient() {
@@ -159,7 +160,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         return;
                     }
                 }
-                Files.writeString(Path.of("campus-client-result.txt"),"PASS: eleven ground, aerial, TNT, promenade, source-limit, IAS, photographic facade and former Mensa frames captured after full streaming readiness");mc.stop();return;
+                Files.writeString(Path.of("campus-client-result.txt"),"PASS: twelve ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa and paving-detail frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);

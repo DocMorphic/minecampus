@@ -1,0 +1,426 @@
+{
+  "date": "2026-10-23",
+  "status": "Mapped ground material pass verified; overall realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 183723235,
+    "sha256": "b74ed2662b72fca1549cad45d72311d4a2a41f6f69cd2753b5cbd519b7a7acbb",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "8a809d31ed8fd826049afcc83f9665b8524616c5783166c1d6b67d35881d75d7",
+    "rendererSourceFingerprint": "29b5368a8f81a624",
+    "bundleSha256": "fc169925648ff56dc908caa0eaeaa2a067bb60a2bdf7e5d642bcb61c260d31a3",
+    "tiles": 83
+  },
+  "geometry": {
+    "renderTiles": 83,
+    "photoFacadeCandidates": 80,
+    "triangles": 1306665,
+    "textureBytes": 241662224,
+    "auxiliaryTriangles": 5326,
+    "auxiliaryTextureBytes": 13530024,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "groundSurfaces": {
+    "source": "OpenStreetMap contributors, ODbL 1.0",
+    "sourceFile": "ground-surfaces.geojson",
+    "sourceSha256": "ec1e32626a126dd856d6840dc6a535cb43b03a59288800e29126e6261ea0050a",
+    "maskSha256": "ed61891a65f9d06484f612bbc61993bcba096d41f21d7aa3bedc83ab982c5502",
+    "maskSize": [
+      4096,
+      4096
+    ],
+    "maskBoundsMC": [
+      [
+        -352,
+        -416
+      ],
+      [
+        320,
+        256
+      ]
+    ],
+    "maskChannels": [
+      "grass",
+      "paving",
+      "asphalt"
+    ],
+    "areasSquareMetres": {
+      "grass": 76998.93,
+      "paving": 5218.63,
+      "asphalt": 908.94,
+      "preserve": 9114.31
+    },
+    "osmWays": [
+      22757642,
+      172133981,
+      172828667,
+      172828673,
+      175325685,
+      175325694,
+      179243714,
+      179243715,
+      179243716,
+      179243718,
+      179243721,
+      179243729,
+      179243738,
+      179243739,
+      179243744,
+      179243745,
+      179243747,
+      179243751,
+      179243759,
+      179243763,
+      179269048,
+      179269907,
+      179271735,
+      191972708,
+      200408251,
+      200408252,
+      200408256,
+      201393942,
+      206171689,
+      259323189,
+      440252485,
+      440843080,
+      440843081,
+      440843082,
+      441496909,
+      443978035,
+      607381833,
+      620869701,
+      630206993,
+      912372763,
+      912372764,
+      912372765,
+      912372766,
+      912372767,
+      983606078,
+      983610115,
+      994995947,
+      994995948,
+      994995949,
+      994995950,
+      994995951,
+      994995952,
+      994995953,
+      999575409,
+      999579493,
+      999579497,
+      1079804592,
+      1079804593,
+      1079804594,
+      1079805430,
+      1079926023,
+      1079926024,
+      1082146188,
+      1279395571,
+      1291159094,
+      1291159095,
+      1291159096,
+      1310911960,
+      1358702716,
+      1358716330,
+      1358717473,
+      1362974621,
+      1362974622,
+      1362974623,
+      1362974624,
+      1362974625,
+      1362974626,
+      1362974627,
+      1362974644,
+      1366380976,
+      1366380992,
+      1366380993,
+      1366381003,
+      1366381004,
+      1366381005,
+      1373539304,
+      1373539305,
+      1373539306,
+      1373540061,
+      1373540062,
+      1376884902,
+      1376884903,
+      1376884906,
+      1376884907,
+      1376884908,
+      1376884915,
+      1376884916,
+      1376884917,
+      1376884918,
+      1376884953,
+      1376888076,
+      1376888077,
+      1376888078,
+      1376888079,
+      1376888080,
+      1376888081,
+      1376888082,
+      1376888083,
+      1376888087,
+      1376888088,
+      1376888089,
+      1376888091,
+      1376888092,
+      1376888093,
+      1376888094,
+      1376888095,
+      1376888096,
+      1376888097,
+      1376888098,
+      1376888099,
+      1376888100,
+      1376888101,
+      1376888102,
+      1376888103,
+      1376888104,
+      1376888106,
+      1376888107,
+      1376888109,
+      1376891660,
+      1376891664,
+      1376891667,
+      1376891668,
+      1376891669,
+      1376891670,
+      1376891672,
+      1376891673,
+      1376891677,
+      1376891678,
+      1376891679,
+      1376891681,
+      1376891682,
+      1376891683,
+      1376891684,
+      1376891685,
+      1376891686,
+      1376891687,
+      1376891696,
+      1376891697,
+      1377635019,
+      1377635020,
+      1377635021,
+      1377635022,
+      1377635029,
+      1377635042,
+      1377669498,
+      1377669504,
+      1377669505,
+      1377669506,
+      1377669507,
+      1377864907,
+      1377864908,
+      1377864928,
+      1377864929,
+      1377864930,
+      1377864949,
+      1377864951,
+      1377864952,
+      1377864953,
+      1377864954,
+      1377893948,
+      1377893949,
+      1377893950,
+      1377893954,
+      1377893955,
+      1377893957,
+      1377893961,
+      1377893964,
+      1377893965,
+      1377893969,
+      1377893971,
+      1377893972,
+      1392060051,
+      22757940,
+      24013831,
+      32391927,
+      200408254,
+      479320868,
+      479320872,
+      479320873,
+      998481303,
+      999080201,
+      999083369,
+      1162830172,
+      1162830174
+    ],
+    "note": "Closed mapped surface polygons only. Material textures and paving units are estimates; terrain and collision are unchanged."
+  },
+  "materialControls": {
+    "status": "PASS: ground material alignment and mapped court exclusions",
+    "samples": [
+      {
+        "name": "Mensa bank terrain hit",
+        "positionMC": [
+          11.612,
+          -231.731
+        ],
+        "channelsRGB": [
+          255,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "MW mapped paving",
+        "positionMC": [
+          25,
+          -125
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "Southern mapped asphalt",
+        "positionMC": [
+          -32,
+          122
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "basketball 479320868",
+        "positionMC": [
+          -198.652,
+          164.384
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "beachvolleyball 479320872",
+        "positionMC": [
+          -228.657,
+          168.948
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "beachvolleyball 479320873",
+        "positionMC": [
+          -226.561,
+          157.244
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "serviceTests": {
+    "passed": 21,
+    "failed": 0
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: twelve ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa and paving-detail frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage"
+    },
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "137eb4484493d727f9b576bce0cc739a15ae10936733e0997861eddac700e287"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "80877d0825dee982b0430032ebd0daa45caa606a23e857cc1885fdf190b068ed"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "33e7f9ebf3c68a311cbd9b05491f2c004c1b31a75738ca07cbd8063a7625eda5"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "06f47ec04997fe01a360368cd6d2f3979eaf6e014d77c0394c27a05966a42662"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "21b945317a33b12778d4088401cf1bf13d7563701eaf3dff0ea01914cbc76b9f"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "9532a587f10060db80015a2cb4a3fbc565a9b97d80ad27e9789eec8cb8bb4b4e"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "02e6f03aeadb2c271f4a00751c94fbfe8bf75d96df6b7cdf3155e083099698de"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "12491778b1d3ef3eee7d4ab8595171c080781849d7cae39bb5e3e62b73e8ddd7"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "38a50e00714d5fc131e743f6ca568e08e24756e489c896a6292c2b61cfbb0119"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "5d42cc22d29fbdf5f2ea5f5dc8e57bddbbd217e36d5bb7fc125bab6282958639"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "cfdcf298b89ed1bf02310afec7b0efb01dd9f1ed83735d4dc32e7916498aec7f"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "01a5cccc447038219b7f315f2ec6c8394b3179e379b38f8c54e9ea9920061dd4"
+      }
+    ]
+  },
+  "comparison": {
+    "beforeArtifactSha256": "f7a3ff1a1fb428a6bd586ace1903d76fefdb8342a43cc0063cdebfc7def374fb",
+    "mensaCamera": "0 64.25 -216 180 -5",
+    "groundCamera": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+    "pavingCamera": "25 65 -125 90 25",
+    "beforeGroundRawSha256": "3ee6efaec53ed521e0ca44f2c16f2d9b5f1a98ffc6bd81b9e2d9390dcd7e457a"
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "references": [
+    {
+      "url": "https://la-bar.de/text-hochschulcampus-garching-tu-muenchen/",
+      "use": "Landscape context: folded lawns, grey concrete paving and red asphalt campus band. Material dimensions and individual joints are not surveyed."
+    },
+    {
+      "url": "https://www.openstreetmap.org/copyright",
+      "use": "Mapped surface outlines and tags; selected source GeoJSON and derived mask provided under ODbL 1.0."
+    }
+  ],
+  "remaining": [
+    "The 2m terrain mesh still rounds or facets steep ground and terrace edges; BVV DGM1 can support finer sampling.",
+    "Unmapped paths and terrace details retain blurred aerial texture.",
+    "Untreated facades and incomplete architectural detail remain visible in route captures."
+  ],
+  "installedRelease": "0.4.0"
+}

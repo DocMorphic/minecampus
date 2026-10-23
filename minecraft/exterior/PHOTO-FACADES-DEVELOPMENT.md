@@ -115,3 +115,29 @@ At the same native approach camera:
 Compare the [previous retaining-wall capture](../../docs/screenshots/campus-mensa-retaining-after.jpg). The two tracked overhead source fragments are removed. New diagnostic rays ignore reconstructed vegetation when testing for old triangles, so merely covering an artifact with a leaf card cannot pass. The three retaining-wall rays still require the measured wall geometry behind any intervening foliage.
 
 The final package passed all eleven captures, eight native checks, 21 service tests and binary geometry validation. The collision fixture migrated 184 proxy blocks while preserving its player block and recorded excavation; all 46 backed-up original save files remain byte-identical. Exact package hashes, all eleven captures and native gameplay results are recorded in [crown-fit-development-validation.json](crown-fit-development-validation.json). This is a canopy correction, not a completed campus realism goal. The low-resolution ground imagery, simplified branches/species, pavement and terrace details, and remaining untreated architecture still need work. The installed/public preview remains 0.4.0.
+
+## Mapped ground materials: `b74ed266…`
+
+The previous ground shader inferred materials from aerial colour and lit every ground normal as though it were horizontal. Blurred shadows and roof/tree colours therefore dominated the terrace bank. The current pass uses closed OpenStreetMap polygons to identify 180 lawns and two paved areas, with twelve water/court exclusions. Their outlines were compared with the BVV orthophoto before use. Mapped material detail fades toward the original imagery at longer viewing distances; unknown surfaces keep their photographic treatment. No terrain vertices or collision rules change.
+
+The [landscape designer’s project description](https://la-bar.de/text-hochschulcampus-garching-tu-muenchen/) supports folded lawns, grey concrete paving and a red asphalt campus band. The polygon outlines and material tags come from [the bundled OSM extract](ground-surfaces.geojson), under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). Paver sizes, joints and lawn grain are approximate render materials, not a new survey of those details.
+
+At the existing Galileo ground camera, before:
+
+![Walking-height ground before mapped materials](../../docs/screenshots/campus-ground-material-before.jpg)
+
+After:
+
+![Mapped lawn boundaries and close-range ground grain](../../docs/screenshots/campus-ground-material-after.jpg)
+
+At the established Mensa approach:
+
+![Mensa bank with mapped lawn material and slope-aware shading](../../docs/screenshots/campus-mensa-ground-after.jpg)
+
+The white strip beside the bank remains outside the mapped lawn. It needs geometry/reference work; this pass does not paint it over. A new camera at `25 65 -125`, yaw/pitch `90 25`, shows the approximate paving material in the mapped MW walkway:
+
+![Close-up of mapped paving in the native Minecraft client](../../docs/screenshots/campus-paving-detail-after.jpg)
+
+All twelve native captures, eight gameplay/geometry assertions, six material alignment/exclusion controls, 21 service tests and binary geometry validation passed. The original save’s 46 backed-up files remain unchanged. The full renderer fingerprint is now recorded alongside the upstream patch and service bundle hashes, so shader/resource changes are traceable. [Exact artifact and validation](ground-material-development-validation.json).
+
+The overall goal remains open. Fine terrain edges, unmapped path materials, terrace stairs/artwork and the remaining coarse façades are still incomplete. The installed/public preview remains 0.4.0.

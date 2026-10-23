@@ -4,6 +4,7 @@ uniform sampler2D Sampler1;
 uniform sampler2D Sampler2;
 uniform sampler2D Sampler3;
 uniform sampler2D Sampler4;
+uniform sampler2D Sampler5;
 uniform vec4 ColorModulator;
 uniform vec3 CampusFogColor;
 uniform vec3 CameraPosition;
@@ -30,9 +31,39 @@ void main() {
         float cLum=dot(concrete,vec3(.299,.587,.114)),gLum=dot(lawn,vec3(.299,.587,.114));
         float micro=mix(cLum/.5112,gLum/.3782,grass);
         color.rgb*=mix(1.0,clamp(micro,.65,1.35),proximity*.55);
+        // Mapped land cover provides a sharp material boundary independently
+        // of tree shadows and canopy colours baked into the aerial photograph.
+        vec2 surfaceUv=vec2(worldPosition.x+352.0,256.0-worldPosition.z)/672.0;
+        vec3 mapped=texture(Sampler5,clamp(surfaceUv,0.0,1.0)).rgb;
+        if(any(lessThan(surfaceUv,vec2(0)))||any(greaterThan(surfaceUv,vec2(1))))mapped=vec3(0);
+        float mappedTotal=mapped.r+mapped.g+mapped.b;
+        float mappedAmount=clamp(mappedTotal,0.0,1.0);
+        float materialRange=1.0-smoothstep(35.0,110.0,viewDistance);
+        vec3 aerial=texture(Sampler0,texCoord0).rgb;
+        float aerialLum=dot(aerial,vec3(.299,.587,.114));
+        float lawnShade=clamp(aerialLum/.29,.38,1.25);
+        vec3 lawnColor=vec3(.24,.31,.145)*clamp(gLum/.3782,.45,1.65)*lawnShade;
+        // Approximate small concrete paving units, only within a mapped paved
+        // area. Derivative antialiasing avoids distant crawling joint lines.
+        vec2 paving=worldPosition.xz/vec2(.4,.2);
+        paving.x+=mod(floor(paving.y),2.0)*.5;
+        vec2 edge=min(fract(paving),1.0-fract(paving))*vec2(.4,.2);
+        float jointDistance=min(edge.x,edge.y),aa=max(fwidth(jointDistance),.001);
+        float joint=1.0-smoothstep(.003-aa,.006+aa,jointDistance);
+        float unitVariation=.95+.1*hash(floor(paving));
+        vec3 pavingColor=vec3(.55,.54,.51)*clamp(aerialLum/.5,.4,1.2)*clamp(cLum/.5112,.7,1.3)*unitVariation*(1.0-.3*joint);
+        float asphaltGrain=dot(texture(Sampler1,worldPosition.xz*2.0).rgb,vec3(.299,.587,.114))/.5112;
+        vec3 asphaltColor=aerial*clamp(asphaltGrain,.8,1.2);
+        vec3 material=(mapped.r*lawnColor+mapped.g*pavingColor+mapped.b*asphaltColor)/max(mappedTotal,.0001);
+        color.rgb=mix(color.rgb,material,mappedAmount*materialRange);
+        grass=mix(grass,mapped.r/max(mappedTotal,.0001),mappedAmount);
         vec3 cn=texture(Sampler2,uv).xyz*2.0-1.0,gn=texture(Sampler4,uv).xyz*2.0-1.0;
         vec3 nm=normalize(mix(cn,gn,grass));
-        vec3 n=normalize(vec3(nm.x*.35,1.0,nm.y*.35));
+        vec3 geometric=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
+        if(geometric.y<0.0)geometric=-geometric;
+        vec3 tangent=normalize(vec3(1.0,-geometric.x/max(geometric.y,.1),0));
+        vec3 bitangent=normalize(cross(tangent,geometric));
+        vec3 n=normalize(geometric*nm.z+(tangent*nm.x+bitangent*nm.y)*.35);
         vec3 sun=normalize(vec3(-.5,.8,-.3));
         color.rgb*=mix(1.0,(.55+.45*max(dot(n,sun),0.0))/.91,proximity);
     }
