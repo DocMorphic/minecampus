@@ -1,0 +1,530 @@
+{
+  "date": "2026-10-23",
+  "status": "GRS II closed-envelope and source-correction checkpoint; overall campus-quality goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 234510116,
+    "sha256": "1c117a77676f292fe5facb130063a1fc6c5bd013a9d8c19d6d87fe5e4b229beb",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "97b0717ca5d998bda1cbfae3278d38d922f719cab6b7f37ce63144dea7455881",
+    "rendererSourceFingerprint": "e3a0fb30afe22454",
+    "bundleSha256": "b58ba68285b92e1e5803f64a83841a78f8e3fd308cf62707fb9584a8cbf94d1a",
+    "tiles": 94
+  },
+  "geometry": {
+    "renderTiles": 94,
+    "photoFacadeCandidates": 82,
+    "triangles": 1909427,
+    "textureBytes": 259561444,
+    "auxiliaryTriangles": 5112,
+    "auxiliaryTextureBytes": 13538104,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "grsMainExterior": {
+    "building": "DEBY_LOD2_5284471",
+    "faces": [
+      {
+        "surveyFace": 1,
+        "lengthMetres": 1.9428156186992411,
+        "bays": 2,
+        "baySpacingMetres": 0.9714078093496206,
+        "windowBandsY": [
+          [
+            64.72348694159143,
+            67.42348694159143
+          ],
+          [
+            68.52348694159144,
+            71.42348694159143
+          ]
+        ]
+      },
+      {
+        "surveyFace": 2,
+        "lengthMetres": 35.09385351909262,
+        "bays": 28,
+        "baySpacingMetres": 1.2533519113961649,
+        "windowBandsY": [
+          [
+            64.72348694159143,
+            67.42348694159143
+          ],
+          [
+            68.52348694159144,
+            71.42348694159143
+          ]
+        ]
+      },
+      {
+        "surveyFace": 3,
+        "lengthMetres": 4.892721372020046,
+        "bays": 4,
+        "baySpacingMetres": 1.2231803430050114,
+        "windowBandsY": [
+          [
+            64.72348694159143,
+            67.42348694159143
+          ],
+          [
+            68.52348694159144,
+            71.42348694159143
+          ]
+        ]
+      },
+      {
+        "surveyFace": 5,
+        "lengthMetres": 2.3311795011525325,
+        "bays": 2,
+        "baySpacingMetres": 1.1655897505762662,
+        "windowBandsY": [
+          [
+            64.72348694159143,
+            67.42348694159143
+          ],
+          [
+            68.52348694159144,
+            71.42348694159143
+          ]
+        ]
+      },
+      {
+        "surveyFace": 6,
+        "lengthMetres": 16.375317015304386,
+        "bays": 13,
+        "baySpacingMetres": 1.2596397704080298,
+        "windowBandsY": [
+          [
+            64.72348694159143,
+            67.42348694159143
+          ],
+          [
+            68.52348694159144,
+            71.42348694159143
+          ]
+        ]
+      },
+      {
+        "surveyFace": 8,
+        "lengthMetres": 16.608063236772132,
+        "bays": 13,
+        "baySpacingMetres": 1.2775433259055486,
+        "windowBandsY": [
+          [
+            64.72348694159143,
+            67.42348694159143
+          ],
+          [
+            68.52348694159144,
+            71.42348694159143
+          ]
+        ]
+      },
+      {
+        "surveyFace": 9,
+        "lengthMetres": 4.658674312512058,
+        "bays": 4,
+        "baySpacingMetres": 1.1646685781280146,
+        "windowBandsY": [
+          [
+            64.72348694159143,
+            67.42348694159143
+          ],
+          [
+            68.52348694159144,
+            71.42348694159143
+          ]
+        ]
+      },
+      {
+        "surveyFace": 10,
+        "lengthMetres": 35.06077160730551,
+        "bays": 28,
+        "baySpacingMetres": 1.2521704145466255,
+        "windowBandsY": [
+          [
+            64.72348694159143,
+            67.42348694159143
+          ],
+          [
+            68.52348694159144,
+            71.42348694159143
+          ]
+        ]
+      }
+    ],
+    "source": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching",
+    "note": "Survey envelope and roof preserved. The complete architect plan matches this GRS II footprint and tower connection. Historical facade character is observed; dimensions, colours and less-visible elevations are inferred. Closed exterior only; no interiors."
+  },
+  "reference": {
+    "building": "DEBY_LOD2_5284471",
+    "identity": "GRS II rectangular office/laboratory wing south of the octagonal tower, Boltzmannstra\u00dfe 14",
+    "architectReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching",
+    "planReference": "https://claudia-schreiber-architektur.de/content/3-projekte/19891009-neubau-buero-und-laborgebaeude-ii-garching/grs2_eg-bearbeitet.svg",
+    "contextReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-iii-garching",
+    "referencePeriod": "1986\u20131989 project, with 1994\u20131996 adjoining-building context",
+    "referenceUse": "Visual reference only; photographs and plans are not embedded or redistributed.",
+    "observations": [
+      "The complete ground plan places a roughly 2:3 rectangular wing south of the octagonal tower, with a short junction offset toward its west side and a separate bridge to the long north wing. These features match the BVV envelope.",
+      "Two occupied levels, recessed metal-framed lower glazing, framed upper glazing, projecting pale floor/roof fascia and paired upper diagonal braces are visible in the historical exterior photographs.",
+      "The project description specifies an enclosed basement, metal ground-floor curtain wall and timber-frame upper facade. No interior work is included."
+    ],
+    "geometry": "BVV LoD2 envelope, approximately 24.05 by 35.71 metres, chamfered corners and connection offsets retained. The surveyed orthophoto roof is embedded byte-for-byte.",
+    "diagnosis": "Native courtyard rays pass through the missing west wall to the valid surveyed roof underside and far east/north walls. Repair the closed exterior envelope; do not remove the correctly positioned roof.",
+    "inferences": [
+      "Window heights, bay spacing, frame sections, recess depths and brace placement are estimated within the survey envelope.",
+      "Pale finishes and blue-grey glazing are approximate; historical monochrome photographs do not establish current colours.",
+      "The observed modular character is extrapolated to less-visible elevations. No exact current as-built facade or interior is claimed."
+    ],
+    "earlierNorthWingCorrection": "The close-up facade evidence belongs to this rectangular GRS II wing. The long north wing's detailed frame layout remains an extrapolation from the wide context photograph; its unsupported diagonal braces were removed."
+  },
+  "preservation": {
+    "unchangedExistingTiles": 92,
+    "unchangedOtherFacadePlans": 81,
+    "unchangedRuntimeIds": 82,
+    "mainSurveyRoofEmbeddedExactly": true,
+    "northPartsUnchanged": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "northUpperBracesRemoved": true,
+    "mainSurveyFacesReconstructed": 12,
+    "neighbourFootprintsProtected": true,
+    "terrainGroundAndSurfaceGuidesUnchanged": true
+  },
+  "diagnosisBefore": [
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.7,
+      "v": 0.3,
+      "fov": 76.99999332427979,
+      "tile": 1000010035,
+      "x": 246.0902180671692,
+      "y": 68.75211453437805,
+      "z": -291.1185671687126,
+      "block": "earthcraft:map_wood",
+      "blockPosition": "243, 67, -292",
+      "structureBehindVegetation": 1000050060,
+      "structureDistance": 17.052217,
+      "structureTriangle": [
+        246.7855682373047,
+        72.119140625,
+        -260.6304626464844,
+        255.25503540039062,
+        72.11734008789062,
+        -295.3597717285156,
+        271.6006164550781,
+        72.11650085449219,
+        -292.4202880859375
+      ]
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.8,
+      "v": 0.2,
+      "fov": 76.99999332427979,
+      "tile": 1000010035,
+      "x": 246.7354221343994,
+      "y": 69.77007484436035,
+      "z": -289.36027932167053,
+      "block": "earthcraft:map_wood",
+      "blockPosition": "243, 67, -291",
+      "structureBehindVegetation": 1000050060,
+      "structureDistance": 14.822572,
+      "structureTriangle": [
+        246.7855682373047,
+        72.119140625,
+        -260.6304626464844,
+        248.52809143066406,
+        72.11766815185547,
+        -296.570556640625,
+        253.34275817871094,
+        72.117431640625,
+        -295.7015075683594
+      ]
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.75,
+      "v": 0.5,
+      "fov": 76.99999332427979,
+      "tile": 1000050060,
+      "x": 270.96820068359375,
+      "y": 69.36592745780945,
+      "z": -287.2099552154541,
+      "block": "earthcraft:map_wood",
+      "blockPosition": "243, 66, -291",
+      "structureBehindVegetation": 1000050060,
+      "structureDistance": 32.96393,
+      "structureTriangle": [
+        265.5612487792969,
+        72.11817169189453,
+        -257.53631591796875,
+        271.8519287109375,
+        63.873504638671875,
+        -292.0609130859375,
+        271.852294921875,
+        72.11650085449219,
+        -292.0613098144531
+      ]
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.85,
+      "v": 0.65,
+      "fov": 76.99999332427979,
+      "tile": 1000000034,
+      "x": 258.81083488464355,
+      "y": 64.17824065685272,
+      "z": -285.6591544151306,
+      "block": "earthcraft:map_wood",
+      "blockPosition": "243, 65, -291",
+      "structureBehindVegetation": 1000000034,
+      "structureDistance": 21.183111,
+      "structureTriangle": [
+        258.6145324707031,
+        64.17859097560654,
+        -285.23638916015625,
+        259.6139221191406,
+        64.18152066310654,
+        -285.20159912109375,
+        258.6493225097656,
+        64.1765310390831,
+        -286.23577880859375
+      ]
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.85,
+      "v": 0.45,
+      "fov": 76.99999332427979,
+      "tile": 1000050060,
+      "x": 269.96313285827637,
+      "y": 70.77847623825073,
+      "z": -281.6938829421997,
+      "block": "earthcraft:map_wood",
+      "blockPosition": "243, 66, -291",
+      "structureBehindVegetation": 1000050060,
+      "structureDistance": 33.357136,
+      "structureTriangle": [
+        265.5612487792969,
+        72.11817169189453,
+        -257.53631591796875,
+        271.8519287109375,
+        63.873504638671875,
+        -292.0609130859375,
+        271.852294921875,
+        72.11650085449219,
+        -292.0613098144531
+      ]
+    },
+    {
+      "frameGroundHeight": 519.7618173672081,
+      "u": 0.65,
+      "v": 0.5,
+      "fov": 76.99999332427979,
+      "tile": 1000050060,
+      "x": 264.5354404449463,
+      "y": 68.99528217315674,
+      "z": -293.6906707286835,
+      "block": "earthcraft:map_wood",
+      "blockPosition": "243, 66, -292",
+      "structureBehindVegetation": 1000050060,
+      "structureDistance": 26.344559,
+      "structureTriangle": [
+        255.25503540039062,
+        72.11734008789062,
+        -295.3597717285156,
+        271.60028076171875,
+        63.873504638671875,
+        -292.4198913574219,
+        271.6006164550781,
+        72.11650848388672,
+        -292.4202880859375
+      ]
+    }
+  ],
+  "serviceChecks": {
+    "passed": 27
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: twenty-three ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail, Telefonzentrale and COS frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "telefonzentrale": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "cos": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "cos-ground": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "texture": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted",
+      "cos-site": "PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer",
+      "cos-bench": "PASS: native gravity landed player on the bench proxy at Y=64.0; visible seat top Y=63.89",
+      "cos-landscape": "PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB 0.35874509803921567,0.3236078431372549,0.17615686274509804); exposed curb ray reaches its 12cm edging",
+      "cos-apron": "PASS: native gravity landed on the smooth apron proxy at Y=63.0 (mesh Y=63.46271), replacing the previous Y=64 proxy",
+      "grs-north": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "grs-west": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "grs-connectors-north": "PASS: native rays reach the tower and west link at walking height",
+      "grs-connectors-courtyard": "PASS: native rays reach the tower and west link and the repaired GRS II west facade at walking height",
+      "grs-connectors-aerial": "PASS: native rays reach the tower and west link, the south junction and preserved adjoining GRS roof behind any foliage",
+      "grs-main-west": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "grs-main-east": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage"
+    },
+    "migrationVersion": 16,
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "a2be0294c3c2a0c7472022555f141b4672d630e35500d0bc4b1ca7b5f8213ebd"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "710e388bee1da919d6c2ac7544b43badaad2302ee2574a8c87c6ef3710a43908"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "389df4a204389fabb9b7218eb83176edc68228b7e6a20e577e2c75fcad01d61b"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "a516043122047275e77270538c6a2614f87d7cb126c2498e5afb7e4c959c642f"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "e38b355c4d02d289914ed0ecd0f43605293b7404275b19f3de06a91ef001e0cf"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "73ffa2eeedcc48b7f4ddcf1f98917d3d286dfb5aad092874e3dbf0850677938d"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "36efef51f8cfeff5f7350b2ff1dc1a90df389881f4f35e7aed2f91b552216edf"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "8de04ae08e1d01918314b669bc087349160818dde0f147af67afdbf50a6384c4"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "a604b59fc17c5713ba30f08f70db4ac69801221803fe19efa2373e9228c050f6"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "680bff6bb390eaa65fe99371bea6e561d51e9532928f550e7b9a4ef7b83b9524"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "0de737566927a7324b91f74a1604dc770f72473483dfb991012710cc45da14f9"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "2f53f6c68fcffe78a7f97cfdb006224702c73307afdd3dad35f3d84b05a22bba"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "feeb203e3ec776e0caa2bbea47de1c9aa5bd4e88f82291a2cb92c5558e94559c"
+      },
+      {
+        "file": "campus-road-detail.png",
+        "sha256": "e5ec6b1a18b39fd596d8ffd8a02cf08598f8d19589bc092e430aaa22543a0408"
+      },
+      {
+        "file": "campus-telefonzentrale-west.png",
+        "sha256": "df342d7f8108bf65c770a01f373d72123b45aca28cc927c6c67c0ded5f52f922"
+      },
+      {
+        "file": "campus-cos-southwest.png",
+        "sha256": "a0fe9cb9f09fbffa0080ec0b3b047ac049cb121e5c152fe11df3f904e52407a6"
+      },
+      {
+        "file": "campus-cos-south.png",
+        "sha256": "5b17babed378325852ec831d91f262aaeb510c558b07a7b7da562ac82052efc2"
+      },
+      {
+        "file": "campus-cos-aerial.png",
+        "sha256": "c64ae94e13e87c0c16be9bb234aa69d4eb4e21878a5eb68f978d03c969eb6214"
+      },
+      {
+        "file": "campus-cos-forecourt.png",
+        "sha256": "1303139482dd535d8877ac151c26f6dde3d3a7d6bcd27949ca6b5b8891adfedc"
+      },
+      {
+        "file": "campus-cos-planting.png",
+        "sha256": "4908348079660fe12f46efc05a3889bbd07b758d510fb634b4d232b9835cfdb8"
+      },
+      {
+        "file": "campus-cos-north.png",
+        "sha256": "38eaad06f5e10a0ed834cefb2ceabd66f223840bfe75091ae985263c371d2c8d"
+      },
+      {
+        "file": "campus-grs-north.png",
+        "sha256": "51db4660ff8190e3efdb93e73e1ac90482f30be42e226c4997abfecfa802d39d"
+      },
+      {
+        "file": "campus-grs-west.png",
+        "sha256": "7799edb7b1d4e638bbe2d265aefee03370b68c491e4b9766b9c129021d1cdea8"
+      },
+      {
+        "file": "campus-grs-tower-north.png",
+        "sha256": "b227f67a073a37d12323a0780d0343320321d6a40dd91e06bf43e1f3a03c1470"
+      },
+      {
+        "file": "campus-grs-tower-courtyard.png",
+        "sha256": "6daad8a2a25cb097193b719f971db68ffde514ffa3ca8145af511a8c4a2e3901"
+      },
+      {
+        "file": "campus-grs-connectors-aerial.png",
+        "sha256": "5139219f5538898c56ab97f4ee79d4ceed0927638b74a8f3005ffa835b9888cd"
+      },
+      {
+        "file": "campus-grs-main-west.png",
+        "sha256": "60a65bf343961b865452abdd99de38549a8fd1e196e71ec535f4cbcf7c49ad88"
+      },
+      {
+        "file": "campus-grs-main-east.png",
+        "sha256": "5bf6da68d542b69319ebb3233d66c21b1490c574a0cc615992166b17bd134818"
+      }
+    ],
+    "westCamera": "225 64 -280 -90 -7",
+    "eastCamera": "286 64 -278 90 -7",
+    "courtyardCamera": "238 64 -292 -118 -8",
+    "aerialCamera": "242 96 -310 -40 56"
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "c33930d72e6097b082b32e37b3b1da772bbfcb37cc0a2baa7d4e6b7c5ac7ac92",
+    "sameCamera": true,
+    "camera": "238 64 -292 -118 -8",
+    "beforeImage": "../../docs/screenshots/campus-grs-main-before.jpg",
+    "afterImage": "../../docs/screenshots/campus-grs-main-after.jpg"
+  },
+  "remaining": [
+    "Colours, frame dimensions and less-visible elevations are estimated from historical references.",
+    "The adjacent GRS III wing and Siemensbau retain coarse photographic surfaces.",
+    "Ground margins and parking retain some old construction imagery; campus realism remains unfinished."
+  ],
+  "installedPreview": {
+    "artifactSha256": "1c117a77676f292fe5facb130063a1fc6c5bd013a9d8c19d6d87fe5e4b229beb",
+    "saveFilesVerified": 121,
+    "savesAndSettingsUnchanged": true,
+    "previousArtifactSha256": "c33930d72e6097b082b32e37b3b1da772bbfcb37cc0a2baa7d4e6b7c5ac7ac92"
+  },
+  "updaterChecks": {
+    "passed": 3
+  }
+}

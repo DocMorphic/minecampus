@@ -30,10 +30,6 @@ def build(ctx,bid,walls):
    rings=[np.asarray(p.exterior.coords[:-1])]+[np.asarray(h.coords[:-1])for h in p.interiors];xy=np.concatenate(rings)
    for i in mapbox_earcut.triangulate_float64(xy,np.cumsum([len(r)for r in rings]).astype(np.uint32)):
     x,y=xy[i];parts[part].append([*pt(x,y,depth),float(np.clip((x-l)/(rgt-l),0,1)),float(np.clip((y-base)/(top-base),0,1))])
- def brace(a,b,part=3,radius=.035):
-  a,b=np.asarray(a),np.asarray(b);axis=b-a;axis/=np.linalg.norm(axis);u=np.cross(axis,[0,1,0]);u/=np.linalg.norm(u);v=np.cross(axis,u)
-  rings=[[p+radius*(np.cos(t)*u+np.sin(t)*v)for t in np.arange(8)*np.pi/4]for p in [a,b]]
-  for i in range(8):quad([rings[0][i],rings[0][(i+1)%8],rings[1][(i+1)%8],rings[1][i]],part)
  for index,w in enumerate(walls):
   anchor,direction,normal=[np.asarray(w[k])for k in ['anchor','direction','normal']]
   shape=Polygon(w['rings'][0],w['rings'][1:]).buffer(0);l,b,rgt,t=shape.bounds;length=rgt-l
@@ -59,11 +55,8 @@ def build(ctx,bid,walls):
    block(l,y0,-.02,rgt,y1,.28,0)
    block(l,y0-.035,-.03,rgt,y0,.30,2)
   block(l,t-.08,-.15,rgt,t+.02,.32,3)
-  # Upper facade posts and paired tension rods visible in the architect photos.
+  # Estimated upper facade posts; the close-up diagonal braces belong to GRS II.
   for x in np.linspace(l+.10,rgt-.10,count+1):block(x-.045,base+5.45,-.04,x+.045,base+8.65,.14,3)
-  if index in [1,2,3]:
-   for centre in np.arange(l+4*spacing,rgt-2*spacing,8*spacing):
-    for sign in [-1,1]:brace(pt(centre,base+5.53,.36),pt(centre+sign*2*spacing,base+8.55,.20))
   evidence.append({'surveyFace':index,'lengthMetres':length,'bays':count,'baySpacingMetres':spacing,'windowBandsY':bands})
  grounds=[ctx['mc'](rings[0])for name,surfaces in ctx['buildings']if name==bid for typ,rings in surfaces if typ=='GroundSurface']
  foot=unary_union([Polygon(q[:,[0,2]])for q in grounds])
@@ -79,5 +72,5 @@ def build(ctx,bid,walls):
  parts.append(roof.tolist());textures.append(Image.frombytes('RGBA',(width,height),raw[48+count*20:]))
  vertices=np.concatenate([np.asarray(p)[:,:3]for p in parts]);name=bid+'-grs-exterior.ect';(out/name).write_bytes(encode(list(zip(parts,textures))))
  meta['tiles'].append({'file':name,'kind':'reconstruction','profile':'grs-north-wing','alwaysVisible':True,'runtimeId':1_000_030_012,'bounds':[vertices.min(0).tolist(),vertices.max(0).tolist()]})
- meta['architecture']['grsExterior']={'building':bid,'faces':evidence,'source':reference['architectReference'],'note':'Survey envelope and roof preserved. Historical photographic facade rhythm; dimensions, colours and less-visible elevation details inferred. Bridge junction retained; no interiors.'}
- print('GRS: surveyed north wing, curtain-wall frames, fascia and upper braces; reference-informed estimates',flush=True)
+ meta['architecture']['grsExterior']={'building':bid,'faces':evidence,'source':reference['architectReference'],'note':'Survey envelope and roof preserved. Context photograph establishes two levels; detailed frame geometry is extrapolated. Close-up diagonal braces belong to the adjoining GRS II wing and are omitted here. Bridge junction retained; no interiors.'}
+ print('GRS: surveyed north wing, curtain-wall frames, fascia; context-informed estimates, no unsupported braces',flush=True)

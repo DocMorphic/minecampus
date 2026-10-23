@@ -1,0 +1,22 @@
+{
+  "building": "DEBY_LOD2_5284471",
+  "identity": "GRS II rectangular office/laboratory wing south of the octagonal tower, Boltzmannstraße 14",
+  "architectReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching",
+  "planReference": "https://claudia-schreiber-architektur.de/content/3-projekte/19891009-neubau-buero-und-laborgebaeude-ii-garching/grs2_eg-bearbeitet.svg",
+  "contextReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-iii-garching",
+  "referencePeriod": "1986–1989 project, with 1994–1996 adjoining-building context",
+  "referenceUse": "Visual reference only; photographs and plans are not embedded or redistributed.",
+  "observations": [
+    "The complete ground plan places a roughly 2:3 rectangular wing south of the octagonal tower, with a short junction offset toward its west side and a separate bridge to the long north wing. These features match the BVV envelope.",
+    "Two occupied levels, recessed metal-framed lower glazing, framed upper glazing, projecting pale floor/roof fascia and paired upper diagonal braces are visible in the historical exterior photographs.",
+    "The project description specifies an enclosed basement, metal ground-floor curtain wall and timber-frame upper facade. No interior work is included."
+  ],
+  "geometry": "BVV LoD2 envelope, approximately 24.05 by 35.71 metres, chamfered corners and connection offsets retained. The surveyed orthophoto roof is embedded byte-for-byte.",
+  "diagnosis": "Native courtyard rays pass through the missing west wall to the valid surveyed roof underside and far east/north walls. Repair the closed exterior envelope; do not remove the correctly positioned roof.",
+  "inferences": [
+    "Window heights, bay spacing, frame sections, recess depths and brace placement are estimated within the survey envelope.",
+    "Pale finishes and blue-grey glazing are approximate; historical monochrome photographs do not establish current colours.",
+    "The observed modular character is extrapolated to less-visible elevations. No exact current as-built facade or interior is claimed."
+  ],
+  "earlierNorthWingCorrection": "The close-up facade evidence belongs to this rectangular GRS II wing. The long north wing's detailed frame layout remains an extrapolation from the wide context photograph; its unsupported diagonal braces were removed."
+}

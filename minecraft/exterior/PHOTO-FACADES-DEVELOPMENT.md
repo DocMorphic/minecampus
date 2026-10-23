@@ -386,3 +386,26 @@ Source removal now respects explicit boundaries around these small structures, i
 Artifact `c33930d72e6097b082b32e37b3b1da772bbfcb37cc0a2baa7d4e6b7c5ac7ac92` passes 26 native views, 24 native checks and 27 service tests. Ground rays reach the tower and west bridge; aerial structural rays reach all three additions and the retained neighbouring roof behind any foliage. Each new component embeds its survey roof byte-for-byte. Original save files remain unchanged. [Validation](grs-connectors-development-validation.json).
 
 The campus-quality goal remains active: the neighbouring GRS main/south wings and Siemensbau still have coarse photographic surfaces. Ground margins, older aerial imagery, inferred window details and approximate reflections continue to limit realism.
+
+
+## GRS II exterior and source correction
+
+The apparent overhead fragment in the courtyard is the correctly positioned survey roof of `DEBY_LOD2_5284471`. Native diagnostic rays pass through the absent west wall to that roof's underside, far east/north walls and ground inside the footprint. Dev.8 repairs the closed exterior envelope rather than deleting the valid roof. The approximately 24.05 × 35.71 m BVV outline, chamfered corners and exact orthophoto roof are retained. Recessed glazing, slender frames, pale fascia and upper diagonal braces are reconstructed on the matching GRS II wing. Dimensions, colours and less-visible elevations remain estimates. No interiors are added.
+
+The [complete architect ground plan](https://claudia-schreiber-architektur.de/content/3-projekte/19891009-neubau-buero-und-laborgebaeude-ii-garching/grs2_eg-bearbeitet.svg) places the detailed 1986–1989 project south of the octagonal tower. This corrects the earlier dev.6/dev.7 assumption that the close-up facade photographs directly described the long north wing. That wing is visible in the wide context photograph, but its detailed frame arrangement remains an extrapolation. Unsupported north-wing diagonal braces have been removed; the other four material parts, including its roof, are byte-identical. [Corrected north-wing qualifications](photos/grs-reference.json) and [GRS II references](photos/grs-main-reference.json) distinguish observation from inference.
+
+![Courtyard before: visible roof underside through the missing wall](../../docs/screenshots/campus-grs-main-before.jpg)
+
+![Same courtyard camera after repairing the exterior](../../docs/screenshots/campus-grs-main-after.jpg)
+
+![GRS II west facade](../../docs/screenshots/campus-grs-main-west.jpg)
+
+![GRS II east facade](../../docs/screenshots/campus-grs-main-east.jpg)
+
+![Preserved roof and connected structures](../../docs/screenshots/campus-grs-main-aerial.jpg)
+
+![North wing after removing unsupported braces](../../docs/screenshots/campus-grs-north-corrected.jpg)
+
+Artifact `1c117a77676f292fe5facb130063a1fc6c5bd013a9d8c19d6d87fe5e4b229beb` passes 28 native views, 26 native checks and 27 service tests. A direct courtyard ray now stops at the repaired west facade; three rays on each west/east view verify exterior coverage behind any foliage. The aerial ray reaches the same surveyed roof in its new complete-envelope tile. All 92 unaffected earlier render tiles and 81 other facade plans are unchanged, and all 82 facade runtime IDs retain their identities. Boundaries protect the separate tower, links and neighbouring buildings. Collision migration advances to v16 and preserves player-edit fixtures. [Validation](grs-main-development-validation.json).
+
+This remains an incremental exterior checkpoint. GRS III, Siemensbau, parking/ground margins, roof detail and reflection quality still need work; the full campus-quality goal is open.

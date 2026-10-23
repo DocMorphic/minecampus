@@ -123,8 +123,9 @@ finished-site grading are approximate reconstructions, not measured as-built dat
 Source provenance is supplied as cos-reference.json.
 
 GRS north-wing exterior: BVV survey envelope with estimated curtain-wall
-frames, fascia and braces informed by historical Detlef Schreiber project
-photographs. Reference photographs/drawings are not included in this package.
+frames and fascia extrapolated from historical Detlef Schreiber context
+photographs. Unsupported braces are omitted. Reference photographs/drawings
+are not included in this package.
 https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching
 Colours, frame dimensions and less-visible elevations are inferred.
 Source qualifications are supplied as grs-reference.json.
@@ -134,6 +135,12 @@ with glazing, pale walls, louvres and a courtyard door informed by the same
 historical architect reference. Dimensions, colours, door placement and bridge
 glazing are inferred. No interiors or reference photographs are included.
 Source qualifications are supplied as grs-connectors-reference.json.
+
+GRS II rectangular wing: complete BVV envelope with recessed glazing, pale
+fascia and upper braces informed by the matching architect plan and photographs.
+Frame dimensions, colours and hidden elevations remain estimated. The exact
+surveyed orthophoto roof is retained; the missing west exterior is repaired.
+Source qualifications are supplied as grs-main-reference.json.
 
 Google scenery is streamed by the user's own configured service. No Google tile
 content, Minecraft assets, credentials or saved worlds are included in this build.
@@ -181,6 +188,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/cos-reference.json',(SOURCE/'photos/cos-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-reference.json',(SOURCE/'photos/grs-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-connectors-reference.json',(SOURCE/'photos/grs-connectors-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/grs-main-reference.json',(SOURCE/'photos/grs-main-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site.json',(SOURCE/'cos-site.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site-surfaces.geojson',(DATA/'cos-site-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/sources.json',(SOURCE/'sources.json').read_bytes())
