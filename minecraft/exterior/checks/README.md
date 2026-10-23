@@ -94,3 +94,14 @@ Cameras 33–34 add the path (`262 64 -255 90 20`) and the same upward courtyard
 Stage 32's first aerial target is corrected to `(246.593168,73.385192,-238.988457)`, on the main GRS III raised roof. Both previous targets reached the tower roof; the main roof had visual but not direct ray coverage. The second tower-roof ray remains.
 
 Preservation verifies all 95 previous tiles and 82 plans, stable runtime IDs, the connector's embedded two-triangle roof, neighbouring-footprint exclusions and unchanged terrain. All 1,527 changed material pixels were previously unassigned, lie inside the inferred path and outside buildings; all existing mapped material pixels remain unchanged. Edging has an empty collision-part list. These checks do not establish whole-campus completion.
+
+
+## Runtime mesh shadows
+
+`CampusShadowChecks` runs before every route capture when `minecampus.requireRuntimeShadows=true`. It verifies that `CampusShadows` comes from the packaged JAR, compares the actual GPU sun direction with Minecraft's sky rotation, and checks the day/weather strength. Require `campus-shadow-route-result.json` to report PASS with all 35 sequential stages, in addition to the existing 33 result files. FPS values are individual route readings, not a controlled performance benchmark.
+
+`CampusShadowFunctionalCheck` runs separately in the isolated `run-campus-check` save. After streaming readiness, call its `tick(mc)` method from the check harness at camera `38 73 -59 -135 50`, instead of advancing the normal route. Copy the packaged source shader to `expected-runtime-shadow.fsh`; the check rejects resource overrides and a renderer loaded from harness classes. Do not copy the experimental renderer or hook into this run.
+
+The functional check uses actual primed TNT at `(44.5,67,-62.5)`, compares a 512² region of the rendered depth map, restores only its newly recorded edits, and compares the restored depth. It then verifies GPU lighting and captures morning, evening and night, requiring the daytime shadow pass to stop at night. Finally it reloads resources, verifies replacement and destruction of the old framebuffer, compares depth again, and checks mipmapped sampling on all ten shared materials. Require the final `campus-shadow-functional.json` PASS and seven fresh captures. Preserve the full route output before this separate run, and compare capture timestamps with the relevant run start and JAR build time. These fixtures must never run against a user's save.
+
+The new pass applies only to the map meshes. Vanilla blocks, players and mobs do not participate. Existing aerial-image shadows remain baked into those images.

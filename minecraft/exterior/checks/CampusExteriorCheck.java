@@ -444,6 +444,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 return;
             }
+            if(Boolean.getBoolean("minecampus.requireRuntimeShadows"))CampusShadowChecks.record(mc,stage,NAMES.length);
             try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
                 image.writeToFile(Path.of(NAMES[stage]));
             }

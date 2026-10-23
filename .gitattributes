@@ -1,0 +1,2 @@
+# Unified diff context prefixes are data, not Java indentation.
+minecraft/exterior/patches/*.patch -whitespace

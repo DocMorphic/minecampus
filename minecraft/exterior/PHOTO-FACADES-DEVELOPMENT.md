@@ -455,3 +455,14 @@ The [architect's courtyard photograph and plan](https://claudia-schreiber-archit
 Artifact `c94315901c1a6b29f3390a4833dbebf292e5e36a759f6200299a2e8dfe96e3fc` passes 35 native captures, 33 native checks, 27 service tests and 25 ground-material controls. The new checks verify the former upper fragment is absent, the lower ray reaches the reconstructed connector, a neighbouring GRS II ray remains intact, two ground rays reach the paving mask and the low edging is visible. The stage-32 aerial test is also corrected: its first ray now reaches the raised main GRS III roof; previously both rays reached the tower. All 95 earlier render tiles, 82 earlier facade plans and the terrain guides are unchanged. Only 1,527 previously unassigned material pixels change, within the path and outside buildings. Collision migration advances to v18. [Validation](grs-courtyard-development-validation.json).
 
 This is still a development checkpoint. Courtyard planting, nearby coarse facades, older ground imagery and the renderer's simplified reflections/lighting remain unfinished.
+
+
+## Sun-aligned mesh shadows
+
+Dev.11 adds local cast shadows from the actual loaded map geometry, with alpha-cutout foliage and material lighting aligned to Minecraft's sky. TNT changes the mesh used by the depth pass. The pass fades with rain and stops at night; night lighting and sunrise/sunset are verified in the packaged game. A resource-reload regression found during testing is fixed: shared materials regain their mipmaps even if Minecraft reuses their texture IDs.
+
+![Morning, noon, evening and night from the same native camera](../../docs/screenshots/campus-runtime-shadow-time-of-day.jpg)
+
+![GRS courtyard with sun-aligned material lighting and local mesh shadows](../../docs/screenshots/campus-runtime-shadow-courtyard.jpg)
+
+The change preserves all dev.10 geometry, textures, terrain and the bundled service. [Exact artifact, native route, TNT/depth restoration and reload evidence](runtime-shadow-development-validation.json). Only map meshes participate; vanilla blocks and entities do not. The depth map is local and thin edges can show sampling patterns. Photographic ground retains its baked shadows, glass still approximates the sky and ground, and pale path margins and coarse neighboring buildings remain unfinished. This is an incremental checkpoint toward the active campus-quality goal.

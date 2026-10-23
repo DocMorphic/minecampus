@@ -1,21 +1,24 @@
 diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
-index 53d3868..ef48082 100644
 --- a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
 +++ b/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
-@@ -43,6 +43,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
+@@ -43,6 +43,16 @@
   */
  public final class MapRenderer {
  	public static final MapRenderer INSTANCE = new MapRenderer();
-+    private static ShaderInstance campusGroundShader;
++    private static ShaderInstance campusGroundShader,campusShadowShader;
 +    public static void registerCampusShader() {
-+        net.fabricmc.fabric.api.client.rendering.v1.CoreShaderRegistrationCallback.EVENT.register(context ->
++        net.fabricmc.fabric.api.client.rendering.v1.CoreShaderRegistrationCallback.EVENT.register(context -> {
++            CampusShadows.clear();CampusMaterials.invalidate();
 +            context.register(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("realworldmc", "campus_ground"),
-+                com.mojang.blaze3d.vertex.DefaultVertexFormat.POSITION_TEX, shader -> campusGroundShader=shader));
++                com.mojang.blaze3d.vertex.DefaultVertexFormat.POSITION_TEX, shader -> campusGroundShader=shader);
++            context.register(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("realworldmc", "campus_shadow"),
++                com.mojang.blaze3d.vertex.DefaultVertexFormat.POSITION_TEX, shader -> campusShadowShader=shader);
++        });
 +    }
  
  	private static final int MAX_UPLOADS_PER_FRAME = 3;
  	private static final int MAX_REFRESH_PER_FRAME = 4;
-@@ -108,6 +114,14 @@ public final class MapRenderer {
+@@ -108,6 +118,14 @@
  	private int tickCounter;
  
  	public volatile String status = "";
@@ -30,7 +33,15 @@ index 53d3868..ef48082 100644
  	public volatile String attributionText = "Google, RealWorldMC";
  
  	public void setRegions(RegionsPayload payload) {
-@@ -198,6 +212,7 @@ public final class MapRenderer {
+@@ -148,6 +166,7 @@
+     }
+ 
+ 	private void resetTiles() {
++        RenderSystem.recordRenderCall(CampusShadows::clear);
+ 		synchronized (uploadQueue) {
+             epoch++;
+             uploadQueue.clear();
+@@ -198,6 +217,7 @@
  				String q = String.format(Locale.ROOT, "/render/select?%s&x=%.2f&y=%.2f&z=%.2f&space=%d&aheadX=%.2f&aheadZ=%.2f",
  					ServiceClient.originQuery(o.latitude(), o.longitude(), o.groundHeight()), cam.x, cam.y, cam.z, space ? 1 : 0, lookAhead.x, lookAhead.z);
  				JsonObject res = ServiceClient.getJson(q, Duration.ofSeconds(30));
@@ -38,16 +49,20 @@ index 53d3868..ef48082 100644
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -422,17 +437,53 @@ public final class MapRenderer {
+@@ -422,17 +442,57 @@
  		RenderSystem.depthMask(true);
  		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
-+        if(current!=null&&Math.abs(current.latitude()-48.265)<1e-7&&Math.abs(current.longitude()-11.671)<1e-7&&!space&&campusGroundShader!=null)CampusMaterials.bind();
++        boolean campusPass=current!=null&&Math.abs(current.latitude()-48.265)<1e-7&&Math.abs(current.longitude()-11.671)<1e-7&&!space&&retained==null&&campusGroundShader!=null;
++        if(campusPass){
++            CampusShadows.update(tiles,cam,level,partial,campusShadowShader,campusGroundShader);
++            CampusMaterials.bind();
++        }else CampusShadows.bind(campusGroundShader,0f);
  
  		for (MapTile t : tiles) {
 +            // Minecampus reserves these 36 ids for its 100m surveyed ground tiles.
 +            boolean surveyed=t!=null && t.data.id>=1_000_000_000 && t.data.id<1_000_000_036 && campusGroundShader!=null;
-+            boolean campus=current!=null && Math.abs(current.latitude()-48.265)<1e-7 && Math.abs(current.longitude()-11.671)<1e-7 && !space && campusGroundShader!=null;
++            boolean campus=campusPass;
 +            ShaderInstance tileShader=campus ? campusGroundShader : shader;
 +            if(campus && t!=null) {
 +                tileShader.safeGetUniform("TileAnchor").set((float)t.data.anchorX,(float)t.data.anchorY,(float)t.data.anchorZ);
@@ -93,6 +108,14 @@ index 53d3868..ef48082 100644
  			}
  		}
  		VertexBuffer.unbind();
+@@ -455,6 +515,7 @@
+ 	private void markDirty(java.util.function.Predicate<MapTile> test) {
+ 		RenderSystem.recordRenderCall(() -> {
+ 			for (MapTile t : loaded.values()) if (test.test(t)) t.dirty = true;
++            CampusShadows.invalidate();
+ 		});
+ 	}
+ 
 diff --git a/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java b/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java
 index d246af9..4693653 100644
 --- a/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java

@@ -238,5 +238,7 @@
     "meanAbsoluteChannelDifference": 0.0,
     "changedPixelFraction": 0.0,
     "note": "Comparison of the two baseline captures; timing/context differences may remain."
-  }
+  },
+  "sourceRevision": "4df56e360f67019521a2c4158b0aebebfd24af9d",
+  "sourceRevisionNote": "sourceFiles hashes refer to this historical benchmark revision, before dynamic sunlight and production lifecycle integration."
 }

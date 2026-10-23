@@ -22,11 +22,12 @@ public final class CampusShadows {
     private static boolean ready;
     private static long nextUpdate;
     private static Vec3 lastCamera=Vec3.ZERO;
+    private static final Vector3f lastSun=new Vector3f();
     public static long updates;
     public static int draws;
     public static void clear(){
         if(target!=null){target.destroyBuffers();target=null;}
-        ready=false;
+        ready=false;RenderSystem.setShaderTexture(11,0);
     }
     private CampusShadows(){}
 
@@ -37,7 +38,7 @@ public final class CampusShadows {
         long now=System.nanoTime();
         // Redraw at most ten times per second; MapTile refresh may add latency.
         // A large camera move bypasses the throttle.
-        if(ready&&now<nextUpdate&&camera.distanceToSqr(lastCamera)<400)return;
+        if(ready&&now<nextUpdate&&camera.distanceToSqr(lastCamera)<400&&lastSun.dot(sun)>.9999f)return;
         int drawFbo=GL11.glGetInteger(GL30.GL_DRAW_FRAMEBUFFER_BINDING);
         int readFbo=GL11.glGetInteger(GL30.GL_READ_FRAMEBUFFER_BINDING);
         int[] viewport=new int[4];GL11.glGetIntegerv(GL11.GL_VIEWPORT,viewport);
@@ -54,7 +55,9 @@ public final class CampusShadows {
             RenderSystem.clear(GL11.GL_DEPTH_BUFFER_BIT,Minecraft.ON_OSX);
             Vector3f center=new Vector3f((float)camera.x,(float)camera.y,(float)camera.z);
             Vector3f eye=new Vector3f(sun).mul(160f).add(center);
-            Vector3f up=Math.abs(sun.y)>.99f?new Vector3f(0,0,1):new Vector3f(0,1,0);
+            // Minecraft's sun travels in XY. A stable Z up-vector avoids a
+            // basis switch as the sun passes nearly overhead.
+            Vector3f up=Math.abs(sun.z)>.99f?new Vector3f(0,1,0):new Vector3f(0,0,1);
             Matrix4f view=new Matrix4f().lookAt(eye,center,up);
             Matrix4f projection=new Matrix4f().ortho(-RADIUS,RADIUS,-RADIUS,RADIUS,1f,320f);
             matrix.set(projection).mul(view);
@@ -63,12 +66,12 @@ public final class CampusShadows {
             float dy=(Math.round(origin.y*SIZE*.5f)-origin.y*SIZE*.5f)*2f/SIZE;
             projection.m30(projection.m30()+dx);projection.m31(projection.m31()+dy);
             matrix.set(projection).mul(view);
+            var frustum=new net.minecraft.client.renderer.culling.Frustum(view,projection);
+            frustum.prepare(0,0,0);
             draws=0;
             for(var tile:tiles){
-                // The square light-space footprint needs off-camera casters.
-                // Keep its conservative world bound; never use the view frustum.
-                var b=tile.bounds;
-                if(b.maxX<camera.x-150||b.minX>camera.x+150||b.maxZ<camera.z-150||b.minZ>camera.z+150)continue;
+                // Cull against the light volume, including off-camera casters.
+                if(!frustum.isVisible(tile.bounds))continue;
                 Matrix4f mv=new Matrix4f(view).translate((float)tile.data.anchorX,(float)tile.data.anchorY,(float)tile.data.anchorZ);
                 for(int part=0;part<tile.partCount();part++){
                     if(tile.isEmpty(part))continue;
@@ -78,7 +81,7 @@ public final class CampusShadows {
                     var buffer=tile.buffer(part);buffer.bind();buffer.drawWithShader(mv,projection,shader);draws++;
                 }
             }
-            ready=true;updates++;nextUpdate=now+100_000_000L;lastCamera=camera;
+            ready=true;updates++;nextUpdate=now+100_000_000L;lastCamera=camera;lastSun.set(sun);
         }finally{
             VertexBuffer.unbind();
             GlStateManager._glBindFramebuffer(GL30.GL_DRAW_FRAMEBUFFER,drawFbo);
@@ -94,9 +97,12 @@ public final class CampusShadows {
         }
     }
     public static void bind(ShaderInstance shader,boolean enabled){
+        bind(shader,enabled?.28f:0f);
+    }
+    public static void bind(ShaderInstance shader,float strength){
         if(shader==null)return;
-        shader.safeGetUniform("CampusShadowStrength").set(enabled&&ready?.28f:0f);
-        if(enabled&&ready){
+        shader.safeGetUniform("CampusShadowStrength").set(ready?strength:0f);
+        if(strength>0&&ready){
             RenderSystem.setShaderTexture(11,target.getDepthTextureId());
             shader.safeGetUniform("CampusShadowMatrix").set(matrix);
         }

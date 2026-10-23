@@ -41,6 +41,32 @@ vec3 groundNormalDetail(sampler2D source,vec3 p,vec3 weights) {
     if(weights.z>0.0){vec3 n=textureGrad(source,p.xy,dx.xy,dy.xy).xyz*2.0-1.0;detail+=vec3(n.x,n.y,0)*weights.z;}
     return detail;
 }
+uniform vec3 CampusSunDirection;
+uniform sampler2D Sampler11;
+uniform mat4 CampusShadowMatrix;
+uniform float CampusShadowStrength;
+float campusShadow(vec3 p) {
+    if(CampusShadowStrength<=0.0)return 0.0;
+    vec3 n=normalize(cross(dFdx(p),dFdy(p)));
+    if(dot(n,CameraPosition-p)<0.0)n=-n;
+    vec4 projected=CampusShadowMatrix*vec4(p+n*.01,1.0);
+    vec3 at=projected.xyz/projected.w*.5+.5;
+    if(any(lessThan(at,vec3(0)))||any(greaterThan(at,vec3(1))))return 0.0;
+    vec3 dx=dFdx(at),dy=dFdy(at);
+    float determinant=dx.x*dy.y-dx.y*dy.x;
+    vec2 plane=abs(determinant)>1e-12?vec2(dx.z*dy.y-dy.z*dx.y,dx.x*dy.z-dy.x*dx.z)/determinant:vec2(0);
+    float shade=0.0;
+    for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){
+        vec2 sampleUv=(floor(at.xy*4096.0)+vec2(x,y)+.5)/4096.0;
+        float nearest=textureLod(Sampler11,sampleUv,0.0).r;
+        float compare=at.z+dot(plane,sampleUv-at.xy)-.00003;
+        shade+=compare>nearest?1.0:0.0;
+    }
+    float edge=1.0-smoothstep(.80,.98,max(abs(at.x*2.0-1.0),abs(at.y*2.0-1.0)));
+    return shade/9.0*edge;
+}
+
+
 void main() {
     vec4 color=texture(Sampler0,texCoord0);
     if(abs(MaterialDetail-13.0)<.1){
@@ -119,7 +145,7 @@ void main() {
             if(soil>.001)detail=mix(detail,groundNormalDetail(Sampler10,worldPosition/1.3,weights),soil);
             detail-=geometric*dot(detail,geometric);
             vec3 n=normalize(geometric+detail*.35);
-            vec3 sun=normalize(vec3(-.5,.8,-.3));
+            vec3 sun=CampusSunDirection;
             color.rgb*=mix(1.0,(.55+.45*max(dot(n,sun),0.0))/.91,proximity);
         }
     }
@@ -138,7 +164,7 @@ void main() {
             float strength=.45*(1.0-smoothstep(20.0,50.0,viewDistance));
             n=normalize(n+strength*(tangent*detail.x+bitangent*detail.y));
         }
-        color.rgb*=.65+.35*max(dot(n,normalize(vec3(-.5,.8,-.3))),0.0);
+        color.rgb*=.65+.35*max(dot(n,CampusSunDirection),0.0);
     }
     if(abs(MaterialDetail-9.0)<.1) {
         vec3 roofN=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
@@ -150,7 +176,7 @@ void main() {
         vec3 view=normalize(CameraPosition-worldPosition);
         if(dot(n,view)<0.0)n=-n;
         if(abs(n.y)<0.7) {
-            vec3 sun=normalize(vec3(-0.5,0.8,-0.3));
+            vec3 sun=CampusSunDirection;
             if(MaterialDetail>6.5&&MaterialDetail<8.5) {
                 vec2 uv=abs(n.x)>abs(n.z)?worldPosition.zy*.5:worldPosition.xy*.5;
                 vec3 nm=texture(Sampler2,uv).xyz*2.0-1.0;
@@ -181,7 +207,7 @@ void main() {
     }
     if(MaterialDetail>3.5&&MaterialDetail<5.5) {
         vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
-        vec3 sun=normalize(vec3(-0.5,0.8,-0.3));
+        vec3 sun=CampusSunDirection;
         float lighting=0.58+0.42*abs(dot(n,sun));
         if(MaterialDetail<4.5) {
             // Double-sided leaf transmission; cutout atlas preserves holes between leaves.
@@ -190,6 +216,7 @@ void main() {
         }
         color.rgb*=lighting;
     }
+    color.rgb*=1.0-CampusShadowStrength*campusShadow(worldPosition);
     color*=ColorModulator;
     color.rgb=mix(color.rgb,CampusFogColor,smoothstep(650.0,1000.0,viewDistance));
     fragColor=color;

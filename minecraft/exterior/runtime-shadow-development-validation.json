@@ -1,0 +1,888 @@
+{
+  "date": "2026-10-24",
+  "status": "Native-verified development checkpoint; broader campus realism goal remains active",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 234667959,
+    "sha256": "a2fc7761fbda0828f351b72f0fd79de04da92373d914c23b38e89a4711cebe5b",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "24bad7f4099f109a6f41155b3063315c976f487c50fed37060b81979399adec6",
+    "rendererSourceFingerprint": "ad7eb2fd11420bad",
+    "bundleSha256": "cfd78334e5246ae25223efaf39578eb13ec2afde5338478622a63e010429b9f5",
+    "tiles": 97
+  },
+  "rendering": {
+    "depthMapSize": 4096,
+    "widthMetres": 128,
+    "sunlight": "Minecraft sky rotation; same direction used by map materials",
+    "night": "Daytime shadow pass disabled",
+    "rain": "Strength reduced by rain level; formula covered by GPU checks in clear weather, rain transition not separately exercised",
+    "castersAndReceivers": "Loaded map meshes only; alpha-cutout leaves included",
+    "resourceReload": "Retires framebuffer and regenerates shared material mipmaps even if texture IDs are reused",
+    "scheduledRefreshIntervalMilliseconds": 100,
+    "refreshQualification": "Damage invalidation, large camera movement and sunlight changes can bypass the scheduled interval."
+  },
+  "preservation": {
+    "previousArtifactSha256": "c94315901c1a6b29f3390a4833dbebf292e5e36a759f6200299a2e8dfe96e3fc",
+    "serviceBundleByteIdentical": true,
+    "renderTiles": 97,
+    "allGeometryTexturesTerrainAndFacadePlansUnchanged": true,
+    "collisionMigrationVersion": 18,
+    "jarEntryDiff": {
+      "changed": [
+        "META-INF/MANIFEST.MF",
+        "assets/realworldmc/shaders/core/campus_ground.fsh",
+        "assets/realworldmc/shaders/core/campus_ground.json",
+        "dev/realworldmc/client/CampusMaterials.class",
+        "dev/realworldmc/client/MapRenderer$Retained.class",
+        "dev/realworldmc/client/MapRenderer$TileRequest.class",
+        "dev/realworldmc/client/MapRenderer$Upload.class",
+        "dev/realworldmc/client/MapRenderer$Want.class",
+        "dev/realworldmc/client/MapRenderer.class"
+      ],
+      "added": [
+        "assets/realworldmc/shaders/core/campus_shadow.fsh",
+        "assets/realworldmc/shaders/core/campus_shadow.json",
+        "assets/realworldmc/shaders/core/campus_shadow.vsh",
+        "dev/realworldmc/client/CampusShadows.class"
+      ],
+      "removed": []
+    }
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: twenty-three ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail, Telefonzentrale and COS frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "telefonzentrale": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "cos": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "cos-ground": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "texture": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted",
+      "cos-site": "PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer",
+      "cos-bench": "PASS: native gravity landed player on the bench proxy at Y=64.0; visible seat top Y=63.89",
+      "cos-landscape": "PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB 0.3896470588235294,0.3523137254901961,0.1912156862745098); exposed curb ray reaches its 12cm edging",
+      "cos-apron": "PASS: native gravity landed on the smooth apron proxy at Y=63.0 (mesh Y=63.46271), replacing the previous Y=64 proxy",
+      "grs-north": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "grs-west": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "grs-connectors-north": "PASS: native rays reach the tower and west link at walking height",
+      "grs-connectors-courtyard": "PASS: native rays reach the tower and west link and the repaired GRS II west facade at walking height",
+      "grs-connectors-aerial": "PASS: native rays reach the tower and west link, the south junction and preserved adjoining GRS roof behind any foliage",
+      "grs-main-west": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "grs-main-east": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "grs-iii-west": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-south": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-east": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-tower": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-aerial": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-courtyard-path": "PASS: two walking-view rays reach the paving mask on unchanged surveyed terrain, and a third reaches the low edging",
+      "grs-courtyard-connector": "PASS: upper scan fragment absent, lower fragment replaced by surveyed connector and adjacent GRS II facade preserved"
+    },
+    "routeLighting": {
+      "status": "PASS: packaged shadows and sky-consistent material lighting verified across the native route",
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-a2fc7761fb.jar",
+      "frames": [
+        {
+          "stage": 0,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 346,
+          "shadowDraws": 35,
+          "fps": 77
+        },
+        {
+          "stage": 1,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 531,
+          "shadowDraws": 28,
+          "fps": 116
+        },
+        {
+          "stage": 2,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 628,
+          "shadowDraws": 40,
+          "fps": 105
+        },
+        {
+          "stage": 3,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 720,
+          "shadowDraws": 41,
+          "fps": 111
+        },
+        {
+          "stage": 4,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 812,
+          "shadowDraws": 71,
+          "fps": 91
+        },
+        {
+          "stage": 5,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 909,
+          "shadowDraws": 81,
+          "fps": 115
+        },
+        {
+          "stage": 6,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1003,
+          "shadowDraws": 84,
+          "fps": 110
+        },
+        {
+          "stage": 7,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1095,
+          "shadowDraws": 32,
+          "fps": 92
+        },
+        {
+          "stage": 8,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1188,
+          "shadowDraws": 140,
+          "fps": 80
+        },
+        {
+          "stage": 9,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1283,
+          "shadowDraws": 89,
+          "fps": 115
+        },
+        {
+          "stage": 10,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1378,
+          "shadowDraws": 87,
+          "fps": 114
+        },
+        {
+          "stage": 11,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1473,
+          "shadowDraws": 33,
+          "fps": 108
+        },
+        {
+          "stage": 12,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1566,
+          "shadowDraws": 113,
+          "fps": 103
+        },
+        {
+          "stage": 13,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1660,
+          "shadowDraws": 81,
+          "fps": 105
+        },
+        {
+          "stage": 14,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1751,
+          "shadowDraws": 98,
+          "fps": 91
+        },
+        {
+          "stage": 15,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1842,
+          "shadowDraws": 98,
+          "fps": 114
+        },
+        {
+          "stage": 16,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1936,
+          "shadowDraws": 105,
+          "fps": 114
+        },
+        {
+          "stage": 17,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2134,
+          "shadowDraws": 28,
+          "fps": 114
+        },
+        {
+          "stage": 18,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2228,
+          "shadowDraws": 83,
+          "fps": 114
+        },
+        {
+          "stage": 19,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2320,
+          "shadowDraws": 81,
+          "fps": 114
+        },
+        {
+          "stage": 20,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2409,
+          "shadowDraws": 49,
+          "fps": 71
+        },
+        {
+          "stage": 21,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2504,
+          "shadowDraws": 63,
+          "fps": 79
+        },
+        {
+          "stage": 22,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2596,
+          "shadowDraws": 89,
+          "fps": 112
+        },
+        {
+          "stage": 23,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2687,
+          "shadowDraws": 90,
+          "fps": 91
+        },
+        {
+          "stage": 24,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2781,
+          "shadowDraws": 88,
+          "fps": 111
+        },
+        {
+          "stage": 25,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2876,
+          "shadowDraws": 85,
+          "fps": 106
+        },
+        {
+          "stage": 26,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2971,
+          "shadowDraws": 85,
+          "fps": 110
+        },
+        {
+          "stage": 27,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3067,
+          "shadowDraws": 72,
+          "fps": 88
+        },
+        {
+          "stage": 28,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3163,
+          "shadowDraws": 140,
+          "fps": 108
+        },
+        {
+          "stage": 29,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3257,
+          "shadowDraws": 102,
+          "fps": 115
+        },
+        {
+          "stage": 30,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3348,
+          "shadowDraws": 104,
+          "fps": 79
+        },
+        {
+          "stage": 31,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3440,
+          "shadowDraws": 108,
+          "fps": 83
+        },
+        {
+          "stage": 32,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3536,
+          "shadowDraws": 91,
+          "fps": 108
+        },
+        {
+          "stage": 33,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3631,
+          "shadowDraws": 108,
+          "fps": 86
+        },
+        {
+          "stage": 34,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3721,
+          "shadowDraws": 108,
+          "fps": 85
+        }
+      ]
+    },
+    "functional": {
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-a2fc7761fb.jar",
+      "latestCapture": "reloaded",
+      "clientDayTime": 6000,
+      "shadowStrength": 0.28,
+      "newTntEdits": 29,
+      "changedDepthSamples": 14338,
+      "restoredDepthResidualSamples": 0,
+      "noonMeanLuminance": 120.03538439280626,
+      "nightMeanLuminance": 24.48089721331909,
+      "reloadDepthResidualSamples": 0,
+      "reloadedMaterials": [
+        {
+          "material": "concrete_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "concrete_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "grass_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "grass_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "ground_surfaces",
+          "minFilter": 9987,
+          "maxLod": 12.0
+        },
+        {
+          "material": "brick_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "asphalt_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "asphalt_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "soil_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "soil_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        }
+      ],
+      "status": "PASS: actual TNT changed native shadow depth, restoration recovered it, and sky-consistent morning/evening/night lighting rendered",
+      "depthCropSize": 512,
+      "depthDifferenceThreshold": 1e-05,
+      "lightingChecks": 5,
+      "lighting": [
+        {
+          "phase": "noon",
+          "dayTime": 6000,
+          "gpuMaterialDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 387
+        },
+        {
+          "phase": "morning",
+          "dayTime": 1000,
+          "gpuMaterialDirection": [
+            0.8861938,
+            0.46331468,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 530
+        },
+        {
+          "phase": "evening",
+          "dayTime": 11000,
+          "gpuMaterialDirection": [
+            -0.8861939,
+            0.46331462,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 564
+        },
+        {
+          "phase": "night",
+          "dayTime": 18000,
+          "gpuMaterialDirection": [
+            -8.742278e-08,
+            1.0,
+            -0.0
+          ],
+          "gpuShadowStrength": 0.0,
+          "shadowUpdates": 573
+        },
+        {
+          "phase": "reloaded-noon",
+          "dayTime": 6000,
+          "gpuMaterialDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 648
+        }
+      ]
+    },
+    "fullRunLogSha256": "d781a7bc0c72b6205d9e2cff79773f89e78ba323546e6af04a769aa40a7410a8",
+    "functionalLogSha256": "1a08c0f086711acb687deefd155975cb8fc36e318bc01f4923b09f5483afb8a4",
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "c696e14143cd06e1214e072ba91ed1833b3eff7c7125f948e03a6f9c110cf1d6"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "70ee244ea7adda8c69a7b83fe8f3213a8c8f015921440f35b89f74fd1cbde972"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "d3e57c7effb4a808704852f3ba16e9a614f327fdbf59d9a4e03ead43c2801123"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "10198a1a4290d92bbabd0b83e8c1b23cfe002e9d0d3c7f0e7bfe7194be052b92"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "283d2f52dfaf63fa4c37dde439d6225312acb967d4fcb16f911eb381c11e42cd"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "886e7516a240005c882449e92430692020f7c018e3482473886359ce9c3cd722"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "516010ae9aab56357a8939f0a50ef4c4745d6b042adb319ae2cd2ace9bdb8b0d"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "ab7f815553d67abe7a88c91fb870967cd6cc5b3e7e8f6048031192d82c49ff72"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "337e7ad4f33a325eb6360aa8e51afe71b2d5bd40548d4240886419975f327c15"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "59baff1351ba56d5893254d7cab55b183a283ef3e61163c79fa725de4407f611"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "5f79cf067a1cda24b8200e10af4fb4a181720f4acc83ed668128bdec0f88620a"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "e4036ea17dd767706686d6a1fe5188889250bd94666030be39cfdd6f9776fba0"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "98f73fc43abfe55e1b2a299a48e6e1787e34aa45ceb19808f9c0b0b4d41442ad"
+      },
+      {
+        "file": "campus-road-detail.png",
+        "sha256": "e5537840dcaba91724ea5c6df0749f0a4b6cfd8c30b3a824b3d07d669fed370e"
+      },
+      {
+        "file": "campus-telefonzentrale-west.png",
+        "sha256": "1b4fef34ce572c941c90e4340954fcd4dfca3a1c09bcec8362d787a7c4d72d25"
+      },
+      {
+        "file": "campus-cos-southwest.png",
+        "sha256": "a47425320f8936f232eb5c741c0843f49e74e74ad734fa761d437035a5ed3a80"
+      },
+      {
+        "file": "campus-cos-south.png",
+        "sha256": "f97768818011da40a2141be27094c7b4f7bdd7d4a9d04ab43832dcd7d6b5c3fe"
+      },
+      {
+        "file": "campus-cos-aerial.png",
+        "sha256": "26a318e23b5ec04a5d1e6ae9efe0670e7351e70ca824a8a11dc2197d0f6fdfb3"
+      },
+      {
+        "file": "campus-cos-forecourt.png",
+        "sha256": "a6f6d6a8d196ebc1575a6a3e2401729360452095b8727bf9431eba5fae7a6d6d"
+      },
+      {
+        "file": "campus-cos-planting.png",
+        "sha256": "4d9000be04d3abc8d7992bea4b96b3415293441edc00b652467c88dc83c22171"
+      },
+      {
+        "file": "campus-cos-north.png",
+        "sha256": "1f537398450d1a32f5cc26a587e4accc7b30a66aba6905a4bff71d7cccdb2dea"
+      },
+      {
+        "file": "campus-grs-north.png",
+        "sha256": "5e1ba3c12a43c6abc9f16912da56941a616d05e3d05f1474f8c8030e91017936"
+      },
+      {
+        "file": "campus-grs-west.png",
+        "sha256": "49fe9d1992e8fe1b50036c56bee6bfa040a86c75cba6577f3720341052b917bf"
+      },
+      {
+        "file": "campus-grs-tower-north.png",
+        "sha256": "5332ed8cbf499088aa51dc967e90ae674ba41e7fc4dcd62deff3b178c00b951e"
+      },
+      {
+        "file": "campus-grs-tower-courtyard.png",
+        "sha256": "b94ab0ac1d2c0774dcf9459222da32d5bdff493726bec5f671dd1957047b16cf"
+      },
+      {
+        "file": "campus-grs-connectors-aerial.png",
+        "sha256": "049830ac191a8d5b679dad8010f1bd0d6ef3a9932ae2b1d9e20f567188fedb59"
+      },
+      {
+        "file": "campus-grs-main-west.png",
+        "sha256": "ea7d2dd8c97c193b7345dc43daa7eeb2e23b924d23547bc03180173bcd812704"
+      },
+      {
+        "file": "campus-grs-main-east.png",
+        "sha256": "a361f569d73eca3c71ee2b6129d095e5b3dac7d6c5ff58d37482eee5fd45ffdf"
+      },
+      {
+        "file": "campus-grs-iii-west.png",
+        "sha256": "0f68e7aa09ecc2c7457f591d4bceb626f47ee37a5b65d24786092abc5dcef489"
+      },
+      {
+        "file": "campus-grs-iii-south.png",
+        "sha256": "ef8a82aad0b736a689d770b760c32ccf90e4968efa1e1a9e3e34595ad61e806a"
+      },
+      {
+        "file": "campus-grs-iii-east.png",
+        "sha256": "ab1bae716e95c73226da46210c90cdecd824eea09b286eddcf361e226934b7db"
+      },
+      {
+        "file": "campus-grs-iii-tower.png",
+        "sha256": "76d0422843c04eb96b963e0467e317606828f91f8f41a79efa97d36424cb2066"
+      },
+      {
+        "file": "campus-grs-iii-aerial.png",
+        "sha256": "078e06b1d8f5c19929367182047860b3cfa3e575652abb52f472fc5afe3d486e"
+      },
+      {
+        "file": "campus-grs-courtyard-path.png",
+        "sha256": "d252dbca9362bb3097192310199e724cad575ebef89a421b5f0eaacda952688a"
+      },
+      {
+        "file": "campus-grs-courtyard-connector.png",
+        "sha256": "76d0422843c04eb96b963e0467e317606828f91f8f41a79efa97d36424cb2066"
+      }
+    ],
+    "functionalCaptures": [
+      {
+        "file": "campus-shadow-functional-before.png",
+        "sha256": "3891634a94aaef3463a77cbcb2decd8f47f86bf25a94e72f830d2f6a83204e11"
+      },
+      {
+        "file": "campus-shadow-functional-excavated.png",
+        "sha256": "8acd1c6d710fe2f44b12b9b17965287dc09d16d9f3ebae4251b5efb69a8726ee"
+      },
+      {
+        "file": "campus-shadow-functional-restored.png",
+        "sha256": "e012382f22f85ace3c4f436b452b633228f8a36d9a481b23f2da53d1fc581645"
+      },
+      {
+        "file": "campus-shadow-functional-morning.png",
+        "sha256": "da85de17b127a146227c389ce43bc8994db1c8742ec59ba616517a334653fcd8"
+      },
+      {
+        "file": "campus-shadow-functional-evening.png",
+        "sha256": "6c535ef574ed287acb065d1d7c4ee2cb48291ac3e07b8a4fd2b538896d2c84a7"
+      },
+      {
+        "file": "campus-shadow-functional-night.png",
+        "sha256": "d967897522372c92beb4c5e306a7ad615000586470bd79c9d38458308e367bb3"
+      },
+      {
+        "file": "campus-shadow-functional-reloaded.png",
+        "sha256": "669cc7af6234d1314a0a4d2cfe834096c674684682b5ea6fed249a67e08afb2c"
+      }
+    ],
+    "allCapturesNewerThanRunStartAndArtifact": true,
+    "checkSourceSha256": {
+      "CampusShadowFunctionalCheck.java": "84c91d8dfe772d62fb71e73ca77cd0451c8bbe8ca5a0b5401c46dc4b0a3064ce",
+      "CampusShadowChecks.java": "a2e172980a95dc6f693399d855a48967e6921c9a11cefae01a850cda14452976"
+    },
+    "functionalHarnessSha256": "fdc386862e0f6d67524b4a95b1f88a6345cf6be94151a18167eaeb3e1e733db7",
+    "routeHarnessSha256": "d5a45d43d9dac8f2d1d849853fe8e4c24d59fb601c78de20218d2bc62b817fe3"
+  },
+  "serviceChecks": {
+    "passed": 27,
+    "logSha256": "a76e703b21ed2e51dcac30e0b437aee03492bc968fc17bd63bfa868ec1fb5d54"
+  },
+  "updaterChecks": {
+    "passed": 3,
+    "logSha256": "6a4daf1661afebf443652376afd016982ab2c079f2b11e8994aa39df0eb91843"
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "developmentFindings": {
+    "reloadFailure": "First packaged check found shared materials reverted to nearest filtering and MAX_LOD=0 after reload. Shader registration now invalidates their cached preparation state.",
+    "prototypeOnlyStateAssertions": 2697,
+    "prototypeFunctionalLogSha256": "337347ef12c8500091f32dd2ad595da2d0b19dce4a68b06d289b11b3e0e2d6bf",
+    "prototypeBenchmarkEvidence": "runtime-shadow-development-review.json",
+    "performance": "Earlier isolated A/B/A prototype measured 95 / 89.5 / 95.5 FPS. Final route readings are not an A/B performance comparison."
+  },
+  "remaining": [
+    "Only campus map meshes participate; vanilla blocks, players and mobs do not cast or receive this pass.",
+    "Aerial imagery retains baked shadows, which can disagree with moving sunlight.",
+    "Thin slats and shadow edges can show small sampling patterns; the local depth map fades near its edge.",
+    "Glass remains a procedural sky/ground approximation without scene reflections.",
+    "Siemensbau, pale ground margins, courtyard planting, parking and other coarse surfaces remain unfinished."
+  ],
+  "installedPreview": {
+    "artifactSha256": "a2fc7761fbda0828f351b72f0fd79de04da92373d914c23b38e89a4711cebe5b",
+    "previousArtifactSha256": "c94315901c1a6b29f3390a4833dbebf292e5e36a759f6200299a2e8dfe96e3fc",
+    "updateSaveFilesVerified": 121,
+    "updateSavesAndSettingsUnchanged": true
+  }
+}

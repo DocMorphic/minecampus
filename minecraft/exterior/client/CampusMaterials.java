@@ -15,6 +15,9 @@ public final class CampusMaterials {
     private static final String[] NAMES={"concrete_diff","concrete_normal","grass_diff","grass_normal","ground_surfaces","brick_normal","asphalt_diff","asphalt_normal","soil_diff","soil_normal"};
     private static final int[] prepared={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
     private CampusMaterials(){}
+    // Resource reload can replace pixel storage while retaining the GL name.
+    // Reapply mipmaps and sampling even when the numeric texture ID is reused.
+    public static void invalidate(){java.util.Arrays.fill(prepared,-1);}
     public static void bind(){
         var manager=Minecraft.getInstance().getTextureManager();
         for(int i=0;i<NAMES.length;i++){
