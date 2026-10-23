@@ -246,6 +246,8 @@ for stale in OUT.glob('DEBY_LOD2_*.ect'):
  if stale.name not in {t['file'] for t in metadata['tiles']}:stale.unlink()
 from exterior_architecture import build as build_architecture
 build_architecture(globals())
+from exterior_ias import build as build_ias
+build_ias(globals())
 from exterior_vegetation import build as build_vegetation
 build_vegetation(globals())
 (OUT/'manifest.json').write_text(json.dumps(metadata,separators=(',',':')))

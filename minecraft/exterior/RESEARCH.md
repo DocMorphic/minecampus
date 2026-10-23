@@ -36,3 +36,7 @@ The [Graduate School architect reference](https://www.hkarchitekten.at/en/projec
 A public [KartaView location query](https://kartaview.org/doc/faq) for the campus with a 500 m radius returned an empty result in this research. This does not establish absence of imagery across the wider region. No KartaView imagery is bundled. It did not supply a replacement street-level campus scan.
 
 A source backface-culling experiment did not resolve the outdoor fragment problem and was reverted. The final preview retains the source's two-sided rendering. Roof/overlap and outdoor classification repair, rather than more tile requests, are the relevant corrections. The unreconstructed source-façade inspection remains below the requested realism target.
+
+## IAS exterior — 23 October 2026
+
+The [architect's IAS project](https://fritsch-tschaidse.de/en/projects/tu-munich-institute-for-advanced-study.html) documents the raised terrace, glazed entrance storey, recessed terraces/atrium and expanded-metal cladding with folding sun screens. The [High Contrast photograph](https://commons.wikimedia.org/wiki/File:TU_M%C3%BCnchen_Garching_-_Institute_for_Advanced_Study.jpg), licensed CC BY 3.0 DE, supplies material crops and a south-façade reference. BVV component `DEBY_LOD2_8486677` supplies the measured outer envelope and roof form. Recess, stair and panel dimensions are reconstructed, not newly measured. The new native camera faces the IAS from the promenade and must be checked before claiming improvement.

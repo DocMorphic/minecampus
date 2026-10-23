@@ -19,3 +19,11 @@ The outdoor photo layer is retired away from protected building and roof coverag
 Next quality work should prioritize the remaining source façades and site-specific architectural fidelity, using consistent ground cameras and explicit before/after evidence. Do not mark the overall realism goal complete on the strength of the preview's functional tests.
 
 [Actual game captures and functional validation](VALIDATION.md) · [Sources and rebuild](README.md)
+
+## Next development pass
+
+The IAS exterior has been reconstructed from BVV component `DEBY_LOD2_8486677`, the architect’s project reference and High Contrast’s CC BY 3.0 DE photograph. It adds the recessed south atrium, glazed entrance floor, raised terrace/stair, panel joints, folded side screens and rooftop sunshade. This extends the development scene to seven detailed building components; the published 0.4.0 preview still contains six.
+
+The same native camera was captured before/after. The new gravity check landed the player on the IAS terrace at Y=67; all eight native views and the TNT/ground/preservation checks passed. Development evidence is recorded separately so the published preview’s validation remains attributable to its exact JAR. Remaining coarse neighbouring façades are still open work.
+
+[IAS development comparison and validation](IAS-DEVELOPMENT.md)

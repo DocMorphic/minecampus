@@ -13,13 +13,15 @@ import java.nio.file.Path;
 /** Hidden, isolated native-client captures; not included in the distributed datapack. */
 public final class CampusExteriorCheck implements ClientModInitializer {
     private boolean opened, moved, walkingStarted;
-    private volatile boolean gameplayVerified;
-    private int ticks, stage=Boolean.getBoolean("minecampus.inspectOnly")?3:0, total, readyTicks;
+    private volatile boolean gameplayVerified, terraceVerified;
+    private boolean terraceStarted, terraceCheckQueued;
+    private int terraceTicks;
+    private int ticks, stage=Boolean.getBoolean("minecampus.inspectOnly")?Integer.getInteger("minecampus.inspectStage",3):0, total, readyTicks;
     private volatile Throwable failure;
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -27,7 +29,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "35 65 -40 90 0",
         "35 65 100 180 0",
         "50 65 -190 0 0",
-        "150 65 -220 -90 0"
+        "150 65 -220 -90 0",
+        "65 65 -157 -166 -8"
     };
 
     @Override public void onInitializeClient() {
@@ -97,7 +100,30 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     });
                     return;
                 }
-                Files.writeString(Path.of("campus-client-result.txt"),"PASS: ground, aerial, TNT and three promenade route frames captured after full streaming readiness");mc.stop();return;
+                if(!terraceStarted){
+                    terraceStarted=true;
+                    mc.getSingleplayerServer().execute(()->{
+                        var player=mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
+                        mc.getSingleplayerServer().getCommands().performPrefixedCommand(player.createCommandSourceStack().withPermission(4),"tp @s 72.5 74 -200.5");
+                    });
+                    return;
+                }
+                if(++terraceTicks<120)return;
+                if(!terraceVerified){
+                    if(!terraceCheckQueued){
+                        terraceCheckQueued=true;
+                        mc.getSingleplayerServer().execute(()->{
+                            try{
+                                var player=mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
+                                if(!player.onGround()||Math.abs(player.getY()-67)>.51)throw new AssertionError("IAS terrace collider mismatch: "+player.getY());
+                                Files.writeString(Path.of("campus-terrace-result.txt"),"PASS: native gravity landed player on reconstructed IAS terrace at Y="+player.getY());
+                                terraceVerified=true;
+                            }catch(Throwable error){failure=error;}
+                        });
+                    }
+                    return;
+                }
+                Files.writeString(Path.of("campus-client-result.txt"),"PASS: eight ground, aerial, TNT, promenade, source-limit and IAS frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);

@@ -1,0 +1,32 @@
+{
+  "status": "development; overall realism goal unfinished",
+  "release": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 178159989,
+    "sha256": "6abbc4fbef6a06ea65a2176987829d73c2343946fdbe49a6d856f5359bce185a",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "8a809d31ed8fd826049afcc83f9665b8524616c5783166c1d6b67d35881d75d7",
+    "bundleSha256": "1567d483e6a9ae9a7f842387e83796652eacd19ef5285911ef360be9a38dd71f",
+    "tiles": 82
+  },
+  "checks": {
+    "client": "PASS: eight ground, aerial, TNT, promenade, source-limit and IAS frames captured after full streaming readiness",
+    "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+    "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+    "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0"
+  },
+  "geometry": {
+    "renderTiles": 82,
+    "triangles": 1507325,
+    "textureBytes": 241268996,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 734,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "camera": "65 65 -157 -166 -8",
+  "originalSaveModified": false,
+  "installedPreview": "0.4.0"
+}

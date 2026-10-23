@@ -19,6 +19,8 @@ Run `python3 scripts/minecraft.py install`, then launch **Minecampus — TUM Gar
 
 Create a **TUM Garching — Minecampus** world for an undamaged campus. Existing saves retain their player builds and recorded excavation/TNT damage. The deleted Mensa interior preview is no longer included.
 
+The current source build also includes the next IAS development pass; it produces a `0.5.0-dev` JAR. The normal installer remains pinned to the published 0.4.0 preview until the next release. See [IAS development evidence](IAS-DEVELOPMENT.md).
+
 ## How collisions and damage work
 
 Both new chunks and existing nearby Garching chunks receive proxy blocks voxelized from the survey surfaces and reconstructed tree wood. Leaf cards are visual geometry, not a complete Minecraft leaf-block simulation. The migration keeps ordinary Minecraft blocks and positions in the authoritative edit journal. It suppresses recording of its own repairs, and stores completed chunks so the operation survives save/reload. Actual player mining, placement and TNT continue through Minecraft and RealWorldMC's damage system.

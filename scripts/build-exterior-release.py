@@ -74,6 +74,12 @@ Leaf and bark atlases: Poly Haven jacaranda_tree (CC0 1.0).
 https://polyhaven.com/a/jacaranda_tree
 Reconstructed branch placement and artistic foliage, not surveyed tree species.
 
+IAS facade material: High Contrast (CC BY 3.0 DE).
+https://commons.wikimedia.org/wiki/File:TU_M%C3%BCnchen_Garching_-_Institute_for_Advanced_Study.jpg
+https://creativecommons.org/licenses/by/3.0/de/
+Cropped metal/glass material; surveyed envelope with reconstructed atrium,
+folding screens and terrace based on the architect's project reference.
+
 Google scenery is streamed by the user's own configured service. No Google tile
 content, Minecraft assets, credentials or saved worlds are included in this build.
 '''
@@ -117,13 +123,13 @@ with zipfile.ZipFile(release) as original:
    name=asset['file'];assert Path(name).name==name and name.endswith('.ect')
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
  bundle=patched.getvalue()
- target=OUT/'RealWorldMC-Minecampus-Exterior-0.4.0-mc1.21.1.jar'
+ target=OUT/'RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar'
  with zipfile.ZipFile(compiled) as code,zipfile.ZipFile(target,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
   for entry in code.infolist():
    if entry.filename in ['realworldmc-service.zip','realworldmc-service.sha256']:continue
    data=code.read(entry.filename)
    if entry.filename=='fabric.mod.json':
-    d=json.loads(data);d['version']='1.0.3+minecampus.exterior.2';d['name']='RealWorldMC — Minecampus Exterior';data=json.dumps(d,indent=2).encode()
+    d=json.loads(data);d['version']='1.0.3+minecampus.exterior.3-dev';d['name']='RealWorldMC — Minecampus Exterior';data=json.dumps(d,indent=2).encode()
    write(z,entry.filename,data)
   write(z,'realworldmc-service.zip',bundle);write(z,'realworldmc-service.sha256',hashlib.sha256(bundle).hexdigest().encode())
   write(z,'LICENSES/Minecampus-exterior-notices.txt',notices.encode())
