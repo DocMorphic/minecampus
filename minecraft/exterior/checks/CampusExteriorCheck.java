@@ -285,7 +285,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 float[][] pixelsToPick=new float[][]{{.81f,.435f},{.38f,.443f}};
                 if(stage==6)pixelsToPick=new float[][]{{.75f,.46f},{.8f,.5f},{.9f,.45f},{.38f,.38f},{.37f,.43f},{.766f,.55f}};
                 if(stage==10)pixelsToPick=new float[][]{{.15f,.55f},{.5f,.55f},{.85f,.55f}};
-                if(stage==9)pixelsToPick=new float[][]{{.78f,.35f},{.84f,.43f},{.96f,.40f},{.265f,.58f},{.51f,.59f},{.65f,.48f},{.745f,.615f}};
+                if(stage==9)pixelsToPick=new float[][]{{.78f,.35f},{.84f,.43f},{.96f,.40f},{.265f,.58f},{.51f,.59f},{.65f,.48f},{.745f,.615f},{.1f,.6f},{.18f,.55f},{.35f,.58f},{.58f,.56f},{.7f,.55f},{.82f,.41f}};
                 if(stage==3||stage==5){
                     try(var frameImage=Screenshot.takeScreenshot(mc.getMainRenderTarget())){
                         var candidates=new java.util.ArrayList<int[]>();int width=frameImage.getWidth(),height=frameImage.getHeight();long sumX=0,sumY=0;
@@ -318,6 +318,17 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     }
                     var pick=new com.google.gson.JsonObject();var region=dev.realworldmc.EarthRegions.at((int)Math.floor(eye.x),(int)Math.floor(eye.z));if(region!=null)pick.addProperty("frameGroundHeight",region.groundHeight());pick.addProperty("u",pixel[0]);pick.addProperty("v",pixel[1]);pick.addProperty("fov",actualFov);pick.addProperty("tile",hit);pick.addProperty("x",eye.x+ray.x*nearest);pick.addProperty("y",eye.y+ray.y*nearest);pick.addProperty("z",eye.z+ray.z*nearest);var blockHit=mc.level.clip(new net.minecraft.world.level.ClipContext(eye,eye.add(ray.x*256,ray.y*256,ray.z*256),net.minecraft.world.level.ClipContext.Block.OUTLINE,net.minecraft.world.level.ClipContext.Fluid.NONE,mc.player));
                     var pos=blockHit.getBlockPos();pick.addProperty("block",net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(mc.level.getBlockState(pos).getBlock()).toString());pick.addProperty("blockPosition",pos.toShortString());picks.add(pick);
+                }
+                if(stage==9&&Boolean.getBoolean("minecampus.requireMensaRetaining")){
+                    int confirmed=0;
+                    for(var element:picks){var pick=element.getAsJsonObject();float u=pick.get("u").getAsFloat();
+                        if(Math.abs(u-.18f)<.0001f||Math.abs(u-.35f)<.0001f||Math.abs(u-.58f)<.0001f){
+                            if(pick.get("tile").getAsInt()!=1_000_030_005)throw new AssertionError("Former Mensa approach still hits an old wall fragment at u="+u);
+                            confirmed++;
+                        }
+                    }
+                    if(confirmed!=3)throw new AssertionError("Missing approach diagnostic rays");
+                    Files.writeString(Path.of("campus-retaining-result.txt"),"PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction");
                 }
                 Files.writeString(Path.of("campus-fragment-picks-"+stage+".json"),picks.toString());
             }

@@ -83,3 +83,21 @@ The wider approach remains visibly unfinished:
 The photographic pipeline omits a face once its structural replacement owns it, preventing an old flat sheet from covering the new recess. The auxiliary collision surface also omits that old face. A new native assertion verifies air at the former wall position `(5,68,-247)`, solid recessed glazing at `(5,68,-249)` and the overhead canopy at `(5,70,-247)` after collision migration. The exact packaged artifact completed eleven viewpoints and all six native assertions; all 21 service tests pass. All 46 backed-up original save files remain unchanged.
 
 [Exact artifact, native captures, source qualifications and validation](mensa-front-development-validation.json). The overall goal remains open. Remaining work includes the approach’s scan fragments, terrace artwork and pavement, untreated elevations, roof detail and campus-wide fidelity. The installed/public preview is still 0.4.0.
+
+## Terrace retaining walls: `0b4d1eac…`
+
+Fixed native rays identified the large lower-approach fragments as the old source mesh along BVV wall 39 of `DEBY_LOD2_5284422`. This outer terrace wall is 50.10 m long, with only 42.9% photographic coverage of its visible area; keeping its unsupported source mesh preserved the jagged shapes. The existing licensed IAS panorama shows concrete terrace walls and railing beside the building:
+
+![Concrete terrace-wall reference beside IAS](../../docs/screenshots/campus-mensa-retaining-reference.jpg)
+
+Reference: [High Contrast, CC BY 3.0 DE](https://commons.wikimedia.org/wiki/File:TU_M%C3%BCnchen_Garching_-_Institute_for_Advanced_Study.jpg), cropped from the existing source photograph. The crop is a material/structure reference, not a matching-camera comparison or a survey of every surface detail.
+
+Four lower faces (39, 18, 0 and 27) now use their measured geometry with physically scaled concrete texture. Railing segments are added only where the sampled ground profile shows an exposed drop, keeping the adjoining paved plateau connection open. The source and auxiliary collision faces relinquish ownership to the reconstruction, as for the upper frontage. No interior is added.
+
+At the established approach camera, after full native streaming readiness:
+
+![Surveyed concrete terrace edge replacing the jagged lower scan](../../docs/screenshots/campus-mensa-retaining-after.jpg)
+
+Compare the [previous same-camera capture](../../docs/screenshots/campus-mensa-front-approach.jpg). The large lower fragments are gone. A new native assertion requires the three diagnostic rays at `(0.18,0.55)`, `(0.35,0.58)` and `(0.58,0.56)` to hit the reconstructed wall tile. All eleven viewpoints, seven native assertions, 21 service tests and generated-geometry validation passed. All 46 original backed-up save files remain unchanged. [Exact artifact and evidence](mensa-retaining-development-validation.json).
+
+The overhead fragments remain visible. A public-survey diagnostic links their location to a connected tall canopy extending beyond the currently generated circular crown. Crown ownership currently excludes protected building footprints and clips assigned foliage near the seed; the next correction needs to retain real overhang and fit the crown’s shape. The overall realism goal remains unfinished, and the installed/public preview remains 0.4.0.

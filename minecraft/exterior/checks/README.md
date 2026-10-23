@@ -13,3 +13,5 @@ For the photographic façade development build, set `minecampus.requirePhotograp
 See [validation](../VALIDATION.md) for the tested release hash and evidence. The harness establishes specific rendering/gameplay checks, not the overall architectural realism goal.
 
 For the structural former Mensa frontage, set `minecampus.requireMensaFront=true` and delete/require a fresh `campus-frontage-result.txt` alongside the other result files. The eleventh camera requires the reconstructed frontage tile. The full run verifies that the former flat collision wall is open at a representative bay, while the recessed glazing and overhead canopy remain solid. This check runs after the isolated world’s collision migration; inspection-only captures do not establish collision correctness.
+
+For the retaining-wall pass, also set `minecampus.requireMensaRetaining=true` and delete/require a fresh `campus-retaining-result.txt`. Three fixed rays in the lower approach must hit the reconstructed wall tile rather than the original jagged scan. This verifies those wall fragments only; it does not excuse the remaining overhead canopy artifacts.

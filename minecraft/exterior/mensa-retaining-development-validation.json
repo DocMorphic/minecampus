@@ -1,0 +1,342 @@
+{
+  "date": "2026-10-23",
+  "status": "Survey retaining-wall development pass verified; full realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 188012856,
+    "sha256": "0b4d1eacd2ae136e15a1f57781c19d665171d2647f8b58b44b5d975cfe040efa",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "8a809d31ed8fd826049afcc83f9665b8524616c5783166c1d6b67d35881d75d7",
+    "bundleSha256": "63371e8c79bba775c4b5ea7f74c11f0b34e05fea5154e6bafc52b643a7fe580d",
+    "tiles": 83
+  },
+  "geometry": {
+    "renderTiles": 83,
+    "photoFacadeCandidates": 80,
+    "triangles": 1517339,
+    "textureBytes": 241662224,
+    "auxiliaryTriangles": 5326,
+    "auxiliaryTextureBytes": 13530024,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 740,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "retainingFaces": [
+    {
+      "surfaceIndex": 39,
+      "lengthMetres": 50.0963770101451,
+      "baseY": 61.660716485061144,
+      "topY": 67.41125353821984,
+      "railingSegments": 19
+    },
+    {
+      "surfaceIndex": 18,
+      "lengthMetres": 13.70139815385643,
+      "baseY": 61.66077391825067,
+      "topY": 67.41125353821984,
+      "railingSegments": 7
+    },
+    {
+      "surfaceIndex": 0,
+      "lengthMetres": 8.291407326150612,
+      "baseY": 61.660589354615425,
+      "topY": 67.4107164809098,
+      "railingSegments": 0
+    },
+    {
+      "surfaceIndex": 27,
+      "lengthMetres": 14.899934571720694,
+      "baseY": 61.66006664394345,
+      "topY": 67.41058935085861,
+      "railingSegments": 0
+    }
+  ],
+  "reference": {
+    "photo": "https://commons.wikimedia.org/wiki/File:TU_M%C3%BCnchen_Garching_-_Institute_for_Advanced_Study.jpg",
+    "credit": "High Contrast, CC BY 3.0 DE",
+    "note": "Concrete terrace walls and railing visible beside IAS; material and railing detail reconstructed, wall footprint and levels from BVV."
+  },
+  "serviceTests": {
+    "passed": 21,
+    "failed": 0
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: eleven ground, aerial, TNT, promenade, source-limit, IAS, photographic facade and former Mensa frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction"
+    },
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "ae64b20bb4ba38d61a1a040a1918b67923f82ee26ba150c241494aeff9534b2f"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "41c43e7447fc0cf7b3c8582cd6438f5b972ac8727597934c3b7e1475c3491840"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "567e08f567797328053602eb4aa2d4463cb879a06e6ecae04420b16bfd6ae777"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "19e8a38620c9052083dcdb06678ce7b7824fc59f5d8d65e48849c4478e14a88a"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "48793010105f9a42136f61606659ec7f4f946be8c476016bff0a9b2bba093c1c"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "7e04d5d6b0419a91ca86d232efa15d9b466662e3a09b7ed955897bf598708919"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "00872fc10b09c29ef83cf4b29e97e3f5253cada5237d808b011e596913f2d177"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "dfa1eb7fa7347664c4078cbb2b58c4c74b9261b093a2c27311837b037b0a04ea"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "fc937784a0bae15bd65faf6dc5e381d6d74d06ab55c6777830b6182fdbfb1305"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "b2baf76a975922a7f4f798cc7baf3b2f9878b5d749dcbc3771eada2e314dd31c"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "b26ecea54f1019e487dd4470756f950f9930069e5c4ce89c03c883b44f43d821"
+      }
+    ],
+    "approachPicks": [
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.78,
+        "v": 0.35,
+        "fov": 76.99999332427979,
+        "tile": 1000010022,
+        "x": 9.698186874389648,
+        "y": 69.64357161521912,
+        "z": -226.8295602798462,
+        "block": "minecraft:void_air",
+        "blockPosition": "156, 129, -408"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.84,
+        "v": 0.43,
+        "fov": 76.99999332427979,
+        "tile": 1200024672,
+        "x": 16.734905242919922,
+        "y": 69.21447086334229,
+        "z": -232.15522956848145,
+        "block": "minecraft:void_air",
+        "blockPosition": "177, 102, -397"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.96,
+        "v": 0.4,
+        "fov": 76.99999332427979,
+        "tile": -1,
+        "x": 7891.9560546875,
+        "y": 1555.8535203933716,
+        "z": -6174.0966796875,
+        "block": "minecraft:void_air",
+        "blockPosition": "202, 104, -369"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.265,
+        "v": 0.58,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": -14.270172119140625,
+        "y": 64.98930525779724,
+        "z": -237.88505172729492,
+        "block": "earthcraft:map_wood",
+        "blockPosition": "-4, 65, -222"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.51,
+        "v": 0.59,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": 1.0511163473129272,
+        "y": 64.7889313697815,
+        "z": -235.15551567077637,
+        "block": "earthcraft:map_stone",
+        "blockPosition": "1, 64, -235"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.65,
+        "v": 0.48,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": 13.84621810913086,
+        "y": 69.60905241966248,
+        "z": -246.75275230407715,
+        "block": "earthcraft:map_grass",
+        "blockPosition": "7, 67, -234"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.745,
+        "v": 0.615,
+        "fov": 76.99999332427979,
+        "tile": 1000000022,
+        "x": 11.612102508544922,
+        "y": 64.34492707252502,
+        "z": -231.7314853668213,
+        "block": "earthcraft:map_dirt",
+        "blockPosition": "10, 64, -231"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.1,
+        "v": 0.6,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": -27.13959312438965,
+        "y": 64.12736082077026,
+        "z": -240.17778205871582,
+        "block": "earthcraft:map_stone",
+        "blockPosition": "-26, 64, -240"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.18,
+        "v": 0.55,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": -20.735084533691406,
+        "y": 66.0557087957859,
+        "z": -239.03679656982422,
+        "block": "earthcraft:map_wood",
+        "blockPosition": "-15, 65, -232"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.35,
+        "v": 0.58,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": -8.494406700134277,
+        "y": 65.02978783845901,
+        "z": -236.85608673095703,
+        "block": "earthcraft:map_wood",
+        "blockPosition": "-3, 65, -222"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.58,
+        "v": 0.56,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": 4.777678966522217,
+        "y": 65.72000993788242,
+        "z": -234.49162101745605,
+        "block": "earthcraft:map_stone",
+        "blockPosition": "4, 65, -235"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.7,
+        "v": 0.55,
+        "fov": 76.99999332427979,
+        "tile": 1000030005,
+        "x": 10.621888160705566,
+        "y": 66.01163157820702,
+        "z": -233.4504451751709,
+        "block": "earthcraft:map_stone",
+        "blockPosition": "8, 65, -231"
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.82,
+        "v": 0.41,
+        "fov": 76.99999332427979,
+        "tile": 1200024672,
+        "x": 16.211894035339355,
+        "y": 69.85929346084595,
+        "z": -232.57795333862305,
+        "block": "minecraft:void_air",
+        "blockPosition": "171, 109, -402"
+      }
+    ]
+  },
+  "comparison": {
+    "camera": "0 64.25 -216 180 -5",
+    "beforeArtifactSha256": "cb804d81575290525c04db1d1bdc67b90f04dcfa4a84c2584c771940dc6a327b",
+    "beforeRawSha256": "e73631b8a4f98a22308138799ab157b31805d1aa0a867e6fb609139801d48072",
+    "beforeEvidence": "docs/screenshots/campus-mensa-front-approach.jpg",
+    "afterRawSha256": "b2baf76a975922a7f4f798cc7baf3b2f9878b5d749dcbc3771eada2e314dd31c"
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "nextCanopyEvidence": {
+    "windowMC": [
+      [
+        8,
+        -242
+      ],
+      [
+        26,
+        -218
+      ]
+    ],
+    "method": "0.5m samples of BVV DOP20 green pixels and DOM20 height above DGM/LoD2 support; connected component after a one-cell closing. This is a diagnostic window, not a complete crown measurement.",
+    "components": [
+      {
+        "label": 1,
+        "area": 143.5,
+        "center": [
+          13.16,
+          -225.29
+        ],
+        "bounds": [
+          [
+            8.5,
+            -233.5
+          ],
+          [
+            18.5,
+            -218.5
+          ]
+        ],
+        "heightRange": [
+          1.5579833984375,
+          9.49447631835939,
+          12.395541381835956,
+          12.711975097656222
+        ],
+        "baseRange": [
+          62.276528313430205,
+          67.4216389367013
+        ]
+      }
+    ],
+    "inference": "The residual overhead fragments are consistent with the northern overhang of the connected tall canopy, which the current circular crown/footprint exclusion fails to cover. Next work should fit crown extent from the survey rather than insert a shrub."
+  },
+  "remaining": [
+    "Overhead scan fragments remain beside the terrace.",
+    "Crown shapes and foliage overhang need better survey fitting.",
+    "Pavement, terrace stairs/artwork, untreated facades and campus-wide realism remain unfinished."
+  ],
+  "installedRelease": "0.4.0"
+}
