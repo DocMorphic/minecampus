@@ -40,7 +40,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -74,7 +74,9 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "249 64 -210 180 -8",
         "278 64 -237 90 -7",
         "262 64 -255 90 -15",
-        "280 105 -208 140 56"
+        "280 105 -208 140 56",
+        "262 64 -255 90 20",
+        "262 64 -255 90 -15"
     };
 
     @Override public void onInitializeClient() {
@@ -445,7 +447,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
                 image.writeToFile(Path.of(NAMES[stage]));
             }
-            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12||stage==14||stage==15||stage==16||stage==17||stage==18||stage==19||stage==21||stage==22||stage==23||stage==24||stage==25||stage==26||stage==27||stage>=28&&stage<=32){
+            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12||stage==14||stage==15||stage==16||stage==17||stage==18||stage==19||stage==21||stage==22||stage==23||stage==24||stage==25||stage==26||stage==27||stage>=28&&stage<=34){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
                 var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
@@ -467,7 +469,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 if(stage==10)pixelsToPick=new float[][]{{.15f,.55f},{.5f,.55f},{.85f,.55f}};
                 if(stage==9)pixelsToPick=new float[][]{{.78f,.35f},{.84f,.43f},{.96f,.40f},{.265f,.58f},{.51f,.59f},{.65f,.48f},{.745f,.615f},{.1f,.6f},{.18f,.55f},{.35f,.58f},{.58f,.56f},{.7f,.55f},{.82f,.41f}};
-                if(stage==15||stage==16||stage==17||stage==18||stage==19||stage==21||stage==22||stage==23||stage==24||stage==25||stage==26||stage==27||stage>=28&&stage<=32){
+                if(stage==15||stage==16||stage==17||stage==18||stage==19||stage==21||stage==22||stage==23||stage==24||stage==25||stage==26||stage==27||stage>=28&&stage<=34){
                     double[][] targets=new double[3][3];
                     if(stage==15){double[] along={2.5,19.599,36.699};for(int i=0;i<3;i++)targets[i]=new double[]{152.840612+.1777*along[i],73.1068,-284.946-.9841*along[i]};}
                     else if(stage==16){double[] along={9.2,14,24};for(int i=0;i<3;i++)targets[i]=new double[]{152.840612+.9841*along[i],i==0?64.7568:72.9318,-284.946+.1777*along[i]};}
@@ -485,7 +487,9 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     else if(stage==29)targets=new double[][]{{239.929903,65.300000,-228.044689},{247.774517,67.300000,-226.629455},{255.619131,70.300000,-225.214220}};
                     else if(stage==30)targets=new double[][]{{260.265683,65.300000,-228.438349},{261.682621,67.300000,-236.285374},{263.099560,70.300000,-244.132398}};
                     else if(stage==31)targets=new double[][]{{251.30,68,-255.4},{249.3,67,-252.8}};
-                    else if(stage==32)targets=new double[][]{{243.593111,74.681476,-255.554242},{245,74.681,-256}};
+                    else if(stage==32)targets=new double[][]{{246.593168,73.385192,-238.988457},{245,74.681,-256}};
+                    else if(stage==33)targets=new double[][]{{258,63.84,-254.151},{254,63.82,-254.864},{257.811305,63.851526,-255.098095}};
+                    else if(stage==34)targets=new double[][]{{251.30,68,-255.4},{249.3,67,-252.8},{255.351174,68.8,-259.074938}};
                     var eye=camera.getPosition();var forward=new org.joml.Vector3f(camera.getLookVector());var right=new org.joml.Vector3f(forward).cross(0,1,0).normalize();var up=new org.joml.Vector3f(right).cross(forward).normalize();pixelsToPick=new float[targets.length][2];
                     for(int i=0;i<targets.length;i++){var q=targets[i];var target=new org.joml.Vector3f((float)(q[0]-eye.x),(float)(q[1]-eye.y),(float)(q[2]-eye.z));float depth=target.dot(forward);pixelsToPick[i]=new float[]{(float)(.5+.5*target.dot(right)/(depth*tanHalf*16/9)),(float)(.5-.5*target.dot(up)/(depth*tanHalf))};
                         if(depth<=0||pixelsToPick[i][0]<=0||pixelsToPick[i][0]>=1||pixelsToPick[i][1]<=0||pixelsToPick[i][1]>=1)throw new AssertionError("COS target outside verification frame");
@@ -505,6 +509,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         }
                     }
                 }
+                if(stage==34){pixelsToPick[0]=new float[]{.61f,.30f};pixelsToPick[1]=new float[]{.61f,.42f};}
                 for(float[] pixel:pixelsToPick){
                     var forward=new org.joml.Vector3f(camera.getLookVector());
                     var right=new org.joml.Vector3f(forward).cross(0,1,0).normalize();
@@ -609,6 +614,26 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     for(var entry:picks)if(entry.getAsJsonObject().get("structureBehindVegetation").getAsInt()!=1_000_030_017)throw new AssertionError("GRS III ray misses reconstructed exterior at stage "+stage+": "+entry);
                     String[] names={"west","south","east","tower","aerial"};
                     Files.writeString(Path.of("campus-grs-iii-"+names[stage-28]+"-result.txt"),"PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage");
+                }
+                if(Boolean.getBoolean("minecampus.requireGrsCourtyard")&&stage==34){
+                    var high=picks.get(0).getAsJsonObject();
+                    if(high.get("structureBehindVegetation").getAsInt()>=1_100_000_000&&high.get("structureDistance").getAsDouble()<30)throw new AssertionError("Upper connector scan fragment survives");
+                    if(picks.get(1).getAsJsonObject().get("structureBehindVegetation").getAsInt()!=1_000_030_018)throw new AssertionError("Lower connector ray misses replacement: "+picks.get(1));
+                    if(picks.get(2).getAsJsonObject().get("structureBehindVegetation").getAsInt()!=1_000_030_016)throw new AssertionError("Neighbouring GRS II facade was not preserved");
+                    Files.writeString(Path.of("campus-grs-courtyard-connector-result.txt"),"PASS: upper scan fragment absent, lower fragment replaced by surveyed connector and adjacent GRS II facade preserved");
+                }
+                if(Boolean.getBoolean("minecampus.requireGrsCourtyard")&&stage==33){
+                    var maskLocation=net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("realworldmc","textures/campus/ground_surfaces.png");
+                    try(var stream=mc.getResourceManager().getResourceOrThrow(maskLocation).open();var mask=com.mojang.blaze3d.platform.NativeImage.read(stream)){
+                        for(int i=0;i<2;i++){
+                            var pick=picks.get(i).getAsJsonObject();int tile=pick.get("tile").getAsInt();
+                            if(tile<1_000_000_000||tile>=1_000_000_036)throw new AssertionError("Courtyard paving ray misses surveyed terrain: "+pick);
+                            int x=(int)((pick.get("x").getAsDouble()+352)/672*4096),y=(int)((256-pick.get("z").getAsDouble())/672*4096);
+                            if(mask.getPixelRGBA(x,y)!=0xFF00FF00)throw new AssertionError("Courtyard ray misses paving material mask");
+                        }
+                    }
+                    if(picks.get(2).getAsJsonObject().get("tile").getAsInt()!=1_000_030_019)throw new AssertionError("Courtyard low-edge ray misses edging: "+picks.get(2));
+                    Files.writeString(Path.of("campus-grs-courtyard-path-result.txt"),"PASS: two walking-view rays reach the paving mask on unchanged surveyed terrain, and a third reaches the low edging");
                 }
                 if(Boolean.getBoolean("minecampus.requireCosLandscape")&&stage==19){
                     if(picks.size()!=2)throw new AssertionError("Missing COS landscape rays");

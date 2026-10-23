@@ -434,3 +434,24 @@ Artifact `436b688c24f1ead360d40153f4785cde34e2e208eef2ec0e21e1f3ec3c2d190a` pass
 The full campus goal remains open. The tree-covered west view is a useful same-camera comparison but not sufficient by itself to judge the facade; the south/east views provide additional evidence. Courtyard surfaces, parking, Siemensbau, detailed roofs and broader material realism still need work.
 
 The tower view still contains a stray scan fragment behind its right edge. A separate native inspection locates it on/near the small surveyed connector `DEBY_LOD2_5284469` (4.28 m²), which is below the photographic-candidate size threshold. Its protected neighbouring footprint explains why the GRS III replacement leaves it intact. This is a concrete next repair, documented in the validation record; the broader quality goal remains open.
+
+
+## GRS II/III connector and courtyard approach
+
+The separate 4.28 m² connector `DEBY_LOD2_5284469` was below the facade-candidate threshold, leaving conspicuous scan fragments behind the rounded tower. It is now appended explicitly as plan `1_000_050_082`, with all four surveyed walls, two inferred glazing bands and the exact two-triangle survey/orthophoto roof. Existing plan IDs remain unchanged. Its cleanup margin excludes neighbouring buildings and extends three metres above its roof to cover the diagnosed scan spike. The main GRS II/III envelopes remain intact.
+
+The [architect's courtyard photograph and plan](https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-iii-garching) support a narrow paved approach to the tower door. A 1.8 m estimated strip adds 41.05 m² of paving between the door and east walk. Low 6 cm edging follows the DGM; its dimensions are inferred and it creates no metre-wide collision barrier. Building footprints and existing mapped materials retain precedence. The exact terrain mesh is unchanged. [Source qualifications](photos/grs-courtyard-reference.json).
+
+![Courtyard ground before](../../docs/screenshots/campus-grs-courtyard-path-before.jpg)
+
+![Same ground view after](../../docs/screenshots/campus-grs-courtyard-path-after.jpg)
+
+![Connector fragment before](../../docs/screenshots/campus-grs-courtyard-connector-before.jpg)
+
+![Same view after connector reconstruction](../../docs/screenshots/campus-grs-courtyard-connector-after.jpg)
+
+![Preserved roofs and surrounding layout](../../docs/screenshots/campus-grs-courtyard-aerial.jpg)
+
+Artifact `c94315901c1a6b29f3390a4833dbebf292e5e36a759f6200299a2e8dfe96e3fc` passes 35 native captures, 33 native checks, 27 service tests and 25 ground-material controls. The new checks verify the former upper fragment is absent, the lower ray reaches the reconstructed connector, a neighbouring GRS II ray remains intact, two ground rays reach the paving mask and the low edging is visible. The stage-32 aerial test is also corrected: its first ray now reaches the raised main GRS III roof; previously both rays reached the tower. All 95 earlier render tiles, 82 earlier facade plans and the terrain guides are unchanged. Only 1,527 previously unassigned material pixels change, within the path and outside buildings. Collision migration advances to v18. [Validation](grs-courtyard-development-validation.json).
+
+This is still a development checkpoint. Courtyard planting, nearby coarse facades, older ground imagery and the renderer's simplified reflections/lighting remain unfinished.

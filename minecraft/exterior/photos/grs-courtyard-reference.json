@@ -1,0 +1,32 @@
+{
+  "building": "DEBY_LOD2_5284469",
+  "identity": "Small surveyed junction between GRS II and the GRS III rounded stair tower",
+  "architectReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-iii-garching",
+  "contextReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-ii-garching",
+  "referenceUse": "Historical exterior photographs and plans are visual references only; not redistributed. BVV LoD2 supplies the connector envelope and DOP20 its roof imagery.",
+  "observations": [
+    "Native rays identify surviving scan fragments on/near the separate 4.28 m\u00b2 connector; one lies more than 2 m above its surveyed roof.",
+    "The architect plan and courtyard photograph show the rounded tower joining GRS II.",
+    "The courtyard photograph shows a narrow paved approach to the tower door with planting beside it. BVV orthophoto locates the gap and east-side path, but tree canopy obscures part of the paving."
+  ],
+  "inferences": [
+    "Two recessed glazing bands follow the adjoining GRS II facade character. Exact openings, colours and frame dimensions are not measured.",
+    "Path centreline, 1.8 m width and low edge dimensions are estimated. The terrain retains its existing survey heights; no interiors or general courtyard infill."
+  ],
+  "path": {
+    "centrelineMC": [
+      [
+        251.55,
+        -255.3
+      ],
+      [
+        274.0,
+        -251.3
+      ]
+    ],
+    "widthMetres": 1.8,
+    "edgeWidthMetres": 0.1,
+    "edgeHeightMetres": 0.06
+  },
+  "preservation": "Retain the complete connector roof. Clip the cleanup margin away from neighbouring footprints, and preserve existing mapped ground materials and terrain."
+}

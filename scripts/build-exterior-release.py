@@ -147,6 +147,8 @@ referenced from Claudia Schreiber Architektur
 https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-iii-garching
 Historical reference photographs and drawings are not redistributed.
 Source qualifications are supplied as grs-iii-reference.json.
+The small GRS II/III connector and inferred courtyard approach use the same
+architectural context; additional qualifications are in grs-courtyard-reference.json.
 
 Google scenery is streamed by the user's own configured service. No Google tile
 content, Minecraft assets, credentials or saved worlds are included in this build.
@@ -196,8 +198,10 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/grs-connectors-reference.json',(SOURCE/'photos/grs-connectors-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-main-reference.json',(SOURCE/'photos/grs-main-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-iii-reference.json',(SOURCE/'photos/grs-iii-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/grs-courtyard-reference.json',(SOURCE/'photos/grs-courtyard-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site.json',(SOURCE/'cos-site.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site-surfaces.geojson',(DATA/'cos-site-surfaces.geojson').read_bytes())
+  write(target,'src/minecampus-exterior/grs-courtyard-surfaces.geojson',(DATA/'grs-courtyard-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/sources.json',(SOURCE/'sources.json').read_bytes())
   write(target,'src/minecampus-exterior/vegetation-sources.json',(SOURCE/'vegetation-sources.json').read_bytes())
   write(target,'src/minecampus-exterior/ground-surfaces.geojson',(SOURCE/'ground-surfaces.geojson').read_bytes())

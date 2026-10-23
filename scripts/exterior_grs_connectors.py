@@ -9,12 +9,13 @@ import mapbox_earcut
 TOWER='DEBY_LOD2_5284470'
 WEST='DEBY_LOD2_104553225'
 SOUTH='DEBY_LOD2_104553232'
-BUILDINGS={TOWER:1_000_030_013,WEST:1_000_030_014,SOUTH:1_000_030_015}
+COURTYARD='DEBY_LOD2_5284469'
+BUILDINGS={TOWER:1_000_030_013,WEST:1_000_030_014,SOUTH:1_000_030_015,COURTYARD:1_000_030_018}
 
 def build(ctx,bid,walls):
  if bid not in BUILDINGS:return None
  root,out,meta,encode=[ctx[k]for k in ['ROOT','OUT','metadata','encode']]
- reference=json.loads((root/'minecraft/exterior/photos/grs-connectors-reference.json').read_text())
+ reference=json.loads((root/('minecraft/exterior/photos/grs-courtyard-reference.json'if bid==COURTYARD else'minecraft/exterior/photos/grs-connectors-reference.json')).read_text())
  base=min(w['bounds'][0][1]for w in walls);top=max(w['bounds'][1][1]for w in walls)
  assert len(walls)==(20 if bid==TOWER else 4)
  textures=[Image.new('RGBA',(1,1),c)for c in [(188,190,182,255),(42,63,72,255),(51,56,56,255),(135,143,143,255)]]
@@ -84,7 +85,7 @@ def build(ctx,bid,walls):
  foot=unary_union(own);near=[p for p in neighbours if p.distance(foot)<4]
  boundary=foot.union(foot.buffer(2.75).difference(unary_union(near).buffer(.75)))
  rings=[{'ring':list(p.exterior.coords),'holes':[list(h.coords)for h in p.interiors]}for p in ([boundary]if boundary.geom_type=='Polygon'else boundary.geoms)]
- for ring in rings:meta['replacements'].append(dict(ring,y0=base-.10,y1=top+.35,kind='architecture',alwaysVisible=True))
+ for ring in rings:meta['replacements'].append(dict(ring,y0=base-.10,y1=top+(3.0 if bid==COURTYARD else .35),kind='architecture',alwaysVisible=True))
  raw=(out/(bid+'-photo-roof.ect')).read_bytes();assert raw[:4]==b'ECT1' and struct.unpack_from('<i',raw,4)[0]==1 and struct.unpack_from('<ddd',raw,8)==(0,0,0)
  count,width,height=struct.unpack_from('<iii',raw,32);roof=np.frombuffer(raw,dtype='<f4',count=count*5,offset=48).reshape((-1,5)).copy()
  parts.append(roof.tolist());textures.append(Image.frombytes('RGBA',(width,height),raw[48+count*20:]))

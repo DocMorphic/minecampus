@@ -23,7 +23,7 @@ def build(ctx):
   return float((grid[j,i,1]*(1-fx)+grid[j,i+1,1]*fx)*(1-fz)+(grid[j+1,i,1]*(1-fx)+grid[j+1,i+1,1]*fx)*fz)
  manual=set(meta['architecture']['buildings'])|{'DEBY_LOD2_107614322','DEBY_LOD2_107614323','DEBY_LOD2_5284521','DEBY_LOD2_5284523','DEBY_LOD2_104552957'}
  protected=unary_union([Polygon(mc(r[0])[:,[0,2]])for bid,surfaces in buildings if bid in manual for typ,r in surfaces if typ=='GroundSurface'])
- small_links={'DEBY_LOD2_104553225','DEBY_LOD2_104553232'}
+ small_links={'DEBY_LOD2_104553225','DEBY_LOD2_104553232','DEBY_LOD2_5284469'}
  # Append explicitly supported small links; retain every existing runtime ID.
  for bid,surfaces in sorted(buildings,key=lambda b:(b[0]in small_links,b[0]!=PILOT,b[0])):
   if bid in manual or bid in EXCLUDED:continue

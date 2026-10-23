@@ -18,11 +18,13 @@ def build(ctx):
  paths,path_stats=derive(ctx,data)
  from exterior_cos_site import build as build_cos_site
  site,site_stats=build_cos_site(ctx,data,paths)
+ from exterior_grs_courtyard import build as build_grs_courtyard
+ grs_site,grs_stats=build_grs_courtyard(ctx,data["features"]+paths+site)
  toUtm=Transformer.from_crs(4326,25832,always_xy=True).transform
  bounds=metadata['boundsUtm'];limit=box(*bounds);size=4096;span=672
  layers={k:[]for k in ['grass','paving','asphalt','soil','preserve']};areas={k:0 for k in layers};features=[]
  preview=Image.open(out/'campus-orthophoto.jpg').convert('RGB');draw=ImageDraw.Draw(preview)
- for feature in data['features']+paths+site:
+ for feature in data['features']+paths+site+grs_site:
   p=transform(toUtm,shape(feature['geometry']));p=p if p.is_valid else p.buffer(0);p=p.intersection(limit)
   if p.is_empty:continue
   material=feature['properties']['material'];areas[material]+=p.area
@@ -35,7 +37,7 @@ def build(ctx):
    layers[material].append((projected,255))
    pixels=[((e-bounds[0])*5,(bounds[3]-n)*5)for e,n in poly.exterior.coords]
    draw.line(pixels,fill={'grass':(255,220,0),'paving':(255,80,80),'asphalt':(0,230,255),'preserve':(255,80,255),'soil':(130,70,20)}[material],width=4)
-  features.append(feature['properties']['osmWay'])
+  if 'osmWay'in feature['properties']:features.append(feature['properties']['osmWay'])
  pixels=np.zeros((size,size,4),dtype=np.uint8);pixels[:,:,3]=255
  for i,material in enumerate(['grass','paving','asphalt']):
   if layers[material]:pixels[:,:,i]=rasterize(layers[material],out_shape=(size,size),transform=from_origin(-352,256,span/size,span/size),dtype='uint8')
@@ -49,4 +51,5 @@ def build(ctx):
  metadata['groundSurfaces']={'source':'OpenStreetMap contributors, ODbL 1.0','sourceFile':'ground-surfaces.geojson','sourceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'maskSha256':hashlib.sha256(target.read_bytes()).hexdigest(),'maskSize':[size,size],'maskBoundsMC':[[-352,-416],[320,256]],'maskChannels':['grass','paving','asphalt','soil = 1 - alpha'],'areasSquareMetres':{k:round(v,2)for k,v in areas.items()},'osmWays':features,'paths':path_stats,'note':'Mapped polygons plus explicit-width path/road strips, clipped away from buildings and mapped areas. Width-derived edges, textures and paving units are estimates; terrain and collision are unchanged.'}
  metadata['attribution']+='; land cover: © OpenStreetMap contributors (ODbL 1.0)'
  metadata['groundSurfaces']['cosSite']=site_stats
+ metadata['groundSurfaces']['grsCourtyard']=grs_stats
  print('Ground materials:',len(features),'mapped polygons;',metadata['groundSurfaces']['areasSquareMetres'],flush=True)
