@@ -1,0 +1,27 @@
+{
+  "role": "Exterior reference only; not a runtime texture",
+  "buildingId": "DEBY_LOD2_52738492",
+  "osmWay": 1079926021,
+  "sourceMetadata": "uya-eso-reference.json",
+  "sourcePage": "https://www.eso.org/public/ireland/images/170818035-cc/",
+  "credit": "Ernst A. Graf/ESO",
+  "license": "CC BY 4.0",
+  "licensePage": "https://www.eso.org/public/outreach/copyright/",
+  "cropPixels": [
+    4250,
+    1740,
+    4608,
+    2110
+  ],
+  "cropFile": "docs/screenshots/campus-warehouse-reference.jpg",
+  "cropSha256": "11518d2f81ea4bae33ead1114258ae042f818a85a1600a217d83faf621aee27d",
+  "observations": [
+    "Low rectangular building with grey flat roof and pale roof edge.",
+    "Warm brick-coloured exterior, with a small dark opening on one visible elevation."
+  ],
+  "limitations": [
+    "2017 aerial reference, partially occluded by trees.",
+    "The source-limit game camera sees the opposite sides; this photograph does not establish their openings.",
+    "Brick scale, roof-edge dimensions and unobserved elevations need explicit inference or further evidence."
+  ]
+}

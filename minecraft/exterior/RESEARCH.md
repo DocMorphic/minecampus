@@ -65,3 +65,12 @@ The project area is 160 square metres, whereas candidate BVV envelope `DEBY_LOD2
 The existing ground-material mask contains closed surface polygons, leaving many mapped linear paths on aerial imagery alone. A scan of the repository's OSM snapshot (2026-06-01, SHA-256 `4d0fc46fd780184c22567b47a00b0df701ae55c8d9b4bb460cc51bb08f422307`) found 411 road/path ways intersecting the 600 m campus after excluding explicit interiors, nonzero levels, tunnels and bridges. They include 173 asphalt, 100 paving-stone, 37 sett and 20 fine-gravel ways; 23 carry widths. These are candidate centre-lines, not measured surface boundaries or 411 verified ground-level paths.
 
 [OSM surface tags](https://wiki.openstreetmap.org/wiki/Key:surface) distinguish material types. [Width](https://wiki.openstreetmap.org/wiki/Key:width) is a physical width, normally in metres; [area:highway](https://wiki.openstreetmap.org/wiki/Key:area:highway) provides mapped surface polygons where available. The next material pass should prefer polygons, then explicit-width lines, and check inferred boundaries against DOP20. Building footprints, water, raised walkways, stairs and lawns need exclusion/overlap checks. Fine gravel needs its own material rather than being treated as paving. This inventory is preparation; it does not claim new paths have already been rendered.
+
+
+## Small warehouse exterior reference
+
+The same [ESO aerial](https://www.eso.org/public/ireland/images/170818035-cc/) shows the small warehouse north of UYE, candidate `DEBY_LOD2_52738492`: a low rectangular building with a grey flat roof, pale edge and warm brick-coloured walls. One small dark opening is visible. The game camera approaches the opposite sides, so this reference does not establish their openings. [Crop metadata and limitations](photos/warehouse-eso-reference.json).
+
+![Small warehouse in the 2017 ESO aerial](../../docs/screenshots/campus-warehouse-reference.jpg)
+
+Credit: Ernst A. Graf/ESO, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Cropped from the original aerial; reference only, not a runtime texture.
