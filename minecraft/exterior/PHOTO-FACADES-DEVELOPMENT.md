@@ -409,3 +409,28 @@ The [complete architect ground plan](https://claudia-schreiber-architektur.de/co
 Artifact `1c117a77676f292fe5facb130063a1fc6c5bd013a9d8c19d6d87fe5e4b229beb` passes 28 native views, 26 native checks and 27 service tests. A direct courtyard ray now stops at the repaired west facade; three rays on each west/east view verify exterior coverage behind any foliage. The aerial ray reaches the same surveyed roof in its new complete-envelope tile. All 92 unaffected earlier render tiles and 81 other facade plans are unchanged, and all 82 facade runtime IDs retain their identities. Boundaries protect the separate tower, links and neighbouring buildings. Collision migration advances to v16 and preserves player-edit fixtures. [Validation](grs-main-development-validation.json).
 
 This remains an incremental exterior checkpoint. GRS III, Siemensbau, parking/ground margins, roof detail and reflection quality still need work; the full campus-quality goal is open.
+
+
+## GRS III square wing and rounded tower
+
+BVV `DEBY_LOD2_5284472` now has a complete exterior informed by the [architect's 1994–1996 photographs, plan and section](https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-iii-garching). The approximately 23.95 m square main wing lies south of the attached rounded tower. Its survey geometry matches the plan after rotation. Three glazing bands include the partly exposed lower level; pale floor edges, eight diagonal-set perimeter columns, upper braces and horizontal blinds reproduce the observed architectural character. Bay spacing, blind positions, colours and less-visible elevations are estimates. The tower's unverified rear remains mostly opaque. [Source qualifications](photos/grs-iii-reference.json).
+
+All 30 surveyed wall faces are retained, and all 50 roof triangles and the roof image are embedded byte-for-byte. This preserves the raised central roof; it does not claim a detailed current glazed roof model. There are no interiors or terrain changes.
+
+![West approach before](../../docs/screenshots/campus-grs-iii-before.jpg)
+
+![Same west approach after](../../docs/screenshots/campus-grs-iii-west.jpg)
+
+![South elevation](../../docs/screenshots/campus-grs-iii-south.jpg)
+
+![East elevation](../../docs/screenshots/campus-grs-iii-east.jpg)
+
+![Rounded stair tower](../../docs/screenshots/campus-grs-iii-tower.jpg)
+
+![Surveyed raised roof retained](../../docs/screenshots/campus-grs-iii-aerial.jpg)
+
+Artifact `436b688c24f1ead360d40153f4785cde34e2e208eef2ec0e21e1f3ec3c2d190a` passes 33 native captures, 31 native checks and 27 service tests. New rays check three points on each west/south/east facade, two tower/link targets and two roof targets, including behind foliage. All 94 previous render tiles, 81 other facade plans and 82 runtime identities are unchanged. Cleanup boundaries exclude neighbouring footprints. Collision migration v17 preserves player-edit fixtures. [Validation](grs-iii-development-validation.json).
+
+The full campus goal remains open. The tree-covered west view is a useful same-camera comparison but not sufficient by itself to judge the facade; the south/east views provide additional evidence. Courtyard surfaces, parking, Siemensbau, detailed roofs and broader material realism still need work.
+
+The tower view still contains a stray scan fragment behind its right edge. A separate native inspection locates it on/near the small surveyed connector `DEBY_LOD2_5284469` (4.28 m²), which is below the photographic-candidate size threshold. Its protected neighbouring footprint explains why the GRS III replacement leaves it intact. This is a concrete next repair, documented in the validation record; the broader quality goal remains open.

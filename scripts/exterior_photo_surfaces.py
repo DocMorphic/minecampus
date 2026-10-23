@@ -72,7 +72,8 @@ def build(ctx):
   from exterior_grs_main import build as build_grs_main
   main_retirement_boundary=build_grs_main(ctx,bid,walls)
   from exterior_grs_connectors import build as build_grs_connectors
-  retirement_boundary=main_retirement_boundary or build_grs_connectors(ctx,bid,walls)
+  from exterior_grs_iii import build as build_grs_iii
+  retirement_boundary=main_retirement_boundary or build_grs_connectors(ctx,bid,walls) or build_grs_iii(ctx,bid,walls)
   if retirement_boundary:rings=retirement_boundary
   collisionName=bid+'-photo-collision.ect'
   vertices=[[*wall['vertices'][i],0,0]for wall in walls if not wall.get('reconstructed') for i in wall['indices']]

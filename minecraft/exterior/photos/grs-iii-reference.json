@@ -1,0 +1,21 @@
+{
+  "building": "DEBY_LOD2_5284472",
+  "identity": "GRS III square office/laboratory wing and rounded stair tower, Boltzmannstra\u00dfe 14",
+  "architectReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-iii-garching",
+  "planReference": "https://claudia-schreiber-architektur.de/content/3-projekte/19960916-neubau-buero-und-laborgebaeude-iii-garching/grs3_grundriss-eg-bearbeitet.svg",
+  "sectionReference": "https://claudia-schreiber-architektur.de/content/3-projekte/19960916-neubau-buero-und-laborgebaeude-iii-garching/grs3_schnitt-i-i-bearbeitet.svg",
+  "referencePeriod": "1994\u20131996 project; historical photographs do not establish every current detail",
+  "referenceUse": "Visual reference only; copyrighted photos/plans are not embedded or redistributed.",
+  "observations": [
+    "Square main wing with eight perimeter columns at corners and wall centres; attached rounded stair tower connects to GRS II. The survey square is approximately 23.95 m on each side, south of the tower; the architect plan matches after rotation.",
+    "Three visible glazing levels including a partly exposed lower level, pale projecting floor edges, upper diagonal braces and external horizontal blinds appear in the exterior photograph.",
+    "The project description specifies square concrete columns set diagonally, a raised lower level lit by surrounding slopes, and an upper glazed steel structure. The section depicts a central raised roof.",
+    "Courtyard photograph shows a pale rounded tower with a low entrance and adjacent glazing."
+  ],
+  "preservation": "All 30 surveyed wall faces and 50 orthophoto roof triangles retained, including the raised central roof (Y=72.30\u201375.25). No terrain change or interiors.",
+  "inferences": [
+    "Window bands, bay widths, blind drops, frames and brace positions are estimated from the historical photos within the survey envelope.",
+    "Colours and glazing reflections are approximate; photographs are monochrome.",
+    "Less-visible elevations extrapolate the observed modular facade. The tower rear remains primarily opaque because exact current openings are not established."
+  ]
+}

@@ -1,0 +1,931 @@
+{
+  "date": "2026-10-24",
+  "status": "GRS III exterior checkpoint; overall campus-quality goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 234637297,
+    "sha256": "436b688c24f1ead360d40153f4785cde34e2e208eef2ec0e21e1f3ec3c2d190a",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "8e859f333d751e831795d7e8fb37a0812b2cb9fa6426f5830e25b614bef8db28",
+    "rendererSourceFingerprint": "a3703c028af60dd1",
+    "bundleSha256": "0185c8b2d7440a053aa4abd3871baa73af38aadd6e536d20960f422dfaae14e3",
+    "tiles": 95
+  },
+  "geometry": {
+    "renderTiles": 95,
+    "photoFacadeCandidates": 82,
+    "triangles": 1940723,
+    "textureBytes": 259660580,
+    "auxiliaryTriangles": 5022,
+    "auxiliaryTextureBytes": 13538100,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "grsIIIExterior": {
+    "building": "DEBY_LOD2_5284472",
+    "faces": [
+      {
+        "surveyFace": 0,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 4.366652287934698
+      },
+      {
+        "surveyFace": 1,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 10.199462700325501
+      },
+      {
+        "surveyFace": 2,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.4849177617707509
+      },
+      {
+        "surveyFace": 3,
+        "role": "main facade",
+        "lengthMetres": 4.941959068867573,
+        "bays": 3,
+        "windowBandsY": [
+          [
+            63.30058055787546,
+            65.57058055787546
+          ],
+          [
+            66.16058055787546,
+            68.60058055787546
+          ],
+          [
+            69.25058055787547,
+            71.819
+          ]
+        ]
+      },
+      {
+        "surveyFace": 4,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 2.3312852619738553
+      },
+      {
+        "surveyFace": 5,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 1.1594928294090219
+      },
+      {
+        "surveyFace": 6,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 1.8101954285203672
+      },
+      {
+        "surveyFace": 7,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.4838584067553494
+      },
+      {
+        "surveyFace": 8,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 1.8322810228698199
+      },
+      {
+        "surveyFace": 9,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.4740274111057184
+      },
+      {
+        "surveyFace": 10,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.4835341899854439
+      },
+      {
+        "surveyFace": 11,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 10.197626780502166
+      },
+      {
+        "surveyFace": 12,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.4824669188930211
+      },
+      {
+        "surveyFace": 13,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.47580003752883704
+      },
+      {
+        "surveyFace": 14,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 1.1580903259580948
+      },
+      {
+        "surveyFace": 15,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 5.656437334648654
+      },
+      {
+        "surveyFace": 16,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 10.690519298237316
+      },
+      {
+        "surveyFace": 17,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 4.373885193043754
+      },
+      {
+        "surveyFace": 18,
+        "role": "main facade",
+        "lengthMetres": 23.942503624339295,
+        "bays": 16,
+        "windowBandsY": [
+          [
+            63.30058055787546,
+            65.57058055787546
+          ],
+          [
+            66.16058055787546,
+            68.60058055787546
+          ],
+          [
+            69.25058055787547,
+            71.819
+          ]
+        ]
+      },
+      {
+        "surveyFace": 19,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.4799101359538587
+      },
+      {
+        "surveyFace": 20,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 8.375762606824765
+      },
+      {
+        "surveyFace": 21,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 1.6484902377402173
+      },
+      {
+        "surveyFace": 22,
+        "role": "main facade",
+        "lengthMetres": 16.624758492073557,
+        "bays": 11,
+        "windowBandsY": [
+          [
+            63.30058055787546,
+            65.57058055787546
+          ],
+          [
+            66.16058055787546,
+            68.60058055787546
+          ],
+          [
+            69.25058055787547,
+            71.819
+          ]
+        ]
+      },
+      {
+        "surveyFace": 23,
+        "role": "main facade",
+        "lengthMetres": 23.947853529707835,
+        "bays": 16,
+        "windowBandsY": [
+          [
+            63.30058055787546,
+            65.57058055787546
+          ],
+          [
+            66.16058055787546,
+            68.60058055787546
+          ],
+          [
+            69.25058055787547,
+            71.819
+          ]
+        ]
+      },
+      {
+        "surveyFace": 24,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.480538642970411
+      },
+      {
+        "surveyFace": 25,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.48048347911742045
+      },
+      {
+        "surveyFace": 26,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 10.689240039516955
+      },
+      {
+        "surveyFace": 27,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 1.6596204624376103
+      },
+      {
+        "surveyFace": 28,
+        "role": "tower, link or roof upstand",
+        "lengthMetres": 0.4768408162549046
+      },
+      {
+        "surveyFace": 29,
+        "role": "main facade",
+        "lengthMetres": 23.964050872275113,
+        "bays": 16,
+        "windowBandsY": [
+          [
+            63.30058055787546,
+            65.57058055787546
+          ],
+          [
+            66.16058055787546,
+            68.60058055787546
+          ],
+          [
+            69.25058055787547,
+            71.819
+          ]
+        ]
+      }
+    ],
+    "source": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-iii-garching",
+    "columns": 8,
+    "note": "Square main wing, attached rounded tower, 30 survey walls and all 50 roof triangles preserved. Historical photos and plan inform three glazing bands, fascia, diagonal-set perimeter columns, upper braces and blinds. Dimensions, colours and less-visible elevations are estimated; no interiors."
+  },
+  "reference": {
+    "building": "DEBY_LOD2_5284472",
+    "identity": "GRS III square office/laboratory wing and rounded stair tower, Boltzmannstra\u00dfe 14",
+    "architectReference": "https://claudia-schreiber-architektur.de/projekte/neubau-buero-und-laborgebaeude-iii-garching",
+    "planReference": "https://claudia-schreiber-architektur.de/content/3-projekte/19960916-neubau-buero-und-laborgebaeude-iii-garching/grs3_grundriss-eg-bearbeitet.svg",
+    "sectionReference": "https://claudia-schreiber-architektur.de/content/3-projekte/19960916-neubau-buero-und-laborgebaeude-iii-garching/grs3_schnitt-i-i-bearbeitet.svg",
+    "referencePeriod": "1994\u20131996 project; historical photographs do not establish every current detail",
+    "referenceUse": "Visual reference only; copyrighted photos/plans are not embedded or redistributed.",
+    "observations": [
+      "Square main wing with eight perimeter columns at corners and wall centres; attached rounded stair tower connects to GRS II. The survey square is approximately 23.95 m on each side, south of the tower; the architect plan matches after rotation.",
+      "Three visible glazing levels including a partly exposed lower level, pale projecting floor edges, upper diagonal braces and external horizontal blinds appear in the exterior photograph.",
+      "The project description specifies square concrete columns set diagonally, a raised lower level lit by surrounding slopes, and an upper glazed steel structure. The section depicts a central raised roof.",
+      "Courtyard photograph shows a pale rounded tower with a low entrance and adjacent glazing."
+    ],
+    "preservation": "All 30 surveyed wall faces and 50 orthophoto roof triangles retained, including the raised central roof (Y=72.30\u201375.25). No terrain change or interiors.",
+    "inferences": [
+      "Window bands, bay widths, blind drops, frames and brace positions are estimated from the historical photos within the survey envelope.",
+      "Colours and glazing reflections are approximate; photographs are monochrome.",
+      "Less-visible elevations extrapolate the observed modular facade. The tower rear remains primarily opaque because exact current openings are not established."
+    ]
+  },
+  "preservation": {
+    "unchangedExistingTiles": 94,
+    "unchangedOtherFacadePlans": 81,
+    "unchangedRuntimeIds": 82,
+    "surveyRoofEmbeddedExactly": true,
+    "surveyRoofTriangles": 50,
+    "surveyFacesReconstructed": 30,
+    "neighbourFootprintsProtected": true,
+    "terrainGroundAndSurfaceGuidesUnchanged": true
+  },
+  "serviceChecks": {
+    "passed": 27
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: twenty-three ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail, Telefonzentrale and COS frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "telefonzentrale": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "cos": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "cos-ground": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "texture": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted",
+      "cos-site": "PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer",
+      "cos-bench": "PASS: native gravity landed player on the bench proxy at Y=64.0; visible seat top Y=63.89",
+      "cos-landscape": "PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB 0.35874509803921567,0.3236078431372549,0.17615686274509804); exposed curb ray reaches its 12cm edging",
+      "cos-apron": "PASS: native gravity landed on the smooth apron proxy at Y=63.0 (mesh Y=63.46271), replacing the previous Y=64 proxy",
+      "grs-north": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "grs-west": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "grs-connectors-north": "PASS: native rays reach the tower and west link at walking height",
+      "grs-connectors-courtyard": "PASS: native rays reach the tower and west link and the repaired GRS II west facade at walking height",
+      "grs-connectors-aerial": "PASS: native rays reach the tower and west link, the south junction and preserved adjoining GRS roof behind any foliage",
+      "grs-main-west": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "grs-main-east": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "grs-iii-west": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-south": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-east": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-tower": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-aerial": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage"
+    },
+    "migrationVersion": 17,
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "6964b7a1a60ab87b06a74674afea1c50ab412fab45cdfe66dddb21b2904da86c"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "03e5c2ee47f82219651431acf2c6ed65dc8e72dde7c4e30e64f3b2e00a3eb2d8"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "4f93dce486dd239ff16222c1cab2ca8512eed4f835e759fcde81e7e3b620b130"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "87f647d6ec4f6c871282249374dd0aa3f746e96dbbf36c3a23de4f281c0ed66f"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "3ddb0cc58af995c4062837f06fdebdd2b8bc123c23a75cb2e53738a5d574deb3"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "df4c5a82f54d26a362269d71e166e128ecb832d883b7b4a655f88fa5aa52ba3d"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "4060247ef9654418cc371c9b8b40ac4616454ef226fcda5e882e19c25088ff5f"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "b28240f06f99c5ccfe79a86087eaa0dce97c484e5379b430a4b6c608f5b3c848"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "c8f9ca950f1bdb42e2b3539b00ffd40b34d10b2793f31b63500756098cfc88cf"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "680bff6bb390eaa65fe99371bea6e561d51e9532928f550e7b9a4ef7b83b9524"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "0de737566927a7324b91f74a1604dc770f72473483dfb991012710cc45da14f9"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "8b62203491f1fe181aa426fd1fcf1330506c8b14d02f55f85a1070aa56c8bde2"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "d4b7281be7cc0eb1206f80f99df14c1dc9acf079e236b6cda7da52e5c02ba73b"
+      },
+      {
+        "file": "campus-road-detail.png",
+        "sha256": "6deb25f6579fbd4f3272015b25b356a4e1ac32262bc99e9835f134ffd5fa4e11"
+      },
+      {
+        "file": "campus-telefonzentrale-west.png",
+        "sha256": "b9b67ca4ae250c2131ccadc90c12069119277974b7a1d896c8348881ff642a5f"
+      },
+      {
+        "file": "campus-cos-southwest.png",
+        "sha256": "a0fe9cb9f09fbffa0080ec0b3b047ac049cb121e5c152fe11df3f904e52407a6"
+      },
+      {
+        "file": "campus-cos-south.png",
+        "sha256": "98d4ab82545539d657c3e1b1a8cb3655154a00925fb94947a609ef9cec7548a6"
+      },
+      {
+        "file": "campus-cos-aerial.png",
+        "sha256": "29b2065f10aacf2a6ac87c2c460573a133352c8d02c94b6364cd88fa773a72fa"
+      },
+      {
+        "file": "campus-cos-forecourt.png",
+        "sha256": "40eee1697164181607ffde1d6a1c5b4e4fe204d5033cf984a895eda638a7e1b3"
+      },
+      {
+        "file": "campus-cos-planting.png",
+        "sha256": "6a53e569fb2133c6821987ba53b15dcf812b4d9d2377921205a5649c1eee2dc7"
+      },
+      {
+        "file": "campus-cos-north.png",
+        "sha256": "2d7f215af3044f9c0587eece7f60f31de76ff92bd5c93d57fbf6b062b7f781da"
+      },
+      {
+        "file": "campus-grs-north.png",
+        "sha256": "9658dffa67a30b32baeac83f495e6d3aa53b099e68e4e6c7db328248346c35bb"
+      },
+      {
+        "file": "campus-grs-west.png",
+        "sha256": "7bff22cd33fa71cb99132c28d2a367036ef0855ddf0b7af89e59dc2cabde4340"
+      },
+      {
+        "file": "campus-grs-tower-north.png",
+        "sha256": "715867609c621f188ee6b1e606a3f0797e6dc8ef33af46e67b9082c64b43d7a3"
+      },
+      {
+        "file": "campus-grs-tower-courtyard.png",
+        "sha256": "6daad8a2a25cb097193b719f971db68ffde514ffa3ca8145af511a8c4a2e3901"
+      },
+      {
+        "file": "campus-grs-connectors-aerial.png",
+        "sha256": "04f837b7ac1f13fd1c2c7505c66e99ea93e79e9514903aa3220e7da50e30cc22"
+      },
+      {
+        "file": "campus-grs-main-west.png",
+        "sha256": "e27f83bc7fd55848a7b6baefe48e488c6707c98228ee4157f2f39740d91791e2"
+      },
+      {
+        "file": "campus-grs-main-east.png",
+        "sha256": "697213d005ecc46584f1b39fc2623e562081f9d99003c9a34f5bfe493e7b4f67"
+      },
+      {
+        "file": "campus-grs-iii-west.png",
+        "sha256": "be9cce1aea645ac510f6f2f7fd68a642ab39a7add52f1fd57993406055a60da1"
+      },
+      {
+        "file": "campus-grs-iii-south.png",
+        "sha256": "3b0f9bae081cf18d2829a6f7f9eb94f9387c996f3d5468f3738ffa2e68727fa0"
+      },
+      {
+        "file": "campus-grs-iii-east.png",
+        "sha256": "2039cce737d2c2014449ec2c354dfa0045f7269d0531cb3fa5c251411e57d205"
+      },
+      {
+        "file": "campus-grs-iii-tower.png",
+        "sha256": "7649c61fb3f6a88acede7b3d89b6130cfd5e869f5f66b8bda793b7bf35c1494f"
+      },
+      {
+        "file": "campus-grs-iii-aerial.png",
+        "sha256": "94bb2a7c81ae4a5eb1728581f7bae1cb982f382be500e3a97f937cba9023342c"
+      }
+    ],
+    "westCamera": "222 64 -240 -90 -7",
+    "southCamera": "249 64 -210 180 -8",
+    "eastCamera": "278 64 -237 90 -7",
+    "towerCamera": "262 64 -255 90 -15",
+    "aerialCamera": "280 105 -208 140 56",
+    "diagnosticRays": {
+      "28": [
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.6711569,
+          "v": 0.5915898,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 236.92452907562256,
+          "y": 65.29515686631203,
+          "z": -232.58874702453613,
+          "block": "earthcraft:map_stone",
+          "blockPosition": "236, 65, -234",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 15.998061,
+          "structureTriangle": [
+            240.4925537109375,
+            65.5705968960167,
+            -252.2139892578125,
+            236.23458862304688,
+            65.5705968960167,
+            -228.79385375976562,
+            236.23458862304688,
+            63.300596438253024,
+            -228.79385375976562
+          ]
+        },
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.47650218,
+          "v": 0.50952256,
+          "fov": 76.99999332427979,
+          "tile": 1000010034,
+          "x": 229.28546285629272,
+          "y": 66.34899985790253,
+          "z": -239.95348393917084,
+          "block": "earthcraft:map_plaster",
+          "blockPosition": "237, 67, -241",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 15.281307,
+          "structureTriangle": [
+            237.85675048828125,
+            63.02059765895615,
+            -240.2301788330078,
+            237.56658935546875,
+            63.02059765895615,
+            -240.64849853515625,
+            237.56658935546875,
+            71.93902035793076,
+            -240.64849853515625
+          ]
+        },
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.32029712,
+          "v": 0.40789586,
+          "fov": 76.99999332427979,
+          "tile": 1000010034,
+          "x": 226.93034505844116,
+          "y": 66.83499717712402,
+          "z": -241.8101441860199,
+          "block": "earthcraft:map_wood",
+          "blockPosition": "231, 68, -245",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 19.800045,
+          "structureTriangle": [
+            239.48623657226562,
+            70.28322812160263,
+            -247.99266052246094,
+            239.48623657226562,
+            70.30723019679795,
+            -247.99266052246094,
+            239.72552490234375,
+            70.30723019679795,
+            -249.308837890625
+          ]
+        }
+      ],
+      "29": [
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.31529203,
+          "v": 0.5994298,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 239.79691696166992,
+          "y": 65.29555302858353,
+          "z": -228.30238914489746,
+          "block": "earthcraft:map_stone",
+          "blockPosition": "240, 65, -228",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 21.160929,
+          "structureTriangle": [
+            259.5177001953125,
+            65.5705968960167,
+            -224.74459838867188,
+            236.11302185058594,
+            65.5705968960167,
+            -228.9669952392578,
+            236.11302185058594,
+            63.300596438253024,
+            -228.9669952392578
+          ]
+        },
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.4645223,
+          "v": 0.52632946,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 247.82151854038239,
+          "y": 67.25423800945282,
+          "z": -226.16286277770996,
+          "block": "earthcraft:map_stone",
+          "blockPosition": "247, 67, -227",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 16.826736,
+          "structureTriangle": [
+            248.08969116210938,
+            63.02059765895615,
+            -226.348876953125,
+            247.67137145996094,
+            63.02059765895615,
+            -226.0587158203125,
+            247.67137145996094,
+            71.93902035793076,
+            -226.0587158203125
+          ]
+        },
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.6334517,
+          "v": 0.40510854,
+          "fov": 76.99999332427979,
+          "tile": 1000010034,
+          "x": 253.14663887023926,
+          "y": 68.40900301933289,
+          "z": -218.86474323272705,
+          "block": "earthcraft:map_stone",
+          "blockPosition": "255, 70, -226",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 17.495653,
+          "structureTriangle": [
+            255.2155303955078,
+            70.28322812160263,
+            -225.28195190429688,
+            255.2155303955078,
+            70.30723019679795,
+            -225.28195190429688,
+            256.53070068359375,
+            70.30723019679795,
+            -225.044677734375
+          ]
+        }
+      ],
+      "30": [
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.34216332,
+          "v": 0.58840245,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 260.0116901397705,
+          "y": 65.29554212093353,
+          "z": -228.32605648040771,
+          "block": "earthcraft:map_stone",
+          "blockPosition": "260, 65, -229",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 20.217226,
+          "structureTriangle": [
+            263.5697937011719,
+            65.5705968960167,
+            -248.0308837890625,
+            259.3427734375,
+            65.5705968960167,
+            -224.62159729003906,
+            259.3427734375,
+            63.300596438253024,
+            -224.62159729003906
+          ]
+        },
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.49550876,
+          "v": 0.51421267,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 262.1774158477783,
+          "y": 67.25057208538055,
+          "z": -236.291688606143,
+          "block": "earthcraft:map_plaster",
+          "blockPosition": "262, 67, -237",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 16.40515,
+          "structureTriangle": [
+            261.96319580078125,
+            63.02059765895615,
+            -236.60052490234375,
+            262.25335693359375,
+            63.02059765895615,
+            -236.1822052001953,
+            262.25335693359375,
+            71.93902035793076,
+            -236.1822052001953
+          ]
+        },
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.67019814,
+          "v": 0.39025608,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 263.10421657562256,
+          "y": 70.29858493804932,
+          "z": -244.1300892829895,
+          "block": "earthcraft:map_stone",
+          "blockPosition": "263, 70, -244",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 17.808357,
+          "structureTriangle": [
+            263.0315856933594,
+            70.28322812160263,
+            -243.72781372070312,
+            263.0315856933594,
+            70.30723019679795,
+            -243.72781372070312,
+            263.26910400390625,
+            70.30723019679795,
+            -245.0432891845703
+          ]
+        }
+      ],
+      "31": [
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.5278303,
+          "v": 0.5329769,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 251.33270931243896,
+          "y": 67.9930489063263,
+          "z": -255.39737129211426,
+          "block": "earthcraft:map_plaster",
+          "blockPosition": "251, 67, -256",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 11.451857,
+          "structureTriangle": [
+            251.32098388671875,
+            74.68107815822373,
+            -255.0714111328125,
+            251.33822631835938,
+            65.67059537013779,
+            -255.55072021484375,
+            251.3209686279297,
+            65.67059537013779,
+            -255.07102966308594
+          ]
+        },
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.45414147,
+          "v": 0.59991443,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 249.46154308319092,
+          "y": 66.98311126232147,
+          "z": -252.8208043575287,
+          "block": "earthcraft:map_plaster",
+          "blockPosition": "250, 66, -254",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 13.216623,
+          "structureTriangle": [
+            249.42372131347656,
+            72.29827328761826,
+            -252.5988311767578,
+            249.42364501953125,
+            63.0212690456749,
+            -252.59840393066406,
+            249.60687255859375,
+            63.02122326930771,
+            -253.67372131347656
+          ]
+        }
+      ],
+      "32": [
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.5153341,
+          "v": 0.16318561,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 243.59313583374023,
+          "y": 74.68149280548096,
+          "z": -255.55419921875,
+          "block": "earthcraft:map_stone",
+          "blockPosition": "243, 74, -256",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 68.49373,
+          "structureTriangle": [
+            247.40826416015625,
+            74.68136807521591,
+            -252.96327209472656,
+            241.18165588378906,
+            74.6816808803917,
+            -254.08859252929688,
+            242.1894073486328,
+            74.68142911037216,
+            -259.6108703613281
+          ]
+        },
+        {
+          "frameGroundHeight": 519.7618173672081,
+          "u": 0.5234521,
+          "v": 0.16631159,
+          "fov": 76.99999332427979,
+          "tile": 1000030017,
+          "x": 245.0004425048828,
+          "y": 74.68139362335205,
+          "z": -255.99939346313477,
+          "block": "earthcraft:map_plaster",
+          "blockPosition": "245, 74, -256",
+          "structureBehindVegetation": 1000030017,
+          "structureDistance": 68.062355,
+          "structureTriangle": [
+            247.40826416015625,
+            74.68136807521591,
+            -252.96327209472656,
+            241.18165588378906,
+            74.6816808803917,
+            -254.08859252929688,
+            242.1894073486328,
+            74.68142911037216,
+            -259.6108703613281
+          ]
+        }
+      ]
+    }
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "1c117a77676f292fe5facb130063a1fc6c5bd013a9d8c19d6d87fe5e4b229beb",
+    "sameCamera": true,
+    "camera": "222 64 -240 -90 -7",
+    "beforeImage": "../../docs/screenshots/campus-grs-iii-before.jpg",
+    "afterImage": "../../docs/screenshots/campus-grs-iii-west.jpg"
+  },
+  "remaining": [
+    "Colours, frame dimensions, blinds and less-visible elevations are estimated from historical references.",
+    "The raised roof retains its survey/orthophoto surface; it is not a detailed glazed steel roof model.",
+    "Adjacent Siemensbau and other campus walls retain coarse photographic surfaces.",
+    "Courtyard ground, parking and margins remain unfinished; overall campus realism is not achieved.",
+    "A separately protected 4.28 m\u00b2 connector (DEBY_LOD2_5284469) retains distorted provider triangles behind the tower; native diagnostics identify the next repair."
+  ],
+  "installedPreview": {
+    "artifactSha256": "436b688c24f1ead360d40153f4785cde34e2e208eef2ec0e21e1f3ec3c2d190a",
+    "previousArtifactSha256": "1c117a77676f292fe5facb130063a1fc6c5bd013a9d8c19d6d87fe5e4b229beb",
+    "updateSaveFilesVerified": 121,
+    "updateSavesAndSettingsUnchanged": true
+  },
+  "updaterChecks": {
+    "passed": 3
+  },
+  "remainingFragmentDiagnosis": {
+    "inspectionArtifactSha256": "436b688c24f1ead360d40153f4785cde34e2e208eef2ec0e21e1f3ec3c2d190a",
+    "camera": "262 64 -255 90 -15",
+    "separateFromFullValidation": true,
+    "hits": [
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.61,
+        "v": 0.3,
+        "fov": 76.99999332427979,
+        "tile": 1200027105,
+        "x": 249.17463207244873,
+        "y": 74.15823554992676,
+        "z": -259.1918115615845,
+        "block": "earthcraft:map_plaster",
+        "blockPosition": "250, 72, -259",
+        "structureBehindVegetation": 1200027105,
+        "structureDistance": 16.506968,
+        "structureTriangle": [
+          248.4826889038086,
+          74.05468273162842,
+          -259.3986568450928,
+          248.48271656036377,
+          74.25961589813232,
+          -258.98791694641113,
+          249.92226028442383,
+          74.26031017303467,
+          -258.9879837036133
+        ]
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.61,
+        "v": 0.42,
+        "fov": 76.99999332427979,
+        "tile": 1200027106,
+        "x": 248.50345611572266,
+        "y": 71.34700059890747,
+        "z": -259.167142868042,
+        "block": "earthcraft:map_plaster",
+        "blockPosition": "250, 70, -259",
+        "structureBehindVegetation": 1200027106,
+        "structureDistance": 15.826687,
+        "structureTriangle": [
+          248.50345611572266,
+          71.39073371887207,
+          -259.1931800842285,
+          248.50345611572266,
+          70.98090314865112,
+          -258.78241539001465,
+          248.50344467163086,
+          70.77598571777344,
+          -258.98778343200684
+        ]
+      },
+      {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.62,
+        "v": 0.46,
+        "fov": 76.99999332427979,
+        "tile": 1000030016,
+        "x": 245.39981079101562,
+        "y": 71.3885087966919,
+        "z": -260.61251640319824,
+        "block": "earthcraft:map_plaster",
+        "blockPosition": "250, 69, -259",
+        "structureBehindVegetation": 1000030016,
+        "structureDistance": 19.054003,
+        "structureTriangle": [
+          246.7908477783203,
+          71.38850613673935,
+          -260.65960693359375,
+          246.73202514648438,
+          71.38850613673935,
+          -260.3348693847656,
+          242.14794921875,
+          71.38850613673935,
+          -261.1653137207031
+        ]
+      }
+    ],
+    "nearbySurveyBuilding": "DEBY_LOD2_5284469",
+    "surveyBounds": [
+      [
+        246.4831,
+        63.811,
+        -260.6305
+      ],
+      [
+        249.0783,
+        71.9902,
+        -258.3995
+      ]
+    ],
+    "footprintAreaSquareMetres": 4.27816,
+    "finding": "The surviving provider fragments lie on/near a separate 4.28 m\u00b2 surveyed connector between GRS II and III, which the neighbour-safe replacement protects. It is excluded from photographic facade plans by the 20 m\u00b2 threshold. One fragment extends above its survey roof. Reconstruct this small connector explicitly and bound cleanup to its own envelope; do not delete neighbouring tower or GRS II geometry."
+  }
+}
