@@ -1,0 +1,242 @@
+{
+  "status": "UNRELEASED DEVELOPMENT: native mesh shadow pass works in the courtyard; gameplay, time-of-day, broader visual review and integration remain incomplete",
+  "artifactSha256": "c94315901c1a6b29f3390a4833dbebf292e5e36a759f6200299a2e8dfe96e3fc",
+  "installedPreviewUnchanged": "exterior-0.5.0-dev.10",
+  "camera": "262 64 -255 90 -15",
+  "nativeRun": {
+    "logSha256": "5a7dd194d946ad18efad068781151c0e243445fe0f99c7a1d3898f0bbb46c0b1",
+    "result": "BUILD SUCCESSFUL",
+    "benchmark": {
+      "status": "PASS: same-scene baseline/candidate/baseline samples captured",
+      "note": "Six one-second FPS readings per phase after six seconds of warmup; a local comparison, not a universal performance guarantee.",
+      "phases": [
+        {
+          "phase": "baseline",
+          "shadowDraws": 0,
+          "shadowUpdates": 0,
+          "fpsSamples": [
+            94,
+            95,
+            95,
+            95,
+            94,
+            95
+          ],
+          "medianFps": 95.0
+        },
+        {
+          "phase": "candidate",
+          "shadowDraws": 377,
+          "shadowUpdates": 139,
+          "fpsSamples": [
+            90,
+            89,
+            88,
+            90,
+            89,
+            90
+          ],
+          "medianFps": 89.5
+        },
+        {
+          "phase": "baseline",
+          "shadowDraws": 377,
+          "shadowUpdates": 140,
+          "fpsSamples": [
+            96,
+            94,
+            96,
+            95,
+            95,
+            96
+          ],
+          "medianFps": 95.5
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "shadowResolution": 4096,
+    "lightSpaceWidthMetres": 128,
+    "nominalMetresPerTexel": 0.03125,
+    "sunDirectionBeforeNormalization": [
+      -0.5,
+      0.8,
+      -0.3
+    ],
+    "shadowStrength": 0.28,
+    "surfaceNormalOffsetMetres": 0.01,
+    "receiverDepthBias": 3e-05,
+    "polygonOffsetFactor": 0.75,
+    "polygonOffsetUnits": 2,
+    "filter": "3x3 receiver-plane comparison at exact texel centres",
+    "capturedDraws": 377,
+    "refreshThrottleMilliseconds": 100
+  },
+  "captures": [
+    {
+      "phase": "baseline",
+      "nativePngSha256": "ff0baf4c3fd88180b0e9e687da6895e21140edaf04ea0f87fbbdae0dd9521391",
+      "image": "docs/screenshots/campus-runtime-shadow-baseline.jpg",
+      "sha256": "70e03fffda4e1063f03fc8e414876f7a105f1bc11be443b8dfd9a90a82441773"
+    },
+    {
+      "phase": "candidate",
+      "nativePngSha256": "cf5bbdba5912d1b4256f90622535b3eae8a2845649828600141c39aaafd934b5",
+      "image": "docs/screenshots/campus-runtime-shadow-candidate.jpg",
+      "sha256": "8f98c9bd4b3c775133f27958dd1b3c7bf613f82cd0e5a5b6588e29eba268efae"
+    },
+    {
+      "phase": "baseline-return",
+      "nativePngSha256": "ff0baf4c3fd88180b0e9e687da6895e21140edaf04ea0f87fbbdae0dd9521391",
+      "image": "docs/screenshots/campus-runtime-shadow-baseline-return.jpg",
+      "sha256": "70e03fffda4e1063f03fc8e414876f7a105f1bc11be443b8dfd9a90a82441773"
+    }
+  ],
+  "nativeProbes": [
+    {
+      "u": 0.1,
+      "v": 0.55,
+      "surfaceTile": 1000030017,
+      "surfacePart": 1,
+      "surface": "(257.6658763885498, 66.51176899671555, -248.95645666122437)",
+      "sunCasterTile": 1000030017,
+      "sunCasterPart": 3,
+      "sunCasterDistance": 0.72605187,
+      "surfaceDepth": 0.49377927,
+      "shadowDepth": 0.48570174,
+      "shadowWorld": "( 2.564E+2  6.859E+1 -2.497E+2  1.000E+0)"
+    },
+    {
+      "u": 0.1,
+      "v": 0.57,
+      "surfaceTile": 1000030017,
+      "surfacePart": 1,
+      "surface": "(257.6311101913452, 66.36031997203827, -248.96281051635742)",
+      "sunCasterTile": 1000030017,
+      "sunCasterPart": 3,
+      "sunCasterDistance": 0.7649673,
+      "surfaceDepth": 0.49410185,
+      "shadowDepth": 0.4910332,
+      "shadowWorld": "( 2.571E+2  6.716E+1 -2.493E+2  1.000E+0)"
+    },
+    {
+      "u": 0.12,
+      "v": 0.6,
+      "surfaceTile": 1000030017,
+      "surfacePart": 0,
+      "surface": "(257.80530834198, 66.11017832159996, -249.49008464813232)",
+      "sunCasterTile": -1,
+      "sunCasterPart": -1,
+      "sunCasterDistance": 10000.0,
+      "surfaceDepth": 0.49451047,
+      "shadowDepth": 0.4948704,
+      "shadowWorld": "( 2.579E+2  6.602E+1 -2.495E+2  1.000E+0)"
+    },
+    {
+      "u": 0.24,
+      "v": 0.4,
+      "surfaceTile": 1000030017,
+      "surfacePart": 3,
+      "surface": "(256.1540856361389, 68.4505968093872, -249.4539065361023)",
+      "sunCasterTile": 1000030017,
+      "sunCasterPart": 2,
+      "sunCasterDistance": 0.08848956,
+      "surfaceDepth": 0.4860333,
+      "shadowDepth": 0.4829661,
+      "shadowWorld": "( 2.557E+2  6.924E+1 -2.498E+2  1.000E+0)"
+    },
+    {
+      "u": 0.25,
+      "v": 0.41,
+      "surfaceTile": 1000030017,
+      "surfacePart": 3,
+      "surface": "(255.87918043136597, 68.45059657096863, -249.4602370262146)",
+      "sunCasterTile": 1000030017,
+      "sunCasterPart": 2,
+      "sunCasterDistance": 0.08848956,
+      "surfaceDepth": 0.485592,
+      "shadowDepth": 0.48253772,
+      "shadowWorld": "( 2.554E+2  6.924E+1 -2.497E+2  1.000E+0)"
+    },
+    {
+      "u": 0.22,
+      "v": 0.65,
+      "surfaceTile": 1000030017,
+      "surfacePart": 0,
+      "surface": "(256.3447585105896, 65.78961665928364, -249.75698614120483)",
+      "sunCasterTile": -1,
+      "sunCasterPart": -1,
+      "sunCasterDistance": 10000.0,
+      "surfaceDepth": 0.4927565,
+      "shadowDepth": 0.4929964,
+      "shadowWorld": "( 2.564E+2  6.573E+1 -2.497E+2  1.000E+0)"
+    },
+    {
+      "u": 0.56,
+      "v": 0.4,
+      "surfaceTile": 1000030017,
+      "surfacePart": 0,
+      "surface": "(250.71755027770996, 70.87556505203247, -256.6620943546295)",
+      "sunCasterTile": 1000030017,
+      "sunCasterPart": 0,
+      "sunCasterDistance": 0.73006797,
+      "surfaceDepth": 0.46441296,
+      "shadowDepth": 0.4496907,
+      "shadowWorld": "( 2.483E+2  7.467E+1 -2.581E+2  1.000E+0)"
+    },
+    {
+      "u": 0.56,
+      "v": 0.28,
+      "surfaceTile": 1000030017,
+      "surfacePart": 0,
+      "surface": "(250.44763851165771, 73.83836650848389, -256.8364613056183)",
+      "sunCasterTile": 1000030017,
+      "sunCasterPart": 0,
+      "sunCasterDistance": 0.43801132,
+      "surfaceDepth": 0.45630938,
+      "shadowDepth": 0.45311815,
+      "shadowWorld": "( 2.500E+2  7.467E+1 -2.572E+2  1.000E+0)"
+    }
+  ],
+  "sourceFiles": {
+    "campus_shadow.fsh": "30d7af7f432fb359d5b508c2b05791105f1b14e0bddc315aea428d8d5a38ac2a",
+    "campus_ground.json": "802c317749781a12fc71f13c93e2ead3dc72d836da14835f5e10647ada6a6f76",
+    "CampusMaterialBenchmark.java": "d870d8a695cdeecbba1b0c61d2c28a0f71c5ffb93058a3fdcb3bf69a33d11181",
+    "CampusShadows.java": "7b648ec376bcc35977b866ba07d148142c26d4b472433453184078f21f1ed74d",
+    "shadow_receive.glsl": "58ebce92bda63afdfbdab98a287d45a08728edfaff1c1b0cd1fabb272b35af9b",
+    "campus_shadow.vsh": "de7cdd3faab48fdcc81c8660abdfa6f164aed74817c354787e7520e606920b74",
+    "CampusShadowTrial.java": "7450f45b6725b4cda1b677773af18f3f5b1803f1faf6d78a891395ef166a5332",
+    "campus_shadow.json": "500e631b82859ea2b74b775b521b5db254f242c261c97c7f8239c6f92255bcb0",
+    "CampusShadowProbe.java": "869625c558b486da53d4d5cff67bca471eea932f1c97b8662297e9e36eba2852"
+  },
+  "observations": [
+    "The first 2048/192m pass produced visible triangular patterns and median 77 FPS versus baseline 92/94.",
+    "The 100ms refresh bound recovered much of the rendering cost. Receiver-plane sampling at exact texel centres reduced comparison errors.",
+    "The 4096/128m trial improves thin-slat shadows. Some small edge patterns and bright rims remain; wider routes and motion are not yet visually accepted.",
+    "Native CPU rays identify nearby GRS III metal slats where the coarse map can miss a caster. Receiver offset and rasterization also affect the comparison; these probes do not establish a single cause for every artifact."
+  ],
+  "limitations": [
+    "Fixed light direction, matching the current material shader; no dynamic sunlight or night switch yet.",
+    "TNT-driven buffer refresh is the intended input path but shadow response to actual TNT has not yet been tested.",
+    "Only MapTile meshes cast/receive the trial shadows; vanilla blocks, players and mobs are not included.",
+    "The isolated hook runs after the existing map render, so its map applies on the next frame. Production integration still needs to run at the correct point after buffer refresh.",
+    "Region switches, disconnect cleanup, resource reloads, exact GL state invariants, camera movement and broad route performance need explicit checks.",
+    "The rough horizontal caster bound should be replaced by the actual light frustum before production use.",
+    "This is not an installed preview feature or proof of full-campus realism."
+  ],
+  "nextChecks": [
+    "Wire sunlight consistently with the Minecraft sky and disable daytime shadows at night.",
+    "Verify actual TNT excavation changes the depth map and restoration restores it in the isolated save.",
+    "Add production lifecycle/state handling and inspect representative ground and aerial routes."
+  ],
+  "technicalReferences": [
+    "https://wikis.khronos.org/opengl/GLAPI/glPolygonOffset",
+    "https://wikis.khronos.org/opengl/Sampler_(GLSL)"
+  ],
+  "baselineReturnPixelComparison": {
+    "meanAbsoluteChannelDifference": 0.0,
+    "changedPixelFraction": 0.0,
+    "note": "Comparison of the two baseline captures; timing/context differences may remain."
+  }
+}
