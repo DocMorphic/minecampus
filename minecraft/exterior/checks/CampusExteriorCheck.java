@@ -21,6 +21,9 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private boolean roofStarted, roofCheckQueued;
     private volatile boolean roofVerified;
     private int roofTicks;
+    private boolean bankStarted;
+    private volatile boolean bankVerified,bankCheckQueued;
+    private int bankTicks;
     private int ticks, stage=Boolean.getBoolean("minecampus.inspectOnly")?Integer.getInteger("minecampus.inspectStage",3):0, total, readyTicks;
     private volatile Throwable failure;
     private volatile int expectedJournal;
@@ -43,6 +46,11 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     };
 
     @Override public void onInitializeClient() {
+        if(Boolean.getBoolean("minecampus.bankOnly")){
+            stage=NAMES.length;walkingStarted=true;gameplayVerified=true;ticks=100;
+            terraceStarted=true;terraceVerified=true;terraceTicks=120;
+            roofStarted=true;roofVerified=true;roofTicks=120;
+        }
         ClientLifecycleEvents.CLIENT_STARTED.register(mc -> {
             org.lwjgl.glfw.GLFW.glfwHideWindow(mc.getWindow().getWindow());
             if(!Path.of("").toAbsolutePath().getFileName().toString().equals("run-campus-check"))throw new AssertionError("QA must run only in its isolated directory");
@@ -160,7 +168,38 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         return;
                     }
                 }
-                Files.writeString(Path.of("campus-client-result.txt"),"PASS: twelve ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa and paving-detail frames captured after full streaming readiness");mc.stop();return;
+                if(Boolean.getBoolean("minecampus.requireFineTerrain")||Boolean.getBoolean("minecampus.bankOnly")){
+                    if(!bankStarted){
+                        bankStarted=true;
+                        mc.getSingleplayerServer().execute(()->{
+                            var player=mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
+                            player.setGameMode(GameType.CREATIVE);player.getAbilities().flying=false;player.onUpdateAbilities();
+                            mc.getSingleplayerServer().getCommands().performPrefixedCommand(player.createCommandSourceStack().withPermission(4),"tp @s 14.5 68 -228.5 180 0");
+                        });
+                        return;
+                    }
+                    if(++bankTicks<120)return;
+                    if(!bankVerified){
+                        if(!bankCheckQueued){
+                            bankCheckQueued=true;
+                            mc.getSingleplayerServer().execute(()->{
+                                try{
+                                    var world=mc.getSingleplayerServer().overworld();
+                                    if(!dev.realworldmc.CampusCollision.aligned(world,0,-15)){bankCheckQueued=false;return;}
+                                    var player=mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
+                                    // Barycentric height of the encoded DGM1 triangle at
+                                    // (14.5,-228.5), independently checked by validate-terrain.py.
+                                    // Native ground proxy tops round to the nearest block.
+                                    if(!player.onGround()||Math.abs(player.getY()-62.378458)>.51)throw new AssertionError("Fine Mensa bank collider mismatch: "+player.getY());
+                                    Files.writeString(Path.of("campus-bank-result.txt"),"PASS: native gravity landed player on the refined Mensa bank at Y="+player.getY());
+                                    bankVerified=true;
+                                }catch(Throwable error){failure=error;}
+                            });
+                        }
+                        return;
+                    }
+                }
+                if(!Boolean.getBoolean("minecampus.bankOnly"))Files.writeString(Path.of("campus-client-result.txt"),"PASS: twelve ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa and paving-detail frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);

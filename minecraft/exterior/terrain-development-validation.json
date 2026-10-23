@@ -1,0 +1,264 @@
+{
+  "date": "2026-10-23",
+  "status": "Full DGM1 terrain sampling verified; overall realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 187266680,
+    "sha256": "5dba4904a7302acbd7474897394c18aefa3522188d7e1dbb560f4c2a4e04ac21",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "8a809d31ed8fd826049afcc83f9665b8524616c5783166c1d6b67d35881d75d7",
+    "rendererSourceFingerprint": "34db3fe1e50be3bc",
+    "bundleSha256": "c10cf87ca9fd6e42d94550757002873f75323ff119549798a3485eeca2d3b585",
+    "tiles": 83
+  },
+  "geometry": {
+    "renderTiles": 83,
+    "photoFacadeCandidates": 80,
+    "triangles": 1861145,
+    "textureBytes": 241662224,
+    "auxiliaryTriangles": 5326,
+    "auxiliaryTextureBytes": 13530024,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "terrainSampling": {
+    "sourceMetres": 1,
+    "interiorVertexMetres": 1,
+    "pixelConvention": "Area raster values at half-pixel centres",
+    "boundaryMethod": "Bilinear interpolation across merged source tiles; nearest valid edge value at the dataset boundary",
+    "guideMetres": 2
+  },
+  "terrainValidation": {
+    "status": "PASS: encoded terrain preserves all DGM1 interior samples and adjoining tile seams",
+    "sourceSampleCount": 360000,
+    "maximumPositionErrorMetres": 2.1800125178386423e-05,
+    "maximumTileSeamErrorMetres": 0,
+    "note": "Source representation accuracy only; not a claim of millimetre real-world survey accuracy.",
+    "nativeBankProbe": {
+      "positionMC": [
+        14.5,
+        -228.5
+      ],
+      "meshHeight": 62.37845813883744,
+      "expectedProxyTop": 62,
+      "toleranceMetres": 0.51
+    },
+    "previousTwoMetreMesh": {
+      "wholeCampus": {
+        "sampleCount": 360000,
+        "absoluteHeightErrorP50P95P99MaxMetres": [
+          0.014259456811863913,
+          0.11900317878598514,
+          0.29449458634628234,
+          5.772743101127233
+        ],
+        "over25cm": 4905
+      },
+      "outsideProtectedFootprints": {
+        "sampleCount": 238960,
+        "absoluteHeightErrorP50P95P99MaxMetres": [
+          0.01674663909616214,
+          0.12901295597744564,
+          0.32449338674492234,
+          5.772743101127233
+        ],
+        "over25cm": 3926
+      },
+      "terraceWindow": {
+        "sampleCount": 4800,
+        "absoluteHeightErrorP50P95P99MaxMetres": [
+          0.0274964558136368,
+          0.2505234942330859,
+          1.3565311803006592,
+          4.039489625153635
+        ],
+        "over25cm": 244
+      },
+      "terraceOutsideProtectedFootprints": {
+        "sampleCount": 2809,
+        "absoluteHeightErrorP50P95P99MaxMetres": [
+          0.020477176933923147,
+          0.29164731446556935,
+          1.4289983128395995,
+          4.039489625153635
+        ],
+        "over25cm": 193
+      }
+    }
+  },
+  "samplerTests": {
+    "passed": 3,
+    "failed": 0
+  },
+  "serviceTests": {
+    "passed": 21,
+    "failed": 0
+  },
+  "materialControls": {
+    "status": "PASS: ground material alignment and mapped court exclusions",
+    "samples": [
+      {
+        "name": "Mensa bank terrain hit",
+        "positionMC": [
+          11.612,
+          -231.731
+        ],
+        "channelsRGB": [
+          255,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "MW mapped paving",
+        "positionMC": [
+          25,
+          -125
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "Southern mapped asphalt",
+        "positionMC": [
+          -32,
+          122
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "basketball 479320868",
+        "positionMC": [
+          -198.652,
+          164.384
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "beachvolleyball 479320872",
+        "positionMC": [
+          -228.657,
+          168.948
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "beachvolleyball 479320873",
+        "positionMC": [
+          -226.561,
+          157.244
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: twelve ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa and paving-detail frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0"
+    },
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "e5a09806f2f7505e2b050b189a0fc7392d8eed7cddc606239229c13f8100e470"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "68866cfed2ab8fa635e10f83b46a9b538bf8e369a1f7adf0a31049718f8a3526"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "c749e7d326cf2803ca37026e241ee063cd254320406ece3725f7ee8581c048b7"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "7a3967794185de001c9dc641c784489fd851ec5e9efb2eb5376c52758e331804"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "0eca2456cb8b6da48ed0717816b9b334538cc3da070a297d107fddd764a6bb8f"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "bcd9263870073e361c4f35a2cd2ad5d0f4a80afbcf804c139d6a550d8ac90a46"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "b6b8236406facd157ff81f83109fc711a601992139e5e60f150134a6ab082e5b"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "3736a0bfae075ca393e710fa209d57875aeab3a7ca656458ee3d82214e407c1a"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "8d900fccd5b7bc5e18c1c1709c11e78ade921c422e9c58a341732aaad5ac7a4a"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "5757a1d203b86a81b66387b8599ebacd68db4dd8b1e457c6fe623425c4878ca6"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "c5d6903c1afa9d11b8cc63180463ab8c1fbd6dbe56e36d5a725ac984b658d5fb"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "6466372489c8a47c4d43b1eb01cf9efa8a722034cc39607f9792353ee5ea74a9"
+      }
+    ]
+  },
+  "comparison": {
+    "beforeArtifactSha256": "b74ed2662b72fca1549cad45d72311d4a2a41f6f69cd2753b5cbd519b7a7acbb",
+    "mensaCamera": "0 64.25 -216 180 -5",
+    "beforeMensaRawSha256": "5d42cc22d29fbdf5f2ea5f5dc8e57bddbbd217e36d5bb7fc125bab6282958639"
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "collisionMigration": "v5; ordinary blocks and recorded edits preserved",
+  "probeCorrection": "Initial bank check assumed Y=63 and failed at Y=62. Independent interpolation measured mesh Y=62.378458; final full run checks that height with a 0.51 m tolerance.",
+  "references": [
+    {
+      "url": "https://gdal.org/en/stable/tutorials/geotransforms_tut.html",
+      "use": "Raster transform origin is the pixel corner; sample centres are half a pixel inward."
+    }
+  ],
+  "remaining": [
+    "Steep-face ground texture stretch and blurred unmapped paths.",
+    "Terrace stairs, artwork and other architectural detail.",
+    "Untreated facades remain coarse in route captures."
+  ],
+  "installedRelease": "0.4.0"
+}

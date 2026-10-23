@@ -67,3 +67,10 @@ The two tracked overhead terrace fragments are corrected in the development buil
 The development renderer now uses 180 OSM lawn polygons and two explicitly mapped paved areas, with twelve mapped water/court exclusions. A 4096² classification texture anchors close-range materials to their mapped footprints. Ground normals follow the terrain slope, and shared material textures now use anisotropic filtering. Paving units and lawn grain remain estimates, with the original aerial imagery supplying broad colour/shadow context. The native route check now includes a twelfth camera for close-range paving.
 
 This improves surface readability without changing terrain geometry or player collision. The current two-metre ground grid still rounds/facets steep edges even though DGM1 provides finer source sampling. That geometry, unmapped paths, terrace details and untreated façades remain the next work. All eight native checks, six material control samples and 21 service tests passed; all 46 backed-up original save files remain unchanged. The installed/public preview is still 0.4.0. [Exact ground-material evidence](ground-material-development-validation.json).
+
+
+## One-metre terrain and pixel-centred sampling
+
+The development mesh now preserves all 360,000 DGM1 interior samples with continuous tile boundaries. Bilinear sampling uses pixel centres and crosses the merged source-file seam. This removes the previous two-metre terrain simplification and corrects the half-pixel sampling offset. The Mensa bank's diagonal edge is visibly cleaner. Collision migration v5 uses the finer mesh while retaining ordinary player blocks and the edit journal.
+
+Source-encoding accuracy does not establish the accuracy or currency of the survey. The ground remains a heightfield, Minecraft collision remains a block grid, and source-filtering guides remain two-metre samples. Steep-face material stretching, unmapped paths, terrace detail and untreated façades still prevent completion of the realism goal. [Terrain evidence](terrain-development-validation.json); installed/public release remains 0.4.0.

@@ -25,6 +25,8 @@ The development renderer also uses [mapped ground surfaces](ground-surfaces.geoj
 
 ## How collisions and damage work
 
+Development terrain now retains every DGM1 sample at its one-metre pixel centre. The sampler interpolates across the source-file boundary, and adjoining 100 m render tiles share identical boundary vertices. The two-metre guide remains for source-mesh filtering; rendered terrain and its voxelized collision use the finer mesh. See [terrain validation](terrain-development-validation.json) for source-representation checks and native gameplay evidence.
+
 Both new chunks and existing nearby Garching chunks receive proxy blocks voxelized from the survey surfaces and reconstructed tree wood. Leaf cards are visual geometry, not a complete Minecraft leaf-block simulation. The migration keeps ordinary Minecraft blocks and positions in the authoritative edit journal. It suppresses recording of its own repairs, and stores completed chunks so the operation survives save/reload. Actual player mining, placement and TNT continue through Minecraft and RealWorldMC's damage system.
 
 The collision grid remains Minecraft's one-metre block grid. A sloping photographic surface and its supporting block tops can differ by up to approximately half a block. A repeated application must preserve edits, rather than infer player damage from a changed terrain LOD.
@@ -37,6 +39,8 @@ Use Python 3.9+ in an isolated environment, JDK 21, Node.js 22+ and Git:
 python3 -m venv .venv-exterior
 .venv-exterior/bin/pip install -r minecraft/exterior/requirements.txt
 .venv-exterior/bin/python scripts/build-exterior.py --download
+.venv-exterior/bin/python scripts/test_exterior_terrain.py
+.venv-exterior/bin/python scripts/validate-terrain.py
 .venv-exterior/bin/python scripts/validate-ground-surfaces.py
 python3 scripts/validate-exterior.py
 python3 scripts/build-exterior-release.py --java-home /absolute/path/to/jdk-21

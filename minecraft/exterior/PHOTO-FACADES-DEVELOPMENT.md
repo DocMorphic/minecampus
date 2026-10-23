@@ -141,3 +141,18 @@ The white strip beside the bank remains outside the mapped lawn. It needs geomet
 All twelve native captures, eight gameplay/geometry assertions, six material alignment/exclusion controls, 21 service tests and binary geometry validation passed. The original save’s 46 backed-up files remain unchanged. The full renderer fingerprint is now recorded alongside the upstream patch and service bundle hashes, so shader/resource changes are traceable. [Exact artifact and validation](ground-material-development-validation.json).
 
 The overall goal remains open. Fine terrain edges, unmapped path materials, terrace stairs/artwork and the remaining coarse façades are still incomplete. The installed/public preview remains 0.4.0.
+
+
+## Full DGM1 terrain sampling: `5dba4904…`
+
+The previous mesh used two-metre spacing and selected each containing raster pixel. DGM1 stores samples at pixel centres: the [GDAL geotransform convention](https://gdal.org/en/stable/tutorials/geotransforms_tut.html) places those centres half a pixel inward from the transform origin. The new sampler merges the adjacent elevation files before bilinear interpolation. Every source sample inside the 600 × 600 m campus now becomes an interior mesh vertex; shared 100 m tile boundaries use the same interpolated heights. The two-metre guide remains for source filtering, while rendering and collision voxelization use the one-metre mesh.
+
+Against the source raster, all 360,000 interior positions agree within 0.000022 m and adjoining tile edges match exactly. This measures encoding fidelity, not real-world survey accuracy. The old mesh differed from source samples by more than 25 cm at 3,926 positions outside protected footprints, including 193 in the selected terrace window. Those figures describe the previous interpolation error, not changes to the underlying survey.
+
+At the same Mensa approach camera:
+
+![Mensa bank after retaining the full DGM1 elevation sampling](../../docs/screenshots/campus-mensa-terrain-after.jpg)
+
+Compare the [previous two-metre capture](../../docs/screenshots/campus-mensa-ground-after.jpg). The diagonal bank edge is cleaner. Steep-face texture stretch, approximate materials and untreated façades remain visible; this is not final campus-quality evidence.
+
+The native bank probe originally assumed a landing at Y=63 and failed at Y=62. Independent triangle interpolation established the actual rendered surface at Y=62.378458, so the probe now checks that measured height with the existing half-block tolerance. Collision migration advances to v5 to realign previous proxy blocks, retaining the existing protections for ordinary blocks and recorded edits. Exact artifact hashes, source checks, native results and original-save verification are recorded in [terrain-development-validation.json](terrain-development-validation.json). The installed/public preview remains 0.4.0 and the overall goal remains open.

@@ -104,7 +104,8 @@ edges=np.flatnonzero(np.diff(np.r_[False,mask,False]));glass_spans=[(a/texture.w
 
 rasters=[rasterio.open(CACHE/('campus-dop-'+s+'.tif')) for s in ['west','east']]
 dems=[rasterio.open(CACHE/('campus-dgm-'+s+'.tif')) for s in ['west','east']]
-dem_arrays=[r.read(1) for r in dems]
+from exterior_terrain import ElevationSampler,terrain_axis
+elevation=ElevationSampler(dems)
 
 def orthophoto(points):
  out=np.zeros((len(points),3),dtype=np.uint8)
@@ -114,10 +115,7 @@ def orthophoto(points):
  return out
 
 def height(e,n):
- for r,a in zip(dems,dem_arrays):
-  if r.bounds.left<=e<r.bounds.right and r.bounds.bottom<=n<r.bounds.top:
-   col,row=(~r.transform)*(e,n);return float(a[min(a.shape[0]-1,max(0,int(row))),min(a.shape[1]-1,max(0,int(col)))])
- raise ValueError('Outside DEM')
+ return elevation(e,n)
 
 # One true-resolution aerial image. Terrain and roofs share exactly the same
 # projected image coordinates, so there is no independent texture drift.
@@ -154,19 +152,18 @@ def photo_uv(p):return np.column_stack(((p[:,0]-BOUNDS[0])/(BOUNDS[2]-BOUNDS[0])
 
 metadata={'walls':[],'boundsUtm':BOUNDS,'origin':ORIGIN,'verticalDatumNote':'Official GCG2016 grid (BKG / PROJ CDN), bilinear interpolation; DHHN2016 physical height plus geoid undulation gives ellipsoid height.','buildings':[],'tiles':[],'attribution':spec['attribution']+' (CC BY 4.0); façade material: Minecampus reconstruction'}
 # A compact DEM grid also guides runtime removal of the noisy source ground.
-grid=[]
-for n in range(BOUNDS[1],BOUNDS[3]+1,2):
- grid.extend(mc(np.array([(e,n,height(e,n)) for e in range(BOUNDS[0],BOUNDS[2]+1,2)])).tolist())
-metadata['terrainGuide']={'width':301,'height':301,'points':grid}
+guideXY=np.array([(e,n)for n in range(BOUNDS[1],BOUNDS[3]+1,2)for e in range(BOUNDS[0],BOUNDS[2]+1,2)])
+metadata['terrainGuide']={'width':301,'height':301,'points':mc(np.column_stack((guideXY,elevation.sample(guideXY)))).tolist()}
+metadata['terrainSampling']={'sourceMetres':1,'interiorVertexMetres':1,'pixelConvention':'Area raster values at half-pixel centres','boundaryMethod':'Bilinear interpolation across merged source tiles; nearest valid edge value at the dataset boundary','guideMetres':2}
 # 100m terrain tiles avoid repeatedly uploading a 36MB single image.
 for e in range(BOUNDS[0],BOUNDS[2],100):
  for n in range(BOUNDS[1],BOUNDS[3],100):
-  grid=[(x,y,height(x,y)) for y in range(n,n+101,2) for x in range(e,e+101,2)]
-  p=np.array(grid);q=mc(p);v=[]
-  for row in range(50):
-   for col in range(50):
-    a=row*51+col
-    for i in [a,a+1,a+51,a+1,a+52,a+51]:v.append([*q[i],(p[i,0]-e)/100,(n+100-p[i,1])/100])
+  xs,ys=terrain_axis(e),terrain_axis(n);stride=len(xs)
+  xy=np.array([(x,y)for y in ys for x in xs]);p=np.column_stack((xy,elevation.sample(xy)));q=mc(p);v=[]
+  for row in range(len(ys)-1):
+   for col in range(len(xs)-1):
+    a=row*stride+col
+    for i in [a,a+1,a+stride,a+1,a+stride+1,a+stride]:v.append([*q[i],(p[i,0]-e)/100,(n+100-p[i,1])/100])
   box=(int((e-BOUNDS[0])*5),int((BOUNDS[3]-n-100)*5),int((e-BOUNDS[0]+100)*5),int((BOUNDS[3]-n)*5))
   name=f'ground-{e}-{n}.ect';(OUT/name).write_bytes(encode([(v,photo.crop(box))]));metadata['tiles'].append({'file':name,'bounds':[q.min(axis=0).tolist(),q.max(axis=0).tolist()],'kind':'ground','runtimeId':1_000_000_000+len(metadata['tiles'])})
 from shapely.geometry import Polygon,box,Point
