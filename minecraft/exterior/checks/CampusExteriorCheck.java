@@ -305,7 +305,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     var right=new org.joml.Vector3f(forward).cross(0,1,0).normalize();
                     var up=new org.joml.Vector3f(right).cross(forward).normalize();
                     var ray=new org.joml.Vector3f(forward).add(right.mul((pixel[0]*2-1)*tanHalf*16/9)).add(up.mul((1-pixel[1]*2)*tanHalf)).normalize();
-                    var eye=camera.getPosition();float nearest=10000;int hit=-1;
+                    var eye=camera.getPosition();float nearest=10000,nearestStructure=10000;int hit=-1,structureHit=-1;
                     for(var item:loaded.values()){
                         var tile=(MapTile)item;var data=tile.data;
                         if(!((java.util.List<?>)df.get(renderer)).contains(data.id))continue;
@@ -313,22 +313,36 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                             for(int o=0;o<v.length;o+=15){
                                 float t=org.joml.Intersectionf.intersectRayTriangle((float)(eye.x-data.anchorX),(float)(eye.y-data.anchorY),(float)(eye.z-data.anchorZ),ray.x,ray.y,ray.z,v[o],v[o+1],v[o+2],v[o+5],v[o+6],v[o+7],v[o+10],v[o+11],v[o+12],1e-6f);
                                 if(t>0&&t<nearest){nearest=t;hit=data.id;}
+                                if(t>0&&t<nearestStructure&&(data.id<1_000_010_000||data.id>=1_000_020_000)){nearestStructure=t;structureHit=data.id;}
                             }
                         }
                     }
                     var pick=new com.google.gson.JsonObject();var region=dev.realworldmc.EarthRegions.at((int)Math.floor(eye.x),(int)Math.floor(eye.z));if(region!=null)pick.addProperty("frameGroundHeight",region.groundHeight());pick.addProperty("u",pixel[0]);pick.addProperty("v",pixel[1]);pick.addProperty("fov",actualFov);pick.addProperty("tile",hit);pick.addProperty("x",eye.x+ray.x*nearest);pick.addProperty("y",eye.y+ray.y*nearest);pick.addProperty("z",eye.z+ray.z*nearest);var blockHit=mc.level.clip(new net.minecraft.world.level.ClipContext(eye,eye.add(ray.x*256,ray.y*256,ray.z*256),net.minecraft.world.level.ClipContext.Block.OUTLINE,net.minecraft.world.level.ClipContext.Fluid.NONE,mc.player));
-                    var pos=blockHit.getBlockPos();pick.addProperty("block",net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(mc.level.getBlockState(pos).getBlock()).toString());pick.addProperty("blockPosition",pos.toShortString());picks.add(pick);
+                    var pos=blockHit.getBlockPos();pick.addProperty("block",net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(mc.level.getBlockState(pos).getBlock()).toString());pick.addProperty("blockPosition",pos.toShortString());pick.addProperty("structureBehindVegetation",structureHit);pick.addProperty("structureDistance",nearestStructure);picks.add(pick);
                 }
                 if(stage==9&&Boolean.getBoolean("minecampus.requireMensaRetaining")){
                     int confirmed=0;
                     for(var element:picks){var pick=element.getAsJsonObject();float u=pick.get("u").getAsFloat();
                         if(Math.abs(u-.18f)<.0001f||Math.abs(u-.35f)<.0001f||Math.abs(u-.58f)<.0001f){
-                            if(pick.get("tile").getAsInt()!=1_000_030_005)throw new AssertionError("Former Mensa approach still hits an old wall fragment at u="+u);
+                            if(pick.get("structureBehindVegetation").getAsInt()!=1_000_030_005)throw new AssertionError("Former Mensa approach still hits an old wall fragment behind vegetation at u="+u);
                             confirmed++;
                         }
                     }
                     if(confirmed!=3)throw new AssertionError("Missing approach diagnostic rays");
                     Files.writeString(Path.of("campus-retaining-result.txt"),"PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction");
+                }
+                if(stage==9&&Boolean.getBoolean("minecampus.requireMensaCanopy")){
+                    int confirmed=0;
+                    for(var element:picks){var pick=element.getAsJsonObject();float u=pick.get("u").getAsFloat();
+                        if(Math.abs(u-.84f)<.0001f||Math.abs(u-.82f)<.0001f){
+                            // Ignore the new foliage when checking for the old fragments:
+                            // covering a broken triangle is not evidence it was removed.
+                            if(pick.get("structureBehindVegetation").getAsInt()>=1_100_000_000&&pick.get("structureDistance").getAsFloat()<30)throw new AssertionError("Original near-terrace canopy fragment survives behind new foliage at u="+u);
+                            confirmed++;
+                        }
+                    }
+                    if(confirmed!=2)throw new AssertionError("Missing canopy diagnostic rays");
+                    Files.writeString(Path.of("campus-canopy-result.txt"),"PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage");
                 }
                 Files.writeString(Path.of("campus-fragment-picks-"+stage+".json"),picks.toString());
             }

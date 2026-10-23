@@ -101,3 +101,17 @@ At the established approach camera, after full native streaming readiness:
 Compare the [previous same-camera capture](../../docs/screenshots/campus-mensa-front-approach.jpg). The large lower fragments are gone. A new native assertion requires the three diagnostic rays at `(0.18,0.55)`, `(0.35,0.58)` and `(0.58,0.56)` to hit the reconstructed wall tile. All eleven viewpoints, seven native assertions, 21 service tests and generated-geometry validation passed. All 46 original backed-up save files remain unchanged. [Exact artifact and evidence](mensa-retaining-development-validation.json).
 
 The overhead fragments remain visible. A public-survey diagnostic links their location to a connected tall canopy extending beyond the currently generated circular crown. Crown ownership currently excludes protected building footprints and clips assigned foliage near the seed; the next correction needs to retain real overhang and fit the crown’s shape. The overall realism goal remains unfinished, and the installed/public preview remains 0.4.0.
+
+## Survey-fitted crowns: `f7a3ff1a…`
+
+The terrace diagnostic showed that the nearby tall canopy extends well beyond its trunk candidate. Crown fitting now assigns connected DOP20 foliage to tree candidates using DOM20 height above surveyed roofs and terrain. It keeps trunk placement separate from crown extent, allows measured overhang over low roofs, and samples foliage positions within that footprint instead of forcing every tree into a circle around its height peak. The 14 m ownership limit is a guard against joining distant vegetation, not a claimed measured crown radius.
+
+The representative trunk remains at approximately `(11.96,63.99,-220.53)`. Its fitted foliage samples extend north to `Z=-232.06`, with a sample centroid at `Z=-224.25`; the previous circular crown ended near `Z=-227.09`. Branches, lower crown boundaries, species and individual leaves remain procedural estimates. DOM measures the upper surface and does not measure a solid foliage volume down to the ground. The lower boundary therefore preserves exposed trunks; unsupported low samples do not become tall-tree foliage. The development scene now contains 739 inferred trees in 36 groups.
+
+At the same native approach camera:
+
+![Survey-fitted canopy above the Mensa terrace, with the old floating fragments removed](../../docs/screenshots/campus-mensa-crown-after.jpg)
+
+Compare the [previous retaining-wall capture](../../docs/screenshots/campus-mensa-retaining-after.jpg). The two tracked overhead source fragments are removed. New diagnostic rays ignore reconstructed vegetation when testing for old triangles, so merely covering an artifact with a leaf card cannot pass. The three retaining-wall rays still require the measured wall geometry behind any intervening foliage.
+
+The final package passed all eleven captures, eight native checks, 21 service tests and binary geometry validation. The collision fixture migrated 184 proxy blocks while preserving its player block and recorded excavation; all 46 backed-up original save files remain byte-identical. Exact package hashes, all eleven captures and native gameplay results are recorded in [crown-fit-development-validation.json](crown-fit-development-validation.json). This is a canopy correction, not a completed campus realism goal. The low-resolution ground imagery, simplified branches/species, pavement and terrace details, and remaining untreated architecture still need work. The installed/public preview remains 0.4.0.

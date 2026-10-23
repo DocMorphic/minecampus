@@ -11,7 +11,7 @@ from rasterio.transform import from_origin
 from rasterio.features import rasterize
 from scipy import ndimage
 from scipy.spatial import cKDTree
-from shapely.geometry import Polygon,Point
+from shapely.geometry import Polygon,Point,MultiPoint
 from shapely.ops import unary_union
 from PIL import Image,ImageDraw
 
@@ -81,19 +81,20 @@ def build(ctx):
  roofElevation=rasterize(sorted(roofShapes,key=lambda x:x[1]),out_shape=(h,w),transform=transform,dtype='float32')
  roofElevation=np.maximum(roofElevation,dem)
  # Shadowed crowns can have nearly equal green/blue channels. This broader
- # colour test applies only above measured roofs, not to tree placement.
+ # colour test extends crown fitting but does not add trunk candidates.
  shadedFoliage=(g>red*1.05)&(g>=b)&(g>35)&(g<175)
- overhang=(foliage|shadedFoliage)&(dom-roofElevation>2.5)&(canopy>4)
- # Cover each 2m guide cell before downsampling the 0.5m mask. Point sampling
- # missed narrow canopy edges and left isolated scan triangles above terraces.
- overhang=ndimage.maximum_filter(overhang,size=5)
+ # Fit the foliage separately from the trunk candidates. A crown can extend
+ # over a raised terrace, where height above the local ground is much lower
+ # than height above its trunk. Only components attached to a tree seed below
+ # will be retained, so this does not turn isolated terrace objects into trees.
+ crownMask=ndimage.binary_closing((foliage|shadedFoliage)&(dom-roofElevation>1.5),iterations=1)
  ceiling=ndimage.maximum_filter(roofElevation-dem,size=7)
- maskBytes=[];roofCeilings=[]
+ roofCeilings=[]
  for j in range(301):
   row=min(1199,max(0,1199-j*4))
   for i in range(301):
-   col=min(1199,max(0,i*4));maskBytes.append(int(overhang[row,col]));roofCeilings.append(round(float(terrainPoints[j*301+i][1]+ceiling[row,col]),3))
- metadata['vegetationOverhang']={'width':301,'height':301,'mask':base64.b64encode(bytes(maskBytes)).decode(),'roofCeilings':roofCeilings,'source':'BVV DOP20 green or brown foliage pixels with DOM20 at least 2.5m above the LoD2 roof; conservative local roof maximum'}
+   col=min(1199,max(0,i*4));roofCeilings.append(round(float(terrainPoints[j*301+i][1]+ceiling[row,col]),3))
+ metadata['vegetationOverhang']={'width':301,'height':301,'roofCeilings':roofCeilings}
 
  mask=(canopy>3)&foliage&~occupied
  mask=ndimage.binary_closing(mask,iterations=2)&~occupied
@@ -106,10 +107,21 @@ def build(ctx):
  for row,col in coords:
   value=smoothed[row,col]
   if not any((row-r)**2+(col-c)**2<(max(2.5,min(5.0,value*.23))/resolution)**2 for r,c in chosen):chosen.append((int(row),int(col)))
- centers=np.asarray(chosen);pixels=np.argwhere(mask);_,owner=cKDTree(centers).query(pixels)
+ centers=np.asarray(chosen)
+ crownLabels,_=ndimage.label(crownMask|mask)
+ pixels=np.argwhere(crownMask|mask);pixelLabels=crownLabels[tuple(pixels.T)]
+ seedLabels=crownLabels[tuple(centers.T)];owner=np.full(len(pixels),-1,dtype=int)
+ for label in np.unique(seedLabels):
+  if not label:continue
+  seeds=np.flatnonzero(seedLabels==label);members=np.flatnonzero(pixelLabels==label)
+  distance,nearest=cKDTree(centers[seeds]).query(pixels[members])
+  nearby=distance<28 # 14m maximum; the old 8m cap amputated terrace overhangs.
+  owner[members[nearby]]=seeds[nearest[nearby]]
+ supported=np.zeros((h,w),bool)
+ crownRegions=[]
  trees=[];preview=Image.fromarray(rgb.astype('uint8'));draw=ImageDraw.Draw(preview)
  for i,(row,col) in enumerate(centers):
-  region=pixels[owner==i];region=region[np.linalg.norm(region-[row,col],axis=1)<16]
+  region=pixels[owner==i]
   if len(region)<12:continue
   delta=(region-[row,col])*resolution
   radius=max(.9,min(7.5,float(np.percentile(np.linalg.norm(delta,axis=1),85))))
@@ -118,9 +130,26 @@ def build(ctx):
   e=bounds[0]+(col+.5)*resolution;north=bounds[3]-(row+.5)*resolution
   if any(p.contains(Point(e,north)) for p in footprints):continue
   base=mc(np.array([(e,north,height(e,north))]))[0]
-  trees.append({'center':base.tolist(),'height':round(top,3),'radius':round(radius,3),'utm':[e,north],'shape':'columnar' if top/radius>4.5 else 'broad'})
+  east=bounds[0]+(region[:,1]+.5)*resolution;norths=bounds[3]-(region[:,0]+.5)*resolution
+  crown=mc(np.column_stack((east,norths,dom[tuple(region.T)])))
+  floor=mc(np.column_stack((east,norths,roofElevation[tuple(region.T)])))[:,1]
+  # DOM measures the upper surface, not a filled column down to the terrain.
+  # A tree's tapered lower crown must stay above the exposed trunk. Low pixels
+  # beneath that envelope may be a separate shrub; do not fit them as crown.
+  lower=max(1.5,top*.36)
+  valid=(crown[:,1]>base[1]+lower+.5)&(crown[:,1]>floor+1.5)
+  if np.count_nonzero(valid)<12:continue
+  region=region[valid];crown=crown[valid];floor=floor[valid];east=east[valid];norths=norths[valid]
+  supported[tuple(region.T)]=True
+  crownRegions.append((crown,floor,np.column_stack((east,norths))))
+  trees.append({'center':base.tolist(),'height':round(top,3),'radius':round(radius,3),'utm':[e,north],'shape':'columnar' if top/radius>4.5 else 'broad','crownCenter':np.mean(crown,axis=0).round(3).tolist(),'crownBounds':[crown.min(axis=0).round(3).tolist(),crown.max(axis=0).round(3).tolist()],'crownArea':round(len(region)*resolution**2,2)})
   draw.ellipse((col-radius*2,row-radius*2,col+radius*2,row+radius*2),outline=(255,220,0),width=1)
  preview.save(out/'vegetation-survey.jpg',quality=94)
+ # Cover each 2m guide cell before downsampling the 0.5m mask. Retire only
+ # foliage belonging to a crown actually emitted above.
+ overhang=ndimage.maximum_filter(supported&(dom-roofElevation>1.5),size=5)
+ metadata['vegetationOverhang']['mask']=base64.b64encode(bytes(int(overhang[min(1199,max(0,1199-j*4)),min(1199,i*4)])for j in range(301)for i in range(301))).decode()
+ metadata['vegetationOverhang']['source']='BVV DOP20/DOM20 foliage connected to surveyed tree candidates, at least 1.5m above the LoD2 roof or terrain; conservative local roof maximum'
  metadata['vegetation']={'source':'BVV DOM20/DGM1/DOP20; algorithmic crowns, reconstructed branches and species appearance','trees':trees}
  leaf=Image.open(cache/'tree-source/textures/jacaranda_tree_leaves_diff_1k.jpg').convert('RGBA')
  alpha=Image.open(cache/'tree-source/textures/jacaranda_tree_leaves_alpha_1k.png').convert('L').resize(leaf.size)
@@ -134,18 +163,28 @@ def build(ctx):
    angles=[2*math.pi*j/sides,2*math.pi*(j+1)/sides]
    corners=[a+ra*(t*math.cos(angles[0])+v*math.sin(angles[0])),a+ra*(t*math.cos(angles[1])+v*math.sin(angles[1])),b+rb*(t*math.cos(angles[1])+v*math.sin(angles[1])),b+rb*(t*math.cos(angles[0])+v*math.sin(angles[0]))]
    for k in (0,1,2,0,2,3):vertices.append([*corners[k],*[[(j/sides),1],[(j+1)/sides,1],[(j+1)/sides,0],[j/sides,0]][k]])
- for tree in trees:
+ for tree,(crown,crownFloor,crownUtm) in zip(trees,crownRegions):
   base=np.array(tree['center']);H=tree['height'];R=tree['radius'];key=(int((tree['utm'][0]-bounds[0])//100),int((tree['utm'][1]-bounds[1])//100));wood,leaves=groups.setdefault(key,([],[]))
-  column=tree['shape']=='columnar';cy=H*(.58 if column else .67);ry=H*(.43 if column else .33)
+  column=tree['shape']=='columnar'
   trunk_top=base+np.array([rng.uniform(-.2,.2),H*.72,rng.uniform(-.2,.2)]);trunk_radius=max(.07,min(.42,H*.016));tube(wood,base,trunk_top,trunk_radius,.045,9)
   # Divergent structural branches remain visible from below the canopy.
+  branchTargets=np.flatnonzero(crown[:,1]>base[1]+H*.65)
   for branch in range(10 if column else 16):
-   angle=branch*2.399963;fraction=.34+.58*branch/(10 if column else 16)
-   a=base+np.array([0,H*fraction*.82,0]);b=base+np.array([math.cos(angle)*R*.72,H*(.55+.35*rng.random()),math.sin(angle)*R*.72]);tube(wood,a,b,trunk_radius*.43,.016)
-  count=int(max(180,min(900,R*R*28)))
+   if not len(branchTargets):break
+   fraction=.42+.22*branch/(10 if column else 16)
+   target=int(rng.choice(branchTargets));b=crown[target].copy()
+   b[[0,2]]=base[[0,2]]+(b[[0,2]]-base[[0,2]])*.72
+   a=base+np.array([0,H*fraction,0]);b[1]=max(a[1]+.3,crownFloor[target]+.8,b[1]-H*.12)
+   # Keep branches on the trunk side of any raised roof/terrace. The foliage
+   # may overhang it, but an inferred branch must not pierce the structure.
+   if crownFloor[target]>a[1]-.8:continue
+   tube(wood,a,b,trunk_radius*.43,.016)
+  count=int(max(180,min(1200,tree['crownArea']*7)))
   for card in range(count):
-   az=rng.uniform(0,2*math.pi);z=rng.uniform(-1,1);rr=rng.uniform(.25,1)**(1/3);ring=math.sqrt(1-z*z)
-   center=base+np.array([R*rr*ring*math.cos(az),cy+ry*rr*z,R*rr*ring*math.sin(az)])
+   sample=int(rng.integers(len(crown)));center=crown[sample].copy()
+   center[[0,2]]+=rng.uniform(-.23,.23,2)
+   depth=max(.11,center[1]-max(crownFloor[sample]+.8,base[1]+max(1.5,H*.36)))
+   center[1]-=rng.uniform(.1,max(.11,depth))
    normal=rng.normal(size=3);normal/=np.linalg.norm(normal);right=np.cross(normal,[0,1,0] if abs(normal[1])<.9 else [1,0,0]);right/=np.linalg.norm(right);up=np.cross(normal,right)
    size=rng.uniform(.65,1.15)*max(.7,min(1.4,R*.3));right*=size;up*=size*.7
    corners=[center-right-up,center+right-up,center+right+up,center-right+up]
@@ -154,7 +193,7 @@ def build(ctx):
    for k in (0,1,2,0,2,3):leaves.append([*corners[k],*uv[k]])
   # The matching source vegetation is removed only inside a crown footprint,
   # subtracting nearby surveyed building walls to prevent collateral clipping.
-  centerUtm=Point(*tree['utm']);area=centerUtm.buffer(R+1.2,resolution=10)
+  area=MultiPoint(crownUtm).convex_hull.buffer(1.2,resolution=10)
   for p in footprints:
    if p.intersects(area):area=area.difference(p)
   shapes=[area] if area.geom_type=='Polygon' else list(getattr(area,'geoms',[]))
