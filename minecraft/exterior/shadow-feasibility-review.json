@@ -1,0 +1,94 @@
+{
+  "status": "REJECTED FOR RELEASE: static survey-shell shadows have visible edge artifacts and cannot track gameplay edits or sun movement",
+  "artifactSha256": "c94315901c1a6b29f3390a4833dbebf292e5e36a759f6200299a2e8dfe96e3fc",
+  "releaseUnchanged": "exterior-0.5.0-dev.10",
+  "camera": "262 64 -255 90 -15",
+  "nativeRun": {
+    "result": "BUILD SUCCESSFUL",
+    "logSha256": "74fa0bd28c4032190b59023ef748d425ad3db200c4db72740417a3e558d96fc2",
+    "benchmark": {
+      "status": "PASS: same-scene baseline/candidate/baseline samples captured",
+      "note": "Six one-second FPS readings per phase after six seconds of warmup; a local comparison, not a universal performance guarantee.",
+      "phases": [
+        {
+          "phase": "baseline",
+          "fpsSamples": [
+            94,
+            95,
+            93,
+            94,
+            93,
+            94
+          ],
+          "medianFps": 94.0
+        },
+        {
+          "phase": "candidate",
+          "fpsSamples": [
+            90,
+            90,
+            89,
+            90,
+            89,
+            87
+          ],
+          "medianFps": 89.5
+        },
+        {
+          "phase": "baseline",
+          "fpsSamples": [
+            96,
+            96,
+            97,
+            96,
+            96,
+            95
+          ],
+          "medianFps": 96.0
+        }
+      ]
+    },
+    "harnessSha256": "55b6a22a85d2de49661536fbfebe939d7431e828de04aa751b163e894f791d97",
+    "referenceGroundHeightCheck": 519.7618173672081
+  },
+  "prototype": {
+    "status": "Experimental QA only; not integrated into the release",
+    "triangles": 9622,
+    "size": 4096,
+    "metresPerTexel": 0.1875,
+    "buildSeconds": 1.3345785410000002,
+    "sha256": "0f7498adeb9a1c98d41f8f9a4ba3849b9b5448cc7d194adaa83dd2b6bce139f4",
+    "limitations": [
+      "Survey shells include openings and recesses that current reconstruction has changed.",
+      "Fixed sunlight matches the existing material shader, not the day/night sun.",
+      "Does not track player destruction, placed blocks, vegetation or provider mesh.",
+      "Reference frame is the isolated QA world; production needs explicit region-height translation."
+    ]
+  },
+  "captures": [
+    {
+      "phase": "baseline",
+      "nativePngSha256": "ff0baf4c3fd88180b0e9e687da6895e21140edaf04ea0f87fbbdae0dd9521391",
+      "image": "docs/screenshots/campus-shadow-study-baseline.jpg",
+      "sha256": "373787a17bd352f320fcaf6d0deca484f136f4f043f9b13b9207cec2b14bbe29"
+    },
+    {
+      "phase": "candidate",
+      "nativePngSha256": "8209ec79dc99a706f40d672c56168d8e8cb36cc913cc7d6da2e3599fb3923d15",
+      "image": "docs/screenshots/campus-shadow-study-candidate.jpg",
+      "sha256": "a05720b52a799324cbbe32aca0a799da4aa1d85063a29604eb0dd1e435619468"
+    },
+    {
+      "phase": "baseline-return",
+      "nativePngSha256": "ff0baf4c3fd88180b0e9e687da6895e21140edaf04ea0f87fbbdae0dd9521391",
+      "image": "docs/screenshots/campus-shadow-study-baseline-return.jpg",
+      "sha256": "373787a17bd352f320fcaf6d0deca484f136f4f043f9b13b9207cec2b14bbe29"
+    }
+  ],
+  "visualReview": [
+    "The candidate adds broad courtyard shading, but creates bands on the rounded tower and roof-edge halos.",
+    "The current preview still has pale photographic ground margins and approximate glass; this experiment does not resolve them."
+  ],
+  "nextStep": "Test a depth pass from the actual loaded MapTile buffers after damage refresh. Match material sunlight and validate destruction, region changes, alpha-cutout foliage, frame rate and representative routes before enabling it.",
+  "technicalReference": "https://wikis.khronos.org/opengl/Sampler_(GLSL)"
+}
