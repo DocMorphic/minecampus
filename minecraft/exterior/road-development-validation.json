@@ -1,0 +1,292 @@
+{
+  "date": "2026-10-23",
+  "status": "Road/path material pass native-verified; overall realism goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 228892013,
+    "sha256": "3aa5bec24c5c9287f33188124fb99fb89f9b755bbd2e258dee0041d709c25f68",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "4f452a549e5b07f4623f6b1e7252aa278e18d194b5665664302b5163567010f6",
+    "rendererSourceFingerprint": "5cba853d04322351",
+    "bundleSha256": "9c7f47b4910dc75449df07eaaa37fcfbfbfef7853dcad75f328ef490b54172f9",
+    "tiles": 86
+  },
+  "geometry": {
+    "renderTiles": 86,
+    "photoFacadeCandidates": 80,
+    "triangles": 1871629,
+    "textureBytes": 258701608,
+    "auxiliaryTriangles": 5236,
+    "auxiliaryTextureBytes": 13530020,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "geometryPreservation": {
+    "meshFilesChecked": 246,
+    "byteIdentical": true,
+    "baselineSha256": "2e5824e69b26e36372a73186c34565a673e7e782912bcf5c0c795d378d90956f"
+  },
+  "surfacePaths": {
+    "sourceFile": "path-widths.json",
+    "sourceSha256": "3d80bf76e057138211c85d90f5593a0b4a176d03f092bfb9eeee9d537aff6155",
+    "derivedFile": "path-surfaces.geojson",
+    "derivedSha256": "31444de04356e0d44f7b495b0fec8ee56cf2eb621becdf60d0a12ddbb6982aab",
+    "ways": 19,
+    "rawAreaSquareMetres": 7179.14,
+    "includedAreaSquareMetres": 7163.29,
+    "exclusions": "BVV building ground footprints and all existing mapped surface polygons",
+    "boundaryQualification": "Half-width buffers of mapped lines, not surveyed curbs or inferred sidewalks."
+  },
+  "surfaceChecks": {
+    "status": "PASS: ground material alignment, explicit-width edges and mapped-area exclusions",
+    "pathOverlapWithMappedAreasSquareMetres": 1.1646685151565396e-08,
+    "samples": [
+      {
+        "name": "Mensa bank terrain hit",
+        "positionMC": [
+          11.612,
+          -231.731
+        ],
+        "channelsRGB": [
+          255,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "MW mapped paving",
+        "positionMC": [
+          25,
+          -125
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "Southern mapped asphalt",
+        "positionMC": [
+          -32,
+          122
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "Boltzmann road centre (330587895)",
+        "positionMC": [
+          34.464,
+          -97.081
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "Beyond Boltzmann road width",
+        "positionMC": [
+          31.022,
+          -97.715
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Eastern footway centre (983606070)",
+        "positionMC": [
+          107.705,
+          -168.459
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "Beyond eastern footway width",
+        "positionMC": [
+          107.455,
+          -166.98
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Western paving path centre (1289405426)",
+        "positionMC": [
+          -294.368,
+          -253.75
+        ],
+        "channelsRGB": [
+          0,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "Western path adjacent lawn",
+        "positionMC": [
+          -294.638,
+          -252.275
+        ],
+        "channelsRGB": [
+          255,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "basketball 479320868",
+        "positionMC": [
+          -198.652,
+          164.384
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "beachvolleyball 479320872",
+        "positionMC": [
+          -228.657,
+          168.948
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "beachvolleyball 479320873",
+        "positionMC": [
+          -226.561,
+          157.244
+        ],
+        "channelsRGB": [
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "material": {
+    "source": "https://polyhaven.com/a/asphalt_04",
+    "license": "CC0-1.0",
+    "repeatMetres": 4,
+    "qualification": "Approximate scanned aggregate, not the actual campus road material. Width-derived edges are not surveyed curbs."
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: fourteen ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse and road-detail frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction"
+    },
+    "migrationVersion": 8,
+    "changedProxiesAcrossRun": 0,
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "8c0fb362a9d1906e52b01c24e3361f9dd128054677cac00ce8b69b7566987f80"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "c6ed54c0c6d54358fbb260a4951d3020f4ac454ba751568d81fce4b0c598d430"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "af3c0a16116f94cee2c19c872f9613625e1bf7f96ec32cb9fa2197a2ef463e39"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "eecab2a028943903a34475860ed39c90319773d6ce2b4f82232f5147d6f6289f"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "a810892e466917a85037d01e196900802bc23802ebb1783dbc3f358ac27e4d8f"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "e7b6fbd96d1fdbdc497b082f27d65bcecec567c2de3bb1c4f5a82f542120e877"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "facd92d7fe65a6260cd954ed73cb52015a6fc70108f969d197a8050c43964b9d"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "e3dcb2242def617fffc31d87ebcfa8680d5972c8f5c3ee853b907a667c192b4f"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "5a3747473ef353c5a95dcd1b6ccd770ef96295ebd4aee19300c38932b3ef334b"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "3ef37f950e34c2cd705384b7e0d617ae07f44907eb335532506e942b1bd50773"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "c5d6903c1afa9d11b8cc63180463ab8c1fbd6dbe56e36d5a725ac984b658d5fb"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "121c05b0275668eacfc590acfff0e42a88f720f0e6c64455330efe1f3d741c6e"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "979136fd5de05b6f0ca478037033fd81b24660214314fb3d6c789384387200cc"
+      },
+      {
+        "file": "campus-road-detail.png",
+        "sha256": "4b2bba72746f52e140b463501784ab7e6d29e610a52825f06bf9b7ecd606a15d"
+      }
+    ]
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "2e5824e69b26e36372a73186c34565a673e7e782912bcf5c0c795d378d90956f",
+    "routeCamera": "50 65 -190 0 0",
+    "detailCamera": "51 65 -190 0 40",
+    "beforeImage": "../../docs/screenshots/campus-road-before.jpg",
+    "afterImage": "../../docs/screenshots/campus-road-after.jpg"
+  },
+  "remaining": [
+    "Unmapped sidewalks and paths retain coarse aerial appearance.",
+    "Road edges are material-mask boundaries without reconstructed curbs.",
+    "Neighboring northern structures and terrace details remain unfinished."
+  ],
+  "installedPreview": "exterior-0.5.0-dev.1 (b0ecb5ad); this development pass is not installed"
+}

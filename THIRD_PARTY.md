@@ -56,3 +56,10 @@ Ernst A. Graf/ESO, [“A view of the Garching research campus”](https://www.es
 The development exterior uses [Poly Haven Brick Wall 001](https://polyhaven.com/a/brick_wall_001), photographed by Dimitrios Savva and processed by Rob Tuytel, under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The 2K diffuse map is warmed by RGB multipliers 1.18/1.20/1.10; the matching OpenGL normal map is retained. The texture repeats at an inferred 1.5 m scale, adapted from the source's stated 3 m span. This approximates masonry appearance and is not a scanned material from the Garching warehouse. Source and converted-resource hashes are pinned in `minecraft/exterior/material-sources.json`.
 
 The warehouse reference crop is Ernst A. Graf/ESO, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), from the [2017 campus aerial](https://www.eso.org/public/ireland/images/170818035-cc/). It is a documented reference rather than a runtime texture.
+
+
+## Road and path surface detail
+
+Explicit-width road/path centre-lines in `minecraft/exterior/path-widths.json` are © OpenStreetMap contributors, [ODbL 1.0](https://www.openstreetmap.org/copyright). The release includes derived strips as `path-surfaces.geojson`; these exclude BVV building footprints and previously mapped ground surfaces. Buffer edges are estimates from tagged widths, not surveyed curbs.
+
+[Poly Haven Asphalt 04](https://polyhaven.com/a/asphalt_04), photographed by Sergej Majboroda and processed by Jenelle van Heerden, supplies the 2K diffuse and OpenGL normal maps under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The decoded RGB maps are converted to PNG without recolouring and repeat at the source's stated four-metre scale. This is an approximate road material, not a scan of Garching's roads. Source/resource hashes are in `minecraft/exterior/material-sources.json`.

@@ -30,3 +30,6 @@ The UYE development pass enables `minecampus.requireUyeExterior=true`. At source
 
 
 The warehouse pass enables `minecampus.requireWarehouseExterior=true`. Source-limit camera 6 checks two formerly blurred foreground rays at `(0.12, 0.60)` and `(0.22, 0.56)`. New camera 12 (`183 65 -231.5 90 3.5`) checks the central east-opening ray. All three must hit tile `1_000_030_008`; `campus-warehouse-result.txt` is the eleventh required PASS file. The route now captures thirteen frames, and collision storage advances to v8. See `warehouse-development-validation.json`.
+
+
+The road-material pass adds camera 13 (`51 65 -190 0 40`), bringing the full run to fourteen frames. Inspect `campus-road-detail.png` and compare the existing route views against the previous artifact. `validate-ground-surfaces.py` checks source/resource hashes, six road/path centre and edge controls, the existing material controls and mapped-area exclusions. This material-only change retains collision storage v8.

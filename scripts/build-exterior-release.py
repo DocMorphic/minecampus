@@ -15,6 +15,8 @@ for path,key in [(SOURCE/'ground-surfaces.geojson','sourceSha256'),(SOURCE/'asse
 for item in json.loads((SOURCE/'material-sources.json').read_text())['materials']:
  p=SOURCE/'assets/textures/campus'/(item['name']+'.png')
  if hashlib.sha256(p.read_bytes()).hexdigest()!=item['resourceSha256']:raise SystemExit('Material resource checksum mismatch: '+item['name'])
+for path,key in [(SOURCE/'path-widths.json','sourceSha256'),(DATA/'path-surfaces.geojson','derivedSha256')]:
+ if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['paths'][key]:raise SystemExit('Path material provenance mismatch: '+path.name)
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -76,6 +78,11 @@ https://polyhaven.com/a/grass_ground
 Ground surface boundaries: © OpenStreetMap contributors (ODbL 1.0).
 https://www.openstreetmap.org/copyright
 Selected mapped polygons and their tags are included as ground-surfaces.geojson.
+Explicit-width road/path source lines and derived strips are included as
+path-widths.json and path-surfaces.geojson (ODbL 1.0), with building and mapped-area exclusions.
+Asphalt detail: Poly Haven asphalt_04 by Jenelle van Heerden and Sergej Majboroda (CC0).
+https://polyhaven.com/a/asphalt_04
+The material is approximate; it is not a scan of the campus roads.
 The derived surface database/mask is available under ODbL 1.0; material grain
 and paving joints are approximate reconstructions, not measured paving units.
 Warehouse masonry: Poly Haven brick_wall_001 by Dimitrios Savva and Rob Tuytel (CC0 1.0).
@@ -138,6 +145,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/sources.json',(SOURCE/'sources.json').read_bytes())
   write(target,'src/minecampus-exterior/vegetation-sources.json',(SOURCE/'vegetation-sources.json').read_bytes())
   write(target,'src/minecampus-exterior/ground-surfaces.geojson',(SOURCE/'ground-surfaces.geojson').read_bytes())
+  write(target,'src/minecampus-exterior/path-widths.json',(SOURCE/'path-widths.json').read_bytes())
+  write(target,'src/minecampus-exterior/path-surfaces.geojson',(DATA/'path-surfaces.geojson').read_bytes())
   for asset in manifest['tiles']:
    name=asset['file'];assert Path(name).name==name and name.endswith('.ect')
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())

@@ -6,6 +6,8 @@ uniform sampler2D Sampler3;
 uniform sampler2D Sampler4;
 uniform sampler2D Sampler5;
 uniform sampler2D Sampler6;
+uniform sampler2D Sampler7;
+uniform sampler2D Sampler8;
 uniform vec4 ColorModulator;
 uniform vec3 CampusFogColor;
 uniform vec3 CameraPosition;
@@ -83,14 +85,23 @@ void main() {
         float joint=1.0-smoothstep(.003-aa,.006+aa,jointDistance);
         float unitVariation=.95+.1*hash(floor(paving));
         vec3 pavingColor=vec3(.55,.54,.51)*clamp(aerialLum/.5,.4,1.2)*clamp(cLum/.5112,.7,1.3)*unitVariation*(1.0-.3*joint);
-        float asphaltGrain=dot(groundTexture(Sampler1,worldPosition*2.0,weights),vec3(.299,.587,.114))/.5112;
-        vec3 asphaltColor=aerial*clamp(asphaltGrain,.8,1.2);
+        vec3 asphaltColor=aerial;
+        if(mapped.b>.001){
+            // Four-metre scanned aggregate detail. Keep broad aerial shade,
+            // with bounded highlights so washed-out pixels do not erase grain.
+            vec3 asphalt=groundTexture(Sampler7,worldPosition*.25,weights);
+            asphaltColor=asphalt*clamp(aerialLum/.55,.4,1.2);
+        }
         vec3 material=(mapped.r*lawnColor+mapped.g*pavingColor+mapped.b*asphaltColor)/max(mappedTotal,.0001);
         color.rgb=mix(color.rgb,material,mappedAmount*materialRange);
         grass=mix(grass,mapped.r/max(mappedTotal,.0001),mappedAmount);
         if(proximity>0.0){
             vec3 cn=groundNormalDetail(Sampler2,materialPosition,weights),gn=groundNormalDetail(Sampler4,materialPosition,weights);
             vec3 detail=mix(cn,gn,grass);
+            if(mapped.b>.001){
+                vec3 asphaltNormal=groundNormalDetail(Sampler8,worldPosition*.25,weights);
+                detail=mix(detail,asphaltNormal,clamp(mapped.b,0.0,1.0));
+            }
             detail-=geometric*dot(detail,geometric);
             vec3 n=normalize(geometric+detail*.35);
             vec3 sun=normalize(vec3(-.5,.8,-.3));

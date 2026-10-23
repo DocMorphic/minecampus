@@ -63,6 +63,30 @@
       "sourcePhysicalRepeatMetres": 3,
       "runtimeRepeatMetres": 1.5,
       "scaleQualification": "Adapted to approximate common brick dimensions; not measured on this warehouse."
+    },
+    {
+      "name": "asphalt_diff",
+      "asset": "asphalt_04",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_04/asphalt_04_diff_2k.jpg",
+      "sha256": "e02ac16d23ea97008c2507cf58bfad7c18a3b5933b5bdea14f7f90f33a784976",
+      "license": "CC0 1.0",
+      "assetPage": "https://polyhaven.com/a/asphalt_04",
+      "authors": "Jenelle van Heerden; Sergej Majboroda",
+      "physicalRepeatMetres": 4,
+      "adaptation": "Decoded JPEG to RGB PNG; no resizing or recolouring. Runtime shading follows the aerial context.",
+      "resourceSha256": "baa2f2ea36aa0e1003c3cc98ce6ea0ad69abba8ba8cc39598d32f1979f7fa357"
+    },
+    {
+      "name": "asphalt_normal",
+      "asset": "asphalt_04",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_04/asphalt_04_nor_gl_2k.jpg",
+      "sha256": "16ab393a8e9135ff1f30545bc0bc46b7b7f79da8db881bcb0da22cd12d528257",
+      "license": "CC0 1.0",
+      "assetPage": "https://polyhaven.com/a/asphalt_04",
+      "authors": "Jenelle van Heerden; Sergej Majboroda",
+      "physicalRepeatMetres": 4,
+      "adaptation": "Decoded JPEG to RGB PNG; no resizing or recolouring. Runtime shading follows the aerial context.",
+      "resourceSha256": "7eb55539a066d5f1d2639fda22e3845064e4d7880d345776b23bb39ae4a7969c"
     }
   ],
   "changes": "JPEG converted to PNG for the Minecraft resource loader; sampled as repeating colour detail and tangent-space normals."

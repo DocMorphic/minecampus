@@ -1,0 +1,909 @@
+{
+  "source": "https://api.openstreetmap.org/api/0.6/map?bbox=11.667,48.263,11.675,48.268",
+  "retrieved": "2026-10-23",
+  "sourceSha256": "887126e1d79641324b789b9f03522d73e5c24d068708b935de13c295dc51cf1c",
+  "license": "ODbL-1.0",
+  "ways": [
+    {
+      "osmWay": 30571475,
+      "version": 20,
+      "timestamp": "2025-02-13T15:24:10Z",
+      "tags": {
+        "cycleway:both": "no",
+        "highway": "unclassified",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Lichtenbergstra\u00dfe",
+        "parking:both": "no",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "width": "6"
+      },
+      "widthMetres": 6.0,
+      "lengthInCampusMetres": 25.36,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6675912,
+            48.2672556
+          ],
+          [
+            11.667858,
+            48.2672231
+          ],
+          [
+            11.6679274,
+            48.2672153
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 30610971,
+      "version": 22,
+      "timestamp": "2025-01-07T11:56:52Z",
+      "tags": {
+        "bicycle": "yes",
+        "cycleway:both": "no",
+        "highway": "residential",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Lichtenbergstra\u00dfe",
+        "parking:both": "no",
+        "sidewalk": "separate",
+        "smoothness": "good",
+        "source:maxspeed": "DE:urban",
+        "surface": "asphalt",
+        "width": "7"
+      },
+      "widthMetres": 7.0,
+      "lengthInCampusMetres": 55.94,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6717061,
+            48.266761
+          ],
+          [
+            11.6718792,
+            48.2667403
+          ],
+          [
+            11.6722984,
+            48.2666876
+          ],
+          [
+            11.6724475,
+            48.2666714
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 32075146,
+      "version": 17,
+      "timestamp": "2025-12-10T14:00:54Z",
+      "tags": {
+        "highway": "footway",
+        "incline": "up",
+        "lit": "yes",
+        "smoothness": "excellent",
+        "surface": "asphalt",
+        "width": "2"
+      },
+      "widthMetres": 2.0,
+      "lengthInCampusMetres": 55.1,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6704434,
+            48.2678435
+          ],
+          [
+            11.670424,
+            48.2677779
+          ],
+          [
+            11.670356,
+            48.2675552
+          ],
+          [
+            11.6703012,
+            48.2673572
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 46195417,
+      "version": 17,
+      "timestamp": "2026-04-29T16:14:09Z",
+      "tags": {
+        "cycleway:both": "no",
+        "foot": "use_sidepath",
+        "highway": "unclassified",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Boltzmannstra\u00dfe",
+        "name:etymology:wikidata": "Q84296",
+        "parking:both": "no",
+        "psv": "yes",
+        "sidewalk": "separate",
+        "smoothness": "excellent",
+        "surface": "asphalt",
+        "width": "7"
+      },
+      "widthMetres": 7.0,
+      "lengthInCampusMetres": 26.61,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6711494,
+            48.2647506
+          ],
+          [
+            11.6711707,
+            48.2648257
+          ],
+          [
+            11.6712162,
+            48.2649857
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 46717843,
+      "version": 24,
+      "timestamp": "2025-02-11T11:44:40Z",
+      "tags": {
+        "bicycle": "yes",
+        "cycleway:both": "no",
+        "foot": "use_sidepath",
+        "highway": "unclassified",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Lichtenbergstra\u00dfe",
+        "parking:both": "no",
+        "parking:both:restriction": "no_parking",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "width": "7"
+      },
+      "widthMetres": 7.0,
+      "lengthInCampusMetres": 209.6,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6689283,
+            48.267097
+          ],
+          [
+            11.6692343,
+            48.2670628
+          ],
+          [
+            11.6697235,
+            48.2670029
+          ],
+          [
+            11.6702852,
+            48.2669362
+          ],
+          [
+            11.6704779,
+            48.2669141
+          ],
+          [
+            11.6706445,
+            48.2668929
+          ],
+          [
+            11.6708106,
+            48.2668726
+          ],
+          [
+            11.671356,
+            48.2668045
+          ],
+          [
+            11.6714993,
+            48.2667867
+          ],
+          [
+            11.671605,
+            48.2667732
+          ],
+          [
+            11.6717061,
+            48.266761
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 46717844,
+      "version": 20,
+      "timestamp": "2025-02-13T15:24:06Z",
+      "tags": {
+        "bicycle": "yes",
+        "cycleway:both": "no",
+        "highway": "unclassified",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Lichtenbergstra\u00dfe",
+        "parking:both": "no",
+        "parking:both:restriction": "no_parking",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "width": "6"
+      },
+      "widthMetres": 6.0,
+      "lengthInCampusMetres": 75.47,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6679274,
+            48.2672153
+          ],
+          [
+            11.6683122,
+            48.2671702
+          ],
+          [
+            11.6684988,
+            48.2671481
+          ],
+          [
+            11.6687008,
+            48.2671238
+          ],
+          [
+            11.6689283,
+            48.267097
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 172826863,
+      "version": 21,
+      "timestamp": "2026-04-29T16:18:05Z",
+      "tags": {
+        "cycleway:both": "no",
+        "highway": "residential",
+        "lane_markings": "no",
+        "lit": "yes",
+        "name": "James-Franck-Stra\u00dfe",
+        "name:etymology:wikidata": "Q57066",
+        "parking:left": "separate",
+        "parking:right": "no",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "no",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "width": "7"
+      },
+      "widthMetres": 7.0,
+      "lengthInCampusMetres": 122.47,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6729541,
+            48.2670384
+          ],
+          [
+            11.6730428,
+            48.2670273
+          ],
+          [
+            11.6737346,
+            48.2669408
+          ],
+          [
+            11.6738849,
+            48.2669237
+          ],
+          [
+            11.674502,
+            48.2668531
+          ],
+          [
+            11.6745307,
+            48.2668519
+          ],
+          [
+            11.6745788,
+            48.26685
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 330587895,
+      "version": 15,
+      "timestamp": "2026-04-29T16:14:09Z",
+      "tags": {
+        "cycleway:both": "no",
+        "foot": "use_sidepath",
+        "highway": "unclassified",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Boltzmannstra\u00dfe",
+        "name:etymology:wikidata": "Q84296",
+        "parking:both": "no",
+        "psv": "yes",
+        "sidewalk": "separate",
+        "smoothness": "good",
+        "source:width": "ARCore",
+        "surface": "asphalt",
+        "width": "6"
+      },
+      "widthMetres": 6.0,
+      "lengthInCampusMetres": 200.75,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6712162,
+            48.2649857
+          ],
+          [
+            11.6712199,
+            48.2649987
+          ],
+          [
+            11.6713852,
+            48.2655774
+          ],
+          [
+            11.6715013,
+            48.2660119
+          ],
+          [
+            11.6715774,
+            48.2663124
+          ],
+          [
+            11.6716283,
+            48.2664916
+          ],
+          [
+            11.6716417,
+            48.2665378
+          ],
+          [
+            11.671689,
+            48.2667017
+          ],
+          [
+            11.6717061,
+            48.266761
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 441246635,
+      "version": 12,
+      "timestamp": "2026-06-22T12:28:40Z",
+      "tags": {
+        "cycleway:both": "no",
+        "highway": "service",
+        "lanes": "1",
+        "lit": "yes",
+        "maxspeed": "50",
+        "noname": "yes",
+        "oneway": "yes",
+        "parking:both": "no",
+        "service": "major",
+        "sidewalk:left": "no",
+        "sidewalk:right": "separate",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "width": "6.1"
+      },
+      "widthMetres": 6.1,
+      "lengthInCampusMetres": 35.69,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6713137,
+            48.2637059
+          ],
+          [
+            11.6710268,
+            48.2637516
+          ],
+          [
+            11.6709767,
+            48.2637596
+          ],
+          [
+            11.670908,
+            48.2637705
+          ],
+          [
+            11.6708462,
+            48.2637804
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 983606065,
+      "version": 8,
+      "timestamp": "2023-01-02T09:00:39Z",
+      "tags": {
+        "bicycle": "designated",
+        "emergency": "designated",
+        "foot": "designated",
+        "highway": "path",
+        "lit": "yes",
+        "segregated": "no",
+        "smoothness": "excellent",
+        "surface": "asphalt",
+        "traffic_sign": "DE:240",
+        "width": "2"
+      },
+      "widthMetres": 2.0,
+      "lengthInCampusMetres": 56.32,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6716809,
+            48.2644413
+          ],
+          [
+            11.6720361,
+            48.2643959
+          ],
+          [
+            11.6722282,
+            48.2643717
+          ],
+          [
+            11.6723209,
+            48.2643779
+          ],
+          [
+            11.6723864,
+            48.2644354
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 983606070,
+      "version": 3,
+      "timestamp": "2025-02-24T16:29:26Z",
+      "tags": {
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "width": "2"
+      },
+      "widthMetres": 2.0,
+      "lengthInCampusMetres": 22.43,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6725996,
+            48.266498
+          ],
+          [
+            11.6723017,
+            48.2665317
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 1083613975,
+      "version": 8,
+      "timestamp": "2026-04-29T16:14:09Z",
+      "tags": {
+        "cycleway:both": "no",
+        "emergency": "designated",
+        "highway": "residential",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "name": "Walther-von-Dyck-Stra\u00dfe",
+        "name:etymology:wikidata": "Q65180",
+        "oneway": "yes",
+        "parking:both": "no",
+        "sidewalk": "no",
+        "smoothness": "excellent",
+        "source:maxspeed": "DE:urban",
+        "source:width": "ARCore",
+        "surface": "asphalt",
+        "width": "4.2"
+      },
+      "widthMetres": 4.2,
+      "lengthInCampusMetres": 54.83,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6729168,
+            48.2660127
+          ],
+          [
+            11.6730108,
+            48.2663655
+          ],
+          [
+            11.6729071,
+            48.2664811
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 1108128612,
+      "version": 8,
+      "timestamp": "2026-04-29T16:18:05Z",
+      "tags": {
+        "bicycle": "yes",
+        "cycleway:both": "no",
+        "highway": "residential",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Boltzmannstra\u00dfe",
+        "name:etymology:wikidata": "Q84296",
+        "parking:both": "no",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "no",
+        "smoothness": "good",
+        "source:width": "ARCore",
+        "surface": "asphalt",
+        "width": "6"
+      },
+      "widthMetres": 6.0,
+      "lengthInCampusMetres": 62.84,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6724475,
+            48.2666714
+          ],
+          [
+            11.6724628,
+            48.2667368
+          ],
+          [
+            11.6724794,
+            48.2668043
+          ],
+          [
+            11.6725233,
+            48.2669829
+          ],
+          [
+            11.672553,
+            48.267089
+          ],
+          [
+            11.672589,
+            48.2672285
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 1108128613,
+      "version": 9,
+      "timestamp": "2026-04-29T16:18:05Z",
+      "tags": {
+        "bicycle": "yes",
+        "cycleway:both": "no",
+        "highway": "residential",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Boltzmannstra\u00dfe",
+        "name:etymology:wikidata": "Q84296",
+        "parking:both": "no",
+        "sidewalk": "separate",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "width": "6"
+      },
+      "widthMetres": 6.0,
+      "lengthInCampusMetres": 92.97,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.672589,
+            48.2672285
+          ],
+          [
+            11.6726593,
+            48.2674937
+          ],
+          [
+            11.6727208,
+            48.2677227
+          ],
+          [
+            11.6727477,
+            48.267815
+          ],
+          [
+            11.6728163,
+            48.2680506
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 1108129077,
+      "version": 10,
+      "timestamp": "2025-06-26T05:49:18Z",
+      "tags": {
+        "bicycle": "yes",
+        "cycleway:both": "no",
+        "highway": "path",
+        "lane_markings": "no",
+        "lit": "yes",
+        "name": "James-Franck-Stra\u00dfe",
+        "parking:both": "no",
+        "sidewalk": "no",
+        "smoothness": "good",
+        "source:width": "ARCore",
+        "surface": "asphalt",
+        "width": "5.6"
+      },
+      "widthMetres": 5.6,
+      "lengthInCampusMetres": 27.68,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6745788,
+            48.26685
+          ],
+          [
+            11.6747977,
+            48.2668428
+          ],
+          [
+            11.6751142,
+            48.2668192
+          ],
+          [
+            11.6754478,
+            48.2667872
+          ],
+          [
+            11.6754779,
+            48.2667843
+          ],
+          [
+            11.6755103,
+            48.2667807
+          ],
+          [
+            11.6758195,
+            48.2667467
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 1198953652,
+      "version": 7,
+      "timestamp": "2026-04-29T16:18:05Z",
+      "tags": {
+        "cycleway:both": "no",
+        "highway": "residential",
+        "lane_markings": "no",
+        "lit": "yes",
+        "name": "James-Franck-Stra\u00dfe",
+        "name:etymology:wikidata": "Q57066",
+        "parking:both": "separate",
+        "sidewalk:left": "separate",
+        "sidewalk:right": "no",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "width": "7"
+      },
+      "widthMetres": 7.0,
+      "lengthInCampusMetres": 30.31,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.672553,
+            48.267089
+          ],
+          [
+            11.6726456,
+            48.2670769
+          ],
+          [
+            11.6729541,
+            48.2670384
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 1203803777,
+      "version": 10,
+      "timestamp": "2025-02-13T15:26:01Z",
+      "tags": {
+        "cycleway:both": "no",
+        "highway": "unclassified",
+        "lane_markings": "no",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Lichtenbergstra\u00dfe",
+        "parking:both": "no",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "width": "6"
+      },
+      "widthMetres": 6.0,
+      "lengthInCampusMetres": 52.92,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6661659,
+            48.2674354
+          ],
+          [
+            11.666404,
+            48.2674024
+          ],
+          [
+            11.6667484,
+            48.2673623
+          ],
+          [
+            11.6671797,
+            48.2673074
+          ],
+          [
+            11.6675912,
+            48.2672556
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 1289405424,
+      "version": 4,
+      "timestamp": "2025-02-13T15:24:45Z",
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "paving_stones",
+        "wheelchair": "no",
+        "width": "0.5"
+      },
+      "widthMetres": 0.5,
+      "lengthInCampusMetres": 58.94,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6686887,
+            48.2670777
+          ],
+          [
+            11.6685683,
+            48.2670929
+          ],
+          [
+            11.6685364,
+            48.2671101
+          ],
+          [
+            11.6684907,
+            48.2671176
+          ],
+          [
+            11.6680295,
+            48.2671696
+          ],
+          [
+            11.6680114,
+            48.2671697
+          ],
+          [
+            11.6679968,
+            48.2671678
+          ],
+          [
+            11.6679836,
+            48.2671645
+          ],
+          [
+            11.6679162,
+            48.2671724
+          ]
+        ]
+      }
+    },
+    {
+      "osmWay": 1289405426,
+      "version": 5,
+      "timestamp": "2025-02-13T17:21:25Z",
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "paving_stones",
+        "width": "2"
+      },
+      "widthMetres": 2.0,
+      "lengthInCampusMetres": 77.61,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            11.6679162,
+            48.2671724
+          ],
+          [
+            11.6678473,
+            48.2671806
+          ],
+          [
+            11.6671671,
+            48.2672648
+          ],
+          [
+            11.6668219,
+            48.2673092
+          ],
+          [
+            11.6663763,
+            48.267362
+          ],
+          [
+            11.6662097,
+            48.2673817
+          ],
+          [
+            11.6661533,
+            48.2673879
+          ]
+        ]
+      }
+    }
+  ],
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "derivation": "Selected ground-level asphalt/paving ways with explicit numeric width tags. Half-width buffers are inferred boundaries, not surveyed curbs. Excludes tagged indoor, tunnel, bridge, nonzero level/layer ways."
+}

@@ -224,3 +224,24 @@ A thirteenth native viewpoint now checks the east elevation and opening:
 The new view exposes further untreated structures to the north; those remain a quality failure. All thirteen views and eleven native checks passed, including two foreground rays and the east-opening ray hitting the warehouse replacement. Collision migration v8 changed 135 proxies on the route while preservation checks passed. The roof is byte-identical to the preceding artifact, and all 46 original backed-up world files are unchanged. The exporter now omits empty auxiliary wall sections when all faces have been reconstructed. [Exact artifact and validation](warehouse-development-validation.json).
 
 The installed/public preview remains `exterior-0.5.0-dev.1`. This development pass will join the next tested snapshot. Path/road materials, untreated nearby structures and terrace detail keep the goal open.
+
+
+## Road and path detail: `3aa5bec2…`
+
+Nineteen OSM road/path segments have explicit widths and asphalt/paving tags. Their half-width strips add 7,163.29 m² of material coverage, excluding surveyed building footprints and all existing mapped surface polygons. These are width-derived boundaries, not surveyed curbs. The source lines and derived polygons are included under ODbL; [source data](path-widths.json) and [validation](road-development-validation.json) record provenance and checks.
+
+Before, on the central Boltzmann route:
+
+![Road before the material pass](../../docs/screenshots/campus-road-before.jpg)
+
+After, from the same camera:
+
+![Mapped road with close-range asphalt grain](../../docs/screenshots/campus-road-after.jpg)
+
+The material uses [Poly Haven Asphalt 04](https://polyhaven.com/a/asphalt_04), photographed by Sergej Majboroda and processed by Jenelle van Heerden, CC0. Its diffuse and OpenGL normal maps repeat at four metres, with broad shading from the aerial image. It is not a scan of this campus road. A fourteenth native view checks it close up:
+
+![Asphalt detail beside the still-coarse sidewalk](../../docs/screenshots/campus-road-detail-after.jpg)
+
+The sharper road makes the untreated pale sidewalks and uneven-looking margins more apparent. Those remain quality failures; this pass does not reconstruct curbs or complete path coverage. The previously exposed northern structures and terrace details also remain unfinished.
+
+All fourteen native captures and eleven gameplay/geometry checks passed. Twelve material-control samples pass, including centres and outside-width points on three paths. Derived strips have less than 0.001 m² numerical overlap with existing mapped areas. All 246 packaged mesh files are byte-identical to the warehouse build; collision v8 remains, with zero proxy changes in this run. All 46 original backed-up save files are unchanged. The installed/public preview remains `exterior-0.5.0-dev.1` until these accumulated changes are published and installed as the next snapshot.
