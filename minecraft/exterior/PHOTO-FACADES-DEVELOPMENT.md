@@ -300,3 +300,24 @@ A controlled same-scene comparison isolated the old `GL_TEXTURE_MAX_LOD=0` clamp
 ![Same scene after enabling the existing mip levels](../../docs/screenshots/campus-cos-filter-after.jpg)
 
 Remaining: visible timber repetition, approximate rear elevations and ground materials, the old construction surroundings in aerial imagery, and coarse neighbouring buildings. These views establish a specific improvement, not completion of the realism goal.
+
+
+## COS forecourt and site materials
+
+Twelve pinned OSM ways supply the perimeter walk, north/south access drives, connecting paths, two bench lines and bicycle-parking boundary. Ten clipped surface patches add about 954 m² of paving and 310 m² of asphalt. The existing mapped lawns, courts and paths retain their previous pixels; all 36 terrain tiles remain byte-identical to dev.3. [Source and qualifications](cos-site.json).
+
+Two backless wooden benches follow the mapped lines. Their slats, concrete supports and dimensions are inferred. Ten tubular stands fit the mapped parking polygon and its capacity of twenty bicycles; the precise arrangement is estimated. Bench wood reuses Alexander Pach's credited COS photograph. Benches retain collision; thin stand tubes are decorative to avoid metre-wide invisible barriers.
+
+Before and after from the same southwest camera:
+
+![Before COS site materials](../../docs/screenshots/campus-cos-site-before.jpg)
+
+![COS with mapped site materials](../../docs/screenshots/campus-cos-site-after.jpg)
+
+From the forecourt at walking height:
+
+![COS benches and bicycle stands](../../docs/screenshots/campus-cos-forecourt.jpg)
+
+Artifact `8541badba7723d5eb381ddd29366be7deab9a9777d435e4d3318b297e1024325` passed nineteen native captures, seventeen native checks and 26 service tests. New checks verify direct visibility of both benches and a stand, plus gravity landing on a bench proxy at Y=64 above the visible seat at about Y=63.84. All 360,000 terrain samples and 22 material controls pass. [Validation](cos-site-development-validation.json). The separate playable preview is `exterior-0.5.0-dev.4`.
+
+Remaining: unmapped margins still show pale construction imagery; exact curbs, planting beds and furniture designs are unfinished. Aerial surroundings keep the older photographic ground, and site furniture/materials currently appear in walking mode. The adjoining Siemensbau and other coarse facades still need work. This is an incremental improvement, not completion of the quality goal.

@@ -11,6 +11,8 @@ for spec in [*manifest['tiles'],*extra]:
  data=(folder/spec['file']).read_bytes();assert data[:4]==b'ECT1',spec['file']
  count,*anchor=struct.unpack_from('<i3d',data,4);offset=32
  assert 0<count<100 and all(math.isfinite(x) for x in anchor)
+ if "collisionParts" in spec:
+  selected=spec["collisionParts"];assert isinstance(selected,list) and len(set(selected))==len(selected) and all(type(i) is int and 0<=i<count for i in selected),(spec["file"],selected)
  for part in range(count):
   vertices,w,h=struct.unpack_from('<3i',data,offset);offset+=16
   assert vertices>0 and vertices%3==0 and 0<w<=8192 and 0<h<=8192,(spec['file'],vertices,w,h)

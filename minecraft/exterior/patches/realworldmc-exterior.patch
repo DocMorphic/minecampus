@@ -38,7 +38,7 @@ index 53d3868..ef48082 100644
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -422,17 +437,49 @@ public final class MapRenderer {
+@@ -422,17 +437,51 @@ public final class MapRenderer {
  		RenderSystem.depthMask(true);
  		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
@@ -77,6 +77,8 @@ index 53d3868..ef48082 100644
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:7f);
 +                if(campus && t.data.id==1_000_030_010)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0?13f:(i>=4?0f:11f)));
++                if(campus && t.data.id==1_000_030_011)
++                    tileShader.safeGetUniform("MaterialDetail").set(i==0?13f:(i==1?7f:11f));
 +                if(campus && t.data.id==1_000_030_008)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?12f:(i==2?6f:7f));
 +                if(campus && t.data.id==1_000_030_003)

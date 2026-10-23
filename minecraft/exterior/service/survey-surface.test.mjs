@@ -14,7 +14,7 @@ function fixture(t,bytes,extra={},deps,sourceTiles=[]){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-survey-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
  const points=[];for(let z=0;z<=20;z+=10)for(let x=0;x<=20;x+=10)points.push([x,0,z]);
  fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify({origin:Object.values(origin),attribution:'BVV CC BY 4.0',tiles:[],terrainGuide:{width:3,height:3,points},walls:[{points:[[10,0,3],[10,10,3],[10,10,17],[10,0,17]]}],...extra}));
- const service={renderSelect:async()=>({tiles:sourceTiles,attribution:[]}),renderTile:async()=>bytes};const check=attachSurveySurface(service,dir,deps);return {service,check,dir};
+ const service={renderSelect:async()=>({tiles:sourceTiles,attribution:[]}),renderTile:async()=>bytes,chunk:async(_frame,_cx,_cz,_minY,span)=>new Uint8Array(16*16*span)};const check=attachSurveySurface(service,dir,deps);return {service,check,dir};
 }
 test('survey removes source ground while retaining texture bytes and triangle header integrity',async t=>{
  const {service,check}=fixture(t,tile([[4,.4,4],[8,.8,4],[4,.5,8]]));const b=await service.renderTile(origin,1_100_000_007);
@@ -195,4 +195,19 @@ test('manual-only facade cleanup applies even when there are no photographic ren
  assert.equal(result.pending??0,0);
  assert.equal(result.tiles[0].id,1_200_000_007);
  assert.equal((await service.renderTile(origin,1_200_000_007)).readInt32LE(32),0);
+});
+
+test('furniture collision includes selected solids while keeping decorative tubes in the render stream',async t=>{
+ const solids=tile([[2,1,2],[3,1,2],[2,1,3]]),tubes=tile([[4,2,4],[5,2,4],[4,2,5]]);
+ const multipart=Buffer.concat([solids,tubes.subarray(32)]);multipart.writeInt32LE(2,4);
+ let meshes;
+ const spec={file:'furniture.ect',kind:'reconstruction',runtimeId:1_000_030_011,bounds:[[1,0,1],[6,3,6]],collisionParts:[0]};
+ const {service,dir}=fixture(t,null,{tiles:[spec]},{voxelizeArea:(frame,assets)=>{meshes=assets;return {vox:new Uint8Array(16*16*8)};}});
+ fs.writeFileSync(path.join(dir,spec.file),multipart);
+ const frame={...origin,mcToEcef:(...p)=>p};
+ service.campusCollision(frame,0,0,0,8);
+ assert.equal(meshes.length,1);assert.equal(meshes[0].primitives.length,1);
+ assert.deepEqual([...meshes[0].primitives[0].positions],[2,1,2,3,1,2,2,1,3]);
+ const rendered=await service.renderTile(frame,spec.runtimeId);
+ assert.equal(rendered.readInt32LE(4),2);assert.deepEqual(rendered,multipart);
 });

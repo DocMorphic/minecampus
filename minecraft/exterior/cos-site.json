@@ -1,0 +1,379 @@
+{
+  "source": "https://api.openstreetmap.org/api/0.6/map?bbox=11.667,48.263,11.675,48.268",
+  "retrieved": "2026-10-23",
+  "sourceSha256": "887126e1d79641324b789b9f03522d73e5c24d068708b935de13c295dc51cf1c",
+  "license": "ODbL-1.0",
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "references": [
+    {
+      "url": "https://nav.tum.de/building/cos",
+      "role": "Current exterior photo: completed paved perimeter, west tree strip and south forecourt."
+    },
+    {
+      "url": "https://www.wankner-und-fischer.de/projekte/neubau-forschungsgebaeude-cos-garching/",
+      "role": "2021/2022 landscape design context only; no plan pixels bundled, current mapped positions take precedence."
+    }
+  ],
+  "estimates": {
+    "perimeterWalkWidthMetres": 2.0,
+    "entrancePathWidthMetres": 2.0,
+    "mainWestWalkWidthMetres": 2.5,
+    "northDriveWidthMetres": 4.5,
+    "southDriveWidthMetres": 5.0,
+    "benchSeatHeightMetres": 0.46,
+    "benchWidthMetres": 0.55,
+    "bicycleStands": 10,
+    "note": "Widths, furniture dimensions, supports and rack arrangement inferred from source context; positions/paths and 20-bicycle capacity are mapped. No claim of surveyed curbs or exact furniture design."
+  },
+  "ways": [
+    {
+      "osmWay": 28038705,
+      "version": 10,
+      "timestamp": "2026-04-12T14:32:39Z",
+      "tags": {
+        "highway": "service",
+        "lit": "yes",
+        "service": "driveway",
+        "surface": "paving_stones"
+      },
+      "coordinates": [
+        [
+          11.6728163,
+          48.2680506
+        ],
+        [
+          11.6729868,
+          48.2680292
+        ],
+        [
+          11.6731864,
+          48.2680073
+        ],
+        [
+          11.6739462,
+          48.2679167
+        ],
+        [
+          11.6746453,
+          48.2678424
+        ],
+        [
+          11.6748014,
+          48.2678258
+        ]
+      ]
+    },
+    {
+      "osmWay": 172828680,
+      "version": 10,
+      "timestamp": "2025-06-15T13:45:10Z",
+      "tags": {
+        "bicycle": "no",
+        "foot": "designated",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "paving_stones"
+      },
+      "coordinates": [
+        [
+          11.6727889,
+          48.2672059
+        ],
+        [
+          11.6728572,
+          48.2674667
+        ],
+        [
+          11.6729868,
+          48.2680292
+        ],
+        [
+          11.6730236,
+          48.2681843
+        ],
+        [
+          11.6730739,
+          48.2683912
+        ],
+        [
+          11.6732963,
+          48.2691805
+        ],
+        [
+          11.6733048,
+          48.2692188
+        ],
+        [
+          11.6733123,
+          48.2692525
+        ]
+      ]
+    },
+    {
+      "osmWay": 1365740003,
+      "version": 5,
+      "timestamp": "2026-08-29T12:03:44Z",
+      "tags": {
+        "highway": "service",
+        "lit": "yes",
+        "service": "driveway",
+        "sidewalk:left": "no",
+        "sidewalk:right": "yes",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6728572,
+          48.2674667
+        ],
+        [
+          11.6730378,
+          48.2674461
+        ],
+        [
+          11.6731098,
+          48.2674379
+        ],
+        [
+          11.6733444,
+          48.2674111
+        ],
+        [
+          11.6735565,
+          48.2673869
+        ],
+        [
+          11.6736866,
+          48.2673721
+        ],
+        [
+          11.6737172,
+          48.2673908
+        ]
+      ]
+    },
+    {
+      "osmWay": 1365740352,
+      "version": 3,
+      "timestamp": "2025-06-15T13:30:48Z",
+      "tags": {
+        "highway": "path",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6730303,
+          48.267402
+        ],
+        [
+          11.6730378,
+          48.2674461
+        ]
+      ]
+    },
+    {
+      "osmWay": 1365740353,
+      "version": 3,
+      "timestamp": "2025-06-15T13:31:27Z",
+      "tags": {
+        "highway": "path",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6733353,
+          48.2673663
+        ],
+        [
+          11.6733444,
+          48.2674111
+        ]
+      ]
+    },
+    {
+      "osmWay": 1365740354,
+      "version": 3,
+      "timestamp": "2025-06-15T13:31:32Z",
+      "tags": {
+        "highway": "path",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6735455,
+          48.267342
+        ],
+        [
+          11.6735565,
+          48.2673869
+        ]
+      ]
+    },
+    {
+      "osmWay": 1489202325,
+      "version": 1,
+      "timestamp": "2026-03-15T17:40:51Z",
+      "tags": {
+        "access": "yes",
+        "amenity": "bicycle_parking",
+        "bicycle_parking": "stands",
+        "capacity": "20",
+        "covered": "no",
+        "fee": "no"
+      },
+      "coordinates": [
+        [
+          11.67325,
+          48.2674966
+        ],
+        [
+          11.6732429,
+          48.2674661
+        ],
+        [
+          11.6733347,
+          48.2674573
+        ],
+        [
+          11.6733417,
+          48.2674872
+        ],
+        [
+          11.67325,
+          48.2674966
+        ]
+      ]
+    },
+    {
+      "osmWay": 1489202326,
+      "version": 1,
+      "timestamp": "2026-03-15T17:40:51Z",
+      "tags": {
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "coordinates": [
+        [
+          11.6731098,
+          48.2674379
+        ],
+        [
+          11.6731343,
+          48.2675404
+        ],
+        [
+          11.6731396,
+          48.2675625
+        ]
+      ]
+    },
+    {
+      "osmWay": 1489202327,
+      "version": 1,
+      "timestamp": "2026-03-15T17:40:51Z",
+      "tags": {
+        "amenity": "bench",
+        "armrest": "no",
+        "backrest": "no",
+        "material": "wood"
+      },
+      "coordinates": [
+        [
+          11.6731045,
+          48.2675048
+        ],
+        [
+          11.6731107,
+          48.2675312
+        ],
+        [
+          11.6730569,
+          48.2675365
+        ]
+      ]
+    },
+    {
+      "osmWay": 1489202328,
+      "version": 1,
+      "timestamp": "2026-03-15T17:40:51Z",
+      "tags": {
+        "amenity": "bench",
+        "armrest": "no",
+        "backrest": "no",
+        "material": "wood"
+      },
+      "coordinates": [
+        [
+          11.6731469,
+          48.2675259
+        ],
+        [
+          11.6731416,
+          48.2674995
+        ]
+      ]
+    },
+    {
+      "osmWay": 1489202329,
+      "version": 1,
+      "timestamp": "2026-03-15T17:40:51Z",
+      "tags": {
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "coordinates": [
+        [
+          11.6731343,
+          48.2675404
+        ],
+        [
+          11.673041,
+          48.2675506
+        ],
+        [
+          11.673138,
+          48.267935
+        ],
+        [
+          11.673571,
+          48.2678805
+        ],
+        [
+          11.6735135,
+          48.2676506
+        ],
+        [
+          11.6734766,
+          48.2675031
+        ],
+        [
+          11.6731343,
+          48.2675404
+        ]
+      ]
+    },
+    {
+      "osmWay": 1489202330,
+      "version": 1,
+      "timestamp": "2026-03-15T17:40:51Z",
+      "tags": {
+        "highway": "footway",
+        "surface": "paving_stones"
+      },
+      "coordinates": [
+        [
+          11.6735135,
+          48.2676506
+        ],
+        [
+          11.6737447,
+          48.2676251
+        ]
+      ]
+    }
+  ]
+}

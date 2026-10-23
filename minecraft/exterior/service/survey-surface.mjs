@@ -173,7 +173,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     const primitives=[];let offset=32;const shift=manifest.origin[2]-frame.h0;
     for(let part=0;part<count;part++){
       const n=bytes.readInt32LE(offset),w=bytes.readInt32LE(offset+4),h=bytes.readInt32LE(offset+8);offset+=16;
-      if(spec.kind==='vegetation'&&part>0){offset+=n*20+w*h*4;continue;}
+      if((spec.kind==='vegetation'&&part>0)||(spec.collisionParts&&!spec.collisionParts.includes(part))){offset+=n*20+w*h*4;continue;}
       const positions=new Float64Array(n*3),uvs=new Float32Array(n*2),indices=new Uint32Array(n);
       for(let i=0;i<n;i++){
         const at=offset+i*20,x=bytes.readFloatLE(at)+anchor[0],y=bytes.readFloatLE(at+4)+anchor[1]+shift,z=bytes.readFloatLE(at+8)+anchor[2];

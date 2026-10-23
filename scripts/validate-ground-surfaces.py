@@ -7,7 +7,7 @@ from pathlib import Path
 import json,hashlib
 import numpy as np
 from PIL import Image
-from shapely.geometry import shape,box
+from shapely.geometry import shape,box,Polygon
 from shapely.ops import transform,unary_union
 from pyproj import Transformer
 root=Path(__file__).resolve().parents[1];out=root/'dist-minecraft/exterior'
@@ -50,5 +50,19 @@ for feature in json.loads(source.read_text())['features']:
  polygon=transform(toUtm.transform,shape(feature['geometry'])).intersection(box(*bounds));point=polygon.representative_point()
  x,z=np.array([point.x-middle[0],point.y-middle[1],1])@coeff
  check(tags['sport']+' '+str(feature['properties']['osmWay']),x,z,[0,0,0])
-result={'status':'PASS: ground material alignment, explicit-width edges and mapped-area exclusions','pathOverlapWithMappedAreasSquareMetres':overlap,'samples':samples}
+site=spec['cosSite']
+for path,key in [(root/'minecraft/exterior/cos-site.json','sourceSha256'),(out/'cos-site-surfaces.geojson','derivedSha256')]:
+ assert hashlib.sha256(path.read_bytes()).hexdigest()==site[key]
+features=json.loads((out/'cos-site-surfaces.geojson').read_text())['features']
+polygons=[transform(toUtm.transform,shape(f['geometry'])) for f in features]
+site_union=unary_union(polygons)
+site_overlap=site_union.intersection(mapped.union(paths)).area
+assert site_overlap<.001,('COS paving covers existing mapped materials',site_overlap)
+assert sum(p.area for p in polygons)-site_union.area<.001,'COS surface patches overlap'
+assert site_union.intersection(Polygon(m['siteGrading']['footprintUtm'])).area<.001,'COS paving crosses building footprint'
+for feature,polygon in zip(features,polygons):
+ point=polygon.representative_point()
+ x,z=np.array([point.x-middle[0],point.y-middle[1],1])@coeff
+ check('COS '+str(feature['properties']['osmWay']),x,z,[0,255,0]if feature['properties']['material']=='paving'else[0,0,255])
+result={'cosSiteOverlapSquareMetres':site_overlap,'cosSiteSurfacePatches':len(features),'status':'PASS: ground material alignment, explicit-width edges and mapped-area exclusions','pathOverlapWithMappedAreasSquareMetres':overlap,'samples':samples}
 (out/'ground-surfaces-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

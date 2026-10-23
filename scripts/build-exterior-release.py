@@ -17,6 +17,8 @@ for item in json.loads((SOURCE/'material-sources.json').read_text())['materials'
  if hashlib.sha256(p.read_bytes()).hexdigest()!=item['resourceSha256']:raise SystemExit('Material resource checksum mismatch: '+item['name'])
 for path,key in [(SOURCE/'path-widths.json','sourceSha256'),(DATA/'path-surfaces.geojson','derivedSha256')]:
  if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['paths'][key]:raise SystemExit('Path material provenance mismatch: '+path.name)
+for path,key in [(SOURCE/'cos-site.json','sourceSha256'),(DATA/'cos-site-surfaces.geojson','derivedSha256')]:
+ if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['cosSite'][key]:raise SystemExit('COS site provenance mismatch: '+path.name)
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -80,6 +82,12 @@ https://www.openstreetmap.org/copyright
 Selected mapped polygons and their tags are included as ground-surfaces.geojson.
 Explicit-width road/path source lines and derived strips are included as
 path-widths.json and path-surfaces.geojson (ODbL 1.0), with building and mapped-area exclusions.
+COS completed-site map lines and furniture positions: © OpenStreetMap contributors.
+Source and derived surfaces: cos-site.json and cos-site-surfaces.geojson (ODbL 1.0).
+Path widths, apron infill, bench dimensions/supports and rack arrangement are
+approximate reconstructions; the mapped bicycle capacity implies ten stands.
+Bench timber reuses the credited Alexander Pach COS photograph (CC BY 4.0).
+Thin rack tubes are decorative; benches retain collision.
 Asphalt detail: Poly Haven asphalt_04 by Jenelle van Heerden and Sergej Majboroda (CC0).
 https://polyhaven.com/a/asphalt_04
 The material is approximate; it is not a scan of the campus roads.
@@ -152,6 +160,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/manifest.json',(DATA/'manifest.json').read_bytes())
   write(target,'src/minecampus-exterior/NOTICE.txt',notices.encode())
   write(target,'src/minecampus-exterior/cos-reference.json',(SOURCE/'photos/cos-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/cos-site.json',(SOURCE/'cos-site.json').read_bytes())
+  write(target,'src/minecampus-exterior/cos-site-surfaces.geojson',(DATA/'cos-site-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/sources.json',(SOURCE/'sources.json').read_bytes())
   write(target,'src/minecampus-exterior/vegetation-sources.json',(SOURCE/'vegetation-sources.json').read_bytes())
   write(target,'src/minecampus-exterior/ground-surfaces.geojson',(SOURCE/'ground-surfaces.geojson').read_bytes())

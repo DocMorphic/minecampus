@@ -126,3 +126,10 @@ The new view exposes poor neighboring façades and missing site detail. A useful
 COS (TUM 5132) now has its surveyed complete envelope and roof, photograph-informed west/south timber facades, and inferred rear openings. It remains visible in aerial mode. The older terrain scan's construction mounds are replaced by explicit local grading, with nearby buildings excluded; native gravity verifies the former mound position. Eighteen views, fifteen native checks, 25 service tests and terrain verification pass. [COS evidence](cos-development-validation.json) and [play instructions](PREVIEW-0.5.md) accompany `exterior-0.5.0-dev.3`, which also includes Telefonzentrale.
 
 The goal remains open. COS still needs convincing ground materials, site objects and reduced timber repetition; aerial surroundings retain the old construction-site imagery. Siemensbau and several larger neighbouring facades remain visibly coarse. Address these limitations using the current route views and sourced exterior evidence; do not equate passing native checks with visual completion.
+
+
+## COS site materials and furniture
+
+The dev.4 snapshot adds ten bounded material patches, two mapped bench lines and ten inferred bicycle stands. Nineteen native views, seventeen checks and 26 service tests pass. Terrain tiles and existing mapped material pixels remain unchanged; native gravity verifies the bench collider. [Site evidence](cos-site-development-validation.json).
+
+The corrected forecourt view is outside Siemensbau's surveyed footprint; the exploratory `(162,-262)` camera was inside it and is excluded. The current ground view still shows pale old construction imagery between mapped patches. Next, resolve these margins with source-informed planting/paving rather than assuming that every unmapped region is paved. Improve the nearby coarse facade once sufficient reference evidence exists. The quality goal remains active.

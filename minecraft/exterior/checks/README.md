@@ -41,3 +41,9 @@ The COS pass adds cameras 15–17: `128 65 -267 -140 -13`, `190 65 -270 140 -15`
 
 
 The COS release also requires `campus-texture-result.txt` (fifteen results total). At camera 15, the harness verifies that the packaged shader is active with no resource-pack override. It checks the COS timber, one ground tile and eight shared material textures: trilinear minification, generated mip levels and `GL_TEXTURE_MAX_LOD` at least as high as the maximum allocated level. `campus-texture-sampling.json` records these values. This guards the level-zero clamp inherited from Minecraft texture allocation, which previously prevented generated mipmaps from being sampled.
+
+## COS forecourt
+
+The site pass adds camera 18 (`162 64 -270 -171 14`), outside the neighbouring surveyed footprints. The earlier exploratory camera at `(162,-262)` was inside Siemensbau and is not a valid walking view. With `minecampus.requireCosSite=true`, require `campus-cos-site-result.txt` and `campus-cos-bench-result.txt` in addition to the previous fifteen checks. The full run has nineteen captures and seventeen results. Three rays must reach the visible furniture tile `1_000_030_011` (both benches and a rack); native gravity must land at Y=64 on the bench proxy above a visible seat at approximately Y=63.84. Collision migration advances to v12.
+
+`collisionParts` selects solid bench parts for voxelization while leaving thin rack tubes render-only. A service test verifies both collision filtering and preservation of all rendered parts. Ground validation checks the ten derived material patches, source hashes and exclusions; all 36 terrain tiles remain unchanged from dev.3. Path widths, furniture dimensions and exact rack arrangement remain explicit estimates.
