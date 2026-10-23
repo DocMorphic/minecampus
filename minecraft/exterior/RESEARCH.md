@@ -51,3 +51,10 @@ The coarse pilot façade `DEBY_LOD2_5284443` matches OSM way 23316555, named UYA
 ![UYA exterior and roof courts, cropped from the 2017 campus photograph](../../docs/screenshots/campus-uya-reference.jpg)
 
 Credit: **Ernst A. Graf/ESO**, [CC BY 4.0 under ESO's usage terms](https://www.eso.org/public/outreach/copyright/). Cropped for reference; not used as a runtime texture. [Pinned source, crop and identity metadata](photos/uya-eso-reference.json). Next work should fit the visible façade structure to the surveyed envelope, retaining the actual roof courts and distinguishing measured dimensions from inferred window detail.
+
+
+## UYE exterior reference for the next pass
+
+The [architect's UYE reception-building project](https://seifert-hugues.de/projekte/projekt-objekte/empfangsgebaeude-frm2.html&categorie=gewerbe-verwaltung) provides an exterior photograph showing a pale projecting flat-roof fascia and dark, horizontally divided glazing. The image filename identifies UYE and the project page dates completion to 2011. The photograph is reference-only: no open redistribution license has been established, so it is not committed or used as a runtime texture. [Pinned source metadata](photos/uye-architect-reference.json).
+
+The project area is 160 square metres, whereas candidate BVV envelope `DEBY_LOD2_31360854` measures about 29.05 × 15.44 metres. This discrepancy needs resolution at the exterior/roof level before repeating the photographed pattern over the whole envelope. It may describe only the renovated part. No interior reconstruction is planned. The published 0.5 snapshot retains the preceding photographic treatment for this building.

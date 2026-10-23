@@ -1,0 +1,19 @@
+{
+  "buildingCandidate": "DEBY_LOD2_31360854",
+  "name": "UYE exterior / FRM II reception building",
+  "sourcePage": "https://seifert-hugues.de/projekte/projekt-objekte/empfangsgebaeude-frm2.html&categorie=gewerbe-verwaltung",
+  "publisher": "seifert hugues architekten gmbh",
+  "projectCompletionYear": 2011,
+  "accessed": "2026-10-23",
+  "exteriorImage": "https://seifert-hugues.de/assets/components/phpthumbof/cache/1_UYE%20pforte%20garching%202.2883b14a20f1fb9357c1e8cb4576d25e.jpg",
+  "referenceSha256": "08112cf4270074003b7a11238f74b1ff1c0f346dc042398307533665c4c558f2",
+  "use": "Reference only; no open redistribution license established. Image is not committed or bundled as a material.",
+  "visibleExteriorFeatures": [
+    "Pale projecting flat roof fascia",
+    "Dark framed full-height glazing",
+    "Horizontal glazing divisions",
+    "Recessed glazing beneath the overhang"
+  ],
+  "identityQualification": "Image filename explicitly identifies UYE. Project page gives 160 square metres; the current rectangular survey envelope covers approximately 448 square metres. Determine which frontage belongs to the renovation before applying its glazing pattern to the whole survey envelope.",
+  "nextStep": "Match the visible external frontage and roof to BVV and the licensed ESO aerial reference. Preserve the surveyed roof. Do not infer unobserved elevations or interiors from this one exterior photograph."
+}
