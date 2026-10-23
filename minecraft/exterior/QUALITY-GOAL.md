@@ -119,3 +119,10 @@ The sharper road exposes the remaining coarse sidewalks and margins. Curbs, nort
 The four-window reconstruction is now on the correct Telefonzentrale envelope (5130), verified by four native window rays and a matching before/after camera. The unverified Siemensbau windows were removed before recording the final artifact. Fifteen frames, twelve native checks and 22 service tests pass; the original save is unchanged. [Evidence](telefonzentrale-development-validation.json). The installed preview remains dev.2.
 
 The new view exposes poor neighboring façades and missing site detail. A useful next source candidate is the [Center for Organoid Systems, TUM 5132](https://nav.tum.de/building/cos): NavigaTUM supplies Alexander Pach's exterior photograph under CC BY 4.0. Its address matches OSM way 1275027418, and that footprint overlaps the convex outer BVV envelope `DEBY_LOD2_108698313` with 0.933 intersection-over-union. Verify the visible wall orientation and current geometry before reconstructing it; this research does not establish that every degraded background surface belongs to COS. The realism goal remains open.
+
+
+## COS and third playable snapshot
+
+COS (TUM 5132) now has its surveyed complete envelope and roof, photograph-informed west/south timber facades, and inferred rear openings. It remains visible in aerial mode. The older terrain scan's construction mounds are replaced by explicit local grading, with nearby buildings excluded; native gravity verifies the former mound position. Eighteen views, fifteen native checks, 25 service tests and terrain verification pass. [COS evidence](cos-development-validation.json) and [play instructions](PREVIEW-0.5.md) accompany `exterior-0.5.0-dev.3`, which also includes Telefonzentrale.
+
+The goal remains open. COS still needs convincing ground materials, site objects and reduced timber repetition; aerial surroundings retain the old construction-site imagery. Siemensbau and several larger neighbouring facades remain visibly coarse. Address these limitations using the current route views and sourced exterior evidence; do not equate passing native checks with visual completion.

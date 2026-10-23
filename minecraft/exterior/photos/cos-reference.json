@@ -1,0 +1,22 @@
+{
+  "building": "DEBY_LOD2_108698313",
+  "tumBuilding": "5132",
+  "sourcePage": "https://nav.tum.de/building/cos",
+  "download": "https://nav.tum.de/cdn/lg/5132_0.webp",
+  "author": "Alexander Pach",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "sha256": "469a058f1ceffd8378bb23a995cf832fdbe81209386d63965f7f6be168b3ec53",
+  "timberQuad": [
+    2160,
+    1140,
+    2160,
+    1380,
+    2540,
+    1490,
+    2540,
+    1250
+  ],
+  "use": "West/south facade reference and rectified repeated timber material. Exact opening positions, dimensions and other elevations inferred.",
+  "identity": "TUM 5132 / Boltzmannstr. 12; OSM way 1275027418; OSM/BVV convex-envelope IoU 0.933."
+}

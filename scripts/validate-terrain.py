@@ -11,7 +11,7 @@ from rasterio.merge import merge
 from pyproj import Transformer
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
-from shapely import contains_xy
+from shapely import contains_xy,points,distance,intersects
 root=Path(__file__).resolve().parents[1];out=root/'dist-minecraft/exterior'
 parser=argparse.ArgumentParser();parser.add_argument('--before-manifest',type=Path);args=parser.parse_args()
 m=json.loads((out/'manifest.json').read_text());origin=m['origin'];bounds=m['boundsUtm']
@@ -24,18 +24,22 @@ def expected(x,y,z):
  offset=(gv[j,i]*(1-fx)+gv[j,i+1]*fx)*(1-fy)+(gv[j+1,i]*(1-fx)+gv[j+1,i+1]*fx)*fy
  xx,yy,zz=toEcef.transform(x,y,z+offset);p=np.column_stack((xx,yy,zz))-zero
  return np.column_stack((p@east,p@up+64,p@south))
-seams={};maxSeam=0;errors=[];expectedPoints=[];sampleXY=[];bankHeights=[]
+seams={};maxSeam=0;errors=[];expectedPoints=[];sampleXY=[];bankHeights=[];cosHeights=[];gradedCount=0
+grade=m.get('siteGrading')
+if grade:
+ footprint=Polygon(grade['footprintUtm']);neighbours=unary_union([Polygon(p)for p in grade['excludedNeighbourFootprintsUtm']]).buffer(grade['neighbourBufferMetres'])
 for spec in m['tiles']:
  if spec['kind']!='ground':continue
  data=(out/spec['file']).read_bytes();parts,*anchor=struct.unpack_from('<i3d',data,4);assert parts==1
  count=struct.unpack_from('<i',data,32)[0];v=np.frombuffer(data,dtype='<f4',count=count*5,offset=48).reshape(-1,5)
  # Independently recover the visible surface underneath the native gravity probe.
- lo,hi=spec['bounds'];px,pz=14.5,-228.5
- if lo[0]<=px<=hi[0] and lo[2]<=pz<=hi[2]:
-  triangles=(v[:,:3].astype(float)+anchor).reshape(-1,3,3)
-  a=triangles[:,0];u=triangles[:,1]-a;w=triangles[:,2]-a;det=u[:,0]*w[:,2]-u[:,2]*w[:,0]
-  f=((px-a[:,0])*w[:,2]-(pz-a[:,2])*w[:,0])/det;g=(u[:,0]*(pz-a[:,2])-u[:,2]*(px-a[:,0]))/det
-  hit=(f>=0)&(g>=0)&(f+g<=1);bankHeights.extend((a[:,1]+f*u[:,1]+g*w[:,1])[hit].tolist())
+ lo,hi=spec['bounds']
+ for px,pz,heights in [(14.5,-228.5,bankHeights),(186.5,-288.5,cosHeights)]:
+  if lo[0]<=px<=hi[0] and lo[2]<=pz<=hi[2]:
+   triangles=(v[:,:3].astype(float)+anchor).reshape(-1,3,3)
+   a=triangles[:,0];u=triangles[:,1]-a;w=triangles[:,2]-a;det=u[:,0]*w[:,2]-u[:,2]*w[:,0]
+   f=((px-a[:,0])*w[:,2]-(pz-a[:,2])*w[:,0])/det;g=(u[:,0]*(pz-a[:,2])-u[:,2]*(px-a[:,0]))/det
+   hit=(f>=0)&(g>=0)&(f+g<=1);heights.extend((a[:,1]+f*u[:,1]+g*w[:,1])[hit].tolist())
  _,ids=np.unique(v[:,3:5],axis=0,return_index=True);v=v[ids];assert len(v)==102*102
  e,n=map(int,Path(spec['file']).stem.split('-')[1:]);x=np.round(e+v[:,3].astype(float)*100,3);y=np.round(n+100-v[:,4].astype(float)*100,3);actual=v[:,:3].astype(float)+anchor
  interior=(v[:,3]>0)&(v[:,3]<1)&(v[:,4]>0)&(v[:,4]<1)
@@ -45,12 +49,21 @@ for spec in m['tiles']:
   else:seams[key]=point
  x=x[interior];y=y[interior];actual=actual[interior]
  np.testing.assert_allclose(np.mod(x,1),.5,atol=1e-6);np.testing.assert_allclose(np.mod(y,1),.5,atol=1e-6)
- col,row=(~tr)*(x,y);height=dgm[row.astype(int),col.astype(int)];want=expected(x,y,height)
+ col,row=(~tr)*(x,y);height=dgm[row.astype(int),col.astype(int)].astype(float)
+ if grade:
+  locations=points(x,y);d=distance(locations,footprint)
+  t=np.clip((d-grade['innerMetres'])/(grade['outerMetres']-grade['innerMetres']),0,1);weight=1-t*t*(3-2*t)
+  weight[intersects(locations,neighbours)]=0;gradedCount+=int(np.count_nonzero(weight))
+  height+=weight*(grade['heightDHHN2016']-height)
+ want=expected(x,y,height)
  errors.extend(np.linalg.norm(actual-want,axis=1));expectedPoints.append(want);sampleXY.append(np.column_stack((x,y)))
 assert len(errors)==360000 and max(errors)<.001 and maxSeam<.00001,(len(errors),max(errors),maxSeam)
-result={'status':'PASS: encoded terrain preserves all DGM1 interior samples and adjoining tile seams','sourceSampleCount':len(errors),'maximumPositionErrorMetres':max(errors),'maximumTileSeamErrorMetres':maxSeam,'note':'Source representation accuracy only; not a claim of millimetre real-world survey accuracy.'}
+result={'status':'PASS: encoded terrain matches DGM1 plus explicit site grading, with adjoining tile seams preserved','sourceSampleCount':len(errors),'unalteredDgmSamples':len(errors)-gradedCount,'inferredSiteGradingSamples':gradedCount,'maximumPositionErrorMetres':max(errors),'maximumTileSeamErrorMetres':maxSeam,'note':'Source representation accuracy only; not a claim of millimetre real-world survey accuracy. Explicit site grading is approximate finished terrain, not measured DGM.'}
 assert len(bankHeights)==1 and abs(bankHeights[0]-62.378458)<.00001,bankHeights
 result['nativeBankProbe']={'positionMC':[14.5,-228.5],'meshHeight':bankHeights[0],'expectedProxyTop':round(bankHeights[0]),'toleranceMetres':.51}
+if grade:
+ assert len(cosHeights)==1 and abs(cosHeights[0]-63.15315985)<.00001,cosHeights
+ result['nativeCosGroundProbe']={'positionMC':[186.5,-288.5],'meshHeight':cosHeights[0],'expectedProxyTop':round(cosHeights[0]),'toleranceMetres':.51}
 if args.before_manifest:
  old=json.loads(args.before_manifest.read_text());grid=np.array(old['terrainGuide']['points']).reshape(301,301,3);xy=np.concatenate(sampleXY);want=np.concatenate(expectedPoints)
  s=(xy[:,0]-bounds[0])/2;t=(xy[:,1]-bounds[1])/2;i=s.astype(int);j=t.astype(int);fx=s-i;fy=t-j

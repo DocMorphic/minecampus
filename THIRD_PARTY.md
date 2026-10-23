@@ -68,3 +68,8 @@ Explicit-width road/path centre-lines in `minecraft/exterior/path-widths.json` a
 ## Telefonzentrale exterior reference
 
 The west end of TUM building 5130 is informed by Heinz Theuerkauf's [2018 front view](https://www.flickr.com/photos/26095468@N04/44227697504/) and [oblique view](https://www.flickr.com/photos/26095468@N04/43135332700/), plus Bayreuth2009's [2014 campus sculpture photograph](https://commons.wikimedia.org/wiki/File:Garching,_Forschungszentrum_(Campus),_moderne_Kunst.jpg), CC BY 3.0. These photographs are visual references only; none of their pixels are bundled. The model uses the BVV envelope, existing CC0 concrete grain and original approximate glass/trim materials. Opening sizes, recess depth and continuation of the roof fascia are inferred. The reference metadata identifies the smaller Telefonzentrale separately from the adjacent Siemensbau.
+
+
+## Center for Organoid Systems (COS)
+
+[Alexander Pach's COS exterior photograph](https://nav.tum.de/building/cos) is supplied by NavigaTUM under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The original WebP and provenance are in `minecraft/exterior/photos/cos-reference.*`. An unobstructed timber patch is rectified, resized and repeated at an approximate scale on the BVV survey envelope. Window geometry and dark/metal materials are reconstructed; hidden elevations and exact dimensions are inferred. The game HUD retains the photographer's credit.

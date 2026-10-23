@@ -28,6 +28,10 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
   function inside(x,z,ring){let yes=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>z)!==(b[1]>z)&&x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])yes=!yes;}return yes;}
   const replacementGrid=new Map();
   for(const r of replacements)for(let x=Math.floor(r.bounds[0]/20);x<=Math.floor(r.bounds[2]/20);x++)for(let z=Math.floor(r.bounds[1]/20);z<=Math.floor(r.bounds[3]/20);z++){const key=x+','+z;if(!replacementGrid.has(key))replacementGrid.set(key,[]);replacementGrid.get(key).push(r);}
+  const alwaysIds=new Map([...ids].filter(([,t])=>t.alwaysVisible));
+  function alwaysReplaced(x,y,z){
+    return (replacementGrid.get(Math.floor(x/20)+','+Math.floor(z/20))??[]).some(r=>r.alwaysVisible&&y>=r.y0&&y<=r.y1&&inside(x,z,r.ring)&&!(r.holes??[]).some(h=>inside(x,z,h)));
+  }
   const replacementCache=new Map();
   function replaced(p){
     const ix=Math.floor(p[0]),iz=Math.floor(p[2]),key=(ix+2048)*4096+iz+2048;
@@ -78,7 +82,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     return Boolean(overhangMask[p]|overhangMask[p+1]|overhangMask[q]|overhangMask[q+1])&&y>Math.max(c[p],c[p+1],c[q],c[q+1])+.5;
   }
   let removed=0;
-  function correct(bytes,shift=0,photo=null){
+  function correct(bytes,shift=0,photo=null,alwaysOnly=false){
     const input=Buffer.isBuffer(bytes)?bytes:Buffer.from(bytes);if(input.toString('ascii',0,4)!=='ECT1')throw Error('Unsupported terrain format');
     const count=input.readInt32LE(4),ax=input.readDoubleLE(8),ay=input.readDoubleLE(16),az=input.readDoubleLE(24);
     const output=Buffer.allocUnsafe(input.length);input.copy(output,0,0,32);let read=32,write=32;
@@ -91,8 +95,8 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
         const x2=input.readFloatLE(at+20)+ax,y2=input.readFloatLE(at+24)+ay,z2=input.readFloatLE(at+28)+az;
         const x3=input.readFloatLE(at+40)+ax,y3=input.readFloatLE(at+44)+ay,z3=input.readFloatLE(at+48)+az;
         const x=(x1+x2+x3)/3,y=(y1+y2+y3)/3,z=(z1+z2+z3)/3,floor=terrain(x,z);
-        let retire=false;
-        if(floor!==null){
+        let retire=alwaysOnly&&alwaysReplaced(x,y-shift,z);
+        if(!alwaysOnly&&floor!==null){
           // The local outdoor layer is reconstructed from DGM/DOP and canopy
           // data. Retaining scattered pieces of its old photographic counterpart
           // leaves floating branches above paths. Building/roof masks protect
@@ -106,8 +110,8 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           }
           if(!retire)retire=replaced([x,y-shift,z])||replaced([x1,y1-shift,z1])||replaced([x2,y2-shift,z2])||replaced([x3,y3-shift,z3]);
         }
-        if(!retire)retire=containedBand([[x1,y1-shift,z1],[x2,y2-shift,z2],[x3,y3-shift,z3]]);
-        if(!retire&&photo)retire=retiresPhotoSurface(photo,x,y-shift,z);
+        if(!alwaysOnly&&!retire)retire=containedBand([[x1,y1-shift,z1],[x2,y2-shift,z2],[x3,y3-shift,z3]]);
+        if(!alwaysOnly&&!retire&&photo)retire=retiresPhotoSurface(photo,x,y-shift,z);
         if(retire){removed++;continue;}
         input.copy(output,write,at,at+60);write+=60;kept+=3;
       }
@@ -116,7 +120,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     }
     return output.subarray(0,write);
   }
-  const CLIPPED_OFFSET=1_100_000_000,PHOTO_OFFSET=1_200_000_000;
+  const CLIPPED_OFFSET=1_100_000_000,PHOTO_OFFSET=1_200_000_000,AERIAL_OFFSET=1_300_000_000;
   const photographic=new WeakMap();
   const modes=new WeakMap();
   const select=service.renderSelect.bind(service),tile=service.renderTile.bind(service);
@@ -138,11 +142,16 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           .catch(()=>{state.ready=true;console.warn('[campus-photo] preparation unavailable; original retained');});
       }
       if(state&&!state.ready)selected.pending=(selected.pending??0)+1;
-      const photo=state?.result,offset=photo?.tiles.length?PHOTO_OFFSET:CLIPPED_OFFSET;
+      const photo=state?.result,offset=photo?.patches.length?PHOTO_OFFSET:CLIPPED_OFFSET;
       selected.tiles=selected.tiles.map(t=>({...t,id:t.id+offset,parent:t.parent?t.parent+offset:0,chain:t.chain.map(id=>id+offset)}));
       if(photo){selected.tiles.unshift(...photo.tiles);selected.attribution.push(...photo.copyright);}
 
       for(const [id]of ids)selected.tiles.unshift({id,fine:true,parent:0,chain:[]});
+    }else if(alwaysIds.size){
+      // Recently built landmarks must not disappear into obsolete aerial tiles.
+      // This mode retires only their explicit footprints, not the ground layer.
+      selected.tiles=selected.tiles.map(t=>({...t,id:t.id+AERIAL_OFFSET,parent:t.parent?t.parent+AERIAL_OFFSET:0,chain:t.chain.map(id=>id+AERIAL_OFFSET)}));
+      for(const [id]of alwaysIds)selected.tiles.unshift({id,fine:true,parent:0,chain:[]});
     }
     selected.attribution.push(manifest.attribution);
     return selected;
@@ -154,6 +163,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     if(photo?.bytes.has(id))return photo.bytes.get(id);
     if(ids.has(id)){const b=Buffer.from(await fs.promises.readFile(path.join(directory,ids.get(id).file)));b.writeDoubleLE(b.readDoubleLE(16)+shift,16);return b;}
     if(id<CLIPPED_OFFSET)return tile(frame,id);
+    if(id>=AERIAL_OFFSET){const bytes=await tile(frame,id-AERIAL_OFFSET);return bytes?correct(bytes,shift,null,true):bytes;}
     const enhanced=id>=PHOTO_OFFSET,bytes=await tile(frame,id-(enhanced?PHOTO_OFFSET:CLIPPED_OFFSET));return bytes?correct(bytes,shift,enhanced?photo:null):bytes;
   };
   const decodedAssets=new Map();

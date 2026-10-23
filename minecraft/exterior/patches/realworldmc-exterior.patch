@@ -38,7 +38,7 @@ index 53d3868..ef48082 100644
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -422,17 +437,47 @@ public final class MapRenderer {
+@@ -422,17 +437,49 @@ public final class MapRenderer {
  		RenderSystem.depthMask(true);
  		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
@@ -75,6 +75,8 @@ index 53d3868..ef48082 100644
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:7f);
 +                if(campus && (t.data.id==1_000_030_007 || t.data.id==1_000_030_009))
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:7f);
++                if(campus && t.data.id==1_000_030_010)
++                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0?13f:(i>=4?0f:11f)));
 +                if(campus && t.data.id==1_000_030_008)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?12f:(i==2?6f:7f));
 +                if(campus && t.data.id==1_000_030_003)
@@ -138,3 +140,17 @@ index f22e08c..5af6d03 100644
  		Registry.register(BuiltInRegistries.CHUNK_GENERATOR, id("earth"), EarthChunkGenerator.CODEC);
  		Registry.register(BuiltInRegistries.CHUNK_GENERATOR, id("streetworld"), StreetChunkGenerator.CODEC);
  		PayloadTypeRegistry.playS2C().register(RegionsPayload.TYPE, RegionsPayload.CODEC);
+diff --git a/mod/src/client/java/dev/realworldmc/client/MapTile.java b/mod/src/client/java/dev/realworldmc/client/MapTile.java
+--- a/mod/src/client/java/dev/realworldmc/client/MapTile.java
++++ b/mod/src/client/java/dev/realworldmc/client/MapTile.java
+@@ -72,6 +72,10 @@
+ 		GlStateManager._bindTexture(id);
+ 		int levels = 31 - Integer.numberOfLeadingZeros(Math.max(w, h));
+ 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL12.GL_TEXTURE_MAX_LEVEL, levels);
++		// TextureUtil.prepareImage(..., 0, ...) also clamps MAX_LOD to zero.
++		// Generated mip levels remain unused until that sampling clamp is lifted.
++		GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL12.GL_TEXTURE_MIN_LOD, 0f);
++		GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL12.GL_TEXTURE_MAX_LOD, (float) levels);
+ 		GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
+ 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR_MIPMAP_LINEAR);
+ 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);

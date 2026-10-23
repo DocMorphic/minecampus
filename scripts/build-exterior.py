@@ -104,8 +104,18 @@ edges=np.flatnonzero(np.diff(np.r_[False,mask,False]));glass_spans=[(a/texture.w
 
 rasters=[rasterio.open(CACHE/('campus-dop-'+s+'.tif')) for s in ['west','east']]
 dems=[rasterio.open(CACHE/('campus-dgm-'+s+'.tif')) for s in ['west','east']]
-from exterior_terrain import ElevationSampler,terrain_axis
+from exterior_terrain import ElevationSampler,SiteGradedElevation,terrain_axis
 elevation=ElevationSampler(dems)
+# The DGM records the former COS construction site, including piles against the
+# now-completed facade. The current TUM photo supports a level finished perimeter.
+# Infer its grading from the surveyed building base; preserve other footprints.
+from shapely.geometry import Polygon
+from shapely.ops import unary_union
+cos_grounds=[r[0]for bid,surfaces in buildings if bid=='DEBY_LOD2_108698313' for typ,r in surfaces if typ=='GroundSurface']
+cos_foot=unary_union([Polygon(p[:,:2])for p in cos_grounds])
+cos_neighbours=[Polygon(r[0][:,:2])for bid,surfaces in buildings if bid!='DEBY_LOD2_108698313' for typ,r in surfaces if typ=='GroundSurface' and Polygon(r[0][:,:2]).distance(cos_foot)<9]
+cos_grade=float(np.median(np.concatenate(cos_grounds)[:,2]))+.12
+elevation=SiteGradedElevation(elevation,cos_foot,cos_grade,cos_neighbours)
 
 def orthophoto(points):
  out=np.zeros((len(points),3),dtype=np.uint8)
@@ -151,6 +161,7 @@ def triangulate(rings):
 def photo_uv(p):return np.column_stack(((p[:,0]-BOUNDS[0])/(BOUNDS[2]-BOUNDS[0]),(BOUNDS[3]-p[:,1])/(BOUNDS[3]-BOUNDS[1])))
 
 metadata={'walls':[],'boundsUtm':BOUNDS,'origin':ORIGIN,'verticalDatumNote':'Official GCG2016 grid (BKG / PROJ CDN), bilinear interpolation; DHHN2016 physical height plus geoid undulation gives ellipsoid height.','buildings':[],'tiles':[],'attribution':spec['attribution']+' (CC BY 4.0); façade material: Minecampus reconstruction'}
+metadata['siteGrading']={'building':'DEBY_LOD2_108698313','footprintUtm':list(cos_foot.exterior.coords),'heightDHHN2016':cos_grade,'innerMetres':4,'outerMetres':8,'excludedNeighbourFootprintsUtm':[list(p.exterior.coords)for p in cos_neighbours],'neighbourBufferMetres':1,'source':'https://nav.tum.de/building/cos','note':'Approximate finished-site grading inferred from the current photo and survey base; replaces obsolete construction mounds, blends to DGM beyond 4m, leaves it unchanged beyond 8m and near neighbouring buildings.'}
 # A compact DEM grid also guides runtime removal of the noisy source ground.
 guideXY=np.array([(e,n)for n in range(BOUNDS[1],BOUNDS[3]+1,2)for e in range(BOUNDS[0],BOUNDS[2]+1,2)])
 metadata['terrainGuide']={'width':301,'height':301,'points':mc(np.column_stack((guideXY,elevation.sample(guideXY)))).tolist()}

@@ -99,6 +99,15 @@ https://creativecommons.org/licenses/by/3.0/de/
 Cropped metal/glass material; surveyed envelope with reconstructed atrium,
 folding screens and terrace based on the architect's project reference.
 
+COS timber photograph: Alexander Pach / NavigaTUM (CC BY 4.0).
+https://nav.tum.de/building/cos
+https://nav.tum.de/cdn/lg/5132_0.webp
+https://creativecommons.org/licenses/by/4.0/
+An unobstructed patch is rectified, resized and repeated at an estimated scale.
+The BVV envelope and roof are retained; window dimensions, rear elevations and
+finished-site grading are approximate reconstructions, not measured as-built data.
+Source provenance is supplied as cos-reference.json.
+
 Google scenery is streamed by the user's own configured service. No Google tile
 content, Minecraft assets, credentials or saved worlds are included in this build.
 '''
@@ -142,6 +151,7 @@ with zipfile.ZipFile(release) as original:
     write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/manifest.json',(DATA/'manifest.json').read_bytes())
   write(target,'src/minecampus-exterior/NOTICE.txt',notices.encode())
+  write(target,'src/minecampus-exterior/cos-reference.json',(SOURCE/'photos/cos-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/sources.json',(SOURCE/'sources.json').read_bytes())
   write(target,'src/minecampus-exterior/vegetation-sources.json',(SOURCE/'vegetation-sources.json').read_bytes())
   write(target,'src/minecampus-exterior/ground-surfaces.geojson',(SOURCE/'ground-surfaces.geojson').read_bytes())

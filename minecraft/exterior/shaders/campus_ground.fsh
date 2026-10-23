@@ -41,6 +41,13 @@ vec3 groundNormalDetail(sampler2D source,vec3 p,vec3 weights) {
 }
 void main() {
     vec4 color=texture(Sampler0,texCoord0);
+    if(abs(MaterialDetail-13.0)<.1){
+        // Average fine timber boards over a slightly wider pixel footprint.
+        // MapTile must also lift Minecraft's initial level-zero sampling clamp.
+        vec2 size=vec2(textureSize(Sampler0,0));
+        float footprint=max(length(dFdx(texCoord0)*size),length(dFdy(texCoord0)*size));
+        color=textureLod(Sampler0,texCoord0,max(0.0,log2(max(footprint,1.0))+1.5));
+    }
     if(color.a<(MaterialDetail>3.5&&MaterialDetail<4.5?0.45:0.1))discard;
     // The aerial image supplies surveyed colour and markings. Only close-range
     // material grain is reconstructed; it does not invent additional geometry.
@@ -130,7 +137,7 @@ void main() {
         if(dot(roofN,CameraPosition-worldPosition)<0.0)roofN=-roofN;
         if(roofN.y<-.05)color.rgb=vec3(.25,.27,.28);
     }
-    if((MaterialDetail>1.5&&MaterialDetail<3.5)||(MaterialDetail>5.5&&MaterialDetail<8.5)||abs(MaterialDetail-11.0)<.1) {
+    if((MaterialDetail>1.5&&MaterialDetail<3.5)||(MaterialDetail>5.5&&MaterialDetail<8.5)||abs(MaterialDetail-11.0)<.1||abs(MaterialDetail-13.0)<.1) {
         vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
         vec3 view=normalize(CameraPosition-worldPosition);
         if(dot(n,view)<0.0)n=-n;

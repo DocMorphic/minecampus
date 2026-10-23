@@ -23,6 +23,10 @@ public final class CampusMaterials {
             if(prepared[i]!=id){
                 GlStateManager._bindTexture(id);
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D,GL12.GL_TEXTURE_MAX_LEVEL,i==4?12:10);
+                // Minecraft initially allocates these as level-zero textures.
+                // Lift its separate sampling clamp as well as MAX_LEVEL.
+                GL11.glTexParameterf(GL11.GL_TEXTURE_2D,GL12.GL_TEXTURE_MIN_LOD,0f);
+                GL11.glTexParameterf(GL11.GL_TEXTURE_2D,GL12.GL_TEXTURE_MAX_LOD,i==4?12f:10f);
                 GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D,GL11.GL_TEXTURE_MIN_FILTER,GL11.GL_LINEAR_MIPMAP_LINEAR);
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D,GL11.GL_TEXTURE_MAG_FILTER,GL11.GL_LINEAR);

@@ -1,6 +1,6 @@
 # Exterior Preview 0.5
 
-This playable development snapshot adds the IAS exterior, survey-aligned photographic walls, the former Mensa terrace frontage and retaining walls, UYA's outer façades, UYE's east/north glazing, the masonry warehouse exterior, width-mapped road materials, survey-fitted tree crowns, mapped ground materials and full DGM1 terrain sampling. It runs inside Minecraft Java 1.21.1 with the existing Minecampus add-on and Fabric setup.
+This playable development snapshot adds the IAS exterior, survey-aligned photographic walls, the former Mensa terrace frontage and retaining walls, UYA's outer façades, UYE's east/north glazing, the masonry warehouse exterior, width-mapped road materials, the Telefonzentrale west end, the COS exterior and its approximate finished-site grading, survey-fitted tree crowns, mapped ground materials and full DGM1 terrain sampling. It runs inside Minecraft Java 1.21.1 with the existing Minecampus add-on and Fabric setup.
 
 The campus is still unfinished: several neighboring walls remain blurry, paths have inconsistent detail, and reconstructed window divisions/materials are approximate. Interiors are outside this pass. The public default installer remains on 0.4.0.
 
@@ -13,7 +13,7 @@ Allow the map to finish streaming before judging geometry. The photographic faç
 ## Install the same snapshot alongside an existing setup
 
 1. Quit Minecraft and its launcher.
-2. Download `RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar` from the [0.5 development preview release](https://github.com/DocMorphic/minecampus/releases/tag/exterior-0.5.0-dev.2) into this repository's `dist-minecraft/` directory.
+2. Download `RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar` from the [0.5 development preview release](https://github.com/DocMorphic/minecampus/releases/tag/exterior-0.5.0-dev.3) into this repository's `dist-minecraft/` directory.
 3. On macOS/Linux, run `python3 scripts/install-exterior-preview.py` from the repository root. This requires the normal Minecampus installation and its map setup to exist already. It verifies the artifact hash, checks world locks, copies saves into a separate instance, verifies every copied save file, and adds the preview launcher profile. For an existing preview, use `python3 scripts/install-exterior-preview.py --update` instead. This verifies the recorded mod, refuses an open world, backs up the old mod, and replaces only that mod while verifying that saves and local settings stay unchanged.
 4. Restart the launcher and follow the play instructions above.
 
@@ -21,8 +21,8 @@ The installer uses the current user's local map configuration, stored privately 
 
 ## Evidence
 
-The released JAR is the exact native-tested artifact: SHA-256 `3aa5bec24c5c9287f33188124fb99fb89f9b755bbd2e258dee0041d709c25f68`. Fourteen native views, eleven gameplay/geometry checks, twelve material-control samples and binary geometry validation passed. Three updater tests verify save/settings preservation, rejection of modified mods, and rejection of locked worlds. See [the validation record](road-development-validation.json) and [in-game comparisons](PHOTO-FACADES-DEVELOPMENT.md#road-and-path-detail-3aa5bec2).
+The released JAR is the exact native-tested artifact: SHA-256 `d33bf85d9b112279856958605bf901f49d6f3c1cf7aff17fac2603ba6b0cb775`. Eighteen native views, fifteen native checks, 25 service tests, four terrain-sampling tests and binary geometry validation passed. Terrain verification checks all 360,000 samples: 357,572 retain the DGM heights and 2,428 use explicitly documented COS site grading. The grade is inferred from the current reference photo and surveyed base, not a new terrain survey. Three updater tests verify save/settings preservation, rejection of modified mods, and rejection of locked worlds. See [the validation record](cos-development-validation.json) and [in-game comparisons](PHOTO-FACADES-DEVELOPMENT.md#cos-exterior-and-finished-site-grading).
 
-![Central road and campus exteriors in the tested Minecraft build](../../docs/screenshots/campus-road-after.jpg)
+![COS exterior in the tested Minecraft build](../../docs/screenshots/campus-cos-after.jpg)
 
 The broader visual-quality goal remains open. Functional checks establish playability of the tested cases, not completion of the campus reconstruction.

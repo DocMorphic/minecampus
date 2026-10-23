@@ -99,6 +99,12 @@ export async function preparePhotographicFacades(service,directory,frame,origin,
  const spec=JSON.parse(await fs.promises.readFile(path.join(directory,'photo-facades.json'),'utf8'));
  const shift=origin[2]-frame.h0,tiles=[],bytes=new Map(),patches=[],copyright=new Set(),metrics=[];
  for(const plan of spec.plans){
+  if(plan.manualRoof){
+   // The replacement owns its walls even when no obsolete imagery is baked.
+   // Keep the same finite-wall cleanup used by photographic reconstructions.
+   patches.push({...plan,walls:plan.walls.map(w=>({...w,accepted:Boolean(w.reconstructed)})),roofCache:new Map()});
+   metrics.push({id:plan.id,accepted:true,reason:"complete manual envelope and roof"});continue;
+  }
   try{
    const min=plan.bounds[0].map((v,k)=>v-8+(k===1?shift:0)),max=plan.bounds[1].map((v,k)=>v+8+(k===1?shift:0));
    const nodes=await deps.collectRegionTiles(service.client,frame,min,max,1),meshes=await service.meshesFor(nodes);

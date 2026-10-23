@@ -10,11 +10,11 @@ function tile(positions){
  const b=Buffer.alloc(32+16+positions.length*20+4);b.write('ECT1');b.writeInt32LE(1,4);b.writeInt32LE(positions.length,32);b.writeInt32LE(1,36);b.writeInt32LE(1,40);b.fill(255,44,48);
  positions.forEach((p,i)=>[...p,.25,.75].forEach((n,j)=>b.writeFloatLE(n,48+i*20+j*4)));b.set([12,34,56,255],b.length-4);return b;
 }
-function fixture(t,bytes,extra={}){
+function fixture(t,bytes,extra={},deps,sourceTiles=[]){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-survey-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
  const points=[];for(let z=0;z<=20;z+=10)for(let x=0;x<=20;x+=10)points.push([x,0,z]);
  fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify({origin:Object.values(origin),attribution:'BVV CC BY 4.0',tiles:[],terrainGuide:{width:3,height:3,points},walls:[{points:[[10,0,3],[10,10,3],[10,10,17],[10,0,17]]}],...extra}));
- const service={renderSelect:async()=>({tiles:[],attribution:[]}),renderTile:async()=>bytes};const check=attachSurveySurface(service,dir);return {service,check};
+ const service={renderSelect:async()=>({tiles:sourceTiles,attribution:[]}),renderTile:async()=>bytes};const check=attachSurveySurface(service,dir,deps);return {service,check,dir};
 }
 test('survey removes source ground while retaining texture bytes and triangle header integrity',async t=>{
  const {service,check}=fixture(t,tile([[4,.4,4],[8,.8,4],[4,.5,8]]));const b=await service.renderTile(origin,1_100_000_007);
@@ -172,4 +172,27 @@ test('roof-only replacement removes contained fragments without erasing a wall c
  const shifted=tile([[4,6.5,4],[5,7.5,4],[4,7,5]]);shifted.writeDoubleLE(2,16);
  const other=fixture(t,shifted,extra);
  assert.equal((await other.service.renderTile({...origin,h0:origin.h0-2},1_100_000_007)).readInt32LE(32),0);
+});
+
+test('current landmarks survive aerial mode while unrelated photographic ground remains unchanged',async t=>{
+ const extra={tiles:[{runtimeId:1_000_030_010,kind:'reconstruction',file:'current-building.ect',alwaysVisible:true}],replacements:[{ring:[[3,3],[8,3],[8,8],[3,8]],holes:[],y0:2,y1:20,alwaysVisible:true}],protectionGrid:{width:20,height:20,metresPerPixel:1,data:Buffer.alloc(400).toString('base64')}};
+ const oldSite=fixture(t,tile([[4,8,4],[5,9,4],[4,8,5]]),extra);
+ const aerial=await oldSite.service.renderSelect(origin,[6,100,6]);assert.ok(aerial.tiles.some(x=>x.id===1_000_030_010));
+ assert.equal((await oldSite.service.renderTile(origin,1_300_000_007)).readInt32LE(32),0);
+ for(const p of [[[12,.4,12],[13,.6,12],[12,.4,13]],[[4,25,4],[5,26,4],[4,25,5]]]){
+  const original=tile(p),other=fixture(t,original,extra);assert.deepEqual(await other.service.renderTile(origin,1_300_000_007),original);
+ }
+ const shifted=tile([[4,8,4],[5,9,4],[4,8,5]]);shifted.writeDoubleLE(2,16);const other=fixture(t,shifted,extra);
+ assert.equal((await other.service.renderTile({...origin,h0:origin.h0-2},1_300_000_007)).readInt32LE(32),0);
+ assert.deepEqual((await other.service.renderSelect({...origin,lat:49},[6,100,6])).tiles,[]);
+});
+
+test('manual-only facade cleanup applies even when there are no photographic render tiles',async t=>{
+ const {service,dir}=fixture(t,tile([[5,4,5],[6,4,5],[5,5,5]]),{photoFacades:{file:'photo-facades.json'}},{collectRegionTiles(){throw Error('manual envelope needs no old photo');}},[{id:7,parent:0,chain:[]}]);
+ fs.writeFileSync(path.join(dir,'photo-facades.json'),JSON.stringify({plans:[{id:'manual',manualRoof:true,bounds:[[3,0,3],[8,8,8]],walls:[{reconstructed:true,anchor:[3,0,3],direction:[1,0,0],normal:[0,0,1],bounds:[[0,0],[5,8]]}]}]}));
+ let result;
+ for(let i=0;i<100;i++){result=await service.renderSelect(origin,[6,5,6]);if(!result.pending)break;await new Promise(r=>setTimeout(r,1));}
+ assert.equal(result.pending??0,0);
+ assert.equal(result.tiles[0].id,1_200_000_007);
+ assert.equal((await service.renderTile(origin,1_200_000_007)).readInt32LE(32),0);
 });

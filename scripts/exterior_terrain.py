@@ -31,3 +31,29 @@ def terrain_axis(start,length=100):
  # Interior vertices coincide with DGM1 sample centres. Shared integer tile
  # boundaries use interpolated heights, giving identical edges on both sides.
  return np.r_[float(start),np.arange(start+.5,start+length,1),float(start+length)]
+
+class SiteGradedElevation:
+ """Explicit local reconstruction over an older DEM; the source stays unchanged.
+
+ A finished-building perimeter is levelled to its surveyed base, with a smooth
+ transition back to the DEM. Neighbouring building footprints are excluded.
+ This is an approximation of finished grading, not new survey evidence.
+ """
+ def __init__(self,source,footprint,base,neighbours,inner=4,outer=8):
+  from shapely.ops import unary_union
+  if not 0<=inner<outer:raise ValueError('Invalid grading transition')
+  self.source,self.footprint,self.base=source,footprint,float(base)
+  self.neighbours=unary_union(neighbours).buffer(1)
+  self.inner,self.outer=inner,outer
+ def sample(self,points):
+  from shapely import points as make_points,distance,intersects
+  xy=np.asarray(points,dtype=float);result=self.source.sample(xy)
+  lo,bot,hi,top=self.footprint.bounds
+  ids=np.flatnonzero((xy[:,0]>=lo-self.outer)&(xy[:,0]<=hi+self.outer)&(xy[:,1]>=bot-self.outer)&(xy[:,1]<=top+self.outer))
+  if len(ids):
+   p=make_points(xy[ids]);d=distance(p,self.footprint)
+   t=np.clip((d-self.inner)/(self.outer-self.inner),0,1);weight=1-t*t*(3-2*t)
+   weight[intersects(p,self.neighbours)]=0
+   result[ids]+=weight*(self.base-result[ids])
+  return result
+ def __call__(self,e,n):return float(self.sample([[e,n]])[0])

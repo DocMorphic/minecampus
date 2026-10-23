@@ -269,3 +269,34 @@ After, from the same camera:
 All fifteen native views and twelve gameplay/geometry checks passed, including rays through all four window centres hitting the replacement. Roof-band retirement removes only fully contained triangles, preserving unsupported walls crossing the band. All 22 service tests pass. Collision migration v9 changed 119 proxies across the full route; preservation and journal checks passed. All 46 backed-up original world files remain unchanged. The exact artifact is recorded in [validation](telefonzentrale-development-validation.json).
 
 The neighboring Siemensbau still has coarse photographic walls. The four steles, path margins, curbs and other visible structures remain unfinished. The installed/public preview remains `exterior-0.5.0-dev.2`; this pass is a tested source build for the next snapshot. The overall goal remains active.
+
+
+## COS exterior and finished-site grading
+
+TUM 5132 / Center for Organoid Systems now uses the complete BVV envelope (`DEBY_LOD2_108698313`), with its stepped roof embedded unchanged. Alexander Pach's [NavigaTUM photograph](https://nav.tum.de/building/cos), CC BY 4.0, supplies the west/south reference and rectified timber material. Recessed openings, floor flashings and the metal rooftop screen replace the obsolete construction-site geometry. Exact dimensions and less-visible elevations are inferred; [source metadata](photos/cos-reference.json) records that distinction.
+
+The DGM still contained construction piles beside the finished building. A local inferred grade follows the surveyed base plus 0.12 m, holds level within four metres, and blends back to the original terrain by eight metres. Neighbouring building footprints plus a one-metre margin are excluded. All 360,000 encoded samples were checked: 357,572 retain DGM heights, while 2,428 use this explicit adjustment; shared tile edges remain identical. Low obsolete source debris and collision are retired over that bounded site. Parking, curbs, paths and furnishings have not been reconstructed to the current photograph.
+
+Before, from the same southwest camera:
+
+![COS site before reconstruction](../../docs/screenshots/campus-cos-before.jpg)
+
+After, in Minecraft Java:
+
+![COS southwest exterior](../../docs/screenshots/campus-cos-after.jpg)
+
+![COS south elevation and graded perimeter](../../docs/screenshots/campus-cos-south-after.jpg)
+
+COS persists in aerial mode while unrelated aerial ground retains the original photography:
+
+![COS in the surrounding aerial campus](../../docs/screenshots/campus-cos-aerial-after.jpg)
+
+Artifact `d33bf85d9b112279856958605bf901f49d6f3c1cf7aff17fac2603ba6b0cb775` passed eighteen native frames and fifteen checks, including seven COS model/roof rays and gravity landing at the former construction mound. The 25 service checks include manual-only source cleanup and aerial landmark persistence. The original 46 backed-up save files remain byte-identical. [Validation](cos-development-validation.json). Native sampler checks also verify that Minecraft’s initial level-zero clamp is lifted for map tiles and shared materials, allowing their generated mipmaps to be used. The playable snapshot is `exterior-0.5.0-dev.3`, also including the earlier Telefonzentrale pass.
+
+A controlled same-scene comparison isolated the old `GL_TEXTURE_MAX_LOD=0` clamp: generated mipmaps existed but could not be sampled. Lifting only the COS timber texture's clamp to 8 removed the strong wavy pattern. The final build lifts the corresponding clamp for all streamed/map textures and shared campus materials, with ten native sampler checks. Timber also uses a slightly wider sampling footprint; fine board lines are averaged at distance.
+
+![Before the sampling-clamp correction](../../docs/screenshots/campus-cos-filter-before.jpg)
+
+![Same scene after enabling the existing mip levels](../../docs/screenshots/campus-cos-filter-after.jpg)
+
+Remaining: visible timber repetition, approximate rear elevations and ground materials, the old construction surroundings in aerial imagery, and coarse neighbouring buildings. These views establish a specific improvement, not completion of the realism goal.

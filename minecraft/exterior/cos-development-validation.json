@@ -1,0 +1,473 @@
+{
+  "date": "2026-10-23",
+  "status": "COS envelope visible at walking height and in aerial mode; overall quality goal remains open",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 229312685,
+    "sha256": "d33bf85d9b112279856958605bf901f49d6f3c1cf7aff17fac2603ba6b0cb775",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "942429fcdef557d7bd2b871b6fa44e191e907a077aceecd788bd1b6fc7be36fd",
+    "rendererSourceFingerprint": "905057fd2abe516e",
+    "bundleSha256": "7459e568e8d35ffc96a11973eb8eed82d9de46dc317886421cfabfed86d23125",
+    "tiles": 88
+  },
+  "geometry": {
+    "renderTiles": 88,
+    "photoFacadeCandidates": 80,
+    "triangles": 1888989,
+    "textureBytes": 259315260,
+    "auxiliaryTriangles": 5186,
+    "auxiliaryTextureBytes": 13530016,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "cos": {
+    "building": "DEBY_LOD2_108698313",
+    "tumBuilding": "5132",
+    "faces": [
+      {
+        "surveyFaces": [
+          7
+        ],
+        "role": "west",
+        "windowGroups": 37,
+        "lengthMetres": 39.198914215174575,
+        "baseY": 63.03285497843414,
+        "topY": 83.53477262875556
+      },
+      {
+        "surveyFaces": [
+          8,
+          11,
+          16
+        ],
+        "role": "south",
+        "windowGroups": 10,
+        "lengthMetres": 28.969044314178305,
+        "baseY": 63.033735739229144,
+        "topY": 83.53477262948356
+      },
+      {
+        "surveyFaces": [
+          0
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 19.341038097084258,
+        "baseY": 74.83193356608885,
+        "topY": 78.63290961447368
+      },
+      {
+        "surveyFaces": [
+          1
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 1.5360697361712707,
+        "baseY": 63.03187568021496,
+        "topY": 74.83193356176002
+      },
+      {
+        "surveyFaces": [
+          2
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 12.448193771071837,
+        "baseY": 78.63214978704693,
+        "topY": 83.53278438755089
+      },
+      {
+        "surveyFaces": [
+          3
+        ],
+        "role": "inferred",
+        "windowGroups": 26,
+        "lengthMetres": 39.17286111295873,
+        "baseY": 63.03181830759792,
+        "topY": 78.63373571371787
+      },
+      {
+        "surveyFaces": [
+          4
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 19.332581286547324,
+        "baseY": 70.83187566847046,
+        "topY": 74.83285172304846
+      },
+      {
+        "surveyFaces": [
+          5
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 12.397257553026979,
+        "baseY": 78.63348607370018,
+        "topY": 83.53406593825737
+      },
+      {
+        "surveyFaces": [
+          6
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 14.340641189111494,
+        "baseY": 74.83307688881537,
+        "topY": 83.53377857447697
+      },
+      {
+        "surveyFaces": [
+          9
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 8.124843180067945,
+        "baseY": 74.83278440414082,
+        "topY": 83.53307687129075
+      },
+      {
+        "surveyFaces": [
+          10
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 1.516200120632586,
+        "baseY": 63.03181830697621,
+        "topY": 70.83187566413353
+      },
+      {
+        "surveyFaces": [
+          12
+        ],
+        "role": "inferred",
+        "windowGroups": 24,
+        "lengthMetres": 25.95116017723701,
+        "baseY": 63.03193358558073,
+        "topY": 83.53285494174601
+      },
+      {
+        "surveyFaces": [
+          13
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 14.34038351124767,
+        "baseY": 74.8327844047757,
+        "topY": 78.63348606900128
+      },
+      {
+        "surveyFaces": [
+          14
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 1.5063081803329088,
+        "baseY": 70.83279479542428,
+        "topY": 78.63285171794794
+      },
+      {
+        "surveyFaces": [
+          15
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 8.124843315943009,
+        "baseY": 74.83348607950487,
+        "topY": 83.53377857511177
+      },
+      {
+        "surveyFaces": [
+          17
+        ],
+        "role": "inferred",
+        "windowGroups": 0,
+        "lengthMetres": 1.5246085633126334,
+        "baseY": 74.83285172739191,
+        "topY": 78.63290961508683
+      }
+    ],
+    "source": "https://nav.tum.de/building/cos",
+    "note": "Surveyed complete envelope and unchanged roof. West/south openings informed by photograph; exact dimensions/recess and other elevations inferred. Rectified timber patch repeated at estimated scale. No interiors."
+  },
+  "siteGrading": {
+    "building": "DEBY_LOD2_108698313",
+    "footprintUtm": [
+      [
+        698388.34,
+        5349509.01
+      ],
+      [
+        698385.47,
+        5349489.38
+      ],
+      [
+        698376.73,
+        5349490.64
+      ],
+      [
+        698363.73,
+        5349492.53
+      ],
+      [
+        698356.8,
+        5349493.53
+      ],
+      [
+        698362.44,
+        5349532.32
+      ],
+      [
+        698382.35,
+        5349529.42
+      ],
+      [
+        698388.12,
+        5349528.58
+      ],
+      [
+        698389.64,
+        5349528.36
+      ],
+      [
+        698391.14,
+        5349528.14
+      ],
+      [
+        698388.34,
+        5349509.01
+      ]
+    ],
+    "heightDHHN2016": 473.42,
+    "innerMetres": 4,
+    "outerMetres": 8,
+    "excludedNeighbourFootprintsUtm": [],
+    "neighbourBufferMetres": 1,
+    "source": "https://nav.tum.de/building/cos",
+    "note": "Approximate finished-site grading inferred from the current photo and survey base; replaces obsolete construction mounds, blends to DGM beyond 4m, leaves it unchanged beyond 8m and near neighbouring buildings."
+  },
+  "terrainValidation": {
+    "status": "PASS: encoded terrain matches DGM1 plus explicit site grading, with adjoining tile seams preserved",
+    "sourceSampleCount": 360000,
+    "unalteredDgmSamples": 357572,
+    "inferredSiteGradingSamples": 2428,
+    "maximumPositionErrorMetres": 2.1800125178386423e-05,
+    "maximumTileSeamErrorMetres": 0,
+    "note": "Source representation accuracy only; not a claim of millimetre real-world survey accuracy. Explicit site grading is approximate finished terrain, not measured DGM.",
+    "nativeBankProbe": {
+      "positionMC": [
+        14.5,
+        -228.5
+      ],
+      "meshHeight": 62.37845813883744,
+      "expectedProxyTop": 62,
+      "toleranceMetres": 0.51
+    },
+    "nativeCosGroundProbe": {
+      "positionMC": [
+        186.5,
+        -288.5
+      ],
+      "meshHeight": 63.153159852418085,
+      "expectedProxyTop": 63,
+      "toleranceMetres": 0.51
+    }
+  },
+  "roofPreservation": {
+    "file": "DEBY_LOD2_108698313-photo-roof.ect",
+    "sha256": "8339644b1b608778529fcf4e736c4c6a095433d92470ea18fab7e5fe108e31d0",
+    "byteIdentical": true,
+    "embeddedPartByteIdentical": true
+  },
+  "textureSampling": {
+    "shaderSha256": "152589eb22792937e3b7eadb846ad3c55a680280d3f9709255ae935a5d116d55",
+    "samplers": [
+      {
+        "maxLevel": 8,
+        "maxLod": 8.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 8,
+        "maxLod": 8.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 12,
+        "maxLod": 12.0,
+        "lastMipWidth": 1
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 2
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 2
+      },
+      {
+        "maxLevel": 10,
+        "maxLod": 10.0,
+        "lastMipWidth": 2
+      }
+    ]
+  },
+  "filterDiagnosis": {
+    "baselineArtifactSha256": "f0171e51f8f98d7e0db958f7d7bedd27cd14c2e14f69ef98c1a7d6470ce69e71",
+    "sameScene": true,
+    "shaderUnchanged": true,
+    "baselineMaxLod": 0,
+    "candidateMaxLod": 8,
+    "scope": "Controlled experiment changes only the COS timber texture sampling clamp; final native run checks ten map/shared textures."
+  },
+  "serviceChecks": {
+    "passed": 25,
+    "aerialPolicy": "Only explicitly persistent landmarks and their footprint retirement apply in distant photographic mode. Other ground/photo geometry is retained.",
+    "manualRoofPolicy": "COS bypasses obsolete photo baking; the surveyed roof is embedded once in its persistent model."
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: eighteen ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail, Telefonzentrale and COS frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "telefonzentrale": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "cos": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "cos-ground": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "texture": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted"
+    },
+    "migrationVersion": 11,
+    "changedProxiesAcrossRun": 0,
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "7494123d20d2259c7c760fda6154c0ad02d68ffa6f13c951cb37561037b4a065"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "9158f364a22b21868d28ff081a455d9610d7214bdaeedb7bc02f5907349cbc26"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "f8052e12091dca61f47c0d1c98a0e826b26e8e2a2778bb553d3b15f259d0ee76"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "e8120e1342350160ae6813ed8f83fa24c22489158af31fbafd25fcabca7ed270"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "103d29ae544d39b8d184c58e934bf816587edbb44f4c31e5cf8d5412fb5ebc01"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "028212d3ec3be828e589fc59218f0e0287cd5c2fe35dbb4ae2b402c840976ee0"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "8cc49855e2fe84be2289f09a7ac7363a02e5ba0adc071f1205cbbd979be5c4af"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "42f5a2a2176d29f92a0b5dc8468446ff08e45ad530e6a13355bb8992405732d0"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "c0f5dbbe76b26c1f55b93dcc81ab30b531062cd19cb2b37e47a0c7f70dd7509b"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "680bff6bb390eaa65fe99371bea6e561d51e9532928f550e7b9a4ef7b83b9524"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "717cef7eeb678543ce5c85c88b2b170b1d8d51fdf9e565a5e7d5af920bcd155a"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "c9b4462db8a165fef6c65bfcac879032f6649b9c0e03d048b93134aaed2ecd69"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "7dc8927089c1f4e4bdf05458923abe685fb8fe6d1c920ee218f42a9ac00e9658"
+      },
+      {
+        "file": "campus-road-detail.png",
+        "sha256": "354d3b02b2e94c5ad299deb9ea1f3aae857773ab249fc05a094b34a8d4d457dd"
+      },
+      {
+        "file": "campus-telefonzentrale-west.png",
+        "sha256": "3ea2cd6443402feb084db12247657a5889153ff69cd85ae072bcfb0f0f032fe9"
+      },
+      {
+        "file": "campus-cos-southwest.png",
+        "sha256": "eaa65e9a4da4b4810b9f9ef8a6c1e1668076fd61ee71ce9c510ef5bdca100cea"
+      },
+      {
+        "file": "campus-cos-south.png",
+        "sha256": "4d20ca954d9aba4aa4c5347a76698ed0c4384499a683152fcca7898be1662db3"
+      },
+      {
+        "file": "campus-cos-aerial.png",
+        "sha256": "c56660f24481ddb462deb2693d5ca8ad91237b2c87ec83ca2f2d6e3f9e6b1887"
+      }
+    ]
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "comparison": {
+    "beforeArtifactSha256": "3c0d8f3744ffb38f0e082a7bd25d6529b44664367d6071a26e81ee1c79314b77",
+    "sameCamera": true,
+    "camera": "128 65 -267 -140 -13",
+    "beforeImage": "../../docs/screenshots/campus-cos-before.jpg",
+    "afterImage": "../../docs/screenshots/campus-cos-after.jpg"
+  },
+  "remaining": [
+    "Rear elevations and exact window dimensions are inferred.",
+    "COS forecourt, parking, entrances and surrounding site furnishings remain approximate or absent.",
+    "Other nearby photographic facades, sidewalks, curbs and terrace details remain unfinished."
+  ],
+  "installedPreview": {
+    "artifactSha256": "d33bf85d9b112279856958605bf901f49d6f3c1cf7aff17fac2603ba6b0cb775",
+    "previousArtifactSha256": "3aa5bec24c5c9287f33188124fb99fb89f9b755bbd2e258dee0041d709c25f68",
+    "saveFilesVerified": 121,
+    "savesAndSettingsUnchanged": true,
+    "previousModBackedUp": true
+  }
+}

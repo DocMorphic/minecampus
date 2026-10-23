@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {bakeWall,acceptsFacade} from './photo-facades.mjs';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {bakeWall,acceptsFacade,preparePhotographicFacades} from './photo-facades.mjs';
 const wall={anchor:[0,0,0],direction:[1,0,0],normal:[0,0,1],bounds:[[0,0],[4,4]],rings:[[[0,0],[4,0],[4,4],[0,4]]],vertices:[[0,0,0],[4,0,0],[4,4,0],[0,4,0]],indices:[0,1,2,0,2,3]};
 const mesh=(z,color,x=4)=>({mc:new Float64Array([0,0,z,x,0,z,x,4,z,0,4,z]),uvs:new Float32Array([0,1,1,1,1,0,0,0]),indices:new Uint32Array([0,1,2,0,2,3]),color});
 const options={pixelsPerMetre:4,maxProjectionDistance:6,sampleColor:(p,u,v,out)=>{out.splice(0,3,...p.color);}};
@@ -46,4 +49,14 @@ test('source ownership preserves an unsupported nearby wall and courtyard while 
  assert.equal(retiresPhotoSurface(photo,2,4,.5),true);
  assert.equal(retiresPhotoSurface(photo,2,4,2.5),false);
  assert.equal(retiresPhotoSurface(photo,20,4,.5),false);
+});
+
+test('complete manual roof/envelope skips obsolete photography and avoids a duplicate roof',async t=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-manual-roof-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+ fs.writeFileSync(path.join(dir,'photo-facades.json'),JSON.stringify({plans:[{id:'current-building',manualRoof:true,bounds:[[0,0,0],[4,4,4]],walls:[{...wall,reconstructed:true}]}]}));
+ const result=await preparePhotographicFacades({},dir,{h0:5},[48,11,5],{collectRegionTiles(){throw Error('obsolete source must not be consulted');}});
+ assert.equal(result.tiles.length,0);assert.equal(result.bytes.size,0);assert.equal(result.patches.length,1);assert.match(result.metrics[0].reason,/complete manual/);
+ const {retiresPhotoSurface}=await import('./photo-facades.mjs');
+ assert.equal(retiresPhotoSurface(result,2,2,2),true,'old debris beside a rebuilt wall is retired');
+ assert.equal(retiresPhotoSurface(result,2,2,7),false,'unrelated surroundings stay intact');
 });

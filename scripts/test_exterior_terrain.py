@@ -3,7 +3,7 @@ import unittest
 import numpy as np
 from rasterio.io import MemoryFile
 from rasterio.transform import from_origin
-from exterior_terrain import ElevationSampler,terrain_axis
+from exterior_terrain import ElevationSampler,SiteGradedElevation,terrain_axis
 
 class TerrainSamplingTest(unittest.TestCase):
  def make(self,left,values):
@@ -26,5 +26,13 @@ class TerrainSamplingTest(unittest.TestCase):
  def test_tile_edges_match_and_interior_uses_source_centres(self):
   a,b=terrain_axis(100),terrain_axis(200)
   self.assertEqual(a[-1],b[0]);np.testing.assert_array_equal(a[1:-1],np.arange(100.5,200,1))
+ def test_finished_site_grading_is_local_and_preserves_neighbours(self):
+  from shapely.geometry import box
+  class Source:
+   def sample(self,xy):return np.full(len(xy),10.)
+  grade=SiteGradedElevation(Source(),box(0,0,10,10),4,[box(12,3,14,7)])
+  xy=np.array([[5,5],[5,-4],[5,-6],[5,-8],[5,-9],[13,5],[11.5,5]])
+  np.testing.assert_allclose(grade.sample(xy),[4,4,7,10,10,10,10])
+  self.assertEqual(grade(5,-4),4)
 
 if __name__=='__main__':unittest.main()
