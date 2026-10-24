@@ -3227,14 +3227,22 @@
       "Three matched baseline camera positions are outside surveyed standing coverage; these are visual captures only. Ten separately specified standing controls pass."
     ],
     "nextActions": [
-      "Finish the fresh-generation comparison.",
-      "Repair the measured outer WSI ground transition, then reconstruct ZNN and refine surrounding ground/vegetation."
+      "Run the prepared two-camera physics-wsi-gap-before-37 baseline with the current36JAR to confirm the three fixed sky-colour rays before editing terrain.",
+      "Use the504sampled source heights for a bounded transition across the126.35m outer WSI boundary; retain seven unresolved points and preserve earlier terrain. Independently validate geometry/collision and repeat matched views.",
+      "Reconstruct ZNN and refine ground materials, outer parking and planting. Keep the overall goal active."
     ],
     "continuousWalking": {
       "status": "PASS: repeated physical traversal; visual acceptance remains false",
       "run": "physics-wsi-routes-36",
       "metres": 152.8600296238171,
       "reviewedCaptures": 35
+    },
+    "freshGeneration": {
+      "status": "PASS: fresh-generation comparison; visual acceptance remains false",
+      "run": "physics-wsi-fresh-36c",
+      "views": 6,
+      "standing": 4,
+      "westWallDirtStripAbsent": true
     }
   },
   "physicsWSIContinuousRoutes36": {
@@ -3351,5 +3359,76 @@
     "minimumMeshAboveSourceMetres": -0.025593604131159964,
     "maximumMeshAboveSourceMetres": 0.8110574512895639,
     "qualification": "Transient provider samples, nearest low-slope surface within1.25m of DGM. Diagnostic only; no geometry changed, no unresolved sample filled, and visual/collision acceptance remains pending."
+  },
+  "physicsWSIFresh36c": {
+    "status": "PASS: fresh-generation comparison; visual acceptance remains false",
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 304384887,
+      "sha256": "72e5d616453713d3cdbb3c97bc933e3f692f41901b0262175b5470382763d1e3",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "1a0a23eae062989a162f3cafb433bd065b3ef64abbed70ffb26f3f4c4a0f412e",
+      "rendererSourceFingerprint": "ea4b6b0290841ca5",
+      "bundleSha256": "78349c283e517a6ad6f932360a86381ca1ce4e9244a386c5d192643b1a0aa9d9",
+      "tiles": 267,
+      "bundleUnpackedBytes": 682926771,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "viewsReviewed": 6,
+    "standingCapturesReviewed": 4,
+    "maxSupportErrorMetres": 0.1127854190337132,
+    "firstCaptureSeconds": 370.0,
+    "fps": [
+      75,
+      102,
+      62,
+      54,
+      88,
+      52
+    ],
+    "freshWorld": {
+      "source": "/Users/dharmaydave/me/minecampus/.cache/exterior-release-check/run-campus-check/saves/campus-check-physics-canopy-fresh-32b",
+      "destination": "/Users/dharmaydave/me/minecampus/.cache/exterior-release-check/run-campus-check/saves/campus-check-physics-wsi-fresh-36c",
+      "sourceLevelSha256": "ca7fcbd1d950624330c532988588e118bce93517e975fb9defdd93ebbdaeb77c",
+      "copiedOnly": {
+        "level.dat": "d26f17423c1d5071b8c55c992d3f58e9183f08654098e8220b27297585242fc7",
+        "data/earthcraft_regions.dat": "dbc61e755d225899c7f008bea50af68d6a01a93b32721e52e88063e7369e97bb"
+      },
+      "embeddedPlayerRemoved": true,
+      "chunksCopied": false,
+      "playerDataCopied": false,
+      "existingWorldsChanged": false
+    },
+    "westWallDirtStripAbsent": true,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "failedSetupAttempt": {
+      "run": "physics-wsi-fresh-36b",
+      "terminalExit": 1,
+      "reason": "QA level metadata was missing; client stopped before any scene was captured. Setup now checks level.dat before launch."
+    },
+    "findings": [
+      "The same packaged36JAR now runs in newly generated isolated QA chunks. No chunks/playerdata were copied; embedded player was removed from the new copy of QA level metadata. Existing worlds were preserved.",
+      "All six camera views and four standing captures reviewed. The west-wall dirt strip is absent at the matched location, confirming saved state in the reused QA world rather than fresh36generation there. Ownership is not inferred; old blocks are preserved.",
+      "The northern ground/source gap and outer parking blobs remain in fresh generation. These are current scene issues requiring repair.",
+      "WSI geometry, north/south glazing, separate east/north trees and surveyed roof render consistently in the fresh scene. Ground blur and fa\u00e7ade-base halos remain."
+    ],
+    "nextActions": [
+      "Run the prepared two-camera physics-wsi-gap-before-37 baseline with the current36JAR to confirm the three fixed sky-colour rays before editing terrain.",
+      "Use the504sampled source heights for a bounded transition across the126.35m outer WSI boundary; retain seven unresolved points and preserve earlier terrain. Independently validate geometry/collision and repeat matched views.",
+      "Reconstruct ZNN and refine ground materials, outer parking and planting. Keep the overall goal active."
+    ]
   }
 }
