@@ -40,7 +40,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png", "campus-promenade-lawn-path.png", "campus-promenade-east-path.png", "campus-crosspath-south.png", "campus-crosspath-north.png", "campus-galileo-court-upper.png", "campus-galileo-court-floor.png", "campus-galileo-court-stairs.png", "campus-galileo-west.png", "campus-galileo-southwest.png", "campus-galileo-east.png", "campus-galileo-aerial.png", "campus-galileo-north-detail.png", "campus-galileo-grade-overview.png", "campus-galileo-grade-walking.png", "campus-galileo-ramps-overview.png", "campus-galileo-ramp-north.png", "campus-galileo-ramp-south.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png", "campus-promenade-lawn-path.png", "campus-promenade-east-path.png", "campus-crosspath-south.png", "campus-crosspath-north.png", "campus-galileo-court-upper.png", "campus-galileo-court-floor.png", "campus-galileo-court-stairs.png", "campus-galileo-west.png", "campus-galileo-southwest.png", "campus-galileo-east.png", "campus-galileo-aerial.png", "campus-galileo-north-detail.png", "campus-galileo-grade-overview.png", "campus-galileo-grade-walking.png", "campus-galileo-ramps-overview.png", "campus-galileo-ramp-north.png", "campus-galileo-ramp-south.png", "campus-mlz-north.png", "campus-mlz-courtyard.png", "campus-mlz-south.png", "campus-mlz-east.png", "campus-mlz-aerial.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -93,7 +93,12 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "67 65 -42 180 14",
         "151 100 -116 90 70",
         "144 64.4 -142 10 22",
-        "136 64.4 -104 10 22"
+        "136 64.4 -104 10 22",
+        "185 65 -157 0 -12",
+        "153 65 -110 -100 -8",
+        "180 76 -60 180 5",
+        "219 66 -108 90 -12",
+        "245 115 -150 48 42"
     };
 
     @Override public void onInitializeClient() {
@@ -503,7 +508,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
                 image.writeToFile(Path.of(NAMES[stage]));
             }
-            if(stage==38||stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12||stage==14||stage==15||stage==16||stage==17||stage==18||stage==19||stage==21||stage==22||stage==23||stage==24||stage==25||stage==26||stage==27||stage>=28&&stage<=34){
+            if(stage==50||stage==53||stage==54||stage==55||stage==38||stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12||stage==14||stage==15||stage==16||stage==17||stage==18||stage==19||stage==21||stage==22||stage==23||stage==24||stage==25||stage==26||stage==27||stage>=28&&stage<=34){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
                 var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
@@ -565,6 +570,10 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         }
                     }
                 }
+                if(stage==50)pixelsToPick=new float[][]{{.102f,.20f}};
+                if(stage==53)pixelsToPick=new float[][]{{.71f,.54f},{.70f,.59f}};
+                if(stage==54)pixelsToPick=new float[][]{{.5f,.5f},{.7697f,.233f},{.3477f,.3361f}};
+                if(stage==55)pixelsToPick=new float[][]{{.64f,.62f},{.66f,.62f},{.81f,.61f},{.83f,.61f}};
                 if(stage==38)pixelsToPick=new float[][]{{.74f,.445f},{.81f,.46f}};
                 if(stage==34){pixelsToPick[0]=new float[]{.61f,.30f};pixelsToPick[1]=new float[]{.61f,.42f};}
                 for(float[] pixel:pixelsToPick){
@@ -588,6 +597,12 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     var pos=blockHit.getBlockPos();pick.addProperty("block",net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(mc.level.getBlockState(pos).getBlock()).toString());pick.addProperty("blockPosition",pos.toShortString());pick.addProperty("structureBehindVegetation",structureHit);pick.addProperty("structureDistance",nearestStructure);if(structureTriangle!=null){var triangle=new com.google.gson.JsonArray();for(double value:structureTriangle)triangle.add(value);pick.add("structureTriangle",triangle);}picks.add(pick);
                 }
                 Files.writeString(Path.of("campus-fragment-picks-"+stage+".json"),picks.toString());
+                if(Boolean.getBoolean("minecampus.requireMlz")&&(stage==50||stage==53||stage==55||stage==54)){
+                    for(var element:picks){var pick=element.getAsJsonObject();int hit=pick.get("tile").getAsInt();
+                        if(stage==54){if(pick.get("u").getAsFloat()!=.5f&&hit>=1_100_000_000)throw new AssertionError("MLZ roof scan remnant still visible at "+pick);}
+                        else if(hit<1_000_030_023||hit>1_000_030_025)throw new AssertionError("MLZ wall scan remnant still visible at "+pick);
+                    }
+                }
                 if(stage==9&&Boolean.getBoolean("minecampus.requireMensaRetaining")){
                     int confirmed=0;
                     for(var element:picks){var pick=element.getAsJsonObject();float u=pick.get("u").getAsFloat();
@@ -717,6 +732,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     Files.writeString(Path.of("campus-telefonzentrale-result.txt"),"PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope");
                 }
             }
+            if(stage>=52&&stage<=56&&Boolean.getBoolean("minecampus.requireMlz"))CampusMlzChecks.verify(stage,loaded);
+            if(stage==56&&Boolean.getBoolean("minecampus.mlzReview")){Files.writeString(Path.of("campus-mlz-review-result.txt"),"PASS: eight ramp and MLZ exterior views captured");mc.stop();return;}
             if(stage==51&&Boolean.getBoolean("minecampus.requireGalileoRamps")){CampusGalileoRampChecks.begin(mc,loaded);rampsWalking=true;return;}
             if(Boolean.getBoolean("minecampus.galileoRampsReview")&&stage==51){Files.writeString(Path.of("campus-galileo-ramps-review-result.txt"),"PASS: three isolated ramp views captured");mc.stop();return;}
             if(stage==48&&Boolean.getBoolean("minecampus.requireGalileoGrade")){CampusGalileoGradeChecks.begin(mc,loaded);gradeWalking=true;return;}

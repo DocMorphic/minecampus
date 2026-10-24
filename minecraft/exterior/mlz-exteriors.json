@@ -1,0 +1,1553 @@
+{
+  "reference": "photos/galileo-east-neighbours-reference.json",
+  "referenceSha256": "0448471fb9398794778c13426c0af09b86a26b1ab3737b520d8f3ec5e77e909e",
+  "qualification": "Survey envelopes and roof triangles retained. Individual visible window groups follow state-building-office photographs and official FRM II/TUM video; dimensions are estimated by perspective rectification and relative image proportions, not measured as-built. Unobserved faces use explicitly recorded estimates. No interiors.",
+  "recessMetres": 0.22,
+  "panelJointMetres": 0.016,
+  "panelModuleMetres": 3.6,
+  "frameMetres": 0.055,
+  "buildings": {
+    "DEBY_LOD2_108180785": {
+      "name": "UYW",
+      "runtimeId": 1000030023,
+      "expectedWallCount": 30,
+      "surveyWallsSha256": "1b929f58ad9cf18f1337179dd60e0cb9c649385dddf9b84b4a831e90c7a5911d",
+      "faces": {
+        "25": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.022900763358778626,
+                0.15076335877862596
+              ],
+              "heightAboveBase": [
+                13.565574712643679,
+                15.567873563218392
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.1717557251908397,
+                0.29866412213740456
+              ],
+              "heightAboveBase": [
+                13.565574712643679,
+                15.567873563218392
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.31774809160305345,
+                0.4437022900763359
+              ],
+              "heightAboveBase": [
+                13.565574712643679,
+                15.567873563218392
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.46469465648854963,
+                0.5877862595419847
+              ],
+              "heightAboveBase": [
+                13.565574712643679,
+                15.567873563218392
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.6068702290076335,
+                0.7280534351145038
+              ],
+              "heightAboveBase": [
+                13.565574712643679,
+                15.567873563218392
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.7929389312977099,
+                0.9112595419847328
+              ],
+              "heightAboveBase": [
+                13.565574712643679,
+                15.567873563218392
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.02767175572519084,
+                0.15458015267175573
+              ],
+              "heightAboveBase": [
+                10.061551724137932,
+                12.013793103448277
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.17461832061068702,
+                0.3005725190839695
+              ],
+              "heightAboveBase": [
+                10.061551724137932,
+                12.013793103448277
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.3196564885496183,
+                0.4446564885496183
+              ],
+              "heightAboveBase": [
+                10.061551724137932,
+                12.013793103448277
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.4637404580152672,
+                0.5896946564885496
+              ],
+              "heightAboveBase": [
+                10.061551724137932,
+                12.013793103448277
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.607824427480916,
+                0.7299618320610687
+              ],
+              "heightAboveBase": [
+                10.061551724137932,
+                12.013793103448277
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.7929389312977099,
+                0.9112595419847328
+              ],
+              "heightAboveBase": [
+                10.061551724137932,
+                12.013793103448277
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.033396946564885496,
+                0.15935114503816794
+              ],
+              "heightAboveBase": [
+                5.50632183908046,
+                7.408505747126437
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.1784351145038168,
+                0.30248091603053434
+              ],
+              "heightAboveBase": [
+                5.50632183908046,
+                7.408505747126437
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.7471374045801527,
+                0.8635496183206107
+              ],
+              "heightAboveBase": [
+                5.50632183908046,
+                7.408505747126437
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.18129770992366412,
+                0.30725190839694655
+              ],
+              "heightAboveBase": [
+                1.0512068965517243,
+                3.053505747126437
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.32633587786259544,
+                0.45038167938931295
+              ],
+              "heightAboveBase": [
+                1.0512068965517243,
+                3.053505747126437
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.4685114503816794,
+                0.5896946564885496
+              ],
+              "heightAboveBase": [
+                1.0512068965517243,
+                3.053505747126437
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.6087786259541985,
+                0.7280534351145038
+              ],
+              "heightAboveBase": [
+                1.0512068965517243,
+                3.053505747126437
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.7452290076335878,
+                0.8625954198473282
+              ],
+              "heightAboveBase": [
+                1.0512068965517243,
+                3.053505747126437
+              ],
+              "kind": "window"
+            }
+          ],
+          "basis": "Official video 28 s, north outer face; six/six/three/five separated groups, rectified with visually picked corners.",
+          "referenceFrameSeconds": 28
+        },
+        "3": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.19,
+                0.88
+              ],
+              "heightAboveBase": [
+                10.1,
+                12.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.19,
+                0.88
+              ],
+              "heightAboveBase": [
+                13.7,
+                15.6
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.66,
+                0.94
+              ],
+              "heightAboveBase": [
+                0,
+                4.2
+              ],
+              "kind": "service-door"
+            }
+          ],
+          "basis": "Official video 348 s east end; two upper ribbons and tall service door. Shared station axis spans both survey fragments.",
+          "axisEndpointsMC": [
+            [
+              218.7415722711303,
+              -129.761
+            ],
+            [
+              216.385,
+              -116.687
+            ]
+          ]
+        },
+        "6": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.19,
+                0.88
+              ],
+              "heightAboveBase": [
+                10.1,
+                12.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.19,
+                0.88
+              ],
+              "heightAboveBase": [
+                13.7,
+                15.6
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.66,
+                0.94
+              ],
+              "heightAboveBase": [
+                0,
+                4.2
+              ],
+              "kind": "service-door"
+            }
+          ],
+          "basis": "Official video 348 s east end; two upper ribbons and tall service door. Shared station axis spans both survey fragments.",
+          "axisEndpointsMC": [
+            [
+              218.7415722711303,
+              -129.761
+            ],
+            [
+              216.385,
+              -116.687
+            ]
+          ]
+        },
+        "11": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.36,
+                0.72
+              ],
+              "heightAboveBase": [
+                0.8,
+                2.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.36,
+                0.72
+              ],
+              "heightAboveBase": [
+                5.0,
+                6.7
+              ],
+              "kind": "window"
+            }
+          ],
+          "basis": "Official video 24 s, west end: largely blank high wall with two low window groups."
+        },
+        "5": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.06,
+                0.45
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.4
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.53,
+                0.94
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.4
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.45
+              ],
+              "heightAboveBase": [
+                5.9,
+                7.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.53,
+                0.94
+              ],
+              "heightAboveBase": [
+                5.9,
+                7.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.45
+              ],
+              "heightAboveBase": [
+                10.0,
+                11.9
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.53,
+                0.94
+              ],
+              "heightAboveBase": [
+                10.0,
+                11.9
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.45
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.53,
+                0.94
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            }
+          ],
+          "basis": "State building office street photograph; separated ribbons and recessed western entrance. Group widths/heights estimated from perspective."
+        },
+        "28": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.06,
+                0.29
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.4
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.34,
+                0.57
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.4
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.29
+              ],
+              "heightAboveBase": [
+                5.9,
+                7.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.34,
+                0.57
+              ],
+              "heightAboveBase": [
+                5.9,
+                7.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.62,
+                0.94
+              ],
+              "heightAboveBase": [
+                5.9,
+                7.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.29
+              ],
+              "heightAboveBase": [
+                10.0,
+                11.9
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.34,
+                0.57
+              ],
+              "heightAboveBase": [
+                10.0,
+                11.9
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.62,
+                0.94
+              ],
+              "heightAboveBase": [
+                10.0,
+                11.9
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.29
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.34,
+                0.57
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.62,
+                0.94
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.64,
+                0.96
+              ],
+              "heightAboveBase": [
+                0,
+                4.3
+              ],
+              "kind": "entrance"
+            }
+          ],
+          "basis": "State building office street photograph; separated ribbons and recessed western entrance. Group widths/heights estimated from perspective."
+        },
+        "24": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.14,
+                0.85
+              ],
+              "heightAboveBase": [
+                5.9,
+                7.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.14,
+                0.85
+              ],
+              "heightAboveBase": [
+                10,
+                11.9
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.14,
+                0.85
+              ],
+              "heightAboveBase": [
+                14.1,
+                16
+              ],
+              "kind": "window"
+            }
+          ],
+          "basis": "Oblique video 348 s, inner return; group proportions estimated."
+        }
+      }
+    },
+    "DEBY_LOD2_108180786": {
+      "name": "UYL",
+      "runtimeId": 1000030024,
+      "expectedWallCount": 9,
+      "surveyWallsSha256": "778eab3c8b976547009fbc0a5a1be8207bb550b68cc9ff188b0ce6f3b3e223ae",
+      "faces": {
+        "0": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.05,
+                0.18
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.21,
+                0.34
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.37,
+                0.5
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.53,
+                0.66
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.69,
+                0.82
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.85,
+                0.96
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.05,
+                0.18
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.21,
+                0.34
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.37,
+                0.5
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.53,
+                0.66
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.69,
+                0.82
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.85,
+                0.96
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.05,
+                0.18
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.21,
+                0.34
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.37,
+                0.5
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.53,
+                0.66
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.69,
+                0.82
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.85,
+                0.96
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.05,
+                0.18
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.21,
+                0.34
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.37,
+                0.5
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.53,
+                0.66
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.69,
+                0.82
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.85,
+                0.96
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            }
+          ],
+          "basis": "Elevated native dev.18 photographic baseline reveals six separated groups across the visible upper rows. Six groups replace the earlier five-group estimate; heights and obscured lower divisions remain inferred from the common building system.",
+          "nativeReference": {
+            "artifactSha256": "cb831505de563ead526a75acf6597dcb28b2dc084ef44a82c8451cd0ccb4779b",
+            "capture": "campus-mlz-south.png",
+            "captureSha256": "c7d4e29629c148a71db7ca78d2b2381f7d0a400d4a5a06735d58ca3ee2671c22",
+            "use": "Visual geometry reference only; provider facade pixels are not packaged as textures."
+          }
+        },
+        "8": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.15,
+                0.86
+              ],
+              "heightAboveBase": [
+                10,
+                11.9
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.15,
+                0.86
+              ],
+              "heightAboveBase": [
+                14.1,
+                16
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.15,
+                0.42
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.3
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.58,
+                0.76
+              ],
+              "heightAboveBase": [
+                0,
+                3.3
+              ],
+              "kind": "service-door"
+            }
+          ],
+          "basis": "Official video 24 s west end in background; upper bands and lower openings visible, dimensions estimated."
+        },
+        "7": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.06,
+                0.44
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.52,
+                0.94
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.44
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.52,
+                0.94
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.44
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.52,
+                0.94
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.44
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.52,
+                0.94
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            }
+          ],
+          "basis": "State building office street photograph, lower western north wing; separated four-level glazing."
+        },
+        "3": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.15,
+                0.86
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.15,
+                0.86
+              ],
+              "heightAboveBase": [
+                14.1,
+                16
+              ],
+              "kind": "window"
+            }
+          ],
+          "basis": "East-end outer return partly occluded in video; extrapolated upper bands."
+        }
+      }
+    },
+    "DEBY_LOD2_108180787": {
+      "name": "UYL",
+      "runtimeId": 1000030025,
+      "expectedWallCount": 17,
+      "surveyWallsSha256": "a7c3720013cb3d1d75590ac1a23b870f1a59f17c7321b9d4b516f67ae8eb8e01",
+      "faces": {
+        "9": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.06,
+                0.46
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.54,
+                0.94
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.46
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.54,
+                0.94
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.46
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.54,
+                0.94
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.46
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.54,
+                0.94
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            }
+          ],
+          "basis": "State building office street photograph, north inner facade; grouped glazing proportions estimated."
+        },
+        "11": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.06,
+                0.46
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.54,
+                0.94
+              ],
+              "heightAboveBase": [
+                1.3,
+                3.2
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.46
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.54,
+                0.94
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.46
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.54,
+                0.94
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.06,
+                0.46
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.54,
+                0.94
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            }
+          ],
+          "basis": "State building office street photograph, north inner facade; grouped glazing proportions estimated."
+        },
+        "0": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.12,
+                0.86
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.12,
+                0.86
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.12,
+                0.86
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.18,
+                0.44
+              ],
+              "heightAboveBase": [
+                0,
+                3.7
+              ],
+              "kind": "service-door"
+            }
+          ],
+          "basis": "Official video 348 s east service end; bands/door estimated; shared station axis spans three collinear fragments.",
+          "axisEndpointsMC": [
+            [
+              212.7501,
+              -96.482
+            ],
+            [
+              210.54,
+              -84.26
+            ]
+          ]
+        },
+        "3": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.12,
+                0.86
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.12,
+                0.86
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.12,
+                0.86
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.18,
+                0.44
+              ],
+              "heightAboveBase": [
+                0,
+                3.7
+              ],
+              "kind": "service-door"
+            }
+          ],
+          "basis": "Official video 348 s east service end; bands/door estimated; shared station axis spans three collinear fragments.",
+          "axisEndpointsMC": [
+            [
+              212.7501,
+              -96.482
+            ],
+            [
+              210.54,
+              -84.26
+            ]
+          ]
+        },
+        "14": {
+          "openings": [
+            {
+              "alongFraction": [
+                0.12,
+                0.86
+              ],
+              "heightAboveBase": [
+                5.6,
+                7.5
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.12,
+                0.86
+              ],
+              "heightAboveBase": [
+                9.9,
+                11.8
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.12,
+                0.86
+              ],
+              "heightAboveBase": [
+                14.1,
+                16.0
+              ],
+              "kind": "window"
+            },
+            {
+              "alongFraction": [
+                0.18,
+                0.44
+              ],
+              "heightAboveBase": [
+                0,
+                3.7
+              ],
+              "kind": "service-door"
+            }
+          ],
+          "basis": "Official video 348 s east service end; bands/door estimated; shared station axis spans three collinear fragments.",
+          "axisEndpointsMC": [
+            [
+              212.7501,
+              -96.482
+            ],
+            [
+              210.54,
+              -84.26
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "sharedWalls": [
+    {
+      "a": [
+        "DEBY_LOD2_108180786",
+        1
+      ],
+      "b": [
+        "DEBY_LOD2_108180787",
+        1
+      ],
+      "occludedHeightRangeMC": [
+        63.966974854137725,
+        81.11720178703507
+      ]
+    },
+    {
+      "a": [
+        "DEBY_LOD2_108180786",
+        2
+      ],
+      "b": [
+        "DEBY_LOD2_108180787",
+        8
+      ],
+      "occludedHeightRangeMC": [
+        63.9672335765592,
+        81.11839910718379
+      ]
+    },
+    {
+      "a": [
+        "DEBY_LOD2_108180786",
+        4
+      ],
+      "b": [
+        "DEBY_LOD2_108180787",
+        16
+      ],
+      "occludedHeightRangeMC": [
+        63.96720179639715,
+        81.11723356623028
+      ]
+    },
+    {
+      "a": [
+        "DEBY_LOD2_108180786",
+        5
+      ],
+      "b": [
+        "DEBY_LOD2_108180787",
+        15
+      ],
+      "occludedHeightRangeMC": [
+        63.96822967501189,
+        81.11839910718379
+      ]
+    }
+  ],
+  "unlistedFaces": "Plain surveyed concrete or roof parapet; no invented repeated window pattern. Narrow returns and unobserved plant faces remain plain.",
+  "sourceRetirement": {
+    "collarMetres": 3.5,
+    "neighbourGuardMetres": 0.5,
+    "basis": "Native diagnostic rays on first candidate hit floating provider fragments 2.6\u20133.0 m outside UYW; expand only the target-building collar and subtract buffered footprints of every non-MLZ survey building.",
+    "controls": [
+      {
+        "x": 197.0946445465088,
+        "y": 68.08620145916939,
+        "z": -116.21592140197754,
+        "sourceTile": 1200027171
+      },
+      {
+        "x": 198.1686782836914,
+        "y": 68.06385344266891,
+        "z": -116.98355960845947,
+        "sourceTile": 1200027164
+      }
+    ],
+    "roofPaddingMetres": 3.0,
+    "roofControls": [
+      {
+        "x": 198.85453987121582,
+        "y": 85.7049503326416,
+        "z": -84.36227989196777,
+        "sourceTile": 1200024937
+      },
+      {
+        "x": 166.1178207397461,
+        "y": 83.38291835784912,
+        "z": -93.52139282226562,
+        "sourceTile": 1200024938
+      }
+    ],
+    "roofBasis": "Native diagnostic rays identified old roof fragments at Y=83.383 above the 81.119 lower body and Y=85.705 above the 84.998 higher body. Retire source fragments up to 3 m above each target body within the same neighbour-protected collar; surveyed roofs and other building footprints remain unchanged."
+  }
+}

@@ -1,7 +1,7 @@
 {
   "date": "2026-10-24",
-  "status": "Read-only next reconstruction study; no neighbouring building geometry changed",
-  "observedProblem": "UYW and UYL appear prominently in the east-ramp walking views as distorted photographic walls. Their repair remains part of the campus realism goal.",
+  "status": "Exterior reference study; reconstruction assumptions are recorded separately in mlz-exteriors.json",
+  "observedProblem": "Before reconstruction, UYW and UYL appeared prominently in the east-ramp walking views as distorted photographic walls.",
   "sources": [
     {
       "url": "https://nav.tum.de/building/uyw",

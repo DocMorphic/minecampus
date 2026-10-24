@@ -1,0 +1,3413 @@
+{
+  "date": "2026-10-24",
+  "status": "Native-verified MLZ exterior development checkpoint; broader realism goal remains active",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 235916640,
+    "sha256": "657391e86128e2ab86ffbb3706f2090bc01f22bf121b93be256d60331766f20d",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "56da86fc3297c5e51e8f8d53d407e2c78d863df942cc38db73f586f7d7db8560",
+    "rendererSourceFingerprint": "6d187d22d3aba861",
+    "bundleSha256": "e8415d9cceedf9ff36595304418e97ad519fb756fc861fd1b98861d31b8cbff9",
+    "tiles": 103
+  },
+  "source": "mlz-exteriors.json",
+  "sourceSha256": "df8e17e8cda2a5fb07c01af425b6f1ea33e5cac90f8168960d441e2c4b5bc89f",
+  "geometry": {
+    "status": "PASS: all 100 previous render meshes and 83 survey roofs unchanged; three reconstructed bodies; four proven shared-wall pairs clipped only across their common height",
+    "sourceRetirement": {
+      "areaSquareMetres": 3086.602307399644,
+      "maximumCollarMetres": 3.5,
+      "neighbourGuardMetres": 0.5,
+      "knownFragmentControlsCovered": 2,
+      "roofPaddingMetres": 3.0,
+      "knownRoofFragmentControlsCovered": 2
+    },
+    "sourceSha256": "df8e17e8cda2a5fb07c01af425b6f1ea33e5cac90f8168960d441e2c4b5bc89f",
+    "roofHashes": {
+      "DEBY_LOD2_108180785": "ec8020b66158798bb230f5d19a24a2ae13f716bbea0892a4b5fd05d7549db6b3",
+      "DEBY_LOD2_108180786": "95b0eeea2f0deada0fb05c76259423b208144e41bfa5fea28333e50ae3213c39",
+      "DEBY_LOD2_108180787": "0fc2bc1c25921fa52ecf3d1006f3d9f60c4b0430da73fd1b6e6e2d2840a9f98d"
+    },
+    "sharedWalls": [
+      {
+        "a": [
+          "DEBY_LOD2_108180786",
+          1
+        ],
+        "b": [
+          "DEBY_LOD2_108180787",
+          1
+        ],
+        "occludedHeightRangeMC": [
+          63.966974854137725,
+          81.11720178703507
+        ],
+        "coincidenceErrorMetres": 0.0004010674658607194
+      },
+      {
+        "a": [
+          "DEBY_LOD2_108180786",
+          2
+        ],
+        "b": [
+          "DEBY_LOD2_108180787",
+          8
+        ],
+        "occludedHeightRangeMC": [
+          63.9672335765592,
+          81.11839910718379
+        ],
+        "coincidenceErrorMetres": 0.0003930313912933126
+      },
+      {
+        "a": [
+          "DEBY_LOD2_108180786",
+          4
+        ],
+        "b": [
+          "DEBY_LOD2_108180787",
+          16
+        ],
+        "occludedHeightRangeMC": [
+          63.96720179639715,
+          81.11723356623028
+        ],
+        "coincidenceErrorMetres": 0.0006110649158434551
+      },
+      {
+        "a": [
+          "DEBY_LOD2_108180786",
+          5
+        ],
+        "b": [
+          "DEBY_LOD2_108180787",
+          15
+        ],
+        "occludedHeightRangeMC": [
+          63.96822967501189,
+          81.11839910718379
+        ],
+        "coincidenceErrorMetres": 0.0005302945703406433
+      }
+    ],
+    "openingPieces": 115,
+    "qualification": "Survey envelopes and roof triangles retained. Individual visible window groups follow state-building-office photographs and official FRM II/TUM video; dimensions are estimated by perspective rectification and relative image proportions, not measured as-built. Unobserved faces use explicitly recorded estimates. No interiors."
+  },
+  "binary": {
+    "renderTiles": 103,
+    "photoFacadeCandidates": 83,
+    "triangles": 2164416,
+    "textureBytes": 257136448,
+    "auxiliaryTriangles": 4910,
+    "auxiliaryTextureBytes": 13540392,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "jarChanges": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "LICENSES/Minecampus-exterior-notices.txt",
+      "dev/realworldmc/CampusCollision.class",
+      "dev/realworldmc/client/MapRenderer.class",
+      "realworldmc-service.sha256",
+      "realworldmc-service.zip"
+    ]
+  },
+  "collisionMigrationVersion": 23,
+  "serviceTests": {
+    "passed": 29,
+    "logSha256": "9da71827e2062c90e7c24b5a729b9d7b6f1be8cc1a06aaf8afdc07dbbbf8dd42"
+  },
+  "previewUpdaterTests": {
+    "passed": 3,
+    "logSha256": "5b3a82a7711b02c4d13ce7398380d89d976dcd281d86685fcb35ff574781d8e8"
+  },
+  "native": {
+    "checks": {
+      "campus-warehouse-result.txt": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "campus-cos-landscape-result.txt": "PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB 0.3896470588235294,0.3523137254901961,0.1912156862745098); exposed curb ray reaches its 12cm edging",
+      "campus-grs-iii-west-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-grs-iii-south-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-grs-main-west-result.txt": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "campus-galileo-facade-46-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-galileo-facade-43-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-cos-apron-result.txt": "PASS: native gravity landed on the smooth apron proxy at Y=63.0 (mesh Y=63.46271), replacing the previous Y=64 proxy",
+      "campus-roof-result.txt": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "campus-grs-connectors-courtyard-result.txt": "PASS: native rays reach the tower and west link and the repaired GRS II west facade at walking height",
+      "campus-cos-result.txt": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "campus-galileo-facade-44-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-cos-bench-result.txt": "PASS: native gravity landed player on the bench proxy at Y=64.0; visible seat top Y=63.89",
+      "campus-cos-ground-result.txt": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "campus-client-result.txt": "PASS: all configured native route frames captured after full streaming readiness",
+      "campus-grs-connectors-aerial-result.txt": "PASS: native rays reach the tower and west link, the south junction and preserved adjoining GRS roof behind any foliage",
+      "campus-grs-connectors-north-result.txt": "PASS: native rays reach the tower and west link at walking height",
+      "campus-grs-courtyard-path-result.txt": "PASS: two walking-view rays reach the paving mask on unchanged surveyed terrain, and a third reaches the low edging",
+      "campus-galileo-facade-42-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-collision-result.txt": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "campus-gameplay-result.txt": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "campus-grs-iii-tower-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-grs-courtyard-connector-result.txt": "PASS: upper scan fragment absent, lower fragment replaced by surveyed connector and adjacent GRS II facade preserved",
+      "campus-promenade-result.txt": "PASS: four mapped path controls and three facade-seam controls reach loaded surveyed ground and the active GPU asphalt mask",
+      "campus-telefonzentrale-result.txt": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "campus-bank-result.txt": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "campus-frontage-result.txt": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "campus-grs-iii-aerial-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-terrace-result.txt": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "campus-cos-site-result.txt": "PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer",
+      "campus-texture-result.txt": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted",
+      "campus-retaining-result.txt": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "campus-uye-result.txt": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "campus-grs-north-result.txt": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "campus-grs-iii-east-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-canopy-result.txt": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "campus-galileo-facade-45-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-grs-west-result.txt": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "campus-grs-main-east-result.txt": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "campus-crosspaths-result.txt": "PASS: eight crossing and entrance path controls reach loaded surveyed ground and the active GPU asphalt mask"
+    },
+    "gravity": {
+      "court": {
+        "status": "PASS: lower courtyard, five stair landings and two turning-apron controls support native gravity within the existing half-block terrain tolerance",
+        "probes": [
+          {
+            "x": 105.5,
+            "z": -157.5,
+            "meshHeight": 60.300262451171875,
+            "standingY": 60.0,
+            "onGround": true
+          },
+          {
+            "x": 96.5,
+            "z": -165.5,
+            "meshHeight": 63.650413513183594,
+            "standingY": 64.0,
+            "onGround": true
+          },
+          {
+            "x": 95.5,
+            "z": -161.5,
+            "meshHeight": 62.84052276611328,
+            "standingY": 63.0,
+            "onGround": true
+          },
+          {
+            "x": 94.5,
+            "z": -158.5,
+            "meshHeight": 62.030616760253906,
+            "standingY": 62.0,
+            "onGround": true
+          },
+          {
+            "x": 94.5,
+            "z": -154.5,
+            "meshHeight": 61.22069549560547,
+            "standingY": 61.0,
+            "onGround": true
+          },
+          {
+            "x": 93.5,
+            "z": -150.5,
+            "meshHeight": 60.30079650878906,
+            "standingY": 60.0,
+            "onGround": true
+          },
+          {
+            "x": 93.5,
+            "z": -147.5,
+            "meshHeight": 60.30085372924805,
+            "standingY": 60.0,
+            "onGround": true
+          },
+          {
+            "x": 94.5,
+            "z": -147.5,
+            "meshHeight": 60.300819396972656,
+            "standingY": 60.0,
+            "onGround": true
+          }
+        ]
+      },
+      "grade": {
+        "status": "PASS: three former frontage pits now support native gravity on reconstructed paving within the existing half-block proxy tolerance",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "x": 66.5,
+            "z": -58.5,
+            "meshHeight": 64.85272216796875,
+            "standingY": 65.0,
+            "onGround": true
+          },
+          {
+            "x": 65.5,
+            "z": -49.5,
+            "meshHeight": 64.85385131835938,
+            "standingY": 65.0,
+            "onGround": true
+          },
+          {
+            "x": 72.5,
+            "z": -73.5,
+            "meshHeight": 65.00621032714844,
+            "standingY": 65.0,
+            "onGround": true
+          }
+        ]
+      },
+      "ramps": {
+        "status": "PASS: six ramp positions support native gravity within the one-metre voxel bound derived from each displayed floor gradient",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "x": 142.5,
+            "z": -136.5,
+            "meshHeight": 63.5200080871582,
+            "standingY": 64.0,
+            "slopeDerivedVoxelTolerance": 0.6007765822287481,
+            "onGround": true
+          },
+          {
+            "x": 141.5,
+            "z": -129.5,
+            "meshHeight": 62.480201721191406,
+            "standingY": 63.0,
+            "slopeDerivedVoxelTolerance": 0.5953223755504214,
+            "onGround": true
+          },
+          {
+            "x": 139.5,
+            "z": -122.5,
+            "meshHeight": 61.403385162353516,
+            "standingY": 61.0,
+            "slopeDerivedVoxelTolerance": 0.5965181096010072,
+            "onGround": true
+          },
+          {
+            "x": 136.5,
+            "z": -101.5,
+            "meshHeight": 63.867950439453125,
+            "standingY": 64.0,
+            "slopeDerivedVoxelTolerance": 0.5779164962783133,
+            "onGround": true
+          },
+          {
+            "x": 135.5,
+            "z": -95.5,
+            "meshHeight": 62.933441162109375,
+            "standingY": 63.0,
+            "slopeDerivedVoxelTolerance": 0.609906096855496,
+            "onGround": true
+          },
+          {
+            "x": 133.5,
+            "z": -89.5,
+            "meshHeight": 61.95527267456055,
+            "standingY": 62.0,
+            "slopeDerivedVoxelTolerance": 0.5977123537991929,
+            "onGround": true
+          }
+        ]
+      }
+    },
+    "mlzOpenings": {
+      "52": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400101,
+            "x": 171.57540620815757,
+            "y": 78.43262887136103,
+            "z": -138.0278504455543
+          },
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400027,
+            "x": 171.79700740145196,
+            "y": 74.9035771472231,
+            "z": -137.98795663475673
+          },
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400028,
+            "x": 172.06785330436733,
+            "y": 70.32331852653346,
+            "z": -137.93919753267082
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 201.59005672214153,
+            "y": 65.91826105526908,
+            "z": -132.62445540530692
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030023,
+            "blockPosition": "171, 78, -139",
+            "distanceFromOutside": 1.0122228133205908
+          }
+        ]
+      },
+      "53": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999957,
+            "x": 210.95965482150646,
+            "y": 66.21590473343,
+            "z": -117.88927582087628
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999957,
+            "x": 210.95965482150646,
+            "y": 70.71590473343,
+            "z": -117.88927582087628
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999958,
+            "x": 210.95965482150646,
+            "y": 74.81590473343,
+            "z": -117.88927582087628
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999958,
+            "x": 210.95965482150646,
+            "y": 78.91590473343,
+            "z": -117.88927582087628
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.000001,
+            "x": 189.0739345751811,
+            "y": 66.21590473343,
+            "z": -114.61627228692196
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999987,
+            "x": 172.90239150915883,
+            "y": 70.71590473343,
+            "z": -117.516301243339
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.000001,
+            "x": 189.0739345751811,
+            "y": 78.91590473343,
+            "z": -114.61627228692196
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 164.13639670355906,
+            "y": 66.0669748544018,
+            "z": -100.57446738615478
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 164.13639670355906,
+            "y": 70.3669748544018,
+            "z": -100.57446738615478
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 164.13639670355906,
+            "y": 74.66697485440181,
+            "z": -100.57446738615478
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 164.13639670355906,
+            "y": 78.8669748544018,
+            "z": -100.57446738615478
+          },
+          {
+            "tile": 1000030025,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 205.1169193735171,
+            "y": 66.21661518088976,
+            "z": -97.64438067474299
+          },
+          {
+            "tile": 1000030025,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 205.1169193735171,
+            "y": 70.51661518088977,
+            "z": -97.64438067474299
+          },
+          {
+            "tile": 1000030025,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 205.1169193735171,
+            "y": 74.81661518088977,
+            "z": -97.64438067474299
+          },
+          {
+            "tile": 1000030025,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 205.1169193735171,
+            "y": 79.01661518088977,
+            "z": -97.64438067474299
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399961,
+            "x": 185.42992941077193,
+            "y": 66.21661518088976,
+            "z": -101.21046088337383
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399964,
+            "x": 185.42992941077193,
+            "y": 70.51661518088977,
+            "z": -101.21046088337383
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399961,
+            "x": 185.42992941077193,
+            "y": 74.81661518088977,
+            "z": -101.21046088337383
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399964,
+            "x": 185.42992941077193,
+            "y": 79.01661518088977,
+            "z": -101.21046088337383
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030023,
+            "blockPosition": "210, 66, -118",
+            "distanceFromOutside": 1.0965718500353525
+          },
+          {
+            "tile": 1000030024,
+            "blockPosition": "164, 66, -101",
+            "distanceFromOutside": 1.567660351963587
+          },
+          {
+            "tile": 1000030025,
+            "blockPosition": "205, 66, -98",
+            "distanceFromOutside": 1.6385379168743057
+          }
+        ]
+      },
+      "54": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399989,
+            "x": 200.4008429250382,
+            "y": 66.0669748544018,
+            "z": -78.9953394832095
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9400027,
+            "x": 183.84129822167415,
+            "y": 70.3669748544018,
+            "z": -81.96699911060573
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 167.28175351831007,
+            "y": 74.66697485440181,
+            "z": -84.93865873800195
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030024,
+            "blockPosition": "200, 66, -79",
+            "distanceFromOutside": 0.9887608644545297
+          }
+        ]
+      },
+      "55": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999992,
+            "x": 216.9598515743662,
+            "y": 74.91590473343,
+            "z": -121.1138554799178
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.0000079,
+            "x": 216.95985963525874,
+            "y": 78.51590473343,
+            "z": -121.11390010089374
+          },
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9700018,
+            "x": 216.6395725976517,
+            "y": 65.96604635675294,
+            "z": -119.34095496639856
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.0000057,
+            "x": 217.77424471228113,
+            "y": 74.91590473343,
+            "z": -125.6239295801716
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999981,
+            "x": 217.77425272276614,
+            "y": 78.51590473343,
+            "z": -125.62397415906962
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399985,
+            "x": 206.72850243374114,
+            "y": 74.66697485440181,
+            "z": -81.25462047745128
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399985,
+            "x": 206.72850243374114,
+            "y": 78.8669748544018,
+            "z": -81.25462047745128
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9400009,
+            "x": 211.7482509818993,
+            "y": 70.51661518088977,
+            "z": -92.08888273988825
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.940002,
+            "x": 211.74826476492274,
+            "y": 74.81661518088977,
+            "z": -92.0889661533656
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9400016,
+            "x": 211.7482782274107,
+            "y": 79.01661518088977,
+            "z": -92.08904762699467
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9700079,
+            "x": 211.75165197298782,
+            "y": 65.81666351361105,
+            "z": -92.1094651973634
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399865,
+            "x": 212.09135532810265,
+            "y": 70.51661518088977,
+            "z": -94.07062108789047
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9400024,
+            "x": 212.0913630665502,
+            "y": 74.81661518088977,
+            "z": -94.07066396847044
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399865,
+            "x": 212.09137062503387,
+            "y": 79.01661518088977,
+            "z": -94.07070585182761
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9700023,
+            "x": 212.02517332529249,
+            "y": 65.81664675201735,
+            "z": -93.70389085654774
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399962,
+            "x": 211.11371330463362,
+            "y": 70.51661518088977,
+            "z": -88.55365898629762
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399948,
+            "x": 211.11372114856718,
+            "y": 74.81661518088977,
+            "z": -88.55370143142541
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399962,
+            "x": 211.11372881008367,
+            "y": 79.01661518088977,
+            "z": -88.5537428894572
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030023,
+            "blockPosition": "217, 74, -121",
+            "distanceFromOutside": 0.943015039623463
+          },
+          {
+            "tile": 1000030024,
+            "blockPosition": "206, 74, -82",
+            "distanceFromOutside": 1.7241242526739642
+          },
+          {
+            "tile": 1000030025,
+            "blockPosition": "212, 70, -93",
+            "distanceFromOutside": 1.4547966363141698
+          }
+        ]
+      },
+      "56": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400065,
+            "x": 162.2853397812337,
+            "y": 65.51590473343,
+            "z": -128.69681466160995
+          },
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400066,
+            "x": 162.2853397812337,
+            "y": 69.71590473343,
+            "z": -128.69681466160995
+          },
+          {
+            "tile": 1000030024,
+            "part": 1,
+            "distance": 1.9999973,
+            "x": 156.147068471196,
+            "y": 74.76697485440181,
+            "z": -94.55083526678457
+          },
+          {
+            "tile": 1000030024,
+            "part": 1,
+            "distance": 1.9999974,
+            "x": 156.147068471196,
+            "y": 78.8669748544018,
+            "z": -94.55083526678457
+          },
+          {
+            "tile": 1000030024,
+            "part": 1,
+            "distance": 1.999997,
+            "x": 155.55193313893272,
+            "y": 70.26697485440181,
+            "z": -91.24308110957728
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9699901,
+            "x": 156.59341997039346,
+            "y": 65.46810199109291,
+            "z": -97.03165088469004
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030023,
+            "blockPosition": "161, 65, -129",
+            "distanceFromOutside": 0.6938492971221151
+          },
+          {
+            "tile": 1000030024,
+            "blockPosition": "155, 74, -95",
+            "distanceFromOutside": 0.8345131426389376
+          }
+        ]
+      }
+    },
+    "focusedMlzOpenings": {
+      "52": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400101,
+            "x": 171.57540620815757,
+            "y": 78.43262887136103,
+            "z": -138.0278504455543
+          },
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400027,
+            "x": 171.79700740145196,
+            "y": 74.9035771472231,
+            "z": -137.98795663475673
+          },
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400028,
+            "x": 172.06785330436733,
+            "y": 70.32331852653346,
+            "z": -137.93919753267082
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 201.59005672214153,
+            "y": 65.91826105526908,
+            "z": -132.62445540530692
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030023,
+            "blockPosition": "171, 78, -139",
+            "distanceFromOutside": 1.0122228133205908
+          }
+        ]
+      },
+      "53": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999957,
+            "x": 210.95965482150646,
+            "y": 66.21590473343,
+            "z": -117.88927582087628
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999957,
+            "x": 210.95965482150646,
+            "y": 70.71590473343,
+            "z": -117.88927582087628
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999958,
+            "x": 210.95965482150646,
+            "y": 74.81590473343,
+            "z": -117.88927582087628
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999958,
+            "x": 210.95965482150646,
+            "y": 78.91590473343,
+            "z": -117.88927582087628
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.000001,
+            "x": 189.0739345751811,
+            "y": 66.21590473343,
+            "z": -114.61627228692196
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999987,
+            "x": 172.90239150915883,
+            "y": 70.71590473343,
+            "z": -117.516301243339
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.000001,
+            "x": 189.0739345751811,
+            "y": 78.91590473343,
+            "z": -114.61627228692196
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 164.13639670355906,
+            "y": 66.0669748544018,
+            "z": -100.57446738615478
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 164.13639670355906,
+            "y": 70.3669748544018,
+            "z": -100.57446738615478
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 164.13639670355906,
+            "y": 74.66697485440181,
+            "z": -100.57446738615478
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 164.13639670355906,
+            "y": 78.8669748544018,
+            "z": -100.57446738615478
+          },
+          {
+            "tile": 1000030025,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 205.1169193735171,
+            "y": 66.21661518088976,
+            "z": -97.64438067474299
+          },
+          {
+            "tile": 1000030025,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 205.1169193735171,
+            "y": 70.51661518088977,
+            "z": -97.64438067474299
+          },
+          {
+            "tile": 1000030025,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 205.1169193735171,
+            "y": 74.81661518088977,
+            "z": -97.64438067474299
+          },
+          {
+            "tile": 1000030025,
+            "part": 1,
+            "distance": 2.0000029,
+            "x": 205.1169193735171,
+            "y": 79.01661518088977,
+            "z": -97.64438067474299
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399961,
+            "x": 185.42992941077193,
+            "y": 66.21661518088976,
+            "z": -101.21046088337383
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399964,
+            "x": 185.42992941077193,
+            "y": 70.51661518088977,
+            "z": -101.21046088337383
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399961,
+            "x": 185.42992941077193,
+            "y": 74.81661518088977,
+            "z": -101.21046088337383
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399964,
+            "x": 185.42992941077193,
+            "y": 79.01661518088977,
+            "z": -101.21046088337383
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030023,
+            "blockPosition": "210, 66, -118",
+            "distanceFromOutside": 1.0965718500353525
+          },
+          {
+            "tile": 1000030024,
+            "blockPosition": "164, 66, -101",
+            "distanceFromOutside": 1.567660351963587
+          },
+          {
+            "tile": 1000030025,
+            "blockPosition": "205, 66, -98",
+            "distanceFromOutside": 1.6385379168743057
+          }
+        ]
+      },
+      "54": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399989,
+            "x": 200.4008429250382,
+            "y": 66.0669748544018,
+            "z": -78.9953394832095
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9400027,
+            "x": 183.84129822167415,
+            "y": 70.3669748544018,
+            "z": -81.96699911060573
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399979,
+            "x": 167.28175351831007,
+            "y": 74.66697485440181,
+            "z": -84.93865873800195
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030024,
+            "blockPosition": "200, 66, -79",
+            "distanceFromOutside": 0.9887608644545297
+          }
+        ]
+      },
+      "55": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999992,
+            "x": 216.9598515743662,
+            "y": 74.91590473343,
+            "z": -121.1138554799178
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.0000079,
+            "x": 216.95985963525874,
+            "y": 78.51590473343,
+            "z": -121.11390010089374
+          },
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9700018,
+            "x": 216.6395725976517,
+            "y": 65.96604635675294,
+            "z": -119.34095496639856
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 2.0000057,
+            "x": 217.77424471228113,
+            "y": 74.91590473343,
+            "z": -125.6239295801716
+          },
+          {
+            "tile": 1000030023,
+            "part": 1,
+            "distance": 1.9999981,
+            "x": 217.77425272276614,
+            "y": 78.51590473343,
+            "z": -125.62397415906962
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399985,
+            "x": 206.72850243374114,
+            "y": 74.66697485440181,
+            "z": -81.25462047745128
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9399985,
+            "x": 206.72850243374114,
+            "y": 78.8669748544018,
+            "z": -81.25462047745128
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9400009,
+            "x": 211.7482509818993,
+            "y": 70.51661518088977,
+            "z": -92.08888273988825
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.940002,
+            "x": 211.74826476492274,
+            "y": 74.81661518088977,
+            "z": -92.0889661533656
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9400016,
+            "x": 211.7482782274107,
+            "y": 79.01661518088977,
+            "z": -92.08904762699467
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9700079,
+            "x": 211.75165197298782,
+            "y": 65.81666351361105,
+            "z": -92.1094651973634
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399865,
+            "x": 212.09135532810265,
+            "y": 70.51661518088977,
+            "z": -94.07062108789047
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9400024,
+            "x": 212.0913630665502,
+            "y": 74.81661518088977,
+            "z": -94.07066396847044
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399865,
+            "x": 212.09137062503387,
+            "y": 79.01661518088977,
+            "z": -94.07070585182761
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9700023,
+            "x": 212.02517332529249,
+            "y": 65.81664675201735,
+            "z": -93.70389085654774
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399962,
+            "x": 211.11371330463362,
+            "y": 70.51661518088977,
+            "z": -88.55365898629762
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399948,
+            "x": 211.11372114856718,
+            "y": 74.81661518088977,
+            "z": -88.55370143142541
+          },
+          {
+            "tile": 1000030025,
+            "part": 2,
+            "distance": 1.9399962,
+            "x": 211.11372881008367,
+            "y": 79.01661518088977,
+            "z": -88.5537428894572
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030023,
+            "blockPosition": "217, 74, -121",
+            "distanceFromOutside": 0.943015039623463
+          },
+          {
+            "tile": 1000030024,
+            "blockPosition": "206, 74, -82",
+            "distanceFromOutside": 1.7241242526739642
+          },
+          {
+            "tile": 1000030025,
+            "blockPosition": "212, 70, -93",
+            "distanceFromOutside": 1.4547966363141698
+          }
+        ]
+      },
+      "56": {
+        "status": "PASS: individual MLZ openings visible on displayed reconstruction without overlapping source facades",
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+        "probes": [
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400065,
+            "x": 162.2853397812337,
+            "y": 65.51590473343,
+            "z": -128.69681466160995
+          },
+          {
+            "tile": 1000030023,
+            "part": 2,
+            "distance": 1.9400066,
+            "x": 162.2853397812337,
+            "y": 69.71590473343,
+            "z": -128.69681466160995
+          },
+          {
+            "tile": 1000030024,
+            "part": 1,
+            "distance": 1.9999973,
+            "x": 156.147068471196,
+            "y": 74.76697485440181,
+            "z": -94.55083526678457
+          },
+          {
+            "tile": 1000030024,
+            "part": 1,
+            "distance": 1.9999974,
+            "x": 156.147068471196,
+            "y": 78.8669748544018,
+            "z": -94.55083526678457
+          },
+          {
+            "tile": 1000030024,
+            "part": 1,
+            "distance": 1.999997,
+            "x": 155.55193313893272,
+            "y": 70.26697485440181,
+            "z": -91.24308110957728
+          },
+          {
+            "tile": 1000030024,
+            "part": 2,
+            "distance": 1.9699901,
+            "x": 156.59341997039346,
+            "y": 65.46810199109291,
+            "z": -97.03165088469004
+          }
+        ],
+        "nativeWallColliders": [
+          {
+            "tile": 1000030023,
+            "blockPosition": "161, 65, -129",
+            "distanceFromOutside": 0.6938492971221151
+          },
+          {
+            "tile": 1000030024,
+            "blockPosition": "155, 74, -95",
+            "distanceFromOutside": 0.8345131426389376
+          }
+        ]
+      }
+    },
+    "knownScanRemnants": {
+      "full": {
+        "50": [
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.102,
+            "v": 0.2,
+            "fov": 76.99999332427979,
+            "tile": 1000030024,
+            "x": 174.91904640197754,
+            "y": 68.273765707016,
+            "z": -98.86163711547852,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "160, 67, -120",
+            "structureBehindVegetation": 1000030024,
+            "structureDistance": 52.42545,
+            "structureTriangle": [
+              177.0461883544922,
+              67.42498990138779,
+              -98.47964477539062,
+              173.5186309814453,
+              69.41699429591904,
+              -99.11312866210938,
+              173.5186309814453,
+              67.42498990138779,
+              -99.11312866210938
+            ]
+          }
+        ],
+        "53": [
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.71,
+            "v": 0.54,
+            "fov": 76.99999332427979,
+            "tile": 1000030025,
+            "x": 178.9970245361328,
+            "y": 68.40624368190765,
+            "z": -99.85062408447266,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "178, 68, -100",
+            "structureBehindVegetation": 1000030025,
+            "structureDistance": 27.32031,
+            "structureTriangle": [
+              178.689697265625,
+              71.15863247951279,
+              -98.1922836303711,
+              178.689697265625,
+              67.57463284572373,
+              -98.1922836303711,
+              179.3427734375,
+              67.57463284572373,
+              -101.71627807617188
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.7,
+            "v": 0.59,
+            "fov": 76.99999332427979,
+            "tile": 1000030025,
+            "x": 179.12712287902832,
+            "y": 66.5587632060051,
+            "z": -100.5526180267334,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "179, 66, -101",
+            "structureBehindVegetation": 1000030025,
+            "structureDistance": 27.144224,
+            "structureTriangle": [
+              178.689697265625,
+              67.5586340053917,
+              -98.1922836303711,
+              179.3427734375,
+              63.97463437160263,
+              -101.71627807617188,
+              179.3427734375,
+              67.5586340053917,
+              -101.71627807617188
+            ]
+          }
+        ],
+        "54": [
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.5,
+            "v": 0.5,
+            "fov": 76.99999332427979,
+            "tile": 1000030024,
+            "x": 180.4999960059863,
+            "y": 75.62148809432983,
+            "z": -82.34309577941895,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "180, 75, -83",
+            "structureBehindVegetation": 1000030024,
+            "structureDistance": 22.930351,
+            "structureTriangle": [
+              180.43878173828125,
+              77.91699429591904,
+              -82.35408020019531,
+              181.50091552734375,
+              75.61699124416123,
+              -82.1634750366211,
+              180.43878173828125,
+              75.61699124416123,
+              -82.35408020019531
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.7697,
+            "v": 0.233,
+            "fov": 76.99999332427979,
+            "tile": -1,
+            "x": 5926.43505859375,
+            "y": 2608.634160041809,
+            "z": -7842.69873046875,
+            "block": "minecraft:void_air",
+            "blockPosition": "327, 142, -259",
+            "structureBehindVegetation": -1,
+            "structureDistance": 10000.0
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.3477,
+            "v": 0.3361,
+            "fov": 76.99999332427979,
+            "tile": -1,
+            "x": -3666.717529296875,
+            "y": 1619.194462776184,
+            "z": -9160.185546875,
+            "block": "minecraft:void_air",
+            "blockPosition": "82, 117, -293",
+            "structureBehindVegetation": -1,
+            "structureDistance": 10000.0
+          }
+        ],
+        "55": [
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.64,
+            "v": 0.62,
+            "fov": 76.99999332427979,
+            "tile": 1000030023,
+            "x": 194.37476539611816,
+            "y": 68.14279562234879,
+            "z": -117.2739839553833,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "194, 68, -118",
+            "structureBehindVegetation": 1000030023,
+            "structureDistance": 26.964449,
+            "structureTriangle": [
+              194.3251495361328,
+              67.47392483791123,
+              -116.99567413330078,
+              194.3251495361328,
+              69.76592465480576,
+              -116.99567413330078,
+              194.7816619873047,
+              69.76592465480576,
+              -119.556396484375
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.66,
+            "v": 0.62,
+            "fov": 76.99999332427979,
+            "tile": 1000030023,
+            "x": 194.60540390014648,
+            "y": 68.13799661397934,
+            "z": -118.56773281097412,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "194, 68, -119",
+            "structureBehindVegetation": 1000030023,
+            "structureDistance": 27.248926,
+            "structureTriangle": [
+              194.7816619873047,
+              69.76592465480576,
+              -119.556396484375,
+              194.95416259765625,
+              67.47392483791123,
+              -120.5240478515625,
+              194.3251495361328,
+              67.47392483791123,
+              -116.99567413330078
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.81,
+            "v": 0.61,
+            "fov": 76.99999332427979,
+            "tile": 1000030023,
+            "x": 206.8939619064331,
+            "y": 68.07650998234749,
+            "z": -118.3940019607544,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "207, 68, -119",
+            "structureBehindVegetation": 1000030023,
+            "structureDistance": 16.667328,
+            "structureTriangle": [
+              206.74205017089844,
+              69.76592465480576,
+              -118.42121124267578,
+              209.2898712158203,
+              67.47392483791123,
+              -117.96485900878906,
+              205.76202392578125,
+              67.47392483791123,
+              -118.59674835205078
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.83,
+            "v": 0.61,
+            "fov": 76.99999332427979,
+            "tile": 1000030023,
+            "x": 207.8426809310913,
+            "y": 68.04215347766876,
+            "z": -118.22407245635986,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "209, 67, -118",
+            "structureBehindVegetation": 1000030023,
+            "structureDistance": 15.84541,
+            "structureTriangle": [
+              206.74205017089844,
+              69.76592465480576,
+              -118.42121124267578,
+              209.2898712158203,
+              67.47392483791123,
+              -117.96485900878906,
+              205.76202392578125,
+              67.47392483791123,
+              -118.59674835205078
+            ]
+          }
+        ]
+      },
+      "focused": {
+        "50": [
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.102,
+            "v": 0.2,
+            "fov": 76.99999332427979,
+            "tile": 1000030024,
+            "x": 174.91904640197754,
+            "y": 68.273765707016,
+            "z": -98.86163711547852,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "160, 67, -120",
+            "structureBehindVegetation": 1000030024,
+            "structureDistance": 52.42545,
+            "structureTriangle": [
+              177.0461883544922,
+              67.42498990138779,
+              -98.47964477539062,
+              173.5186309814453,
+              69.41699429591904,
+              -99.11312866210938,
+              173.5186309814453,
+              67.42498990138779,
+              -99.11312866210938
+            ]
+          }
+        ],
+        "53": [
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.71,
+            "v": 0.54,
+            "fov": 76.99999332427979,
+            "tile": 1000030025,
+            "x": 178.9970245361328,
+            "y": 68.40624368190765,
+            "z": -99.85062408447266,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "173, 67, -103",
+            "structureBehindVegetation": 1000030025,
+            "structureDistance": 27.32031,
+            "structureTriangle": [
+              178.689697265625,
+              71.15863247951279,
+              -98.1922836303711,
+              178.689697265625,
+              67.57463284572373,
+              -98.1922836303711,
+              179.3427734375,
+              67.57463284572373,
+              -101.71627807617188
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.7,
+            "v": 0.59,
+            "fov": 76.99999332427979,
+            "tile": 1000030025,
+            "x": 179.12712287902832,
+            "y": 66.5587632060051,
+            "z": -100.5526180267334,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "173, 66, -103",
+            "structureBehindVegetation": 1000030025,
+            "structureDistance": 27.144224,
+            "structureTriangle": [
+              178.689697265625,
+              67.5586340053917,
+              -98.1922836303711,
+              179.3427734375,
+              63.97463437160263,
+              -101.71627807617188,
+              179.3427734375,
+              67.5586340053917,
+              -101.71627807617188
+            ]
+          }
+        ],
+        "54": [
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.5,
+            "v": 0.5,
+            "fov": 76.99999332427979,
+            "tile": 1000030024,
+            "x": 180.4999960059863,
+            "y": 75.62148809432983,
+            "z": -82.34309577941895,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "180, 75, -83",
+            "structureBehindVegetation": 1000030024,
+            "structureDistance": 22.930351,
+            "structureTriangle": [
+              180.43878173828125,
+              77.91699429591904,
+              -82.35408020019531,
+              181.50091552734375,
+              75.61699124416123,
+              -82.1634750366211,
+              180.43878173828125,
+              75.61699124416123,
+              -82.35408020019531
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.7697,
+            "v": 0.233,
+            "fov": 76.99999332427979,
+            "tile": -1,
+            "x": 5926.43505859375,
+            "y": 2608.634160041809,
+            "z": -7842.69873046875,
+            "block": "minecraft:void_air",
+            "blockPosition": "327, 142, -259",
+            "structureBehindVegetation": -1,
+            "structureDistance": 10000.0
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.3477,
+            "v": 0.3361,
+            "fov": 76.99999332427979,
+            "tile": -1,
+            "x": -3666.717529296875,
+            "y": 1619.194462776184,
+            "z": -9160.185546875,
+            "block": "minecraft:void_air",
+            "blockPosition": "82, 117, -293",
+            "structureBehindVegetation": -1,
+            "structureDistance": 10000.0
+          }
+        ],
+        "55": [
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.64,
+            "v": 0.62,
+            "fov": 76.99999332427979,
+            "tile": 1000030023,
+            "x": 194.37476539611816,
+            "y": 68.14279562234879,
+            "z": -117.2739839553833,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "194, 68, -118",
+            "structureBehindVegetation": 1000030023,
+            "structureDistance": 26.964449,
+            "structureTriangle": [
+              194.3251495361328,
+              67.47392483791123,
+              -116.99567413330078,
+              194.3251495361328,
+              69.76592465480576,
+              -116.99567413330078,
+              194.7816619873047,
+              69.76592465480576,
+              -119.556396484375
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.66,
+            "v": 0.62,
+            "fov": 76.99999332427979,
+            "tile": 1000030023,
+            "x": 194.60540390014648,
+            "y": 68.13799661397934,
+            "z": -118.56773281097412,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "194, 68, -119",
+            "structureBehindVegetation": 1000030023,
+            "structureDistance": 27.248926,
+            "structureTriangle": [
+              194.7816619873047,
+              69.76592465480576,
+              -119.556396484375,
+              194.95416259765625,
+              67.47392483791123,
+              -120.5240478515625,
+              194.3251495361328,
+              67.47392483791123,
+              -116.99567413330078
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.81,
+            "v": 0.61,
+            "fov": 76.99999332427979,
+            "tile": 1000030023,
+            "x": 206.8939619064331,
+            "y": 68.07650998234749,
+            "z": -118.3940019607544,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "211, 67, -115",
+            "structureBehindVegetation": 1000030023,
+            "structureDistance": 16.667328,
+            "structureTriangle": [
+              206.74205017089844,
+              69.76592465480576,
+              -118.42121124267578,
+              209.2898712158203,
+              67.47392483791123,
+              -117.96485900878906,
+              205.76202392578125,
+              67.47392483791123,
+              -118.59674835205078
+            ]
+          },
+          {
+            "frameGroundHeight": 519.7618173672081,
+            "u": 0.83,
+            "v": 0.61,
+            "fov": 76.99999332427979,
+            "tile": 1000030023,
+            "x": 207.8426809310913,
+            "y": 68.04215347766876,
+            "z": -118.22407245635986,
+            "block": "earthcraft:map_stone",
+            "blockPosition": "211, 67, -115",
+            "structureBehindVegetation": 1000030023,
+            "structureDistance": 15.84541,
+            "structureTriangle": [
+              206.74205017089844,
+              69.76592465480576,
+              -118.42121124267578,
+              209.2898712158203,
+              67.47392483791123,
+              -117.96485900878906,
+              205.76202392578125,
+              67.47392483791123,
+              -118.59674835205078
+            ]
+          }
+        ]
+      }
+    },
+    "shadowRoute": {
+      "status": "PASS: packaged shadows and sky-consistent material lighting verified across the native route",
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+      "frames": [
+        {
+          "stage": 0,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 351,
+          "shadowDraws": 35,
+          "fps": 70
+        },
+        {
+          "stage": 1,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 540,
+          "shadowDraws": 28,
+          "fps": 115
+        },
+        {
+          "stage": 2,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 637,
+          "shadowDraws": 40,
+          "fps": 106
+        },
+        {
+          "stage": 3,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 730,
+          "shadowDraws": 41,
+          "fps": 111
+        },
+        {
+          "stage": 4,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 822,
+          "shadowDraws": 71,
+          "fps": 83
+        },
+        {
+          "stage": 5,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 918,
+          "shadowDraws": 87,
+          "fps": 102
+        },
+        {
+          "stage": 6,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1013,
+          "shadowDraws": 90,
+          "fps": 116
+        },
+        {
+          "stage": 7,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1108,
+          "shadowDraws": 42,
+          "fps": 95
+        },
+        {
+          "stage": 8,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1200,
+          "shadowDraws": 140,
+          "fps": 73
+        },
+        {
+          "stage": 9,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1297,
+          "shadowDraws": 89,
+          "fps": 115
+        },
+        {
+          "stage": 10,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1392,
+          "shadowDraws": 87,
+          "fps": 116
+        },
+        {
+          "stage": 11,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1485,
+          "shadowDraws": 38,
+          "fps": 103
+        },
+        {
+          "stage": 12,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1576,
+          "shadowDraws": 113,
+          "fps": 67
+        },
+        {
+          "stage": 13,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1671,
+          "shadowDraws": 87,
+          "fps": 106
+        },
+        {
+          "stage": 14,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1765,
+          "shadowDraws": 98,
+          "fps": 88
+        },
+        {
+          "stage": 15,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1857,
+          "shadowDraws": 98,
+          "fps": 115
+        },
+        {
+          "stage": 16,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1951,
+          "shadowDraws": 105,
+          "fps": 105
+        },
+        {
+          "stage": 17,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2144,
+          "shadowDraws": 28,
+          "fps": 114
+        },
+        {
+          "stage": 18,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2238,
+          "shadowDraws": 83,
+          "fps": 114
+        },
+        {
+          "stage": 19,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2331,
+          "shadowDraws": 81,
+          "fps": 115
+        },
+        {
+          "stage": 20,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2420,
+          "shadowDraws": 49,
+          "fps": 55
+        },
+        {
+          "stage": 21,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2511,
+          "shadowDraws": 63,
+          "fps": 65
+        },
+        {
+          "stage": 22,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2603,
+          "shadowDraws": 89,
+          "fps": 113
+        },
+        {
+          "stage": 23,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2697,
+          "shadowDraws": 90,
+          "fps": 89
+        },
+        {
+          "stage": 24,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2790,
+          "shadowDraws": 88,
+          "fps": 111
+        },
+        {
+          "stage": 25,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2886,
+          "shadowDraws": 85,
+          "fps": 108
+        },
+        {
+          "stage": 26,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2979,
+          "shadowDraws": 85,
+          "fps": 110
+        },
+        {
+          "stage": 27,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3072,
+          "shadowDraws": 72,
+          "fps": 83
+        },
+        {
+          "stage": 28,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3167,
+          "shadowDraws": 140,
+          "fps": 109
+        },
+        {
+          "stage": 29,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3261,
+          "shadowDraws": 102,
+          "fps": 115
+        },
+        {
+          "stage": 30,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3353,
+          "shadowDraws": 104,
+          "fps": 84
+        },
+        {
+          "stage": 31,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3443,
+          "shadowDraws": 108,
+          "fps": 81
+        },
+        {
+          "stage": 32,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3538,
+          "shadowDraws": 91,
+          "fps": 108
+        },
+        {
+          "stage": 33,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3630,
+          "shadowDraws": 108,
+          "fps": 79
+        },
+        {
+          "stage": 34,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3722,
+          "shadowDraws": 108,
+          "fps": 87
+        },
+        {
+          "stage": 35,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3847,
+          "shadowDraws": 37,
+          "fps": 93
+        },
+        {
+          "stage": 36,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3937,
+          "shadowDraws": 41,
+          "fps": 74
+        },
+        {
+          "stage": 37,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4029,
+          "shadowDraws": 36,
+          "fps": 64
+        },
+        {
+          "stage": 38,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4119,
+          "shadowDraws": 44,
+          "fps": 73
+        },
+        {
+          "stage": 39,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4214,
+          "shadowDraws": 97,
+          "fps": 99
+        },
+        {
+          "stage": 40,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4309,
+          "shadowDraws": 54,
+          "fps": 96
+        },
+        {
+          "stage": 41,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4405,
+          "shadowDraws": 92,
+          "fps": 116
+        },
+        {
+          "stage": 42,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4897,
+          "shadowDraws": 41,
+          "fps": 69
+        },
+        {
+          "stage": 43,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4991,
+          "shadowDraws": 33,
+          "fps": 68
+        },
+        {
+          "stage": 44,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5087,
+          "shadowDraws": 81,
+          "fps": 85
+        },
+        {
+          "stage": 45,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5180,
+          "shadowDraws": 81,
+          "fps": 67
+        },
+        {
+          "stage": 46,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5272,
+          "shadowDraws": 54,
+          "fps": 74
+        },
+        {
+          "stage": 47,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5363,
+          "shadowDraws": 29,
+          "fps": 69
+        },
+        {
+          "stage": 48,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5453,
+          "shadowDraws": 32,
+          "fps": 81
+        },
+        {
+          "stage": 49,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5693,
+          "shadowDraws": 86,
+          "fps": 106
+        },
+        {
+          "stage": 50,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5787,
+          "shadowDraws": 83,
+          "fps": 109
+        },
+        {
+          "stage": 51,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5877,
+          "shadowDraws": 69,
+          "fps": 71
+        },
+        {
+          "stage": 52,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 6267,
+          "shadowDraws": 232,
+          "fps": 85
+        },
+        {
+          "stage": 53,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 6360,
+          "shadowDraws": 83,
+          "fps": 108
+        },
+        {
+          "stage": 54,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 6452,
+          "shadowDraws": 192,
+          "fps": 57
+        },
+        {
+          "stage": 55,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 6544,
+          "shadowDraws": 251,
+          "fps": 83
+        },
+        {
+          "stage": 56,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 6747,
+          "shadowDraws": 42,
+          "fps": 111
+        }
+      ]
+    },
+    "reflectionRoute": {
+      "status": "PASS: packaged reflection state checked across the full native route",
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-657391e861.jar",
+      "frames": [
+        {
+          "stage": 0,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 3538,
+          "stateChecks": 3538,
+          "fps": 70,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 1,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 3540,
+          "stateChecks": 3540,
+          "fps": 115
+        },
+        {
+          "stage": 2,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 4570,
+          "stateChecks": 4570,
+          "fps": 106,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 3,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 4572,
+          "stateChecks": 4572,
+          "fps": 111
+        },
+        {
+          "stage": 4,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 5307,
+          "stateChecks": 5307,
+          "fps": 83,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 5,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 6244,
+          "stateChecks": 6244,
+          "fps": 102,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 6,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 6246,
+          "stateChecks": 6246,
+          "fps": 116
+        },
+        {
+          "stage": 7,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 6246,
+          "stateChecks": 6246,
+          "fps": 95
+        },
+        {
+          "stage": 8,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 6945,
+          "stateChecks": 6945,
+          "fps": 73,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 9,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 6947,
+          "stateChecks": 6947,
+          "fps": 115
+        },
+        {
+          "stage": 10,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 6947,
+          "stateChecks": 6947,
+          "fps": 116
+        },
+        {
+          "stage": 11,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 6947,
+          "stateChecks": 6947,
+          "fps": 103
+        },
+        {
+          "stage": 12,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 7560,
+          "stateChecks": 7560,
+          "fps": 67,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9835444,
+            0.0,
+            0.18066633,
+            -78.74504
+          ]
+        },
+        {
+          "stage": 13,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 8579,
+          "stateChecks": 8579,
+          "fps": 106,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 14,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 8581,
+          "stateChecks": 8581,
+          "fps": 88
+        },
+        {
+          "stage": 15,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 8581,
+          "stateChecks": 8581,
+          "fps": 115
+        },
+        {
+          "stage": 16,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 8581,
+          "stateChecks": 8581,
+          "fps": 105
+        },
+        {
+          "stage": 17,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 8581,
+          "stateChecks": 8581,
+          "fps": 114
+        },
+        {
+          "stage": 18,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 8581,
+          "stateChecks": 8581,
+          "fps": 114
+        },
+        {
+          "stage": 19,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 8581,
+          "stateChecks": 8581,
+          "fps": 115
+        },
+        {
+          "stage": 20,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9086,
+          "stateChecks": 9086,
+          "fps": 55,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 21,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9698,
+          "stateChecks": 9698,
+          "fps": 65,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 22,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 113
+        },
+        {
+          "stage": 23,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 89
+        },
+        {
+          "stage": 24,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 111
+        },
+        {
+          "stage": 25,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 108
+        },
+        {
+          "stage": 26,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 110
+        },
+        {
+          "stage": 27,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 83
+        },
+        {
+          "stage": 28,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 109
+        },
+        {
+          "stage": 29,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 115
+        },
+        {
+          "stage": 30,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 84
+        },
+        {
+          "stage": 31,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 81
+        },
+        {
+          "stage": 32,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 108
+        },
+        {
+          "stage": 33,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 79
+        },
+        {
+          "stage": 34,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 9700,
+          "stateChecks": 9700,
+          "fps": 87
+        },
+        {
+          "stage": 35,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 10984,
+          "stateChecks": 10984,
+          "fps": 93,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 36,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 11680,
+          "stateChecks": 11680,
+          "fps": 74,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 37,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 12289,
+          "stateChecks": 12289,
+          "fps": 64,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 38,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 12974,
+          "stateChecks": 12974,
+          "fps": 73,
+          "planeTile": 1000000101,
+          "plane": [
+            -0.18125997,
+            -1.2583116e-06,
+            0.98343515,
+            159.56155
+          ]
+        },
+        {
+          "stage": 39,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 13906,
+          "stateChecks": 13906,
+          "fps": 99,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 40,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 13908,
+          "stateChecks": 13908,
+          "fps": 96
+        },
+        {
+          "stage": 41,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 15024,
+          "stateChecks": 15024,
+          "fps": 116,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 42,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 19958,
+          "stateChecks": 19958,
+          "fps": 69,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 43,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 20590,
+          "stateChecks": 20590,
+          "fps": 68,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 44,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 21406,
+          "stateChecks": 21406,
+          "fps": 85,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 45,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 22048,
+          "stateChecks": 22048,
+          "fps": 67,
+          "planeTile": 1000000101,
+          "plane": [
+            -0.18125997,
+            -1.2583116e-06,
+            0.98343515,
+            159.56155
+          ]
+        },
+        {
+          "stage": 46,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 22755,
+          "stateChecks": 22755,
+          "fps": 74,
+          "planeTile": 1000000101,
+          "plane": [
+            -0.18125997,
+            -1.2583116e-06,
+            0.98343515,
+            159.56155
+          ]
+        },
+        {
+          "stage": 47,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 23407,
+          "stateChecks": 23407,
+          "fps": 69,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 48,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 24183,
+          "stateChecks": 24183,
+          "fps": 81,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 49,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 26573,
+          "stateChecks": 26573,
+          "fps": 106,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 50,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 27633,
+          "stateChecks": 27633,
+          "fps": 109,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 51,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 28311,
+          "stateChecks": 28311,
+          "fps": 71,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 52,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 31874,
+          "stateChecks": 31874,
+          "fps": 85,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 53,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 31876,
+          "stateChecks": 31876,
+          "fps": 108
+        },
+        {
+          "stage": 54,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 32420,
+          "stateChecks": 32420,
+          "fps": 57,
+          "planeTile": 1000000101,
+          "plane": [
+            -0.18059166,
+            -1.3525597e-06,
+            0.98355824,
+            120.50958
+          ]
+        },
+        {
+          "stage": 55,
+          "gpuStrength": 1.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 33203,
+          "stateChecks": 33203,
+          "fps": 83,
+          "planeTile": 1000000101,
+          "plane": [
+            -0.18125997,
+            -1.2583116e-06,
+            0.98343515,
+            159.56155
+          ]
+        },
+        {
+          "stage": 56,
+          "gpuStrength": 0.0,
+          "textureBinding": 296,
+          "glError": 0,
+          "reflectionUpdates": 33267,
+          "stateChecks": 33267,
+          "fps": 111
+        }
+      ]
+    },
+    "courtyardArtifactAttribution": "The older courtyard JSON omits rendererJar; it is fresh within the same frozen full run whose route and other reports identify the tested artifact."
+  },
+  "captureHashes": {
+    "campus-final-ground.png": "2750d3fd8bba3b6e47ab3c6863546eaaea63f39a1588a4ae0b343495d41ce75b",
+    "campus-final-aerial.png": "c40a7a3ab6f4051ba399ac00a0925ee07522033f8c58003dd70bb3a78260d48a",
+    "campus-tnt.png": "785ad22507e21c87e25d022d2baa2c6942279e1b8f2175c793f881c5e892b227",
+    "campus-route-west.png": "0c529002f88e97f9c097cfbc7a112a453b3e732b5fb60cd89d9d732b557f43b7",
+    "campus-route-south.png": "4e563844b1895747e642b2bd605b125753e450334885f73c94d611db9d7a042c",
+    "campus-route-north.png": "7f913b80e70e64842faf7d36a879b4ac6ad4a856543722165540774875636dfe",
+    "campus-source-check.png": "3c8397ff2a6072de13d93ee6c15965e9339d9333923d2b7ae7527472d790f1fd",
+    "campus-ias.png": "83e3f8e18bc1b6c0097698e757964a7f21dfb2451ae1ca0b2a506fbca5372551",
+    "campus-photo-north.png": "63fcbde0a0255240730b9b39211a6da5d4ed14fa58daeeac59c85c89a9caddc1",
+    "campus-former-mensa.png": "22e151bf1df0857f490873fdccb0d98894e64f4a02ea34a8d00be33d238c7fa4",
+    "campus-mensa-terrace.png": "5f79cf067a1cda24b8200e10af4fb4a181720f4acc83ed668128bdec0f88620a",
+    "campus-paving-detail.png": "2b908404b28f8fef2d2c44e010003796dc3769fcb3e5927ab3fc2b955de350ca",
+    "campus-warehouse-east.png": "c8f98e3c95ae8162f7767d616952715240619742997b7c66fb3f95ef58b00a6e",
+    "campus-road-detail.png": "16f0963fff6a26d20165679f781986c1f20463f6668f7a35934211c937f331ac",
+    "campus-telefonzentrale-west.png": "56145cbb962d5916f57a3837f44c18dab17a8a9d2fd89cec5c4f98d2d198ee34",
+    "campus-cos-southwest.png": "1e86ccc3d512c7d282c74c0166bc204344a9e21b688f1a558d4967f3e8395af5",
+    "campus-cos-south.png": "af159080c5b5e89eddb1be091c15e13e07ac1f0ad145858d46459713979061b8",
+    "campus-cos-aerial.png": "159120cebbf052ac0f981cc1f56505687676a28b39409511754f713be80e3b2c",
+    "campus-cos-forecourt.png": "2b829f997e65d83536f05aeec70aa514bcd3f6b4a836eb66e2f1761c0afcfaef",
+    "campus-cos-planting.png": "57848a55398ab283a9393ad4b1a3273382834dd293aa21205091c7c7181f51e5",
+    "campus-cos-north.png": "d27dd4369ab66853e92f8b94a0510bd8f826868768c25685e4aaf3e240b25e85",
+    "campus-grs-north.png": "a1b728cf81cd3d1af3aa6c94ae829bbcd6c5e45c46b934f2cfaddf8a6da925cc",
+    "campus-grs-west.png": "0e4c79012a018493e66c17b82fd33f82a65066ce6b8a8642f7c2d87789eafc4e",
+    "campus-grs-tower-north.png": "db9cfd8b4cbc9347100c3646ae41f33bc8113fdc395a5a8760b2d811d0217582",
+    "campus-grs-tower-courtyard.png": "a2e6a1305e381d32aff26494b712f258bf7e825814413a1a3043d525f20993e8",
+    "campus-grs-connectors-aerial.png": "dd1391fc8ce8b04bdeabd1084dfba33624b95babbda50682f812d68388b7fa7b",
+    "campus-grs-main-west.png": "720627d892c1a47e9bfa26ca2297d3cbe03f418837904cd2aa92c8a1eca1a635",
+    "campus-grs-main-east.png": "78e486946ffeec9fd4ca341cabc76397fdebff912b236c905e0574c21baf534a",
+    "campus-grs-iii-west.png": "2bcfaeb57a72a80cbe1082cf7bbc0e12dfc1b124d0b4b19cb52d46df1b0cb68e",
+    "campus-grs-iii-south.png": "3d8d2c483d633aacd626925f0a24e80d8c5907e8312521952e2b9e0f08fe3ed3",
+    "campus-grs-iii-east.png": "f73e6081d96f566500a5a8bd5d411b2512943f01afab702ddbd51e2bc73a3b7d",
+    "campus-grs-iii-tower.png": "3d07c8da6c783d1f80cac7c49c5485876d4549b8544e0f4bac99c7e181d9d9e0",
+    "campus-grs-iii-aerial.png": "af5188996a6cfe9e469e05b4271beb7fea6cdeef12cfa0a71c567c3dd3f848b4",
+    "campus-grs-courtyard-path.png": "b0e23184c46667e13445815484ac6a1c1d7ca78bbe6f40bbd10cc7588e07b314",
+    "campus-grs-courtyard-connector.png": "3d07c8da6c783d1f80cac7c49c5485876d4549b8544e0f4bac99c7e181d9d9e0",
+    "campus-promenade-lawn-path.png": "32d2db68106255abdc3d9a2539d3d727b48f012777e68b4be8b6224ee4ed87e2",
+    "campus-promenade-east-path.png": "6b10010fd2edc15340e648f22969a47daf21a90b144a55ca996706dce008f008",
+    "campus-crosspath-south.png": "eabeb77f9d1b9df53917c3ad6fe22ee6052348e5adddf58d7ef5bb03bebc1a06",
+    "campus-crosspath-north.png": "6bd95c05c97ff28a7fd26b2aeacd95bda772e1562346b8ed5fafd19ad25dcb91",
+    "campus-galileo-court-upper.png": "51646e1d964570f6df2688cfb9f3fa79f693dc27d890dd565324bfb82d5bb323",
+    "campus-galileo-court-floor.png": "4ce5f569c63f15ece92a7289631ad7ccec5603797c7e178dba1ed1658e689cb8",
+    "campus-galileo-court-stairs.png": "7df58c56ae033923e74cbee210016688db0141d19589613efdfa73929ef14bf8",
+    "campus-galileo-west.png": "beccc37352930d747e4a491a6ac9d0c7c1961bb89cf36489ef4f7b5f7698d8c4",
+    "campus-galileo-southwest.png": "8f9cb457c6bfe7b2d9a97290a9419c2a1d019cc0234a107b8f22ec6acc7169dd",
+    "campus-galileo-east.png": "c0cb24911e6838f45eb3d3c0b7521ad5b16906955b2123d16e44fb664df18d8c",
+    "campus-galileo-aerial.png": "b71fd398e122fe004baf87265ad24cc37ae84fffd04f16d202245a56ed54760a",
+    "campus-galileo-north-detail.png": "f8b9424b9686ff08da9382724132f28eeac64550ed994728be4dd7a4b4626f21",
+    "campus-galileo-grade-overview.png": "cce576a2ab56a5160a67e95f0d7d20ff833b9a4cb3ebacdb35021b696baa169b",
+    "campus-galileo-grade-walking.png": "c64644b92cf2d318dc7175194bb48e2eee4fd8dee4156221ce290fecc1281045",
+    "campus-galileo-ramps-overview.png": "f827a179f3694b25850668fed8670a0f810b4e3ed00de3803355e951c9768417",
+    "campus-galileo-ramp-north.png": "95f764048f2bdf45d2f5665358cf5f21aac0a391dce0bef9e513b4c74ec5599d",
+    "campus-galileo-ramp-south.png": "a3ffdd452dc3bafa529a5675272992f20585475c9d35eeb9181f6be7bcb96f27",
+    "campus-mlz-north.png": "2fd5c607f615409bdf7e535ccddb202058ea395fd2db3c8b0753e78a8081daf4",
+    "campus-mlz-courtyard.png": "db65114c3884bb992d538fd43919e5fb34f7ca8e6b9b03e970105b9a51eddb84",
+    "campus-mlz-south.png": "bafc9533a748b73230bf95b0c789bdc1e6fe593d8cb0ac19f5b41c7bc46c19a3",
+    "campus-mlz-east.png": "eb0aa507cad62cf31f63fdce7b12150a274451c037b0977a27a840ee3e8e69d1",
+    "campus-mlz-aerial.png": "c806d65a4fdb673823788d728ba4759e7fc62403304681d8dce128fa345b6280"
+  },
+  "focusedCaptureHashes": {
+    "campus-galileo-ramps-overview.png": "ecd144ff07cf4522d30c110dc58fef1ff8853ec51639d3e741a8fbdf12358aa0",
+    "campus-galileo-ramp-north.png": "811e04eeb3278cde5b8bb3c6d0a0fe9d4cc5d2464e881c4c8be8fc34ad877e23",
+    "campus-galileo-ramp-south.png": "a3179fc4ed8fa601e8799470b6e68a2e2f835d410fadaa8cf52682451fd98921",
+    "campus-mlz-north.png": "03f6ec7987229dadd8a1970f0113899fe5c16382c28c620d410fa0fcce1c4aa8",
+    "campus-mlz-courtyard.png": "4a0fd567f6b1f581f9997124d99ad5eac80083283d31dd5c278bf3cbf3d7d965",
+    "campus-mlz-south.png": "bafc9533a748b73230bf95b0c789bdc1e6fe593d8cb0ac19f5b41c7bc46c19a3",
+    "campus-mlz-east.png": "eb0aa507cad62cf31f63fdce7b12150a274451c037b0977a27a840ee3e8e69d1",
+    "campus-mlz-aerial.png": "5666b2cebca13660f501cbe1ced7f9af8f2ba70bfcb884adce7ea784add12a0f"
+  },
+  "baseline": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 235611467,
+      "sha256": "cb831505de563ead526a75acf6597dcb28b2dc084ef44a82c8451cd0ccb4779b",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "d797577e04bb758776e8effc18c55e86a881c70abeada3b573b305262f8a8d12",
+      "rendererSourceFingerprint": "44e67986ea255584",
+      "bundleSha256": "5c74ee30b649b263175721cc2f0abf21618cc9a2f4625381577b3646e7c17dfd",
+      "tiles": 100
+    },
+    "captureHashes": {
+      "campus-galileo-ramps-overview.png": "4bcc31a0c2e4484b5957cb5f8c771913543dc241704e1de8bbbe1ff635c9b509",
+      "campus-galileo-ramp-north.png": "f320bb63645524d12f3e3c52805bfdf77441f6a927e4a0b7ae211a4b47a5c0cc",
+      "campus-galileo-ramp-south.png": "7774115f1977953fca15f9b444289140d2afe8a8745cee9cc6fb14b4ffd27213",
+      "campus-mlz-north.png": "f56c6dfbf06533018a02e18e7605caa68380fa1c4d52d93f09a47b4f319af1b4",
+      "campus-mlz-courtyard.png": "ea174bc31e7982a11c1d1ff21b7bf8b1e3f8d2904132c5d167dc4c22720d8a21",
+      "campus-mlz-south.png": "c7d4e29629c148a71db7ca78d2b2381f7d0a400d4a5a06735d58ca3ee2671c22",
+      "campus-mlz-east.png": "d514d134d671794447df2bbb9111efcec882f6c694532cadedefb0ec01993f10",
+      "campus-mlz-aerial.png": "474dc7ed43278f2d319e3440c7c8562e15fc0d60036d8d195095ebff4c8c200b"
+    },
+    "southernView": {
+      "startTime": 1792816850.627424,
+      "artifact": {
+        "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+        "size": 235611467,
+        "sha256": "cb831505de563ead526a75acf6597dcb28b2dc084ef44a82c8451cd0ccb4779b",
+        "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+        "sourcePatchSha256": "d797577e04bb758776e8effc18c55e86a881c70abeada3b573b305262f8a8d12",
+        "rendererSourceFingerprint": "44e67986ea255584",
+        "bundleSha256": "5c74ee30b649b263175721cc2f0abf21618cc9a2f4625381577b3646e7c17dfd",
+        "tiles": 100
+      },
+      "stage": 54,
+      "camera": "180 76 -60 180 5",
+      "qualification": "Elevated southern overview above the neighbouring workshops. Ground-level baselines were blocked by adjacent source geometry; the courtyard and both ramp approaches remain ground-level checks.",
+      "checkSources": {
+        "CampusPromenadeChecks.java": "37849cb9c75d4ee4c038ad4de1ffed2544b190c84ffa5bffb1e63c6908708bda",
+        "CampusReflectionLifecycleCheck.java": "52ac94b168a0e0670d749ef9b01e7f56232c15be3f2ddf6c4aaf0782858f4c2d",
+        "CampusMlzChecks.java": "3d971441fb807d7d4526a80920a437b66805a248fce3b5ec8665c3bb5717e18c",
+        "CampusReflectionMotionCheck.java": "42a2c7ca67a8beae2be023611d5d3b7edaaa64ebcedad0ea945a3942b76beec1",
+        "CampusShadowFunctionalCheck.java": "84c91d8dfe772d62fb71e73ca77cd0451c8bbe8ca5a0b5401c46dc4b0a3064ce",
+        "CampusMaterialBenchmark.java": "3f3db1de09256fe1889714600fcc669ffeb5374b586ad91a79ca7f8d8389726b",
+        "CampusReflectionFunctionalCheck.java": "65980239cc98860533c15f1b15224280d15b783b5f98223aaabbd9708d845073",
+        "CampusGalileoRampChecks.java": "333b27644cb1783e458d67d6f1de74086673fb2b25af2d4e8a09012f09feb06b",
+        "CampusCrosspathChecks.java": "758672ecbfc4add691912248b272571e21eb9ef3bc83c51a7e966e60fcd852df",
+        "CampusGalileoGradeChecks.java": "18e37c01fc9e612646496c29d6ce9914888168ced0baa90215b346a20b961c68",
+        "CampusGalileoCourtChecks.java": "9677cb318a6a433420ce7ff9170a5eedbabcb60f1d6a1c7b864ff23e13aa66ad",
+        "CampusReflectionIntegrationCheck.java": "8df23d020f3674bd8461318c5c5599855e452a6e601da02b344b42be44caaa3f",
+        "CampusExteriorCheck.java": "1ae26d2e399cbc94c47d7c9e6bf3e8c68d8342a21f2cc6e31aed302f45167ea7",
+        "CampusGalileoFacadeChecks.java": "369e4663551d98f123b70feb6be182b5bd42b71720c4ac704c698bb5abf5b19b",
+        "CampusShadowChecks.java": "a2e172980a95dc6f693399d855a48967e6921c9a11cefae01a850cda14452976",
+        "CampusReflectionChecks.java": "cb7f97e3d5041c9e7a57bb75abdf14c827456bb6a5b59f86e54fd533e236315f"
+      }
+    }
+  },
+  "checkSources": {
+    "CampusPromenadeChecks.java": "37849cb9c75d4ee4c038ad4de1ffed2544b190c84ffa5bffb1e63c6908708bda",
+    "CampusReflectionLifecycleCheck.java": "52ac94b168a0e0670d749ef9b01e7f56232c15be3f2ddf6c4aaf0782858f4c2d",
+    "CampusMlzChecks.java": "8a69d02ebce166cee1bef0a3f93fc6573f4ac712477f082e7e3d46a6a2e21226",
+    "CampusReflectionMotionCheck.java": "42a2c7ca67a8beae2be023611d5d3b7edaaa64ebcedad0ea945a3942b76beec1",
+    "CampusShadowFunctionalCheck.java": "84c91d8dfe772d62fb71e73ca77cd0451c8bbe8ca5a0b5401c46dc4b0a3064ce",
+    "CampusMaterialBenchmark.java": "3f3db1de09256fe1889714600fcc669ffeb5374b586ad91a79ca7f8d8389726b",
+    "CampusReflectionFunctionalCheck.java": "65980239cc98860533c15f1b15224280d15b783b5f98223aaabbd9708d845073",
+    "CampusGalileoRampChecks.java": "333b27644cb1783e458d67d6f1de74086673fb2b25af2d4e8a09012f09feb06b",
+    "CampusCrosspathChecks.java": "758672ecbfc4add691912248b272571e21eb9ef3bc83c51a7e966e60fcd852df",
+    "CampusGalileoGradeChecks.java": "18e37c01fc9e612646496c29d6ce9914888168ced0baa90215b346a20b961c68",
+    "CampusGalileoCourtChecks.java": "9677cb318a6a433420ce7ff9170a5eedbabcb60f1d6a1c7b864ff23e13aa66ad",
+    "CampusReflectionIntegrationCheck.java": "8df23d020f3674bd8461318c5c5599855e452a6e601da02b344b42be44caaa3f",
+    "CampusExteriorCheck.java": "af9ddd2d3a6666dc92eefadab8f302d450a1db9aa5813757232d49bbc264d55a",
+    "CampusGalileoFacadeChecks.java": "369e4663551d98f123b70feb6be182b5bd42b71720c4ac704c698bb5abf5b19b",
+    "CampusShadowChecks.java": "a2e172980a95dc6f693399d855a48967e6921c9a11cefae01a850cda14452976",
+    "CampusReflectionChecks.java": "cb7f97e3d5041c9e7a57bb75abdf14c827456bb6a5b59f86e54fd533e236315f"
+  },
+  "visualReview": "All 57 fresh route images and the eight focused comparisons reviewed. UYW/UYL now have defined survey envelopes, recessed opening groups and retained roof steps; known wall/roof scan remnants were checked. Adjacent workshops, ground colours and other reconstruction limits remain unfinished.",
+  "retainedTerrainEvidence": {
+    "file": "galileo-ramps-development-validation.json",
+    "scope": "All 100 existing render meshes, including every terrain and ramp tile, are byte-identical to dev.18. Existing survey/terrain guides and bounded ramp collision planes also remain unchanged; the new full route rechecks all 17 gravity probes."
+  },
+  "retainedRendererEvidence": {
+    "file": "reflection-development-validation.json",
+    "artifactSha256": "78db6f22790fcf0ca76364c376def1382df27b079d1da6b69431c89fd818f805",
+    "scope": "Only MLZ material routing and collision migration version change in compiled renderer/server classes. Lighting/reflection code and shaders remain unchanged. Earlier night/motion/reload/disconnect functional evidence remains specific to dev.16; both current routes are fresh."
+  },
+  "limitations": [
+    "Window proportions, panel joints, recesses and doors are source-informed estimates, not measured as-built details.",
+    "Southern window grouping uses the photographic baseline; lower obscured divisions remain inferred.",
+    "South verification is an elevated view above adjacent workshops; ramps and the central lane provide ground-level views.",
+    "Roof equipment, exact small details, adjacent workshops, landscaping and baked ground-image colours remain unfinished.",
+    "Minecraft collision remains an approximation on a one-metre grid.",
+    "No interiors are reconstructed."
+  ],
+  "installation": {
+    "artifactSha256": "657391e86128e2ab86ffbb3706f2090bc01f22bf121b93be256d60331766f20d",
+    "previewSaveFilesUnchanged": 121,
+    "originalSaveFilesUnchanged": 121,
+    "settingsFilesUnchanged": 4,
+    "originalBackupFilesUnchanged": 46,
+    "previousArtifactRetained": "cb831505de563ead526a75acf6597dcb28b2dc084ef44a82c8451cd0ccb4779b"
+  }
+}
