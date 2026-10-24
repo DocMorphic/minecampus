@@ -134,3 +134,12 @@ Cameras 39–41 add the upper edge (`104 65 -176 0 25`), courtyard floor (`105 6
 `validate-galileo-court.py --baseline <directory>` expects the preceding artifact's complete exterior directory at `<directory>/exterior`. It verifies exactly two bounded ground cuts, unchanged surrounding tile bytes, original barycentric XYZ/UV interpolation at cut edges, preserved ground textures, connected lower landing/floor, 27 risers, median surveyed floor height, unchanged old architecture and all previous masks/guides. `validate-terrain.py` checks the surviving original DGM-centred samples; newly clipped boundary vertices are covered by the courtyard validator.
 
 The 4 m stair width and 27 risers are OSM tags. The five-flight layout follows DGM plateaux; endpoints and riser allocation are estimates. Its centreline is shifted 0.65 m west to reconcile the width with the separately mapped retaining wall. Lower landing extension, wall/parapet thickness, handrails, lower exterior glazing and pavement grain are inferred. Interiors and the unrelated Wasserwand/escalators are excluded.
+
+
+## Galileo facade panels
+
+Cameras 42–46 inspect the west, southwest, east, northwest aerial and north-detail views. A focused run starts at 42 with `minecampus.galileoFacadeReview=true`. Add `minecampus.requireGalileoFacade=true` to require `campus-galileo-facade-{42..46}-result.txt`. The full route now has 47 captures and a 17,000-tick deadline.
+
+`CampusGalileoFacadeChecks` samples a 7 × 5 grid of native camera rays against displayed meshes, excluding foliage only for structural diagnosis. Each walking view must reach both Galileo's metal and recessed glass parts; the aerial view must reach a preserved roof part. Diagnostics record every ray, the material-part counts and the packaged renderer JAR. These are loading/geometry checks, not proof of photorealism or an accurate window schedule. Inspect all five images against the preceding artifact and primary source photos.
+
+`validate-galileo-facade.py --baseline <directory>` requires the previous complete exterior directory in `<directory>/exterior`. It verifies the exact two-mesh scope, byte-identical roof parts, unchanged 97 other render tiles and all old manifests/guides. It independently projects the generated recessed backing triangles onto each of the 95 survey walls and checks coverage. Collision migration is v20; the standard save-edit migration and gameplay checks remain required before installing the candidate.

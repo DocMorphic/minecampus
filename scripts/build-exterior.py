@@ -91,15 +91,12 @@ for name in ['campus-east.gml','campus-west.gml']:
   if points[:,0].max()<BOUNDS[0] or points[:,0].min()>BOUNDS[2] or points[:,1].max()<BOUNDS[1] or points[:,1].min()>BOUNDS[3]:continue
   buildings.append((b.get('{'+NS['g']+'}id'),surfaces))
 
-# A real, CC0 Galileo facade photograph by MaxEmanuel (Wikimedia Commons).
-# Rectify an unobstructed facade strip; replication on unphotographed walls is
-# a reconstruction, not a claim that every window has been measured.
-source=Image.open(ROOT/'minecraft/exterior/photos/galileo-north.jpg')
-scale=source.width/1280
-texture=source.transform((768,256),Image.Transform.QUAD,tuple(v*scale for v in (500,34,500,129,950,90,950,0)),resample=Image.Resampling.BICUBIC).convert('RGB')
-texture.save(OUT/'galileo-facade-rectified.jpg',quality=95)
-pixels=np.asarray(texture).astype(float);blue=(pixels[40:220,:,2]-pixels[40:220,:,0]).mean(axis=0);bright=pixels[40:220].mean(axis=(0,2));mask=(blue>2.5)|(bright>249)
-edges=np.flatnonzero(np.diff(np.r_[False,mask,False]));glass_spans=[(a/texture.width*12,b/texture.width*12) for a,b in zip(edges[::2],edges[1::2]) if b-a>4]
+# The main Galileo facade uses explicit panel geometry; contractor photos are
+# references only. The earlier repeated strip is no longer a texture asset.
+from exterior_galileo_facade import wall as build_galileo_wall
+facade_source=ROOT/'minecraft/exterior/photos/galileo-facade-reference.json'
+facade_spec=json.loads(facade_source.read_text())
+facade_records={}
 
 
 rasters=[rasterio.open(CACHE/('campus-dop-'+s+'.tif')) for s in ['west','east']]
@@ -194,6 +191,7 @@ REPLACE=set(GALILEO)|set(LANDSCAPE)
 metadata['replacements']=[]
 for bid,surfaces in buildings:
  wall=[];glazing=[];reveals=[];roof=[];grounds=[];allq=[]
+ if bid in GALILEO:facade_records[bid]=[]
  footprints=[Polygon(mc(r[0])[:,[0,2]],[mc(h)[:,[0,2]] for h in r[1:]]) for typ,r in surfaces if typ=='GroundSurface']
  footprint=unary_union([p if p.is_valid else p.buffer(0) for p in footprints])
  for typ,rings in surfaces:
@@ -210,44 +208,13 @@ for bid,surfaces in buildings:
   if bid not in REPLACE:continue
   if bid in LANDSCAPE:
    wall.extend([[*q[i],0,0] for t in indices for i in t]);continue
-  # Clip the measured planar wall into floor/photograph sections. Every section
-  # uses 0..1 UVs; no dependence on sampler repeat or unbounded UV coordinates.
-  anchor=q[0];delta=next((v-anchor for v in q if np.linalg.norm((v-anchor)[[0,2]])>.1),None)
-  if delta is None:continue
-  direction=np.array([delta[0],0,delta[2]]);direction/=np.linalg.norm(direction)
-  along=(q-anchor)@direction;poly=Polygon(np.column_stack((along,q[:,1])))
-  if not poly.is_valid:poly=poly.buffer(0)
-  if poly.geom_type!='Polygon':continue
-  left,bottom,right,top=poly.bounds
-  normal=np.array([-direction[2],0,direction[0]])
-  mid=q.mean(axis=0)
-  if footprint.contains(Point((mid+normal*.3)[[0,2]])):normal=-normal
-  for x0 in np.arange(math.floor(left/12)*12,right,12):
-   for y0 in np.arange(bottom,top,4.15):
-    cell=poly.intersection(box(x0,y0,x0+12,y0+4.15))
-    if cell.is_empty:continue
-    windows=unary_union([box(x0+l,y0+.15,x0+r,y0+4.0) for l,r in glass_spans])
-    for clipped,inset in [(cell.difference(windows),0),(cell.intersection(windows),.09)]:
-     shapes=[clipped] if clipped.geom_type=='Polygon' else list(getattr(clipped,'geoms',[]))
-     for shape in shapes:
-      if shape.geom_type!='Polygon' or shape.area<.001:continue
-      rings=[np.asarray(shape.exterior.coords[:-1])]+[np.asarray(r.coords[:-1]) for r in shape.interiors]
-      xy=np.concatenate(rings);idx=mapbox_earcut.triangulate_float64(xy,np.cumsum([len(r) for r in rings]).astype(np.uint32))
-      for i in idx:
-       x,y=xy[i];v=anchor+direction*x-normal*inset;v[1]=y;(glazing if inset else wall).append([*v,(x-x0)/12,1-(y-y0)/4.15])
-      if inset:
-       for ring in rings:
-        for i in range(len(ring)):
-         coords=[]
-         for j,depth in [(i,0),((i+1)%len(ring),0),((i+1)%len(ring),inset),(i,inset)]:
-          x,y=ring[j];v=anchor+direction*x-normal*depth;v[1]=y;coords.append([*v,0,0])
-         for j in [0,1,2,0,2,3]:reveals.append(coords[j])
+  build_galileo_wall(q,footprint,facade_spec['reconstruction']['floorLevelsMC'][bid],[wall,glazing,reveals],facade_records[bid])
 
  a=np.array(allq);entry={'id':bid,'grounds':grounds,'bounds':[a.min(axis=0).tolist(),a.max(axis=0).tolist()]};metadata['buildings'].append(entry)
  if bid not in REPLACE:continue
  parts=[]
- if wall:parts.append((wall,Image.new("RGB",(1,1),(177,179,173)) if bid in LANDSCAPE else texture))
- if glazing:parts.append((glazing,texture))
+ if wall:parts.append((wall,Image.new("RGB",(1,1),(177,179,173)) if bid in LANDSCAPE else Image.new("RGB",(1,1),(225,226,223))))
+ if glazing:parts.append((glazing,Image.new("RGB",(1,1),(55,71,78))))
  if reveals:parts.append((reveals,Image.new("RGB",(1,1),(45,48,48))))
  if roof:
   roof=np.asarray(roof);uv=roof[:,3:5];low=np.maximum(0,np.floor(uv.min(axis=0)*[w,h]).astype(int)-2);high=np.minimum([w,h],np.ceil(uv.max(axis=0)*[w,h]).astype(int)+2)
@@ -273,5 +240,8 @@ from exterior_ground_surfaces import build as build_ground_surfaces
 build_ground_surfaces(globals())
 from exterior_galileo_court import build as build_galileo_court
 build_galileo_court(globals())
+metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}
+for stale in ['galileo-facade-rectified.jpg']:
+ if (OUT/stale).exists():(OUT/stale).unlink()
 (OUT/'manifest.json').write_text(json.dumps(metadata,separators=(',',':')))
 print(f'Built: {len(buildings)} survey guides, {len(metadata["tiles"])} render tiles, {len(metadata["architecture"]["buildings"])+2} detailed building components, 3 landscape structures and {len(metadata["vegetation"]["trees"])} reconstructed trees. Native visual validation required.')

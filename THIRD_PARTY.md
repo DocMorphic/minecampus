@@ -31,7 +31,7 @@ Terrain DGM1, orthophotos DOP20 and CityGML LoD2 are © Bayerische Vermessungsve
 
 Vertical coordinates use the [GCG2016 grid distributed by PROJ](https://cdn.proj.org/de_bkg_gcg2016.tif), derived from © GeoBasis-DE / BKG 2023, CC BY 4.0. Bilinear grid interpolation converts DHHN2016 heights to ellipsoid heights.
 
-The Galileo façade strip is derived from [Galileo Garching Nordende](https://commons.wikimedia.org/wiki/File:Galileo_Garching_Nordende.jpg) by MaxEmanuel (18 August 2021), released as [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). It is rectified and repeated; individual window placement is a reconstruction. The reference image and metadata are in `minecraft/exterior/photos/`.
+The retired Galileo façade strip was derived from [Galileo Garching Nordende](https://commons.wikimedia.org/wiki/File:Galileo_Garching_Nordende.jpg) by MaxEmanuel (18 August 2021), released as [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Earlier previews rectified and repeated it. The reference remains available for qualitative study; the current panel meshes use original constant-colour materials. The reference image and metadata are in `minecraft/exterior/photos/`.
 
 Input URLs and SHA-256 hashes are pinned in `minecraft/exterior/sources.json`. Release assets contain open-data derivatives and code; Google tile content, provider credentials and Minecraft game assets are excluded. Game screenshots retain provider attribution.
 
@@ -77,3 +77,8 @@ The west end of TUM building 5130 is informed by Heinz Theuerkauf's [2018 front 
 ## Galileo northern courtyard references
 
 The courtyard boundary, concrete-wall line and 4 m / 27-riser stair tags are © OpenStreetMap contributors (ODbL 1.0), with floor and landing heights from BVV DGM1 (CC BY 4.0). [SLAM Schaar Landschaftsarchitekten's project page](https://slam.green/projekt/galileo-neue-mitte-am-hochschulcampus-garching-muenchen/) supplies the landscape context and completed exterior reference credited to Realotel Garching Hotelbetriebs GmbH. These photographs and drawings are research references only; their pixels are not redistributed. Wall dimensions, flight stations, stair alignment adjustment, handrails, lower exterior glazing and paving units are inferred. The reconstruction uses existing CC0 concrete grain and original geometry/materials. Source records are in `minecraft/exterior/photos/galileo-north-court-reference.json`.
+
+
+## Galileo panel reconstruction references
+
+The two Galileo components retain BVV LoD2 envelopes and DOP20 roof images (CC BY 4.0). Their panel system is informed by [Dobler Metallbau's contractor project page](https://www.dobler-metallbau.com/projekte/hochschulcampus-galileo-garching/) and [project sheet](https://www.dobler-metallbau.com/wp-content/uploads/2020/11/HGG_dt_web.pdf), photographs credited to Sergej Chernoisikow, plus [Nickl & Partner's project description](https://www.nickl-partner.com/projekte/galileo-muenchen/) and the completed exterior photograph linked above. Contractor/architect photographs are research references only and are not redistributed as textures. The inferred 1.4 m modules, floor levels, changing opaque/glazed sequence, narrow ventilation fins and frame dimensions are not an as-built schedule. Smooth pale metal, dark frames and recessed glass are original geometry/materials. See `minecraft/exterior/photos/galileo-facade-reference.json` for source hashes and qualifications.

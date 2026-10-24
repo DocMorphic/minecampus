@@ -1,0 +1,2630 @@
+{
+  "date": "2026-10-24",
+  "status": "Native-verified development checkpoint; campus realism goal remains active",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 235404543,
+    "sha256": "c7fdbce22d557420cae0a07dfd502fc53362d0319f8174928ca9f6349b4ea6fd",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "64baa199bcab26c3b6640f00f5da0b58d9c4ca5c35b3ebb70ead79668e6e15d0",
+    "rendererSourceFingerprint": "bf179c775a6a33d1",
+    "bundleSha256": "4b108f2f0d59c5610dc575e1aee8be9a83f24c2eb2cddd6e63ef3407b9a7aca4",
+    "tiles": 99
+  },
+  "source": {
+    "file": "photos/galileo-facade-reference.json",
+    "sha256": "1d4b241e757d6622ab9756c704227a62f4780bd14e0b2615b14977ee0a31abd4",
+    "qualification": "BVV wall polygons and roof meshes are surveyed. All module widths, floor divisions, panel sequences, vent dimensions and opening arrangements are visual estimates from the completed exterior photographs; not an as-built window schedule. Uniform row-varying pattern applied to unobserved elevations. No interiors or source photos included in generated textures.",
+    "recordStatusNote": "Source record was written before the native validation summarized here."
+  },
+  "geometry": {
+    "status": "PASS: only two Galileo meshes changed; survey roofs and 97 other render tiles preserved; all survey walls have complete recessed backing",
+    "unchangedRenderTiles": 97,
+    "surveyWallsChecked": 95,
+    "maximumUncoveredBackingAreaSquareMetres": 0.0,
+    "buildings": {
+      "DEBY_LOD2_107614322": {
+        "surveyWalls": 60,
+        "wallTriangles": 150901,
+        "roofTriangles": 104,
+        "roofPartSha256": "c1b193136293b4ee2f07b8c5912b085bec785804b80ea45100cc8dccc679ffff",
+        "panelCells": 2659,
+        "glassAreaSquareMetres": 5702.622413606072
+      },
+      "DEBY_LOD2_107614323": {
+        "surveyWalls": 35,
+        "wallTriangles": 105023,
+        "roofTriangles": 30,
+        "roofPartSha256": "be7a0839eff310122a1fe29f19395180a9661bd96791d2d31c86409aff93a330",
+        "panelCells": 1763,
+        "glassAreaSquareMetres": 3956.6407050596426
+      }
+    },
+    "qualification": "BVV wall polygons and roof meshes are surveyed. All module widths, floor divisions, panel sequences, vent dimensions and opening arrangements are visual estimates from the completed exterior photographs; not an as-built window schedule. Uniform row-varying pattern applied to unobserved elevations. No interiors or source photos included in generated textures."
+  },
+  "binary": {
+    "renderTiles": 99,
+    "photoFacadeCandidates": 83,
+    "triangles": 2155372,
+    "textureBytes": 256682288,
+    "auxiliaryTriangles": 5026,
+    "auxiliaryTextureBytes": 13540404,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "preservation": {
+    "previousArtifactSha256": "ab7922f5ca2fcf05797bb1b1b98b2120333a5500b50d39a868bd43ccb517c72d",
+    "jarChangedEntries": [
+      "LICENSES/Minecampus-exterior-notices.txt",
+      "assets/realworldmc/shaders/core/campus_ground.fsh",
+      "dev/realworldmc/CampusCollision.class",
+      "dev/realworldmc/client/MapRenderer.class",
+      "realworldmc-service.sha256",
+      "realworldmc-service.zip"
+    ],
+    "collisionMigrationVersion": 20,
+    "unchangedPriorRenderTiles": 97,
+    "affectedGroundTiles": 0,
+    "surveyRoofsByteIdentical": true,
+    "allExistingManifestGuidesAndArchitectureUnchanged": true
+  },
+  "native": {
+    "checks": {
+      "client": "PASS: all configured native route frames captured after full streaming readiness",
+      "collision": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=580",
+      "gameplay": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "terrace": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "roof": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "frontage": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "retaining": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "canopy": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "bank": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "uye": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "warehouse": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "telefonzentrale": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "cos": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "cos-ground": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "texture": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted",
+      "cos-site": "PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer",
+      "cos-bench": "PASS: native gravity landed player on the bench proxy at Y=64.0; visible seat top Y=63.89",
+      "cos-landscape": "PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB 0.3896470588235294,0.3523137254901961,0.1912156862745098); exposed curb ray reaches its 12cm edging",
+      "cos-apron": "PASS: native gravity landed on the smooth apron proxy at Y=63.0 (mesh Y=63.46271), replacing the previous Y=64 proxy",
+      "grs-north": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "grs-west": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "grs-connectors-north": "PASS: native rays reach the tower and west link at walking height",
+      "grs-connectors-courtyard": "PASS: native rays reach the tower and west link and the repaired GRS II west facade at walking height",
+      "grs-connectors-aerial": "PASS: native rays reach the tower and west link, the south junction and preserved adjoining GRS roof behind any foliage",
+      "grs-main-west": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "grs-main-east": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "grs-iii-west": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-south": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-east": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-tower": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-iii-aerial": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "grs-courtyard-path": "PASS: two walking-view rays reach the paving mask on unchanged surveyed terrain, and a third reaches the low edging",
+      "grs-courtyard-connector": "PASS: upper scan fragment absent, lower fragment replaced by surveyed connector and adjacent GRS II facade preserved",
+      "promenade": "PASS: four mapped path controls and three facade-seam controls reach loaded surveyed ground and the active GPU asphalt mask",
+      "crosspaths": "PASS: eight crossing and entrance path controls reach loaded surveyed ground and the active GPU asphalt mask",
+      "galileo-facade-42": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "galileo-facade-43": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "galileo-facade-44": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "galileo-facade-45": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "galileo-facade-46": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry"
+    },
+    "facadeRayGrids": [
+      {
+        "stage": 42,
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-c7fdbce22d.jar",
+        "metalHits": 10,
+        "glassHits": 21,
+        "roofHits": 0,
+        "structuralRaysIgnoringFoliage": [
+          {
+            "u": 0.2,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 29.610798
+          },
+          {
+            "u": 0.3,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 24.564249
+          },
+          {
+            "u": 0.4,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 20.963116
+          },
+          {
+            "u": 0.5,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 19.21537
+          },
+          {
+            "u": 0.6,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 18.694813
+          },
+          {
+            "u": 0.7,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 19.23534
+          },
+          {
+            "u": 0.8,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 20.462767
+          },
+          {
+            "u": 0.2,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 26.942083
+          },
+          {
+            "u": 0.3,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 22.390652
+          },
+          {
+            "u": 0.4,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 19.149637
+          },
+          {
+            "u": 0.5,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.414183
+          },
+          {
+            "u": 0.6,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.043941
+          },
+          {
+            "u": 0.7,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.720884
+          },
+          {
+            "u": 0.8,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 18.99434
+          },
+          {
+            "u": 0.2,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 25.247473
+          },
+          {
+            "u": 0.3,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 20.621675
+          },
+          {
+            "u": 0.4,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.713678
+          },
+          {
+            "u": 0.5,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 16.10912
+          },
+          {
+            "u": 0.6,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 15.842075
+          },
+          {
+            "u": 0.7,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 16.48083
+          },
+          {
+            "u": 0.8,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 18.001451
+          },
+          {
+            "u": 0.2,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 23.706707
+          },
+          {
+            "u": 0.3,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 19.66071
+          },
+          {
+            "u": 0.4,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 16.703756
+          },
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 15.167998
+          },
+          {
+            "u": 0.6,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 14.961567
+          },
+          {
+            "u": 0.7,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 15.817361
+          },
+          {
+            "u": 0.8,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.260689
+          },
+          {
+            "u": 0.2,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 22.967842
+          },
+          {
+            "u": 0.3,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 19.003841
+          },
+          {
+            "u": 0.4,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 16.171339
+          },
+          {
+            "u": 0.5,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 14.772777
+          },
+          {
+            "u": 0.6,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 14.692502
+          },
+          {
+            "u": 0.7,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 15.340767
+          },
+          {
+            "u": 0.8,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 16.80108
+          }
+        ]
+      },
+      {
+        "stage": 43,
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-c7fdbce22d.jar",
+        "metalHits": 19,
+        "glassHits": 10,
+        "roofHits": 0,
+        "structuralRaysIgnoringFoliage": [
+          {
+            "u": 0.2,
+            "v": 0.2,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 33.821007
+          },
+          {
+            "u": 0.3,
+            "v": 0.2,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 27.955036
+          },
+          {
+            "u": 0.4,
+            "v": 0.2,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 24.081028
+          },
+          {
+            "u": 0.5,
+            "v": 0.2,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 22.087286
+          },
+          {
+            "u": 0.6,
+            "v": 0.2,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 21.522253
+          },
+          {
+            "u": 0.7,
+            "v": 0.2,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 22.1752
+          },
+          {
+            "u": 0.8,
+            "v": 0.2,
+            "tile": 1000000100,
+            "part": 2,
+            "distance": 23.598654
+          },
+          {
+            "u": 0.2,
+            "v": 0.3,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 31.082476
+          },
+          {
+            "u": 0.3,
+            "v": 0.3,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 25.69129
+          },
+          {
+            "u": 0.4,
+            "v": 0.3,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 22.006096
+          },
+          {
+            "u": 0.5,
+            "v": 0.3,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 20.159449
+          },
+          {
+            "u": 0.6,
+            "v": 0.3,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 19.632288
+          },
+          {
+            "u": 0.7,
+            "v": 0.3,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 20.432276
+          },
+          {
+            "u": 0.8,
+            "v": 0.3,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 22.00322
+          },
+          {
+            "u": 0.2,
+            "v": 0.4,
+            "tile": 1000000100,
+            "part": 2,
+            "distance": 29.296997
+          },
+          {
+            "u": 0.3,
+            "v": 0.4,
+            "tile": 1000000100,
+            "part": 2,
+            "distance": 24.033665
+          },
+          {
+            "u": 0.4,
+            "v": 0.4,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 20.498713
+          },
+          {
+            "u": 0.5,
+            "v": 0.4,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 18.771284
+          },
+          {
+            "u": 0.6,
+            "v": 0.4,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 18.36086
+          },
+          {
+            "u": 0.7,
+            "v": 0.4,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 19.252222
+          },
+          {
+            "u": 0.8,
+            "v": 0.4,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 21.020693
+          },
+          {
+            "u": 0.2,
+            "v": 0.5,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 27.775795
+          },
+          {
+            "u": 0.3,
+            "v": 0.5,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 22.885693
+          },
+          {
+            "u": 0.4,
+            "v": 0.5,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 19.539019
+          },
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 17.911293
+          },
+          {
+            "u": 0.6,
+            "v": 0.5,
+            "tile": 1000000100,
+            "part": 2,
+            "distance": 17.699255
+          },
+          {
+            "u": 0.7,
+            "v": 0.5,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 18.600714
+          },
+          {
+            "u": 0.8,
+            "v": 0.5,
+            "tile": 1000000100,
+            "part": 2,
+            "distance": 20.210062
+          },
+          {
+            "u": 0.2,
+            "v": 0.6,
+            "tile": 1000000100,
+            "part": 2,
+            "distance": 26.945415
+          },
+          {
+            "u": 0.3,
+            "v": 0.6,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 22.26173
+          },
+          {
+            "u": 0.4,
+            "v": 0.6,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 19.202051
+          },
+          {
+            "u": 0.5,
+            "v": 0.6,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 17.436405
+          },
+          {
+            "u": 0.6,
+            "v": 0.6,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 17.218475
+          },
+          {
+            "u": 0.7,
+            "v": 0.6,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 18.110214
+          },
+          {
+            "u": 0.8,
+            "v": 0.6,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 19.708494
+          }
+        ]
+      },
+      {
+        "stage": 44,
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-c7fdbce22d.jar",
+        "metalHits": 19,
+        "glassHits": 9,
+        "roofHits": 0,
+        "structuralRaysIgnoringFoliage": [
+          {
+            "u": 0.2,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 32.498
+          },
+          {
+            "u": 0.3,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 31.80186
+          },
+          {
+            "u": 0.4,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 23.42386
+          },
+          {
+            "u": 0.5,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 21.327312
+          },
+          {
+            "u": 0.6,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 20.806128
+          },
+          {
+            "u": 0.7,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 21.300974
+          },
+          {
+            "u": 0.8,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 22.806353
+          },
+          {
+            "u": 0.2,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 30.239573
+          },
+          {
+            "u": 0.3,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 24.833456
+          },
+          {
+            "u": 0.4,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 21.456926
+          },
+          {
+            "u": 0.5,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 19.36636
+          },
+          {
+            "u": 0.6,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 18.975073
+          },
+          {
+            "u": 0.7,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 19.747253
+          },
+          {
+            "u": 0.8,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 21.26332
+          },
+          {
+            "u": 0.2,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 28.18209
+          },
+          {
+            "u": 0.3,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 23.358032
+          },
+          {
+            "u": 0.4,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 19.939259
+          },
+          {
+            "u": 0.5,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 18.032804
+          },
+          {
+            "u": 0.6,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 17.746222
+          },
+          {
+            "u": 0.7,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 18.639528
+          },
+          {
+            "u": 0.8,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 20.190252
+          },
+          {
+            "u": 0.2,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 26.850842
+          },
+          {
+            "u": 0.3,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 22.121433
+          },
+          {
+            "u": 0.4,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 19.005735
+          },
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 17.295008
+          },
+          {
+            "u": 0.6,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.086336
+          },
+          {
+            "u": 0.7,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 17.867819
+          },
+          {
+            "u": 0.8,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 19.458958
+          },
+          {
+            "u": 0.2,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 26.001078
+          },
+          {
+            "u": 0.3,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 21.518265
+          },
+          {
+            "u": 0.4,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 18.44712
+          },
+          {
+            "u": 0.5,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 16.93968
+          },
+          {
+            "u": 0.6,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 16.747654
+          },
+          {
+            "u": 0.7,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.614445
+          },
+          {
+            "u": 0.8,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 19.076426
+          }
+        ]
+      },
+      {
+        "stage": 45,
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-c7fdbce22d.jar",
+        "metalHits": 2,
+        "glassHits": 3,
+        "roofHits": 2,
+        "structuralRaysIgnoringFoliage": [
+          {
+            "u": 0.2,
+            "v": 0.2,
+            "tile": -1,
+            "part": -1,
+            "distance": 1000.0
+          },
+          {
+            "u": 0.3,
+            "v": 0.2,
+            "tile": -1,
+            "part": -1,
+            "distance": 1000.0
+          },
+          {
+            "u": 0.4,
+            "v": 0.2,
+            "tile": 1200024207,
+            "part": 0,
+            "distance": 915.8604
+          },
+          {
+            "u": 0.5,
+            "v": 0.2,
+            "tile": -1,
+            "part": -1,
+            "distance": 1000.0
+          },
+          {
+            "u": 0.6,
+            "v": 0.2,
+            "tile": -1,
+            "part": -1,
+            "distance": 1000.0
+          },
+          {
+            "u": 0.7,
+            "v": 0.2,
+            "tile": -1,
+            "part": -1,
+            "distance": 1000.0
+          },
+          {
+            "u": 0.8,
+            "v": 0.2,
+            "tile": -1,
+            "part": -1,
+            "distance": 1000.0
+          },
+          {
+            "u": 0.2,
+            "v": 0.3,
+            "tile": 1200024993,
+            "part": 0,
+            "distance": 325.53738
+          },
+          {
+            "u": 0.3,
+            "v": 0.3,
+            "tile": 1000050011,
+            "part": 4,
+            "distance": 200.56174
+          },
+          {
+            "u": 0.4,
+            "v": 0.3,
+            "tile": 1000050037,
+            "part": 2,
+            "distance": 241.74103
+          },
+          {
+            "u": 0.5,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 3,
+            "distance": 138.35658
+          },
+          {
+            "u": 0.6,
+            "v": 0.3,
+            "tile": 1000000100,
+            "part": 3,
+            "distance": 141.8844
+          },
+          {
+            "u": 0.7,
+            "v": 0.3,
+            "tile": 1000000100,
+            "part": 0,
+            "distance": 221.84834
+          },
+          {
+            "u": 0.8,
+            "v": 0.3,
+            "tile": 1000000018,
+            "part": 0,
+            "distance": 378.40408
+          },
+          {
+            "u": 0.2,
+            "v": 0.4,
+            "tile": 1000000033,
+            "part": 0,
+            "distance": 201.47493
+          },
+          {
+            "u": 0.3,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 106.629715
+          },
+          {
+            "u": 0.4,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 82.46876
+          },
+          {
+            "u": 0.5,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 100.9933
+          },
+          {
+            "u": 0.6,
+            "v": 0.4,
+            "tile": 1000000100,
+            "part": 1,
+            "distance": 143.63255
+          },
+          {
+            "u": 0.7,
+            "v": 0.4,
+            "tile": 1000000020,
+            "part": 0,
+            "distance": 173.09222
+          },
+          {
+            "u": 0.8,
+            "v": 0.4,
+            "tile": 1000000019,
+            "part": 0,
+            "distance": 199.71242
+          },
+          {
+            "u": 0.2,
+            "v": 0.5,
+            "tile": 1000000027,
+            "part": 0,
+            "distance": 137.64716
+          },
+          {
+            "u": 0.3,
+            "v": 0.5,
+            "tile": 1000000027,
+            "part": 0,
+            "distance": 118.41504
+          },
+          {
+            "u": 0.4,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 86.764244
+          },
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "tile": 1000000021,
+            "part": 0,
+            "distance": 103.144104
+          },
+          {
+            "u": 0.6,
+            "v": 0.5,
+            "tile": 1000000020,
+            "part": 0,
+            "distance": 105.833755
+          },
+          {
+            "u": 0.7,
+            "v": 0.5,
+            "tile": 1000000020,
+            "part": 0,
+            "distance": 118.2489
+          },
+          {
+            "u": 0.8,
+            "v": 0.5,
+            "tile": 1000030000,
+            "part": 1,
+            "distance": 132.28088
+          },
+          {
+            "u": 0.2,
+            "v": 0.6,
+            "tile": 1000000027,
+            "part": 0,
+            "distance": 104.70349
+          },
+          {
+            "u": 0.3,
+            "v": 0.6,
+            "tile": 1000030020,
+            "part": 3,
+            "distance": 99.91526
+          },
+          {
+            "u": 0.4,
+            "v": 0.6,
+            "tile": 1000000021,
+            "part": 0,
+            "distance": 82.68461
+          },
+          {
+            "u": 0.5,
+            "v": 0.6,
+            "tile": 1000000021,
+            "part": 0,
+            "distance": 79.45192
+          },
+          {
+            "u": 0.6,
+            "v": 0.6,
+            "tile": 1000000021,
+            "part": 0,
+            "distance": 82.24532
+          },
+          {
+            "u": 0.7,
+            "v": 0.6,
+            "tile": 1000000021,
+            "part": 0,
+            "distance": 90.888695
+          },
+          {
+            "u": 0.8,
+            "v": 0.6,
+            "tile": 1000000020,
+            "part": 0,
+            "distance": 102.95783
+          }
+        ]
+      },
+      {
+        "stage": 46,
+        "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-c7fdbce22d.jar",
+        "metalHits": 15,
+        "glassHits": 13,
+        "roofHits": 0,
+        "structuralRaysIgnoringFoliage": [
+          {
+            "u": 0.2,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 28.153694
+          },
+          {
+            "u": 0.3,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 22.958286
+          },
+          {
+            "u": 0.4,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 19.585007
+          },
+          {
+            "u": 0.5,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 17.827965
+          },
+          {
+            "u": 0.6,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.271763
+          },
+          {
+            "u": 0.7,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.67912
+          },
+          {
+            "u": 0.8,
+            "v": 0.2,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 18.725407
+          },
+          {
+            "u": 0.2,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 25.02989
+          },
+          {
+            "u": 0.3,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 20.352314
+          },
+          {
+            "u": 0.4,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 17.312973
+          },
+          {
+            "u": 0.5,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 15.736448
+          },
+          {
+            "u": 0.6,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 15.271868
+          },
+          {
+            "u": 0.7,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 15.818943
+          },
+          {
+            "u": 0.8,
+            "v": 0.3,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 17.108694
+          },
+          {
+            "u": 0.2,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 22.675255
+          },
+          {
+            "u": 0.3,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 18.421707
+          },
+          {
+            "u": 0.4,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 15.791525
+          },
+          {
+            "u": 0.5,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 14.245884
+          },
+          {
+            "u": 0.6,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 13.915343
+          },
+          {
+            "u": 0.7,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 14.544175
+          },
+          {
+            "u": 0.8,
+            "v": 0.4,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 15.873205
+          },
+          {
+            "u": 0.2,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 20.948015
+          },
+          {
+            "u": 0.3,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 17.059143
+          },
+          {
+            "u": 0.4,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 14.524947
+          },
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 13.202602
+          },
+          {
+            "u": 0.6,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 13.112317
+          },
+          {
+            "u": 0.7,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 13.702284
+          },
+          {
+            "u": 0.8,
+            "v": 0.5,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 14.90274
+          },
+          {
+            "u": 0.2,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 2,
+            "distance": 19.58624
+          },
+          {
+            "u": 0.3,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 16.168844
+          },
+          {
+            "u": 0.4,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 13.845453
+          },
+          {
+            "u": 0.5,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 0,
+            "distance": 12.636915
+          },
+          {
+            "u": 0.6,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 12.575139
+          },
+          {
+            "u": 0.7,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 13.215724
+          },
+          {
+            "u": 0.8,
+            "v": 0.6,
+            "tile": 1000000101,
+            "part": 1,
+            "distance": 14.3714695
+          }
+        ]
+      }
+    ],
+    "courtyardGravity": {
+      "status": "PASS: lower courtyard, five stair landings and two turning-apron controls support native gravity within the existing half-block terrain tolerance",
+      "probes": [
+        {
+          "x": 105.5,
+          "z": -157.5,
+          "meshHeight": 60.300262451171875,
+          "standingY": 60.0,
+          "onGround": true
+        },
+        {
+          "x": 96.5,
+          "z": -165.5,
+          "meshHeight": 63.650413513183594,
+          "standingY": 64.0,
+          "onGround": true
+        },
+        {
+          "x": 95.5,
+          "z": -161.5,
+          "meshHeight": 62.84052276611328,
+          "standingY": 63.0,
+          "onGround": true
+        },
+        {
+          "x": 94.5,
+          "z": -158.5,
+          "meshHeight": 62.030616760253906,
+          "standingY": 62.0,
+          "onGround": true
+        },
+        {
+          "x": 94.5,
+          "z": -154.5,
+          "meshHeight": 61.22069549560547,
+          "standingY": 61.0,
+          "onGround": true
+        },
+        {
+          "x": 93.5,
+          "z": -150.5,
+          "meshHeight": 60.30079650878906,
+          "standingY": 60.0,
+          "onGround": true
+        },
+        {
+          "x": 93.5,
+          "z": -147.5,
+          "meshHeight": 60.30085372924805,
+          "standingY": 60.0,
+          "onGround": true
+        },
+        {
+          "x": 94.5,
+          "z": -147.5,
+          "meshHeight": 60.300819396972656,
+          "standingY": 60.0,
+          "onGround": true
+        }
+      ]
+    },
+    "shadowRoute": {
+      "status": "PASS: packaged shadows and sky-consistent material lighting verified across the native route",
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-c7fdbce22d.jar",
+      "frames": [
+        {
+          "stage": 0,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 357,
+          "shadowDraws": 35,
+          "fps": 77
+        },
+        {
+          "stage": 1,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 558,
+          "shadowDraws": 28,
+          "fps": 116
+        },
+        {
+          "stage": 2,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 654,
+          "shadowDraws": 40,
+          "fps": 105
+        },
+        {
+          "stage": 3,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 746,
+          "shadowDraws": 41,
+          "fps": 110
+        },
+        {
+          "stage": 4,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 838,
+          "shadowDraws": 71,
+          "fps": 93
+        },
+        {
+          "stage": 5,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 934,
+          "shadowDraws": 87,
+          "fps": 115
+        },
+        {
+          "stage": 6,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1029,
+          "shadowDraws": 90,
+          "fps": 116
+        },
+        {
+          "stage": 7,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1123,
+          "shadowDraws": 38,
+          "fps": 101
+        },
+        {
+          "stage": 8,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1219,
+          "shadowDraws": 140,
+          "fps": 86
+        },
+        {
+          "stage": 9,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1313,
+          "shadowDraws": 89,
+          "fps": 113
+        },
+        {
+          "stage": 10,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1408,
+          "shadowDraws": 87,
+          "fps": 115
+        },
+        {
+          "stage": 11,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1502,
+          "shadowDraws": 38,
+          "fps": 108
+        },
+        {
+          "stage": 12,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1594,
+          "shadowDraws": 113,
+          "fps": 103
+        },
+        {
+          "stage": 13,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1689,
+          "shadowDraws": 87,
+          "fps": 105
+        },
+        {
+          "stage": 14,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1781,
+          "shadowDraws": 98,
+          "fps": 92
+        },
+        {
+          "stage": 15,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1872,
+          "shadowDraws": 98,
+          "fps": 114
+        },
+        {
+          "stage": 16,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1966,
+          "shadowDraws": 105,
+          "fps": 113
+        },
+        {
+          "stage": 17,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2167,
+          "shadowDraws": 28,
+          "fps": 114
+        },
+        {
+          "stage": 18,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2261,
+          "shadowDraws": 83,
+          "fps": 115
+        },
+        {
+          "stage": 19,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2353,
+          "shadowDraws": 81,
+          "fps": 114
+        },
+        {
+          "stage": 20,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2444,
+          "shadowDraws": 49,
+          "fps": 69
+        },
+        {
+          "stage": 21,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2539,
+          "shadowDraws": 63,
+          "fps": 74
+        },
+        {
+          "stage": 22,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2632,
+          "shadowDraws": 89,
+          "fps": 112
+        },
+        {
+          "stage": 23,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2723,
+          "shadowDraws": 90,
+          "fps": 93
+        },
+        {
+          "stage": 24,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2817,
+          "shadowDraws": 88,
+          "fps": 109
+        },
+        {
+          "stage": 25,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2913,
+          "shadowDraws": 85,
+          "fps": 107
+        },
+        {
+          "stage": 26,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3008,
+          "shadowDraws": 85,
+          "fps": 109
+        },
+        {
+          "stage": 27,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3103,
+          "shadowDraws": 72,
+          "fps": 88
+        },
+        {
+          "stage": 28,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3197,
+          "shadowDraws": 140,
+          "fps": 109
+        },
+        {
+          "stage": 29,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3293,
+          "shadowDraws": 102,
+          "fps": 115
+        },
+        {
+          "stage": 30,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3389,
+          "shadowDraws": 104,
+          "fps": 88
+        },
+        {
+          "stage": 31,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3480,
+          "shadowDraws": 108,
+          "fps": 91
+        },
+        {
+          "stage": 32,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3575,
+          "shadowDraws": 91,
+          "fps": 108
+        },
+        {
+          "stage": 33,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3668,
+          "shadowDraws": 108,
+          "fps": 94
+        },
+        {
+          "stage": 34,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3758,
+          "shadowDraws": 108,
+          "fps": 92
+        },
+        {
+          "stage": 35,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3880,
+          "shadowDraws": 37,
+          "fps": 107
+        },
+        {
+          "stage": 36,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3975,
+          "shadowDraws": 37,
+          "fps": 87
+        },
+        {
+          "stage": 37,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4069,
+          "shadowDraws": 36,
+          "fps": 73
+        },
+        {
+          "stage": 38,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4163,
+          "shadowDraws": 40,
+          "fps": 86
+        },
+        {
+          "stage": 39,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4258,
+          "shadowDraws": 106,
+          "fps": 113
+        },
+        {
+          "stage": 40,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4353,
+          "shadowDraws": 67,
+          "fps": 99
+        },
+        {
+          "stage": 41,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4447,
+          "shadowDraws": 88,
+          "fps": 114
+        },
+        {
+          "stage": 42,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4926,
+          "shadowDraws": 37,
+          "fps": 81
+        },
+        {
+          "stage": 43,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5019,
+          "shadowDraws": 33,
+          "fps": 74
+        },
+        {
+          "stage": 44,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5114,
+          "shadowDraws": 98,
+          "fps": 117
+        },
+        {
+          "stage": 45,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5206,
+          "shadowDraws": 81,
+          "fps": 92
+        },
+        {
+          "stage": 46,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5301,
+          "shadowDraws": 67,
+          "fps": 116
+        }
+      ]
+    },
+    "crosspathControls": {
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-c7fdbce22d.jar",
+      "controls": [
+        {
+          "osmWay": 28193721,
+          "x": 55.514,
+          "z": -152.988,
+          "groundY": 64.6455,
+          "terrainTile": 1000000021,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 172826857,
+          "x": 39.038,
+          "z": -146.715,
+          "groundY": 64.54854,
+          "terrainTile": 1000000021,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 403912532,
+          "x": 51.726,
+          "z": -115.218,
+          "groundY": 64.952194,
+          "terrainTile": 1000000021,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 403912530,
+          "x": 46.978,
+          "z": -61.605,
+          "groundY": 64.83136,
+          "terrainTile": 1000000020,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 1013697500,
+          "x": 61.735,
+          "z": -65.616,
+          "groundY": 64.89576,
+          "terrainTile": 1000000020,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 14854252,
+          "x": 33.304,
+          "z": 25.714,
+          "groundY": 64.84056,
+          "terrainTile": 1000000019,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 953220045,
+          "x": 61.795,
+          "z": -53.557,
+          "groundY": 64.928406,
+          "terrainTile": 1000000020,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 20402277,
+          "x": 23.353,
+          "z": 83.647,
+          "groundY": 64.74727,
+          "terrainTile": 1000000019,
+          "gpuMaskRGBA": "0,0,255,255"
+        }
+      ]
+    },
+    "promenadeControls": {
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-c7fdbce22d.jar",
+      "controls": [
+        {
+          "osmWay": 30275349,
+          "x": 5.515,
+          "z": 15.875,
+          "groundY": 64.49654,
+          "terrainTile": 1000000019,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 32458178,
+          "x": 62.714,
+          "z": -23.075,
+          "groundY": 64.795334,
+          "terrainTile": 1000000020,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 386192514,
+          "x": 60.228,
+          "z": -90.7,
+          "groundY": 65.30059,
+          "terrainTile": 1000000020,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 617369303,
+          "x": 35.228,
+          "z": -76.411,
+          "groundY": 64.982834,
+          "terrainTile": 1000000020,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 32458178,
+          "x": 82.148982,
+          "z": -97.19373,
+          "groundY": 64.87958,
+          "terrainTile": 1000000021,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 32458178,
+          "x": 81.967341,
+          "z": -96.26106,
+          "groundY": 64.860825,
+          "terrainTile": 1000000021,
+          "gpuMaskRGBA": "0,0,255,255"
+        },
+        {
+          "osmWay": 32458178,
+          "x": 81.596075,
+          "z": -94.214627,
+          "groundY": 64.853294,
+          "terrainTile": 1000000021,
+          "gpuMaskRGBA": "0,0,255,255"
+        }
+      ]
+    },
+    "captures": [
+      {
+        "file": "campus-final-ground.png",
+        "sha256": "7255f97aed5a66ac1d123976ff67913f278edc459c6d1c0f45f9c78c5eb8430a"
+      },
+      {
+        "file": "campus-final-aerial.png",
+        "sha256": "18528592afb59e63a28e438d3c907085f910a7778a5bde2b08176194e56de3ef"
+      },
+      {
+        "file": "campus-tnt.png",
+        "sha256": "1a129ce774bc24ed9d5b5a0a6ec79e66ea8b342cff8d9bb256a37f9135647313"
+      },
+      {
+        "file": "campus-route-west.png",
+        "sha256": "df0f671b5e1b6adf8b2eec9e10f0b70b42ed5ae02560b763c5e47a1f0f614220"
+      },
+      {
+        "file": "campus-route-south.png",
+        "sha256": "2dfe418fc786dd71f14294d7ba1ac206321cbefd0a88d07e73748d83e9e07c45"
+      },
+      {
+        "file": "campus-route-north.png",
+        "sha256": "86cd7f30d95ba0f5091f6b0edda73d962df85a8d18454588569b434fafd26937"
+      },
+      {
+        "file": "campus-source-check.png",
+        "sha256": "2572c4a45787bdaee30ebd18b8f50a4915adb6148e817ae72d889969c3aa68f2"
+      },
+      {
+        "file": "campus-ias.png",
+        "sha256": "10b7f9c7b2498b50eb05bf8a9a0c13884a03bf9cbe4016c2816c0027f6d4967d"
+      },
+      {
+        "file": "campus-photo-north.png",
+        "sha256": "f84270b23665670a4fd827a3fb50a62b324624f678969803a1e7296f9aadfdb3"
+      },
+      {
+        "file": "campus-former-mensa.png",
+        "sha256": "22e151bf1df0857f490873fdccb0d98894e64f4a02ea34a8d00be33d238c7fa4"
+      },
+      {
+        "file": "campus-mensa-terrace.png",
+        "sha256": "de752b6f8c685e40607d9748a6d06f6807509a644a4ffe3a52bb7f5a710f0578"
+      },
+      {
+        "file": "campus-paving-detail.png",
+        "sha256": "7724593231c4375c63c1c2977320bd7024dfdc73a5000e167a5d1c89d9ad480e"
+      },
+      {
+        "file": "campus-warehouse-east.png",
+        "sha256": "537f4e795f371322812a654ad4089168668d3be58571a24875d02f4e2894c4d2"
+      },
+      {
+        "file": "campus-road-detail.png",
+        "sha256": "99f83e59660942b4686d84fc6ba47292a4c3221fd2d4feeb3df247320c3ba671"
+      },
+      {
+        "file": "campus-telefonzentrale-west.png",
+        "sha256": "ae6964a1df449f82515919aedcd317895e6df0bfd2a872d8b6f94c5f86b8dc06"
+      },
+      {
+        "file": "campus-cos-southwest.png",
+        "sha256": "1e86ccc3d512c7d282c74c0166bc204344a9e21b688f1a558d4967f3e8395af5"
+      },
+      {
+        "file": "campus-cos-south.png",
+        "sha256": "4bec42401c7090837fbfbf993a174c6b488959aebb1746af4376b97ef445f40c"
+      },
+      {
+        "file": "campus-cos-aerial.png",
+        "sha256": "917189db9e71372c7e90396b038d8edeb61d794bf90f140d7900172a68ae5a58"
+      },
+      {
+        "file": "campus-cos-forecourt.png",
+        "sha256": "62ff0eb04ebc909badc5a21b2090500a668e0853d495e33d6a09a2205e4e5906"
+      },
+      {
+        "file": "campus-cos-planting.png",
+        "sha256": "6a6796ab47f0f1ed2a1f595df40b9410d61aa3e4cfe7e550fa5bc346b3406225"
+      },
+      {
+        "file": "campus-cos-north.png",
+        "sha256": "d27dd4369ab66853e92f8b94a0510bd8f826868768c25685e4aaf3e240b25e85"
+      },
+      {
+        "file": "campus-grs-north.png",
+        "sha256": "39c41a41c6d26bf2b8335f34fbd27656b0f5fb2d274a30a00f8d073fda17d0de"
+      },
+      {
+        "file": "campus-grs-west.png",
+        "sha256": "fd3c2ac916a54ee8a7e96091b6f672c88dcc6b26bfa1a3fabda4d2fa9cc35f6b"
+      },
+      {
+        "file": "campus-grs-tower-north.png",
+        "sha256": "c91e6bba6efdecfb366e3026ad53f3e78cd20fa40134339a062fb9ba76e59563"
+      },
+      {
+        "file": "campus-grs-tower-courtyard.png",
+        "sha256": "a2e6a1305e381d32aff26494b712f258bf7e825814413a1a3043d525f20993e8"
+      },
+      {
+        "file": "campus-grs-connectors-aerial.png",
+        "sha256": "dd1391fc8ce8b04bdeabd1084dfba33624b95babbda50682f812d68388b7fa7b"
+      },
+      {
+        "file": "campus-grs-main-west.png",
+        "sha256": "720627d892c1a47e9bfa26ca2297d3cbe03f418837904cd2aa92c8a1eca1a635"
+      },
+      {
+        "file": "campus-grs-main-east.png",
+        "sha256": "f0eb0fd53dfe08fccf2248f68bdf84491265cd44db112d52a96752e2648e58cc"
+      },
+      {
+        "file": "campus-grs-iii-west.png",
+        "sha256": "12e7355493a761ac36a15284205cfdcc76ab6bf9f16e65d5958ff0884ead41f4"
+      },
+      {
+        "file": "campus-grs-iii-south.png",
+        "sha256": "3d8d2c483d633aacd626925f0a24e80d8c5907e8312521952e2b9e0f08fe3ed3"
+      },
+      {
+        "file": "campus-grs-iii-east.png",
+        "sha256": "97b7c2d2de8639923fd158e85bbc26bec32ae5575d7b129b1c8cd77025a1a7a4"
+      },
+      {
+        "file": "campus-grs-iii-tower.png",
+        "sha256": "3d07c8da6c783d1f80cac7c49c5485876d4549b8544e0f4bac99c7e181d9d9e0"
+      },
+      {
+        "file": "campus-grs-iii-aerial.png",
+        "sha256": "0fc7cbd6a30fa66db78f5c2e774e63e9923d311b0babc41fabd4960725237132"
+      },
+      {
+        "file": "campus-grs-courtyard-path.png",
+        "sha256": "b0e23184c46667e13445815484ac6a1c1d7ca78bbe6f40bbd10cc7588e07b314"
+      },
+      {
+        "file": "campus-grs-courtyard-connector.png",
+        "sha256": "3d07c8da6c783d1f80cac7c49c5485876d4549b8544e0f4bac99c7e181d9d9e0"
+      },
+      {
+        "file": "campus-promenade-lawn-path.png",
+        "sha256": "0d8b7af9942550095825e95db895038abfa2280e521b087ee22be2f23ed16b84"
+      },
+      {
+        "file": "campus-promenade-east-path.png",
+        "sha256": "7dc3c350867af674afcfc2e015510d4e37cb8a0ad2e89f63dd6af4605280c010"
+      },
+      {
+        "file": "campus-crosspath-south.png",
+        "sha256": "e65bbbd55a99791a38c35f1339236cd351da576ac8da4d69007645d4ac6359c6"
+      },
+      {
+        "file": "campus-crosspath-north.png",
+        "sha256": "e6f5db6d14182b8187c7ffde5eb7659c102b4bc1c61663ab73a1a4e5ad3fc5c2"
+      },
+      {
+        "file": "campus-galileo-court-upper.png",
+        "sha256": "6bc0c368705a0bad606feb70f426825191dd01f8ae478660bf5d8a0bfabd2c1d"
+      },
+      {
+        "file": "campus-galileo-court-floor.png",
+        "sha256": "4ce5f569c63f15ece92a7289631ad7ccec5603797c7e178dba1ed1658e689cb8"
+      },
+      {
+        "file": "campus-galileo-court-stairs.png",
+        "sha256": "45243f89d5720d11f71b4bd6cb43a3bea4209b77a0da284a704e0f6a0d5e72dd"
+      },
+      {
+        "file": "campus-galileo-west.png",
+        "sha256": "4d5cbf32b458621ff5bebafb934ae19d65bcd45d362f974df2aae604d24c4b2a"
+      },
+      {
+        "file": "campus-galileo-southwest.png",
+        "sha256": "a87649c50a324b458c2b490202b8d80f3a41537d2468cc1df0d0d4e25b7abe34"
+      },
+      {
+        "file": "campus-galileo-east.png",
+        "sha256": "e4d75ae748ca17ec52d0deca1d5efc1afd9522dd5d0a5b1832db63f6250257a9"
+      },
+      {
+        "file": "campus-galileo-aerial.png",
+        "sha256": "6e71d7dad615f27f3650bef291e2a3ebc8b33ee683c8f208c57824b152538d9a"
+      },
+      {
+        "file": "campus-galileo-north-detail.png",
+        "sha256": "34da43e8a3299850a9967413ebbd499bf210fb9baf4e0c12c90e66fdbb27a599"
+      }
+    ],
+    "allCapturesNewerThanRunStartAndArtifact": true,
+    "logSha256": "bee63d162619eb11e1aad16adf7f2248535182edfef41ece606f760e4fbae6c1",
+    "checkSourceSha256": {
+      "CampusCrosspathChecks.java": "758672ecbfc4add691912248b272571e21eb9ef3bc83c51a7e966e60fcd852df",
+      "CampusExteriorCheck.java": "3525294474a5c717fa1ad0ece442e0ae8b7a6f6cfc07f6370d566107fcf167ea",
+      "CampusGalileoCourtChecks.java": "9677cb318a6a433420ce7ff9170a5eedbabcb60f1d6a1c7b864ff23e13aa66ad",
+      "CampusGalileoFacadeChecks.java": "369e4663551d98f123b70feb6be182b5bd42b71720c4ac704c698bb5abf5b19b",
+      "CampusMaterialBenchmark.java": "3f3db1de09256fe1889714600fcc669ffeb5374b586ad91a79ca7f8d8389726b",
+      "CampusPromenadeChecks.java": "37849cb9c75d4ee4c038ad4de1ffed2544b190c84ffa5bffb1e63c6908708bda",
+      "CampusShadowChecks.java": "a2e172980a95dc6f693399d855a48967e6921c9a11cefae01a850cda14452976",
+      "CampusShadowFunctionalCheck.java": "84c91d8dfe772d62fb71e73ca77cd0451c8bbe8ca5a0b5401c46dc4b0a3064ce"
+    }
+  },
+  "functional": {
+    "result": {
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-c7fdbce22d.jar",
+      "latestCapture": "reloaded",
+      "clientDayTime": 6000,
+      "shadowStrength": 0.28,
+      "newTntEdits": 30,
+      "changedDepthSamples": 15362,
+      "restoredDepthResidualSamples": 0,
+      "noonMeanLuminance": 112.27894631410257,
+      "nightMeanLuminance": 22.919051037215098,
+      "reloadDepthResidualSamples": 0,
+      "reloadedMaterials": [
+        {
+          "material": "concrete_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "concrete_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "grass_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "grass_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "ground_surfaces",
+          "minFilter": 9987,
+          "maxLod": 12.0
+        },
+        {
+          "material": "brick_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "asphalt_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "asphalt_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "soil_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "soil_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        }
+      ],
+      "status": "PASS: actual TNT changed native shadow depth, restoration recovered it, and sky-consistent morning/evening/night lighting rendered",
+      "depthCropSize": 512,
+      "depthDifferenceThreshold": 1e-05,
+      "lightingChecks": 5,
+      "lighting": [
+        {
+          "phase": "noon",
+          "dayTime": 6000,
+          "gpuMaterialDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 415
+        },
+        {
+          "phase": "morning",
+          "dayTime": 1000,
+          "gpuMaterialDirection": [
+            0.8861938,
+            0.46331468,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 558
+        },
+        {
+          "phase": "evening",
+          "dayTime": 11000,
+          "gpuMaterialDirection": [
+            -0.8861939,
+            0.46331462,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 592
+        },
+        {
+          "phase": "night",
+          "dayTime": 18000,
+          "gpuMaterialDirection": [
+            -8.742278e-08,
+            1.0,
+            -0.0
+          ],
+          "gpuShadowStrength": 0.0,
+          "shadowUpdates": 601
+        },
+        {
+          "phase": "reloaded-noon",
+          "dayTime": 6000,
+          "gpuMaterialDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 675
+        }
+      ]
+    },
+    "captures": [
+      {
+        "file": "campus-shadow-functional-before.png",
+        "sha256": "6ed1c86c22fd7e2646fb02bcd91cdaedf187678fa06cdc098b2d0306d55bd6a1"
+      },
+      {
+        "file": "campus-shadow-functional-evening.png",
+        "sha256": "1ed8742db9e685d3070b869a7f5174b1a44e5af9cc8692e2874867d38e1e1200"
+      },
+      {
+        "file": "campus-shadow-functional-excavated.png",
+        "sha256": "8e86f674a4d41dea0e1e69ed2b5e56c65c775ced00520b14dff462abf416d93a"
+      },
+      {
+        "file": "campus-shadow-functional-morning.png",
+        "sha256": "edb084e4fc4d5b4072956d59f47db7f945b6f817ba7342eba8053bbda94c69a5"
+      },
+      {
+        "file": "campus-shadow-functional-night.png",
+        "sha256": "770c74834227b6055f6143a91f8e84d15bb23bd0ebdae4d928a19c0bb5570ef8"
+      },
+      {
+        "file": "campus-shadow-functional-reloaded.png",
+        "sha256": "979a27c04396ed7b0a1d7155a4dbf1a018ae7d48a8b3a31ec1c5cd189c608282"
+      },
+      {
+        "file": "campus-shadow-functional-restored.png",
+        "sha256": "fd758fcef3a79b9565a0c0763b02a17ed15e216985e2302b3c686e7af85b8f72"
+      }
+    ],
+    "logSha256": "d2b8147d89d9723d84bec2aba8ab5b5659d1ef75c1d3d86c21833b0521c262f7",
+    "checkSourceSha256": {
+      "CampusCrosspathChecks.java": "758672ecbfc4add691912248b272571e21eb9ef3bc83c51a7e966e60fcd852df",
+      "CampusExteriorCheck.java": "3525294474a5c717fa1ad0ece442e0ae8b7a6f6cfc07f6370d566107fcf167ea",
+      "CampusGalileoCourtChecks.java": "9677cb318a6a433420ce7ff9170a5eedbabcb60f1d6a1c7b864ff23e13aa66ad",
+      "CampusGalileoFacadeChecks.java": "369e4663551d98f123b70feb6be182b5bd42b71720c4ac704c698bb5abf5b19b",
+      "CampusMaterialBenchmark.java": "3f3db1de09256fe1889714600fcc669ffeb5374b586ad91a79ca7f8d8389726b",
+      "CampusPromenadeChecks.java": "37849cb9c75d4ee4c038ad4de1ffed2544b190c84ffa5bffb1e63c6908708bda",
+      "CampusShadowChecks.java": "a2e172980a95dc6f693399d855a48967e6921c9a11cefae01a850cda14452976",
+      "CampusShadowFunctionalCheck.java": "84c91d8dfe772d62fb71e73ca77cd0451c8bbe8ca5a0b5401c46dc4b0a3064ce"
+    }
+  },
+  "excludedRuns": [
+    "The first candidate made all ground floors continuous glass and used overly thick frames. Those details were corrected against the north-end photograph before the final artifact.",
+    "The initial baseline aerial camera faced away from Galileo; it was corrected and recaptured with the previous dev.14 artifact. The wrong-facing image is excluded."
+  ],
+  "comparisonBaseline": {
+    "artifactSha256": "ab7922f5ca2fcf05797bb1b1b98b2120333a5500b50d39a868bd43ccb517c72d",
+    "captures": [
+      {
+        "file": "campus-galileo-west.png",
+        "sha256": "55a18dcd1ff93f350874a5a5e112fc7d682e348908a0dd29ef1fc72ccf13da35"
+      },
+      {
+        "file": "campus-galileo-southwest.png",
+        "sha256": "db30d5c9ba51d1879d09a750ff629c37cc12b104cf1e0a33f5cb838d9e34c061"
+      },
+      {
+        "file": "campus-galileo-east.png",
+        "sha256": "c1defd77d77e7b02d7732890dc5980c3f02b82f9ac406fa21e11c0e10d23b6d1"
+      },
+      {
+        "file": "campus-galileo-aerial.png",
+        "sha256": "3d3d1eab11a78fbf7297be6df01ec6a7e47a8ce24c0b8ed03a03d5316a0072fb"
+      },
+      {
+        "file": "campus-galileo-north-detail.png",
+        "sha256": "ac72608aeb66e12627dc3ef66e2045054d8a70e4bfd34a63efcb86dcd4ef9362"
+      }
+    ],
+    "logSha256": "a8b8e77d00e37034182ffd50f6379dcc7611b9dea589a3ce5576104f50244921",
+    "correctedAerialLogSha256": "584299d14cc8270a6c5776b72e22818cfad86c06a4e54fdab693fac2bbd86bb5"
+  },
+  "originalSave": {
+    "filesChecked": 46,
+    "unchanged": true
+  },
+  "remaining": [
+    "Panel widths, floor divisions and row sequences are inferred, not an as-built schedule. Exact entrance and transparent ground-floor zones remain unfinished.",
+    "Glass still uses approximate sky/ground reflection; realistic scene reflections remain a major visual limitation.",
+    "Courtyard landscaping, seating and some building-base joins need further reference-led work.",
+    "The one-metre collision proxy grid does not reproduce individual visual treads.",
+    "Older aerial shadows, Siemensbau, roof detail and coarse neighbouring geometry remain unfinished."
+  ],
+  "installation": {
+    "profile": "Minecampus \u2014 Exterior Preview 0.5",
+    "artifactSha256": "c7fdbce22d557420cae0a07dfd502fc53362d0319f8174928ca9f6349b4ea6fd",
+    "previewSaveFilesVerified": 121,
+    "previewSavesAndSettingsUnchanged": true,
+    "previousModBackupRetained": true,
+    "originalSaveFilesVerified": 46,
+    "originalSaveUnchanged": true,
+    "updateLogSha256": "234acced47d14bafa8c584f19652bc4fcf8c0c977aa86d4182d6e035f1767254"
+  },
+  "previewUpdaterTests": {
+    "passed": 3,
+    "logSha256": "d22b30c5689a4f0fe5b08152d1fdc622a2ccd4f4f8d5a9c430af3f2f5a3914aa"
+  },
+  "visualReview": {
+    "reviewedAll47RouteCaptures": true,
+    "reviewedAll7FunctionalCaptures": true,
+    "qualification": "Panel/glass distinction and floor variation improve on the repeated strip; ground-floor glazing and frames refined after native comparison. Approximate reflections, inferred opening arrangement and other documented campus limitations remain."
+  }
+}

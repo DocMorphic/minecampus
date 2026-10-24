@@ -1,0 +1,41 @@
+{
+  "status": "Read-only design study; no scene-reflection renderer implemented",
+  "date": "2026-10-24",
+  "observedProblem": "Galileo panel geometry is clearer, but constant-colour panes with the existing sky/ground approximation do not reflect the visible campus. This remains conspicuous at walking height.",
+  "localEvidence": [
+    "shaders/campus_ground.fsh computes an analytic environment from the reflected direction and mixes it with each pane's base colour.",
+    "client/CampusShadows.java already demonstrates an offscreen map-mesh pass with explicit GL state restoration and resource/world lifecycle handling.",
+    "The current renderer uses texture units 0 through 11; any additional texture unit must be checked against actual hardware limits.",
+    "The source wall polygons provide candidate facade planes; the test views at cameras 42 through 46 are retained for comparisons."
+  ],
+  "primaryReferences": [
+    {
+      "url": "https://wikis.khronos.org/opengl/Cubemap_Texture",
+      "facts": "A cubemap has six square faces and is sampled by a direction vector. Seamless filtering across faces is a separate setting."
+    },
+    {
+      "url": "https://wikis.khronos.org/opengl/Framebuffer_Objects",
+      "facts": "A texture image can be attached to an offscreen framebuffer; a cube face can be selected with glFramebufferTexture2D."
+    }
+  ],
+  "candidateApproaches": [
+    {
+      "approach": "One nearby planar facade reflection",
+      "inference": "A mirrored-camera render can give correct perspective for one selected facade plane. Select a nearby visible pane plane and apply its reflection only to coplanar glass; other elevations retain the existing fallback.",
+      "risksToVerify": [
+        "Correct world/camera coordinates, winding and mirrored projection",
+        "Clip geometry behind the reflecting plane without opening visible holes",
+        "Avoid recursive glass reflections",
+        "Restore framebuffer, viewport, texture and depth state",
+        "Refresh after mesh edits and resource/world reloads",
+        "Measure frame time and inspect moving-camera seams"
+      ]
+    },
+    {
+      "approach": "Local dynamic cubemap",
+      "inference": "Broader directional coverage, but six captures add cost and a probe at one position gives inaccurate parallax on distant panes. This is a fallback research option, not a promise of accurate reflections everywhere."
+    }
+  ],
+  "nextExperiment": "Prototype a bounded planar map-mesh reflection outside the production build inputs. Compare the same five native views, movement, day/night and actual TNT response before deciding whether to integrate it.",
+  "limits": "Neither approach creates interiors. Vanilla blocks, players and mobs need explicit integration to appear; do not claim them as reflected until tested. No new imagery API or paid data source is required for reflecting already-rendered geometry."
+}

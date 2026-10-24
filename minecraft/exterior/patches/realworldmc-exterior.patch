@@ -77,7 +77,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  			for (int i = 0; i < t.partCount(); i++) {
  				if (t.isEmpty(i)) continue;
 +                if(campus && t.data.id>=1_000_000_100 && t.data.id<1_000_000_102)
-+                    tileShader.safeGetUniform("MaterialDetail").set(i==1?2f:(i==0||i==2?3f:9f));
++                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==2?16f:9f));
 +                if(campus && t.data.id>=1_000_000_200 && t.data.id<1_000_000_203)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?8f:1f);
 +                if(campus && t.data.id>=1_000_010_000 && t.data.id<1_000_020_000)

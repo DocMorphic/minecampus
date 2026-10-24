@@ -183,7 +183,7 @@ void main() {
         if(dot(roofN,CameraPosition-worldPosition)<0.0)roofN=-roofN;
         if(roofN.y<-.05)color.rgb=vec3(.25,.27,.28);
     }
-    if((MaterialDetail>1.5&&MaterialDetail<3.5)||(MaterialDetail>5.5&&MaterialDetail<8.5)||abs(MaterialDetail-11.0)<.1||abs(MaterialDetail-13.0)<.1) {
+    if((MaterialDetail>1.5&&MaterialDetail<3.5)||(MaterialDetail>5.5&&MaterialDetail<8.5)||abs(MaterialDetail-11.0)<.1||abs(MaterialDetail-13.0)<.1||abs(MaterialDetail-16.0)<.1) {
         vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
         vec3 view=normalize(CameraPosition-worldPosition);
         if(dot(n,view)<0.0)n=-n;
@@ -207,7 +207,9 @@ void main() {
             float highlight=pow(max(dot(reflect(-sun,n),view),0.0),180.0);
             glazing+=vec3(0.8,0.75,0.62)*highlight;
             glazing=mix(glazing,color.rgb*(.82+.18*diffuse),.45*(1.0-.45*fresnel));
-            vec3 metal=color.rgb*(MaterialDetail>6.5&&MaterialDetail<8.5?1.08:0.82)*diffuse;
+            vec3 metal=color.rgb*(abs(MaterialDetail-16.0)<.1?1.0:(MaterialDetail>6.5&&MaterialDetail<8.5?1.08:0.82))*diffuse;
+            // Smooth powder-coated Galileo aluminium, without concrete normals.
+            if(abs(MaterialDetail-16.0)<.1)metal*=.994+.006*noise(worldPosition.xz*70.0);
             if(MaterialDetail>6.5&&MaterialDetail<8.5){
                 vec2 materialUv=abs(n.x)>abs(n.z)?worldPosition.zy*.5:worldPosition.xy*.5;
                 vec3 grain=texture(Sampler1,materialUv).rgb;

@@ -25,6 +25,8 @@ for path,key in [(SOURCE/'crosspaths.json','sourceSha256'),(DATA/'crosspath-surf
  if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['crosspaths'][key]:raise SystemExit('Cross-path provenance mismatch: '+path.name)
 court=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoCourt']
 assert hashlib.sha256((SOURCE/court['sourceFile']).read_bytes()).hexdigest()==court['sourceSha256']
+facade=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoFacade']
+assert hashlib.sha256((SOURCE/facade['sourceFile']).read_bytes()).hexdigest()==facade['sourceSha256']
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -76,10 +78,16 @@ Height transformation grid GCG2016: © GeoBasis-DE / BKG 2023 (CC BY 4.0).
 Grid distribution: https://cdn.proj.org/de_bkg_gcg2016.tif
 License: https://creativecommons.org/licenses/by/4.0/
 
-Galileo facade photograph by MaxEmanuel, 18 August 2021 (CC0 1.0).
-https://commons.wikimedia.org/wiki/File:Galileo_Garching_Nordende.jpg
-Rectified photograph strip; approximate repetition and recessed window reconstruction.
-https://creativecommons.org/publicdomain/zero/1.0/
+Galileo facade: BVV surveyed wall/roof geometry (CC BY 4.0), with inferred
+1.4m panel modules, recessed glazing, smooth powder-coated metal and slim
+ventilation fins. Contractor Dobler Metallbau project sheet HGG_dt_web.pdf
+(issue 2022-02-28, photographs Sergej Chernoisikow); architect Nickl & Partner;
+completed-site landscape photo from SLAM / Realotel Garching Hotelbetriebs GmbH.
+These are research references only; no copyrighted reference pixels are
+redistributed or used as textures. Floor heights and panel/window sequences
+are estimates, not an as-built window schedule. Roof imagery is unchanged.
+See galileo-facade-reference.json. The earlier MaxEmanuel CC0 repeated strip
+has been retired from the two Galileo tiles.
 
 MW concrete photographic material: Renardo la vulpo (CC BY-SA 4.0).
 https://commons.wikimedia.org/wiki/File:Garching,_Eberhard-von-Kuenheim-Bau,_2.jpeg
@@ -224,6 +232,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/grs-iii-reference.json',(SOURCE/'photos/grs-iii-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-courtyard-reference.json',(SOURCE/'photos/grs-courtyard-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-north-court-reference.json',(SOURCE/'photos/galileo-north-court-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/galileo-facade-reference.json',(SOURCE/'photos/galileo-facade-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site.json',(SOURCE/'cos-site.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site-surfaces.geojson',(DATA/'cos-site-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/grs-courtyard-surfaces.geojson',(DATA/'grs-courtyard-surfaces.geojson').read_bytes())

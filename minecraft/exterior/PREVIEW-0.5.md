@@ -1,6 +1,6 @@
 # Exterior Preview 0.5
 
-This playable development snapshot adds the IAS exterior, survey-aligned photographic walls, the former Mensa terrace frontage and retaining walls, UYA's outer façades, UYE's east/north glazing, the masonry warehouse exterior, width-mapped road materials, the Telefonzentrale west end, the COS exterior, approximate finished-site grading, mapped site paving, benches, bicycle stands, an inferred planting bed, a smooth forecourt grade and the GRS north wing, stair tower, connecting bridges, repaired GRS II exterior and GRS III square wing/rounded tower, the small GRS II/III connector and a paved courtyard approach, survey-fitted tree crowns, mapped ground materials and full DGM1 terrain sampling. Four main asphalt promenade corridors, eight crossing/entrance paths and smoother ground-material boundaries reduce blurry path margins. Galileo’s northern sunken courtyard now has retaining walls, a lower paved floor, five stair flights, handrails and lower exterior glazing, replacing the stretched terrain bank. It also adds local mesh shadows that follow the sun, react to terrain damage, and turn off at night. It runs inside Minecraft Java 1.21.1 with the existing Minecampus add-on and Fabric setup.
+This playable development snapshot adds the IAS exterior, survey-aligned photographic walls, the former Mensa terrace frontage and retaining walls, UYA's outer façades, UYE's east/north glazing, the masonry warehouse exterior, width-mapped road materials, the Telefonzentrale west end, the COS exterior, approximate finished-site grading, mapped site paving, benches, bicycle stands, an inferred planting bed, a smooth forecourt grade and the GRS north wing, stair tower, connecting bridges, repaired GRS II exterior and GRS III square wing/rounded tower, the small GRS II/III connector and a paved courtyard approach, survey-fitted tree crowns, mapped ground materials and full DGM1 terrain sampling. Four main asphalt promenade corridors, eight crossing/entrance paths and smoother ground-material boundaries reduce blurry path margins. Galileo’s northern sunken courtyard now has retaining walls, a lower paved floor, five stair flights, handrails and lower exterior glazing, replacing the stretched terrain bank. The two Galileo facades now have separate pale metal panels, recessed glazing, fine joints and narrow ventilation fins in place of the repeated photographic strip. It also adds local mesh shadows that follow the sun, react to terrain damage, and turn off at night. It runs inside Minecraft Java 1.21.1 with the existing Minecampus add-on and Fabric setup.
 
 The campus is still unfinished: several neighboring walls remain blurry, paths have inconsistent detail, and reconstructed window divisions/materials are approximate. Interiors are outside this pass. The public default installer remains on 0.4.0.
 
@@ -13,7 +13,7 @@ Allow the map to finish streaming before judging geometry. The photographic faç
 ## Install the same snapshot alongside an existing setup
 
 1. Quit Minecraft and its launcher.
-2. Download `RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar` from the [0.5 development preview release](https://github.com/DocMorphic/minecampus/releases/tag/exterior-0.5.0-dev.14) into this repository's `dist-minecraft/` directory.
+2. Download `RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar` from the [0.5 development preview release](https://github.com/DocMorphic/minecampus/releases/tag/exterior-0.5.0-dev.15) into this repository's `dist-minecraft/` directory.
 3. On macOS/Linux, run `python3 scripts/install-exterior-preview.py` from the repository root. This requires the normal Minecampus installation and its map setup to exist already. It verifies the artifact hash, checks world locks, copies saves into a separate instance, verifies every copied save file, and adds the preview launcher profile. For an existing preview, use `python3 scripts/install-exterior-preview.py --update` instead. This verifies the recorded mod, refuses an open world, backs up the old mod, and replaces only that mod while verifying that saves and local settings stay unchanged.
 4. Restart the launcher and follow the play instructions above.
 
@@ -21,15 +21,17 @@ The installer uses the current user's local map configuration, stored privately 
 
 ## Evidence
 
-The released JAR is the exact native-tested artifact: SHA-256 `ab7922f5ca2fcf05797bb1b1b98b2120333a5500b50d39a868bd43ccb517c72d`. [Detailed evidence](galileo-court-development-validation.json) records 42 fresh native captures, all 35 earlier checks, eight courtyard gravity controls, the 42-frame GPU lighting route, and seven separate TNT/sky/reload captures. The service suite has 28 passing tests; terrain/updater tests have eight.
+The released JAR is the exact native-tested artifact: SHA-256 `c7fdbce22d557420cae0a07dfd502fc53362d0319f8174928ca9f6349b4ea6fd`. [Detailed evidence](galileo-facade-development-validation.json) records 47 fresh native captures, 40 geometry/gameplay checks, eight courtyard gravity controls, the 47-frame GPU lighting route, and seven separate TNT/sky/reload captures.
 
-The courtyard replaces approximately 681 m² of stretched terrain with a bounded cut and fitted structures. Two ground tiles change; 95 earlier render tiles, all previous ground-material masks, survey guides and old architecture stay unchanged. The lower floor follows the median BVV DGM height. The OSM court/wall/stair records establish the envelope, 4 m width and 27 risers; flight stations, wall dimensions, lower glazing and a 0.65 m stair alignment correction are estimates. The lower landing connects to the open court. Interiors and reference photographs are not included.
+This checkpoint replaces only the two Galileo wall meshes. Both embedded survey roofs, the other 97 render tiles, terrain, courtyard, vegetation and existing guides remain unchanged. The panel/window system follows the contractor and completed exterior photographs. Its 1.4 m modules, floor divisions and row sequences remain estimates; exact entrance and transparent ground-floor zones are unfinished. Contractor photographs are research references, not texture assets.
 
-Collision migration is v19 and preserves ordinary player blocks and recorded edits. Gravity tests land within 0.35 m of the visible floor/landings, using the existing one-metre proxy grid. This does not provide fine collision for every visual tread. Galileo facade fidelity, courtyard landscaping, some building-base joins and neighbouring source artifacts remain unfinished.
+The earlier courtyard repair remains intact: about 681 m² of bounded terrain cut, retaining walls, 27 risers across five flights and a connected lower landing. Collision migration is now v20 and preserves ordinary player blocks and recorded edits. The existing one-metre proxy grid still approximates visual treads.
 
-![Galileo courtyard before](../../docs/screenshots/campus-galileo-court-floor-before.jpg)
+![Galileo facade before](../../docs/screenshots/campus-galileo-facade-before.jpg)
 
-![Galileo courtyard after](../../docs/screenshots/campus-galileo-court-floor-after.jpg)
+![Galileo facade after](../../docs/screenshots/campus-galileo-facade-after.jpg)
+
+![Galileo aerial view](../../docs/screenshots/campus-galileo-facade-aerial.jpg)
 
 ![Galileo courtyard stairs](../../docs/screenshots/campus-galileo-court-stairs-after.jpg)
 

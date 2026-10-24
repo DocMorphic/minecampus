@@ -40,7 +40,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png", "campus-promenade-lawn-path.png", "campus-promenade-east-path.png", "campus-crosspath-south.png", "campus-crosspath-north.png", "campus-galileo-court-upper.png", "campus-galileo-court-floor.png", "campus-galileo-court-stairs.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png", "campus-promenade-lawn-path.png", "campus-promenade-east-path.png", "campus-crosspath-south.png", "campus-crosspath-north.png", "campus-galileo-court-upper.png", "campus-galileo-court-floor.png", "campus-galileo-court-stairs.png", "campus-galileo-west.png", "campus-galileo-southwest.png", "campus-galileo-east.png", "campus-galileo-aerial.png", "campus-galileo-north-detail.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -83,7 +83,12 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "65 66 -140 -150 10",
         "104 65 -176 0 25",
         "105 60.5 -153 170 -6",
-        "95 65 -171 10 30"
+        "95 65 -171 10 30",
+        "72 65 -125 -90 -14",
+        "50 65 -20 -90 -12",
+        "145 65 -115 90 -12",
+        "25 110 -180 -37 27",
+        "104 65 -156 0 -20"
     };
 
     @Override public void onInitializeClient() {
@@ -110,7 +115,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
 
     private void tick(Minecraft mc) {
         try {
-            if (++total > 14000) throw new AssertionError("Native campus client capture timed out");
+            if (++total > 17000) throw new AssertionError("Native campus client capture timed out");
             if (failure != null) throw new AssertionError("Integrated server check failed", failure);
             if (!opened && mc.getOverlay()==null) {
                 opened=true;
@@ -467,6 +472,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 return;
             }
+            if(stage>=42&&stage<=46&&Boolean.getBoolean("minecampus.requireGalileoFacade"))CampusGalileoFacadeChecks.verify(mc,loaded,stage);
             if(stage==35&&Boolean.getBoolean("minecampus.requirePromenade"))CampusPromenadeChecks.verify(mc,loaded);
             if(stage==37&&Boolean.getBoolean("minecampus.requireCrosspaths"))CampusCrosspathChecks.verify(mc,loaded);
             if(Boolean.getBoolean("minecampus.requireRuntimeShadows"))CampusShadowChecks.record(mc,stage,NAMES.length);
@@ -688,6 +694,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
             }
             if(stage==41&&Boolean.getBoolean("minecampus.requireGalileoCourt")){CampusGalileoCourtChecks.begin(mc,loaded);courtWalking=true;return;}
+            if(Boolean.getBoolean("minecampus.galileoFacadeReview")&&stage==46){Files.writeString(Path.of("campus-galileo-facade-review-result.txt"),"PASS: five Galileo facade review frames captured");mc.stop();return;}
             if(Boolean.getBoolean("minecampus.galileoCourtReview")&&stage==41){Files.writeString(Path.of("campus-galileo-court-review-result.txt"),"PASS: four Galileo courtyard frames captured");mc.stop();return;}
             if(Boolean.getBoolean("minecampus.crosspathReview")&&stage==38){Files.writeString(Path.of("campus-crosspath-review-result.txt"),"PASS: four promenade and cross-path walking frames captured");mc.stop();return;}
             if(Boolean.getBoolean("minecampus.promenadeReview")&&stage==36){Files.writeString(Path.of("campus-promenade-review-result.txt"),"PASS: both promenade walking frames captured");mc.stop();return;}

@@ -1,5 +1,5 @@
 {
-  "status": "Read-only facade source study; detailed replacement not yet implemented",
+  "status": "Source-informed panel reconstruction candidate; native visual validation pending",
   "date": "2026-10-24",
   "primarySources": [
     {
@@ -50,6 +50,37 @@
     }
   ],
   "completedWestElevationReference": "https://slam.green/wp-content/uploads/2024/07/SCC_Munich_Exterior_02-1024x683.jpg",
-  "nextWork": "Fit panel/window rhythm and transparent ground-floor bands to BVV envelopes using completed exterior photographs. Preserve measured roofs; distinguish surveyed dimensions from inferred modules. Current repeated photographic strip does not reproduce the facade accurately.",
-  "imageRights": "Research references only; no photos or PDF images redistributed or used as texture assets."
+  "nextWork": "Validate panel reconstruction at five native viewpoints and compare against the preceding repeated photographic strip; review entrances and estimate limitations.",
+  "imageRights": "Research references only; no photos or PDF images redistributed or used as texture assets.",
+  "reconstruction": {
+    "moduleWidthMetres": 1.4,
+    "floorLevelsMC": {
+      "DEBY_LOD2_107614322": [
+        63.881,
+        68.381,
+        72.621,
+        76.861,
+        81.101,
+        85.341,
+        89.581
+      ],
+      "DEBY_LOD2_107614323": [
+        63.94,
+        68.24,
+        72.44,
+        76.64,
+        80.84,
+        85.04,
+        89.24
+      ]
+    },
+    "windowRecessMetres": 0.105,
+    "jointBackingRecessMetres": 0.145,
+    "upperVentWidthMetres": 0.18,
+    "ventFinPitchMetres": 0.09,
+    "pattern": "MGGMGMGGMGGMMGMGG",
+    "floorPatternShift": 5,
+    "qualification": "BVV wall polygons and roof meshes are surveyed. All module widths, floor divisions, panel sequences, vent dimensions and opening arrangements are visual estimates from the completed exterior photographs; not an as-built window schedule. Uniform row-varying pattern applied to unobserved elevations. No interiors or source photos included in generated textures.",
+    "groundFloor": "Continue the observed metal/glass panel system to the surveyed base. Do not assume a continuous curtain wall across every ground-floor elevation; exact entrance/transparent zones remain to be surveyed."
+  }
 }
