@@ -139,6 +139,14 @@ def independent_correction(record, earlier):
    d=distance(pts,edge);replace=d<best;along=line_locate_point(edge,pts,normalized=True);residual[replace]=(ds[0]*(1-along)+ds[1]*along)[replace];best[replace]=d[replace]
   def smooth(v):
    v=np.clip(v,0,1);return v*v*(3-2*v)
+  if 'nearestEdgeBlendMetres' in record:
+   assert record['nearestEdgeBlendMetres']==.25
+   numerator=np.zeros(len(xy));denominator=np.zeros(len(xy))
+   for edge,ds in valid_edges:
+    d=distance(pts,edge);along=line_locate_point(edge,pts,normalized=True)
+    weight=smooth(1-(d-best)/record['nearestEdgeBlendMetres'])
+    numerator+=weight*(ds[0]*(1-along)+ds[1]*along);denominator+=weight
+   residual=numerator/denominator
   missing_fade=smooth(distance(pts,missing_geometry)/record['priorFadeMetres'])if not missing_geometry.is_empty else np.ones(len(xy))
   return residual*smooth(1-best/record['widthMetres'])*smooth(distance(pts,earlier)/record['priorFadeMetres'])*missing_fade
  return calculate
@@ -154,21 +162,38 @@ for line in outer_transition['lines']:
    assert delta is None and join is None;assert abs(outer_correction(xy[i:i+1])[0])<1e-8;missing+=1
   else:
    assert abs(delta-(source-survey))<1e-8 and abs(join-(delta-old[i]))<1e-7 and abs(delta)<=outer_transition['maximumResidualMetres'];accepted+=1
-assert accepted==outer_transition['acceptedSamples']==616 and missing==outer_transition['missingSamples']==662
+assert accepted==outer_transition['acceptedSamples']==784 and missing==outer_transition['missingSamples']==802
 def correction(xy):
  return inherited_correction(xy)+outer_correction(xy)
 areas=[];mcareas=[];ground_error=0;hashes={name:sha(out/name)for name in [rec['meshFile'],rec['roofFile'],*rec['treeTiles']]}
 with rasterio.open(r/'.cache/campus-dgm-east.tif')as dem,rasterio.open(r/'.cache/campus-dop-east.tif')as dop:
  data=dem.read(1).astype(float)
  for name in rec['groundTiles']:
-  v,texture=decode(out/name)[0];e,n=map(int,Path(name).stem.split('-')[-2:]);step=spec['groundTileMetres'];xy=np.column_stack([e+v[:,3]*step,n+step-v[:,4]*step]);expected=world(xy,sample(dem,data,xy[:,0],xy[:,1])+correction(xy));error=float(np.max(np.abs(expected-v[:,:3])));assert error<.001;ground_error=max(ground_error,error)
+  v,texture=decode(out/name)[0];e,n=map(int,Path(name).stem.split('-')[-2:]);step=spec['groundTileMetres'];xy=np.column_stack([e+v[:,3]*step,n+step-v[:,4]*step]);expected=world(xy,sample(dem,data,xy[:,0],xy[:,1])+correction(xy));error=float(np.max(np.abs(expected-v[:,:3])));assert error<.001,(name,error,xy[np.argmax(np.max(np.abs(expected-v[:,:3]),axis=1))].tolist());ground_error=max(ground_error,error)
   areas.append(union_all(polygons(xy.reshape(-1,3,2))));mcareas.append(union_all(polygons(v[:,:3].reshape(-1,3,3)[:,:,[0,2]])));c,row=(~dop.transform)*(e,n+step);rgb=dop.read([1,2,3],window=rasterio.windows.Window(round(c),round(row),step*5,step*5)).transpose(1,2,0);assert np.array_equal(np.frombuffer(texture,dtype='uint8').reshape(step*5,step*5,4)[:,:,:3],rgb);hashes[name]=sha(out/name)
 area=unary_union(areas);mcarea=unary_union(mcareas);coverage=read(out/rec['coverageFile']);assert area.symmetric_difference(shape(coverage['ground'])).area<.01
 others=unary_union([Polygon(p[0][:,:2],[h[:,:2]for h in p[1:]]).buffer(0)for bid,items in surveys.items()if bid!=spec['building']for k,p in items if k=='GroundSurface'])
 assert area.intersection(others.buffer(.4999)).area<.01
 assert area.intersection(prior).area<.005
 explicit_extent=unary_union([Polygon(rings[0][:,:2],[h[:,:2]for h in rings[1:]])for kind,rings in raw if kind=='GroundSurface']).buffer(spec['apronMetres']).union(shape(coverage['canopy']).buffer(spec['canopyExtent']['groundMarginMetres'])).union(box(*spec['northLandscapeBoundsUtm']))
+policy=spec['northLandscapeBoundary'];assert rec['northLandscapeBoundary']==policy
+project=Transformer.from_crs(4326,25832,always_xy=True).transform
+mapped={}
+for item in policy['osm']:
+ path=r/'minecraft/exterior'/item['sourceFile'];assert sha(path)==item['sha256'];assert sha(out/path.name)==item['sha256'];inputs[path.name]=item['sha256']
+ xml=ET.parse(path).getroot();nodes={n.get('id'):project(float(n.get('lon')),float(n.get('lat')))for n in xml.findall('node')}
+ for way in xml.findall('way'):mapped[way.get('id')]=Polygon([nodes[n.get('ref')]for n in way.findall('nd')]).buffer(0)
+river=mapped[policy['riverWay']];woodland=mapped[policy['woodlandWay']]
+explicit_extent=explicit_extent.union(woodland.buffer(policy['woodlandMarginMetres'])).difference(river.buffer(policy['riverGuardMetres']))
+components=[explicit_extent]if explicit_extent.geom_type=='Polygon'else list(explicit_extent.geoms)
+connected=[part for part in components if part.intersects(shape(coverage['envelope']))];assert len(connected)==1
+explicit_extent=connected[0]
 assert shape(coverage['extent']).symmetric_difference(explicit_extent).area<.001
+assert area.intersection(river).area<.001, 'Reconstructed land covers the mapped river'
+assert area.intersection(river.buffer(policy['riverGuardMetres']-.001)).area<.001
+assert area.intersection(Point(698493,5349720).buffer(.25)).is_empty, 'Former invalid river standing target must be excluded'
+assert all(explicit_extent.boundary.distance(Point(q))<.002 for line in outer_transition['lines']for q in line['utm']), 'Transition controls must follow the current boundary'
+
 expected=shape(coverage['extent']).difference(others.buffer(.5)).difference(prior.buffer(.002));assert area.symmetric_difference(expected).area<.02
 # Existing ground geometry remains disjoint, including at close footprint guards.
 overlap=0
@@ -185,4 +210,4 @@ with rasterio.open(r/'.cache/campus-dop-east.tif')as dop,rasterio.open(r/'.cache
   q=np.asarray([t['utm']]);rgb=next(dop.sample(q));height=float(next(dom.sample(q))[0]-next(dem.sample(q))[0]);assert rgb[1]>rgb[0]*1.025 and rgb[1]>rgb[2]+2 and height>3
   assert area.buffer(.001).covers(Point(q[0]));assert not others.buffer(1.19).covers(Point(q[0]));assert all(np.linalg.norm(q[0]-np.array(old['utm']))>2 for old in oldtrees)
 assert len({t['runtimeId']for t in m['tiles']if 'runtimeId'in t})==sum('runtimeId'in t for t in m['tiles'])
-result={'status':'PASS: raw surveyed roof/pixels, recessed windows, projecting frames, source terrain and preserved neighboring ground','manifestSha256':sha(out/'manifest.json'),'sourceSha256':sha(r/'minecraft/exterior'/rec['sourceFile']),'validatorSha256':sha(Path(__file__)),'inputSha256':inputs,'roofVertexErrorMetres':roof_vertex_error,'roofFootprintErrorSquareMetres':roof_shape_error,'roofTriangles':33,'windowBandControls':len(rec['openingControls']),'frameControls':len(rec['frameControls']),'wallTriangleControls':wall_vertex_controls,'maximumGroundCoordinateErrorMetres':ground_error,'transitionControls':accepted,'unresolvedTransitionControls':missing,'oldGroundOverlapSquareMetres':overlap,'treeCount':len(trees),'tileSha256':hashes,'qualification':'Architectural detail remains source-informed estimation; outer joins and appearance need native visual review.'};(out/'physics-wsi-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items()if k not in ['tileSha256','inputSha256']},indent=2))
+result={'status':'PASS: raw surveyed roof/pixels, recessed windows, projecting frames, source terrain and preserved neighboring ground','manifestSha256':sha(out/'manifest.json'),'sourceSha256':sha(r/'minecraft/exterior'/rec['sourceFile']),'validatorSha256':sha(Path(__file__)),'inputSha256':inputs,'roofVertexErrorMetres':roof_vertex_error,'roofFootprintErrorSquareMetres':roof_shape_error,'roofTriangles':33,'windowBandControls':len(rec['openingControls']),'frameControls':len(rec['frameControls']),'wallTriangleControls':wall_vertex_controls,'maximumGroundCoordinateErrorMetres':ground_error,'transitionControls':accepted,'unresolvedTransitionControls':missing,'oldGroundOverlapSquareMetres':overlap,'mappedRiverOverlapSquareMetres':area.intersection(river).area,'riverGuardMetres':policy['riverGuardMetres'],'treeCount':len(trees),'tileSha256':hashes,'qualification':'Architectural detail remains source-informed estimation; outer joins and appearance need native visual review.'};(out/'physics-wsi-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items()if k not in ['tileSha256','inputSha256']},indent=2))

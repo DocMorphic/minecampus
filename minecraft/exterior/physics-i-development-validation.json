@@ -3941,7 +3941,7 @@
         "cameraCaptures": 6,
         "standingControlsPassed": 12,
         "maximumSupportErrorMetres": 0.12561945087736603,
-        "visualReview": "Not yet reviewed; numerical checks do not establish visual acceptance",
+        "visualReview": "Reviewed all six camera and twelve standing captures. The ordinary dirt obstruction at control106 is absent in the fresh world. Forest-edge gaps, source canopy boulders, aerial car imagery and distorted neighboring buildings persist; visual acceptance fails.",
         "fractionalSupportChecks": {
           "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
           "states": 144,
@@ -3969,5 +3969,132 @@
       "Review fresh-world captures and repeat bounded checks after the boundary correction.",
       "Continue ZNN and ground-material reconstruction, then dedicated gameplay persistence regression."
     ]
+  },
+  "physicsWSIRiverBoundary40": {
+    "status": "PASS: source and exact packaged controls; native visual inspection running",
+    "sourceValidation": {
+      "status": "PASS: raw surveyed roof/pixels, recessed windows, projecting frames, source terrain and preserved neighboring ground",
+      "manifestSha256": "8be9066047a1c631ad0b13ac659daa74946ec62127bd62c4eaec7a4000b3e1cb",
+      "sourceSha256": "717c56d87dbb9068caf6c77a1eef1f1b1f9594ca21cadccabe70526b4c99571d",
+      "validatorSha256": "1dcb430c137ead8d0b65289752db85ef855515d6b869fa141f34b82296202e22",
+      "roofVertexErrorMetres": 2.0411891960268315e-05,
+      "roofFootprintErrorSquareMetres": 0.0012192752076805595,
+      "roofTriangles": 33,
+      "windowBandControls": 11,
+      "frameControls": 36,
+      "wallTriangleControls": 1231,
+      "maximumGroundCoordinateErrorMetres": 2.9690596761611232e-05,
+      "transitionControls": 784,
+      "unresolvedTransitionControls": 802,
+      "oldGroundOverlapSquareMetres": 0.0,
+      "mappedRiverOverlapSquareMetres": 0.0,
+      "riverGuardMetres": 0.5,
+      "treeCount": 23,
+      "qualification": "Architectural detail remains source-informed estimation; outer joins and appearance need native visual review."
+    },
+    "geometry": {
+      "areaSquareMetres": 11548.743645016813,
+      "groundTiles": 46,
+      "trees": 23,
+      "unchangedPreviousRenderFiles": 249,
+      "mappedRiverWay": "999083370",
+      "southBankWoodlandWay": "1021271193",
+      "riverOverlapSquareMetres": 0.0,
+      "estimatedRiverGuardMetres": 0.5,
+      "estimatedWoodlandMarginMetres": 1.5
+    },
+    "transitionContinuityRegression": {
+      "stepMetres": 2.8284404299914083e-05,
+      "oldMaximumStepMetres": 0.03302610901861752,
+      "newMaximumStepMetres": 7.404565020130427e-06,
+      "newRangeMetres": 0.0007403850824175828
+    },
+    "standingControlCorrections": [
+      {
+        "beforeUTM": [
+          698493,
+          5349720
+        ],
+        "afterUTM": [
+          698493,
+          5349712
+        ],
+        "reason": "Former point is inside mapped river"
+      },
+      {
+        "beforeUTM": [
+          698607,
+          5349714
+        ],
+        "afterUTM": [
+          698607,
+          5349700
+        ],
+        "reason": "Former point is outside corrected connected south-bank terrain"
+      },
+      {
+        "beforeUTM": [
+          698550,
+          5349727
+        ],
+        "afterUTM": [
+          698550,
+          5349706
+        ],
+        "reason": "Former point is on the disconnected opposite-bank strip"
+      }
+    ],
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "installed": false,
+    "remaining": [
+      "Native riverbank/forest-boundary review and walking regression",
+      "Ground materials and baked aerial cars",
+      "ZNN and other coarse visible buildings",
+      "Existing-world migration and gameplay persistence regression"
+    ],
+    "packagedArtifact": {
+      "status": "PASS: exact embedded WSI manifest, source records, geometry and service",
+      "assetFiles": 52,
+      "artifactSha256": "a65f5a9539bf03ac751b96952a5240ea49ef2fcd2df665aa921a62e2b6d668ad"
+    },
+    "riverColumnPreservation": {
+      "status": "PASS: river collision columns retain unknown255 and preserve upstream block values",
+      "riverControls": 100,
+      "uniqueColumns": 100,
+      "previouslyOverriddenControls": 100,
+      "qualification": "Packaged service preservation check with an upstream marker value; native visual review and real river generation remain separate."
+    },
+    "packagedPreflight": {
+      "status": "PASS: route preflight",
+      "controls": 448,
+      "maxSupportErrorMetres": 0.1325498184845202,
+      "supportToleranceMetres": 0.51,
+      "supportFailures": [],
+      "bodyClearanceFailures": []
+    },
+    "fractionalRegression": {
+      "status": "PASS: packaged fractional supports, boundaries, material codes and overlapping geometry",
+      "heightCases": 19,
+      "overlapCases": 4
+    },
+    "native": {
+      "status": "RUNNING; no completed native acceptance claimed",
+      "plan": "physics-wsi-river-boundary-40",
+      "cameraViews": 8,
+      "standingControls": 12,
+      "freshIsolatedWorld": true
+    }
   }
 }

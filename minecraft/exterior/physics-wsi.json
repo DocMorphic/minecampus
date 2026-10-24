@@ -7,7 +7,7 @@
   "reference": "photos/physics-wsi-reference.json",
   "referenceSha256": "074316624c7084ed3f0239eb53af975839503a334018596bddc01919cc90ba2a",
   "surveyBoundsUtm": [
-    698460,
+    698430,
     5349560,
     698660,
     5349760
@@ -241,7 +241,7 @@
   },
   "groundTransition": {
     "sourceFile": "physics-wsi-ground-transition.json",
-    "sha256": "c88b2b2c1649183dff4e2203010c4775c2aab28599492dfab49cfce1b63a1691"
+    "sha256": "4064a389c72601f861f7d864eab79503fd84decec1fac681d73b18eda0020ada"
   },
   "northLandscapeBoundsUtm": [
     698490,
@@ -249,5 +249,22 @@
     698610,
     5349730
   ],
-  "northLandscapeQualification": "Bounded extension across the north access road, parking edge, lawn and canopy visible in pinned BVV DOP20/DOM20. Region limits are reconstruction boundaries, not cadastral features. Neighboring surveyed footprints remain protected; vehicle type and fine street furniture are unresolved."
+  "northLandscapeQualification": "Bounded northern landscape extended to the mapped south-bank woodland and clipped clear of the mapped river. Neighboring surveyed buildings remain protected. Vehicle and furniture detail remain unresolved.",
+  "northLandscapeBoundary": {
+    "osm": [
+      {
+        "sourceFile": "physics-wsi-north-osm.xml",
+        "sha256": "e6286d30a04e51a822333970a3ab191ca82f83ec9a8fb1208caad0786b4d0a88",
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.674502410872297,48.268576732661465,11.676995847510021,48.26986835478469",
+        "upstreamSha256": "21860d72ebab6e3f4b121ac1bfcab8c26145bafae7409bc2fd9a9ba53a45f69d",
+        "attribution": "\u00a9 OpenStreetMap contributors, ODbL 1.0",
+        "licenseUrl": "https://www.openstreetmap.org/copyright"
+      }
+    ],
+    "woodlandWay": "1021271193",
+    "riverWay": "999083370",
+    "woodlandMarginMetres": 1.5,
+    "riverGuardMetres": 0.5,
+    "qualification": "Mapped woodland and river boundaries are approximate OSM features. The 1.5m woodland margin and 0.5m water guard are reconstruction estimates. Keep only the land component connected to WSI; preserve source water and the opposite bank."
+  }
 }

@@ -168,6 +168,10 @@ assert digest(DATA/wsi['coverageFile'])==wsi['coverageSha256']
 assert wsi['groundTransition']==wsi_spec['groundTransition']
 assert digest(SOURCE/wsi_spec['groundTransition']['sourceFile'])==wsi_spec['groundTransition']['sha256']
 assert digest(DATA/wsi_spec['groundTransition']['sourceFile'])==wsi_spec['groundTransition']['sha256']
+assert wsi['northLandscapeBoundary']==wsi_spec['northLandscapeBoundary']
+for item in wsi_spec['northLandscapeBoundary']['osm']:
+ assert digest(SOURCE/item['sourceFile'])==item['sha256']
+ assert digest(DATA/item['sourceFile'])==item['sha256']
 wsi_check=json.loads((DATA/'physics-wsi-validation.json').read_text())
 assert wsi_check['status'].startswith('PASS:')
 assert wsi_check['manifestSha256']==digest(DATA/'manifest.json')
@@ -490,6 +494,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/'+physics_ii['materialDerivedFile'],(DATA/physics_ii['materialDerivedFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-wsi.json',(SOURCE/wsi['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+wsi_spec['groundTransition']['sourceFile'],(SOURCE/wsi_spec['groundTransition']['sourceFile']).read_bytes())
+  for item in wsi_spec['northLandscapeBoundary']['osm']:write(target,'src/minecampus-exterior/'+item['sourceFile'],(SOURCE/item['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-wsi-reference.json',(SOURCE/wsi_spec['reference']).read_bytes())
   write(target,'src/minecampus-exterior/'+wsi['coverageFile'],(DATA/wsi['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-new-laboratory.json',(SOURCE/'physics-new-laboratory.json').read_bytes())

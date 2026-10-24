@@ -11,15 +11,70 @@ import rasterio
 from rasterio.windows import Window
 from PIL import Image
 from pyproj import Transformer
-from shapely.geometry import Polygon, box, mapping
+from shapely.geometry import Polygon, LineString, box, mapping
 from shapely.ops import unary_union
 
 from exterior_physics_i import nearby_surveys, survey_plan, roof_texture, polygons
 from exterior_physics_library import triangles
 from exterior_physics_ii import ground_transition
-from exterior_physics_ii_landscape import canopy_extension
+from exterior_physics_ii_landscape import canopy_extension, osm_ways
 from exterior_terrain import ElevationSampler
 from exterior_vegetation import build as build_vegetation
+
+
+def north_land_extent(root, spec, original, extent):
+    """Keep connected south-bank terrain clear of the mapped river."""
+    policy = spec['northLandscapeBoundary']
+    ways = osm_ways(root, policy)
+    woodland = Polygon(ways[policy['woodlandWay']][0]).buffer(0)
+    river = Polygon(ways[policy['riverWay']][0]).buffer(0)
+    land = extent.union(woodland.buffer(policy['woodlandMarginMetres'])).difference(river.buffer(policy['riverGuardMetres']))
+    connected = [p for p in polygons(land) if p.intersects(original)]
+    assert len(connected) == 1, 'WSI must have one connected land component'
+    assert connected[0].intersection(river).area < 1e-6
+    return connected[0]
+
+
+def blended_outer_transition(root, spec, prior):
+    """Blend nearby boundary residuals continuously at equidistant corners."""
+    from shapely import points, distance
+    source = root/'minecraft/exterior'/spec['groundTransition']['sourceFile']
+    assert hashlib.sha256(source.read_bytes()).hexdigest() == spec['groundTransition']['sha256']
+    record = json.loads(source.read_text())
+    segments, residuals, missing = [], [], []
+    for line in record['lines']:
+        for i in range(len(line['utm'])-1):
+            edge = line['utm'][i:i+2]
+            values = line['joinDelta'][i:i+2]
+            if None in values:
+                missing.append(LineString(edge))
+            else:
+                segments.append(edge); residuals.append(values)
+    segments, residuals = np.asarray(segments), np.asarray(residuals)
+    a = segments[:,0]; direction = segments[:,1]-a
+    length2 = np.sum(direction**2, axis=1)
+    assert np.all(length2 > 0)
+    missing = unary_union(missing)
+    blend = record['nearestEdgeBlendMetres']
+    assert 0 < blend <= record['widthMetres']
+    def smooth(v):
+        v = np.clip(v,0,1)
+        return v*v*(3-2*v)
+    def correction(xy):
+        xy = np.asarray(xy); result = np.zeros(len(xy))
+        for start in range(0,len(xy),1024):
+            q = xy[start:start+1024]
+            t = np.clip(np.sum((q[:,None,:]-a)*direction,axis=2)/length2,0,1)
+            distances = np.linalg.norm(q[:,None,:]-a-t[:,:,None]*direction,axis=2)
+            nearest = distances.min(axis=1)
+            weights = smooth(1-(distances-nearest[:,None])/blend)
+            values = residuals[:,0]*(1-t)+residuals[:,1]*t
+            residual = np.sum(weights*values,axis=1)/weights.sum(axis=1)
+            pts = points(q)
+            missing_fade = smooth(distance(pts,missing)/record['priorFadeMetres']) if not missing.is_empty else 1
+            result[start:start+len(q)] = residual*smooth(1-nearest/record['widthMetres'])*smooth(distance(pts,prior)/record['priorFadeMetres'])*missing_fade
+        return result
+    return correction, record
 
 
 def build(ctx):
@@ -175,7 +230,7 @@ def build(ctx):
     prior = prior_area(meta['supplementalSurfaces'])
     old_index = next(i for i,s in enumerate(meta['supplementalSurfaces']) if s['name']=='physics-ii-site')
     inherited_correction,_ = ground_transition(root,json.loads((root/'minecraft/exterior/physics-ii.json').read_text()),prior_area(meta['supplementalSurfaces'][:old_index]))
-    outer_correction,transition = ground_transition(root,spec,prior)
+    outer_correction,transition = blended_outer_transition(root,spec,prior)
     def correction(xy):
         return inherited_correction(xy)+outer_correction(xy)
     extent = original.buffer(spec['apronMetres'])
@@ -183,6 +238,7 @@ def build(ctx):
         extent = extent.union(box(*spec['northLandscapeBoundsUtm']))
     canopy, canopy_records = canopy_extension(cache,spec,unary_union([original,others]),extent)
     extent = extent.union(canopy.buffer(spec['canopyExtent']['groundMarginMetres']))
+    extent = north_land_extent(root, spec, original, extent)
     area = extent.difference(others.buffer(.5)).difference(prior.buffer(.002))
     step = spec['groundTileMetres']; lo=(np.floor(np.array(area.bounds[:2])/step)*step).astype(int); hi=(np.ceil(np.array(area.bounds[2:])/step)*step).astype(int)
     ground_tiles, tree_tiles = [], []
@@ -230,4 +286,7 @@ def build(ctx):
     meta['architecture']['physicsWSI']={'sourceFile':source.name,'sourceSha256':sha(source),'generatorFile':'scripts/exterior_physics_wsi.py','generatorSha256':sha(Path(__file__)),'vegetationGeneratorSha256':sha(root/'scripts/exterior_vegetation.py'),'transitionGeneratorSha256':sha(root/'scripts/exterior_physics_ii.py'),'canopyGeneratorSha256':sha(root/'scripts/exterior_physics_ii_landscape.py'),'building':spec['building'],'runtimeId':spec['runtimeId'],'meshFile':mesh_name,'roofFile':roof_name,'groundTiles':[t['file'] for t in ground_tiles],'treeTiles':[t['file'] for t in tree_tiles],'treeCount':len(surface['vegetation']['trees']),'canopyComponents':canopy_records,'groundAreaSquareMetres':area.area,'coverageFile':coverage.name,'coverageSha256':sha(coverage),'surveyWalls':walls,'roofTriangles':len(roof)//3,'baseMC':base,'openingControls':openings_record,'frameControls':beams_record,'retirement':retirement,'qualification':spec['qualification']}
     meta['architecture']['physicsWSI']['groundTransition']=spec['groundTransition']
     shutil.copy2(root/'minecraft/exterior'/spec['groundTransition']['sourceFile'],out/spec['groundTransition']['sourceFile'])
+    for item in spec['northLandscapeBoundary']['osm']:
+        shutil.copy2(root/'minecraft/exterior'/item['sourceFile'],out/item['sourceFile'])
+    meta['architecture']['physicsWSI']['northLandscapeBoundary'] = spec['northLandscapeBoundary']
     print('WSI:',len(walls),'walls;',len(roof)//3,'roof triangles;',len(openings_record),'window bands;',len(beams_record),'projecting frame members;',len(ground_tiles),'ground tiles;',len(surface['vegetation']['trees']),'trees',flush=True)
