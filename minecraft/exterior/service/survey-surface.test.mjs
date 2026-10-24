@@ -95,7 +95,7 @@ test('the reconstructed outdoor layer retires high scan remnants while retaining
  assert.equal((await building.service.renderTile(origin,1_100_000_007)).readInt32LE(32),3);
 });
 
-test('photographic replacement switches ids only after readiness, preserves old tiles and uses save datum without mutating source',async t=>{
+test('airborne photographic startup waits for readiness, preserves old tiles and uses save datum without mutating source',async t=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-photo-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
  const wall={anchor:[3,4,5],direction:[1,0,0],normal:[0,0,1],bounds:[[0,4],[4,8]],rings:[[[0,4],[4,4],[4,8],[0,8]]],vertices:[[3,4,5],[7,4,5],[7,8,5],[3,8,5]],indices:[0,1,2,0,2,3]};
  const occluded={...wall,anchor:[3,4,15],bounds:[[0,4],[4,24]],rings:[[[0,4],[4,4],[4,24],[0,24]]],vertices:[[3,4,15],[7,4,15],[7,24,15],[3,24,15]]};
@@ -108,10 +108,11 @@ test('photographic replacement switches ids only after readiness, preserves old 
  const prim={positions,uvs:new Float32Array([0,1,1,1,1,0,0,0]),indices:new Uint32Array([0,1,2,0,2,3])};
  const service={client:{},meshesFor:async()=>[{copyright:'test provider',primitives:[prim]}],renderSelect:async()=>({tiles:[{id:7,parent:0,chain:[],fine:true}],pending:0,attribution:[]}),renderTile:async()=>source};
  attachSurveySurface(service,dir,{collectRegionTiles:async()=>[{}],mcPositions:(frame,p)=>p.positions,sampleColor:(p,u,v,out)=>out.splice(0,3,60,90,120)});
- const initial=await service.renderSelect(frame,[5,6,6]);assert.equal(initial.pending,1);assert.equal(initial.tiles[0].id,1_100_000_007);
+ const initial=await service.renderSelect(frame,[5,160,6]);assert.equal(initial.pending,1);assert.equal(initial.tiles[0].id,1_100_000_007);
  let result;
- for(let i=0;i<30;i++){await new Promise(r=>setTimeout(r,5));result=await service.renderSelect(frame,[5,6,6]);if(result.pending===0)break;}
+ for(let i=0;i<30;i++){await new Promise(r=>setTimeout(r,5));result=await service.renderSelect(frame,[5,160,6]);if(result.pending===0)break;}
  assert.equal(result.pending,0);assert.ok(result.tiles.some(t=>t.id===1_000_050_000));assert.ok(result.tiles.some(t=>t.id===1_200_000_007));assert.ok(result.attribution.includes('test provider'));
+ const descending=await service.renderSelect(frame,[5,6,6]);assert.deepEqual(descending.tiles,result.tiles);assert.equal(descending.pending,0);
  assert.deepEqual(positions,snapshot);
  // Only one sixth of the building's wall area is observed. Its good face must
  // still appear; the larger occluded face must not be synthesized.
@@ -174,17 +175,30 @@ test('roof-only replacement removes contained fragments without erasing a wall c
  assert.equal((await other.service.renderTile({...origin,h0:origin.h0-2},1_100_000_007)).readInt32LE(32),0);
 });
 
-test('current landmarks survive aerial mode while unrelated photographic ground remains unchanged',async t=>{
- const extra={tiles:[{runtimeId:1_000_030_010,kind:'reconstruction',file:'current-building.ect',alwaysVisible:true}],replacements:[{ring:[[3,3],[8,3],[8,8],[3,8]],holes:[],y0:2,y1:20,alwaysVisible:true}],protectionGrid:{width:20,height:20,metresPerPixel:1,data:Buffer.alloc(400).toString('base64')}};
- const oldSite=fixture(t,tile([[4,8,4],[5,9,4],[4,8,5]]),extra);
- const aerial=await oldSite.service.renderSelect(origin,[6,100,6]);assert.ok(aerial.tiles.some(x=>x.id===1_000_030_010));
- assert.equal((await oldSite.service.renderTile(origin,1_300_000_007)).readInt32LE(32),0);
- for(const p of [[[12,.4,12],[13,.6,12],[12,.4,13]],[[4,25,4],[5,26,4],[4,25,5]]]){
-  const original=tile(p),other=fixture(t,original,extra);assert.deepEqual(await other.service.renderTile(origin,1_300_000_007),original);
+test('all reconstructed surfaces remain selected on airborne startup, ascent, descent and outside-camera views',async t=>{
+ const specs=[{runtimeId:1_000_000_000,kind:'ground',file:'ground.ect'},{runtimeId:1_000_030_010,kind:'reconstruction',file:'current-building.ect',alwaysVisible:true},{runtimeId:1_000_000_100,kind:'reconstruction',file:'galileo.ect'}];
+ const source={id:7,parent:3,chain:[1,3],fine:true};
+ for(const shifted of [false,true]){
+  const frame={...origin,h0:origin.h0-(shifted?17:0)};
+  const {service}=fixture(t,null,{tiles:specs},undefined,[source]);
+  // Begin above the old thresholds; repeat middle heights from both sides.
+  for(const [x,y,z]of [[6,150,6],[6,5,6],[6,40,6],[6,60,6],[6,150,6],[6,60,6],[6,40,6],[6,5,6],[100,150,100],[6,150,6]]){
+   const result=await service.renderSelect(frame,[x,y+(shifted?17:0),z]);
+   for(const spec of specs)assert.ok(result.tiles.some(v=>v.id===spec.runtimeId),`missing ${spec.runtimeId} at ${x},${y},${z}`);
+   assert.deepEqual(result.tiles.find(v=>v.id===1_100_000_007),{...source,id:1_100_000_007,parent:1_100_000_003,chain:[1_100_000_001,1_100_000_003]});
+  }
+  assert.deepEqual((await service.renderSelect({...frame,lat:49},[6,150,6])).tiles,[source]);
  }
- const shifted=tile([[4,8,4],[5,9,4],[4,8,5]]);shifted.writeDoubleLE(2,16);const other=fixture(t,shifted,extra);
- assert.equal((await other.service.renderTile({...origin,h0:origin.h0-2},1_300_000_007)).readInt32LE(32),0);
- assert.deepEqual((await other.service.renderSelect({...origin,lat:49},[6,100,6])).tiles,[]);
+});
+
+test('airborne source cleanup stays bounded and keeps unrelated geometry and texture bytes',async t=>{
+ const extra={protectionGrid:{width:20,height:20,metresPerPixel:1,data:Buffer.alloc(400).toString('base64')}};
+ const inside=fixture(t,tile([[4,.4,4],[5,.6,4],[4,.4,5]]),extra,undefined,[{id:7,parent:0,chain:[]}]);
+ const result=await inside.service.renderSelect(origin,[100,150,100]);assert.equal(result.tiles[0].id,1_100_000_007);
+ const removed=await inside.service.renderTile(origin,result.tiles[0].id);assert.equal(removed.readInt32LE(32),0);assert.deepEqual([...removed.subarray(-4)],[12,34,56,255]);
+ const bytes=tile([[24,.4,24],[25,.6,24],[24,.4,25]]),outside=fixture(t,bytes,extra,undefined,[{id:7,parent:0,chain:[]}]);
+ const selected=await outside.service.renderSelect(origin,[6,150,6]);assert.deepEqual(await outside.service.renderTile(origin,selected.tiles[0].id),bytes);
+ assert.deepEqual(await outside.service.renderTile({...origin,lat:49},7),bytes);
 });
 
 test('manual-only facade cleanup applies even when there are no photographic render tiles',async t=>{

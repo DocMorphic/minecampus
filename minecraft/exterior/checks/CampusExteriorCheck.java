@@ -368,7 +368,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
                 var server=mc.getSingleplayerServer(); var playerId=mc.player.getUUID();
-                String camera=Boolean.getBoolean("minecampus.reflectionFunctional")?"58 72 -63 -90 18":Boolean.getBoolean("minecampus.shadowFunctional")?"38 73 -59 -135 50":CAMERAS[stage];
+                String camera=Boolean.getBoolean("minecampus.altitudeFunctional")?CampusAltitudeChecks.INITIAL_CAMERA:Boolean.getBoolean("minecampus.reflectionFunctional")?"58 72 -63 -90 18":Boolean.getBoolean("minecampus.shadowFunctional")?"38 73 -59 -135 50":CAMERAS[stage];
                 server.execute(() -> {
                     try {
                         var player=server.getPlayerList().getPlayer(playerId);
@@ -446,6 +446,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if(((java.util.List<?>)df.get(renderer)).size()!=want.size())ready=false;
             readyTicks=ready?readyTicks+1:0;
             if(ticks<200 || readyTicks<40)return;
+            if(Boolean.getBoolean("minecampus.altitudeFunctional")){CampusAltitudeChecks.tick(mc);return;}
             if(Boolean.getBoolean("minecampus.shadowFunctional")){CampusShadowFunctionalCheck.tick(mc);return;}
             if(Boolean.getBoolean("minecampus.reflectionFunctional")){CampusReflectionFunctionalCheck.tick(mc);return;}
             if(Boolean.getBoolean("minecampus.reflectionIntegration")){CampusReflectionIntegrationCheck.tick(mc);return;}
