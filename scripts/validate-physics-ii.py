@@ -289,7 +289,7 @@ assert old_overlap<.005,old_overlap
 # Reconstruct the complete intended coverage from earlier manifest surfaces.
 def prior_ring(ring):
  q=np.asarray(ring);ecef_points=origin+q[:,0,None]*basis[0]+q[:,1,None]*basis[2]+basis[1];e,n,_=inverse.transform(*ecef_points.T);return np.column_stack([e,n])
-prior=unary_union([box(*m['boundsUtm']),*[Polygon(prior_ring(p['ring']),[prior_ring(h)for h in p.get('holes',[])])for s in m['supplementalSurfaces']if s['name']!='physics-ii-site'for p in s['rings']]])
+prior=unary_union([box(*m['boundsUtm']),*[Polygon(prior_ring(p['ring']),[prior_ring(h)for h in p.get('holes',[])])for s in m['supplementalSurfaces'][:next(i for i,s in enumerate(m['supplementalSurfaces'])if s['name']=='physics-ii-site')]for p in s['rings']]])
 expected_coverage=expected_extent.difference(others.buffer(.5)).difference(prior.buffer(.002))
 independent_coverage_error=area.symmetric_difference(expected_coverage).area
 assert independent_coverage_error<.02,independent_coverage_error

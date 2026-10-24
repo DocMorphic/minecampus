@@ -1,0 +1,242 @@
+{
+  "name": "Walter-Schottky-Institut / TUM5112",
+  "building": "DEBY_LOD2_5323120",
+  "runtimeId": 1000030040,
+  "groundRuntimeStart": 1000060500,
+  "treeRuntimeStart": 1000040600,
+  "reference": "photos/physics-wsi-reference.json",
+  "referenceSha256": "074316624c7084ed3f0239eb53af975839503a334018596bddc01919cc90ba2a",
+  "surveyBoundsUtm": [
+    698460,
+    5349560,
+    698660,
+    5349700
+  ],
+  "cleanupMarginMetres": 2.0,
+  "apronMetres": 12,
+  "groundTileMetres": 20,
+  "windowRecessMetres": 0.16,
+  "frameWidthMetres": 0.06,
+  "mullionPitchMetres": 1.25,
+  "panelPitchMetres": 1.25,
+  "panelJointMetres": 0.012,
+  "jointDepthMetres": 0.06,
+  "materialColours": [
+    [
+      49,
+      57,
+      63,
+      255
+    ],
+    [
+      37,
+      57,
+      68,
+      255
+    ],
+    [
+      192,
+      197,
+      199,
+      255
+    ],
+    [
+      25,
+      30,
+      34,
+      255
+    ]
+  ],
+  "openings": {
+    "1": [
+      [
+        0.2,
+        0.55,
+        14.513860222176413,
+        2.65
+      ],
+      [
+        0.2,
+        3.7,
+        14.513860222176413,
+        5.8
+      ],
+      [
+        0.2,
+        6.95,
+        14.513860222176413,
+        9.05
+      ]
+    ],
+    "22": [
+      [
+        0.2,
+        0.55,
+        44.75817640366012,
+        2.65
+      ],
+      [
+        0.2,
+        3.7,
+        44.75817640366012,
+        5.8
+      ],
+      [
+        0.2,
+        6.95,
+        44.75817640366012,
+        9.05
+      ]
+    ],
+    "8": [
+      [
+        0.3,
+        0.55,
+        59.8,
+        2.65
+      ],
+      [
+        0.3,
+        5.65,
+        59.8,
+        7.9
+      ]
+    ],
+    "4": [
+      [
+        8.6,
+        3.8,
+        11.3,
+        4.7
+      ],
+      [
+        8.8,
+        0.6,
+        10.5,
+        2.4
+      ]
+    ],
+    "3": [
+      [
+        7.8,
+        3.8,
+        10.6,
+        4.7
+      ]
+    ]
+  },
+  "externalFrames": {
+    "1": {
+      "verticalPitchMetres": 5.0,
+      "verticalStartMetres": 0.12,
+      "widthMetres": 0.16,
+      "depthMetres": 0.28,
+      "horizontalBandsAboveBase": [
+        0.1,
+        3.2,
+        6.4,
+        9.4
+      ],
+      "topAboveBase": 9.46,
+      "qualification": "Three-tier south elevation; frame rhythm and dimensions estimated from public photograph and private plane projection."
+    },
+    "22": {
+      "verticalPitchMetres": 5.0,
+      "verticalStartMetres": 0.12,
+      "widthMetres": 0.16,
+      "depthMetres": 0.28,
+      "horizontalBandsAboveBase": [
+        0.1,
+        3.2,
+        6.4,
+        9.4
+      ],
+      "topAboveBase": 9.46,
+      "qualification": "Three-tier south elevation; frame rhythm and dimensions estimated from public photograph and private plane projection."
+    },
+    "8": {
+      "verticalPitchMetres": 5.0,
+      "verticalStartMetres": 0.12,
+      "widthMetres": 0.16,
+      "depthMetres": 0.22,
+      "horizontalBandsAboveBase": [
+        0.1,
+        3.2,
+        8.2,
+        9.25
+      ],
+      "topAboveBase": 9.4,
+      "qualification": "Two clearly observed north-facing glazed bands with a broad opaque intermediate zone. Vertical rhythm and beam depth estimated."
+    }
+  },
+  "qualification": "BVV preserves the surveyed envelope and roof. South window tiers and external framing follow the TUM press photograph and private aligned projections. Exact opening bounds, frame section/depth, colours, obscured end-wall glazing and north-window bands are estimated; north does not repeat the south three-tier pattern. Reference pixels are not bundled. No interiors.",
+  "canopyExtent": {
+    "boundsUtm": [
+      698460,
+      5349560,
+      698660,
+      5349700
+    ],
+    "resolutionMetres": 0.5,
+    "componentSeedsUTM": [
+      [
+        698541.75,
+        5349651.75
+      ],
+      [
+        698554.75,
+        5349650.25
+      ],
+      [
+        698567.25,
+        5349648.25
+      ],
+      [
+        698581.75,
+        5349646.75
+      ],
+      [
+        698542.75,
+        5349646.75
+      ],
+      [
+        698556.25,
+        5349644.75
+      ],
+      [
+        698589.75,
+        5349629.75
+      ],
+      [
+        698529.25,
+        5349632.75
+      ],
+      [
+        698503.75,
+        5349595.25
+      ],
+      [
+        698524.75,
+        5349625.25
+      ],
+      [
+        698527.25,
+        5349622.25
+      ],
+      [
+        698606.75,
+        5349604.75
+      ],
+      [
+        698559.25,
+        5349594.25
+      ],
+      [
+        698581.75,
+        5349595.25
+      ]
+    ],
+    "groundMarginMetres": 2.5,
+    "qualification": "Complete DOP-green DOM-DGM canopy groups intersecting the12m WSI apron. Tree form and species are estimates; earlier tree centres remain excluded."
+  }
+}

@@ -3176,5 +3176,180 @@
       "Implement WSI envelope and adjoining continuous ground using a separate generator with independent roof/wall/clearance validation.",
       "Match these eight baseline cameras and repeat affected walking routes before acceptance."
     ]
+  },
+  "physicsWSICandidate36": {
+    "status": "PASS: bounded native geometry and standing checks; overall visual acceptance withheld",
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 304384887,
+      "sha256": "72e5d616453713d3cdbb3c97bc933e3f692f41901b0262175b5470382763d1e3",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "1a0a23eae062989a162f3cafb433bd065b3ef64abbed70ffb26f3f4c4a0f412e",
+      "rendererSourceFingerprint": "ea4b6b0290841ca5",
+      "bundleSha256": "78349c283e517a6ad6f932360a86381ca1ce4e9244a386c5d192643b1a0aa9d9",
+      "tiles": 267,
+      "bundleUnpackedBytes": 682926771,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "viewsReviewed": 15,
+    "standingCapturesReviewed": 10,
+    "nativeGlazingColliderChecks": 5,
+    "maxSupportErrorMetres": 0.4805716927938022,
+    "supportToleranceMetres": 0.51,
+    "sourceValidation": {
+      "allPreviousRenderTilesUnchanged": 248,
+      "newRenderTiles": 19,
+      "manifestSha256": "de4b46c9d5e3b203f9613109cdcd644116d1a01aa152e5ed81ceda3c8459e330",
+      "newGroundSquareMetres": 3689.3050283511984,
+      "newTrees": 4,
+      "sourceValidatorsPassed": 9
+    },
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "findings": [
+      "The eight matched baseline views now show coherent WSI wall planes, three south window tiers, asymmetric north glazing and the retained surveyed roof. The east tree blob is replaced by a separate source-positioned tree.",
+      "Close views show recessed glazing, reflections, projecting frames and panel seams. Midnight/day return behaves correctly. Exact facade details and material colours remain qualified estimates.",
+      "The new northern apron has a conspicuous sky gap where it joins retained source ground. North-west parking blobs and blurred aerial ground remain. This is a visual failure, not a completed section.",
+      "A small ordinary dirt strip is visible at the west wall in this reused QA world. Fresh-generation comparison is pending; do not infer ownership or delete saved blocks.",
+      "The prior route1 endpoint still has severely warped ZNN source geometry and blue ground openings. Its supported standing point does not establish visual quality.",
+      "Three matched baseline camera positions are outside surveyed standing coverage; these are visual captures only. Ten separately specified standing controls pass."
+    ],
+    "nextActions": [
+      "Finish the fresh-generation comparison.",
+      "Repair the measured outer WSI ground transition, then reconstruct ZNN and refine surrounding ground/vegetation."
+    ],
+    "continuousWalking": {
+      "status": "PASS: repeated physical traversal; visual acceptance remains false",
+      "run": "physics-wsi-routes-36",
+      "metres": 152.8600296238171,
+      "reviewedCaptures": 35
+    }
+  },
+  "physicsWSIContinuousRoutes36": {
+    "status": "PASS: repeated physical traversal; visual acceptance remains false",
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 304384887,
+      "sha256": "72e5d616453713d3cdbb3c97bc933e3f692f41901b0262175b5470382763d1e3",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "1a0a23eae062989a162f3cafb433bd065b3ef64abbed70ffb26f3f4c4a0f412e",
+      "rendererSourceFingerprint": "ea4b6b0290841ca5",
+      "bundleSha256": "78349c283e517a6ad6f932360a86381ca1ce4e9244a386c5d192643b1a0aa9d9",
+      "tiles": 267,
+      "bundleUnpackedBytes": 682926771,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "routes": [
+      {
+        "label": "Mapped footpath 295418158",
+        "travelledMetres": 66.42725338681274,
+        "movementTicks": 314,
+        "jumps": 1,
+        "serverEndpoint": [
+          361.3566207601691,
+          63.0,
+          -365.0735159249854,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "capture": "campus-physics-wsi-routes-36-route-0-end.png"
+      },
+      {
+        "label": "Mapped footpath 317014213",
+        "travelledMetres": 57.74451139844392,
+        "movementTicks": 279,
+        "jumps": 2,
+        "serverEndpoint": [
+          407.1166915251399,
+          64.0,
+          -377.209787479366,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "capture": "campus-physics-wsi-routes-36-route-1-end.png"
+      },
+      {
+        "label": "Mapped footpath 241031086",
+        "travelledMetres": 28.68826483856044,
+        "movementTicks": 141,
+        "jumps": 1,
+        "serverEndpoint": [
+          354.64752320408127,
+          64.0,
+          -394.1253193355452,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "capture": "campus-physics-wsi-routes-36-route-2-end.png"
+      }
+    ],
+    "totalTravelMetres": 152.8600296238171,
+    "jumpInputs": 4,
+    "capturesReviewed": 35,
+    "identicalRoutePlan": "physics-ii-routes-35c",
+    "serverTeleports": {
+      "initialCamera": 1,
+      "routeStarts": 3,
+      "midRoute": 0
+    },
+    "preflight": {
+      "samples": 260,
+      "supportFailures": 0,
+      "bodyClearanceFailures": 0,
+      "toleranceMetres": 0.51,
+      "legacyLimitation": "The separate historical OSM241031086@6.30m sample is not retested by this sample spacing; its0.513546m result remains recorded."
+    },
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "findings": [
+      "All35captures reviewed. WSI remains coherent along route0 and route2; the old warped route2 frontage is now recessed reflective glazing.",
+      "Route1 retains narrow raised shoulders and blue gaps next to the unreconstructed ZNN building. Its endpoint is still visually unacceptable despite successful traversal.",
+      "Ordinary dirt is visible near ZNN and at the west WSI wall in reused QA; fresh comparison is separate and saved blocks are preserved.",
+      "Aerial ground blur, bright wall-foot halos and stepped grass boundaries remain."
+    ],
+    "nextActions": [
+      "Finish the fresh-generation comparison.",
+      "Repair the measured outer WSI ground transition, then reconstruct ZNN and refine surrounding ground/vegetation."
+    ]
+  },
+  "physicsWSITransitionStudy37": {
+    "status": "DIAGNOSIS: outer source ground lies below reconstructed terrain; repair pending",
+    "candidateArtifactSha256": "72e5d616453713d3cdbb3c97bc933e3f692f41901b0262175b5470382763d1e3",
+    "querySha256": "a3c102ae0188e07982617d4a41ef6ec5c6bfaba635b69052380e0fc57ffd6d76",
+    "sourceSampleSha256": "8e5ec0588b4518903080a948310380512d90c775b3bf6c988ff4e9624becf11f",
+    "sourceTileCount": 9,
+    "sourceControls": 504,
+    "unresolvedSourceControls": 7,
+    "matchedGroundControls": 439,
+    "minimumMeshAboveSourceMetres": -0.025593604131159964,
+    "maximumMeshAboveSourceMetres": 0.8110574512895639,
+    "qualification": "Transient provider samples, nearest low-slope surface within1.25m of DGM. Diagnostic only; no geometry changed, no unresolved sample filled, and visual/collision acceptance remains pending."
   }
 }

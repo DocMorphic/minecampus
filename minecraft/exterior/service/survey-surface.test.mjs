@@ -8,14 +8,14 @@ import {attachSurveySurface} from './survey-surface.mjs';
 const origin={lat:48.265,lon:11.671,h0:519.7618173672081};
 test('column-centre collision is restricted to listed Physics ground assets',t=>{
  let meshes;
- const names=['physics.ect','core.ect','building.ect','tree.ect','woodland.ect','laboratory.ect','site.ect','physics-ii.ect'];
- const kinds=['ground','ground','reconstruction','vegetation','ground','ground','ground','ground'];
+ const names=['physics.ect','core.ect','building.ect','tree.ect','woodland.ect','laboratory.ect','site.ect','physics-ii.ect','wsi.ect'];
+ const kinds=['ground','ground','reconstruction','vegetation','ground','ground','ground','ground','ground'];
  const tiles=names.map((file,i)=>({file,kind:kinds[i],runtimeId:100+i,bounds:[[0,0,0],[16,4,16]]}));
- const {service,dir}=fixture(t,null,{tiles,architecture:{physicsISite:{groundTiles:['physics.ect','building.ect']},physicsWoodland:{groundTiles:['woodland.ect']},physicsNewLaboratory:{groundTiles:['laboratory.ect']},physicsLaboratorySite:{groundTiles:['site.ect']},physicsII:{groundTiles:['physics-ii.ect']}}},
+ const {service,dir}=fixture(t,null,{tiles,architecture:{physicsISite:{groundTiles:['physics.ect','building.ect']},physicsWoodland:{groundTiles:['woodland.ect']},physicsNewLaboratory:{groundTiles:['laboratory.ect']},physicsLaboratorySite:{groundTiles:['site.ect']},physicsII:{groundTiles:['physics-ii.ect']},physicsWSI:{groundTiles:['wsi.ect']}}},
    {voxelizeArea:(_frame,assets)=>{meshes=assets;return {vox:new Uint8Array(16*16*8)};}});
  for(const name of names)fs.writeFileSync(path.join(dir,name),tile([[0,1,0],[16,1,0],[0,1,16]]));
  service.campusCollision({...origin,mcToEcef:(x,y,z)=>[x,y,z]},0,0,0,8);
- assert.deepEqual(meshes.map(m=>m.primitives[0].campusHeightfield),[true,false,false,false,true,true,true,true]);
+ assert.deepEqual(meshes.map(m=>m.primitives[0].campusHeightfield),[true,false,false,false,true,true,true,true,true]);
 });
 function tile(positions){
  const b=Buffer.alloc(32+16+positions.length*20+4);b.write('ECT1');b.writeInt32LE(1,4);b.writeInt32LE(positions.length,32);b.writeInt32LE(1,36);b.writeInt32LE(1,40);b.fill(255,44,48);

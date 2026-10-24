@@ -158,6 +158,19 @@ assert physics_ii_check['sourceSha256']==physics_ii['sourceSha256']
 assert physics_ii_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-ii.py')
 assert set(physics_ii_check['tileSha256'])==set(physics_ii['groundTiles']+physics_ii['treeTiles']+physics_ii['shrubTiles']+[b[key]for b in physics_ii['bodies']for key in ['meshFile','roofFile']])
 assert all(digest(DATA/name)==value for name,value in physics_ii_check['tileSha256'].items())
+wsi=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsWSI']
+wsi_spec=json.loads((SOURCE/wsi['sourceFile']).read_text())
+assert digest(SOURCE/wsi['sourceFile'])==wsi['sourceSha256']
+assert digest(SOURCE/wsi_spec['reference'])==wsi_spec['referenceSha256']
+for path,key in [(ROOT/wsi['generatorFile'],'generatorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(ROOT/'scripts/exterior_physics_ii.py','transitionGeneratorSha256'),(ROOT/'scripts/exterior_physics_ii_landscape.py','canopyGeneratorSha256')]:assert digest(path)==wsi[key]
+assert digest(DATA/wsi['coverageFile'])==wsi['coverageSha256']
+wsi_check=json.loads((DATA/'physics-wsi-validation.json').read_text())
+assert wsi_check['status'].startswith('PASS:')
+assert wsi_check['manifestSha256']==digest(DATA/'manifest.json')
+assert wsi_check['sourceSha256']==wsi['sourceSha256']
+assert wsi_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-wsi.py')
+assert set(wsi_check['tileSha256'])==set(wsi['groundTiles']+wsi['treeTiles']+[wsi['meshFile'],wsi['roofFile']])
+assert all(digest(DATA/name)==value for name,value in wsi_check['tileSha256'].items())
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -196,6 +209,13 @@ details are source-informed estimates. Courtyard shrubs use DOP20 colour and
 DOM20/DGM1 height bounds; species and foliage form are estimated with CC0
 Poly Haven textures. No interiors or provider pixels. See physics-ii.json
 and physics-ii-reference.json.
+
+The WSI exterior preserves BVV wall planes, including the thin roof-edge strip,
+and original roof geometry with public DOP20 roof imagery. Window tiers and
+projecting frames are estimates informed by TUM exterior photographs and private
+source review; no reference pixels are bundled. Surrounding terrain and tree
+positions/heights use BVV DGM1/DOM20/DOP20. Tree forms and species are inferred.
+See physics-wsi.json and physics-wsi-reference.json. No interiors.
 
 The expanded Physik II landscape follows OSM parking, grass and footway
 boundaries (ODbL 1.0, © OpenStreetMap contributors) and BVV DGM1 heights.
@@ -473,6 +493,9 @@ with zipfile.ZipFile(release) as original:
    if 'osmReference'in body:write(target,'src/minecampus-exterior/'+body['osmReference']['sourceFile'],(SOURCE/body['osmReference']['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['coverageFile'],(DATA/physics_ii['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['materialDerivedFile'],(DATA/physics_ii['materialDerivedFile']).read_bytes())
+  write(target,'src/minecampus-exterior/physics-wsi.json',(SOURCE/wsi['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/physics-wsi-reference.json',(SOURCE/wsi_spec['reference']).read_bytes())
+  write(target,'src/minecampus-exterior/'+wsi['coverageFile'],(DATA/wsi['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-new-laboratory.json',(SOURCE/'physics-new-laboratory.json').read_bytes())
   write(target,'src/minecampus-exterior/physics-new-laboratory-reference.json',(SOURCE/'photos/physics-new-laboratory-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/physics-laboratory-site.json',(SOURCE/'physics-laboratory-site.json').read_bytes())

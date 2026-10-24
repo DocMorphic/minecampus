@@ -58,7 +58,7 @@
       "imageUrl": "https://idw-online.de/de/newsimage72329?size=screen",
       "publisher": "TUM press release, 17 July 2008, syndicated by Informationsdienst Wissenschaft",
       "credit": "TUM/WSI, Jochen Bruckbauer",
-      "qualification": "Clear 800×400 historic south exterior photograph, used for architectural observation only. Source restricts reuse to the press-release context; pixels are not redistributed or bundled as textures."
+      "qualification": "Clear 800\u00d7400 historic south exterior photograph, used for architectural observation only. Source restricts reuse to the press-release context; pixels are not redistributed or bundled as textures."
     }
   ],
   "observations": [
@@ -67,5 +67,5 @@
     "The large east and west end walls have a taller opaque roof portion. BVV supplies the stepped and pitched roof geometry; it must not be replaced with a single flat box.",
     "The historic photo shows an external stair at the far short end. Its present state and geometry need confirmation from newer source references before modeling."
   ],
-  "qualification": "Preliminary source study only. The three-level south facade is photograph-supported; opening coordinates, projecting frame depths, material colours, north-face tiers and occluded details still need digitization and packaged-game review. Reference pixels are not bundled. No interior reconstruction."
+  "qualification": "BVV preserves the surveyed envelope and roof. South window tiers and external framing follow the TUM press photograph and private aligned projections. Exact opening bounds, frame section/depth, colours, obscured end-wall glazing and north-window bands are estimated; north does not repeat the south three-tier pattern. Reference pixels are not bundled. No interiors."
 }
