@@ -466,3 +466,22 @@ Dev.11 adds local cast shadows from the actual loaded map geometry, with alpha-c
 ![GRS courtyard with sun-aligned material lighting and local mesh shadows](../../docs/screenshots/campus-runtime-shadow-courtyard.jpg)
 
 The change preserves all dev.10 geometry, textures, terrain and the bundled service. [Exact artifact, native route, TNT/depth restoration and reload evidence](runtime-shadow-development-validation.json). Only map meshes participate; vanilla blocks and entities do not. The depth map is local and thin edges can show sampling patterns. Photographic ground retains its baked shadows, glass still approximates the sky and ground, and pale path margins and coarse neighboring buildings remain unfinished. This is an incremental checkpoint toward the active campus-quality goal.
+
+
+## Promenade asphalt and smoother ground boundaries
+
+Four OSM footpaths have asphalt surface tags but no width, so the earlier explicit-width importer left them on the blurry aerial ground image. Bounded corridors now cover approximately 3,707 m². Their alignments and classifications come from OSM; widths and offsets are estimates from the BVV 20 cm orthophoto. The wider eastern promenade transitions to a narrower park bend. Existing mapped material areas take priority. [Source records and qualifications](promenade-paths.json).
+
+The ground mask now averages 16 coverage samples per pixel, reducing staircase edges on diagonal paths. A documented 20 cm texture margin under surveyed facades prevents photographic edge bleed without changing geometry or collision. Native ray diagnosis also found that the original broad corridor stopped about 20–23 cm short of its eastern facade. Expanding only that edge covers the actual terrain hit; seven GPU material controls check all four paths and three former gap points.
+
+![Central promenade before](../../docs/screenshots/campus-promenade-before.jpg)
+
+![Same camera with mapped asphalt](../../docs/screenshots/campus-promenade-after.jpg)
+
+![Narrow lawn path with smoother edges](../../docs/screenshots/campus-promenade-lawn.jpg)
+
+![Eastern promenade meeting the facade](../../docs/screenshots/campus-promenade-east.jpg)
+
+All 97 render tiles, terrain and architecture guides remain unchanged. Existing material interiors are preserved; previous boundary pixels intentionally gain fractional coverage. The renderer classes and shaders remain byte-identical to dev.11. Short transverse paths still retain photographic surfaces, and a lighter textured strip near the eastern facade remains from the aerial image's baked shading. This is an incremental ground-material improvement; broader campus reconstruction remains unfinished.
+
+The dev.12 package passes 37 native views, 34 ordinary checks, 37-frame GPU lighting validation, 27 service tests and three updater tests. The preview update preserves all 121 save files and local settings. [Exact artifact and preservation evidence](promenade-development-validation.json).

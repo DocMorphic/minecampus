@@ -19,6 +19,8 @@ for path,key in [(SOURCE/'path-widths.json','sourceSha256'),(DATA/'path-surfaces
  if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['paths'][key]:raise SystemExit('Path material provenance mismatch: '+path.name)
 for path,key in [(SOURCE/'cos-site.json','sourceSha256'),(DATA/'cos-site-surfaces.geojson','derivedSha256')]:
  if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['cosSite'][key]:raise SystemExit('COS site provenance mismatch: '+path.name)
+for path,key in [(SOURCE/'promenade-paths.json','sourceSha256'),(DATA/'promenade-surfaces.geojson','derivedSha256')]:
+ if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['promenade'][key]:raise SystemExit('Promenade provenance mismatch: '+path.name)
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -82,6 +84,12 @@ https://www.openstreetmap.org/copyright
 Selected mapped polygons and their tags are included as ground-surfaces.geojson.
 Explicit-width road/path source lines and derived strips are included as
 path-widths.json and path-surfaces.geojson (ODbL 1.0), with building and mapped-area exclusions.
+Promenade paths without width tags use explicitly estimated widths/offsets from
+BVV DOP20 orthophotos (CC BY 4.0), with the mapped OSM asphalt classification.
+Source: promenade-paths.json; derived corridors: promenade-surfaces.geojson.
+Existing mapped areas take priority. A documented 20 cm texture margin beneath
+surveyed facades prevents bright sampling seams; geometry and collision remain unchanged.
+Material boundaries use 4x area coverage to reduce visible raster steps.
 COS completed-site map lines and furniture positions: © OpenStreetMap contributors.
 Source and derived surfaces: cos-site.json and cos-site-surfaces.geojson (ODbL 1.0).
 Path widths, apron infill, bench dimensions/supports and rack arrangement are
@@ -206,6 +214,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/vegetation-sources.json',(SOURCE/'vegetation-sources.json').read_bytes())
   write(target,'src/minecampus-exterior/ground-surfaces.geojson',(SOURCE/'ground-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/path-widths.json',(SOURCE/'path-widths.json').read_bytes())
+  write(target,'src/minecampus-exterior/promenade-paths.json',(SOURCE/'promenade-paths.json').read_bytes())
+  write(target,'src/minecampus-exterior/promenade-surfaces.geojson',(DATA/'promenade-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/path-surfaces.geojson',(DATA/'path-surfaces.geojson').read_bytes())
   for asset in manifest['tiles']:
    name=asset['file'];assert Path(name).name==name and name.endswith('.ect')

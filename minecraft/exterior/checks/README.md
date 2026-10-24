@@ -98,10 +98,21 @@ Preservation verifies all 95 previous tiles and 82 plans, stable runtime IDs, th
 
 ## Runtime mesh shadows
 
-`CampusShadowChecks` runs before every route capture when `minecampus.requireRuntimeShadows=true`. It verifies that `CampusShadows` comes from the packaged JAR, compares the actual GPU sun direction with Minecraft's sky rotation, and checks the day/weather strength. Require `campus-shadow-route-result.json` to report PASS with all 35 sequential stages, in addition to the existing 33 result files. FPS values are individual route readings, not a controlled performance benchmark.
+`CampusShadowChecks` runs before every route capture when `minecampus.requireRuntimeShadows=true`. It verifies that `CampusShadows` comes from the packaged JAR, compares the actual GPU sun direction with Minecraft's sky rotation, and checks the day/weather strength. Require `campus-shadow-route-result.json` to report PASS with all configured sequential stages (37 after the promenade pass), in addition to the existing 33 result files. FPS values are individual route readings, not a controlled performance benchmark.
 
 `CampusShadowFunctionalCheck` runs separately in the isolated `run-campus-check` save. After streaming readiness, call its `tick(mc)` method from the check harness at camera `38 73 -59 -135 50`, instead of advancing the normal route. Copy the packaged source shader to `expected-runtime-shadow.fsh`; the check rejects resource overrides and a renderer loaded from harness classes. Do not copy the experimental renderer or hook into this run.
 
 The functional check uses actual primed TNT at `(44.5,67,-62.5)`, compares a 512² region of the rendered depth map, restores only its newly recorded edits, and compares the restored depth. It then verifies GPU lighting and captures morning, evening and night, requiring the daytime shadow pass to stop at night. Finally it reloads resources, verifies replacement and destruction of the old framebuffer, compares depth again, and checks mipmapped sampling on all ten shared materials. Require the final `campus-shadow-functional.json` PASS and seven fresh captures. Preserve the full route output before this separate run, and compare capture timestamps with the relevant run start and JAR build time. These fixtures must never run against a user's save.
 
 The new pass applies only to the map meshes. Vanilla blocks, players and mobs do not participate. Existing aerial-image shadows remain baked into those images.
+
+
+## Promenade surface detail
+
+Cameras 35–36 add the narrow lawn path (`60 66 -100 180 10`) and eastern building-side path (`80 65 -100 0 10`). Enable `minecampus.requirePromenade=true`. `CampusPromenadeChecks` reads back four path controls and three diagnosed facade-seam locations from the GPU material mask and requires blue asphalt coverage, then independently intersects the loaded survey terrain below each point. Require `campus-promenade-result.txt` and inspect `campus-promenade-controls.json`. The full route now contains 37 views and 34 ordinary result files, plus the runtime-shadow route check.
+
+For a focused two-camera review, set `minecampus.startStage=35`, `minecampus.promenadeReview=true` and `minecampus.requirePromenade=true`; omit `inspectOnly` and the sequential shadow-route requirement. Require `campus-promenade-review-result.txt` and both fresh captures. This focused review does not replace the full route.
+
+Run `.cache/geodata-venv/bin/python scripts/validate-promenade.py --baseline <prior-build-directory>` after building. The baseline directory must contain the previous `manifest.json`, `ground_surfaces.png` and an inventory mapping prior output paths to SHA-256 hashes. It checks all 97 prior mesh bytes and terrain/architecture/vegetation guides, the seven controls, mapped-area exclusions, and the maximum 20 cm texture margin under building footprints. The 4x coverage mask may change existing boundary pixels; existing material interiors must stay unchanged. Thin vector boundaries absent from the old raster are checked against the actual prior outlines within the half-texel-diagonal and frame-fit tolerance.
+
+Widths/offsets are inferred from BVV DOP20 and kept separate from OSM tags. The southern bend uses a narrower corridor. The footprint margin is texture padding under facades, with no geometry, collision or interior change.

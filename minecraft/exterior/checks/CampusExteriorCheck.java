@@ -35,12 +35,12 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private boolean apronStarted;
     private volatile boolean apronVerified,apronQueued;
     private int apronTicks;
-    private int ticks, stage=Boolean.getBoolean("minecampus.inspectOnly")?Integer.getInteger("minecampus.inspectStage",3):0, total, readyTicks;
+    private int ticks, stage=Integer.getInteger("minecampus.startStage",Boolean.getBoolean("minecampus.inspectOnly")?Integer.getInteger("minecampus.inspectStage",3):0), total, readyTicks;
     private volatile Throwable failure;
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png", "campus-promenade-lawn-path.png", "campus-promenade-east-path.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -76,7 +76,9 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "262 64 -255 90 -15",
         "280 105 -208 140 56",
         "262 64 -255 90 20",
-        "262 64 -255 90 -15"
+        "262 64 -255 90 -15",
+        "60 66 -100 180 10",
+        "80 65 -100 0 10"
     };
 
     @Override public void onInitializeClient() {
@@ -317,7 +319,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         return;
                     }
                 }
-                if(!Boolean.getBoolean("minecampus.bankOnly"))Files.writeString(Path.of("campus-client-result.txt"),"PASS: twenty-three ground, aerial, TNT, promenade, source-limit, IAS, photographic facade, former Mensa, paving-detail, warehouse, road-detail, Telefonzentrale and COS frames captured after full streaming readiness");mc.stop();return;
+                if(!Boolean.getBoolean("minecampus.bankOnly"))Files.writeString(Path.of("campus-client-result.txt"),"PASS: all configured native route frames captured after full streaming readiness");mc.stop();return;
             }
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
@@ -444,6 +446,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
                 return;
             }
+            if(stage==35&&Boolean.getBoolean("minecampus.requirePromenade"))CampusPromenadeChecks.verify(mc,loaded);
             if(Boolean.getBoolean("minecampus.requireRuntimeShadows"))CampusShadowChecks.record(mc,stage,NAMES.length);
             try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
                 image.writeToFile(Path.of(NAMES[stage]));
@@ -661,6 +664,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     Files.writeString(Path.of("campus-telefonzentrale-result.txt"),"PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope");
                 }
             }
+            if(Boolean.getBoolean("minecampus.promenadeReview")&&stage==36){Files.writeString(Path.of("campus-promenade-review-result.txt"),"PASS: both promenade walking frames captured");mc.stop();return;}
             if(Boolean.getBoolean("minecampus.inspectOnly")){Files.writeString(Path.of("campus-inspection-result.txt"),"PASS: isolated inspection frame");mc.stop();return;}
             ++stage;
             moved=false;

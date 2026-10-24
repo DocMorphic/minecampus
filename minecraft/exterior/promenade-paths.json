@@ -1,0 +1,364 @@
+{
+  "status": "Width and centre offsets inferred from BVV DOP20; OSM supplies path alignment and asphalt classification",
+  "fetchedDate": "2026-10-24",
+  "license": "ODbL-1.0",
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "selection": "Four long mapped footpaths intersecting the central promenade study area, MC X=18..100, Z=-160..80",
+  "ways": [
+    {
+      "osmWay": 30275349,
+      "version": 24,
+      "timestamp": "2025-03-12T00:31:50Z",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/30275349/full",
+      "sourceSha256": "3f59d9345a601d75223981b10315ba1540085d550cd88b80b223103849f41c2a",
+      "tags": {
+        "bicycle": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "oneway": "no",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6715837,
+          48.2667155
+        ],
+        [
+          11.6715318,
+          48.2665097
+        ],
+        [
+          11.6715302,
+          48.2665034
+        ],
+        [
+          11.6714841,
+          48.266325
+        ],
+        [
+          11.6714017,
+          48.266023
+        ],
+        [
+          11.6713386,
+          48.2657962
+        ],
+        [
+          11.6712801,
+          48.265591
+        ],
+        [
+          11.6711775,
+          48.2652155
+        ],
+        [
+          11.6711218,
+          48.2650125
+        ],
+        [
+          11.6710561,
+          48.2647849
+        ],
+        [
+          11.6710495,
+          48.2647619
+        ],
+        [
+          11.6710124,
+          48.2646508
+        ],
+        [
+          11.6709861,
+          48.2645521
+        ],
+        [
+          11.6708745,
+          48.2641514
+        ]
+      ],
+      "widthEvidence": "Tree-shadowed western roadside pavement: approximately 4\u20135 m corridor; mapped paving/lawns take priority.",
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 13,
+          "widthMetres": 4.5,
+          "leftOffsetMetres": 0
+        }
+      ]
+    },
+    {
+      "osmWay": 32458178,
+      "version": 32,
+      "timestamp": "2025-07-23T19:03:56Z",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/32458178/full",
+      "sourceSha256": "61c480d0e1cc6743b8eaf21a402187e31aefbdf71d93fb5791af71f2e88a4098",
+      "tags": {
+        "bicycle": "designated",
+        "emergency": "designated",
+        "foot": "designated",
+        "highway": "path",
+        "lit": "yes",
+        "segregated": "no",
+        "smoothness": "excellent",
+        "surface": "asphalt",
+        "traffic_sign": "DE:240"
+      },
+      "coordinates": [
+        [
+          11.672282,
+          48.266624
+        ],
+        [
+          11.6722692,
+          48.2665739
+        ],
+        [
+          11.6722589,
+          48.2665356
+        ],
+        [
+          11.6721394,
+          48.2660916
+        ],
+        [
+          11.672028,
+          48.2657077
+        ],
+        [
+          11.6719582,
+          48.2654613
+        ],
+        [
+          11.6719042,
+          48.2652722
+        ],
+        [
+          11.6718942,
+          48.2652369
+        ],
+        [
+          11.6718745,
+          48.265168
+        ],
+        [
+          11.671787,
+          48.2648613
+        ],
+        [
+          11.671755,
+          48.2647362
+        ],
+        [
+          11.6717064,
+          48.2645429
+        ],
+        [
+          11.6716809,
+          48.2644413
+        ],
+        [
+          11.6716618,
+          48.26437
+        ],
+        [
+          11.6716012,
+          48.2641558
+        ],
+        [
+          11.6715526,
+          48.2639895
+        ],
+        [
+          11.6712501,
+          48.2638613
+        ],
+        [
+          11.6712174,
+          48.2638503
+        ]
+      ],
+      "widthEvidence": "Broad paved corridor between the eastern building fronts and lawn. Orthophoto transects establish the general corridor; native terrain rays exposed a 0.20\u20130.23 m gap before the surveyed facade. Its eastern bound extends to that facade, with the western bound unchanged. The southern bend uses a separate narrow park-path corridor.",
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 14,
+          "widthMetres": 10.6,
+          "leftOffsetMetres": -2.7
+        },
+        {
+          "fromVertex": 14,
+          "toVertex": 17,
+          "widthMetres": 3.4,
+          "leftOffsetMetres": 0
+        }
+      ]
+    },
+    {
+      "osmWay": 386192514,
+      "version": 13,
+      "timestamp": "2026-05-15T08:44:14Z",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/386192514/full",
+      "sourceSha256": "6c97e13e0d0ba661d1522305f32a615684f52e8458d3ef4966f2693b9d2132b9",
+      "tags": {
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6718621,
+          48.2666778
+        ],
+        [
+          11.6718615,
+          48.2666571
+        ],
+        [
+          11.6718499,
+          48.2664152
+        ],
+        [
+          11.6718319,
+          48.2660578
+        ],
+        [
+          11.671802,
+          48.2655785
+        ],
+        [
+          11.6718008,
+          48.2655491
+        ],
+        [
+          11.6717995,
+          48.2655194
+        ],
+        [
+          11.6717926,
+          48.2654899
+        ],
+        [
+          11.6717817,
+          48.2654118
+        ],
+        [
+          11.6717756,
+          48.2653153
+        ],
+        [
+          11.6717529,
+          48.2648687
+        ],
+        [
+          11.671787,
+          48.2648613
+        ]
+      ],
+      "widthEvidence": "Three open-lawn transects show approximately 3 m across, with the mapped centre up to 0.5 m east of the visible centre. Use 3.6 m envelope clipped by mapped lawn boundaries.",
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 11,
+          "widthMetres": 3.6,
+          "leftOffsetMetres": -0.4
+        }
+      ]
+    },
+    {
+      "osmWay": 617369303,
+      "version": 10,
+      "timestamp": "2025-03-12T00:31:50Z",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/617369303/full",
+      "sourceSha256": "2f8e961edb9e720cef13ccf2357e4e0fbe0521273947552da10dca51dd042291",
+      "tags": {
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6717465,
+          48.2666941
+        ],
+        [
+          11.6716903,
+          48.2664845
+        ],
+        [
+          11.6716505,
+          48.2663389
+        ],
+        [
+          11.6715659,
+          48.2660205
+        ],
+        [
+          11.6714383,
+          48.2655701
+        ],
+        [
+          11.6713663,
+          48.265304
+        ],
+        [
+          11.6713256,
+          48.2651565
+        ],
+        [
+          11.6712845,
+          48.2650088
+        ],
+        [
+          11.6712797,
+          48.2649902
+        ],
+        [
+          11.671242,
+          48.2648449
+        ],
+        [
+          11.6712351,
+          48.2648188
+        ]
+      ],
+      "widthEvidence": "Visible roadside pavement transects extend approximately -2.8 to +1.4 m from the mapped centreline in the left-normal direction.",
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 10,
+          "widthMetres": 4.4,
+          "leftOffsetMetres": -0.6
+        }
+      ]
+    }
+  ],
+  "derivation": "Approximate widths and offsets from the orthophoto, preserving existing mapped areas. A 20 cm texture margin under surveyed facades prevents bright sampling seams; it changes no geometry, collision or interiors. Widths and offsets are not OSM tags or surveyed curbs.",
+  "orthophotoSource": "sources.json dop20; cropped orthophoto uses EPSG:25832, 0.2 metres per pixel",
+  "orthophotoSha256": "0c65db3c43a9fa2c546ffe22266ea8015106c2bb3eb30cc064ce6162a8933339",
+  "texturePaddingInsideFootprintsMetres": 0.2,
+  "nativeFacadeControls": [
+    {
+      "x": 82.14898228645325,
+      "z": -97.1937301158905,
+      "terrainY": 64.87957799434662,
+      "terrainTile": 1000000021
+    },
+    {
+      "x": 81.96734070777893,
+      "z": -96.26105999946594,
+      "terrainY": 64.86082923412323,
+      "terrainTile": 1000000021
+    },
+    {
+      "x": 81.59607481956482,
+      "z": -94.21462726593018,
+      "terrainY": 64.85330247879028,
+      "terrainTile": 1000000021
+    }
+  ]
+}
