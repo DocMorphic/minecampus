@@ -342,7 +342,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if (!moved) {
                 moved=true; ticks=0; readyTicks=0; mc.setScreen(null);
                 var server=mc.getSingleplayerServer(); var playerId=mc.player.getUUID();
-                String camera=Boolean.getBoolean("minecampus.shadowFunctional")?"38 73 -59 -135 50":CAMERAS[stage];
+                String camera=Boolean.getBoolean("minecampus.reflectionFunctional")?"58 72 -63 -90 18":Boolean.getBoolean("minecampus.shadowFunctional")?"38 73 -59 -135 50":CAMERAS[stage];
                 server.execute(() -> {
                     try {
                         var player=server.getPlayerList().getPlayer(playerId);
@@ -421,6 +421,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             readyTicks=ready?readyTicks+1:0;
             if(ticks<200 || readyTicks<40)return;
             if(Boolean.getBoolean("minecampus.shadowFunctional")){CampusShadowFunctionalCheck.tick(mc);return;}
+            if(Boolean.getBoolean("minecampus.reflectionFunctional")){CampusReflectionFunctionalCheck.tick(mc);return;}
+            if(Boolean.getBoolean("minecampus.reflectionIntegration")){CampusReflectionIntegrationCheck.tick(mc);return;}
             if(Boolean.getBoolean("minecampus.materialBenchmark")){
                 // Streaming and the controlled comparison each get their own
                 // bounded interval; slow provider loading must not consume
@@ -476,6 +478,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             if(stage==35&&Boolean.getBoolean("minecampus.requirePromenade"))CampusPromenadeChecks.verify(mc,loaded);
             if(stage==37&&Boolean.getBoolean("minecampus.requireCrosspaths"))CampusCrosspathChecks.verify(mc,loaded);
             if(Boolean.getBoolean("minecampus.requireRuntimeShadows"))CampusShadowChecks.record(mc,stage,NAMES.length);
+            if(Boolean.getBoolean("minecampus.requireReflections"))CampusReflectionChecks.record(mc,stage,NAMES.length);
             try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
                 image.writeToFile(Path.of(NAMES[stage]));
             }

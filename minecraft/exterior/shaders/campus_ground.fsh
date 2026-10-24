@@ -67,7 +67,13 @@ float campusShadow(vec3 p) {
 }
 
 
+uniform sampler2D PlanarTexture;
+uniform mat4 PlanarMatrix;
+uniform vec4 PlanarPlane;
+uniform float PlanarStrength;
+
 void main() {
+    vec3 planarRadiance=vec3(0); float planarWeight=0.;
     vec4 color=texture(Sampler0,texCoord0);
     if(abs(MaterialDetail-13.0)<.1){
         // Average fine timber boards over a slightly wider pixel footprint.
@@ -207,6 +213,17 @@ void main() {
             float highlight=pow(max(dot(reflect(-sun,n),view),0.0),180.0);
             glazing+=vec3(0.8,0.75,0.62)*highlight;
             glazing=mix(glazing,color.rgb*(.82+.18*diffuse),.45*(1.0-.45*fresnel));
+// Insert after the analytic glazing colour is computed, before final lighting.
+if(glass>.5&&PlanarStrength>0.0&&abs(dot(PlanarPlane,vec4(worldPosition,1.0)))<.03&&abs(dot(n,PlanarPlane.xyz))>.999){
+    vec4 projected=PlanarMatrix*vec4(worldPosition,1.0);
+    vec2 uv=projected.xy/projected.w*.5+.5;
+    if(projected.w>0.0&&all(greaterThanEqual(uv,vec2(0)))&&all(lessThanEqual(uv,vec2(1)))){
+        vec3 scene=texture(PlanarTexture,uv).rgb;
+        planarRadiance=scene*vec3(.90,.96,1.0);
+        planarWeight=(.65+.30*fresnel)*PlanarStrength;
+    }
+}
+
             vec3 metal=color.rgb*(abs(MaterialDetail-16.0)<.1?1.0:(MaterialDetail>6.5&&MaterialDetail<8.5?1.08:0.82))*diffuse;
             // Smooth powder-coated Galileo aluminium, without concrete normals.
             if(abs(MaterialDetail-16.0)<.1)metal*=.994+.006*noise(worldPosition.xz*70.0);
@@ -232,6 +249,7 @@ void main() {
     }
     color.rgb*=1.0-CampusShadowStrength*campusShadow(worldPosition);
     color*=ColorModulator;
+    color.rgb=mix(color.rgb,planarRadiance,planarWeight);
     color.rgb=mix(color.rgb,CampusFogColor,smoothstep(650.0,1000.0,viewDistance));
     fragColor=color;
 }

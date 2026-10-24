@@ -1,6 +1,15 @@
 from pathlib import Path
-import json,shutil,subprocess
+import json,shutil,subprocess,hashlib,zipfile
 root=Path.cwd();base=root/'.cache/exterior-release-check';qa=root/'.cache/exterior-reflection-check';exp=root/'minecraft/exterior/experiments/reflections';run=qa/'run-campus-check'
+revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+if revision!='100682e20ea22ddbdc988db799b2507748e4604a' or subprocess.run(['git','diff','--quiet','HEAD','--','minecraft/exterior/shaders','minecraft/exterior/checks','minecraft/exterior/client'],cwd=root).returncode:
+ raise SystemExit('Historical prototype: use the clean 100682e source tree, or the maintained reflection checks for the integrated renderer.')
+artifact=root/'dist-minecraft/RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar'
+if hashlib.sha256(artifact.read_bytes()).hexdigest()!='c7fdbce22d557420cae0a07dfd502fc53362d0319f8174928ca9f6349b4ea6fd':
+ raise SystemExit('Historical prototype requires the dev.15 JAR. For the integrated renderer use checks/CampusReflectionIntegrationCheck.java.')
+with zipfile.ZipFile(artifact) as archive:
+ baseline_spec=json.loads(archive.read('assets/realworldmc/shaders/core/campus_ground.json'))
+ baseline_shader=archive.read('assets/realworldmc/shaders/core/campus_ground.fsh').decode()
 qa.mkdir(exist_ok=True);run.mkdir(exist_ok=True)
 for name in ['settings.gradle','gradle.properties']:shutil.copy2(base/name,qa/name)
 for name in ['config','saves']:
@@ -23,7 +32,7 @@ res=qa/'src/main/resources';res.mkdir(parents=True,exist_ok=True)
 mod={'schemaVersion':1,'id':'minecampus-reflection-check','version':'1.0.0','environment':'client','entrypoints':{'client':['dev.realworldmc.client.CampusExteriorCheck','dev.realworldmc.client.CampusReflectionTrial']},'depends':{'realworldmc':'>=1.0.3'}}
 (res/'fabric.mod.json').write_text(json.dumps(mod,indent=2)+'\n')
 shaders=res/'assets/realworldmc/shaders/core';shaders.mkdir(parents=True,exist_ok=True)
-base_shader=json.loads((root/'minecraft/exterior/shaders/campus_ground.json').read_text())
+base_shader=baseline_spec
 spec={'vertex':'realworldmc:campus_reflection','fragment':'realworldmc:campus_reflection','samplers':[{'name':'Sampler0'}],'attributes':['Position','UV0'],'uniforms':[u for u in base_shader['uniforms']if u['name']in ['ModelViewMat','ProjMat','TileAnchor']]+[{'name':name,'type':'float','count':len(values),'values':values}for name,values in [('ClipPlane',[0,0,0,0]),('AlphaCutoff',[.1]),('WorldLight',[1.]),('SunDirection',[0,1,0]),('ReflectedEye',[0,0,0])]]}
 (exp/'campus_reflection.json').write_text(json.dumps(spec,indent=2)+'\n')
 for p in exp.glob('campus_reflection.*'):shutil.copy2(p,shaders/p.name)
@@ -32,7 +41,7 @@ pack=run/'resourcepacks/campus-planar-reflection';out=pack/'assets/realworldmc/s
 base_shader['uniforms'].append({'name':'PlanarTexture','type':'int','count':1,'values':[12]})
 base_shader['uniforms'] += [{'name':'PlanarMatrix','type':'matrix4x4','count':16,'values':[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]},{'name':'PlanarPlane','type':'float','count':4,'values':[0,0,0,0]},{'name':'PlanarStrength','type':'float','count':1,'values':[0]}]
 (out/'campus_ground.json').write_text(json.dumps(base_shader,indent=2)+'\n')
-shader=(root/'minecraft/exterior/shaders/campus_ground.fsh').read_text();shader=shader.replace('void main() {','uniform sampler2D PlanarTexture;\nuniform mat4 PlanarMatrix;\nuniform vec4 PlanarPlane;\nuniform float PlanarStrength;\n\nvoid main() {')
+shader=baseline_shader;shader=shader.replace('void main() {','uniform sampler2D PlanarTexture;\nuniform mat4 PlanarMatrix;\nuniform vec4 PlanarPlane;\nuniform float PlanarStrength;\n\nvoid main() {')
 needle='            glazing=mix(glazing,color.rgb*(.82+.18*diffuse),.45*(1.0-.45*fresnel));';assert shader.count(needle)==1
 shader=shader.replace(needle,needle+'\n'+(exp/'reflection_receive.glsl').read_text())
 shader=shader.replace('void main() {','void main() {\n    vec3 planarRadiance=vec3(0); float planarWeight=0.;')

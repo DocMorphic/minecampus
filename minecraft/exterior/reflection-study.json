@@ -1,5 +1,5 @@
 {
-  "status": "Isolated planar prototype implemented and stationary/native controls verified; not integrated into production",
+  "status": "Same-frame planar reflection integrated; native movement, damage, reload, disconnect/reopen and full-route checks passed",
   "date": "2026-10-24",
   "observedProblem": "Galileo panel geometry is clearer, but constant-colour panes with the existing sky/ground approximation do not reflect the visible campus. This remains conspicuous at walking height.",
   "localEvidence": [
@@ -40,7 +40,7 @@
       "inference": "Broader directional coverage, but six captures add cost and a probe at one position gives inaccurate parallax on distant panes. This is a fallback research option, not a promise of accurate reflections everywhere."
     }
   ],
-  "nextExperiment": "Prototype a bounded planar map-mesh reflection outside the production build inputs. Compare the same five native views, movement, day/night and actual TNT response before deciding whether to integrate it.",
+  "nextExperiment": "Improve source-backed Galileo terrain and facade-base transitions; retain known reflection limits in the preview documentation.",
   "limits": "Neither approach creates interiors. Vanilla blocks, players and mobs need explicit integration to appear; do not claim them as reflected until tested. No new imagery API or paid data source is required for reflecting already-rendered geometry.",
   "prototypeEvidence": "experiments/reflections/validation.json",
   "prototypeNotes": [
@@ -48,6 +48,7 @@
     "Nine native phases cover off/on/off, four stationary viewpoints, night, resource reload and return to daylight.",
     "Minecraft 1.21.1 requires an explicitly managed extra hardware texture unit beyond its twelve cached units.",
     "West comparison median FPS 85.5 off, 68 on, 86.5 off again on the tested M1 Max.",
-    "Continuous camera motion, destruction, integration and full release validation remain unfinished."
-  ]
+    "Historical prototype limits were addressed by the integrated validation; broader coverage and whole-campus realism remain unfinished."
+  ],
+  "integrationEvidence": "reflection-development-validation.json"
 }

@@ -1,24 +1,26 @@
 diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
 --- a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
 +++ b/mod/src/client/java/dev/realworldmc/client/MapRenderer.java
-@@ -43,6 +43,16 @@
+@@ -43,6 +43,18 @@
   */
  public final class MapRenderer {
  	public static final MapRenderer INSTANCE = new MapRenderer();
-+    private static ShaderInstance campusGroundShader,campusShadowShader;
++    private static ShaderInstance campusGroundShader,campusShadowShader,campusReflectionShader;
 +    public static void registerCampusShader() {
 +        net.fabricmc.fabric.api.client.rendering.v1.CoreShaderRegistrationCallback.EVENT.register(context -> {
-+            CampusShadows.clear();CampusMaterials.invalidate();
++            CampusShadows.clear();CampusReflections.clear();CampusMaterials.invalidate();
 +            context.register(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("realworldmc", "campus_ground"),
 +                com.mojang.blaze3d.vertex.DefaultVertexFormat.POSITION_TEX, shader -> campusGroundShader=shader);
 +            context.register(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("realworldmc", "campus_shadow"),
 +                com.mojang.blaze3d.vertex.DefaultVertexFormat.POSITION_TEX, shader -> campusShadowShader=shader);
++            context.register(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("realworldmc", "campus_reflection"),
++                com.mojang.blaze3d.vertex.DefaultVertexFormat.POSITION_TEX, shader -> campusReflectionShader=shader);
 +        });
 +    }
  
  	private static final int MAX_UPLOADS_PER_FRAME = 3;
  	private static final int MAX_REFRESH_PER_FRAME = 4;
-@@ -108,6 +118,14 @@
+@@ -108,6 +120,14 @@
  	private int tickCounter;
  
  	public volatile String status = "";
@@ -33,15 +35,15 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  	public volatile String attributionText = "Google, RealWorldMC";
  
  	public void setRegions(RegionsPayload payload) {
-@@ -148,6 +166,7 @@
+@@ -148,6 +168,7 @@
      }
  
  	private void resetTiles() {
-+        RenderSystem.recordRenderCall(CampusShadows::clear);
++        RenderSystem.recordRenderCall(()->{CampusShadows.clear();CampusReflections.clear();});
  		synchronized (uploadQueue) {
              epoch++;
              uploadQueue.clear();
-@@ -198,6 +217,7 @@
+@@ -198,6 +219,7 @@
  				String q = String.format(Locale.ROOT, "/render/select?%s&x=%.2f&y=%.2f&z=%.2f&space=%d&aheadX=%.2f&aheadZ=%.2f",
  					ServiceClient.originQuery(o.latitude(), o.longitude(), o.groundHeight()), cam.x, cam.y, cam.z, space ? 1 : 0, lookAhead.x, lookAhead.z);
  				JsonObject res = ServiceClient.getJson(q, Duration.ofSeconds(30));
@@ -49,15 +51,16 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -422,17 +442,59 @@
+@@ -422,17 +444,60 @@
  		RenderSystem.depthMask(true);
  		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
 +        boolean campusPass=current!=null&&Math.abs(current.latitude()-48.265)<1e-7&&Math.abs(current.longitude()-11.671)<1e-7&&!space&&retained==null&&campusGroundShader!=null;
 +        if(campusPass){
 +            CampusShadows.update(tiles,cam,level,partial,campusShadowShader,campusGroundShader);
++            CampusReflections.render(ctx,tiles,campusReflectionShader,campusGroundShader);
 +            CampusMaterials.bind();
-+        }else CampusShadows.bind(campusGroundShader,0f);
++        }else {CampusShadows.bind(campusGroundShader,0f);CampusReflections.disable(campusGroundShader);}
  
  		for (MapTile t : tiles) {
 +            // Minecampus reserves these 36 ids for its 100m surveyed ground tiles.
@@ -110,7 +113,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  			}
  		}
  		VertexBuffer.unbind();
-@@ -455,6 +517,7 @@
+@@ -455,6 +520,7 @@
  	private void markDirty(java.util.function.Predicate<MapTile> test) {
  		RenderSystem.recordRenderCall(() -> {
  			for (MapTile t : loaded.values()) if (test.test(t)) t.dirty = true;
@@ -119,10 +122,9 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  	}
  
 diff --git a/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java b/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java
-index d246af9..4693653 100644
 --- a/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java
 +++ b/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java
-@@ -14,6 +14,7 @@ public class RealWorldMCClient implements ClientModInitializer {
+@@ -14,6 +14,7 @@
  	@Override
  	public void onInitializeClient() {
          SetupScreen.register();
@@ -130,7 +132,7 @@ index d246af9..4693653 100644
          HelpScreen.register();
          ClientTickEvents.END_CLIENT_TICK.register(dev.realworldmc.client.map.OsmTileCache::tick);
  
-@@ -58,8 +59,11 @@ public class RealWorldMCClient implements ClientModInitializer {
+@@ -58,8 +59,11 @@
  			// Attribution required by the Google Map Tiles API terms.
  			String attr = SpaceFlight.body()==CelestialBody.EARTH ? renderer.attributionText : SpaceFlight.body().credits;
  			int color = dev.realworldmc.CreditFade.HUD.color(mc.screen instanceof net.minecraft.client.gui.screens.ChatScreen);
@@ -145,10 +147,9 @@ index d246af9..4693653 100644
  		});
  	}
 diff --git a/mod/src/main/java/dev/realworldmc/MapEdits.java b/mod/src/main/java/dev/realworldmc/MapEdits.java
-index c699a58..5388439 100644
 --- a/mod/src/main/java/dev/realworldmc/MapEdits.java
 +++ b/mod/src/main/java/dev/realworldmc/MapEdits.java
-@@ -20,7 +20,7 @@ public final class MapEdits {
+@@ -20,7 +20,7 @@
          return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(StreetEdits.Storage::new,StreetEdits.Storage::load,null),"realworldmc_map_edits");
      }
      public static void changed(ServerLevel level,BlockPos pos,BlockState before,BlockState after) {
@@ -158,10 +159,9 @@ index c699a58..5388439 100644
          if(!EarthBlocks.isMapBlock(before) && !placement)return;
          var data=storage(level);data.record(pos,before);
 diff --git a/mod/src/main/java/dev/realworldmc/RealWorldMC.java b/mod/src/main/java/dev/realworldmc/RealWorldMC.java
-index f22e08c..5af6d03 100644
 --- a/mod/src/main/java/dev/realworldmc/RealWorldMC.java
 +++ b/mod/src/main/java/dev/realworldmc/RealWorldMC.java
-@@ -53,6 +53,7 @@ public class RealWorldMC implements ModInitializer {
+@@ -53,6 +53,7 @@
  	public void onInitialize() {
  		EarthConfig.get();
  		EarthBlocks.init();
@@ -172,7 +172,17 @@ index f22e08c..5af6d03 100644
 diff --git a/mod/src/client/java/dev/realworldmc/client/MapTile.java b/mod/src/client/java/dev/realworldmc/client/MapTile.java
 --- a/mod/src/client/java/dev/realworldmc/client/MapTile.java
 +++ b/mod/src/client/java/dev/realworldmc/client/MapTile.java
-@@ -72,6 +72,10 @@
+@@ -30,6 +30,9 @@
+     private dev.realworldmc.MeshCut.Index cutIndex;
+ 	private final boolean[] empty;
+ 	public boolean dirty;
++    private float[] reflectionGlass;
++    /** Exact post-cut glass triangles; read-only, retained only for Galileo. */
++    public float[] reflectionGlass(){return reflectionGlass;}
+ 
+ 	public MapTile(TileData data, ClientLevel level) {
+         this(data,MapDamage.cuts(new AABB(data.minX,data.minY,data.minZ,data.maxX,data.maxY,data.maxZ),level,data.anchorX,data.anchorY,data.anchorZ));
+@@ -72,6 +75,10 @@
  		GlStateManager._bindTexture(id);
  		int levels = 31 - Integer.numberOfLeadingZeros(Math.max(w, h));
  		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL12.GL_TEXTURE_MAX_LEVEL, levels);
@@ -183,3 +193,12 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapTile.java b/mod/src/c
  		GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
  		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR_MIPMAP_LINEAR);
  		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+@@ -121,6 +128,8 @@
+         }
+         int length=vertices==null?source.length:vertices.size();
+         float[] draw=vertices==null?source:vertices.elements();
++        if(i==1&&data.id>=1_000_000_100&&data.id<1_000_000_102)
++            reflectionGlass=vertices==null?source:java.util.Arrays.copyOf(draw,length);
+         empty[i]=length==0;if(empty[i])return;
+         try(ByteBufferBuilder bytes=new ByteBufferBuilder(length/5*DefaultVertexFormat.POSITION_TEX.getVertexSize())) {
+             BufferBuilder bb=new BufferBuilder(bytes,VertexFormat.Mode.TRIANGLES,DefaultVertexFormat.POSITION_TEX);
