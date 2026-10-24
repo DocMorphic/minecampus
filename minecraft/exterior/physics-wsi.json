@@ -169,7 +169,7 @@
       "qualification": "Two clearly observed north-facing glazed bands with a broad opaque intermediate zone. Vertical rhythm and beam depth estimated."
     }
   },
-  "qualification": "BVV preserves the surveyed envelope and roof. South window tiers and external framing follow the TUM press photograph and private aligned projections. Exact opening bounds, frame section/depth, colours, obscured end-wall glazing and north-window bands are estimated; north does not repeat the south three-tier pattern. Reference pixels are not bundled. No interiors.",
+  "qualification": "BVV preserves the surveyed envelope and roof. South window tiers and external framing follow the TUM press photograph and private aligned projections. Exact opening bounds, frame section/depth, colours, obscured end-wall glazing and north-window bands are estimated; north does not repeat the south three-tier pattern. Reference pixels are not bundled. No interiors. A sampled2.5m outer shoulder joins retained source ground; its heights are estimated transitions, with earlier terrain preserved and missing samples left unresolved.",
   "canopyExtent": {
     "boundsUtm": [
       698460,
@@ -238,5 +238,9 @@
     ],
     "groundMarginMetres": 2.5,
     "qualification": "Complete DOP-green DOM-DGM canopy groups intersecting the12m WSI apron. Tree form and species are estimates; earlier tree centres remain excluded."
+  },
+  "groundTransition": {
+    "sourceFile": "physics-wsi-ground-transition.json",
+    "sha256": "733df4f2c42075ff379a49f9b1cd35080d02790dcd8caabf5d90fa562a30227c"
   }
 }

@@ -3430,5 +3430,333 @@
       "Use the504sampled source heights for a bounded transition across the126.35m outer WSI boundary; retain seven unresolved points and preserve earlier terrain. Independently validate geometry/collision and repeat matched views.",
       "Reconstruct ZNN and refine ground materials, outer parking and planting. Keep the overall goal active."
     ]
+  },
+  "physicsWSITransition37": {
+    "status": "PASS: bounded terrain/native checks; FAIL: dense shoulder walking preflight",
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 304407533,
+      "sha256": "539d4d7d80d114edc5860dec644b851af9793ef55cfc771d27784fe2c0644b61",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "1a0a23eae062989a162f3cafb433bd065b3ef64abbed70ffb26f3f4c4a0f412e",
+      "rendererSourceFingerprint": "381465468a4aeb65",
+      "bundleSha256": "8d7f31cb2230d047ede9fb8ac82975d42636e2a162edd82808076f14a337fa0f",
+      "tiles": 267,
+      "bundleUnpackedBytes": 682990395,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "viewsReviewed": 15,
+    "standingCapturesReviewed": 16,
+    "nativeGlazingColliderChecks": 5,
+    "formerEmptyRaysNowHitGround": 3,
+    "maxSupportErrorMetres": 0.48174678560366146,
+    "supportToleranceMetres": 0.51,
+    "changedGroundTiles": 11,
+    "unchangedRenderTiles": 256,
+    "groundPixelsAndUVPreserved": true,
+    "transitionControls": 504,
+    "unresolvedTransitionControls": 7,
+    "visualComparison": {
+      "status": "Main northern gap repaired; smaller northwestern gap remains",
+      "checks": [
+        {
+          "view": 4,
+          "fixedROI": [
+            0.02,
+            0.55,
+            0.98,
+            0.93
+          ],
+          "colour": [
+            180,
+            208,
+            255
+          ],
+          "beforeVoidPixels": 8627,
+          "afterVoidPixels": 0,
+          "reductionPercent": 100.0,
+          "targetedRays": 1,
+          "targetedRaysNowHitGround": 1,
+          "qualification": "Fixed-image comparison and exactnative ray checks, not proof that all outer gaps are closed."
+        },
+        {
+          "view": 5,
+          "fixedROI": [
+            0.02,
+            0.55,
+            0.98,
+            0.93
+          ],
+          "colour": [
+            180,
+            208,
+            255
+          ],
+          "beforeVoidPixels": 9778,
+          "afterVoidPixels": 4963,
+          "reductionPercent": 49.24319901820413,
+          "targetedRays": 2,
+          "targetedRaysNowHitGround": 2,
+          "qualification": "Fixed-image comparison and exactnative ray checks, not proof that all outer gaps are closed."
+        }
+      ]
+    },
+    "denseShoulderPreflight": {
+      "status": "FAIL",
+      "samples": 80,
+      "supportFailures": [
+        {
+          "index": 13,
+          "label": "Northern shoulder parallel to WSI sample13",
+          "meshY": 63.35906534945781,
+          "supportExpectedY": 63.46815759664534,
+          "standingY": 64,
+          "previousY": 64,
+          "centreError": 0.6409346505421922,
+          "error": 0.5318424033546592
+        },
+        {
+          "index": 14,
+          "label": "Northern shoulder parallel to WSI sample14",
+          "meshY": 63.36199358978635,
+          "supportExpectedY": 63.461184292447314,
+          "standingY": 64,
+          "previousY": 64,
+          "centreError": 0.6380064102136487,
+          "error": 0.5388157075526863
+        },
+        {
+          "index": 31,
+          "label": "Northern shoulder parallel to WSI sample31",
+          "meshY": 63.43483258022786,
+          "supportExpectedY": 63.526485078063956,
+          "standingY": 63,
+          "previousY": 64,
+          "centreError": -0.4348325802278623,
+          "error": -0.5264850780639563
+        },
+        {
+          "index": 32,
+          "label": "Northern shoulder parallel to WSI sample32",
+          "meshY": 63.43111738319425,
+          "supportExpectedY": 63.52712402086996,
+          "standingY": 63,
+          "previousY": 64,
+          "centreError": -0.4311173831942483,
+          "error": -0.5271240208699624
+        },
+        {
+          "index": 39,
+          "label": "Northern shoulder parallel to WSI sample39",
+          "meshY": 63.430874885576415,
+          "supportExpectedY": 63.518564744603964,
+          "standingY": 63,
+          "previousY": 64,
+          "centreError": -0.43087488557641507,
+          "error": -0.5185647446039638
+        },
+        {
+          "index": 40,
+          "label": "Northern shoulder parallel to WSI sample40",
+          "meshY": 63.42411620524764,
+          "supportExpectedY": 63.51722177761121,
+          "standingY": 63,
+          "previousY": 64,
+          "centreError": -0.4241162052476426,
+          "error": -0.517221777611212
+        },
+        {
+          "index": 41,
+          "label": "Northern shoulder parallel to WSI sample41",
+          "meshY": 63.41329629489174,
+          "supportExpectedY": 63.51360210627104,
+          "standingY": 63,
+          "previousY": 64,
+          "centreError": -0.4132962948917367,
+          "error": -0.513602106271037
+        },
+        {
+          "index": 45,
+          "label": "Northern shoulder parallel to WSI sample45",
+          "meshY": 63.37035983745588,
+          "supportExpectedY": 63.48588276405542,
+          "standingY": 64,
+          "previousY": 64,
+          "centreError": 0.6296401625441206,
+          "error": 0.5141172359445818
+        },
+        {
+          "index": 46,
+          "label": "Northern shoulder parallel to WSI sample46",
+          "meshY": 63.373613226114685,
+          "supportExpectedY": 63.48910585723263,
+          "standingY": 64,
+          "previousY": 64,
+          "centreError": 0.626386773885315,
+          "error": 0.5108941427673699
+        },
+        {
+          "index": 53,
+          "label": "Northern shoulder parallel to WSI sample53",
+          "meshY": 63.38760741783857,
+          "supportExpectedY": 63.48939502600962,
+          "standingY": 64,
+          "previousY": 64,
+          "centreError": 0.6123925821614336,
+          "error": 0.5106049739903824
+        },
+        {
+          "index": 64,
+          "label": "Northern shoulder parallel to WSI sample64",
+          "meshY": 63.38416467267953,
+          "supportExpectedY": 63.485688967032786,
+          "standingY": 64,
+          "previousY": 64,
+          "centreError": 0.6158353273204682,
+          "error": 0.514311032967214
+        },
+        {
+          "index": 65,
+          "label": "Northern shoulder parallel to WSI sample65",
+          "meshY": 63.374764316316856,
+          "supportExpectedY": 63.48275393566183,
+          "standingY": 64,
+          "previousY": 64,
+          "centreError": 0.6252356836831439,
+          "error": 0.5172460643381669
+        },
+        {
+          "index": 66,
+          "label": "Northern shoulder parallel to WSI sample66",
+          "meshY": 63.36513029661705,
+          "supportExpectedY": 63.47619495467751,
+          "standingY": 64,
+          "previousY": 64,
+          "centreError": 0.6348697033829467,
+          "error": 0.5238050453224901
+        },
+        {
+          "index": 67,
+          "label": "Northern shoulder parallel to WSI sample67",
+          "meshY": 63.35263399664248,
+          "supportExpectedY": 63.47497885038291,
+          "standingY": 64,
+          "previousY": 64,
+          "centreError": 0.6473660033575186,
+          "error": 0.5250211496170891
+        }
+      ],
+      "clearanceFailures": [
+        {
+          "index": 68,
+          "label": "Northern shoulder parallel to WSI sample68",
+          "blocked": [],
+          "unknown": [
+            [
+              373,
+              63,
+              -438
+            ],
+            [
+              373,
+              64,
+              -438
+            ]
+          ],
+          "dropObstructions": [
+            {
+              "position": [
+                373,
+                65,
+                -438
+              ],
+              "code": 255
+            },
+            {
+              "position": [
+                373,
+                66,
+                -438
+              ],
+              "code": 255
+            },
+            {
+              "position": [
+                373,
+                67,
+                -438
+              ],
+              "code": 255
+            },
+            {
+              "position": [
+                373,
+                68,
+                -438
+              ],
+              "code": 255
+            }
+          ]
+        }
+      ],
+      "continuousTraversal": "Not run; preflight failures preserved for repair."
+    },
+    "priorRoutesPreflight": {
+      "samples": 260,
+      "supportFailures": 0,
+      "clearanceFailures": 0,
+      "legacyLimitation": "The separately recorded old exact6.30m support failure is not retested by these260points."
+    },
+    "fractionalSupportStudy": {
+      "status": "SIMULATION ONLY: candidate38 collision design; no runtime change or native proof",
+      "totalControls": 80,
+      "knownTerrainControls": 79,
+      "currentSupportFailures": 14,
+      "simulatedFailuresAtUnchangedLimit": 0,
+      "simulatedMaximumKnownErrorMetres": 0.16138104606139336,
+      "unknownControls": [
+        68
+      ],
+      "requiredImplementation": [
+        "Extend existing invisible map blocks with a persistent1..16height property while keeping default full blocks and old IDs compatible.",
+        "Encode fractional terrain tops separately from ordinary wall/roof/tree voxels; preserve full colliders when geometry overlaps.",
+        "Update generation and collision alignment consistently; preserve MapEdits and every ordinary block.",
+        "Keep sample68 as unresolved until native/source coverage is verified; do not treat255asair.",
+        "Retest exact80shoulder points, old260routes, earlier strict failures, TNT/edit persistence and native continuous walking."
+      ]
+    },
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "findings": [
+      "All31native captures reviewed. The main northern blue gap closes, while the northwestern fixed-region opening shrinks49.24%. All3previously empty native rays now hit reconstructed terrain.",
+      "Earlier building/roof/tree meshes and all ground pixels remain byte-identical. Reflections, night/day return and the five glazing colliders remain correct.",
+      "Small western/northwestern gaps, retained triangular fragments, blurred aerial ground and warped ZNN/parking remain. Newly inspected shoulder views expose these defects.",
+      "Terrain contains tiny steep slivers: area with slope>1 increases from0.06175to0.09735m2; the maximum14.106slope is unchanged from36. Mesh refinement remains outstanding.",
+      "All16selected standing controls pass, but dense sampling along/across the shoulder reveals14whole-block support errors beyond0.51m and one unknown retained-source column at sample68. These failures prevent walking/release acceptance.",
+      "Simulation of1/16-block terrain tops reduces79known-control errors below0.162m; this is not implemented or native-verified. Exact native regression now confirms sample68 body clearance and sample13 support failure (0.5318424m error)."
+    ],
+    "nextActions": [
+      "Implement compatible fractional invisible terrain tops, preserving full wall/tree/roof colliders, existing block IDs, MapEdits and ordinary blocks. Retest exact80shoulder samples plus prior routes and native walking.",
+      "Repair remaining outer source/parking coverage, refine steep slivers/materials, and reconstruct ZNN. Keep the full goal active."
+    ],
+    "nativeNegativeRegression": {
+      "archive": ".cache/physics-wsi-shoulder-body-before-38",
+      "capturesReviewed": 4,
+      "sample68": "PASS native body clearance and grounded support",
+      "sample13": "FAIL: player stands64.0m versus63.46815759664534m support; error0.5318424033546592m",
+      "supportToleranceMetres": 0.51
+    }
   }
 }

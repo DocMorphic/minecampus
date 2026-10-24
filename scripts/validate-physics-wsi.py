@@ -122,22 +122,41 @@ def utm_ring(ring):
 def surface_area(items):
  return unary_union([box(*m['boundsUtm']),*[Polygon(utm_ring(p['ring']),[utm_ring(h)for h in p.get('holes',[])])for s in items for p in s['rings']]])
 idx=next(i for i,s in enumerate(m['supplementalSurfaces'])if s['name']=='physics-wsi-site');prior=surface_area(m['supplementalSurfaces'][:idx]);oldidx=next(i for i,s in enumerate(m['supplementalSurfaces'])if s['name']=='physics-ii-site');prior_ground=surface_area(m['supplementalSurfaces'][:oldidx])
-transition=read(r/'minecraft/exterior/physics-ii-ground-transition.json');valid_edges=[];missing_edges=[]
-for line in transition['lines']:
- values=line.get('joinDelta',line['delta'])
- for i in range(len(values)-1):
-  edge=LineString(line['utm'][i:i+2]);ds=values[i:i+2]
-  if None in ds:missing_edges.append(edge)
-  else:valid_edges.append((edge,ds))
-missing_geometry=unary_union(missing_edges)
+transition=read(r/'minecraft/exterior/physics-ii-ground-transition.json')
+def independent_correction(record, earlier):
+ valid_edges=[];missing_edges=[]
+ for line in record['lines']:
+  values=line.get('joinDelta',line['delta'])
+  for i in range(len(values)-1):
+   edge=LineString(line['utm'][i:i+2]);ds=values[i:i+2]
+   if None in ds:missing_edges.append(edge)
+   else:valid_edges.append((edge,ds))
+ missing_geometry=unary_union(missing_edges)
+ def calculate(xy):
+  from shapely import points,distance,line_locate_point
+  pts=points(xy);best=np.full(len(xy),np.inf);residual=np.zeros(len(xy))
+  for edge,ds in valid_edges:
+   d=distance(pts,edge);replace=d<best;along=line_locate_point(edge,pts,normalized=True);residual[replace]=(ds[0]*(1-along)+ds[1]*along)[replace];best[replace]=d[replace]
+  def smooth(v):
+   v=np.clip(v,0,1);return v*v*(3-2*v)
+  missing_fade=smooth(distance(pts,missing_geometry)/record['priorFadeMetres'])if not missing_geometry.is_empty else np.ones(len(xy))
+  return residual*smooth(1-best/record['widthMetres'])*smooth(distance(pts,earlier)/record['priorFadeMetres'])*missing_fade
+ return calculate
+inherited_correction=independent_correction(transition,prior_ground)
+transition_path=r/'minecraft/exterior'/spec['groundTransition']['sourceFile'];assert sha(transition_path)==spec['groundTransition']['sha256'];assert sha(out/transition_path.name)==sha(transition_path);inputs[transition_path.name]=sha(transition_path)
+outer_transition=read(transition_path);assert rec['groundTransition']==spec['groundTransition'];assert outer_transition['inheritedTransitionSha256']==sha(r/'minecraft/exterior/physics-ii-ground-transition.json')
+outer_correction=independent_correction(outer_transition,prior)
+accepted=missing=0
+for line in outer_transition['lines']:
+ xy=np.asarray(line['utm']);old=inherited_correction(xy);assert np.max(np.abs(old-line['inheritedCorrectionMetres']))<1e-7
+ for i,(source,survey,delta,join)in enumerate(zip(line['sourceHeightMC'],line['surveyHeightMC'],line['delta'],line['joinDelta'])):
+  if source is None:
+   assert delta is None and join is None;assert abs(outer_correction(xy[i:i+1])[0])<1e-8;missing+=1
+  else:
+   assert abs(delta-(source-survey))<1e-8 and abs(join-(delta-old[i]))<1e-7 and abs(delta)<=outer_transition['maximumResidualMetres'];accepted+=1
+assert accepted==outer_transition['acceptedSamples']==504 and missing==outer_transition['missingSamples']==7
 def correction(xy):
- from shapely import points,distance,line_locate_point
- pts=points(xy);best=np.full(len(xy),np.inf);residual=np.zeros(len(xy))
- for edge,ds in valid_edges:
-  d=distance(pts,edge);replace=d<best;along=line_locate_point(edge,pts,normalized=True);residual[replace]=(ds[0]*(1-along)+ds[1]*along)[replace];best[replace]=d[replace]
- def smooth(v):
-  v=np.clip(v,0,1);return v*v*(3-2*v)
- return residual*smooth(1-best/transition['widthMetres'])*smooth(distance(pts,prior_ground)/transition['priorFadeMetres'])*smooth(distance(pts,missing_geometry)/transition['priorFadeMetres'])
+ return inherited_correction(xy)+outer_correction(xy)
 areas=[];mcareas=[];ground_error=0;hashes={name:sha(out/name)for name in [rec['meshFile'],rec['roofFile'],*rec['treeTiles']]}
 with rasterio.open(r/'.cache/campus-dgm-east.tif')as dem,rasterio.open(r/'.cache/campus-dop-east.tif')as dop:
  data=dem.read(1).astype(float)
@@ -164,4 +183,4 @@ with rasterio.open(r/'.cache/campus-dop-east.tif')as dop,rasterio.open(r/'.cache
   q=np.asarray([t['utm']]);rgb=next(dop.sample(q));height=float(next(dom.sample(q))[0]-next(dem.sample(q))[0]);assert rgb[1]>rgb[0]*1.025 and rgb[1]>rgb[2]+2 and height>3
   assert area.buffer(.001).covers(Point(q[0]));assert not others.buffer(1.19).covers(Point(q[0]));assert all(np.linalg.norm(q[0]-np.array(old['utm']))>2 for old in oldtrees)
 assert len({t['runtimeId']for t in m['tiles']if 'runtimeId'in t})==sum('runtimeId'in t for t in m['tiles'])
-result={'status':'PASS: raw surveyed roof/pixels, recessed windows, projecting frames, source terrain and preserved neighboring ground','manifestSha256':sha(out/'manifest.json'),'sourceSha256':sha(r/'minecraft/exterior'/rec['sourceFile']),'validatorSha256':sha(Path(__file__)),'inputSha256':inputs,'roofVertexErrorMetres':roof_vertex_error,'roofFootprintErrorSquareMetres':roof_shape_error,'roofTriangles':33,'windowBandControls':len(rec['openingControls']),'frameControls':len(rec['frameControls']),'wallTriangleControls':wall_vertex_controls,'maximumGroundCoordinateErrorMetres':ground_error,'oldGroundOverlapSquareMetres':overlap,'treeCount':len(trees),'tileSha256':hashes,'qualification':'Architectural detail remains source-informed estimation; outer joins and appearance need native visual review.'};(out/'physics-wsi-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items()if k not in ['tileSha256','inputSha256']},indent=2))
+result={'status':'PASS: raw surveyed roof/pixels, recessed windows, projecting frames, source terrain and preserved neighboring ground','manifestSha256':sha(out/'manifest.json'),'sourceSha256':sha(r/'minecraft/exterior'/rec['sourceFile']),'validatorSha256':sha(Path(__file__)),'inputSha256':inputs,'roofVertexErrorMetres':roof_vertex_error,'roofFootprintErrorSquareMetres':roof_shape_error,'roofTriangles':33,'windowBandControls':len(rec['openingControls']),'frameControls':len(rec['frameControls']),'wallTriangleControls':wall_vertex_controls,'maximumGroundCoordinateErrorMetres':ground_error,'transitionControls':accepted,'unresolvedTransitionControls':missing,'oldGroundOverlapSquareMetres':overlap,'treeCount':len(trees),'tileSha256':hashes,'qualification':'Architectural detail remains source-informed estimation; outer joins and appearance need native visual review.'};(out/'physics-wsi-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items()if k not in ['tileSha256','inputSha256']},indent=2))

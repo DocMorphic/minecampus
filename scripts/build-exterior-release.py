@@ -164,6 +164,9 @@ assert digest(SOURCE/wsi['sourceFile'])==wsi['sourceSha256']
 assert digest(SOURCE/wsi_spec['reference'])==wsi_spec['referenceSha256']
 for path,key in [(ROOT/wsi['generatorFile'],'generatorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(ROOT/'scripts/exterior_physics_ii.py','transitionGeneratorSha256'),(ROOT/'scripts/exterior_physics_ii_landscape.py','canopyGeneratorSha256')]:assert digest(path)==wsi[key]
 assert digest(DATA/wsi['coverageFile'])==wsi['coverageSha256']
+assert wsi['groundTransition']==wsi_spec['groundTransition']
+assert digest(SOURCE/wsi_spec['groundTransition']['sourceFile'])==wsi_spec['groundTransition']['sha256']
+assert digest(DATA/wsi_spec['groundTransition']['sourceFile'])==wsi_spec['groundTransition']['sha256']
 wsi_check=json.loads((DATA/'physics-wsi-validation.json').read_text())
 assert wsi_check['status'].startswith('PASS:')
 assert wsi_check['manifestSha256']==digest(DATA/'manifest.json')
@@ -215,6 +218,8 @@ and original roof geometry with public DOP20 roof imagery. Window tiers and
 projecting frames are estimates informed by TUM exterior photographs and private
 source review; no reference pixels are bundled. Surrounding terrain and tree
 positions/heights use BVV DGM1/DOM20/DOP20. Tree forms and species are inferred.
+An estimated 2.5 m outer terrain shoulder joins sampled retained source heights,
+with prior terrain and unresolved samples protected by a bounded fade.
 See physics-wsi.json and physics-wsi-reference.json. No interiors.
 
 The expanded Physik II landscape follows OSM parking, grass and footway
@@ -494,6 +499,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/'+physics_ii['coverageFile'],(DATA/physics_ii['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['materialDerivedFile'],(DATA/physics_ii['materialDerivedFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-wsi.json',(SOURCE/wsi['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+wsi_spec['groundTransition']['sourceFile'],(SOURCE/wsi_spec['groundTransition']['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-wsi-reference.json',(SOURCE/wsi_spec['reference']).read_bytes())
   write(target,'src/minecampus-exterior/'+wsi['coverageFile'],(DATA/wsi['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-new-laboratory.json',(SOURCE/'physics-new-laboratory.json').read_bytes())

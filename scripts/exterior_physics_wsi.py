@@ -174,7 +174,10 @@ def build(ctx):
         return unary_union([box(*meta['boundsUtm']),*[Polygon(utm(p['ring']),[utm(h) for h in p.get('holes',[])]) for s in surfaces for p in s['rings']]])
     prior = prior_area(meta['supplementalSurfaces'])
     old_index = next(i for i,s in enumerate(meta['supplementalSurfaces']) if s['name']=='physics-ii-site')
-    correction,_ = ground_transition(root,json.loads((root/'minecraft/exterior/physics-ii.json').read_text()),prior_area(meta['supplementalSurfaces'][:old_index]))
+    inherited_correction,_ = ground_transition(root,json.loads((root/'minecraft/exterior/physics-ii.json').read_text()),prior_area(meta['supplementalSurfaces'][:old_index]))
+    outer_correction,transition = ground_transition(root,spec,prior)
+    def correction(xy):
+        return inherited_correction(xy)+outer_correction(xy)
     extent = original.buffer(spec['apronMetres'])
     canopy, canopy_records = canopy_extension(cache,spec,unary_union([original,others]),extent)
     extent = extent.union(canopy.buffer(spec['canopyExtent']['groundMarginMetres']))
@@ -204,7 +207,7 @@ def build(ctx):
                 ground_tiles.append({'file':name,'kind':'ground','runtimeId':spec['groundRuntimeStart']+len(ground_tiles),'bounds':[v.min(0).tolist(),v.max(0).tolist()]})
         xy=np.array([(e,n) for n in range(lo[1],hi[1]+1,2) for e in range(lo[0],hi[0]+1,2)])
         guide={'width':int((hi[0]-lo[0])//2+1),'height':int((hi[1]-lo[1])//2+1),'points':xyz(xy).tolist()}
-        surface={'name':'physics-wsi-site','rings':rings(area),'terrainGuide':guide,'protectedFootprints':rings(others.buffer(3)),'outdoorReconstructed':True,'qualification':'BVV DGM1/DOP20 terrain.12m apron is estimated; inherited Physik II transition keeps earlier ground joins. New outer source joins still require native review.'}
+        surface={'name':'physics-wsi-site','rings':rings(area),'terrainGuide':guide,'protectedFootprints':rings(others.buffer(3)),'outdoorReconstructed':True,'qualification':'BVV DGM1/DOP20 terrain with estimated12m apron. Inherited Physik II transition preserves earlier joins; an estimated2.5m outer shoulder joins sampled source heights, fading at prior terrain and unresolved samples. Native review remains required.'}
         previous=[*meta['vegetation']['trees'],*[t for s in meta['supplementalSurfaces'] for t in s.get('vegetation',{}).get('trees',[])]]
         with tempfile.TemporaryDirectory(prefix='wsi-',dir=cache) as temp:
             folder=Path(temp); col,row=(~dop.transform)*(lo[0],hi[1]); rgb=dop.read([1,2,3],window=Window(round(col),round(row),int((hi[0]-lo[0])*5),int((hi[1]-lo[1])*5))).transpose(1,2,0)
@@ -223,4 +226,6 @@ def build(ctx):
     meta['tiles'].extend(ground_tiles+tree_tiles);meta['supplementalSurfaces'].append(surface)
     coverage=out/'physics-wsi-coverage.geojson';coverage.write_text(json.dumps({'ground':mapping(area),'envelope':mapping(original),'extent':mapping(extent),'canopy':mapping(canopy)},separators=(',',':'))+'\n')
     meta['architecture']['physicsWSI']={'sourceFile':source.name,'sourceSha256':sha(source),'generatorFile':'scripts/exterior_physics_wsi.py','generatorSha256':sha(Path(__file__)),'vegetationGeneratorSha256':sha(root/'scripts/exterior_vegetation.py'),'transitionGeneratorSha256':sha(root/'scripts/exterior_physics_ii.py'),'canopyGeneratorSha256':sha(root/'scripts/exterior_physics_ii_landscape.py'),'building':spec['building'],'runtimeId':spec['runtimeId'],'meshFile':mesh_name,'roofFile':roof_name,'groundTiles':[t['file'] for t in ground_tiles],'treeTiles':[t['file'] for t in tree_tiles],'treeCount':len(surface['vegetation']['trees']),'canopyComponents':canopy_records,'groundAreaSquareMetres':area.area,'coverageFile':coverage.name,'coverageSha256':sha(coverage),'surveyWalls':walls,'roofTriangles':len(roof)//3,'baseMC':base,'openingControls':openings_record,'frameControls':beams_record,'retirement':retirement,'qualification':spec['qualification']}
+    meta['architecture']['physicsWSI']['groundTransition']=spec['groundTransition']
+    shutil.copy2(root/'minecraft/exterior'/spec['groundTransition']['sourceFile'],out/spec['groundTransition']['sourceFile'])
     print('WSI:',len(walls),'walls;',len(roof)//3,'roof triangles;',len(openings_record),'window bands;',len(beams_record),'projecting frame members;',len(ground_tiles),'ground tiles;',len(surface['vegetation']['trees']),'trees',flush=True)
