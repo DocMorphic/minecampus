@@ -35,6 +35,8 @@ mlz=json.loads((DATA/'manifest.json').read_text())['architecture']['mlzExteriors
 assert hashlib.sha256((SOURCE/mlz['sourceFile']).read_bytes()).hexdigest()==mlz['sourceSha256']
 siemensbau=json.loads((DATA/'manifest.json').read_text())['architecture']['siemensbauExterior']
 assert hashlib.sha256((SOURCE/siemensbau['sourceFile']).read_bytes()).hexdigest()==siemensbau['sourceSha256']
+rcm=json.loads((DATA/'manifest.json').read_text())['architecture']['rcmExterior']
+assert hashlib.sha256((SOURCE/rcm['sourceFile']).read_bytes()).hexdigest()==rcm['sourceSha256']
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -66,6 +68,11 @@ compiled=work/'mod/build/libs/realworldmc-1.0.3.jar'
 if not compiled.is_file():raise SystemExit('Expected remapped release JAR missing.')
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
+
+RCM-Technikum / TUM 5104: surveyed five-face envelope and stepped roof retained.
+Individual dark source features guide estimated windows/vents; obscured details,
+materials, divisions and recess dimensions remain unresolved or inferred.
+No interiors or provider source imagery. See rcm-technikum-5104.json.
 
 Siemensbau / TUM 5103: surveyed envelope and orthophoto roof retained.
 North opening groups follow locally observed provider photography; obscured
@@ -266,6 +273,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/galileo-frontage-grade.json',(SOURCE/'galileo-frontage-grade.json').read_bytes())
   write(target,'src/minecampus-exterior/mlz-exteriors.json',(SOURCE/'mlz-exteriors.json').read_bytes())
   write(target,'src/minecampus-exterior/siemensbau-5103.json',(SOURCE/'siemensbau-5103.json').read_bytes())
+  write(target,'src/minecampus-exterior/rcm-technikum-5104.json',(SOURCE/'rcm-technikum-5104.json').read_bytes())
+  write(target,'src/minecampus-exterior/rcm-technikum-reference.json',(SOURCE/'photos/rcm-technikum-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-east-neighbours-reference.json',(SOURCE/'photos/galileo-east-neighbours-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-east-ramps.json',(SOURCE/'galileo-east-ramps.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-east-ramp-reference.json',(SOURCE/'photos/galileo-east-ramp-reference.json').read_bytes())

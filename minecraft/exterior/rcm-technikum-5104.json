@@ -1,0 +1,108 @@
+{
+  "building": "DEBY_LOD2_5284446",
+  "tumBuilding": "5104",
+  "name": "RCM-Technikum",
+  "runtimeId": 1000030027,
+  "expectedWallCount": 5,
+  "surveyWallsSha256": "df564741343c59a33177d63c0038ee7727e3553fe80fe0a193dc3ae0b73b03a7",
+  "reference": "photos/rcm-technikum-reference.json",
+  "referenceSha256": "7ad8e09a1792a1b6f490be0b5d5d254aefee44167124035046797fe8d392f29e",
+  "qualification": "Source-informed exterior, not an as-built model. Surveyed five-face envelope and four roof triangles are retained. Individual dark features guide a small set of estimated openings; classifications, dimensions, frames and recesses are approximate. Obscured lower south/east details remain unresolved and are represented by a closed wall. No interiors.",
+  "recessMetres": 0.14,
+  "frameMetres": 0.06,
+  "sourceRetirement": {
+    "collarMetres": 2.75,
+    "neighbourGuardMetres": 0.5,
+    "roofPaddingMetres": 0.8
+  },
+  "faces": {
+    "0": {
+      "basis": "Survey envelope; pale largely solid hall wall in available private projection. Obscured details are unresolved.",
+      "openings": []
+    },
+    "1": {
+      "basis": "Survey envelope; pale largely solid hall wall in available private projection. Obscured details are unresolved.",
+      "openings": []
+    },
+    "2": {
+      "basis": "Survey envelope; pale largely solid hall wall in available private projection. Obscured details are unresolved.",
+      "openings": [
+        {
+          "alongMetres": [
+            4.9,
+            8.7
+          ],
+          "heightAboveBase": [
+            1.05,
+            2.45
+          ],
+          "kind": "window",
+          "basis": "Broad lower dark opening observed on west projection; dimensions, glazing function and three divisions estimated.",
+          "divisions": 3
+        },
+        {
+          "alongMetres": [
+            3.6,
+            4.35
+          ],
+          "heightAboveBase": [
+            3.0,
+            3.85
+          ],
+          "kind": "vent",
+          "basis": "Small dark west feature observed; ventilation treatment and dimensions estimated.",
+          "divisions": 1
+        }
+      ]
+    },
+    "3": {
+      "basis": "Survey envelope; pale largely solid hall wall in available private projection. Obscured details are unresolved.",
+      "openings": [
+        {
+          "alongMetres": [
+            0.55,
+            1.25
+          ],
+          "heightAboveBase": [
+            0.9,
+            1.95
+          ],
+          "kind": "window",
+          "basis": "Small left-hand dark opening in partially occluded eastern strip; dimensions and glazing estimated.",
+          "divisions": 1
+        },
+        {
+          "alongMetres": [
+            2.5,
+            3.35
+          ],
+          "heightAboveBase": [
+            1.25,
+            2.1
+          ],
+          "kind": "window",
+          "basis": "Second dark opening in eastern strip; dimensions and glazing estimated.",
+          "divisions": 1
+        }
+      ]
+    },
+    "4": {
+      "basis": "Survey envelope; pale largely solid hall wall in available private projection. Obscured details are unresolved.",
+      "openings": [
+        {
+          "alongMetres": [
+            -17.4,
+            -16.45
+          ],
+          "heightAboveBase": [
+            2.7,
+            3.6
+          ],
+          "kind": "vent",
+          "basis": "Isolated small dark north-wall feature in private projection; dimensions and ventilation treatment estimated.",
+          "divisions": 1
+        }
+      ]
+    }
+  }
+}

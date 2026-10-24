@@ -1,0 +1,501 @@
+{
+  "date": "2026-10-24",
+  "status": "Native-verified RCM-Technikum exterior checkpoint; broader campus realism remains unfinished",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 236078492,
+    "sha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "3d33e5c5d6d7d6bc0225023fef0d920706d44679026a7a069649667905493cff",
+    "rendererSourceFingerprint": "cebf11d5ee598846",
+    "bundleSha256": "fa26bfdf62e08022fe95db1ee76fc1dcbf42a6345092c56972a539a7cdfcd177",
+    "tiles": 105
+  },
+  "staticGeometry": {
+    "status": "PASS: existing render meshes, survey roofs and unrelated facade/collision plans retained; new body follows the 5104 survey envelope",
+    "previousRenderMeshesUnchanged": 104,
+    "surveyRoofsUnchanged": 83,
+    "unrelatedCollisionFilesUnchanged": 82,
+    "roofSha256": "76841f142ff0c9d2d026b1457b492a325f55667ba3cbd5d634e20430476e3e24",
+    "cleanupAreaSquareMetres": 650.2050849481269,
+    "neighbourGuardMetres": 0.5,
+    "openingCount": 5,
+    "qualification": "Source-informed exterior, not an as-built model. Surveyed five-face envelope and four roof triangles are retained. Individual dark features guide a small set of estimated openings; classifications, dimensions, frames and recesses are approximate. Obscured lower south/east details remain unresolved and are represented by a closed wall. No interiors.",
+    "sourceSha256": "6ba735c27c2e931346dfd82f894f7832511f848bf83ea789ed72ec5fc4d3bd1c"
+  },
+  "binaryScope": {
+    "artifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86",
+    "previousArtifactSha256": "3902fde6af38009e7f6f105ed62bf55d53adb959abfc39f8e773561a71cd2024",
+    "shaderFilesUnchanged": 11,
+    "serviceCodeFilesUnchanged": 17,
+    "changedJarEntries": [
+      "dev/realworldmc/CampusCollision.class",
+      "dev/realworldmc/client/MapRenderer.class",
+      "realworldmc-service.zip",
+      "realworldmc-service.sha256",
+      "LICENSES/Minecampus-exterior-notices.txt"
+    ],
+    "qualification": "Geometry/provenance and collision migration change; renderer material range includes new tile. No shader or executable service source change."
+  },
+  "native": {
+    "fullRouteFrames": 57,
+    "checks": {
+      "campus-warehouse-result.txt": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "campus-cos-landscape-result.txt": "PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB 0.3896470588235294,0.3523137254901961,0.1912156862745098); exposed curb ray reaches its 12cm edging",
+      "campus-grs-iii-west-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-grs-iii-south-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-grs-main-west-result.txt": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "campus-galileo-facade-46-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-galileo-facade-43-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-cos-apron-result.txt": "PASS: native gravity landed on the smooth apron proxy at Y=63.0 (mesh Y=63.46271), replacing the previous Y=64 proxy",
+      "campus-roof-result.txt": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "campus-grs-connectors-courtyard-result.txt": "PASS: native rays reach the tower and west link and the repaired GRS II west facade at walking height",
+      "campus-cos-result.txt": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "campus-galileo-facade-44-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-cos-bench-result.txt": "PASS: native gravity landed player on the bench proxy at Y=64.0; visible seat top Y=63.89",
+      "campus-cos-ground-result.txt": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "campus-client-result.txt": "PASS: all configured native route frames captured after full streaming readiness",
+      "campus-grs-connectors-aerial-result.txt": "PASS: native rays reach the tower and west link, the south junction and preserved adjoining GRS roof behind any foliage",
+      "campus-grs-connectors-north-result.txt": "PASS: native rays reach the tower and west link at walking height",
+      "campus-grs-courtyard-path-result.txt": "PASS: two walking-view rays reach the paving mask on unchanged surveyed terrain, and a third reaches the low edging",
+      "campus-galileo-facade-42-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-collision-result.txt": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "campus-gameplay-result.txt": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "campus-grs-iii-tower-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-grs-courtyard-connector-result.txt": "PASS: upper scan fragment absent, lower fragment replaced by surveyed connector and adjacent GRS II facade preserved",
+      "campus-promenade-result.txt": "PASS: four mapped path controls and three facade-seam controls reach loaded surveyed ground and the active GPU asphalt mask",
+      "campus-telefonzentrale-result.txt": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "campus-bank-result.txt": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "campus-frontage-result.txt": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "campus-grs-iii-aerial-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-terrace-result.txt": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "campus-cos-site-result.txt": "PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer",
+      "campus-texture-result.txt": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted",
+      "campus-retaining-result.txt": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "campus-uye-result.txt": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "campus-grs-north-result.txt": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "campus-grs-iii-east-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-canopy-result.txt": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "campus-galileo-facade-45-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-grs-west-result.txt": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "campus-grs-main-east-result.txt": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "campus-crosspaths-result.txt": "PASS: eight crossing and entrance path controls reach loaded surveyed ground and the active GPU asphalt mask"
+    },
+    "lightingRoutes": {
+      "shadow": {
+        "status": "PASS: packaged shadows and sky-consistent material lighting verified across the native route",
+        "frames": 57,
+        "reportSha256": "e20bb834351e93df8c0eaac5c3f5061a5b8848f2f42c382c1019dcd11d38dafb"
+      },
+      "reflection": {
+        "status": "PASS: packaged reflection state checked across the full native route",
+        "frames": 57,
+        "reportSha256": "0fe70e0be585dfd503ccd43e79151c229bd6ea2451843ca7323e27440d586b2c"
+      }
+    },
+    "gravity": {
+      "court": {
+        "status": "PASS: lower courtyard, five stair landings and two turning-apron controls support native gravity within the existing half-block terrain tolerance",
+        "probes": [
+          {
+            "x": 105.5,
+            "z": -157.5,
+            "meshHeight": 60.300262451171875,
+            "standingY": 60.0,
+            "onGround": true
+          },
+          {
+            "x": 96.5,
+            "z": -165.5,
+            "meshHeight": 63.650413513183594,
+            "standingY": 64.0,
+            "onGround": true
+          },
+          {
+            "x": 95.5,
+            "z": -161.5,
+            "meshHeight": 62.84052276611328,
+            "standingY": 63.0,
+            "onGround": true
+          },
+          {
+            "x": 94.5,
+            "z": -158.5,
+            "meshHeight": 62.030616760253906,
+            "standingY": 62.0,
+            "onGround": true
+          },
+          {
+            "x": 94.5,
+            "z": -154.5,
+            "meshHeight": 61.22069549560547,
+            "standingY": 61.0,
+            "onGround": true
+          },
+          {
+            "x": 93.5,
+            "z": -150.5,
+            "meshHeight": 60.30079650878906,
+            "standingY": 60.0,
+            "onGround": true
+          },
+          {
+            "x": 93.5,
+            "z": -147.5,
+            "meshHeight": 60.30085372924805,
+            "standingY": 60.0,
+            "onGround": true
+          },
+          {
+            "x": 94.5,
+            "z": -147.5,
+            "meshHeight": 60.300819396972656,
+            "standingY": 60.0,
+            "onGround": true
+          }
+        ],
+        "reportSha256": "5ba2808c0d77e8ef2ee842ed52a3c31827689ba568d50f3cab2d1dc1e0b513f3"
+      },
+      "grade": {
+        "status": "PASS: three former frontage pits now support native gravity on reconstructed paving within the existing half-block proxy tolerance",
+        "probes": [
+          {
+            "x": 66.5,
+            "z": -58.5,
+            "meshHeight": 64.85272216796875,
+            "standingY": 65.0,
+            "onGround": true
+          },
+          {
+            "x": 65.5,
+            "z": -49.5,
+            "meshHeight": 64.85385131835938,
+            "standingY": 65.0,
+            "onGround": true
+          },
+          {
+            "x": 72.5,
+            "z": -73.5,
+            "meshHeight": 65.00621032714844,
+            "standingY": 65.0,
+            "onGround": true
+          }
+        ],
+        "reportSha256": "3e1653e452c4bb04ad12b444f2f333e9b60533f74912f3fe1df5d8020241a178"
+      },
+      "ramps": {
+        "status": "PASS: six ramp positions support native gravity within the one-metre voxel bound derived from each displayed floor gradient",
+        "probes": [
+          {
+            "x": 142.5,
+            "z": -136.5,
+            "meshHeight": 63.5200080871582,
+            "standingY": 64.0,
+            "slopeDerivedVoxelTolerance": 0.6007765822287481,
+            "onGround": true
+          },
+          {
+            "x": 141.5,
+            "z": -129.5,
+            "meshHeight": 62.480201721191406,
+            "standingY": 63.0,
+            "slopeDerivedVoxelTolerance": 0.5953223755504214,
+            "onGround": true
+          },
+          {
+            "x": 139.5,
+            "z": -122.5,
+            "meshHeight": 61.403385162353516,
+            "standingY": 61.0,
+            "slopeDerivedVoxelTolerance": 0.5965181096010072,
+            "onGround": true
+          },
+          {
+            "x": 136.5,
+            "z": -101.5,
+            "meshHeight": 63.867950439453125,
+            "standingY": 64.0,
+            "slopeDerivedVoxelTolerance": 0.5779164962783133,
+            "onGround": true
+          },
+          {
+            "x": 135.5,
+            "z": -95.5,
+            "meshHeight": 62.933441162109375,
+            "standingY": 63.0,
+            "slopeDerivedVoxelTolerance": 0.609906096855496,
+            "onGround": true
+          },
+          {
+            "x": 133.5,
+            "z": -89.5,
+            "meshHeight": 61.95527267456055,
+            "standingY": 62.0,
+            "slopeDerivedVoxelTolerance": 0.5977123537991929,
+            "onGround": true
+          }
+        ],
+        "reportSha256": "18127f3074bcc497c622c89032aab384e8986a5d86fb3fe36fde4819fc019d08"
+      }
+    },
+    "retainedMlzOpeningRays": 50,
+    "retainedMlzNativeWallColliders": 10,
+    "focusedInspection": {
+      "frames": 14,
+      "rcmSurfaceRays": 15,
+      "retainedSiemensbauOpeningRays": 33,
+      "nativeWallColliders": 3,
+      "reportSha256": "76d9abfe183cc4ad2fb582d49bbd913b5357e51c4d76b5df4534a7a6231d22ba",
+      "planSha256": "c6dea378e5e668a45293151795a5ebbce21cc4713b1fa8735ea310f156cb7d13"
+    }
+  },
+  "captureHashes": {
+    "campus-final-ground.png": "503132b5a17c74a3a936b24f96ccc510ac5a077a4e22c6ddc36235d3cb7cd9c1",
+    "campus-final-aerial.png": "fb398dc3d94b513462dd424d9026c663a41881425aded5341f366986e5c3c18f",
+    "campus-tnt.png": "791749bf9fbc64f19914a90ca43a2816d29170052adffac79cb7170270ec0bff",
+    "campus-route-west.png": "29387171ba97d99c0cbf4d8ba3dea11a9a7eefda9412e76994798986fdbf1393",
+    "campus-route-south.png": "8228c64a789d8b1ff9c01b0753104e89a98b4c6f93cfb927c49a1fa60fc6429b",
+    "campus-route-north.png": "cd6da99657ac586b7e79f967562c4e7b2fb8012965ecc00fed2da084f7de4e9c",
+    "campus-source-check.png": "34662f29638358d58e0ef44803beeeaf3716771624ea7f2507d1c040576e4736",
+    "campus-ias.png": "358fc2b3c4b0da0c879b38d13c56709f1eca1fa4398f3cd360dbdfaa33e444c0",
+    "campus-photo-north.png": "abed49a5d65618a20ef4535c588a87ab0430cf61d44b657ca11c961fa1887500",
+    "campus-former-mensa.png": "dee655a9f31cfc72e7e10d1f02fd5421417912ae2c25105f2d84778afbb13176",
+    "campus-mensa-terrace.png": "8f0df0578633a2d8667873e56d0bccbaef065faa0b64a71d22c2a1cbcdea8793",
+    "campus-paving-detail.png": "1aa0988fed9d5458ac6d5db726a4d28b28c88b0e8585586c01ca6c3e914a740a",
+    "campus-warehouse-east.png": "47fa9a5fa10d490a8331afc7fc4d79e9c101b5ae34acf959e79e7b4fab671fcd",
+    "campus-road-detail.png": "54f6e6658df52804ec130a85b19657d85c6cb564fbcfa0d5c9a83f3612d30940",
+    "campus-telefonzentrale-west.png": "5ad8090600f2bccaf0d5a02a9f1f2880334a7237eea85438aed8579618b28835",
+    "campus-cos-southwest.png": "ce65a6686534ce3472fc58e0799601a446524c0a46056d6a872fba4f880ae422",
+    "campus-cos-south.png": "fac65766ee0e98ece4345c710c2c8be768f2fa17088d545f382cc65b7b3f2819",
+    "campus-cos-aerial.png": "07e2132a30c9f318d6adad5b868974882c22f3c80ecdb34e2014fed4d20ce086",
+    "campus-cos-forecourt.png": "562d3a5e259ed9e12cff9dd89f340537661689ffa9ecc5cde952280c67fa3418",
+    "campus-cos-planting.png": "9a2b4fe285daafc949a7a145d5305d5c8677c68b9e9748358f754640a3e052eb",
+    "campus-cos-north.png": "bab445b42d756939f7ff3e09442b67146feb0408056e6aebb58adf8d459a3797",
+    "campus-grs-north.png": "be13133fb44b6c45271ae2113635b67a06425a62199ea3c38f5a0df9f5f4273e",
+    "campus-grs-west.png": "e9f4e32808b03f0c0db8139dfa23103d4d75a59dd11b5548db571a35f2780734",
+    "campus-grs-tower-north.png": "d05647364e4283b51e13ac4ac261947c91371a2a27bb53392c2d5329cfd775c2",
+    "campus-grs-tower-courtyard.png": "bb83e0c1c403d90be4efcc23999c113fae0e9643675b1578f610f11119149f45",
+    "campus-grs-connectors-aerial.png": "ff556768cb74516ae64280f5262621863fb910c6463928dbc6f59dc5122e6fbc",
+    "campus-grs-main-west.png": "f6ba59cf17a47c5c1390259352b7a1a9d36a9576a605587f782402b3e17b7530",
+    "campus-grs-main-east.png": "ab7ddaa7cc574a0bb0043133374cfcc8321f9dcde099d906a3fe157224f14055",
+    "campus-grs-iii-west.png": "93efec43efda8d785186449717bef31c93c3ec978b6fc146c87fc7fc28f4f9bb",
+    "campus-grs-iii-south.png": "82bbe166107c2dabb05fdfdd1a3c4b5849cebfe0d0da4cc2583f2f72d8a49e73",
+    "campus-grs-iii-east.png": "b2cabd94cf9620eb6765d9d13a82545bc4749ba6e056c44eb8842d042271dbb0",
+    "campus-grs-iii-tower.png": "65039d2b4e67030e7db4e2b7c42e32d8b39770002b5336fcb6d4f53666aa071b",
+    "campus-grs-iii-aerial.png": "3a2a5e8b0a1c464a5b139047b5cc1f8259b30f8741357239483c8eb7598a4138",
+    "campus-grs-courtyard-path.png": "db8bd33e401173a431888a286e4f72acf8938025c472ca7dd3ca0af937d30bd7",
+    "campus-grs-courtyard-connector.png": "65039d2b4e67030e7db4e2b7c42e32d8b39770002b5336fcb6d4f53666aa071b",
+    "campus-promenade-lawn-path.png": "eadb684d3546cc318ba9c4867e3fad1d63ac810b051e51a9d3cdcc79cd550885",
+    "campus-promenade-east-path.png": "ce2b5006eeeda82abdc7f6bb6cf0413b10b4bc64f6f7e8e2ece2a96ffc457f69",
+    "campus-crosspath-south.png": "a294fdaf325cbd3654f4f0c2f695caadeaf17a93c2a06609b5bcb956db1743a3",
+    "campus-crosspath-north.png": "a5187801c049944803fe1eaa7b52c425288e994f80b29c802627e31902e97827",
+    "campus-galileo-court-upper.png": "e2437600afba962eb429b24e6b74a1fa0cac137385a07b2e12a3d94e52d3d19c",
+    "campus-galileo-court-floor.png": "59862200a643ed55d76c8f3b8258c24023309d01bf5aa0f6331a7f35118c993d",
+    "campus-galileo-court-stairs.png": "0b1830bcc965fdd68a6b9ff05775e0ff3a26ef3e34dd8cbf08da5bdbeed4de4e",
+    "campus-galileo-west.png": "f7a70e51fce5ad00dd948deaad610824533cfdefb0dd910c685cb42c14b6bdc4",
+    "campus-galileo-southwest.png": "f8428b1b81ebb1b66142fb0e6c7019383fe0bc1573204af26b9e161c24e7d2f5",
+    "campus-galileo-east.png": "9089309f5ea37ba1aee8eeea1c0f99b50ccf8d9641e87a46ff54b1199ab4d3c5",
+    "campus-galileo-aerial.png": "7e3836f40ee733eb10d88ba6bcf713976167dca0dfe6735ed5b71ceffc09ca28",
+    "campus-galileo-north-detail.png": "e1afa761e99e0c650b9200c0c172be25e2d59d98a21aa841752932e769de620c",
+    "campus-galileo-grade-overview.png": "818d102806610221afbb557381c5b0fe6ce7acd09ca5450ea563b9dcfd1bebf6",
+    "campus-galileo-grade-walking.png": "5315885b1d86f8579795c37ae8de27341aad210eee2e2338f8fef5baef6de7e7",
+    "campus-galileo-ramps-overview.png": "54d98b4c52abe59d0cd3ab0e1aea389c7138d6ee4626e63dc345a5d22e3ea6d8",
+    "campus-galileo-ramp-north.png": "02c4027a698b658cb5eddf8d0f154c6bdf9dd4998cd4a65404ca7d17252d5ea8",
+    "campus-galileo-ramp-south.png": "a767013356f9d0a60ca9a91e8b8c3f63153d63e70a2f1287e3069d4615a6c0e8",
+    "campus-mlz-north.png": "cab0509fc5bda7507126977bbac13c140fe54e73ce0ed36381c0a2adf2fd6b94",
+    "campus-mlz-courtyard.png": "3b7923065a2c16ed8caff36f87ddfcbbb6820a9c766a5d2973676ee7d793a9cd",
+    "campus-mlz-south.png": "3dc65a69adad3b03f7aa2c977fecee73a04fdd80a85812610ab8cf3e9512c3fe",
+    "campus-mlz-east.png": "27ecfafa5358bd19d0957935b6980d6ee87f84ac58c14867d8c7dea694373873",
+    "campus-mlz-aerial.png": "aed436c5656e9be5d8224bc74e46f602ff84b773021b9b5e4769bcd44bf03ca1"
+  },
+  "focusedCaptureHashes": {
+    "campus-rcm-technikum-5104-0.png": "a3993ab96f01cc4db2aff662ed39c9b7f51f4437622e8c4d2ceac974d701fa1d",
+    "campus-rcm-technikum-5104-1.png": "b18034263b1ee533da1719927cdc9734cbe3bbcf5f5ddbe8c8fd12319e570804",
+    "campus-rcm-technikum-5104-2.png": "8aae7d9f13ce2a06afcd4b97bc86d23b9fef696532314fd838376c548baae50e",
+    "campus-rcm-technikum-5104-3.png": "e9769963aeb31976503ff9ef75b53d0328b783c509ed9d35d4400c9ffceac562",
+    "campus-rcm-technikum-5104-4.png": "ba3fa94e5019b12662dbf96d017181dae47ddaabce031baabf07e10bd4898311",
+    "campus-rcm-technikum-5104-5.png": "2d31c1a148c732edd9b6a493868de2e2429333ef38e2bad4df10eee824cfda6f",
+    "campus-rcm-technikum-5104-6.png": "845104fd70ed714c6dcceaa3d720f6f8ff625c8b32dff562e37aa26148b7db11",
+    "campus-rcm-technikum-5104-7.png": "d2585a1532532ec2d91b76d44f057e2e7785914d2c0cf5951f5d099ccac569fe",
+    "campus-rcm-technikum-5104-8.png": "36eb6edd85cf56173e795f53a93cbacefd9e84d05c5cac4fa7af81dd88337d8e",
+    "campus-rcm-technikum-5104-9.png": "48bd2bca2db1bd997093b28921711af1ae7436979224baa8df37b2217e902a53",
+    "campus-rcm-technikum-5104-10.png": "d82a5e84382d715203bcc350c3b3e075be420dde0077e732292528c9e22fb7bb",
+    "campus-rcm-technikum-5104-11.png": "ff203892df56e98b765ceb9bae0860aa4607fc5da7897bd6751b073d21121721",
+    "campus-rcm-technikum-5104-12.png": "3f60c799976afe32559d2bb956fa05403d124b8319731e5e0b8de3b98c96745f",
+    "campus-rcm-technikum-5104-13.png": "63a24c3209cad54fa2ee743ac9652c38aaa524e8713b0afcc84f2d240dd86643"
+  },
+  "checkSources": {
+    "CampusPromenadeChecks.java": "37849cb9c75d4ee4c038ad4de1ffed2544b190c84ffa5bffb1e63c6908708bda",
+    "CampusReflectionLifecycleCheck.java": "52ac94b168a0e0670d749ef9b01e7f56232c15be3f2ddf6c4aaf0782858f4c2d",
+    "CampusMlzChecks.java": "8a69d02ebce166cee1bef0a3f93fc6573f4ac712477f082e7e3d46a6a2e21226",
+    "CampusReflectionMotionCheck.java": "42a2c7ca67a8beae2be023611d5d3b7edaaa64ebcedad0ea945a3942b76beec1",
+    "CampusShadowFunctionalCheck.java": "84c91d8dfe772d62fb71e73ca77cd0451c8bbe8ca5a0b5401c46dc4b0a3064ce",
+    "CampusMaterialBenchmark.java": "3f3db1de09256fe1889714600fcc669ffeb5374b586ad91a79ca7f8d8389726b",
+    "CampusReflectionFunctionalCheck.java": "65980239cc98860533c15f1b15224280d15b783b5f98223aaabbd9708d845073",
+    "CampusSiteInspection.java": "58cbd7484053f62df408c7a6436af520a952ad722464e7d86da0600c33a26e08",
+    "CampusGalileoRampChecks.java": "333b27644cb1783e458d67d6f1de74086673fb2b25af2d4e8a09012f09feb06b",
+    "CampusCrosspathChecks.java": "758672ecbfc4add691912248b272571e21eb9ef3bc83c51a7e966e60fcd852df",
+    "CampusGalileoGradeChecks.java": "18e37c01fc9e612646496c29d6ce9914888168ced0baa90215b346a20b961c68",
+    "CampusAltitudeChecks.java": "be47c05220d1077bded07395481f260767e79f0c01e1429934ede52d5ea3d48f",
+    "CampusGalileoCourtChecks.java": "9677cb318a6a433420ce7ff9170a5eedbabcb60f1d6a1c7b864ff23e13aa66ad",
+    "CampusReflectionIntegrationCheck.java": "8df23d020f3674bd8461318c5c5599855e452a6e601da02b344b42be44caaa3f",
+    "CampusExteriorCheck.java": "1a5ac2bba528e6b7d8792347f13f72ce86a2552f0624ed44e8fa437db431de7b",
+    "CampusGalileoFacadeChecks.java": "369e4663551d98f123b70feb6be182b5bd42b71720c4ac704c698bb5abf5b19b",
+    "CampusShadowChecks.java": "a2e172980a95dc6f693399d855a48967e6921c9a11cefae01a850cda14452976",
+    "CampusReflectionChecks.java": "cb7f97e3d5041c9e7a57bb75abdf14c827456bb6a5b59f86e54fd533e236315f"
+  },
+  "sourceFiles": {
+    "minecraft/exterior/rcm-technikum-5104.json": "6ba735c27c2e931346dfd82f894f7832511f848bf83ea789ed72ec5fc4d3bd1c",
+    "minecraft/exterior/photos/rcm-technikum-reference.json": "7ad8e09a1792a1b6f490be0b5d5d254aefee44167124035046797fe8d392f29e",
+    "scripts/exterior_rcm.py": "b2a8c264aa90c60cb2e18c74240c8bdec6f24b1e9429fea023bf417340f27128",
+    "scripts/validate-rcm.py": "f3918789cd1935697e859a8e5e00dc685c6abb96c88c3134c10afebee5b0306d",
+    "minecraft/exterior/native/CampusCollision.java": "82044d8f5221cb08e6fe2c590bad3757739af3eacda949666274fed397cadfac"
+  },
+  "visualReview": {
+    "focusedFrames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "fullFrames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56
+    ],
+    "notes": [
+      "focused 0\u20134: Folded east/south/west source sheets removed; solid survey envelope and roof step retained. Individual lower openings/vent visible and clean. South gap view is very close to adjacent Siemensbau and is not whole-facade evidence. Tree occlusion and baked ground/roof colours remain.",
+      "focused 5\u201313: North/east walls now continuous with no detached mesh sheets; lower east openings and west recess/louver detail visible. Exact stepped roof retained. Close gap frame shows enlarged material grain and is not a whole-facade acceptance camera. Retained Siemensbau north/east views remain intact, with the previously folded RCM backdrop now solid.",
+      "full 0\u20135: Central ground/aerial layout, curved facade and promenade retained; TNT cut visible. No new wall noise or geometry loss in these views.",
+      "full 6\u201311: UYA, IAS, former Mensa terrace/retaining and paving remain intact. No new shader artifacts; unchanged source-colour seams and coarse distant surfaces remain.",
+      "full 12\u201321: Warehouse, Telefonzentrale west, COS facades and site furniture remain intact; RCM appears solid in the COS aerial context. Existing blue/yellow source-image stains near GRS and blurry distant buildings remain visible and unfinished.",
+      "full 22\u201327: GRS walls, glazed connectors, tower and aerial roof geometry retained. Untreated buildings outside the current survey rectangle remain conspicuously coarse in background views; this is a remaining coverage limitation, not solved by the RCM change.",
+      "full 28\u201339: GRS III louvers/tower/roof and courtyard path retained. Promenade and crosspaths intact; Galileo upper courtyard shows no renewed stripes. Nearby out-of-coverage buildings and source-ground colours remain coarse.",
+      "full 40\u201345: Galileo court floor/stairs, facade panels and reflections retained. Concrete walls remain clean without the prior periodic bands; aerial roofs and courtyard cut intact.",
+      "full 46\u201351: Galileo north facade, grade and both ramp approaches retained without new wall bands; blurred ground imagery and coarse neighbouring structures remain visible and outside this RCM checkpoint.",
+      "full 52\u201356: All five MLZ route views retain continuous panelled facades, aligned openings and roof geometry; neighbouring source meshes remain coarse. No RCM regression visible."
+    ]
+  },
+  "retainedEvidence": {
+    "serviceTests": "altitude-development-validation.json",
+    "shadowTimeAndDamage": "siemensbau-5103-development-validation.json",
+    "qualification": "The 17 service code files and 11 shader files are byte-identical to dev.21. Standalone service tests and the detailed morning/evening/night/reload sequence were not rerun; new full-route lighting/TNT/collision checks are fresh on this package."
+  },
+  "qualifications": [
+    "Source-informed exterior, not an as-built model. Surveyed five-face envelope and four roof triangles are retained. Individual dark features guide a small set of estimated openings; classifications, dimensions, frames and recesses are approximate. Obscured lower south/east details remain unresolved and are represented by a closed wall. No interiors.",
+    "Two eastern approaches are partially tree-occluded; elevated and closer views supplement them. The narrow south gap camera is not whole-facade acceptance evidence.",
+    "Source-ground colours, roof photography and exact architectural details remain imperfect. Untreated neighbours and landscaping still need work.",
+    "Native collision uses the existing one-metre proxy grid; it does not reproduce small sill/louver details."
+  ],
+  "installation": {
+    "artifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86",
+    "originalSaveFilesUnchanged": 121,
+    "previewSaveFilesUnchanged": 121,
+    "settingsFilesUnchanged": 4,
+    "previousArtifactRetained": "3902fde6af38009e7f6f105ed62bf55d53adb959abfc39f8e773561a71cd2024",
+    "savesAndSettingsUnchanged": true,
+    "instance": "Minecampus \u2014 Exterior Preview 0.5"
+  },
+  "publicImages": [
+    {
+      "image": "docs/screenshots/campus-rcm-north-before.jpg",
+      "imageSha256": "4d42418954007069f49cb6ab139de869c1560189b36778690a9c4cb85f340e61",
+      "nativeCaptureSha256": "7c4eee36aa9ced0610deec16c0b204186e07c5962bfba55b83700240852fe669",
+      "artifactSha256": "3902fde6af38009e7f6f105ed62bf55d53adb959abfc39f8e773561a71cd2024"
+    },
+    {
+      "image": "docs/screenshots/campus-rcm-north-after.jpg",
+      "imageSha256": "11f65c5085d6dcca483921ab93d2b19c952949f33a6e9ba2136c3a912b994ff7",
+      "nativeCaptureSha256": "845104fd70ed714c6dcceaa3d720f6f8ff625c8b32dff562e37aa26148b7db11",
+      "artifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+    },
+    {
+      "image": "docs/screenshots/campus-rcm-west-before.jpg",
+      "imageSha256": "e65f3566cd547fa24c9ab165397c9b3ba49bebc57280c0e740ffc06b6671b51f",
+      "nativeCaptureSha256": "4a5bda4ca1f31efe3c0eb60633be41c7e2d059dbbf65c5a439fcc1924009f7f9",
+      "artifactSha256": "3902fde6af38009e7f6f105ed62bf55d53adb959abfc39f8e773561a71cd2024"
+    },
+    {
+      "image": "docs/screenshots/campus-rcm-west-after.jpg",
+      "imageSha256": "d5f353bd5e9b2fea82b9b26df6a7ecbb9826d24c0a4a7e8dbfbeaaa29b98417d",
+      "nativeCaptureSha256": "ba3fa94e5019b12662dbf96d017181dae47ddaabce031baabf07e10bd4898311",
+      "artifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+    },
+    {
+      "image": "docs/screenshots/campus-rcm-west-close-after.jpg",
+      "imageSha256": "f8d0c00a4adcbeb1c8d793f5ead777a4d2e8019138b1e6a3db49639caf8d81cb",
+      "nativeCaptureSha256": "48bd2bca2db1bd997093b28921711af1ae7436979224baa8df37b2217e902a53",
+      "artifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+    },
+    {
+      "image": "docs/screenshots/campus-rcm-overview-after.jpg",
+      "imageSha256": "17da57f59dc8261a812bc10db065dd56e82288b792ae225fb2c258bf0392085b",
+      "nativeCaptureSha256": "36eb6edd85cf56173e795f53a93cbacefd9e84d05c5cac4fa7af81dd88337d8e",
+      "artifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+    }
+  ]
+}

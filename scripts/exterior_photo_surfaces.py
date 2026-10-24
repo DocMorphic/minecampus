@@ -75,7 +75,8 @@ def build(ctx):
   from exterior_grs_iii import build as build_grs_iii
   from exterior_mlz import build as build_mlz
   from exterior_siemensbau import build as build_siemensbau
-  retirement_boundary=main_retirement_boundary or build_grs_connectors(ctx,bid,walls) or build_grs_iii(ctx,bid,walls) or build_mlz(ctx,bid,walls) or build_siemensbau(ctx,bid,walls)
+  from exterior_rcm import build as build_rcm
+  retirement_boundary=main_retirement_boundary or build_grs_connectors(ctx,bid,walls) or build_grs_iii(ctx,bid,walls) or build_mlz(ctx,bid,walls) or build_siemensbau(ctx,bid,walls) or build_rcm(ctx,bid,walls)
   if retirement_boundary:rings=retirement_boundary
   collisionName=bid+'-photo-collision.ect'
   vertices=[[*wall['vertices'][i],0,0]for wall in walls if not wall.get('reconstructed') for i in wall['indices']]

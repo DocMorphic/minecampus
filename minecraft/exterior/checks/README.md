@@ -185,3 +185,12 @@ Optional per-camera `probes` contain a surface `target`, outward unit `normal`, 
 Where a surveyed tree legitimately occludes the wall, a plan may list the exact manifest `kind: vegetation` IDs in `vegetationTileIds`. The report records the first hit including vegetation and separately checks the nearest structural surface behind those listed tiles. Provider/source meshes are never excluded by this exception. Inspect the captures as well; a structural ray through foliage is not proof of an unobstructed camera view.
 
 Copy `siemensbau-5103-inspection.json` to the isolated run directory as `site-inspection.json` for the maintained 14-view Siemensbau check. Require all 14 captures, 68 structural opening rays and two native colliders, with the exact packaged renderer hash in the report. Cameras `north-east` and `west` are retained as source-study context but are obstructed by adjoining buildings; the close gap and oblique cameras provide the usable target views. These views do not certify the neighbouring buildings or measured opening accuracy. Run the ordinary 57-view route separately. Changes to the shared shadow receiver also require the packaged TNT/time-of-day/reload functional check.
+
+The RCM-Technikum checkpoint uses `rcm-technikum-5104-inspection.json` with the
+same `runSiteInspection` workflow. Its 14 cameras include 15 RCM wall/opening
+rays, 33 retained Siemensbau opening rays and three native wall-collision
+controls. Copy that plan to the QA run directory as `site-inspection.json`.
+The two eastern approaches have tree occlusion, and the narrow southern gap
+is a close surface check; use the additional elevated/close views when judging
+the full envelope. A captured camera or passing ray does not replace visual
+comparison with the baseline.
