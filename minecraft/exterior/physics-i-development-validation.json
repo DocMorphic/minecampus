@@ -3905,5 +3905,69 @@
       "Reconstruct ZNN from surveyed envelope and the two reviewed primary project photos in .cache/physics-znn-source-39; verify mapped-route endpoint visually remains outside the reconstructed facade.",
       "Run dedicated fractional TNT/mining/placement and edit-persistence regression before any release. Keep the full visual goal active; no installation or publication."
     ]
+  },
+  "physicsWSINorthLandscape39": {
+    "status": "DEVELOPMENT ONLY: source and bounded native checks pass; visual acceptance fails",
+    "artifactSha256": "1402a12f436df3954cabacfbdd4116d316a13de7e9c67830fc5b13dc64ce5dee",
+    "geometry": {
+      "groundAreaSquareMetres": 12923.716420857947,
+      "groundTiles": 46,
+      "sourceSupportedTrees": 34,
+      "unchangedPriorRenderFiles": 249,
+      "acceptedTransitionSamples": 616,
+      "unresolvedTransitionSamples": 662
+    },
+    "validation": {
+      "manifestBoundSourceValidators": 9,
+      "generalExteriorValidator": "PASS",
+      "packagedSupportAndBodyControls": 448,
+      "syntheticFractionalHeightCases": 19,
+      "geometryOverlapChecks": "PASS"
+    },
+    "native": {
+      "combinedReusedWorld": {
+        "cameraCaptures": 21,
+        "standingControlsPassed": 100,
+        "status": "INCOMPLETE: fixed 17000-tick harness timeout; remaining eight controls not attempted"
+      },
+      "tailReusedWorld": {
+        "standingControlsPassed": 6,
+        "failedOriginalControl": 106,
+        "unattemptedOriginalControl": 107,
+        "status": "FAIL: existing ordinary dirt produces standing Y=64 versus expected support Y=62.188119450877366; ordinary blocks preserved"
+      },
+      "freshWorld": {
+        "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+        "cameraCaptures": 6,
+        "standingControlsPassed": 12,
+        "maximumSupportErrorMetres": 0.12561945087736603,
+        "visualReview": "Not yet reviewed; numerical checks do not establish visual acceptance",
+        "fractionalSupportChecks": {
+          "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+          "states": 144,
+          "legacyDefaults": 9
+        }
+      }
+    },
+    "visualReview": {
+      "reviewedInitialCameraCaptures": 21,
+      "fixedNorthwestSkyPixelsBefore": 4963,
+      "fixedNorthwestSkyPixelsAfter": 139,
+      "accepted": false,
+      "knownDefects": [
+        "The bounded landscape overlaps approximately 671.903 square metres of mapped river way 999083370. One new standing control lies inside that river and is an invalid land-acceptance target.",
+        "Woodland cut boundaries retain sky gaps and source canopy fragments.",
+        "Baked aerial cars, pale blurred ground and building-base halos remain.",
+        "The adjacent ZNN source building remains distorted."
+      ]
+    },
+    "releaseAccepted": false,
+    "installed": false,
+    "next": [
+      "Exclude the mapped river and align the woodland extent with source polygons.",
+      "Replace the invalid river standing target with a qualified bank control and verify water preservation.",
+      "Review fresh-world captures and repeat bounded checks after the boundary correction.",
+      "Continue ZNN and ground-material reconstruction, then dedicated gameplay persistence regression."
+    ]
   }
 }

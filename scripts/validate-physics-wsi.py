@@ -154,7 +154,7 @@ for line in outer_transition['lines']:
    assert delta is None and join is None;assert abs(outer_correction(xy[i:i+1])[0])<1e-8;missing+=1
   else:
    assert abs(delta-(source-survey))<1e-8 and abs(join-(delta-old[i]))<1e-7 and abs(delta)<=outer_transition['maximumResidualMetres'];accepted+=1
-assert accepted==outer_transition['acceptedSamples']==504 and missing==outer_transition['missingSamples']==7
+assert accepted==outer_transition['acceptedSamples']==616 and missing==outer_transition['missingSamples']==662
 def correction(xy):
  return inherited_correction(xy)+outer_correction(xy)
 areas=[];mcareas=[];ground_error=0;hashes={name:sha(out/name)for name in [rec['meshFile'],rec['roofFile'],*rec['treeTiles']]}
@@ -167,6 +167,8 @@ area=unary_union(areas);mcarea=unary_union(mcareas);coverage=read(out/rec['cover
 others=unary_union([Polygon(p[0][:,:2],[h[:,:2]for h in p[1:]]).buffer(0)for bid,items in surveys.items()if bid!=spec['building']for k,p in items if k=='GroundSurface'])
 assert area.intersection(others.buffer(.4999)).area<.01
 assert area.intersection(prior).area<.005
+explicit_extent=unary_union([Polygon(rings[0][:,:2],[h[:,:2]for h in rings[1:]])for kind,rings in raw if kind=='GroundSurface']).buffer(spec['apronMetres']).union(shape(coverage['canopy']).buffer(spec['canopyExtent']['groundMarginMetres'])).union(box(*spec['northLandscapeBoundsUtm']))
+assert shape(coverage['extent']).symmetric_difference(explicit_extent).area<.001
 expected=shape(coverage['extent']).difference(others.buffer(.5)).difference(prior.buffer(.002));assert area.symmetric_difference(expected).area<.02
 # Existing ground geometry remains disjoint, including at close footprint guards.
 overlap=0

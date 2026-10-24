@@ -33,7 +33,7 @@ public final class CampusCollision {
         ServerTickEvents.END_SERVER_TICK.register(CampusCollision::tick);
         ServerLifecycleEvents.SERVER_STOPPED.register(server->{epoch++;inFlight.clear();unavailable=false;changedBlocks=0;});
     }
-    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v55");}
+    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v56");}
     private static void tick(MinecraftServer server){
         if(unavailable||server.getTickCount()%10!=0)return;
         var level=server.overworld();
@@ -55,7 +55,7 @@ public final class CampusCollision {
         int cx=pos.x-region.offsetX()/16,cz=pos.z-region.offsetZ()/16;
         // Physics I, P1 and the campus woodland extend east of the original terrain rectangle. The service
         // still returns 255 outside its explicit, neighbour-safe survey patches.
-        if(cx< -22||cx>41||cz< -28||cz>16)return;
+        if(cx< -22||cx>41||cz< -35||cz>16)return;
         int generation=epoch;inFlight.add(key);
         IO.execute(()->{
             try{

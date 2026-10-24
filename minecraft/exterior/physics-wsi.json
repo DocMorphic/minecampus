@@ -10,7 +10,7 @@
     698460,
     5349560,
     698660,
-    5349700
+    5349760
   ],
   "cleanupMarginMetres": 2.0,
   "apronMetres": 12,
@@ -241,6 +241,13 @@
   },
   "groundTransition": {
     "sourceFile": "physics-wsi-ground-transition.json",
-    "sha256": "733df4f2c42075ff379a49f9b1cd35080d02790dcd8caabf5d90fa562a30227c"
-  }
+    "sha256": "c88b2b2c1649183dff4e2203010c4775c2aab28599492dfab49cfce1b63a1691"
+  },
+  "northLandscapeBoundsUtm": [
+    698490,
+    5349640,
+    698610,
+    5349730
+  ],
+  "northLandscapeQualification": "Bounded extension across the north access road, parking edge, lawn and canopy visible in pinned BVV DOP20/DOM20. Region limits are reconstruction boundaries, not cadastral features. Neighboring surveyed footprints remain protected; vehicle type and fine street furniture are unresolved."
 }

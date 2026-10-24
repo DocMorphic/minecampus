@@ -179,6 +179,8 @@ def build(ctx):
     def correction(xy):
         return inherited_correction(xy)+outer_correction(xy)
     extent = original.buffer(spec['apronMetres'])
+    if 'northLandscapeBoundsUtm' in spec:
+        extent = extent.union(box(*spec['northLandscapeBoundsUtm']))
     canopy, canopy_records = canopy_extension(cache,spec,unary_union([original,others]),extent)
     extent = extent.union(canopy.buffer(spec['canopyExtent']['groundMarginMetres']))
     area = extent.difference(others.buffer(.5)).difference(prior.buffer(.002))
@@ -207,7 +209,7 @@ def build(ctx):
                 ground_tiles.append({'file':name,'kind':'ground','runtimeId':spec['groundRuntimeStart']+len(ground_tiles),'bounds':[v.min(0).tolist(),v.max(0).tolist()]})
         xy=np.array([(e,n) for n in range(lo[1],hi[1]+1,2) for e in range(lo[0],hi[0]+1,2)])
         guide={'width':int((hi[0]-lo[0])//2+1),'height':int((hi[1]-lo[1])//2+1),'points':xyz(xy).tolist()}
-        surface={'name':'physics-wsi-site','rings':rings(area),'terrainGuide':guide,'protectedFootprints':rings(others.buffer(3)),'outdoorReconstructed':True,'qualification':'BVV DGM1/DOP20 terrain with estimated12m apron. Inherited Physik II transition preserves earlier joins; an estimated2.5m outer shoulder joins sampled source heights, fading at prior terrain and unresolved samples. Native review remains required.'}
+        surface={'name':'physics-wsi-site','rings':rings(area),'terrainGuide':guide,'protectedFootprints':rings(others.buffer(3)),'outdoorReconstructed':True,'qualification':'BVV DGM1/DOP20 terrain with estimated12m apron and explicit north landscape extent. Inherited Physik II transition preserves earlier joins; an estimated2.5m outer shoulder joins sampled source heights, fading at prior terrain and unresolved samples. Native review remains required.'}
         previous=[*meta['vegetation']['trees'],*[t for s in meta['supplementalSurfaces'] for t in s.get('vegetation',{}).get('trees',[])]]
         with tempfile.TemporaryDirectory(prefix='wsi-',dir=cache) as temp:
             folder=Path(temp); col,row=(~dop.transform)*(lo[0],hi[1]); rgb=dop.read([1,2,3],window=Window(round(col),round(row),int((hi[0]-lo[0])*5),int((hi[1]-lo[1])*5))).transpose(1,2,0)
