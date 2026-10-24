@@ -161,7 +161,7 @@ coverage = read(out/rec['coverageFile'])
 prior_ground = shape(coverage['priorGround'])
 # Reconstruct canopy cells independently from source samples and seed labels.
 from scipy import ndimage
-from shapely import contains_xy
+from shapely import contains_xy,prepare
 canopy_spec=spec['landscape']['canopyExtent'];left,bottom,right,top=canopy_spec['boundsUtm'];resolution=canopy_spec['resolutionMetres']
 cols,rows=int((right-left)/resolution),int((top-bottom)/resolution)
 xx,yy=np.meshgrid(left+(np.arange(cols)+.5)*resolution,top-(np.arange(rows)+.5)*resolution)
@@ -169,7 +169,10 @@ source_xy=np.column_stack([xx.ravel(),yy.ravel()])
 with rasterio.open(r/'.cache/campus-dop-east.tif')as dop,rasterio.open(r/'.cache/campus-dgm-east.tif')as dem,rasterio.open(r/'.cache/32698_5349_20_DOM.tif')as dom:
  colors=np.array(list(dop.sample(source_xy))).astype(float);H=np.array(list(dom.sample(source_xy)))[:,0]-np.array(list(dem.sample(source_xy)))[:,0]
 all_buildings=unary_union([Polygon(v[0][:,:2],[hole[:,:2]for hole in v[1:]]).buffer(0)for items in surveys.values()for kind,v in items if kind=='GroundSurface'])
-occupied=contains_xy(all_buildings.buffer(.5),xx,yy)
+# Prepare once: older GEOS bindings otherwise rebuild the building index
+# for every raster cell. This leaves the exact containment predicate unchanged.
+occupied_geometry=all_buildings.buffer(.5);prepare(occupied_geometry)
+occupied=contains_xy(occupied_geometry,xx,yy)
 source_mask=((colors[:,1]>colors[:,0]*1.025)&(colors[:,1]>colors[:,2]+2)&(H>3)).reshape(rows,cols)&~occupied
 source_labels,_=ndimage.label(ndimage.binary_closing(source_mask,iterations=2)&~occupied)
 canopy_parts=[];canopy_counts=[]
@@ -181,6 +184,11 @@ for e,n in canopy_spec['componentSeedsUTM']:
 expected_canopy=unary_union(canopy_parts)
 assert expected_canopy.symmetric_difference(shape(coverage['canopySourceArea'])).area<.001
 assert canopy_counts==[c['sourceAreaSquareMetres']for c in rec['canopyComponents']]
+grid=Transformer.from_crs(4326,25832,always_xy=True);nodes={};ways={}
+for source in spec['landscape']['osm']:
+ path=r/'minecraft/exterior'/source['sourceFile'];assert sha(path)==source['sha256'];osm=ET.parse(path).getroot()
+ nodes.update({n.get('id'):grid.transform(float(n.get('lon')),float(n.get('lat')))for n in osm.findall('node')})
+ for w in osm.findall('way'):ways[w.get('id')]=([nodes[n.get('ref')]for n in w.findall('nd')],{t.get('k'):t.get('v')for t in w.findall('tag')})
 base_regions=[];primary_regions=[]
 for body in spec['bodies']:
  regions=[Polygon(v[0][:,:2]).buffer(0)for kind,v in surveys[body['building']]if kind=='GroundSurface']
@@ -188,7 +196,17 @@ for body in spec['bodies']:
  if 'landscapeApronMetres'in body:base_regions.append(footprint.buffer(body['landscapeApronMetres']))
  else:primary_regions.append(footprint)
 base_regions.append(unary_union(primary_regions).buffer(spec['apronMetres']))
+coverage_policy=spec['landscape']['coverage']
+for wid in coverage_policy['osmWays']:
+ xy,tags=ways[wid]
+ if xy[0]==xy[-1]:base_regions.append(Polygon(xy).buffer(0))
+ else:
+  assert tags.get('highway')=='footway'
+  width=float(tags.get('width',spec['landscape']['defaultPathWidthMetres']))
+  base_regions.append(LineString(xy).buffer(width/2+coverage_policy['pathVergeMetres'],cap_style=2,join_style=2))
 expected_extent=unary_union(base_regions).union(expected_canopy.buffer(canopy_spec['groundMarginMetres']))
+parts=[expected_extent]if expected_extent.geom_type=='Polygon'else list(expected_extent.geoms)
+expected_extent=unary_union([Polygon(p.exterior,[h for h in p.interiors if Polygon(h).area>coverage_policy['maximumEnclosedVoidSquareMetres']])for p in parts])
 assert expected_extent.symmetric_difference(shape(coverage['landscapeEnvelope'])).area<.001
 exposed=expected_extent.boundary
 valid_edges, missing_edges = [], []
@@ -294,11 +312,6 @@ assert sha(r/rec['landscapeGeneratorFile'])==rec['landscapeGeneratorSha256']
 for key,path in [('materialMaskSha256',r/'minecraft/exterior'/rec['materialMaskFile']),('materialDerivedSha256',out/rec['materialDerivedFile'])]:assert sha(path)==rec[key]
 shader_mapping=(r/'minecraft/exterior/shaders/campus_ground.fsh').read_text().split('// BEGIN GENERATED PHYSICS II SITE MAPPING\n')[1].split('// END GENERATED PHYSICS II SITE MAPPING')[0]
 assert hashlib.sha256(shader_mapping.encode()).hexdigest()==rec['shaderMappingSha256']
-grid=Transformer.from_crs(4326,25832,always_xy=True);nodes={};ways={}
-for source in spec['landscape']['osm']:
- path=r/'minecraft/exterior'/source['sourceFile'];assert sha(path)==source['sha256'];osm=ET.parse(path).getroot()
- nodes.update({n.get('id'):grid.transform(float(n.get('lon')),float(n.get('lat')))for n in osm.findall('node')})
- for w in osm.findall('way'):ways[w.get('id')]=([nodes[n.get('ref')]for n in w.findall('nd')],{t.get('k'):t.get('v')for t in w.findall('tag')})
 owned_footprints=unary_union([Polygon(rings[0][:,:2],[h[:,:2]for h in rings[1:]]).buffer(0)for bid,items in surveys.items()if bid in owned for kind,rings in items if kind=='GroundSurface'])
 outdoor=shape(coverage['ground']).difference(owned_footprints);mapped={'grass':[],'asphalt':[]};path_guards=[]
 for wid,(xy,tags)in ways.items():
@@ -307,16 +320,21 @@ for wid,(xy,tags)in ways.items():
   path=LineString(xy).buffer(float(tags.get('width',spec['landscape']['defaultPathWidthMetres']))/2,cap_style=2,join_style=2);path_guards.append(path.buffer(.35))
   if tags.get('surface')=='asphalt':mapped['asphalt'].append(path.intersection(outdoor))
 mapped={k:unary_union(v)for k,v in mapped.items()};guard=unary_union(path_guards)
-mask=np.asarray(Image.open(r/'minecraft/exterior'/rec['materialMaskFile']));assert mask.shape==(1024,1024,4)and np.all(mask[:,:,3]==255)and not np.any(mask[:,:,1]);low,high=np.array(rec['materialMaskBoundsMC']);pixels=np.array([(i,j)for j in range(3,1024,13)for i in range(3,1024,13)])
+parking=spec['landscape']['gravelParking'];parking_xy,parking_tags=ways[parking['way']]
+assert parking_tags.get('amenity')=='parking'and ways[parking['supportingAisleWay']][1].get('surface')=='pebblestone'
+parking_region=Polygon(parking_xy).buffer(0).intersection(outdoor)
+mask=np.asarray(Image.open(r/'minecraft/exterior'/rec['materialMaskFile']));assert mask.shape==(1024,1024,4)and np.all(mask[:,:,3]==255);low,high=np.array(rec['materialMaskBoundsMC']);pixels=np.array([(i,j)for j in range(3,1024,13)for i in range(3,1024,13)])
 xz=np.column_stack([low[0]+(pixels[:,0]+.5)*(high[0]-low[0])/1024,high[1]-(pixels[:,1]+.5)*(high[1]-low[1])/1024]);ecef_points=origin+xz[:,0,None]*basis[0]+xz[:,1,None]*basis[2]+basis[1];e,n,_=inverse.transform(*ecef_points.T);xy=np.column_stack([e,n]);bounds=shape(coverage['ground']).bounds;lo=np.floor(bounds[:2]);hi=np.ceil(bounds[2:]);cell=np.column_stack([lo[0]+(np.floor((e-lo[0])/.5)+.5)*.5,hi[1]-(np.floor((hi[1]-n)/.5)+.5)*.5]);checked=0
 with rasterio.open(r/'.cache/campus-dop-east.tif')as dop,rasterio.open(r/'.cache/campus-dgm-east.tif')as dem,rasterio.open(r/'.cache/32698_5349_20_DOM.tif')as dom:
  rgb=np.array(list(dop.sample(cell)));H=np.array(list(dom.sample(cell)))[:,0]-np.array(list(dem.sample(cell)))[:,0]
  for k,((i,j),q,c)in enumerate(zip(pixels,xy,cell)):
   point=Point(q)
-  if any(p.boundary.distance(point)<.012 for p in [outdoor,guard,*mapped.values()]if not p.is_empty)or np.min(.25-np.abs(q-c))<.012:continue
+  if any(p.boundary.distance(point)<.012 for p in [outdoor,guard,parking_region,*mapped.values()]if not p.is_empty)or np.min(.25-np.abs(q-c))<.012:continue
   asphalt=mapped['asphalt'].contains(point)
   green=bool(rgb[k,1]>rgb[k,0]*1.025 and rgb[k,1]>rgb[k,2]+2 and -.3<=H[k]<=.7)
   grass=(mapped['grass'].contains(point)or(outdoor.contains(point)and not guard.contains(point)and green))and not asphalt
+  gravel=parking_region.contains(point)and not grass and not asphalt
+  assert bool(mask[j,i,1])==gravel,(i,j,q.tolist(),gravel,mask[j,i].tolist())
   assert bool(mask[j,i,0])==grass and bool(mask[j,i,2])==asphalt,(i,j,q.tolist(),grass,asphalt,mask[j,i].tolist())
   checked+=1
 assert checked>4000,checked
@@ -331,4 +349,4 @@ with rasterio.open(r/'.cache/campus-dgm-east.tif')as dem:
   expected=world(q,sample(dem,data,q[:,0],q[:,1])+independent_correction(q))[0];assert np.max(np.abs(expected-t['center']))<.001
 
 assert len({t['runtimeId']for t in m['tiles']if 'runtimeId'in t})==sum('runtimeId'in t for t in m['tiles'])
-result={'status':'PASS: source roof geometry/pixels, recessed outward panes, joint backing, neighbour retirement, ground separation and raised bridge clearance','manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'validatorSha256':sha(Path(__file__)),'inputSha256':inputs,'roofControls':roof_controls,'maximumRoofCoordinateErrorMetres':max(roof_errors),'paneControlsVerified':pane_count,'northInfillHiddenWallAreaSquareMetres':float(hidden_area),'northernContainer':{'osmFootprintIoU':container_osm_iou,'upperWallSpuriousAreaSquareMetres':upper_wall_spurious_area,'sourceWalls':8,'sourceRoofTriangles':6},'jointBackingControlsVerified':joint_count,'maximumGroundCoordinateErrorMetres':max_ground,'terrainTransition':{'acceptedSamples':accepted,'missingSamples':missing,'estimatedJoiningControls':estimated_count,'unresolvedJoiningControls':missing-estimated_count,'widthMetres':transition['widthMetres'],'sourceSha256':sha(transition_file)},'oldGroundOverlapSquareMetres':old_overlap,'independentCoverageErrorSquareMetres':independent_coverage_error,'canopySourceAreasSquareMetres':canopy_counts,'landscapeMaterialPixelControls':checked,'treeCount':len(trees),'bridgeClearanceMetres':float(clearance),'shrubAreaSquareMetres':planting_area,'tileSha256':hashes,'qualification':'Source representation and estimated architectural geometry only. Native visual, movement, collision and reflection acceptance are separate.'};(out/'physics-ii-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items()if k not in ['tileSha256','inputSha256']},indent=2))
+result={'status':'PASS: source roof geometry/pixels, recessed outward panes, joint backing, neighbour retirement, ground separation and raised bridge clearance','manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'validatorSha256':sha(Path(__file__)),'inputSha256':inputs,'roofControls':roof_controls,'maximumRoofCoordinateErrorMetres':max(roof_errors),'paneControlsVerified':pane_count,'northInfillHiddenWallAreaSquareMetres':float(hidden_area),'northernContainer':{'osmFootprintIoU':container_osm_iou,'upperWallSpuriousAreaSquareMetres':upper_wall_spurious_area,'sourceWalls':8,'sourceRoofTriangles':6},'jointBackingControlsVerified':joint_count,'maximumGroundCoordinateErrorMetres':max_ground,'terrainTransition':{'acceptedSamples':accepted,'missingSamples':missing,'estimatedJoiningControls':estimated_count,'unresolvedJoiningControls':missing-estimated_count,'widthMetres':transition['widthMetres'],'sourceSha256':sha(transition_file)},'oldGroundOverlapSquareMetres':old_overlap,'independentCoverageErrorSquareMetres':independent_coverage_error,'canopySourceAreasSquareMetres':canopy_counts,'landscapeMaterialPixelControls':checked,'mappedExtentWays':coverage_policy['osmWays'],'gravelMaterialPixels':int(np.count_nonzero(mask[:,:,1])),'treeCount':len(trees),'bridgeClearanceMetres':float(clearance),'shrubAreaSquareMetres':planting_area,'tileSha256':hashes,'qualification':'Source representation and estimated architectural geometry only. Native visual, movement, collision and reflection acceptance are separate.'};(out/'physics-ii-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items()if k not in ['tileSha256','inputSha256']},indent=2))

@@ -52,7 +52,7 @@ def ground_transition(root, spec, prior):
 def build(ctx):
     root,cache,out,meta,mc,encode=[ctx[k]for k in ['ROOT','CACHE','OUT','metadata','mc','encode']];sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
     source=root/'minecraft/exterior/physics-ii.json';spec=json.loads(source.read_text());assert sha(root/'minecraft/exterior'/spec['reference'])==spec['referenceSha256']
-    surveys=nearby_surveys(cache, [698460,5349480,698640,5349640]);owned={b['building']for b in spec['bodies']};bodydata=[]
+    surveys=nearby_surveys(cache, spec['surveyBoundsUtm']);owned={b['building']for b in spec['bodies']};bodydata=[]
     for b in spec['bodies']:
         surfaces=next(s for bid,s in surveys if bid==b['building']);foot,walls,roof,points=survey_plan(ctx,surfaces);base=float(points[:,1].min());utm=unary_union([Polygon(r[0][:,:2],[h[:,:2]for h in r[1:]]).buffer(0)for k,r in surfaces if k=='GroundSurface'])
         bodydata.append(dict(spec=b,foot=foot,walls=walls,roof=roof,points=points,base=base,utm=utm))
@@ -122,12 +122,14 @@ def build(ctx):
     def ring_utm(ring):
         q=np.asarray(ring);p=origin+q[:,0,None]*east+q[:,1,None]*south+up;e,n,_=inverse.transform(*p.T);return np.column_stack([e,n])
     prior=unary_union([box(*meta['boundsUtm']),*[Polygon(ring_utm(p['ring']),[ring_utm(h)for h in p.get('holes',[])])for s in meta.get('supplementalSurfaces',[])for p in s['rings']]])
-    from exterior_physics_ii_landscape import classify,write_materials,canopy_extension
+    from exterior_physics_ii_landscape import classify,write_materials,canopy_extension,mapped_extent,close_small_voids
     envelope=unary_union([Polygon(b['utm'].exterior)for b in bodydata])
     primary_envelope=unary_union([Polygon(b['utm'].exterior)for b in bodydata if 'landscapeApronMetres'not in b['spec']])
     base_extent=unary_union([primary_envelope.buffer(spec['apronMetres']),*[Polygon(b['utm'].exterior).buffer(b['spec']['landscapeApronMetres'])for b in bodydata if 'landscapeApronMetres'in b['spec']]])
+    base_extent=base_extent.union(mapped_extent(root,spec['landscape']))
     canopy,canopy_records=canopy_extension(cache,spec['landscape'],unary_union([other_utm,*[b['utm']for b in bodydata]]),base_extent)
     landscape_extent=base_extent.union(canopy.buffer(spec['landscape']['canopyExtent']['groundMarginMetres']))
+    landscape_extent=close_small_voids(landscape_extent,spec['landscape']['coverage']['maximumEnclosedVoidSquareMetres'])
     area=landscape_extent.difference(other_utm.buffer(.5)).difference(prior.buffer(.002))
     step=spec['groundTileMetres'];lo=(np.floor(np.array(area.bounds[:2])/step)*step).astype(int);hi=(np.ceil(np.array(area.bounds[2:])/step)*step).astype(int);groundtiles=[];treetiles=[]
     layers,features,path_guard=classify(root,cache,spec,area,unary_union([b['utm']for b in bodydata]))

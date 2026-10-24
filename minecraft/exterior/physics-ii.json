@@ -591,7 +591,7 @@
   "qualification": "Opening rectangles, cladding divisions, frame profiles, materials, bridge underside and occluded details are approximate source-informed estimates. Provider pixels are not bundled. Roof geometry and roof pixels are retained from the public survey. No interiors. Window levels and group boundaries are digitized from private survey-aligned source projections; hidden lower openings and opposite bridge windows remain estimates. Ground continues from DGM1, retains DOP20 appearance and avoids prior surface overlap. Tree forms/species are inferred from public canopy data. An estimated 2.5m outer shoulder joins retained source ground using sampled height residuals; the transition is not measured DGM terrain. The20m study envelope covers walking approaches. Mapped asphalt and grass use pinned OSM; low green ground below0.7m DOM-DGM is a separate lawn inference. Outer ground joins are estimated from source residuals.",
   "groundTransition": {
     "sourceFile": "physics-ii-ground-transition.json",
-    "sha256": "8806750de3b0577e623208519868e91140b208cb8347af6397c3a4f0d505c94d"
+    "sha256": "b7d86c00dc2eba6b252df60a4090082e4613689e3bb9ce56ece3651d93d2560e"
   },
   "landscape": {
     "osm": [
@@ -612,38 +612,116 @@
         "retrievedSnapshotSha256": "e5ba55a1e62ac4821655d43b701f695bb11966dbdd2378ef202136bb9fb951b6",
         "license": "ODbL1.0",
         "attribution": "\u00a9 OpenStreetMap contributors"
+      },
+      {
+        "sourceFile": "physics-ii-parking-osm.xml",
+        "sha256": "5b1722dd2690158beac575c9c831af0d577f32f0409852c13380b6931619f3fe",
+        "retrievedSnapshotSha256": "fa8af7b5d37d767707b157ebd469f31eabc85dee6c547bf668786fac910eb8f4",
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.6749,48.2681,11.6761,48.26885",
+        "license": "ODbL1.0",
+        "attribution": "\u00a9 OpenStreetMap contributors"
       }
     ],
     "defaultPathWidthMetres": 2.5,
     "qualification": "Mapped asphalt footways and grass; default path widths and low-green ground classification are estimates. Trees follow public canopy data; species/branch forms are estimates.",
     "canopyExtent": {
       "boundsUtm": [
-        698480,
-        5349458,
-        698620,
-        5349620
+        698330,
+        5349450,
+        698650,
+        5349690
       ],
       "resolutionMetres": 0.5,
       "componentSeedsUTM": [
         [
-          698519.5,
+          698505.25,
+          5349642.75
+        ],
+        [
+          698503.75,
+          5349595.25
+        ],
+        [
+          698470.25,
+          5349607.25
+        ],
+        [
+          698606.75,
+          5349604.75
+        ],
+        [
+          698559.25,
           5349594.25
         ],
         [
-          698558,
-          5349592.25
+          698546.25,
+          5349593.25
         ],
         [
-          698542,
-          5349593
+          698581.75,
+          5349595.25
         ],
         [
-          698577,
-          5349585.5
+          698581.25,
+          5349586.25
+        ],
+        [
+          698539.75,
+          5349576.25
+        ],
+        [
+          698560.25,
+          5349573.25
+        ],
+        [
+          698588.25,
+          5349557.75
+        ],
+        [
+          698553.75,
+          5349551.75
+        ],
+        [
+          698550.25,
+          5349546.25
+        ],
+        [
+          698547.25,
+          5349526.25
+        ],
+        [
+          698552.25,
+          5349522.25
         ]
       ],
       "groundMarginMetres": 2.5,
-      "qualification": "Complete northern green canopy components intersecting the original20m landscape, identified from pinned DOP20/DOM20/DGM1. Seeds select source regions, not surveyed tree trunks. Branch form, species and margin are estimates. Existing surveyed buildings and earlier reconstructed ground remain excluded."
+      "qualification": "Complete source canopy components intersecting the extended mapped parking, grass and path study. Seeds select raster regions, not measured trunks. Species, branches and 2.5m margins are estimates."
+    },
+    "coverage": {
+      "osmWays": [
+        "683348588",
+        "1358713330",
+        "1358713331",
+        "1358713332",
+        "1376884954",
+        "295418158",
+        "317014213",
+        "241031086"
+      ],
+      "pathVergeMetres": 2.5,
+      "maximumEnclosedVoidSquareMetres": 1.0,
+      "qualification": "Complete mapped polygons and footway corridors with estimated 2.5m verges. Enclosed voids up to 1m\u00b2 between these landscape patches are filled before preserving all earlier terrain and surveyed building exclusions."
+    },
+    "gravelParking": {
+      "way": "683348588",
+      "supportingAisleWay": "683348590",
+      "qualification": "Parking boundary is mapped but its surface is untagged. Aggregate finish is inferred from the adjoining pebblestone parking aisle and public aerial appearance; mapped grass, asphalt paths and low green vegetation take priority. Applied only to newly reconstructed ground."
     }
-  }
+  },
+  "surveyBoundsUtm": [
+    698330,
+    5349450,
+    698650,
+    5349690
+  ]
 }

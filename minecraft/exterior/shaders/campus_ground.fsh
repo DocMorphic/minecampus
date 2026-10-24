@@ -112,7 +112,7 @@ vec2 woodlandGroundUv(vec2 position) { return vec2(position.x-352.0,32.0-positio
 vec2 laboratorySiteUv(vec2 position) { return vec2(position.x-336.0,-272.0-position.y)/128.0; }
 // END GENERATED LABORATORY SITE MAPPING
 // BEGIN GENERATED PHYSICS II SITE MAPPING
-vec2 physicsIISiteUv(vec2 position) { return vec2(position.x-272.0,-272.0-position.y)/160.0; }
+vec2 physicsIISiteUv(vec2 position) { return vec2(position.x-224.0,-272.0-position.y)/224.0; }
 // END GENERATED PHYSICS II SITE MAPPING
 void main() {
     vec3 planarRadiance=vec3(0); float planarWeight=0.;
@@ -158,7 +158,7 @@ void main() {
         // of tree shadows and canopy colours baked into the aerial photograph.
         vec2 surfaceUv=vec2(worldPosition.x+352.0,256.0-worldPosition.z)/672.0;
         vec4 surfaceMask=texture(Sampler5,clamp(surfaceUv,0.0,1.0));
-        vec3 mapped=surfaceMask.rgb;float soil=1.0-surfaceMask.a;
+        vec3 mapped=surfaceMask.rgb;float soil=1.0-surfaceMask.a;float gravel=0.0;
         if(any(lessThan(surfaceUv,vec2(0)))||any(greaterThan(surfaceUv,vec2(1)))){mapped=vec3(0);soil=0.0;}
         if(physicsGround){
             vec2 physicsUv=physicsIIGround?physicsIISiteUv(worldPosition.xz):laboratoryGround?laboratorySiteUv(worldPosition.xz):woodlandGround?woodlandGroundUv(worldPosition.xz):physicsGroundUv(worldPosition.xz);
@@ -166,12 +166,13 @@ void main() {
                 vec4 overlay=texture(Sampler6,physicsUv);
                 float blend=(woodlandGround||laboratoryGround||physicsIIGround)?1.0:physicsGroundBlend(worldPosition.xz),woodland=1.0-overlay.a;
                 float coverage=clamp(dot(overlay.rgb,vec3(1))+woodland,0.0,1.0)*blend;
+                if(physicsIIGround){gravel=overlay.g*blend;overlay.g=0.0;}
                 mapped=mapped*(1.0-coverage)+overlay.rgb*blend;
                 soil=soil*(1.0-coverage)+woodland*blend;
             }
         }
         if(abs(MaterialDetail-15.0)<.1){mapped=vec3(0,1,0);soil=0.0;}
-        float mappedTotal=mapped.r+mapped.g+mapped.b+soil;
+        float mappedTotal=mapped.r+mapped.g+mapped.b+soil+gravel;
         float mappedAmount=clamp(mappedTotal,0.0,1.0);
         float materialRange=1.0-smoothstep(35.0,110.0,viewDistance);
         vec3 aerial=texture(Sampler0,texCoord0).rgb;
@@ -192,6 +193,11 @@ void main() {
         float joint=1.0-smoothstep(.003-aa,.006+aa,jointDistance);
         float unitVariation=.95+.1*hash(floor(paving));
         vec3 pavingColor=vec3(.55,.54,.51)*clamp(aerialLum/.5,.4,1.2)*clamp(cLum/.5112,.7,1.3)*unitVariation*(1.0-.3*joint);
+        vec3 gravelColor=vec3(0);
+        if(gravel>.001){
+            // The inferred parking aggregate uses the scan's three-metre scale.
+            gravelColor=groundTexture(Sampler9,worldPosition/3.0,weights)*clamp(aerialLum/.5,.65,1.15);
+        }
         vec3 asphaltColor=aerial;
         if(mapped.b>.001){
             // Four-metre scanned aggregate detail. Keep broad aerial shade,
@@ -203,7 +209,7 @@ void main() {
         // construction highlights must not wash this new surface white.
         vec3 soilColor=vec3(0);
         if(soil>.001)soilColor=groundTexture(Sampler9,worldPosition/1.3,weights)*.92;
-        vec3 material=(mapped.r*lawnColor+mapped.g*pavingColor+mapped.b*asphaltColor+soil*soilColor)/max(mappedTotal,.0001);
+        vec3 material=(mapped.r*lawnColor+mapped.g*pavingColor+mapped.b*asphaltColor+soil*soilColor+gravel*gravelColor)/max(mappedTotal,.0001);
         color.rgb=mix(color.rgb,material,mappedAmount*materialRange);
         grass=mix(grass,mapped.r/max(mappedTotal,.0001),mappedAmount);
         if(proximity>0.0){
@@ -213,6 +219,8 @@ void main() {
                 vec3 asphaltNormal=groundNormalDetail(Sampler8,worldPosition*.25,weights);
                 detail=mix(detail,asphaltNormal,clamp(mapped.b,0.0,1.0));
             }
+            if(gravel>.001)
+                detail=mix(detail,groundNormalDetail(Sampler10,worldPosition/3.0,weights),gravel);
             if(soil>.001)detail=mix(detail,groundNormalDetail(Sampler10,worldPosition/1.3,weights),soil);
             detail-=geometric*dot(detail,geometric);
             vec3 n=normalize(geometric+detail*.35);

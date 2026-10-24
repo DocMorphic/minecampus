@@ -197,6 +197,14 @@ DOM20/DGM1 height bounds; species and foliage form are estimated with CC0
 Poly Haven textures. No interiors or provider pixels. See physics-ii.json
 and physics-ii-reference.json.
 
+The expanded Physik II landscape follows OSM parking, grass and footway
+boundaries (ODbL 1.0, © OpenStreetMap contributors) and BVV DGM1 heights.
+Verge widths and sub-square-metre gap continuity are inferred. Gravel finish
+on the new parking ground is inferred from a nearby pebblestone aisle and
+aerial appearance; generic gravel_ground_01 scan by Rob Tuytel / Poly Haven,
+CC0 1.0, https://polyhaven.com/a/gravel_ground_01, at three-metre scale.
+Mapped and low-raster vegetation retain priority over the inferred aggregate.
+
 Laboratory west site: BVV DGM1 ground and DOP20 imagery, preserving prior
 terrain and building/bridge footprints. OSM paths, grass and railing alignment
 are ODbL 1.0, © OpenStreetMap contributors. Untagged widths, railing dimensions
@@ -459,6 +467,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/physics-ii.json',(SOURCE/'physics-ii.json').read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii_spec['groundTransition']['sourceFile'],(SOURCE/physics_ii_spec['groundTransition']['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-ii-reference.json',(SOURCE/'photos/physics-ii-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/physics-ii-parking-osm.xml',(SOURCE/'physics-ii-parking-osm.xml').read_bytes())
   for body in physics_ii_spec['bodies']:
    if 'osmReference'in body:write(target,'src/minecampus-exterior/'+body['osmReference']['sourceFile'],(SOURCE/body['osmReference']['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['coverageFile'],(DATA/physics_ii['coverageFile']).read_bytes())

@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='utf-8'?>
+<osm version="0.6" generator="Minecampus public source subset">
+  <node id="6400532926" visible="true" version="3" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2684719" lon="11.6733351" />
+  <node id="6400532927" visible="true" version="3" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2683441" lon="11.6744278" />
+  <node id="6400532928" visible="true" version="2" changeset="106184426" timestamp="2021-06-11T03:27:27Z" user="BeKri" uid="14390" lat="48.2687397" lon="11.6745318" />
+  <node id="6400532929" visible="true" version="2" changeset="106184426" timestamp="2021-06-11T03:27:27Z" user="BeKri" uid="14390" lat="48.2687236" lon="11.6746699" />
+  <node id="6400532930" visible="true" version="2" changeset="106184426" timestamp="2021-06-11T03:27:27Z" user="BeKri" uid="14390" lat="48.2688297" lon="11.6746978" />
+  <node id="6400532931" visible="true" version="3" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2687588" lon="11.6749954" />
+  <node id="6400532932" visible="true" version="4" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2689629" lon="11.6750545" />
+  <node id="6400532933" visible="true" version="3" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2688958" lon="11.6754069" />
+  <node id="6400532934" visible="true" version="3" changeset="140010401" timestamp="2023-08-17T12:22:48Z" user="map per" uid="11758604" lat="48.2681729" lon="11.6748876" />
+  <node id="6400532935" visible="true" version="3" changeset="140010401" timestamp="2023-08-17T12:22:48Z" user="map per" uid="11758604" lat="48.2681197" lon="11.6753772" />
+  <node id="6400532936" visible="true" version="2" changeset="106184426" timestamp="2021-06-11T03:27:27Z" user="BeKri" uid="14390" lat="48.2679685" lon="11.6753409" />
+  <node id="6400532937" visible="true" version="2" changeset="106184426" timestamp="2021-06-11T03:27:27Z" user="BeKri" uid="14390" lat="48.2679848" lon="11.6752011" />
+  <node id="6400532938" visible="true" version="2" changeset="106184426" timestamp="2021-06-11T03:27:27Z" user="BeKri" uid="14390" lat="48.2679130" lon="11.6751822" />
+  <node id="6400532939" visible="true" version="2" changeset="106184426" timestamp="2021-06-11T03:27:27Z" user="BeKri" uid="14390" lat="48.2679464" lon="11.6748957" />
+  <node id="6400532940" visible="true" version="3" changeset="113053865" timestamp="2021-10-27T20:00:44Z" user="map per" uid="11758604" lat="48.2678525" lon="11.6748720" />
+  <node id="6400532941" visible="true" version="4" changeset="162362820" timestamp="2025-02-10T18:32:24Z" user="Perlsack" uid="20117761" lat="48.2680282" lon="11.6732750" />
+  <node id="6400532948" visible="true" version="1" changeset="69148095" timestamp="2019-04-12T12:50:20Z" user="roadyboy" uid="2045115" lat="48.2681100" lon="11.6749158" />
+  <node id="6400532949" visible="true" version="1" changeset="69148095" timestamp="2019-04-12T12:50:20Z" user="roadyboy" uid="2045115" lat="48.2680571" lon="11.6753367" />
+  <node id="6400532966" visible="true" version="3" changeset="140010401" timestamp="2023-08-17T12:22:48Z" user="map per" uid="11758604" lat="48.2686922" lon="11.6750360" />
+  <node id="6400532967" visible="true" version="3" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2686596" lon="11.6751296" />
+  <node id="11121952267" visible="true" version="1" changeset="140010401" timestamp="2023-08-17T12:22:48Z" user="map per" uid="11758604" lat="48.2686171" lon="11.6750081" />
+  <node id="12574655256" visible="true" version="1" changeset="162362820" timestamp="2025-02-10T18:32:24Z" user="Perlsack" uid="20117761" lat="48.2681302" lon="11.6733013" />
+  <node id="12574655257" visible="true" version="1" changeset="162362820" timestamp="2025-02-10T18:32:24Z" user="Perlsack" uid="20117761" lat="48.2681701" lon="11.6732397" />
+  <node id="12748948092" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2686854" lon="11.6750973" />
+  <node id="12748948093" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2687353" lon="11.6752926" />
+  <node id="12748948094" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2687639" lon="11.6752575" />
+  <node id="12748948095" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2688131" lon="11.6753277" />
+  <node id="12748948096" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2688448" lon="11.6753650" />
+  <node id="12748948097" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2688567" lon="11.6753513" />
+  <node id="12748948098" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2687581" lon="11.6750865" />
+  <node id="12748948099" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2689281" lon="11.6753176" />
+  <node id="12748948100" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2689146" lon="11.6754389" />
+  <node id="12748948101" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2687962" lon="11.6751879" />
+  <node id="12748948102" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2689514" lon="11.6751364" />
+  <node id="12748948103" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2687661" lon="11.6748565" />
+  <node id="12748948104" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2688119" lon="11.6748616" />
+  <node id="12748948148" visible="true" version="1" changeset="164835210" timestamp="2025-04-11T22:01:32Z" user="CommanderStorm" uid="11816441" lat="48.2681671" lon="11.6749414" />
+  <node id="12755848180" visible="true" version="1" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2683458" lon="11.6744131" />
+  <node id="12755848181" visible="true" version="1" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2683722" lon="11.6741877" />
+  <node id="12755848184" visible="true" version="1" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2683790" lon="11.6741299" />
+  <node id="12755848185" visible="true" version="1" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2684392" lon="11.6736151" />
+  <node id="12755848187" visible="true" version="1" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2684445" lon="11.6735696" />
+  <node id="12755848190" visible="true" version="1" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2684584" lon="11.6734510" />
+  <node id="12755848199" visible="true" version="1" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2684263" lon="11.6733206" />
+  <node id="12755920506" visible="true" version="1" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441" lat="48.2687564" lon="11.6746785" />
+  <way id="683348588" visible="true" version="10" changeset="164961226" timestamp="2025-04-15T00:33:27Z" user="CommanderStorm" uid="11816441">
+    <nd ref="6400532926" />
+    <nd ref="12755848190" />
+    <nd ref="12755848187" />
+    <nd ref="12755848185" />
+    <nd ref="12755848184" />
+    <nd ref="12755848181" />
+    <nd ref="12755848180" />
+    <nd ref="6400532927" />
+    <nd ref="6400532928" />
+    <nd ref="6400532929" />
+    <nd ref="12755920506" />
+    <nd ref="6400532930" />
+    <nd ref="12748948104" />
+    <nd ref="12748948103" />
+    <nd ref="6400532931" />
+    <nd ref="6400532932" />
+    <nd ref="12748948102" />
+    <nd ref="12748948098" />
+    <nd ref="12748948101" />
+    <nd ref="12748948099" />
+    <nd ref="12748948100" />
+    <nd ref="6400532933" />
+    <nd ref="12748948097" />
+    <nd ref="12748948096" />
+    <nd ref="12748948095" />
+    <nd ref="12748948094" />
+    <nd ref="12748948093" />
+    <nd ref="6400532967" />
+    <nd ref="12748948092" />
+    <nd ref="6400532966" />
+    <nd ref="11121952267" />
+    <nd ref="6400532934" />
+    <nd ref="12748948148" />
+    <nd ref="6400532935" />
+    <nd ref="6400532936" />
+    <nd ref="6400532937" />
+    <nd ref="6400532938" />
+    <nd ref="6400532939" />
+    <nd ref="6400532940" />
+    <nd ref="6400532941" />
+    <nd ref="12574655256" />
+    <nd ref="12574655257" />
+    <nd ref="12755848199" />
+    <nd ref="6400532926" />
+    <tag k="access" v="customers" />
+    <tag k="amenity" v="parking" />
+    <tag k="capacity" v="200" />
+    <tag k="capacity:disabled" v="1" />
+    <tag k="fee" v="no" />
+    <tag k="parking" v="surface" />
+  </way>
+  <way id="683348590" visible="true" version="3" changeset="181233619" timestamp="2026-04-12T14:32:50Z" user="k4ch" uid="5764221">
+    <nd ref="6400532948" />
+    <nd ref="6400532949" />
+    <tag k="highway" v="service" />
+    <tag k="lit" v="yes" />
+    <tag k="service" v="parking_aisle" />
+    <tag k="surface" v="pebblestone" />
+  </way>
+</osm>

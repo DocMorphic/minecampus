@@ -50,10 +50,10 @@ def canopy_extension(cache, specification, buildings, base_area):
     return unary_union(selected), records
 
 
-def classify(root,cache,spec,area,owned_footprints):
+def osm_ways(root, specification):
     nodes,ways={},{}
     project=Transformer.from_crs(4326,25832,always_xy=True).transform
-    for source in spec['landscape']['osm']:
+    for source in specification['osm']:
         path=root/'minecraft/exterior'/source['sourceFile']
         assert hashlib.sha256(path.read_bytes()).hexdigest()==source['sha256']
         osm=ET.parse(path).getroot()
@@ -61,7 +61,30 @@ def classify(root,cache,spec,area,owned_footprints):
         for way in osm.findall('way'):
             xy=[nodes[n.get('ref')]for n in way.findall('nd')]
             ways[way.get('id')]=(xy,{t.get('k'):t.get('v')for t in way.findall('tag')})
-    layers={'grass':[],'asphalt':[]};features=[];paths=[]
+    return ways
+
+
+def mapped_extent(root, specification):
+    ways = osm_ways(root, specification)
+    regions = []
+    for wid in specification['coverage']['osmWays']:
+        xy, tags = ways[wid]
+        if xy[0] == xy[-1]:
+            regions.append(Polygon(xy).buffer(0))
+        else:
+            assert tags.get('highway') == 'footway'
+            width = float(tags.get('width', specification['defaultPathWidthMetres']))
+            regions.append(LineString(xy).buffer(width/2 + specification['coverage']['pathVergeMetres'], cap_style=2, join_style=2))
+    return unary_union(regions)
+
+
+def close_small_voids(region, maximum_area):
+    return unary_union([Polygon(p.exterior, [h for h in p.interiors if Polygon(h).area > maximum_area]) for p in polygons(region)])
+
+
+def classify(root,cache,spec,area,owned_footprints):
+    ways = osm_ways(root, spec['landscape'])
+    layers={'grass':[],'asphalt':[],'gravel':[]};features=[];paths=[]
     outdoor=area.difference(owned_footprints)
     for wid,(xy,tags)in ways.items():
         geometry=None;material=None;width=None
@@ -91,6 +114,14 @@ def classify(root,cache,spec,area,owned_footprints):
         layers['grass'].append(inferred)
         features.append({'type':'Feature','properties':{'source':'BVV DOP20/DGM1/DOM20','material':'grass','qualification':'Estimated lawn from green0.5m samples with DOM-DGM between-0.3and0.7m, outside building and path guards.'},'geometry':mapping(inferred)})
     layers={k:unary_union(v)for k,v in layers.items()};layers['grass']=layers['grass'].difference(layers['asphalt'])
+    parking = spec['landscape']['gravelParking']
+    xy, tags = ways[parking['way']]
+    assert tags.get('amenity') == 'parking' and xy[0] == xy[-1]
+    assert ways[parking['supportingAisleWay']][1].get('surface') == 'pebblestone'
+    gravel = Polygon(xy).buffer(0).intersection(outdoor).difference(layers['grass']).difference(layers['asphalt'])
+    layers['gravel'] = gravel
+    if not gravel.is_empty:
+        features.append({'type':'Feature', 'properties':{'source':'OSM boundary with inferred aggregate finish', 'osmWay':parking['way'], 'material':'gravel', 'supportingAisleWay':parking['supportingAisleWay'], 'qualification':parking['qualification']}, 'geometry':mapping(gravel)})
     return layers,features,path_guard
 
 
@@ -99,7 +130,7 @@ def write_materials(root,out,mc,guide,layers,features):
     span=max(128,math.ceil((max(points[:,0].max()-ax,az-points[:,2].min())+.01)/32)*32)
     assert points[:,0].max()<ax+span and points[:,2].min()>az-span
     pixels=np.zeros((size,size,4),dtype=np.uint8);pixels[:,:,3]=255
-    for channel,kind in [(0,'grass'),(2,'asphalt')]:
+    for channel,kind in [(0,'grass'),(1,'gravel'),(2,'asphalt')]:
         regions=[]
         for polygon in polygons(layers[kind]):
             def q(ring):

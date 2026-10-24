@@ -158,6 +158,30 @@
         0.6075035462029709
       ],
       "adaptation": "JPEG decoded to RGB PNG without resizing or recolouring. Generic photographed zinc surface, not a campus sample. Source physical size is unknown;1m runtime repeat and facade colour are estimates."
+    },
+    {
+      "name": "gravel_diff",
+      "asset": "gravel_ground_01",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravel_ground_01/gravel_ground_01_diff_1k.jpg",
+      "sha256": "c3a12b0e3a9399913158dd5cfa1d67ede066970acd1f99e5b89969ac13f89089",
+      "resourceSha256": "ebd6091bcd09e854dfdd74699cf351b8ed1e1efdf5098440a76ee1025dc84916",
+      "assetPage": "https://polyhaven.com/a/gravel_ground_01",
+      "license": "CC0 1.0",
+      "author": "Rob Tuytel",
+      "widthMetres": 3,
+      "qualification": "Generic scanned aggregate, not a photograph of the campus surface. Parking surface assignment is separately qualified in physics-ii.json."
+    },
+    {
+      "name": "gravel_normal",
+      "asset": "gravel_ground_01",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravel_ground_01/gravel_ground_01_nor_gl_1k.jpg",
+      "sha256": "3a832b27276d1457031b164147434558bd245469dc27fd1ff6ae075bde0b12b2",
+      "resourceSha256": "659b61427b3d355831a9cf09e40ea26c279e72b41385fa0917bcab33ce33e8e9",
+      "assetPage": "https://polyhaven.com/a/gravel_ground_01",
+      "license": "CC0 1.0",
+      "author": "Rob Tuytel",
+      "widthMetres": 3,
+      "qualification": "Generic scanned aggregate, not a photograph of the campus surface. Parking surface assignment is separately qualified in physics-ii.json."
     }
   ],
   "changes": "JPEG converted to PNG for the Minecraft resource loader; sampled as repeating colour detail and tangent-space normals."
