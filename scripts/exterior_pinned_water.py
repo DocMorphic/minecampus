@@ -30,4 +30,6 @@ def build(ctx):
         'features':[{'id':'way/'+spec['riverWay'],'segs':segments,'minx':float(points[:,0].min()),'maxx':float(points[:,0].max()),'minz':float(points[:,1].min()),'maxz':float(points[:,1].max())}],
         'qualification':'Pinned OSM river polygon, ODbL. Supplements the upstream water lookup when enabled; does not classify the river as reconstructed land. Existing upstream water-level and river-bed estimation remain unverified until native inspection.'
     }
+    if 'riverbank' in meta['architecture']:
+        meta['pinnedWater']['features'][0]['surveyGround'] = meta['architecture']['riverbank']['waterGround']
     print('Pinned water: one public river polygon;',len(points)-1,'boundary segments',flush=True)

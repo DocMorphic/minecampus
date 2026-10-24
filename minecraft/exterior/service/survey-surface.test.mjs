@@ -414,13 +414,26 @@ test('pinned river survives a live OSM outage without changing foreign regions o
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-water-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
  const points=[];for(let z=0;z<=20;z+=10)for(let x=0;x<=20;x+=10)points.push([x,0,z]);
  const river={id:'way/river',minx:30,maxx:40,minz:30,maxz:40,segs:[30,30,40,30,40,30,40,40,40,40,30,40,30,40,30,30]};
+ river.surveyGround={rings:[{ring:[[30,30],[40,30],[40,40],[30,40]],holes:[]}],terrainGuide:{width:2,height:2,points:[[30,61.35,30],[40,61.35,30],[30,61.35,40],[40,61.35,40]]}};
  fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify({origin:Object.values(origin),tiles:[],terrainGuide:{width:3,height:3,points},pinnedWater:{features:[river]}}));
  let calls=0,fail=true;const other={id:'other'};
  const service={cfg:{},renderSelect:async()=>({tiles:[],attribution:[]}),renderTile:async()=>null,chunk:async()=>null,waterFor:async()=>{calls++;if(fail)throw Error('OSM offline');return [other];}};
  attachSurveySurface(service,dir);
  const result=await service.waterFor(origin,25,25,16);assert.equal(result.length,1);assert.equal(result[0].id,river.id);assert.deepEqual([...result[0].segs],river.segs);
+ assert.equal(result[0].surveyGround.heightOffset,0);
+ const shifted=await service.waterFor({...origin,h0:origin.h0-3},25,25,16);assert.equal(shifted[0].surveyGround.heightOffset,3);assert.equal(shifted[0].surveyGround.terrainGuide.points[0][1],61.35);
  fail=false;assert.deepEqual((await service.waterFor(origin,25,25,16)).map(f=>f.id),['other','way/river']);
  assert.deepEqual(await service.waterFor(origin,0,0,16),[other]);
  assert.deepEqual(await service.waterFor({...origin,lat:1},25,25,16),[other]);
  const before=calls;service.cfg.water=false;assert.deepEqual(await service.waterFor(origin,25,25,16),[]);assert.equal(calls,before);
+});
+
+test('explicit river canopy retirement works beyond all terrain grids and preserves bridge holes',async t=>{
+ const region={rings:[{ring:[[30,0],[40,0],[40,10],[30,10]],holes:[[[36,2],[39,2],[39,8],[36,8]]]}],y0:5,y1:15};
+ const extra={architecture:{riverbank:{sourceRetirement:[region]}}};
+ const tree=fixture(t,tile([[32,8,3],[34,9,3],[32,8,5]]),extra);
+ assert.equal((await tree.service.renderTile(origin,1_100_000_007)).readInt32LE(32),0);
+ const bytes=tile([[37,8,3],[38,8,3],[37,8,4]]),bridge=fixture(t,bytes,extra);
+ assert.deepEqual(await bridge.service.renderTile(origin,1_100_000_007),bytes);
+ assert.deepEqual(await bridge.service.renderTile({...origin,lat:49},1_100_000_007),bytes);
 });

@@ -4234,7 +4234,7 @@
     }
   },
   "physicsZNNTerrain43": {
-    "status": "PASS: source validation, service checks, build and embedded artifact; native QA running",
+    "status": "FAIL: native walking check: Probe 1 standing Y=61.6875, mesh Y=61.55403980240813, onGround=true, horizontal error=1.5848128357568498",
     "validation": {
       "status": "PASS: surveyed ZNN shell, roof, source terrain and complete canopy coverage; native verification pending",
       "manifestSha256": "ae4d5b279248fcdd7172ca85f1a0c3f77d68eaa38eae8f42cc284b3e7bc927c5",
@@ -4304,6 +4304,208 @@
       "Resolve any source/terrain boundary or body-clearance failures",
       "Refine facade, vegetation and ground appearance against source references",
       "Riverbank candidate42 remains visually failed and has one dry water control"
+    ],
+    "native": {
+      "status": "FAIL: native walking check: Probe 1 standing Y=61.6875, mesh Y=61.55403980240813, onGround=true, horizontal error=1.5848128357568498",
+      "artifactSha256": "8295ef4d8aff9a4156d6af70166586119af85b1a84b951d4285df88ab601eb46",
+      "cameraCapturesReviewed": 8,
+      "facadeCollisionChecks": 5,
+      "standingControlsCompleted": 1,
+      "failureCaptureReviewed": true,
+      "failure": {
+        "probe": 1,
+        "control": {
+          "label": "ZNN south ochre facade",
+          "sourceUTM": [
+            698623,
+            5349566
+          ],
+          "target": [
+            421.40024626587103,
+            61.55403980240813,
+            -348.11042552896265
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "tile": 1000060104,
+          "part": 0,
+          "supportHeight": 61.58566393197295,
+          "look": [
+            -176.32096037315353,
+            -9.249434073457545
+          ],
+          "dropHeight": 3,
+          "requireBodyClearance": true
+        },
+        "serverPosition": "(421.40024626587103, 61.6875, -346.5256126932058)",
+        "horizontalError": 1.5848128357568498,
+        "bodyClear": true,
+        "supportExpectedY": 61.58566393197295,
+        "velocity": "(0.0, -0.0784000015258789, 0.0)",
+        "onGround": true,
+        "flying": false,
+        "collisionAligned": true,
+        "supportBlocks": [
+          {
+            "position": "421, 59, -347",
+            "state": "Block{earthcraft:map_dirt}[campus_height=16]"
+          },
+          {
+            "position": "421, 60, -347",
+            "state": "Block{earthcraft:map_dirt}[campus_height=16]"
+          },
+          {
+            "position": "421, 61, -347",
+            "state": "Block{earthcraft:map_stone}[campus_height=11]"
+          }
+        ],
+        "capture": "campus-physics-znn-candidate-43-walking-failure.png",
+        "clientPosition": "(421.40024626587103, 61.6875, -346.5256126932058)"
+      },
+      "preservation": {
+        "originalSaves": {
+          "unchangedFiles": 121
+        },
+        "previewSaves": {
+          "unchangedFiles": 121
+        },
+        "previewSettings": {
+          "unchangedFiles": 4
+        }
+      },
+      "visualAccepted": false,
+      "installed": false,
+      "released": false,
+      "diagnosis": "Southern controls (698623,5349566) and (698601,5349567) were inside surveyed neighboring building DEBY_LOD2_108698299. First one caused lateral displacement; second was never reached. They are invalid outdoor test locations. Candidate43b keeps the exact JAR and uses OSM footway28038389, with every standing point independently checked at least0.65m outside surveyed footprints. Original failed evidence retained.",
+      "visualFindings": [
+        "Surveyed ZNN shell, roof, glass reflections and shading rails render; five native facade collision controls pass.",
+        "Thin blue seam and visible terrain depression remain at western courtyard connection.",
+        "Western entrance is still a generic glazing band; exterior doorway/setback details need source-guided refinement.",
+        "Source geometry blobs remain beside the courtyard and nearby construction/storage yard.",
+        "Aerial view still shows conspicuously melted riverbank vegetation, addressed by separate draft44."
+      ],
+      "files": {
+        "campus-physics-znn-candidate-43-result.json": "40ff2dd8d2b2d21c9a9d64a351e1da8f41ac1584791ef0de75d2331c28ec16a5",
+        "physics-znn-candidate-43-client.log": "d0b9fe048be3d1b7bb7e3d96cb3bbaffaa40219cc345253caa334b839d301e90",
+        "campus-physics-znn-candidate-43-0.png": "68ef962c88f7f0dfe89a862a64c31ad7816bc59d51344d6876cd1e3b5368ca96",
+        "campus-physics-znn-candidate-43-1.png": "5baf74ecb42f2967e947da676004610226ab5351f944b40facfae42b944d2a61",
+        "campus-physics-znn-candidate-43-2.png": "338e814531d96226b4d9bb4fd355164130c7a27121974a7bcd609ac1726f2459",
+        "campus-physics-znn-candidate-43-3.png": "5a404d9ebad5702708ed6d8a32cc001d311feaf0d4c1251c717ca9660e178125",
+        "campus-physics-znn-candidate-43-4.png": "db2f1feeb78d7290d8305b05bbf1e82b4117a571380ac8e3c67c750ea002604f",
+        "campus-physics-znn-candidate-43-5.png": "842c814f5968789d482b07712317997b49a55a9679e9726114df797de1eae8fb",
+        "campus-physics-znn-candidate-43-6.png": "07184cd06fb90c1afc6db3ea42f8c7d6738ef6a6ab821dca7603dccb357a378a",
+        "campus-physics-znn-candidate-43-7.png": "eb9cf3fc1a69e8e2859db292a6282fcb233923c31bf40ea30a8c57ce501832e0",
+        "campus-physics-znn-candidate-43-walk-0.png": "f1c50d728230f90dc624397e675cd8e293e440d10d3256f19f54bec78c6472f0",
+        "campus-physics-znn-candidate-43-walking-failure.png": "2ec64c7e0b4e45aed0f2dd8cc7c1b807722de4ad4b4871d43e15980a4334cb26",
+        "physics-znn-candidate-43-views-review-0.jpg": "01b2f65c58f65ddc44e7b95c9f56ca3725693fab890e856370bf0a04cea91a93",
+        "physics-znn-candidate-43-views-review-1.jpg": "1d72833727121331244e6218bf4bb49ad7cb739b5541a2c5d91d161f85f3a2fa",
+        "physics-znn-candidate-43-views-review-5.jpg": "7bec52e0c457935c22baf232d45a28e3e1eb0632a2f1cbf20c02fd5b49c12085",
+        "physics-znn-candidate-43-walk-review-0.jpg": "cdbe0a4dde27b1e9a5d684eb02b442db0300b6c709bde57160d329863dd4f20f"
+      }
+    }
+  },
+  "physicsZNNPath43b": {
+    "status": "Running corrected public-path controls with identical43JAR",
+    "artifactSha256": "8295ef4d8aff9a4156d6af70166586119af85b1a84b951d4285df88ab601eb46",
+    "views": 8,
+    "facadeChecks": 5,
+    "standingChecks": 12,
+    "visualAccepted": false
+  },
+  "riverbankDraft44": {
+    "status": "PASS: independent source geometry, bounded water input and service tests; unintegrated riverbank draft",
+    "validation": {
+      "status": "PASS: source terrain, canopy completeness, protected river/bridge and DGM-guided water samples; native integration pending",
+      "manifestSha256": "1a072eccd2fc5926c5d743e6b9f7249f2b195c9a403378c8965b8d7d5b881852",
+      "sourceSha256": "59d60cbf7b58d5882d74282972b75b050b981668f4330911ec61fdb9670a328a",
+      "validatorSha256": "68df2af39f4b87cbcc7ba672c762033eb9ed65ddc43e9f0fc8a0b7d7680a7dd1",
+      "generatorSha256": "91ce6b9e29bf1b2a8db649e562aca77adc4428108817be3bfe4ea1adb517b5b2",
+      "maximumGroundCoordinateErrorMetres": 3.0973769980846555e-05,
+      "waterGuideCoordinateErrorMetres": 1.5429257871346636e-08,
+      "channelProjectionErrorSquareMetres": 8.633874682591788e-12,
+      "groundAreaSquareMetres": 4594.950189160295,
+      "oldGroundOverlapSquareMetres": 0.0,
+      "riverLandOverlapSquareMetres": 3.3738585582658e-05,
+      "treeCount": 32,
+      "canopyComponents": 25,
+      "tileSha256": {
+        "riverbank-vegetation-0-0.ect": "9e8c5c5c3a764de0a2de4b82d882031e29bf874fe61abd7c18f0623853af7ec1",
+        "riverbank-vegetation-1-0.ect": "a7bcd567e991026d7bd7a8a08ec42e028f8a57dfe2a8ed748653ee6a81025284",
+        "riverbank-vegetation-2-0.ect": "3bc776e883f4a710af4eaf016b54bcddbdbab5e9d694aca15d5eb2658ec6f726",
+        "riverbank-ground-698600-5349660.ect": "64f4013c4b3bce25ff305170895bc0e2ee2b6eb0419605bdaf846e5b694d02ad",
+        "riverbank-ground-698620-5349660.ect": "ddac01ce6e619a79e8c426aa2d44e579eb14687c0bb3cb9ba28cb31e653cb04d",
+        "riverbank-ground-698640-5349660.ect": "2a588a493a8eda0e407dd6ed5549d7176891028cc9cbef0cbc4df8e69ba0fd88",
+        "riverbank-ground-698600-5349680.ect": "2f401efb2195ae194be37fad392892ca9dd432a6fcb7df1744ba7a28c79ca05d",
+        "riverbank-ground-698620-5349680.ect": "1f77d31c920adde9566f0664f1d4e3492c7c18d84cbd5a2944f16bf035823777",
+        "riverbank-ground-698640-5349680.ect": "54073dc3dcf54f92a4adcbd0e7d1b6963c786aeb316bf58faedd246844b63e42",
+        "riverbank-ground-698660-5349680.ect": "2c1f4a70ed50a2aa73611642ae68a905253ea81c2bbfa0be0ab42a281e6a93d3",
+        "riverbank-ground-698440-5349700.ect": "edc7e4681f5fb32347e2cd96a60c659547429ee5bc223badb4b87b5b947ea9fa",
+        "riverbank-ground-698460-5349700.ect": "fb47f623a43f4759fe310d41df73ee38b1ce41ecd9d19e45dc279ccc53f01be2",
+        "riverbank-ground-698480-5349700.ect": "f201c9e478db61813af3cce025a1fb2e50d6d2659fca6c43f80fa3f5c00fd527",
+        "riverbank-ground-698500-5349700.ect": "1bf743824b3ffb65ab53b69dcfe96e2d81018fcf1f2dd9664d79bb8cb751ce94",
+        "riverbank-ground-698520-5349700.ect": "3f4358b30e515883cbef1fda61bf4303a9376e41b80078fd898cb8cd0ffb9c03",
+        "riverbank-ground-698540-5349700.ect": "12b75934e086cb386c4d2b7a8ce46051f4ba9280ae261e6b69de279116955108",
+        "riverbank-ground-698560-5349700.ect": "6f7ed4fd3a31248db831cadc8cf351d22450baf6887f9b1866a9b19ea8a963df",
+        "riverbank-ground-698580-5349700.ect": "d2ece43010e0439098f5ff8dfacbe42d8074644aa13d8503c3ea9d77193a40aa",
+        "riverbank-ground-698600-5349700.ect": "e7517a81af09bf156b4f2b45112e359cdabb41d18ff3c76e5f08afc3883d2455",
+        "riverbank-ground-698620-5349700.ect": "c83b51333ea382ec7e26cc20de68a29c731ef109fbd35d371b93bb30bb43266c",
+        "riverbank-ground-698640-5349700.ect": "9e4366a6cf6c5154294eb75526e30eeaf0edd53d99a4fa8c5a26b87f77948dde",
+        "riverbank-ground-698660-5349700.ect": "f6ea4ac2fd0a2a61bb1346b6514de67d623b2ebd43be3b0d5d1d1202933e7aca",
+        "riverbank-ground-698440-5349720.ect": "314a8704e132d76f770e8427732ff56dbb620606fd4f789e4471b7d6b51000b6",
+        "riverbank-ground-698460-5349720.ect": "35f5deed990bd7787094535daa26ead9629d9b463fbce51e7dd1a8123142c50f",
+        "riverbank-ground-698480-5349720.ect": "4708d5343efc496b45e3193c5b1ae032500c2c039f9b1ec9a206c3ae9848a7c0",
+        "riverbank-ground-698500-5349720.ect": "db3270eded2424d7d45517c39dce6a76262cac8730317f8202d110eb66d39b75",
+        "riverbank-ground-698520-5349720.ect": "b0ca33a18cced47e9632640e0e1c26796947d2934d2ec53c05ab1c19b0f09c02",
+        "riverbank-ground-698540-5349720.ect": "e535014f688414b815f6a3060d53bf0e3461ca510d5da1bccb6dfa4492fa4533",
+        "riverbank-ground-698560-5349720.ect": "0e7a3e520da7f20429ee5ec77021e941da42080ac4f30ac551e8efce21d49c4d",
+        "riverbank-ground-698580-5349720.ect": "094e656af7270d734a6046473d2dd833314cff8ec6cf1e76661b5dac21163ab6",
+        "riverbank-ground-698600-5349720.ect": "dbb4bf7fb293fd02b2716cf22574cd20ee0dfda9c8c3b77ccc511d6c12321244",
+        "riverbank-ground-698620-5349720.ect": "9a2038ed819cf7c9d1616861fccaf1e885840ca120f11e13de80b26ef344efab",
+        "riverbank-ground-698640-5349720.ect": "43ceccef8b4efefa2b4efec3036edb7e14eaf2a9acac37fd4a9417e64086eacf",
+        "riverbank-ground-698460-5349740.ect": "b954f453074b39d216b2d2b284c89ad6b499214e0e0b36a54cd309c734091884",
+        "riverbank-ground-698480-5349740.ect": "76ff0caae6da4a8f351daae7aa7bb2c99b589dd828ce0fa36309fc307f69b74b",
+        "riverbank-ground-698500-5349740.ect": "26c3a12b4df88d59d8abcb1a1e42f8fb5d98f32f064d799b7822d4194866376b",
+        "riverbank-ground-698520-5349740.ect": "138f951943c652a231ca928e57a73dbb7503dfc875c18a86004d09357f53be53",
+        "riverbank-ground-698540-5349740.ect": "0e1ef0a3e88191ba0ad5fdc5cf85f7e89cd8b7c623957f03c55e5b7526fd683e",
+        "riverbank-ground-698560-5349740.ect": "6fd040c48d317ac694a164f8814ee05cf14ca07075c84fabc56a2061b118e39e"
+      },
+      "qualification": "DGM channel elevation is a water-level estimate, not measured bathymetry. Visual/collision/water behavior remains unverified."
+    },
+    "serviceTests": {
+      "passed": 53,
+      "failed": 0
+    },
+    "upstreamCarver": {
+      "status": "PASS: pinned upstream carver uses DGM-guided channel ground rather than synthetic canopy obstruction",
+      "withoutSurveyWet": false,
+      "withSurveyWet": true,
+      "nativeWaterCode": 23,
+      "waterLevel": 60,
+      "outsideWaterUnchanged": true,
+      "inputGroundUnchanged": true
+    },
+    "nativeWaterControlInputs": {
+      "controls": 35,
+      "estimatedVoxelLevels": [
+        60,
+        61
+      ],
+      "nativeFluidOutcomeVerified": false
+    },
+    "preservedPriorRenderFiles": 498,
+    "visualAccepted": false,
+    "installed": false,
+    "released": false,
+    "remaining": [
+      "Integrate riverbank into main generator, renderer materials, ground collision list, release provenance and exact-artifact checks",
+      "Replace source canopy colliders above the channel with actual new tree occupancy while preserving native water and all user edits",
+      "When water is disabled, retain the original photographic channel surface; distinguish water-channel retirement from canopy retirement",
+      "Verify native water at all35original42controls; retain the original failed result",
+      "Review both banks, bridge opening, near-ground walking and aerial geometry in the packaged game",
+      "Resolve ZNN west courtyard seam/depression and source-informed entrance details after43b completes"
     ]
   }
 }

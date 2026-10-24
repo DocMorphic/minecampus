@@ -1,0 +1,145 @@
+{
+  "name": "WSI riverbanks and overhanging canopy",
+  "surveyBoundsUtm": [
+    698430,
+    5349640,
+    698700,
+    5349820
+  ],
+  "riverSourceFile": "physics-wsi.json",
+  "riverReachBoundsUtm": [
+    698480,
+    5349680,
+    698630,
+    5349760
+  ],
+  "bankWidthMetres": 15,
+  "riverGuardMetres": 0,
+  "neighbourGuardMetres": 0.5,
+  "bridgeWay": "29482365",
+  "bridgeGuardMetres": 1,
+  "bridgeEndGuardMetres": 2,
+  "groundTileMetres": 20,
+  "groundRuntimeStart": 1000060700,
+  "treeRuntimeStart": 1000040800,
+  "osm": [
+    {
+      "sourceFile": "riverbank-osm.xml",
+      "sha256": "1ddbf234bd7eb51239f9aa7aa44cc7adfa40587f9780ce98a1a9f68d7611cd56",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=11.674112655675295,48.26877110540358,11.677831719532211,48.270473390827945"
+    }
+  ],
+  "canopyExtent": {
+    "boundsUtm": [
+      698430,
+      5349640,
+      698700,
+      5349820
+    ],
+    "resolutionMetres": 0.5,
+    "componentSeedsUTM": [
+      [
+        698551.75,
+        5349724.25
+      ],
+      [
+        698501.25,
+        5349741.25
+      ],
+      [
+        698474.25,
+        5349740.25
+      ],
+      [
+        698483.25,
+        5349738.75
+      ],
+      [
+        698492.75,
+        5349731.25
+      ],
+      [
+        698465.75,
+        5349734.25
+      ],
+      [
+        698477.75,
+        5349730.75
+      ],
+      [
+        698468.25,
+        5349719.75
+      ],
+      [
+        698517.75,
+        5349726.75
+      ],
+      [
+        698642.25,
+        5349719.25
+      ],
+      [
+        698501.75,
+        5349726.25
+      ],
+      [
+        698599.25,
+        5349725.75
+      ],
+      [
+        698529.25,
+        5349711.25
+      ],
+      [
+        698558.25,
+        5349711.25
+      ],
+      [
+        698515.25,
+        5349716.25
+      ],
+      [
+        698535.75,
+        5349714.25
+      ],
+      [
+        698540.75,
+        5349716.25
+      ],
+      [
+        698504.25,
+        5349711.25
+      ],
+      [
+        698565.25,
+        5349711.25
+      ],
+      [
+        698601.25,
+        5349713.25
+      ],
+      [
+        698651.25,
+        5349703.75
+      ],
+      [
+        698605.75,
+        5349705.25
+      ],
+      [
+        698635.25,
+        5349689.25
+      ],
+      [
+        698620.75,
+        5349694.25
+      ],
+      [
+        698551.25,
+        5349696.25
+      ]
+    ],
+    "groundMarginMetres": 2
+  },
+  "qualification": "Public BVV DGM1/DOP20/DOM20 and pinned OSM river/bridge. Fifteen-metre bank corridor, two-metre canopy margin, bridge guards, tree species/shape and DGM-guided native water level are estimates. No bathymetric survey or interiors. Water is excluded from reconstructed land; reference/source private meshes are not redistributed."
+}

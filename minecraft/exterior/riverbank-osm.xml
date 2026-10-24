@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='utf-8'?>
+<osm version="0.6" generator="Minecampus public riverbank subset">
+  <node id="148572572" visible="true" version="6" changeset="9934535" timestamp="2011-11-24T16:11:13Z" user="Basstoelpel" uid="72235" lat="48.2692726" lon="11.6801976" />
+  <node id="171928289" visible="true" version="10" changeset="90390546" timestamp="2020-09-04T04:50:37Z" user="opendcc" uid="3249777" lat="48.2777169" lon="11.6777749" />
+  <node id="171953204" visible="true" version="8" changeset="750456" timestamp="2009-01-07T12:28:10Z" user="rxns" uid="88459" lat="48.2720116" lon="11.6775936" />
+  <node id="171953209" visible="true" version="8" changeset="750456" timestamp="2009-01-07T12:28:10Z" user="rxns" uid="88459" lat="48.2728836" lon="11.6777447" />
+  <node id="171953210" visible="true" version="8" changeset="750456" timestamp="2009-01-07T12:28:10Z" user="rxns" uid="88459" lat="48.2732440" lon="11.6778726" />
+  <node id="171953214" visible="true" version="8" changeset="750456" timestamp="2009-01-07T12:28:10Z" user="rxns" uid="88459" lat="48.2737904" lon="11.6781516" />
+  <node id="171953721" visible="true" version="10" changeset="2380296" timestamp="2009-09-05T13:43:46Z" user="klausis" uid="85761" lat="48.2742677" lon="11.6783058" />
+  <node id="171953724" visible="true" version="8" changeset="750456" timestamp="2009-01-07T12:28:10Z" user="rxns" uid="88459" lat="48.2747438" lon="11.6782911" />
+  <node id="171953725" visible="true" version="11" changeset="2380296" timestamp="2009-09-05T13:43:47Z" user="klausis" uid="85761" lat="48.2766172" lon="11.6776890" />
+  <node id="171953726" visible="true" version="11" changeset="2380296" timestamp="2009-09-05T13:43:46Z" user="klausis" uid="85761" lat="48.2769230" lon="11.6776231" />
+  <node id="171953729" visible="true" version="11" changeset="2380296" timestamp="2009-09-05T13:43:46Z" user="klausis" uid="85761" lat="48.2771025" lon="11.6776716" />
+  <node id="171953732" visible="true" version="8" changeset="750456" timestamp="2009-01-07T12:28:10Z" user="rxns" uid="88459" lat="48.2774644" lon="11.6778028" />
+  <node id="171953734" visible="true" version="8" changeset="750456" timestamp="2009-01-07T12:28:10Z" user="rxns" uid="88459" lat="48.2715581" lon="11.6775122" />
+  <node id="171953736" visible="true" version="8" changeset="750456" timestamp="2009-01-07T12:28:10Z" user="rxns" uid="88459" lat="48.2710233" lon="11.6773378" />
+  <node id="171953738" visible="true" version="10" changeset="2380296" timestamp="2009-09-05T13:43:46Z" user="klausis" uid="85761" lat="48.2705580" lon="11.6771739" />
+  <node id="171953743" visible="true" version="11" changeset="2380296" timestamp="2009-09-05T13:43:46Z" user="klausis" uid="85761" lat="48.2698656" lon="11.6769885" />
+  <node id="247890781" visible="true" version="3" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2695702" lon="11.6796103" />
+  <node id="247890783" visible="true" version="3" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2696688" lon="11.6793250" />
+  <node id="247890784" visible="true" version="2" changeset="2380296" timestamp="2009-09-05T13:43:13Z" user="klausis" uid="85761" lat="48.2697340" lon="11.6787986" />
+  <node id="247890786" visible="true" version="3" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2697353" lon="11.6784668" />
+  <node id="247890787" visible="true" version="2" changeset="2380296" timestamp="2009-09-05T13:43:13Z" user="klausis" uid="85761" lat="48.2696834" lon="11.6781855" />
+  <node id="247890789" visible="true" version="3" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2695600" lon="11.6778690" />
+  <node id="247890790" visible="true" version="2" changeset="2380296" timestamp="2009-09-05T13:43:12Z" user="klausis" uid="85761" lat="48.2693974" lon="11.6774830" />
+  <node id="247890792" visible="true" version="3" changeset="12471879" timestamp="2012-07-24T17:29:05Z" user="marek kleciak" uid="338611" lat="48.2692686" lon="11.6771564" />
+  <node id="247890793" visible="true" version="3" changeset="12471879" timestamp="2012-07-24T17:29:05Z" user="marek kleciak" uid="338611" lat="48.2692565" lon="11.6766519" />
+  <node id="247890795" visible="true" version="2" changeset="2380296" timestamp="2009-09-05T13:43:13Z" user="klausis" uid="85761" lat="48.2692813" lon="11.6764045" />
+  <node id="247890797" visible="true" version="4" changeset="106184426" timestamp="2021-06-11T03:27:26Z" user="BeKri" uid="14390" lat="48.2693522" lon="11.6758474" />
+  <node id="247890798" visible="true" version="7" changeset="12471879" timestamp="2012-07-24T17:29:05Z" user="marek kleciak" uid="338611" lat="48.2692521" lon="11.6767350" />
+  <node id="247890800" visible="true" version="13" changeset="113374954" timestamp="2021-11-04T15:35:05Z" user="map per" uid="11758604" lat="48.2694408" lon="11.6767885" />
+  <node id="247890801" visible="true" version="9" changeset="9933952" timestamp="2011-11-24T15:05:36Z" user="Basstoelpel" uid="72235" lat="48.2697088" lon="11.6768434" />
+  <node id="247890803" visible="true" version="4" changeset="106184426" timestamp="2021-06-11T03:27:26Z" user="BeKri" uid="14390" lat="48.2694856" lon="11.6747298" />
+  <node id="247890804" visible="true" version="4" changeset="175761634" timestamp="2025-12-10T14:10:33Z" user="map per" uid="11758604" lat="48.2695743" lon="11.6742110" />
+  <node id="247890806" visible="true" version="3" changeset="175761634" timestamp="2025-12-10T14:10:33Z" user="map per" uid="11758604" lat="48.2696845" lon="11.6736940" />
+  <node id="247890808" visible="true" version="4" changeset="175761634" timestamp="2025-12-10T14:10:33Z" user="map per" uid="11758604" lat="48.2697084" lon="11.6735729" />
+  <node id="247890809" visible="true" version="4" changeset="175761634" timestamp="2025-12-10T14:10:33Z" user="map per" uid="11758604" lat="48.2697281" lon="11.6734655" />
+  <node id="247890811" visible="true" version="3" changeset="12196179" timestamp="2012-07-12T14:00:35Z" user="farad" uid="529836" lat="48.2696362" lon="11.6734213" />
+  <node id="247890812" visible="true" version="4" changeset="106184426" timestamp="2021-06-11T03:27:26Z" user="BeKri" uid="14390" lat="48.2694956" lon="11.6733689" />
+  <node id="247890814" visible="true" version="9" changeset="145510422" timestamp="2023-12-25T20:08:37Z" user="The_Nickname" uid="14742734" lat="48.2692525" lon="11.6733123">
+    <tag k="crossing" v="unmarked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="kerb" v="lowered" />
+    <tag k="tactile_paving" v="no" />
+  </node>
+  <node id="307870826" visible="true" version="3" changeset="12471879" timestamp="2012-07-24T17:29:09Z" user="marek kleciak" uid="338611" lat="48.2692406" lon="11.6768970" />
+  <node id="325000881" visible="true" version="6" changeset="113374954" timestamp="2021-11-04T15:35:05Z" user="map per" uid="11758604" lat="48.2693470" lon="11.6767955" />
+  <node id="327279615" visible="true" version="7" changeset="750456" timestamp="2009-01-07T12:28:10Z" user="rxns" uid="88459" lat="48.2721002" lon="11.6776089" />
+  <node id="349943750" visible="true" version="4" changeset="106184426" timestamp="2021-06-11T03:27:26Z" user="BeKri" uid="14390" lat="48.2692906" lon="11.6733190" />
+  <node id="363759981" visible="true" version="4" changeset="9933952" timestamp="2011-11-24T15:05:39Z" user="Basstoelpel" uid="72235" lat="48.2696383" lon="11.6768011" />
+  <node id="363759989" visible="true" version="2" changeset="2380296" timestamp="2009-09-05T13:43:53Z" user="klausis" uid="85761" lat="48.2708293" lon="11.6772490" />
+  <node id="363759994" visible="true" version="2" changeset="2380296" timestamp="2009-09-05T13:43:52Z" user="klausis" uid="85761" lat="48.2740427" lon="11.6782575" />
+  <node id="363759997" visible="true" version="2" changeset="2380296" timestamp="2009-09-05T13:43:52Z" user="klausis" uid="85761" lat="48.2745141" lon="11.6783112" />
+  <node id="363760000" visible="true" version="2" changeset="2380296" timestamp="2009-09-05T13:43:53Z" user="klausis" uid="85761" lat="48.2750532" lon="11.6782200" />
+  <node id="363760002" visible="true" version="3" changeset="2380296" timestamp="2009-09-05T13:43:53Z" user="klausis" uid="85761" lat="48.2755311" lon="11.6780746" />
+  <node id="363760005" visible="true" version="3" changeset="2380296" timestamp="2009-09-05T13:43:53Z" user="klausis" uid="85761" lat="48.2759379" lon="11.6779529" />
+  <node id="363760007" visible="true" version="3" changeset="2380296" timestamp="2009-09-05T13:43:53Z" user="klausis" uid="85761" lat="48.2767554" lon="11.6776362" />
+  <node id="363760009" visible="true" version="3" changeset="2380296" timestamp="2009-09-05T13:43:53Z" user="klausis" uid="85761" lat="48.2773453" lon="11.6777830" />
+  <node id="1822972203" visible="true" version="2" changeset="106184426" timestamp="2021-06-11T03:27:26Z" user="BeKri" uid="14390" lat="48.2694419" lon="11.6750574" />
+  <node id="1836775649" visible="true" version="1" changeset="12471879" timestamp="2012-07-24T17:28:58Z" user="marek kleciak" uid="338611" lat="48.2692410" lon="11.6769775" />
+  <node id="1836775717" visible="true" version="1" changeset="12471879" timestamp="2012-07-24T17:29:01Z" user="marek kleciak" uid="338611" lat="48.2692491" lon="11.6770649" />
+  <node id="3232218764" visible="true" version="8" changeset="145510422" timestamp="2023-12-25T20:08:37Z" user="The_Nickname" uid="14742734" lat="48.2688911" lon="11.6763634">
+    <tag k="crossing" v="unmarked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="kerb" v="lowered" />
+    <tag k="tactile_paving" v="no" />
+  </node>
+  <node id="6796603293" visible="true" version="2" changeset="113404353" timestamp="2021-11-05T11:14:31Z" user="EvaUnterwegs" uid="10301161" lat="48.2696759" lon="11.6734414">
+    <tag k="bicycle" v="yes" />
+    <tag k="information" v="guidepost" />
+    <tag k="tourism" v="information" />
+  </node>
+  <node id="7787339625" visible="true" version="3" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2691404" lon="11.6765576" />
+  <node id="7810740340" visible="true" version="3" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2690094" lon="11.6764039" />
+  <node id="8429287603" visible="true" version="2" changeset="164195801" timestamp="2025-03-28T08:10:53Z" user="k4ch" uid="5764221" lat="48.2693687" lon="11.6799835" />
+  <node id="8544451334" visible="true" version="3" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2689657" lon="11.6763782" />
+  <node id="9187929567" visible="true" version="1" changeset="112754281" timestamp="2021-10-20T17:05:09Z" user="EvaUnterwegs" uid="10301161" lat="48.2689153" lon="11.6763679" />
+  <node id="9224035327" visible="true" version="1" changeset="113374954" timestamp="2021-11-04T15:35:05Z" user="map per" uid="11758604" lat="48.2692987" lon="11.6767741" />
+  <node id="9554776942" visible="true" version="2" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2694694" lon="11.6776601" />
+  <node id="12565838852" visible="true" version="1" changeset="162250891" timestamp="2025-02-07T15:57:13Z" user="Perlsack" uid="20117761" lat="48.2693349" lon="11.6733298" />
+  <node id="12587131447" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2690805" lon="11.6764848" />
+  <node id="12587131448" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2690456" lon="11.6764421" />
+  <node id="12587131449" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2690272" lon="11.6764217" />
+  <node id="12587131450" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2689894" lon="11.6763906" />
+  <node id="12587131454" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2696270" lon="11.6780252" />
+  <node id="12587131455" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2696995" lon="11.6782375" />
+  <node id="12587131456" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2697151" lon="11.6783037" />
+  <node id="12587131457" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2697389" lon="11.6785533" />
+  <node id="12587131458" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2697387" lon="11.6786699" />
+  <node id="12587131459" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2697241" lon="11.6789584" />
+  <node id="12587131460" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2697076" lon="11.6791246" />
+  <node id="12587131461" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2696328" lon="11.6794349" />
+  <node id="12587131462" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2696920" lon="11.6792291" />
+  <node id="12587131463" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2696059" lon="11.6795162" />
+  <node id="12587131464" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2695223" lon="11.6797116" />
+  <node id="12587131465" visible="true" version="1" changeset="162493279" timestamp="2025-02-14T08:15:13Z" user="map per" uid="11758604" lat="48.2697276" lon="11.6783842" />
+  <node id="12917480191" visible="true" version="1" changeset="167652049" timestamp="2025-06-15T13:56:44Z" user="Perlsack" uid="20117761" lat="48.2691063" lon="11.6765161">
+    <tag k="traffic_calming" v="chicane" />
+  </node>
+  <node id="13367159766" visible="true" version="1" changeset="175761634" timestamp="2025-12-10T14:10:33Z" user="map per" uid="11758604" lat="48.2695277" lon="11.6744724" />
+  <node id="13367159767" visible="true" version="1" changeset="175761634" timestamp="2025-12-10T14:10:33Z" user="map per" uid="11758604" lat="48.2696321" lon="11.6739249" />
+  <way id="22993145" visible="true" version="17" changeset="175761634" timestamp="2025-12-10T14:10:33Z" user="map per" uid="11758604">
+    <nd ref="148572572" />
+    <nd ref="8429287603" />
+    <nd ref="12587131464" />
+    <nd ref="247890781" />
+    <nd ref="12587131463" />
+    <nd ref="12587131461" />
+    <nd ref="247890783" />
+    <nd ref="12587131462" />
+    <nd ref="12587131460" />
+    <nd ref="12587131459" />
+    <nd ref="247890784" />
+    <nd ref="12587131458" />
+    <nd ref="12587131457" />
+    <nd ref="247890786" />
+    <nd ref="12587131465" />
+    <nd ref="12587131456" />
+    <nd ref="12587131455" />
+    <nd ref="247890787" />
+    <nd ref="12587131454" />
+    <nd ref="247890789" />
+    <nd ref="9554776942" />
+    <nd ref="247890790" />
+    <nd ref="247890792" />
+    <nd ref="1836775717" />
+    <nd ref="1836775649" />
+    <nd ref="307870826" />
+    <nd ref="247890798" />
+    <nd ref="247890793" />
+    <nd ref="247890795" />
+    <nd ref="247890797" />
+    <nd ref="1822972203" />
+    <nd ref="247890803" />
+    <nd ref="13367159766" />
+    <nd ref="247890804" />
+    <nd ref="13367159767" />
+    <nd ref="247890806" />
+    <nd ref="247890808" />
+    <nd ref="247890809" />
+    <nd ref="6796603293" />
+    <nd ref="247890811" />
+    <nd ref="247890812" />
+    <nd ref="12565838852" />
+    <nd ref="349943750" />
+    <nd ref="247890814" />
+    <tag k="bicycle" v="designated" />
+    <tag k="foot" v="designated" />
+    <tag k="highway" v="path" />
+    <tag k="lit" v="no" />
+    <tag k="segregated" v="no" />
+    <tag k="smoothness" v="intermediate" />
+    <tag k="surface" v="fine_gravel" />
+    <tag k="tracktype" v="grade2" />
+  </way>
+  <way id="22993147" visible="true" version="16" changeset="190023888" timestamp="2026-10-05T09:41:22Z" user="map per" uid="11758604">
+    <nd ref="247890798" />
+    <nd ref="9224035327" />
+    <nd ref="325000881" />
+    <tag k="bicycle" v="designated" />
+    <tag k="foot" v="designated" />
+    <tag k="highway" v="path" />
+    <tag k="lit" v="yes" />
+    <tag k="motor_vehicle" v="no" />
+    <tag k="name" v="Mühlenweg" />
+    <tag k="segregated" v="no" />
+    <tag k="smoothness" v="intermediate" />
+    <tag k="surface" v="fine_gravel" />
+    <tag k="tracktype" v="grade2" />
+  </way>
+  <way id="29466345" visible="true" version="18" changeset="167652049" timestamp="2025-06-15T13:56:44Z" user="Perlsack" uid="20117761">
+    <nd ref="247890798" />
+    <nd ref="7787339625" />
+    <nd ref="12917480191" />
+    <nd ref="12587131447" />
+    <nd ref="12587131448" />
+    <nd ref="12587131449" />
+    <nd ref="7810740340" />
+    <nd ref="12587131450" />
+    <nd ref="8544451334" />
+    <nd ref="9187929567" />
+    <nd ref="3232218764" />
+    <tag k="bicycle" v="designated" />
+    <tag k="foot" v="designated" />
+    <tag k="highway" v="path" />
+    <tag k="lit" v="no" />
+    <tag k="segregated" v="no" />
+    <tag k="smoothness" v="intermediate" />
+    <tag k="surface" v="compacted" />
+  </way>
+  <way id="29482365" visible="true" version="9" changeset="163068285" timestamp="2025-02-28T20:29:21Z" user="CuriousFlashlight" uid="8264154">
+    <nd ref="325000881" />
+    <nd ref="247890800" />
+    <tag k="bicycle" v="designated" />
+    <tag k="bridge" v="yes" />
+    <tag k="foot" v="designated" />
+    <tag k="highway" v="path" />
+    <tag k="incline" v="0%" />
+    <tag k="layer" v="1" />
+    <tag k="lit" v="no" />
+    <tag k="motor_vehicle" v="no" />
+    <tag k="name" v="Mühlenweg" />
+    <tag k="segregated" v="no" />
+    <tag k="smoothness" v="good" />
+    <tag k="surface" v="wood" />
+    <tag k="tracktype" v="grade1" />
+    <tag k="width" v="2" />
+  </way>
+  <way id="29482368" visible="true" version="11" changeset="113019783" timestamp="2021-10-27T05:58:22Z" user="map per" uid="11758604">
+    <nd ref="247890800" />
+    <nd ref="363759981" />
+    <nd ref="247890801" />
+    <nd ref="171953743" />
+    <nd ref="171953738" />
+    <nd ref="363759989" />
+    <nd ref="171953736" />
+    <nd ref="171953734" />
+    <nd ref="171953204" />
+    <nd ref="327279615" />
+    <nd ref="171953209" />
+    <nd ref="171953210" />
+    <nd ref="171953214" />
+    <nd ref="363759994" />
+    <nd ref="171953721" />
+    <nd ref="363759997" />
+    <nd ref="171953724" />
+    <nd ref="363760000" />
+    <nd ref="363760002" />
+    <nd ref="363760005" />
+    <nd ref="171953725" />
+    <nd ref="363760007" />
+    <nd ref="171953726" />
+    <nd ref="171953729" />
+    <nd ref="363760009" />
+    <nd ref="171953732" />
+    <nd ref="171928289" />
+    <tag k="bicycle" v="designated" />
+    <tag k="foot" v="designated" />
+    <tag k="highway" v="path" />
+    <tag k="lit" v="yes" />
+    <tag k="motor_vehicle" v="agricultural" />
+    <tag k="oneway" v="no" />
+    <tag k="segregated" v="no" />
+    <tag k="smoothness" v="good" />
+    <tag k="surface" v="asphalt" />
+    <tag k="tracktype" v="grade1" />
+  </way>
+</osm>

@@ -510,6 +510,8 @@ with zipfile.ZipFile(release) as original:
    if entry.filename=='src/voxel.mjs':data=patch_voxel(data.decode()).encode()
    write(target,entry.filename,data)
   write(target,'src/terrain-column.mjs',(SOURCE/'service/terrain-column.mjs').read_bytes())
+  write(target,'src/water-survey.mjs',(SOURCE/'service/water-survey.mjs').read_bytes())
+  write(target,'src/source-retirement.mjs',(SOURCE/'service/source-retirement.mjs').read_bytes())
   write(target,'src/minecampus-survey.mjs',(SOURCE/'service/survey-surface.mjs').read_bytes())
   write(target,'src/photo-facades.mjs',(SOURCE/'service/photo-facades.mjs').read_bytes())
   write(target,'src/supplemental-surfaces.mjs',(SOURCE/'service/supplemental-surfaces.mjs').read_bytes())

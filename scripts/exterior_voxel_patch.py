@@ -20,6 +20,9 @@ def patch_voxel(source):
     replace('              vox[i] = 1;', '''              vox[i] = 1;
               if (terrainSupport) terrainTops[i] = Math.max(terrainTops[i], terrainSupport.height);
               else fullGeometry[i] = 1;''')
+    replace("import { sampleColor } from './tiles.mjs';", "import { sampleColor } from './tiles.mjs';\nimport { surveyedWaterGround } from './water-survey.mjs';")
+    replace('  const mask = rasterizePolygons(features, x0, z0, w);',
+            '  const mask = rasterizePolygons(features, x0, z0, w);\n  g0 = surveyedWaterGround(features, g0, x0, z0, w);')
     # Encode last: classification, filling, water and shoreline retain their original material codes.
     replace('  return { vox, ground, surfaceColumns:', '''  for (let i = 0; i < vox.length; i++) {
     if (terrainTops[i] && !fullGeometry[i] && !water?.isWater[i % plane])

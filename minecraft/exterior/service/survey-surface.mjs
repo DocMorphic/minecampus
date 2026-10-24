@@ -4,12 +4,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {preparePhotographicFacades,retiresPhotoSurface} from './photo-facades.mjs';
 import {supplementalSurfaces} from './supplemental-surfaces.mjs';
+import {prepareSourceRetirement} from './source-retirement.mjs';
 
 /** Replaces noisy ground with surveyed terrain and substitutes explicit photo-textured
  * reconstructions only where their survey footprint is known. */
 export function attachSurveySurface(service, directory, {voxelizeArea,collectRegionTiles,mcPositions,sampleColor,correctedTileCacheBytes=128*1024*1024}={}) {
   const manifest=JSON.parse(fs.readFileSync(path.join(directory,'manifest.json'),'utf8'));
   const supplemental=supplementalSurfaces(manifest.supplementalSurfaces);
+  const retireSource=prepareSourceRetirement(manifest.architecture?.riverbank?.sourceRetirement);
   const ground=manifest.tiles.filter(t=>t.kind==='ground'||t.kind==='reconstruction'||t.kind==='vegetation');
   const collisionGround=[...ground,...(manifest.photoFacades?.collisionTiles??[])];
   const columnGround=new Set([...(manifest.architecture?.physicsISite?.groundTiles??[]),...(manifest.architecture?.physicsLibrary?.groundTiles??[]),...(manifest.architecture?.physicsContainer?.groundTiles??[]),...(manifest.architecture?.p1Complex?.groundTiles??[]),...(manifest.architecture?.physicsWoodland?.groundTiles??[]),...(manifest.architecture?.physicsNewLaboratory?.groundTiles??[]),...(manifest.architecture?.physicsLaboratorySite?.groundTiles??[]),...(manifest.architecture?.physicsII?.groundTiles??[]),...(manifest.architecture?.physicsWSI?.groundTiles??[]),...(manifest.architecture?.physicsZNN?.groundTiles??[])]);
@@ -38,7 +40,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
       if(!local.length)return waterFor(frame,x0,z0,w);
       let live;
       try{live=await waterFor(frame,x0,z0,w);}catch{live=[];}
-      return [...live,...local];
+      return [...live,...local.map(f=>f.surveyGround?{...f,surveyGround:{...f.surveyGround,heightOffset:manifest.origin[2]-frame.h0}}:f)];
     };
   }
   const ids=new Map(ground.map((t,i)=>[t.runtimeId??1_000_000_000+i,t]));
@@ -173,7 +175,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
       output.writeInt32LE(kept,header);read+=vertices*20;
       const textureBytes=w*h*4;reserve(textureBytes);input.copy(output,write,read,read+textureBytes);read+=textureBytes;write+=textureBytes;
     }
-    return output.subarray(0,write);
+    return retireSource(output.subarray(0,write),shift);
   }
   const CLIPPED_OFFSET=1_100_000_000,PHOTO_OFFSET=1_200_000_000;
   const photographic=new WeakMap();
