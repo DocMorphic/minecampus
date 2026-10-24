@@ -60,7 +60,18 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     const fx=Math.hypot(ux,uz)/manifest.protectionGrid.metresPerPixel,fz=Math.hypot(vx,vz)/manifest.protectionGrid.metresPerPixel,i=Math.floor(s*fx),j=manifest.protectionGrid.height-1-Math.floor(t*fz);
     return i>=0&&j>=0&&i<manifest.protectionGrid.width&&j<manifest.protectionGrid.height&&protectedPixels[j*manifest.protectionGrid.width+i]!==0;
   }
+  // Precise bounded floors/treads cannot be represented by the coarse 2m DEM
+  // guide. Earlier entries (stair treads) take precedence over the court floor.
+  const terrainOverrideGrid=new Map();
+  for(const r of manifest.terrainOverrides??[]){
+    const xs=r.ring.map(p=>p[0]),zs=r.ring.map(p=>p[1]);
+    for(let x=Math.floor(Math.min(...xs)/16);x<=Math.floor(Math.max(...xs)/16);x++)for(let z=Math.floor(Math.min(...zs)/16);z<=Math.floor(Math.max(...zs)/16);z++){
+      const key=x+','+z;if(!terrainOverrideGrid.has(key))terrainOverrideGrid.set(key,[]);terrainOverrideGrid.get(key).push(r);
+    }
+  }
   function terrain(x,z){
+    const override=(terrainOverrideGrid.get(Math.floor(x/16)+','+Math.floor(z/16))??[]).find(r=>inside(x,z,r.ring));
+    if(override)return override.height;
     const dx=x-a[0],dz=z-a[2],s=(dx*vz-dz*vx)/det,t=(ux*dz-uz*dx)/det;
     if(s<.2||t<.2||s>width-1.2||t>height-1.2)return null;
     const i=Math.floor(s),j=Math.floor(t),fx=s-i,fz=t-j;

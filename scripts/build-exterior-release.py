@@ -23,6 +23,8 @@ for path,key in [(SOURCE/'promenade-paths.json','sourceSha256'),(DATA/'promenade
  if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['promenade'][key]:raise SystemExit('Promenade provenance mismatch: '+path.name)
 for path,key in [(SOURCE/'crosspaths.json','sourceSha256'),(DATA/'crosspath-surfaces.geojson','derivedSha256')]:
  if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['crosspaths'][key]:raise SystemExit('Cross-path provenance mismatch: '+path.name)
+court=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoCourt']
+assert hashlib.sha256((SOURCE/court['sourceFile']).read_bytes()).hexdigest()==court['sourceSha256']
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -54,6 +56,14 @@ compiled=work/'mod/build/libs/realworldmc-1.0.3.jar'
 if not compiled.is_file():raise SystemExit('Expected remapped release JAR missing.')
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
+
+Galileo north sunken courtyard: OSM ways 579584070, 983606071 and 983606072
+(ODbL 1.0), BVV DGM1 floor/landing heights (CC BY 4.0). Wall thickness,
+parapets, five-flight arrangement, handrails, lower glazing and pavement
+are inferred exterior geometry. Landscape references: SLAM Schaar
+Landschaftsarchitekten; completed photo credited to Realotel Garching
+Hotelbetriebs GmbH. Reference photographs are not redistributed or used
+as game textures. See galileo-north-court-reference.json for provenance.
 
 RealWorldMC 1.0.3 by Teddy563 and contributors: Apache-2.0.
 Pinned source: https://github.com/Teddy563/realworldmc/tree/6f18d1f3ba5a02dadee4b14bcb96578bf3941d13
@@ -213,6 +223,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/grs-main-reference.json',(SOURCE/'photos/grs-main-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-iii-reference.json',(SOURCE/'photos/grs-iii-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-courtyard-reference.json',(SOURCE/'photos/grs-courtyard-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/galileo-north-court-reference.json',(SOURCE/'photos/galileo-north-court-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site.json',(SOURCE/'cos-site.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site-surfaces.geojson',(DATA/'cos-site-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/grs-courtyard-surfaces.geojson',(DATA/'grs-courtyard-surfaces.geojson').read_bytes())

@@ -73,3 +73,7 @@ The west end of TUM building 5130 is informed by Heinz Theuerkauf's [2018 front 
 ## Center for Organoid Systems (COS)
 
 [Alexander Pach's COS exterior photograph](https://nav.tum.de/building/cos) is supplied by NavigaTUM under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The original WebP and provenance are in `minecraft/exterior/photos/cos-reference.*`. An unobstructed timber patch is rectified, resized and repeated at an approximate scale on the BVV survey envelope. Window geometry and dark/metal materials are reconstructed; hidden elevations and exact dimensions are inferred. The game HUD retains the photographer's credit.
+
+## Galileo northern courtyard references
+
+The courtyard boundary, concrete-wall line and 4 m / 27-riser stair tags are © OpenStreetMap contributors (ODbL 1.0), with floor and landing heights from BVV DGM1 (CC BY 4.0). [SLAM Schaar Landschaftsarchitekten's project page](https://slam.green/projekt/galileo-neue-mitte-am-hochschulcampus-garching-muenchen/) supplies the landscape context and completed exterior reference credited to Realotel Garching Hotelbetriebs GmbH. These photographs and drawings are research references only; their pixels are not redistributed. Wall dimensions, flight stations, stair alignment adjustment, handrails, lower exterior glazing and paving units are inferred. The reconstruction uses existing CC0 concrete grain and original geometry/materials. Source records are in `minecraft/exterior/photos/galileo-north-court-reference.json`.

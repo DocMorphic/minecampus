@@ -80,7 +80,7 @@ void main() {
     // The aerial image supplies surveyed colour and markings. Only close-range
     // material grain is reconstructed; it does not invent additional geometry.
     float proximity=1.0-smoothstep(10.0,28.0,viewDistance);
-    if(MaterialDetail>0.5&&MaterialDetail<1.5&&viewDistance<110.0) {
+    if(((MaterialDetail>0.5&&MaterialDetail<1.5)||abs(MaterialDetail-15.0)<.1)&&viewDistance<110.0) {
         vec3 geometric=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
         if(geometric.y<0.0)geometric=-geometric;
         vec3 weights=pow(abs(geometric),vec3(4.0));
@@ -100,6 +100,7 @@ void main() {
         vec4 surfaceMask=texture(Sampler5,clamp(surfaceUv,0.0,1.0));
         vec3 mapped=surfaceMask.rgb;float soil=1.0-surfaceMask.a;
         if(any(lessThan(surfaceUv,vec2(0)))||any(greaterThan(surfaceUv,vec2(1)))){mapped=vec3(0);soil=0.0;}
+        if(abs(MaterialDetail-15.0)<.1){mapped=vec3(0,1,0);soil=0.0;}
         float mappedTotal=mapped.r+mapped.g+mapped.b+soil;
         float mappedAmount=clamp(mappedTotal,0.0,1.0);
         float materialRange=1.0-smoothstep(35.0,110.0,viewDistance);
@@ -148,6 +149,17 @@ void main() {
             vec3 sun=CampusSunDirection;
             color.rgb*=mix(1.0,(.55+.45*max(dot(n,sun),0.0))/.91,proximity);
         }
+    }
+    if(abs(MaterialDetail-14.0)<.1) {
+        vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
+        if(dot(n,CameraPosition-worldPosition)<0.0)n=-n;
+        vec3 weights=pow(abs(n),vec3(4.0));weights/=max(dot(weights,vec3(1)),.0001);
+        vec3 grain=groundTexture(Sampler1,worldPosition*.5,weights);
+        float lum=dot(grain,vec3(.299,.587,.114));
+        color.rgb*=mix(1.0,clamp(lum/.5112,.72,1.22),.7);
+        vec3 detail=groundNormalDetail(Sampler2,worldPosition*.5,weights);detail-=n*dot(detail,n);
+        n=normalize(n+detail*.18*proximity);
+        color.rgb*=.68+.32*max(dot(n,CampusSunDirection),0.0);
     }
     if(abs(MaterialDetail-12.0)<.1) {
         vec3 dx=dFdx(worldPosition),dy=dFdy(worldPosition);

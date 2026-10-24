@@ -211,3 +211,18 @@ test('furniture collision includes selected solids while keeping decorative tube
  const rendered=await service.renderTile(frame,spec.runtimeId);
  assert.equal(rendered.readInt32LE(4),2);assert.deepEqual(rendered,multipart);
 });
+
+test('bounded lower floors and stair overrides guide collision without affecting neighbouring terrain',t=>{
+ const spec={file:'court.ect',kind:'reconstruction',runtimeId:1_000_030_020,bounds:[[0,-20,0],[16,2,16]]};
+ const ring=[[4,4],[12,4],[12,12],[4,12]],step=[[4,4],[6,4],[6,12],[4,12]];
+ const {service,dir}=fixture(t,null,{tiles:[spec],terrainOverrides:[{ring:step,height:-2},{ring,height:-6}]},{voxelizeArea:()=>({vox:new Uint8Array(16*16*20).fill(7)})});
+ fs.writeFileSync(path.join(dir,spec.file),tile([[4,-6,4],[12,-6,4],[4,-6,12]]));
+ const frame={...origin,mcToEcef:(...p)=>p};
+ const result=service.campusCollision(frame,0,0,-12,20),at=(x,y,z)=>result[((y+12)*16+z)*16+x];
+ assert.equal(at(8,-9,8),7);assert.equal(at(8,-11,8),255); // lower floor
+ assert.equal(at(5,-7,8),255);assert.equal(at(5,-6,8),7); // earlier stair wins
+ assert.equal(at(3,-7,8),255);assert.equal(at(3,-4,8),7); // outside stays on DEM
+ const shifted=service.campusCollision({...frame,h0:frame.h0-2},0,0,-12,20);
+ assert.equal(shifted[((-9+12)*16+8)*16+8],255); // origin-height shift retained
+ assert.ok(service.campusCollision({...frame,lat:49},0,0,-12,20).every(x=>x===255));
+});

@@ -49,7 +49,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -422,17 +442,57 @@
+@@ -422,17 +442,59 @@
  		RenderSystem.depthMask(true);
  		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
@@ -98,6 +98,8 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?13f:((i==1||i==3)?7f:11f));
 +                if(campus && t.data.id==1_000_030_008)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?12f:(i==2?6f:7f));
++                if(campus && t.data.id==1_000_030_020)
++                    tileShader.safeGetUniform("MaterialDetail").set(i==0?14f:(i==1?6f:(i==2?7f:(i==3?15f:1f))));
 +                if(campus && t.data.id==1_000_030_003)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==4?11f:(i==2?3f:9f)));
  				RenderSystem.setShaderTexture(0, t.textureId(i));
@@ -108,7 +110,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  			}
  		}
  		VertexBuffer.unbind();
-@@ -455,6 +515,7 @@
+@@ -455,6 +517,7 @@
  	private void markDirty(java.util.function.Predicate<MapTile> test) {
  		RenderSystem.recordRenderCall(() -> {
  			for (MapTile t : loaded.values()) if (test.test(t)) t.dirty = true;

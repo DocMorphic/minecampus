@@ -32,7 +32,7 @@ def snapshot(folder):
 
 
 def verify_artifact(jar):
-    evidence = json.loads((ROOT / 'minecraft/exterior/crosspath-development-validation.json').read_text())
+    evidence = json.loads((ROOT / 'minecraft/exterior/galileo-court-development-validation.json').read_text())
     expected = evidence['artifact']
     if jar.stat().st_size != expected['size'] or digest(jar) != expected['sha256']:
         raise RuntimeError('Preview JAR does not match the native-verified artifact.')

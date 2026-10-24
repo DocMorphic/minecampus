@@ -1,0 +1,55 @@
+{
+  "status": "Read-only facade source study; detailed replacement not yet implemented",
+  "date": "2026-10-24",
+  "primarySources": [
+    {
+      "url": "https://www.dobler-metallbau.com/projekte/hochschulcampus-galileo-garching/",
+      "role": "Facade contractor project page; photographs credited to Sergej Chernoisikow"
+    },
+    {
+      "url": "https://www.dobler-metallbau.com/wp-content/uploads/2020/11/HGG_dt_web.pdf",
+      "role": "Two-page contractor project sheet, issue 2022-02-28; facade section photograph and material specifications",
+      "page": 2,
+      "facts": {
+        "facadeSystemAreasSquareMetres": {
+          "unitised": 15000,
+          "mullionTransom": 3350,
+          "plantEnclosureIncludingSteel": 1100
+        },
+        "surfaceFinishes": [
+          "NCS 1500 N matte",
+          "NCS 8000 N matte",
+          "RAL 9007 matte",
+          "NCS 1500 N matte structured coating"
+        ],
+        "facadeComponents": [
+          "Transparent glazing",
+          "Smooth sheet-metal closed elements",
+          "Protective glazing",
+          "Expanded metal"
+        ],
+        "qualification": "Areas apply to the complete project, not an individual facade. These specifications do not establish bay positions or dimensions."
+      },
+      "downloadSha256": "f6dde53b2b17e5bdca4435eb7663b14d34118c0725d879c9909ca222b19ffed0",
+      "size": 1915140,
+      "visualReview": {
+        "pagesInspected": [
+          1,
+          2
+        ],
+        "observations": [
+          "Page 1 shows slim dark perforated/louvred panels beside glazing, narrow frame lines and smooth opaque panels with aligned floor joints.",
+          "Page 2 exterior close-up shows changing opaque/glazed groupings between floors; a uniform repeated strip does not reproduce the arrangement."
+        ],
+        "qualification": "Visual qualitative observations only. No bay dimensions or exact row sequence measured from these perspective photographs."
+      }
+    },
+    {
+      "url": "https://www.nickl-partner.com/projekte/galileo-muenchen/",
+      "role": "Project architect; interlocking L-shaped volumes, terraces and transparent ground-floor zones; photographs credited to Werner Huthmacher"
+    }
+  ],
+  "completedWestElevationReference": "https://slam.green/wp-content/uploads/2024/07/SCC_Munich_Exterior_02-1024x683.jpg",
+  "nextWork": "Fit panel/window rhythm and transparent ground-floor bands to BVV envelopes using completed exterior photographs. Preserve measured roofs; distinguish surveyed dimensions from inferred modules. Current repeated photographic strip does not reproduce the facade accurately.",
+  "imageRights": "Research references only; no photos or PDF images redistributed or used as texture assets."
+}
