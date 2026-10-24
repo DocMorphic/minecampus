@@ -1,0 +1,1631 @@
+{
+  "date": "2026-10-24",
+  "status": "Native-verified western frontage grade development checkpoint; broader realism goal remains active",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 235419000,
+    "sha256": "8b46de9d62096d95e58868c3ff2afdd7ea44f2a68e49be0d1c6d6e7ee4a3d344",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "8b4cedc2c7882df39ba99c1ce899e5d4494447180bc6f07dd7be45d36e3564ef",
+    "rendererSourceFingerprint": "b12ee612a90576e6",
+    "bundleSha256": "fdbf18ca93b0084aadce15175a33f4c1c09bbc41d23a560fc70c2152ebe05f0d",
+    "tiles": 99
+  },
+  "source": "galileo-frontage-grade.json",
+  "sourceSha256": "9eed7f4ec3bdbf18160b5318d41e7ff97eff17c24ed2889d4680dc499d280fc2",
+  "geometry": {
+    "status": "PASS: one bounded ground tile changed; other 98 render meshes, all textures, courtyard and unrelated guides preserved",
+    "changedTiles": [
+      "ground-698200-5349200.ect"
+    ],
+    "changedVertexRecords": 1512,
+    "maximumHeightChangeMetres": 3.3258438110351562,
+    "boundedAreaIncludingBlendSquareMetres": 294.1235501936542,
+    "nativeControls": [
+      {
+        "x": 66.5,
+        "z": -58.5,
+        "previousMeshY": 62.76178741455078,
+        "newMeshY": 64.85271453857422,
+        "expectedProxyY": 65
+      },
+      {
+        "x": 65.5,
+        "z": -49.5,
+        "previousMeshY": 64.172607421875,
+        "newMeshY": 64.85384368896484,
+        "expectedProxyY": 65
+      },
+      {
+        "x": 72.5,
+        "z": -73.5,
+        "previousMeshY": 62.503997802734375,
+        "newMeshY": 65.00619506835938,
+        "expectedProxyY": 65
+      }
+    ],
+    "qualification": "Inferred finished paving grade over three small DGM depressions. Plane fits use the surrounding pinned DGM; DOP20 and SLAM landscape references support continuous paving, but neither supplies measured finished levels. Not a new survey. No interiors or real northern/eastern access depressions are changed."
+  },
+  "terrain": {
+    "status": "PASS: encoded terrain matches DGM1 plus explicit site grading, with adjoining tile seams preserved",
+    "sourceSampleCount": 359319,
+    "unalteredDgmSamples": 356464,
+    "inferredSiteGradingSamples": 2855,
+    "apronGradingSamples": 433,
+    "galileoFrontageGradingSamples": 252,
+    "maximumPositionErrorMetres": 2.1800125178386423e-05,
+    "maximumTileSeamErrorMetres": 0,
+    "note": "Source representation accuracy only; not a claim of millimetre real-world survey accuracy. Explicit site grading is approximate finished terrain, not measured DGM.",
+    "nativeBankProbe": {
+      "positionMC": [
+        14.5,
+        -228.5
+      ],
+      "meshHeight": 62.37845813883744,
+      "expectedProxyTop": 62,
+      "toleranceMetres": 0.51
+    },
+    "nativeCosGroundProbe": {
+      "positionMC": [
+        186.5,
+        -288.5
+      ],
+      "meshHeight": 63.153159852418085,
+      "expectedProxyTop": 63,
+      "toleranceMetres": 0.51
+    },
+    "nativeApronProbe": {
+      "positionMC": [
+        163.5,
+        -276.5
+      ],
+      "meshHeight": 63.462705894935304,
+      "expectedProxyTop": 63,
+      "previousMeshHeight": 63.56278362,
+      "previousProxyTop": 64
+    },
+    "nativePlantingProbe": {
+      "positionMC": [
+        154.04,
+        -278.63
+      ],
+      "meshHeight": 63.44306091824002,
+      "note": "Rendered soil probe uses the same smooth apron plane."
+    }
+  },
+  "binary": {
+    "renderTiles": 99,
+    "photoFacadeCandidates": 83,
+    "triangles": 2155372,
+    "textureBytes": 256682288,
+    "auxiliaryTriangles": 5026,
+    "auxiliaryTextureBytes": 13540404,
+    "surveyedBuildingGuides": 117,
+    "detailedBuildings": 7,
+    "landscapeStructures": 3,
+    "vegetationGroups": 36,
+    "trees": 739,
+    "status": "PASS: binary integrity, finite positions, UV ranges, mesh bounds and intended coverage"
+  },
+  "jarChanges": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "LICENSES/Minecampus-exterior-notices.txt",
+      "dev/realworldmc/CampusCollision.class",
+      "realworldmc-service.sha256",
+      "realworldmc-service.zip"
+    ]
+  },
+  "collisionMigrationVersion": 21,
+  "native": {
+    "checks": {
+      "campus-warehouse-result.txt": "PASS: two former blurred foreground rays and the east-opening ray hit the warehouse reconstruction",
+      "campus-cos-landscape-result.txt": "PASS: bed ray reaches surveyed ground with the soil mask and brown rendered texture (RGB 0.3896470588235294,0.3523137254901961,0.1912156862745098); exposed curb ray reaches its 12cm edging",
+      "campus-grs-iii-west-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-grs-iii-south-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-grs-main-west-result.txt": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "campus-galileo-facade-46-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-galileo-facade-43-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-cos-apron-result.txt": "PASS: native gravity landed on the smooth apron proxy at Y=63.0 (mesh Y=63.46271), replacing the previous Y=64 proxy",
+      "campus-roof-result.txt": "PASS: native gravity landed player on survey roof supporting the photographic facade at Y=72.0",
+      "campus-grs-connectors-courtyard-result.txt": "PASS: native rays reach the tower and west link and the repaired GRS II west facade at walking height",
+      "campus-cos-result.txt": "PASS: six ground-level rays and one aerial roof ray hit the COS reconstruction; current building survives aerial mode",
+      "campus-galileo-facade-44-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-cos-bench-result.txt": "PASS: native gravity landed player on the bench proxy at Y=64.0; visible seat top Y=63.89",
+      "campus-cos-ground-result.txt": "PASS: native gravity landed player on graded COS perimeter at Y=63.0, replacing the former construction mound",
+      "campus-client-result.txt": "PASS: all configured native route frames captured after full streaming readiness",
+      "campus-grs-connectors-aerial-result.txt": "PASS: native rays reach the tower and west link, the south junction and preserved adjoining GRS roof behind any foliage",
+      "campus-grs-connectors-north-result.txt": "PASS: native rays reach the tower and west link at walking height",
+      "campus-grs-courtyard-path-result.txt": "PASS: two walking-view rays reach the paving mask on unchanged surveyed terrain, and a third reaches the low edging",
+      "campus-galileo-facade-42-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-collision-result.txt": "PASS: player block and recorded excavation preserved; migration created no damage records; changed proxies=0",
+      "campus-gameplay-result.txt": "PASS: native TNT excavated surveyed mesh; restoration succeeded; player landed on surveyed ground at Y=65.0",
+      "campus-grs-iii-tower-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-grs-courtyard-connector-result.txt": "PASS: upper scan fragment absent, lower fragment replaced by surveyed connector and adjacent GRS II facade preserved",
+      "campus-promenade-result.txt": "PASS: four mapped path controls and three facade-seam controls reach loaded surveyed ground and the active GPU asphalt mask",
+      "campus-telefonzentrale-result.txt": "PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope",
+      "campus-bank-result.txt": "PASS: native gravity landed player on the refined Mensa bank at Y=62.0",
+      "campus-frontage-result.txt": "PASS: former flat facade is open at (5,68,-247); recessed glazing and overhead canopy retain collision",
+      "campus-grs-iii-aerial-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-terrace-result.txt": "PASS: native gravity landed player on reconstructed IAS terrace at Y=67.0",
+      "campus-cos-site-result.txt": "PASS: both mapped benches and a bicycle stand are visible in the packaged native renderer",
+      "campus-texture-result.txt": "PASS: packaged shader active; ten map/shared material textures use generated mipmaps with sampling clamps lifted",
+      "campus-retaining-result.txt": "PASS: three former jagged approach fragments now hit the surveyed retaining-wall reconstruction",
+      "campus-uye-result.txt": "PASS: foreground UYE ray hits the reconstructed roof fascia/glazing envelope",
+      "campus-grs-north-result.txt": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "campus-grs-iii-east-result.txt": "PASS: native rays reach GRS III's surveyed facade, tower or preserved raised roof behind any foliage",
+      "campus-canopy-result.txt": "PASS: two original near-terrace scan fragments are absent, including behind reconstructed foliage",
+      "campus-galileo-facade-45-result.txt": "PASS: displayed packaged Galileo facade has sampled metal/glass or preserved aerial roof geometry",
+      "campus-grs-west-result.txt": "PASS: three native facade rays reach the surveyed GRS reconstruction after streaming readiness",
+      "campus-grs-main-east-result.txt": "PASS: three native rays stop at the repaired surveyed GRS II facade behind any foliage",
+      "campus-crosspaths-result.txt": "PASS: eight crossing and entrance path controls reach loaded surveyed ground and the active GPU asphalt mask"
+    },
+    "courtyardGravity": {
+      "status": "PASS: lower courtyard, five stair landings and two turning-apron controls support native gravity within the existing half-block terrain tolerance",
+      "probes": [
+        {
+          "x": 105.5,
+          "z": -157.5,
+          "meshHeight": 60.300262451171875,
+          "standingY": 60.0,
+          "onGround": true
+        },
+        {
+          "x": 96.5,
+          "z": -165.5,
+          "meshHeight": 63.650413513183594,
+          "standingY": 64.0,
+          "onGround": true
+        },
+        {
+          "x": 95.5,
+          "z": -161.5,
+          "meshHeight": 62.84052276611328,
+          "standingY": 63.0,
+          "onGround": true
+        },
+        {
+          "x": 94.5,
+          "z": -158.5,
+          "meshHeight": 62.030616760253906,
+          "standingY": 62.0,
+          "onGround": true
+        },
+        {
+          "x": 94.5,
+          "z": -154.5,
+          "meshHeight": 61.22069549560547,
+          "standingY": 61.0,
+          "onGround": true
+        },
+        {
+          "x": 93.5,
+          "z": -150.5,
+          "meshHeight": 60.30079650878906,
+          "standingY": 60.0,
+          "onGround": true
+        },
+        {
+          "x": 93.5,
+          "z": -147.5,
+          "meshHeight": 60.30085372924805,
+          "standingY": 60.0,
+          "onGround": true
+        },
+        {
+          "x": 94.5,
+          "z": -147.5,
+          "meshHeight": 60.300819396972656,
+          "standingY": 60.0,
+          "onGround": true
+        }
+      ]
+    },
+    "frontageGravity": {
+      "status": "PASS: three former frontage pits now support native gravity on reconstructed paving within the existing half-block proxy tolerance",
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-8b46de9d62.jar",
+      "probes": [
+        {
+          "x": 66.5,
+          "z": -58.5,
+          "meshHeight": 64.85272216796875,
+          "standingY": 65.0,
+          "onGround": true
+        },
+        {
+          "x": 65.5,
+          "z": -49.5,
+          "meshHeight": 64.85385131835938,
+          "standingY": 65.0,
+          "onGround": true
+        },
+        {
+          "x": 72.5,
+          "z": -73.5,
+          "meshHeight": 65.00621032714844,
+          "standingY": 65.0,
+          "onGround": true
+        }
+      ]
+    },
+    "focusedFrontageGravity": {
+      "status": "PASS: three former frontage pits now support native gravity on reconstructed paving within the existing half-block proxy tolerance",
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-8b46de9d62.jar",
+      "probes": [
+        {
+          "x": 66.5,
+          "z": -58.5,
+          "meshHeight": 64.85272216796875,
+          "standingY": 65.0,
+          "onGround": true
+        },
+        {
+          "x": 65.5,
+          "z": -49.5,
+          "meshHeight": 64.85385131835938,
+          "standingY": 65.0,
+          "onGround": true
+        },
+        {
+          "x": 72.5,
+          "z": -73.5,
+          "meshHeight": 65.00621032714844,
+          "standingY": 65.0,
+          "onGround": true
+        }
+      ]
+    },
+    "shadowRoute": {
+      "status": "PASS: packaged shadows and sky-consistent material lighting verified across the native route",
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-8b46de9d62.jar",
+      "frames": [
+        {
+          "stage": 0,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 348,
+          "shadowDraws": 35,
+          "fps": 68
+        },
+        {
+          "stage": 1,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 544,
+          "shadowDraws": 28,
+          "fps": 116
+        },
+        {
+          "stage": 2,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 640,
+          "shadowDraws": 40,
+          "fps": 106
+        },
+        {
+          "stage": 3,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 732,
+          "shadowDraws": 41,
+          "fps": 111
+        },
+        {
+          "stage": 4,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 824,
+          "shadowDraws": 71,
+          "fps": 79
+        },
+        {
+          "stage": 5,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 920,
+          "shadowDraws": 87,
+          "fps": 104
+        },
+        {
+          "stage": 6,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1014,
+          "shadowDraws": 90,
+          "fps": 116
+        },
+        {
+          "stage": 7,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1108,
+          "shadowDraws": 38,
+          "fps": 95
+        },
+        {
+          "stage": 8,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1203,
+          "shadowDraws": 140,
+          "fps": 76
+        },
+        {
+          "stage": 9,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1298,
+          "shadowDraws": 89,
+          "fps": 117
+        },
+        {
+          "stage": 10,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1392,
+          "shadowDraws": 87,
+          "fps": 116
+        },
+        {
+          "stage": 11,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1485,
+          "shadowDraws": 38,
+          "fps": 106
+        },
+        {
+          "stage": 12,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1575,
+          "shadowDraws": 113,
+          "fps": 72
+        },
+        {
+          "stage": 13,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1670,
+          "shadowDraws": 87,
+          "fps": 105
+        },
+        {
+          "stage": 14,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1766,
+          "shadowDraws": 98,
+          "fps": 89
+        },
+        {
+          "stage": 15,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1858,
+          "shadowDraws": 98,
+          "fps": 115
+        },
+        {
+          "stage": 16,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 1951,
+          "shadowDraws": 105,
+          "fps": 111
+        },
+        {
+          "stage": 17,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2165,
+          "shadowDraws": 28,
+          "fps": 115
+        },
+        {
+          "stage": 18,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2259,
+          "shadowDraws": 83,
+          "fps": 115
+        },
+        {
+          "stage": 19,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2352,
+          "shadowDraws": 81,
+          "fps": 115
+        },
+        {
+          "stage": 20,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2445,
+          "shadowDraws": 49,
+          "fps": 58
+        },
+        {
+          "stage": 21,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2540,
+          "shadowDraws": 63,
+          "fps": 67
+        },
+        {
+          "stage": 22,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2632,
+          "shadowDraws": 89,
+          "fps": 113
+        },
+        {
+          "stage": 23,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2727,
+          "shadowDraws": 90,
+          "fps": 87
+        },
+        {
+          "stage": 24,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2821,
+          "shadowDraws": 88,
+          "fps": 110
+        },
+        {
+          "stage": 25,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 2916,
+          "shadowDraws": 85,
+          "fps": 107
+        },
+        {
+          "stage": 26,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3009,
+          "shadowDraws": 85,
+          "fps": 110
+        },
+        {
+          "stage": 27,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3102,
+          "shadowDraws": 72,
+          "fps": 84
+        },
+        {
+          "stage": 28,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3196,
+          "shadowDraws": 140,
+          "fps": 111
+        },
+        {
+          "stage": 29,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3292,
+          "shadowDraws": 102,
+          "fps": 116
+        },
+        {
+          "stage": 30,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3384,
+          "shadowDraws": 104,
+          "fps": 85
+        },
+        {
+          "stage": 31,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3480,
+          "shadowDraws": 108,
+          "fps": 89
+        },
+        {
+          "stage": 32,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3576,
+          "shadowDraws": 91,
+          "fps": 108
+        },
+        {
+          "stage": 33,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3666,
+          "shadowDraws": 108,
+          "fps": 91
+        },
+        {
+          "stage": 34,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3760,
+          "shadowDraws": 108,
+          "fps": 86
+        },
+        {
+          "stage": 35,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3882,
+          "shadowDraws": 37,
+          "fps": 103
+        },
+        {
+          "stage": 36,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 3972,
+          "shadowDraws": 37,
+          "fps": 80
+        },
+        {
+          "stage": 37,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4064,
+          "shadowDraws": 36,
+          "fps": 64
+        },
+        {
+          "stage": 38,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4154,
+          "shadowDraws": 40,
+          "fps": 73
+        },
+        {
+          "stage": 39,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4249,
+          "shadowDraws": 106,
+          "fps": 97
+        },
+        {
+          "stage": 40,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4343,
+          "shadowDraws": 67,
+          "fps": 96
+        },
+        {
+          "stage": 41,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4440,
+          "shadowDraws": 88,
+          "fps": 116
+        },
+        {
+          "stage": 42,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 4931,
+          "shadowDraws": 37,
+          "fps": 68
+        },
+        {
+          "stage": 43,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5024,
+          "shadowDraws": 33,
+          "fps": 67
+        },
+        {
+          "stage": 44,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5116,
+          "shadowDraws": 98,
+          "fps": 92
+        },
+        {
+          "stage": 45,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5206,
+          "shadowDraws": 81,
+          "fps": 72
+        },
+        {
+          "stage": 46,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5298,
+          "shadowDraws": 67,
+          "fps": 84
+        },
+        {
+          "stage": 47,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5389,
+          "shadowDraws": 29,
+          "fps": 74
+        },
+        {
+          "stage": 48,
+          "dayTime": 6000,
+          "gpuSunDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 5483,
+          "shadowDraws": 28,
+          "fps": 89
+        }
+      ]
+    },
+    "reflectionRoute": {
+      "status": "PASS: packaged reflection state checked across the full native route",
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-8b46de9d62.jar",
+      "frames": [
+        {
+          "stage": 0,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 3540,
+          "stateChecks": 3540,
+          "fps": 68,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 1,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 3542,
+          "stateChecks": 3542,
+          "fps": 116
+        },
+        {
+          "stage": 2,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 4554,
+          "stateChecks": 4554,
+          "fps": 106,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 3,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 4556,
+          "stateChecks": 4556,
+          "fps": 111
+        },
+        {
+          "stage": 4,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 5282,
+          "stateChecks": 5282,
+          "fps": 79,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 5,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 6164,
+          "stateChecks": 6164,
+          "fps": 104,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 6,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 6166,
+          "stateChecks": 6166,
+          "fps": 116
+        },
+        {
+          "stage": 7,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 6166,
+          "stateChecks": 6166,
+          "fps": 95
+        },
+        {
+          "stage": 8,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 6902,
+          "stateChecks": 6902,
+          "fps": 76,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 9,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 6904,
+          "stateChecks": 6904,
+          "fps": 117
+        },
+        {
+          "stage": 10,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 6904,
+          "stateChecks": 6904,
+          "fps": 116
+        },
+        {
+          "stage": 11,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 6904,
+          "stateChecks": 6904,
+          "fps": 106
+        },
+        {
+          "stage": 12,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 7578,
+          "stateChecks": 7578,
+          "fps": 72,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9835444,
+            0.0,
+            0.18066633,
+            -78.74504
+          ]
+        },
+        {
+          "stage": 13,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 8583,
+          "stateChecks": 8583,
+          "fps": 105,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 14,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 8585,
+          "stateChecks": 8585,
+          "fps": 89
+        },
+        {
+          "stage": 15,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 8585,
+          "stateChecks": 8585,
+          "fps": 115
+        },
+        {
+          "stage": 16,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 8585,
+          "stateChecks": 8585,
+          "fps": 111
+        },
+        {
+          "stage": 17,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 8585,
+          "stateChecks": 8585,
+          "fps": 115
+        },
+        {
+          "stage": 18,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 8585,
+          "stateChecks": 8585,
+          "fps": 115
+        },
+        {
+          "stage": 19,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 8585,
+          "stateChecks": 8585,
+          "fps": 115
+        },
+        {
+          "stage": 20,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9126,
+          "stateChecks": 9126,
+          "fps": 58,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 21,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9764,
+          "stateChecks": 9764,
+          "fps": 67,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 22,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 113
+        },
+        {
+          "stage": 23,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 87
+        },
+        {
+          "stage": 24,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 110
+        },
+        {
+          "stage": 25,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 107
+        },
+        {
+          "stage": 26,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 110
+        },
+        {
+          "stage": 27,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 84
+        },
+        {
+          "stage": 28,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 111
+        },
+        {
+          "stage": 29,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 116
+        },
+        {
+          "stage": 30,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 85
+        },
+        {
+          "stage": 31,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 89
+        },
+        {
+          "stage": 32,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 108
+        },
+        {
+          "stage": 33,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 91
+        },
+        {
+          "stage": 34,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 9766,
+          "stateChecks": 9766,
+          "fps": 86
+        },
+        {
+          "stage": 35,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 11052,
+          "stateChecks": 11052,
+          "fps": 103,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 36,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 11813,
+          "stateChecks": 11813,
+          "fps": 80,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 37,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 12429,
+          "stateChecks": 12429,
+          "fps": 64,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 38,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 13117,
+          "stateChecks": 13117,
+          "fps": 73,
+          "planeTile": 1000000101,
+          "plane": [
+            -0.18125997,
+            -1.2583116e-06,
+            0.98343515,
+            159.56155
+          ]
+        },
+        {
+          "stage": 39,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 14033,
+          "stateChecks": 14033,
+          "fps": 97,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 40,
+          "gpuStrength": 0.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 14035,
+          "stateChecks": 14035,
+          "fps": 96
+        },
+        {
+          "stage": 41,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 15154,
+          "stateChecks": 15154,
+          "fps": 116,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 42,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 20100,
+          "stateChecks": 20100,
+          "fps": 68,
+          "planeTile": 1000000101,
+          "plane": [
+            0.983533,
+            8.332862e-07,
+            0.18072855,
+            -63.37987
+          ]
+        },
+        {
+          "stage": 43,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 20734,
+          "stateChecks": 20734,
+          "fps": 67,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 44,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 21610,
+          "stateChecks": 21610,
+          "fps": 92,
+          "planeTile": 1000000101,
+          "plane": [
+            0.9834414,
+            0.0,
+            0.18122616,
+            -105.68057
+          ]
+        },
+        {
+          "stage": 45,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 22283,
+          "stateChecks": 22283,
+          "fps": 72,
+          "planeTile": 1000000101,
+          "plane": [
+            -0.18125997,
+            -1.2583116e-06,
+            0.98343515,
+            159.56155
+          ]
+        },
+        {
+          "stage": 46,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 23082,
+          "stateChecks": 23082,
+          "fps": 84,
+          "planeTile": 1000000101,
+          "plane": [
+            -0.18125997,
+            -1.2583116e-06,
+            0.98343515,
+            159.56155
+          ]
+        },
+        {
+          "stage": 47,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 23780,
+          "stateChecks": 23780,
+          "fps": 74,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        },
+        {
+          "stage": 48,
+          "gpuStrength": 1.0,
+          "textureBinding": 277,
+          "glError": 0,
+          "reflectionUpdates": 24623,
+          "stateChecks": 24623,
+          "fps": 89,
+          "planeTile": 1000000100,
+          "plane": [
+            0.9835179,
+            0.0,
+            0.1808109,
+            -63.37272
+          ]
+        }
+      ]
+    }
+  },
+  "captureHashes": {
+    "campus-final-ground.png": "98c66d65b4192fc6e9b9888224097d5f70eca78beab4cde345329b9ccd60458c",
+    "campus-final-aerial.png": "a30409cbf569f2ab5c2af91634cdf9e07d046bb9963f3a243908a74a892a85d6",
+    "campus-tnt.png": "31ee9244dce7eca45c52107f656040dd051ec08f3dc9b69cc4d911490633b4dd",
+    "campus-route-west.png": "8f6202b77785457e5ed3d5613b8470905dfab9b2fc81601c43e934fedee5640f",
+    "campus-route-south.png": "b8fa5ec52632b51721924d9a2879798d725f2c95281d846dd44d048654cb6db0",
+    "campus-route-north.png": "0dda21cfdc90eba02226953cd0c617ccdfb8c25a1f618c96416ba8b7c5e453af",
+    "campus-source-check.png": "b9c55709b7679bdc4eafe4458a022d3b2d2eda90aa97717e04897382a19638fe",
+    "campus-ias.png": "dfce77c8809724f5ff024af2012d65add255a16905a1c5133cb35ec6e1dd94aa",
+    "campus-photo-north.png": "28ea6fcecda87386933c8865d35282eba6b8b02728e3bd38679c995a2c25d9f0",
+    "campus-former-mensa.png": "22e151bf1df0857f490873fdccb0d98894e64f4a02ea34a8d00be33d238c7fa4",
+    "campus-mensa-terrace.png": "5f79cf067a1cda24b8200e10af4fb4a181720f4acc83ed668128bdec0f88620a",
+    "campus-paving-detail.png": "e7b8d89d44a61652cb19f5a93b3a9f3a8ed50acf9362e673806a01e45900e82a",
+    "campus-warehouse-east.png": "a3bdeaa4470979c485b9e4c4e6848d17fcdebffc8667686e35b607f61a706e62",
+    "campus-road-detail.png": "38f78e971dfca4b4c718071c7d587923b603740ef74e7cd1f851d310f2543d71",
+    "campus-telefonzentrale-west.png": "f506ae9d4a4d1519529ead41592a3b17906f55cce1fb9b0ece25ad0686781dfb",
+    "campus-cos-southwest.png": "1e86ccc3d512c7d282c74c0166bc204344a9e21b688f1a558d4967f3e8395af5",
+    "campus-cos-south.png": "e39a6e50674a9e9b5de0bb14af6d37a7edaee2fd56798e9d9475ddfea629bf67",
+    "campus-cos-aerial.png": "ab3ef5d404fe45a9faae45ea75215ececc22ba07e5a380842e829d95b8b07fc1",
+    "campus-cos-forecourt.png": "630e0b5dfaa7de489ec360a66611859531edfd8663f3e1739e27b4e18d741661",
+    "campus-cos-planting.png": "126aa4d8b2dd48e1ef791ca66b30f30205c4c83c1fbb8383a52d8ffb6f9e607c",
+    "campus-cos-north.png": "d27dd4369ab66853e92f8b94a0510bd8f826868768c25685e4aaf3e240b25e85",
+    "campus-grs-north.png": "10d3c63be65251ad4213fa7ce7e24907b6991bc85fa6f326c863f74bda8c4f2f",
+    "campus-grs-west.png": "9c2b1816b3cc502bbdecffe396ceddd835757d113c8708e65c9f61c3514a295e",
+    "campus-grs-tower-north.png": "ac69dd830a778dbfaa4e955a5009242efa61470780395341a51e83dac6d432fc",
+    "campus-grs-tower-courtyard.png": "a2e6a1305e381d32aff26494b712f258bf7e825814413a1a3043d525f20993e8",
+    "campus-grs-connectors-aerial.png": "8e4a78c806d2547baf9f1607f929b2b21b657bdd43f3b426fbf4bb6ad29eae94",
+    "campus-grs-main-west.png": "720627d892c1a47e9bfa26ca2297d3cbe03f418837904cd2aa92c8a1eca1a635",
+    "campus-grs-main-east.png": "b889b79cb3c4906bf69e79ecd2d944602da37df405e16498c448c994afffcfd5",
+    "campus-grs-iii-west.png": "afc34dddf5c6bedc160b6dc6a159d2424c2fbe8e89f528480faf9701ad309965",
+    "campus-grs-iii-south.png": "3d8d2c483d633aacd626925f0a24e80d8c5907e8312521952e2b9e0f08fe3ed3",
+    "campus-grs-iii-east.png": "97b7c2d2de8639923fd158e85bbc26bec32ae5575d7b129b1c8cd77025a1a7a4",
+    "campus-grs-iii-tower.png": "3d07c8da6c783d1f80cac7c49c5485876d4549b8544e0f4bac99c7e181d9d9e0",
+    "campus-grs-iii-aerial.png": "6c31cb87de6f664beac9fcfdb5c158e7c7416dbb5b5c6490b8440fe0fb207d9d",
+    "campus-grs-courtyard-path.png": "b0e23184c46667e13445815484ac6a1c1d7ca78bbe6f40bbd10cc7588e07b314",
+    "campus-grs-courtyard-connector.png": "3d07c8da6c783d1f80cac7c49c5485876d4549b8544e0f4bac99c7e181d9d9e0",
+    "campus-promenade-lawn-path.png": "7c0d2727b245a71fa3a4c3726a2279c7c85dc4acc51c4544991e90a29c96f867",
+    "campus-promenade-east-path.png": "eddfcec6cd8e2345154c812b8803ca79ef4b72e685b6586bcb5bfcb936517d28",
+    "campus-crosspath-south.png": "1dafd2a0aa446086467ea15ed016699c5e49cb125d3ad25b9ecb91279a66d2a6",
+    "campus-crosspath-north.png": "39c0dc475d05a790a5cbbd97a797b8fe96821e07b7341424b2eda0ef12066503",
+    "campus-galileo-court-upper.png": "4983b5df6112d6f4a5db50856aaeafb8ca37613d91bbb6a700bcd700aab5b0fd",
+    "campus-galileo-court-floor.png": "4ce5f569c63f15ece92a7289631ad7ccec5603797c7e178dba1ed1658e689cb8",
+    "campus-galileo-court-stairs.png": "593f13d6b94b4329054ad162b3dda03b0cacf135ae234d9a06b4a41d885190e1",
+    "campus-galileo-west.png": "ba10b51c749c38dbaa37f0cd08cb5fe5a954d6523ee0e500619a684b0a8c6254",
+    "campus-galileo-southwest.png": "68ab717f7e6af86c5cc8b9192f0a3036ed356497010ce9ac28f720be359a4ec0",
+    "campus-galileo-east.png": "438343bd7539edff13e20112882890ce07775ebb73ce1b143e67f0ebefc1094e",
+    "campus-galileo-aerial.png": "c63d27afe8df62ae4b89e1254e6996738b3f6d18733f4a0c0371c9778f928369",
+    "campus-galileo-north-detail.png": "f0624f2ca884bfcd7caed7405e8d093038b4b6d5017e457ed1b1a180ddc51ccc",
+    "campus-galileo-grade-overview.png": "161a71b2f022de469c47157945014c5fdf664feb56b86edc140c7a159e32562a",
+    "campus-galileo-grade-walking.png": "3b0d4d70d50d5aebbe37055dfb99e22ed08486327fbd597159052ff4015982e6"
+  },
+  "focusedCaptureHashes": {
+    "campus-galileo-grade-walking.png": "cf325651b40cc87b68cd01db0b62ece7fc08045180fc44ac27e78ecc3f5d813f",
+    "campus-galileo-grade-overview.png": "d518635ba5c638d606a6e7e362f16a604155544b76b1f9de2e4e50b0efba68ad"
+  },
+  "baseline": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 235415981,
+      "sha256": "78db6f22790fcf0ca76364c376def1382df27b079d1da6b69431c89fd818f805",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "8b4cedc2c7882df39ba99c1ce899e5d4494447180bc6f07dd7be45d36e3564ef",
+      "rendererSourceFingerprint": "698b2d5d005d9127",
+      "bundleSha256": "4b108f2f0d59c5610dc575e1aee8be9a83f24c2eb2cddd6e63ef3407b9a7aca4",
+      "tiles": 99
+    },
+    "captureHashes": {
+      "campus-galileo-grade-walking.png": "4ccc0a9d98c08d7e54e4ee377785fb5da5dabf78a17e9bcce16db12def794a54",
+      "campus-galileo-grade-overview.png": "e794227208c58b3cb51b8ed7fae4cef3dcfc12cff3262a161cc34d8882dd01b7"
+    }
+  },
+  "checkSources": {
+    "CampusPromenadeChecks.java": "37849cb9c75d4ee4c038ad4de1ffed2544b190c84ffa5bffb1e63c6908708bda",
+    "CampusReflectionLifecycleCheck.java": "52ac94b168a0e0670d749ef9b01e7f56232c15be3f2ddf6c4aaf0782858f4c2d",
+    "CampusReflectionMotionCheck.java": "42a2c7ca67a8beae2be023611d5d3b7edaaa64ebcedad0ea945a3942b76beec1",
+    "CampusShadowFunctionalCheck.java": "84c91d8dfe772d62fb71e73ca77cd0451c8bbe8ca5a0b5401c46dc4b0a3064ce",
+    "CampusMaterialBenchmark.java": "3f3db1de09256fe1889714600fcc669ffeb5374b586ad91a79ca7f8d8389726b",
+    "CampusReflectionFunctionalCheck.java": "65980239cc98860533c15f1b15224280d15b783b5f98223aaabbd9708d845073",
+    "CampusCrosspathChecks.java": "758672ecbfc4add691912248b272571e21eb9ef3bc83c51a7e966e60fcd852df",
+    "CampusGalileoGradeChecks.java": "18e37c01fc9e612646496c29d6ce9914888168ced0baa90215b346a20b961c68",
+    "CampusGalileoCourtChecks.java": "9677cb318a6a433420ce7ff9170a5eedbabcb60f1d6a1c7b864ff23e13aa66ad",
+    "CampusReflectionIntegrationCheck.java": "8df23d020f3674bd8461318c5c5599855e452a6e601da02b344b42be44caaa3f",
+    "CampusExteriorCheck.java": "42fa37db9428cabec12744ea492e86846c3370c7b726ce60db7183699ac4c477",
+    "CampusGalileoFacadeChecks.java": "369e4663551d98f123b70feb6be182b5bd42b71720c4ac704c698bb5abf5b19b",
+    "CampusShadowChecks.java": "a2e172980a95dc6f693399d855a48967e6921c9a11cefae01a850cda14452976",
+    "CampusReflectionChecks.java": "cb7f97e3d5041c9e7a57bb75abdf14c827456bb6a5b59f86e54fd533e236315f"
+  },
+  "visualReview": "All 49 fresh route frames and both focused before/after views reviewed. Western source pits are absent; other known reconstruction limits remain visible.",
+  "retainedRendererEvidence": {
+    "file": "reflection-development-validation.json",
+    "artifactSha256": "78db6f22790fcf0ca76364c376def1382df27b079d1da6b69431c89fd818f805",
+    "scope": "Renderer classes/shaders byte-identical. Earlier movement/night/reload/disconnect functional evidence remains specific to dev.16; current full route freshly checks shadows, reflections, TNT and collision preservation."
+  },
+  "limitations": [
+    "Finished paving grade is inferred from nearby source samples, not a new survey.",
+    "Aerial-image colour/shadows and pale material margins still remain in the repaired surface.",
+    "Eastern ramps, exact facade openings, neighboring structures and landscaping remain unfinished.",
+    "One-metre Minecraft collision proxies approximate the smooth visual surface."
+  ],
+  "installation": {
+    "separatePreviewUpdated": true,
+    "previewSaveFilesVerified": 121,
+    "savesAndSettingsUnchanged": true,
+    "originalInstanceSaveFilesUnchanged": 121,
+    "originalCampusBackupFilesMatched": 46,
+    "previousArtifactRetained": "78db6f22790fcf0ca76364c376def1382df27b079d1da6b69431c89fd818f805"
+  }
+}

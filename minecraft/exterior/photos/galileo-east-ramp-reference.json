@@ -1,0 +1,768 @@
+{
+  "status": "Read-only source study; eastern ramps not reconstructed yet",
+  "date": "2026-10-24",
+  "scope": "Galileo eastern vehicle access, exterior only",
+  "nativeReference": {
+    "cameraIndex": 44,
+    "positionMC": [
+      145,
+      65,
+      -115
+    ],
+    "yaw": 90,
+    "pitch": -12,
+    "observation": "The existing native view shows smoothed irregular ground along the facade/driveway area. It does not show explicit retaining walls or a resolved ramp edge."
+  },
+  "primaryReferences": [
+    {
+      "url": "https://slam.green/projekt/galileo-neue-mitte-am-hochschulcampus-garching-muenchen/",
+      "facts": "Architect identifies eastern garage entry/exit and delivery access, with connected paved surroundings."
+    },
+    {
+      "url": "https://city-parking.de/standorte/garching-parkgarage-galileo/",
+      "facts": "Operator identifies the Galileo garage at Walther-von-Dyck-Str. 6 and maximum entry height 2.00 m. This is clearance, not floor elevation."
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/1005_Lageplan_0-2048x799.jpg",
+      "facts": "Design plan depicts two elongated ramp structures along the eastern edge. Use for layout comparison, not exact as-built dimensions."
+    }
+  ],
+  "features": [
+    {
+      "way": 983606062,
+      "tags": {
+        "bicycle": "no",
+        "foot": "no",
+        "highway": "service",
+        "horse": "no",
+        "motor_vehicle": "yes",
+        "oneway": "yes",
+        "service": "driveway",
+        "surface": "asphalt"
+      },
+      "coordinatesMC": [
+        [
+          141.59506903681904,
+          -164.706922698766
+        ],
+        [
+          143.6000035876641,
+          -153.67547252587974
+        ],
+        [
+          144.3130068089813,
+          -144.48998674936593
+        ],
+        [
+          142.57588643056806,
+          -134.69281269423664
+        ],
+        [
+          138.88625468709506,
+          -117.34479553997517
+        ]
+      ],
+      "utm": [
+        [
+          698349.7447121318,
+          5349372.971696462
+        ],
+        [
+          698352.1322437712,
+          5349362.016668414
+        ],
+        [
+          698353.164399287,
+          5349352.8615401685
+        ],
+        [
+          698351.7691929935,
+          5349343.009848114
+        ],
+        [
+          698348.6853647952,
+          5349325.543943627
+        ]
+      ],
+      "lengthMetres": 48.11136259289472,
+      "profile": [
+        {
+          "station": 0.0,
+          "utm": [
+            698349.7447121318,
+            5349372.971696462
+          ],
+          "dgmHeightDHHN2016": 474.4915855848516
+        },
+        {
+          "station": 2.00464010803728,
+          "utm": [
+            698350.1715820465,
+            5349371.013032622
+          ],
+          "dgmHeightDHHN2016": 474.5293024855112
+        },
+        {
+          "station": 4.00928021607456,
+          "utm": [
+            698350.5984519614,
+            5349369.054368781
+          ],
+          "dgmHeightDHHN2016": 474.5609705378139
+        },
+        {
+          "station": 6.01392032411184,
+          "utm": [
+            698351.0253218762,
+            5349367.095704941
+          ],
+          "dgmHeightDHHN2016": 474.5906311209336
+        },
+        {
+          "station": 8.01856043214912,
+          "utm": [
+            698351.4521917909,
+            5349365.137041101
+          ],
+          "dgmHeightDHHN2016": 474.61249907811805
+        },
+        {
+          "station": 10.023200540186401,
+          "utm": [
+            698351.8790617058,
+            5349363.178377261
+          ],
+          "dgmHeightDHHN2016": 474.6318629056159
+        },
+        {
+          "station": 12.02784064822368,
+          "utm": [
+            698352.2236231839,
+            5349361.206141097
+          ],
+          "dgmHeightDHHN2016": 474.63238406336353
+        },
+        {
+          "station": 14.032480756260961,
+          "utm": [
+            698352.4482049393,
+            5349359.214120765
+          ],
+          "dgmHeightDHHN2016": 474.6349994983432
+        },
+        {
+          "station": 16.03712086429824,
+          "utm": [
+            698352.6727866946,
+            5349357.222100435
+          ],
+          "dgmHeightDHHN2016": 474.64140653069927
+        },
+        {
+          "station": 18.04176097233552,
+          "utm": [
+            698352.89736845,
+            5349355.230080104
+          ],
+          "dgmHeightDHHN2016": 474.5711186693887
+        },
+        {
+          "station": 20.046401080372803,
+          "utm": [
+            698353.1219502053,
+            5349353.238059773
+          ],
+          "dgmHeightDHHN2016": 474.50391583534775
+        },
+        {
+          "station": 22.051041188410082,
+          "utm": [
+            698352.9364358005,
+            5349351.2518670475
+          ],
+          "dgmHeightDHHN2016": 474.428236547101
+        },
+        {
+          "station": 24.05568129644736,
+          "utm": [
+            698352.6553415909,
+            5349349.267032544
+          ],
+          "dgmHeightDHHN2016": 474.347455164759
+        },
+        {
+          "station": 26.060321404484643,
+          "utm": [
+            698352.3742473812,
+            5349347.28219804
+          ],
+          "dgmHeightDHHN2016": 474.1847145443743
+        },
+        {
+          "station": 28.064961512521922,
+          "utm": [
+            698352.0931531717,
+            5349345.297363536
+          ],
+          "dgmHeightDHHN2016": 473.8654158726022
+        },
+        {
+          "station": 30.069601620559204,
+          "utm": [
+            698351.8120589621,
+            5349343.312529032
+          ],
+          "dgmHeightDHHN2016": 473.5527935393982
+        },
+        {
+          "station": 32.07424172859648,
+          "utm": [
+            698351.4737927889,
+            5349341.336787416
+          ],
+          "dgmHeightDHHN2016": 473.26756114778476
+        },
+        {
+          "station": 34.07888183663376,
+          "utm": [
+            698351.1252392897,
+            5349339.362681942
+          ],
+          "dgmHeightDHHN2016": 472.95777466615357
+        },
+        {
+          "station": 36.08352194467104,
+          "utm": [
+            698350.7766857905,
+            5349337.388576468
+          ],
+          "dgmHeightDHHN2016": 472.6875762481965
+        },
+        {
+          "station": 38.08816205270833,
+          "utm": [
+            698350.4281322913,
+            5349335.414470995
+          ],
+          "dgmHeightDHHN2016": 472.3646919591358
+        },
+        {
+          "station": 40.092802160745606,
+          "utm": [
+            698350.079578792,
+            5349333.440365521
+          ],
+          "dgmHeightDHHN2016": 472.092125434718
+        },
+        {
+          "station": 42.097442268782885,
+          "utm": [
+            698349.7310252928,
+            5349331.466260048
+          ],
+          "dgmHeightDHHN2016": 471.7872757290949
+        },
+        {
+          "station": 44.102082376820164,
+          "utm": [
+            698349.3824717936,
+            5349329.492154574
+          ],
+          "dgmHeightDHHN2016": 471.48813127157763
+        },
+        {
+          "station": 46.10672248485744,
+          "utm": [
+            698349.0339182944,
+            5349327.5180491
+          ],
+          "dgmHeightDHHN2016": 471.1858336136363
+        },
+        {
+          "station": 48.11136259289472,
+          "utm": [
+            698348.6853647952,
+            5349325.543943627
+          ],
+          "dgmHeightDHHN2016": 470.85638441988374
+        }
+      ],
+      "source": {
+        "url": "https://api.openstreetmap.org/api/0.6/way/983606062/full",
+        "sha256": "28523606452e880559d2901896f32077acc3f2eb97def66ecbd4f7172d83d293",
+        "wayVersion": 3,
+        "wayTimestamp": "2023-08-17T12:10:40Z",
+        "retrieved": "2026-10-24",
+        "license": "ODbL 1.0",
+        "attribution": "\u00a9 OpenStreetMap contributors"
+      }
+    },
+    {
+      "way": 994971693,
+      "tags": {
+        "highway": "service",
+        "oneway": "yes",
+        "service": "driveway",
+        "surface": "asphalt"
+      },
+      "coordinatesMC": [
+        [
+          132.36071446049027,
+          -84.7839204184711
+        ],
+        [
+          137.3347241336014,
+          -107.91460384149104
+        ],
+        [
+          142.3165825405158,
+          -112.61868393048644
+        ]
+      ],
+      "utm": [
+        [
+          698343.2966292145,
+          5349292.77570651
+        ],
+        [
+          698347.4628681228,
+          5349316.0654692445
+        ],
+        [
+          698352.278052446,
+          5349320.940036516
+        ]
+      ],
+      "lengthMetres": 30.511289293564783,
+      "profile": [
+        {
+          "station": 0.0,
+          "utm": [
+            698343.2966292145,
+            5349292.77570651
+          ],
+          "dgmHeightDHHN2016": 471.4959408171502
+        },
+        {
+          "station": 2.0340859529043187,
+          "utm": [
+            698343.654815069,
+            5349294.778007326
+          ],
+          "dgmHeightDHHN2016": 471.7903870798144
+        },
+        {
+          "station": 4.068171905808637,
+          "utm": [
+            698344.0130009234,
+            5349296.780308142
+          ],
+          "dgmHeightDHHN2016": 472.0998374961849
+        },
+        {
+          "station": 6.102257858712957,
+          "utm": [
+            698344.371186778,
+            5349298.782608958
+          ],
+          "dgmHeightDHHN2016": 472.39964686239824
+        },
+        {
+          "station": 8.136343811617275,
+          "utm": [
+            698344.7293726325,
+            5349300.784909774
+          ],
+          "dgmHeightDHHN2016": 472.7098977360238
+        },
+        {
+          "station": 10.170429764521593,
+          "utm": [
+            698345.0875584868,
+            5349302.787210589
+          ],
+          "dgmHeightDHHN2016": 473.03080034199286
+        },
+        {
+          "station": 12.204515717425913,
+          "utm": [
+            698345.4457443414,
+            5349304.789511406
+          ],
+          "dgmHeightDHHN2016": 473.37303234998444
+        },
+        {
+          "station": 14.238601670330231,
+          "utm": [
+            698345.8039301959,
+            5349306.7918122215
+          ],
+          "dgmHeightDHHN2016": 473.67568635651014
+        },
+        {
+          "station": 16.27268762323455,
+          "utm": [
+            698346.1621160503,
+            5349308.794113037
+          ],
+          "dgmHeightDHHN2016": 474.02043327060943
+        },
+        {
+          "station": 18.30677357613887,
+          "utm": [
+            698346.5203019048,
+            5349310.796413854
+          ],
+          "dgmHeightDHHN2016": 474.25311597208974
+        },
+        {
+          "station": 20.340859529043186,
+          "utm": [
+            698346.8784877593,
+            5349312.798714669
+          ],
+          "dgmHeightDHHN2016": 474.3520946849294
+        },
+        {
+          "station": 22.374945481947506,
+          "utm": [
+            698347.2366736137,
+            5349314.801015485
+          ],
+          "dgmHeightDHHN2016": 474.370811886929
+        },
+        {
+          "station": 24.409031434851826,
+          "utm": [
+            698347.9896289132,
+            5349316.598726278
+          ],
+          "dgmHeightDHHN2016": 474.356023877888
+        },
+        {
+          "station": 26.443117387756143,
+          "utm": [
+            698349.4191034242,
+            5349318.045829691
+          ],
+          "dgmHeightDHHN2016": 474.3024720720969
+        },
+        {
+          "station": 28.477203340660463,
+          "utm": [
+            698350.848577935,
+            5349319.492933103
+          ],
+          "dgmHeightDHHN2016": 474.2636098230999
+        },
+        {
+          "station": 30.511289293564783,
+          "utm": [
+            698352.278052446,
+            5349320.940036516
+          ],
+          "dgmHeightDHHN2016": 474.23266779314395
+        }
+      ],
+      "source": {
+        "url": "https://api.openstreetmap.org/api/0.6/way/994971693/full",
+        "sha256": "30b619c4f92567d2f03f8073b21d58955b744f0f36ce6915030886be2825aca2",
+        "wayVersion": 2,
+        "wayTimestamp": "2023-08-17T12:10:41Z",
+        "retrieved": "2026-10-24",
+        "license": "ODbL 1.0",
+        "attribution": "\u00a9 OpenStreetMap contributors"
+      }
+    },
+    {
+      "way": 1364296129,
+      "tags": {
+        "barrier": "wall"
+      },
+      "coordinatesMC": [
+        [
+          140.60822862712666,
+          -139.4745628014207
+        ],
+        [
+          129.4428698712727,
+          -81.44771391618997
+        ]
+      ],
+      "utm": [
+        [
+          698349.6363561822,
+          5349347.720249592
+        ],
+        [
+          698340.4966207983,
+          5349289.339997807
+        ]
+      ],
+      "lengthMetres": 59.09135775605751,
+      "profile": [
+        {
+          "station": 0.0,
+          "utm": [
+            698349.6363561822,
+            5349347.720249592
+          ],
+          "dgmHeightDHHN2016": 474.85076896717845
+        },
+        {
+          "station": 2.0376330260709485,
+          "utm": [
+            698349.3211928931,
+            5349345.707137462
+          ],
+          "dgmHeightDHHN2016": 474.6201385836676
+        },
+        {
+          "station": 4.075266052141897,
+          "utm": [
+            698349.006029604,
+            5349343.694025331
+          ],
+          "dgmHeightDHHN2016": 474.39062298523874
+        },
+        {
+          "station": 6.112899078212846,
+          "utm": [
+            698348.6908663148,
+            5349341.680913201
+          ],
+          "dgmHeightDHHN2016": 474.54187927249
+        },
+        {
+          "station": 8.150532104283794,
+          "utm": [
+            698348.3757030257,
+            5349339.66780107
+          ],
+          "dgmHeightDHHN2016": 474.2218502834296
+        },
+        {
+          "station": 10.188165130354744,
+          "utm": [
+            698348.0605397366,
+            5349337.654688939
+          ],
+          "dgmHeightDHHN2016": 473.986395684562
+        },
+        {
+          "station": 12.225798156425691,
+          "utm": [
+            698347.7453764476,
+            5349335.641576809
+          ],
+          "dgmHeightDHHN2016": 474.3085969517531
+        },
+        {
+          "station": 14.263431182496639,
+          "utm": [
+            698347.4302131585,
+            5349333.628464678
+          ],
+          "dgmHeightDHHN2016": 474.9949468178884
+        },
+        {
+          "station": 16.30106420856759,
+          "utm": [
+            698347.1150498694,
+            5349331.615352548
+          ],
+          "dgmHeightDHHN2016": 474.74072730478605
+        },
+        {
+          "station": 18.338697234638538,
+          "utm": [
+            698346.7998865802,
+            5349329.602240417
+          ],
+          "dgmHeightDHHN2016": 473.9856793645232
+        },
+        {
+          "station": 20.376330260709487,
+          "utm": [
+            698346.4847232911,
+            5349327.589128287
+          ],
+          "dgmHeightDHHN2016": 474.9728747758593
+        },
+        {
+          "station": 22.413963286780433,
+          "utm": [
+            698346.169560002,
+            5349325.576016156
+          ],
+          "dgmHeightDHHN2016": 475.02875953189573
+        },
+        {
+          "station": 24.451596312851382,
+          "utm": [
+            698345.854396713,
+            5349323.562904025
+          ],
+          "dgmHeightDHHN2016": 474.93028771689694
+        },
+        {
+          "station": 26.489229338922332,
+          "utm": [
+            698345.5392334239,
+            5349321.549791895
+          ],
+          "dgmHeightDHHN2016": 474.8838708927412
+        },
+        {
+          "station": 28.526862364993278,
+          "utm": [
+            698345.2240701348,
+            5349319.536679764
+          ],
+          "dgmHeightDHHN2016": 475.0111428480201
+        },
+        {
+          "station": 30.564495391064227,
+          "utm": [
+            698344.9089068456,
+            5349317.523567635
+          ],
+          "dgmHeightDHHN2016": 474.74740445216514
+        },
+        {
+          "station": 32.60212841713518,
+          "utm": [
+            698344.5937435565,
+            5349315.510455504
+          ],
+          "dgmHeightDHHN2016": 474.95330435337735
+        },
+        {
+          "station": 34.639761443206126,
+          "utm": [
+            698344.2785802674,
+            5349313.4973433735
+          ],
+          "dgmHeightDHHN2016": 475.01117450171427
+        },
+        {
+          "station": 36.677394469277075,
+          "utm": [
+            698343.9634169784,
+            5349311.484231243
+          ],
+          "dgmHeightDHHN2016": 474.95715862786324
+        },
+        {
+          "station": 38.715027495348025,
+          "utm": [
+            698343.6482536893,
+            5349309.471119112
+          ],
+          "dgmHeightDHHN2016": 474.8621581497093
+        },
+        {
+          "station": 40.752660521418974,
+          "utm": [
+            698343.3330904002,
+            5349307.458006982
+          ],
+          "dgmHeightDHHN2016": 474.93606929811557
+        },
+        {
+          "station": 42.79029354748992,
+          "utm": [
+            698343.017927111,
+            5349305.444894851
+          ],
+          "dgmHeightDHHN2016": 474.2810549476205
+        },
+        {
+          "station": 44.827926573560866,
+          "utm": [
+            698342.7027638219,
+            5349303.431782721
+          ],
+          "dgmHeightDHHN2016": 474.8394769947644
+        },
+        {
+          "station": 46.865559599631816,
+          "utm": [
+            698342.3876005328,
+            5349301.41867059
+          ],
+          "dgmHeightDHHN2016": 474.9983911485583
+        },
+        {
+          "station": 48.903192625702765,
+          "utm": [
+            698342.0724372438,
+            5349299.405558459
+          ],
+          "dgmHeightDHHN2016": 474.9415804036809
+        },
+        {
+          "station": 50.940825651773714,
+          "utm": [
+            698341.7572739547,
+            5349297.392446329
+          ],
+          "dgmHeightDHHN2016": 474.59314706497247
+        },
+        {
+          "station": 52.978458677844664,
+          "utm": [
+            698341.4421106656,
+            5349295.379334198
+          ],
+          "dgmHeightDHHN2016": 474.9253235989344
+        },
+        {
+          "station": 55.01609170391561,
+          "utm": [
+            698341.1269473764,
+            5349293.366222068
+          ],
+          "dgmHeightDHHN2016": 474.3730512986042
+        },
+        {
+          "station": 57.053724729986556,
+          "utm": [
+            698340.8117840873,
+            5349291.353109937
+          ],
+          "dgmHeightDHHN2016": 474.9950303886231
+        },
+        {
+          "station": 59.09135775605751,
+          "utm": [
+            698340.4966207983,
+            5349289.339997807
+          ],
+          "dgmHeightDHHN2016": 474.9818071894439
+        }
+      ],
+      "source": {
+        "url": "https://api.openstreetmap.org/api/0.6/way/1364296129/full",
+        "sha256": "1a17f27f1da3817b4cfefed83213e3aca01ee12c04f492959d43c72733e80292",
+        "wayVersion": 1,
+        "wayTimestamp": "2025-03-03T16:07:27Z",
+        "retrieved": "2026-10-24",
+        "license": "ODbL 1.0",
+        "attribution": "\u00a9 OpenStreetMap contributors"
+      }
+    }
+  ],
+  "interpretation": [
+    "The two mapped driveways span approximately 48.1 m and 30.5 m; DGM profiles descend to approximately 470.86 m and 471.50 m DHHN2016. Preserve the genuine grade changes.",
+    "OSM way 1364296129 supplies a 59.1 m wall line but no height or material tag. Wall profile, thickness, caps and railings require explicit inference from imagery and neighboring levels.",
+    "Centreline raster samples include smoothed edges/covered portions and are not a measured finished ramp section. Determine cross-sections and portal extents before implementation.",
+    "Operator photographs inspected here show the northern facade and garage interior, not a detailed ramp view. They do not establish ramp widths or wall dimensions."
+  ],
+  "nextWork": [
+    "Overlay the live OSM lines on the pinned orthophoto and DGM; measure bounded ramp widths and upper/ramp cross-sections.",
+    "Reconstruct exterior ramp surfaces, retaining sides and visible entry portal only; preserve underground/interior scope exclusions.",
+    "Check the existing east view plus new ramp walking/flying views, actual gravity and edit preservation before release."
+  ],
+  "implemented": false
+}

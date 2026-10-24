@@ -287,3 +287,16 @@ The exact dev.16 artifact is installed in the separate preview. The updater veri
 
 
 A read-only [Galileo ground diagnosis](photos/galileo-ground-diagnosis.json) confirms a western pit at MC `(67,-59)` in both the encoded terrain and raw DGM, independent of TNT. The source raster is about 472.84 m DHHN2016 there, versus 475.03–475.10 m at four controls 5 m away. The pinned orthophoto shows paved frontage, and the landscape plan shows a continuous western route. This supports a bounded reconstruction study, not flattening the whole site. Source acquisition dates and exact finished levels remain unresolved. The real northern courtyard and eastern access ramps must be preserved. No terrain has changed in this diagnosis; the installed/released dev.16 artifact remains intact.
+
+
+## Galileo western frontage grading checkpoint
+
+Three conspicuous pits on the paved western frontage are now repaired within two explicitly bounded grade patches (about 294 m² including blend collars). The plane fits use surrounding pinned DGM samples; the pinned orthophoto and SLAM landscape plan support a continuous paved route. Finished levels are inferred, not newly surveyed. [Source and controls](galileo-frontage-grade.json).
+
+Only `ground-698200-5349200.ect` changes. The other 98 render meshes, textures, northern sunken courtyard, eastern ramps and guide entries outside the patches remain unchanged. The largest height correction is 3.326 m; 252 DGM grid centres receive frontage grading. Independent validation checks every changed vertex against the allowed boundary and all 359,319 source sample centres against DGM plus the recorded grades. Collision migration advances to v21; renderer classes and shaders remain byte-identical to dev.16.
+
+The exact dev.17 candidate passes 49 fresh native views, 40 geometry/gameplay checks, eight courtyard gravity controls, three new frontage gravity controls and both 49-stage lighting/reflection routes. The player lands at Y=65 over all three former pits. Both focused before/after views and every full route image have been reviewed. [Evidence](galileo-grade-development-validation.json); [before](../../docs/screenshots/campus-galileo-grade-before.jpg); [after](../../docs/screenshots/campus-galileo-grade-after.jpg). Earlier reflection movement/night/reload/disconnect checks remain evidence for dev.16, not fresh functional runs of this candidate.
+
+The goal stays active. Bright vehicle/shadow colour patches remain baked into the repaired paving. The next geometry target is the eastern Galileo access: [source study](photos/galileo-east-ramp-reference.json) pins two sloping mapped driveways, a wall and official site/operator references. Raw DGM profiles drop several metres there; these are real access ramps and must not be flattened. Resolve widths, cross-sections and retaining faces before rebuilding the exterior ramps. Exact facade openings, courtyard landscaping, Siemensbau and coarse neighbouring structures also remain unfinished.
+
+The exact dev.17 artifact is installed in the separate preview. All 121 preview-save files and four settings files are unchanged, dev.16 is retained for rollback, all 121 original-instance save files are unchanged, and the original campus world matches all 46 files in its backup.

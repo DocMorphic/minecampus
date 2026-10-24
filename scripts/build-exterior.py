@@ -168,6 +168,12 @@ def photo_uv(p):return np.column_stack(((p[:,0]-BOUNDS[0])/(BOUNDS[2]-BOUNDS[0])
 metadata={'walls':[],'boundsUtm':BOUNDS,'origin':ORIGIN,'verticalDatumNote':'Official GCG2016 grid (BKG / PROJ CDN), bilinear interpolation; DHHN2016 physical height plus geoid undulation gives ellipsoid height.','buildings':[],'tiles':[],'attribution':spec['attribution']+' (CC BY 4.0); façade material: Minecampus reconstruction'}
 metadata['siteGrading']={'building':'DEBY_LOD2_108698313','footprintUtm':list(cos_foot.exterior.coords),'heightDHHN2016':cos_grade,'innerMetres':4,'outerMetres':8,'excludedNeighbourFootprintsUtm':[list(p.exterior.coords)for p in cos_neighbours],'neighbourBufferMetres':1,'source':'https://nav.tum.de/building/cos','note':'Approximate finished-site grading inferred from the current photo and survey base; replaces obsolete construction mounds, blends to DGM beyond 4m, leaves it unchanged beyond 8m except for the explicitly documented forecourt apron; neighbouring buildings are excluded.'}
 metadata['siteGrading']['apron']={'footprintUtm':list(apron_foot.exterior.coords),'originUtm':apron_origin.tolist(),'outwardUtm':apron_outward.tolist(),'baseHeightDHHN2016':cos_grade,'slope':apron_slope,'blendMetres':apron_spec['blendMetres'],'drivewaySamplesUtm':drive_xy.tolist(),'drivewayHeightsDHHN2016':drive_h.tolist(),'note':apron_spec['qualification']}
+from exterior_terrain import BoundedGradeElevation
+frontage_source=ROOT/'minecraft/exterior/galileo-frontage-grade.json'
+frontage_spec=json.loads(frontage_source.read_text())
+frontage_excluded=unary_union([Polygon(r[0][:,:2],[h[:,:2] for h in r[1:]]).buffer(0) for _,surfaces in buildings for kind,r in surfaces if kind=='GroundSurface']).buffer(.5)
+elevation=BoundedGradeElevation(elevation,frontage_spec['patches'],frontage_excluded)
+metadata['frontageGrading']={'sourceFile':'galileo-frontage-grade.json','sourceSha256':hashlib.sha256(frontage_source.read_bytes()).hexdigest(),'patches':frontage_spec['patches'],'buildingExclusionMetres':.5,'qualification':frontage_spec['qualification']}
 # A compact DEM grid also guides runtime removal of the noisy source ground.
 guideXY=np.array([(e,n)for n in range(BOUNDS[1],BOUNDS[3]+1,2)for e in range(BOUNDS[0],BOUNDS[2]+1,2)])
 metadata['terrainGuide']={'width':301,'height':301,'points':mc(np.column_stack((guideXY,elevation.sample(guideXY)))).tolist()}

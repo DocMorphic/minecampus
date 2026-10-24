@@ -27,6 +27,8 @@ court=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoCou
 assert hashlib.sha256((SOURCE/court['sourceFile']).read_bytes()).hexdigest()==court['sourceSha256']
 facade=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoFacade']
 assert hashlib.sha256((SOURCE/facade['sourceFile']).read_bytes()).hexdigest()==facade['sourceSha256']
+frontage=json.loads((DATA/'manifest.json').read_text())['frontageGrading']
+assert hashlib.sha256((SOURCE/frontage['sourceFile']).read_bytes()).hexdigest()==frontage['sourceSha256']
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -58,6 +60,11 @@ compiled=work/'mod/build/libs/realworldmc-1.0.3.jar'
 if not compiled.is_file():raise SystemExit('Expected remapped release JAR missing.')
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
+
+Galileo western frontage: three small source-terrain depressions replaced by
+two bounded paving grades inferred from surrounding BVV DGM1 controls.
+BVV DOP20 and SLAM landscape references support continuous paving; fitted
+levels are a reconstruction, not a new survey. See galileo-frontage-grade.json.
 
 Galileo north sunken courtyard: OSM ways 579584070, 983606071 and 983606072
 (ODbL 1.0), BVV DGM1 floor/landing heights (CC BY 4.0). Wall thickness,
@@ -233,6 +240,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/grs-courtyard-reference.json',(SOURCE/'photos/grs-courtyard-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-north-court-reference.json',(SOURCE/'photos/galileo-north-court-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-facade-reference.json',(SOURCE/'photos/galileo-facade-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/galileo-frontage-grade.json',(SOURCE/'galileo-frontage-grade.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site.json',(SOURCE/'cos-site.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site-surfaces.geojson',(DATA/'cos-site-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/grs-courtyard-surfaces.geojson',(DATA/'grs-courtyard-surfaces.geojson').read_bytes())

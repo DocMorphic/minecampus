@@ -1,0 +1,517 @@
+{
+  "date": "2026-10-24",
+  "qualification": "Inferred finished paving grade over three small DGM depressions. Plane fits use the surrounding pinned DGM; DOP20 and SLAM landscape references support continuous paving, but neither supplies measured finished levels. Not a new survey. No interiors or real northern/eastern access depressions are changed.",
+  "diagnosis": "photos/galileo-ground-diagnosis.json",
+  "patches": [
+    {
+      "name": "west-central-paving",
+      "footprintUtm": [
+        [
+          698283.0,
+          5349253.0
+        ],
+        [
+          698283.0,
+          5349269.0
+        ],
+        [
+          698274.0,
+          5349269.0
+        ],
+        [
+          698274.0,
+          5349253.0
+        ],
+        [
+          698283.0,
+          5349253.0
+        ]
+      ],
+      "originUtm": [
+        698278.5,
+        5349261.0
+      ],
+      "planeCoefficients": [
+        -0.007093607856913661,
+        0.00042008530665769967,
+        475.1079942845857
+      ],
+      "blendMetres": 1.5,
+      "controls": [
+        {
+          "utm": [
+            698285.0,
+            5349251.0
+          ],
+          "heightDHHN2016": 475.0842742919922,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698283.0,
+            5349251.0
+          ],
+          "heightDHHN2016": 475.0592727661133,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698281.0,
+            5349251.0
+          ],
+          "heightDHHN2016": 475.04227447509766,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698279.0,
+            5349251.0
+          ],
+          "heightDHHN2016": 475.0867691040039,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698277.0,
+            5349251.0
+          ],
+          "heightDHHN2016": 475.12352752685547,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698275.0,
+            5349251.0
+          ],
+          "heightDHHN2016": 475.1637725830078,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698273.0,
+            5349251.0
+          ],
+          "heightDHHN2016": 475.14476776123047,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349252.0
+          ],
+          "heightDHHN2016": 475.1152648925781,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349254.0
+          ],
+          "heightDHHN2016": 475.11827850341797,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349256.0
+          ],
+          "heightDHHN2016": 475.13677978515625,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349258.0
+          ],
+          "heightDHHN2016": 475.1585159301758,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349260.0
+          ],
+          "heightDHHN2016": 475.1665267944336,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349262.0
+          ],
+          "heightDHHN2016": 475.18602752685547,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349264.0
+          ],
+          "heightDHHN2016": 475.17102813720703,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349266.0
+          ],
+          "heightDHHN2016": 475.15277099609375,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349268.0
+          ],
+          "heightDHHN2016": 475.165771484375,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698272.0,
+            5349270.0
+          ],
+          "heightDHHN2016": 475.15077209472656,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698273.0,
+            5349271.0
+          ],
+          "heightDHHN2016": 475.1582717895508,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698275.0,
+            5349271.0
+          ],
+          "heightDHHN2016": 475.13726806640625,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698277.0,
+            5349271.0
+          ],
+          "heightDHHN2016": 475.12427520751953,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698279.0,
+            5349271.0
+          ],
+          "heightDHHN2016": 475.10852813720703,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698281.0,
+            5349271.0
+          ],
+          "heightDHHN2016": 475.0910186767578,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698283.0,
+            5349271.0
+          ],
+          "heightDHHN2016": 475.0802688598633,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349271.0
+          ],
+          "heightDHHN2016": 475.0532760620117,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349269.0
+          ],
+          "heightDHHN2016": 475.05577087402344,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349267.0
+          ],
+          "heightDHHN2016": 475.05152893066406,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349265.0
+          ],
+          "heightDHHN2016": 475.05977630615234,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349263.0
+          ],
+          "heightDHHN2016": 475.0530242919922,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349261.0
+          ],
+          "heightDHHN2016": 475.06602478027344,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349259.0
+          ],
+          "heightDHHN2016": 475.0605239868164,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349257.0
+          ],
+          "heightDHHN2016": 475.07252502441406,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349255.0
+          ],
+          "heightDHHN2016": 475.0805206298828,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349253.0
+          ],
+          "heightDHHN2016": 475.0812683105469,
+          "usedForPlane": true
+        }
+      ],
+      "fitResidualMaxMetres": 0.0437849367791614
+    },
+    {
+      "name": "west-north-paving",
+      "footprintUtm": [
+        [
+          698286.0,
+          5349276.0
+        ],
+        [
+          698286.0,
+          5349283.0
+        ],
+        [
+          698282.0,
+          5349283.0
+        ],
+        [
+          698282.0,
+          5349276.0
+        ],
+        [
+          698286.0,
+          5349276.0
+        ]
+      ],
+      "originUtm": [
+        698284.0,
+        5349279.5
+      ],
+      "planeCoefficients": [
+        -0.046096659843235833,
+        0.026084922183439017,
+        475.2598080258368
+      ],
+      "blendMetres": 1.5,
+      "controls": [
+        {
+          "utm": [
+            698288.0,
+            5349274.0
+          ],
+          "heightDHHN2016": 475.09627532958984,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698286.0,
+            5349274.0
+          ],
+          "heightDHHN2016": 475.0635223388672,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698284.0,
+            5349274.0
+          ],
+          "heightDHHN2016": 475.01126861572266,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698282.0,
+            5349274.0
+          ],
+          "heightDHHN2016": 475.07176971435547,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698280.0,
+            5349274.0
+          ],
+          "heightDHHN2016": 475.2097625732422,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698280.0,
+            5349276.0
+          ],
+          "heightDHHN2016": 475.3300247192383,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698280.0,
+            5349278.0
+          ],
+          "heightDHHN2016": 475.4312744140625,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698280.0,
+            5349280.0
+          ],
+          "heightDHHN2016": 475.44727325439453,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698280.0,
+            5349282.0
+          ],
+          "heightDHHN2016": 475.54876708984375,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698280.0,
+            5349284.0
+          ],
+          "heightDHHN2016": 475.6852722167969,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698281.0,
+            5349285.0
+          ],
+          "heightDHHN2016": 475.6755142211914,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698283.0,
+            5349285.0
+          ],
+          "heightDHHN2016": 475.42677307128906,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698285.0,
+            5349285.0
+          ],
+          "heightDHHN2016": 475.0422668457031,
+          "usedForPlane": false
+        },
+        {
+          "utm": [
+            698287.0,
+            5349285.0
+          ],
+          "heightDHHN2016": 475.07877349853516,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698288.0,
+            5349284.0
+          ],
+          "heightDHHN2016": 475.09777069091797,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698288.0,
+            5349282.0
+          ],
+          "heightDHHN2016": 475.1045227050781,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698288.0,
+            5349280.0
+          ],
+          "heightDHHN2016": 475.0972671508789,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698288.0,
+            5349278.0
+          ],
+          "heightDHHN2016": 475.0957794189453,
+          "usedForPlane": true
+        },
+        {
+          "utm": [
+            698288.0,
+            5349276.0
+          ],
+          "heightDHHN2016": 475.09452056884766,
+          "usedForPlane": true
+        }
+      ],
+      "fitResidualMaxMetres": 0.18621161978080636
+    }
+  ],
+  "nativeControlsMC": [
+    [
+      66.5,
+      -58.5
+    ],
+    [
+      65.5,
+      -49.5
+    ],
+    [
+      72.5,
+      -73.5
+    ]
+  ],
+  "references": [
+    "https://slam.green/projekt/galileo-neue-mitte-am-hochschulcampus-garching-muenchen/"
+  ],
+  "sourcesFile": "sources.json"
+}

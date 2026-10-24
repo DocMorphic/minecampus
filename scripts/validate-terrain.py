@@ -24,10 +24,15 @@ def expected(x,y,z):
  offset=(gv[j,i]*(1-fx)+gv[j,i+1]*fx)*(1-fy)+(gv[j+1,i]*(1-fx)+gv[j+1,i+1]*fx)*fy
  xx,yy,zz=toEcef.transform(x,y,z+offset);p=np.column_stack((xx,yy,zz))-zero
  return np.column_stack((p@east,p@up+64,p@south))
-seams={};maxSeam=0;errors=[];expectedPoints=[];sampleXY=[];bankHeights=[];cosHeights=[];plantingHeights=[];apronHeights=[];gradedCount=0;apronCount=0
+seams={};maxSeam=0;errors=[];expectedPoints=[];sampleXY=[];bankHeights=[];cosHeights=[];plantingHeights=[];apronHeights=[];gradedCount=0;apronCount=0;frontageCount=0
 grade=m.get('siteGrading')
 if grade:
  footprint=Polygon(grade['footprintUtm']);neighbours=unary_union([Polygon(p)for p in grade['excludedNeighbourFootprintsUtm']]).buffer(grade['neighbourBufferMetres'])
+frontage=m.get('frontageGrading')
+if frontage:
+ frontage_excluded=unary_union([Polygon(np.asarray(q)[:,[0,2]]).buffer(0) for b in m['buildings'] for q in b['grounds']]).buffer(frontage['buildingExclusionMetres'])
+ from shapely import prepare
+ prepare(frontage_excluded)
 for spec in m['tiles']:
  if spec['kind']!='ground':continue
  data=(out/spec['file']).read_bytes();parts,*anchor=struct.unpack_from('<i3d',data,4);assert parts==1
@@ -54,7 +59,7 @@ for spec in m['tiles']:
  if clipped:interior&=(np.abs(np.mod(x,1)-.5)<1e-6)&(np.abs(np.mod(y,1)-.5)<1e-6)
  x=x[interior];y=y[interior];actual=actual[interior]
  np.testing.assert_allclose(np.mod(x,1),.5,atol=1e-6);np.testing.assert_allclose(np.mod(y,1),.5,atol=1e-6)
- col,row=(~tr)*(x,y);height=dgm[row.astype(int),col.astype(int)].astype(float)
+ col,row=(~tr)*(x,y);height=dgm[row.astype(int),col.astype(int)].astype(float);graded=np.zeros(len(height),dtype=bool)
  if grade:
   locations=points(x,y);d=distance(locations,footprint)
   t=np.clip((d-grade['innerMetres'])/(grade['outerMetres']-grade['innerMetres']),0,1);weight=1-t*t*(3-2*t)
@@ -65,10 +70,19 @@ for spec in m['tiles']:
    target=apron['baseHeightDHHN2016']+apron['slope']*np.maximum(0,(np.column_stack((x,y))-apron['originUtm'])@np.array(apron['outwardUtm']))
    height+=w*(target-height);apronCount+=int(np.count_nonzero(w));graded|=w>0
   gradedCount+=int(np.count_nonzero(graded))
+ if frontage:
+  frontage_changed=np.zeros(len(height),dtype=bool)
+  # Use the recorded UTM patch geometry; the independent scope validator also
+  # compares every unchanged encoded vertex against the preceding artifact.
+  for patch in frontage['patches']:
+   locations=points(x,y);poly=Polygon(patch['footprintUtm']);t=np.clip(distance(locations,poly)/patch['blendMetres'],0,1);w=1-t*t*(3-2*t)
+   w[contains_xy(frontage_excluded,actual[:,0],actual[:,2])]=0;frontage_changed|=w>0
+   xy=np.column_stack((x,y))-patch['originUtm'];coef=patch['planeCoefficients'];target=xy@coef[:2]+coef[2];height+=w*(target-height)
+  frontageCount+=int(np.count_nonzero(frontage_changed));gradedCount+=int(np.count_nonzero(frontage_changed&~graded))
  want=expected(x,y,height)
  errors.extend(np.linalg.norm(actual-want,axis=1));expectedPoints.append(want);sampleXY.append(np.column_stack((x,y)))
 assert 359000<=len(errors)<=360000 and max(errors)<.001 and maxSeam<.00001,(len(errors),max(errors),maxSeam)
-result={'status':'PASS: encoded terrain matches DGM1 plus explicit site grading, with adjoining tile seams preserved','sourceSampleCount':len(errors),'unalteredDgmSamples':len(errors)-gradedCount,'inferredSiteGradingSamples':gradedCount,'apronGradingSamples':apronCount,'maximumPositionErrorMetres':max(errors),'maximumTileSeamErrorMetres':maxSeam,'note':'Source representation accuracy only; not a claim of millimetre real-world survey accuracy. Explicit site grading is approximate finished terrain, not measured DGM.'}
+result={'status':'PASS: encoded terrain matches DGM1 plus explicit site grading, with adjoining tile seams preserved','sourceSampleCount':len(errors),'unalteredDgmSamples':len(errors)-gradedCount,'inferredSiteGradingSamples':gradedCount,'apronGradingSamples':apronCount,'galileoFrontageGradingSamples':frontageCount,'maximumPositionErrorMetres':max(errors),'maximumTileSeamErrorMetres':maxSeam,'note':'Source representation accuracy only; not a claim of millimetre real-world survey accuracy. Explicit site grading is approximate finished terrain, not measured DGM.'}
 assert len(bankHeights)==1 and abs(bankHeights[0]-62.378458)<.00001,bankHeights
 result['nativeBankProbe']={'positionMC':[14.5,-228.5],'meshHeight':bankHeights[0],'expectedProxyTop':round(bankHeights[0]),'toleranceMetres':.51}
 if grade:

@@ -82,3 +82,29 @@ class PlanarApronElevation:
    result[ids]+=weight*(target-result[ids])
   return result
  def __call__(self,e,n):return float(self.sample([[e,n]])[0])
+
+class BoundedGradeElevation:
+ """Explicit inferred paving planes, blended only within recorded patch collars."""
+ def __init__(self,source,patches,excluded):
+  from shapely.geometry import Polygon
+  self.source,self.excluded=source,excluded
+  self.patches=[]
+  for patch in patches:
+   polygon=Polygon(patch['footprintUtm']);blend=float(patch['blendMetres'])
+   plane=np.asarray(patch['planeCoefficients'],dtype=float)
+   if not polygon.is_valid or blend<=0 or np.linalg.norm(plane[:2])>.08:
+    raise ValueError('Invalid bounded paving grade')
+   self.patches.append((polygon,blend,np.asarray(patch['originUtm']),plane))
+ def sample(self,points):
+  from shapely import points as make_points,distance,intersects
+  xy=np.asarray(points,dtype=float);result=self.source.sample(xy)
+  for polygon,blend,origin,plane in self.patches:
+   lo,bot,hi,top=polygon.bounds
+   ids=np.flatnonzero((xy[:,0]>lo-blend)&(xy[:,0]<hi+blend)&(xy[:,1]>bot-blend)&(xy[:,1]<top+blend))
+   if not len(ids):continue
+   p=make_points(xy[ids]);t=np.clip(distance(p,polygon)/blend,0,1);weight=1-t*t*(3-2*t)
+   weight[intersects(p,self.excluded)]=0
+   target=(xy[ids]-origin)@plane[:2]+plane[2]
+   result[ids]+=weight*(target-result[ids])
+  return result
+ def __call__(self,e,n):return float(self.sample([[e,n]])[0])
