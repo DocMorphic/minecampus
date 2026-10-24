@@ -1,0 +1,440 @@
+{
+  "status": "Isolated prototype verified for the listed stationary controls; not installed or production-ready",
+  "date": "2026-10-24",
+  "baseArtifactSha256": "c7fdbce22d557420cae0a07dfd502fc53362d0319f8174928ca9f6349b4ea6fd",
+  "installedPreviewArtifactSha256": "c7fdbce22d557420cae0a07dfd502fc53362d0319f8174928ca9f6349b4ea6fd",
+  "installedPreviewChanged": false,
+  "scope": "One nearby Galileo pane plane; callback prototype; map meshes only. Stationary viewpoint changes, night and reload tested. Continuous movement, gameplay, damage, provider coverage and production integration remain unverified.",
+  "hardware": "Apple M1 Max, OpenGL 4.1; Minecraft framebuffer 2560 x 1440; reflection target 1024 x 576",
+  "comparison": {
+    "offOnOffMedianFps": [
+      85.5,
+      68.0,
+      86.5
+    ],
+    "method": "120 ticks warmup then six one-second FPS samples per stationary phase; assertions run on every reflection update; not a general performance guarantee"
+  },
+  "phases": [
+    {
+      "phase": "west-off",
+      "dayTime": 6000,
+      "fpsSamples": [
+        85,
+        86,
+        87,
+        86,
+        85,
+        85
+      ],
+      "medianFps": 85.5,
+      "reflectionUpdates": 0,
+      "stateChecks": 0,
+      "drawCalls": 0,
+      "lastSubmissionMilliseconds": 0.0,
+      "availableTextureUnits": 0,
+      "gpuUniforms": {
+        "PlanarStrength": 0.0,
+        "MaterialDetail": 0.0,
+        "CampusShadowStrength": 0.28,
+        "PlanarTexture": 12.0
+      },
+      "reflectionTextureBinding": 0,
+      "glError": 0
+    },
+    {
+      "phase": "west-on",
+      "dayTime": 6000,
+      "fpsSamples": [
+        69,
+        68,
+        68,
+        68,
+        69,
+        68
+      ],
+      "medianFps": 68.0,
+      "reflectionUpdates": 784,
+      "stateChecks": 784,
+      "drawCalls": 600,
+      "lastSubmissionMilliseconds": 2.199375,
+      "availableTextureUnits": 16,
+      "planeTile": 1000000101,
+      "plane": [
+        0.983533,
+        8.332862e-07,
+        0.18072855,
+        -63.37987
+      ],
+      "gpuUniforms": {
+        "PlanarStrength": 1.0,
+        "MaterialDetail": 0.0,
+        "CampusShadowStrength": 0.28,
+        "PlanarTexture": 12.0
+      },
+      "reflectionTextureBinding": 3584,
+      "glError": 0
+    },
+    {
+      "phase": "west-off-again",
+      "dayTime": 6000,
+      "fpsSamples": [
+        87,
+        87,
+        87,
+        86,
+        85,
+        86
+      ],
+      "medianFps": 86.5,
+      "reflectionUpdates": 785,
+      "stateChecks": 785,
+      "drawCalls": 600,
+      "lastSubmissionMilliseconds": 2.189417,
+      "availableTextureUnits": 16,
+      "planeTile": 1000000101,
+      "plane": [
+        0.983533,
+        8.332862e-07,
+        0.18072855,
+        -63.37987
+      ],
+      "gpuUniforms": {
+        "PlanarStrength": 0.0,
+        "MaterialDetail": 0.0,
+        "CampusShadowStrength": 0.28,
+        "PlanarTexture": 12.0
+      },
+      "reflectionTextureBinding": 3584,
+      "glError": 0
+    },
+    {
+      "phase": "southwest-on",
+      "dayTime": 6000,
+      "fpsSamples": [
+        67,
+        65,
+        66,
+        67,
+        67,
+        66
+      ],
+      "medianFps": 66.5,
+      "reflectionUpdates": 2327,
+      "stateChecks": 2327,
+      "drawCalls": 430,
+      "lastSubmissionMilliseconds": 1.502709,
+      "availableTextureUnits": 16,
+      "planeTile": 1000000100,
+      "plane": [
+        0.9835179,
+        0.0,
+        0.1808109,
+        -63.37272
+      ],
+      "gpuUniforms": {
+        "PlanarStrength": 1.0,
+        "MaterialDetail": 0.0,
+        "CampusShadowStrength": 0.28,
+        "PlanarTexture": 12.0
+      },
+      "reflectionTextureBinding": 3584,
+      "glError": 0
+    },
+    {
+      "phase": "east-on",
+      "dayTime": 6000,
+      "fpsSamples": [
+        92,
+        92,
+        93,
+        92,
+        90,
+        92
+      ],
+      "medianFps": 92.0,
+      "reflectionUpdates": 3612,
+      "stateChecks": 3612,
+      "drawCalls": 657,
+      "lastSubmissionMilliseconds": 2.285208,
+      "availableTextureUnits": 16,
+      "planeTile": 1000000101,
+      "plane": [
+        0.9834414,
+        0.0,
+        0.18122616,
+        -105.68057
+      ],
+      "gpuUniforms": {
+        "PlanarStrength": 1.0,
+        "MaterialDetail": 0.0,
+        "CampusShadowStrength": 0.28,
+        "PlanarTexture": 12.0
+      },
+      "reflectionTextureBinding": 3584,
+      "glError": 0
+    },
+    {
+      "phase": "north-on",
+      "dayTime": 6000,
+      "fpsSamples": [
+        83,
+        82,
+        79,
+        78,
+        78,
+        77
+      ],
+      "medianFps": 78.5,
+      "reflectionUpdates": 4772,
+      "stateChecks": 4772,
+      "drawCalls": 854,
+      "lastSubmissionMilliseconds": 3.321583,
+      "availableTextureUnits": 16,
+      "planeTile": 1000000101,
+      "plane": [
+        -0.18125997,
+        -1.2583116e-06,
+        0.98343515,
+        159.56155
+      ],
+      "gpuUniforms": {
+        "PlanarStrength": 1.0,
+        "MaterialDetail": 0.0,
+        "CampusShadowStrength": 0.28,
+        "PlanarTexture": 12.0
+      },
+      "reflectionTextureBinding": 3584,
+      "glError": 0
+    },
+    {
+      "phase": "north-night",
+      "dayTime": 18000,
+      "fpsSamples": [
+        78,
+        79,
+        78,
+        81,
+        79,
+        78
+      ],
+      "medianFps": 78.5,
+      "reflectionUpdates": 5679,
+      "stateChecks": 5679,
+      "drawCalls": 854,
+      "lastSubmissionMilliseconds": 3.429708,
+      "availableTextureUnits": 16,
+      "planeTile": 1000000101,
+      "plane": [
+        -0.18125997,
+        -1.2583116e-06,
+        0.98343515,
+        159.56155
+      ],
+      "gpuUniforms": {
+        "PlanarStrength": 1.0,
+        "MaterialDetail": 0.0,
+        "CampusShadowStrength": 0.0,
+        "PlanarTexture": 12.0
+      },
+      "reflectionTextureBinding": 3584,
+      "glError": 0
+    },
+    {
+      "phase": "north-reload-night",
+      "dayTime": 18000,
+      "fpsSamples": [
+        80,
+        80,
+        80,
+        80,
+        81,
+        78
+      ],
+      "medianFps": 80.0,
+      "reflectionUpdates": 6871,
+      "stateChecks": 6871,
+      "drawCalls": 854,
+      "lastSubmissionMilliseconds": 3.340333,
+      "availableTextureUnits": 16,
+      "planeTile": 1000000101,
+      "plane": [
+        -0.18125997,
+        -1.2583116e-06,
+        0.98343515,
+        159.56155
+      ],
+      "gpuUniforms": {
+        "PlanarStrength": 1.0,
+        "MaterialDetail": 0.0,
+        "CampusShadowStrength": 0.0,
+        "PlanarTexture": 12.0
+      },
+      "reflectionTextureBinding": 60,
+      "glError": 0
+    },
+    {
+      "phase": "west-return-day",
+      "dayTime": 6000,
+      "fpsSamples": [
+        64,
+        62,
+        66,
+        68,
+        67,
+        68
+      ],
+      "medianFps": 66.5,
+      "reflectionUpdates": 7633,
+      "stateChecks": 7633,
+      "drawCalls": 600,
+      "lastSubmissionMilliseconds": 2.225625,
+      "availableTextureUnits": 16,
+      "planeTile": 1000000101,
+      "plane": [
+        0.983533,
+        8.332862e-07,
+        0.18072855,
+        -63.37987
+      ],
+      "gpuUniforms": {
+        "PlanarStrength": 1.0,
+        "MaterialDetail": 0.0,
+        "CampusShadowStrength": 0.28,
+        "PlanarTexture": 12.0
+      },
+      "reflectionTextureBinding": 60,
+      "glError": 0
+    }
+  ],
+  "pixelControls": {
+    "selectedPanePixels": {
+      "count": 1030441,
+      "reflectionOnMeanAbsoluteDifference": 63.22446311821832,
+      "offAgainMeanAbsoluteDifference": 0.0,
+      "changedOver12Fraction": 0.9560945265182578
+    },
+    "neutralMaterialControl": {
+      "count": 1059269,
+      "reflectionOnMeanAbsoluteDifference": 0.0,
+      "offAgainMeanAbsoluteDifference": 0.0,
+      "changedOver12Fraction": 0.0
+    }
+  },
+  "restorationControls": {
+    "off-restoration": {
+      "changedPixels": 0,
+      "maxChannelDifference": 0,
+      "meanAbsoluteChannelDifference": 0.0
+    },
+    "night-reload": {
+      "changedPixels": 289,
+      "maxChannelDifference": 6,
+      "meanAbsoluteChannelDifference": 5.8932834201388886e-05
+    },
+    "west-return": {
+      "changedPixels": 2468,
+      "maxChannelDifference": 52,
+      "meanAbsoluteChannelDifference": 0.004647759331597222
+    }
+  },
+  "pixelControlMethod": "Native frames compared without rescaling. Selected-pane mask derived from a separate magenta diagnostic, 1,030,441 pixels. Neutral-material control excludes attribution and selects 1,059,269 grey pixels. Exact off/off restoration and unchanged material control; small differences after reload/return are reported rather than rounded to zero.",
+  "visualReview": {
+    "reviewedPhases": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "findings": [
+      "The west, southwest, east and north glass reflects different actual campus meshes.",
+      "Reflected sky is smooth after separating reflected radiance from surface shadow.",
+      "Night reflection darkens with the level; resource reload and return to daylight retain the effect.",
+      "Reflection edges show aliasing and occasional frame/self-reflection artifacts; facade surface-shadow noise remains outside the reflected radiance.",
+      "East-side terrain distortion and coarse neighbouring structures remain conspicuous."
+    ],
+    "overallRealismGoalComplete": false
+  },
+  "nativeEvidenceSha256": {
+    "campus-reflection-benchmark.json": "35a5ac7a908ad6e2b91477d9d0205bf2e63a92f69b1feae85bf51af4f6a9036f",
+    "campus-reflection-phase-0.json": "ad26e7f8d71d951d154cbc47ca110b71fd0ed69dc348db4ff7b1a5621364671b",
+    "campus-reflection-phase-0.png": "4d5cbf32b458621ff5bebafb934ae19d65bcd45d362f974df2aae604d24c4b2a",
+    "campus-reflection-phase-1.json": "d3367393848b1e921491d869b614862756021fab952b18f8b5bf4393ec525524",
+    "campus-reflection-phase-1.png": "bfdea7a298a863651784b8c03cc18b0fb0e36934aac82f438abfb73418a84d4f",
+    "campus-reflection-phase-2.json": "619784c35b08fbc48d0e5b33cf785588245949148fd302bd7bbe7a164022b161",
+    "campus-reflection-phase-2.png": "4d5cbf32b458621ff5bebafb934ae19d65bcd45d362f974df2aae604d24c4b2a",
+    "campus-reflection-phase-3.json": "a922bb1433f5d0daa81b9ae0982136a0d57cf6b3a85d7423d95789f3ae2a4841",
+    "campus-reflection-phase-3.png": "b91f0d0d5c2d2ad7204f0afec64c6d4bd835ad5e9136dab1569c245ad6891c37",
+    "campus-reflection-phase-4.json": "70aa544182f15dc104fce4a108f4ee8a0543b7b6079cf998450c1c08a013d9f7",
+    "campus-reflection-phase-4.png": "8fdee1640a9de5d5d1a0bbace6092a45b57bd7a7152d05687fde58f1dcb1b7f8",
+    "campus-reflection-phase-5.json": "b1cd6480212055383ba2220fb30e229e92612be3f6acd2d89a0870c9b0552619",
+    "campus-reflection-phase-5.png": "2f5d048d48d1ef03e1d58bd83ab5fb9c42f847e41acb10912e9ab20084742977",
+    "campus-reflection-phase-6.json": "ab793c549908cf1b6cfc304373174eeaeef5ee20435b67cb9f64f86ccbc8ff9f",
+    "campus-reflection-phase-6.png": "c59e29157e70dc30a4a4993479306162f0d659c11bb9bf1fcf90f0042b92d2e4",
+    "campus-reflection-phase-7.json": "75d6144b8ed068c363f40e3334cb2108967a37f57923b9632c9183502158d4c0",
+    "campus-reflection-phase-7.png": "a79c7601a32242904e165c2d4bfedbfc7228d6b28823ce4d91755c9616e348d5",
+    "campus-reflection-phase-8.json": "48459e3ccad4dd3ef2892684b35bdc9404c7682f73577959fc7312ab89dec9a8",
+    "campus-reflection-phase-8.png": "f5647ad6d6d4b02299e8a689320cdb77d61aa2286904cb2f4a88e7b80ffc23ca",
+    "campus-reflection-pixel-analysis.json": "331cba86afe8809b43161b45132d9b14ab231e67c2f1ac7ef3f477c89486e272",
+    "campus-reflection-restoration-analysis.json": "ab133b9201daf1c58e3a4fc60ec5493192f11394da58a5a3b509cd02a6149ec2",
+    "campus-reflection-target-1.png": "b1f97f9a29494dc7176ea24e810fd420a437c3efac2cfb6ffbf06dc1e9be1a05",
+    "campus-reflection-target-3.png": "4af1b9cae54ce53a129ba24ca6dc94f7aeb008450979ce9b27c0d87d367cfbdd",
+    "campus-reflection-target-4.png": "e5fdadf6cc81b87fff975e1722ae3dcf27f587c22819bae4b2193504a3c1c93a",
+    "campus-reflection-target-5.png": "8ceed1d020c34bb4cda91ce5473f663f61ffb0cd3f03e518e5b08f47786372e0",
+    "campus-reflection-target-6.png": "615533ceb89cebaf2279f9636fed689e13a34bce357650c02b61e529fa9b6533",
+    "campus-reflection-target-7.png": "cadbb25ee6dcedbe92e52666759e490bfed6d198ea0c63ea1c4ce1aec15ef7e5",
+    "campus-reflection-target-8.png": "628ffe00a8684adfd411b40ea9dcf7544c7834411320072863ca8cd5f46c1dd2"
+  },
+  "runtimeInputsSha256": {
+    "build.gradle": "13542da03c069b6542ff7f390ff5ef9cdac42968f764e98a907df1247c20a740",
+    "pack/assets/realworldmc/shaders/core/campus_ground.fsh": "fffe2102aefc17ef138f81d74a3cd1288d593ba7ab3e4268470b5f40c6a9b969",
+    "pack/assets/realworldmc/shaders/core/campus_ground.json": "eac3579513aab2cd34b3d55e3e1499147a6d2e08d5c986c54e6389b2c36ee844",
+    "pack/pack.mcmeta": "6d494169c3d59827d3a0b226f0389fa1b8487bc31dee4647af0624e704460e37",
+    "src/main/java/dev/realworldmc/client/CampusCrosspathChecks.java": "758672ecbfc4add691912248b272571e21eb9ef3bc83c51a7e966e60fcd852df",
+    "src/main/java/dev/realworldmc/client/CampusExteriorCheck.java": "9bb6d27192d52577f7522e7c7b199996770e0ff729c14a59a9b316288691365f",
+    "src/main/java/dev/realworldmc/client/CampusGalileoCourtChecks.java": "9677cb318a6a433420ce7ff9170a5eedbabcb60f1d6a1c7b864ff23e13aa66ad",
+    "src/main/java/dev/realworldmc/client/CampusGalileoFacadeChecks.java": "369e4663551d98f123b70feb6be182b5bd42b71720c4ac704c698bb5abf5b19b",
+    "src/main/java/dev/realworldmc/client/CampusMaterialBenchmark.java": "3f3db1de09256fe1889714600fcc669ffeb5374b586ad91a79ca7f8d8389726b",
+    "src/main/java/dev/realworldmc/client/CampusPromenadeChecks.java": "37849cb9c75d4ee4c038ad4de1ffed2544b190c84ffa5bffb1e63c6908708bda",
+    "src/main/java/dev/realworldmc/client/CampusReflectionBenchmark.java": "b69eecf704e89d6b50374e0cdbfda9cda77f7cb0df59a28616d59a2993cfa086",
+    "src/main/java/dev/realworldmc/client/CampusReflectionTrial.java": "6d9f7268817316546678627b43504b1f68f2462e5545cf164dc4f9bd308a5be8",
+    "src/main/java/dev/realworldmc/client/CampusShadowChecks.java": "a2e172980a95dc6f693399d855a48967e6921c9a11cefae01a850cda14452976",
+    "src/main/java/dev/realworldmc/client/CampusShadowFunctionalCheck.java": "84c91d8dfe772d62fb71e73ca77cd0451c8bbe8ca5a0b5401c46dc4b0a3064ce",
+    "src/main/resources/assets/realworldmc/shaders/core/campus_reflection.fsh": "a01477500d5eca847a5d1cdef19735c99c9f72addabd815696d46af2b4caaabb",
+    "src/main/resources/assets/realworldmc/shaders/core/campus_reflection.json": "e389e6af78bde5826d65ee70c940f4157e55c1930862c500364beeb66d994f64",
+    "src/main/resources/assets/realworldmc/shaders/core/campus_reflection.vsh": "d0cd6f5874b68d6fb7900ebe2f9f71d5b846ccbbf3825eba3ce88c603bea3805",
+    "src/main/resources/fabric.mod.json": "505c637b6dd2e1be6b2a2d61721c9a9a7e16d9ee0ef5701528d78874a9146eb3"
+  },
+  "sourceFilesSha256": {
+    "CampusReflectionBenchmark.java": "b69eecf704e89d6b50374e0cdbfda9cda77f7cb0df59a28616d59a2993cfa086",
+    "CampusReflectionTrial.java": "6d9f7268817316546678627b43504b1f68f2462e5545cf164dc4f9bd308a5be8",
+    "README.md": "75015565454f99092ff4064f441ba5ef8af55d35ec88f50e5f4d7a9368fa46a5",
+    "campus_reflection.fsh": "a01477500d5eca847a5d1cdef19735c99c9f72addabd815696d46af2b4caaabb",
+    "campus_reflection.json": "e389e6af78bde5826d65ee70c940f4157e55c1930862c500364beeb66d994f64",
+    "campus_reflection.vsh": "d0cd6f5874b68d6fb7900ebe2f9f71d5b846ccbbf3825eba3ce88c603bea3805",
+    "reflection_receive.glsl": "6f6b04f6250650c52606e68e5ad189cf91842de2f964d23541de6507160a7904",
+    "setup.py": "4b6f211fd56722e0a0bd7fda91889a86369a349d8e802e5aff42d685b2f7b5cd"
+  },
+  "publicScreenshot": {
+    "path": "docs/screenshots/campus-galileo-reflection-experiment.jpg",
+    "sha256": "ea3546da07e4e25ea2988c059604c60c326caa44ad600ac15cc1ba2d254e870a",
+    "description": "Resized native experimental screenshot; attribution retained. Not an image of the installed preview."
+  },
+  "excludedAttempts": [
+    "Initial unbound extra-sampler run produced a target but did not display scene reflections.",
+    "A managed thirteenth sampler crashed Minecraft's twelve-unit cache in the isolated QA client; replaced with raw hardware-unit binding.",
+    "Diagnostic green/magenta shaders are not the final experiment."
+  ],
+  "remaining": [
+    "Same-frame production integration and continuous movement/plane transitions",
+    "Actual TNT/gameplay damage and complete glass destruction",
+    "World disconnect/re-entry and exhaustive graphics-state/resource lifetime checks",
+    "Provider coverage, vanilla blocks/entities and more facades",
+    "Performance and reflection edge/material refinement",
+    "Packaged full-route validation and save-preserving release installation"
+  ]
+}

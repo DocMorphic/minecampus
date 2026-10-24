@@ -1,5 +1,5 @@
 {
-  "status": "Read-only design study; no scene-reflection renderer implemented",
+  "status": "Isolated planar prototype implemented and stationary/native controls verified; not integrated into production",
   "date": "2026-10-24",
   "observedProblem": "Galileo panel geometry is clearer, but constant-colour panes with the existing sky/ground approximation do not reflect the visible campus. This remains conspicuous at walking height.",
   "localEvidence": [
@@ -16,6 +16,10 @@
     {
       "url": "https://wikis.khronos.org/opengl/Framebuffer_Objects",
       "facts": "A texture image can be attached to an offscreen framebuffer; a cube face can be selected with glFramebufferTexture2D."
+    },
+    {
+      "url": "https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html",
+      "facts": "reflection(a,b,c,d) uses a plane with unit normal; the experiment normalizes geometry-derived plane normals."
     }
   ],
   "candidateApproaches": [
@@ -37,5 +41,13 @@
     }
   ],
   "nextExperiment": "Prototype a bounded planar map-mesh reflection outside the production build inputs. Compare the same five native views, movement, day/night and actual TNT response before deciding whether to integrate it.",
-  "limits": "Neither approach creates interiors. Vanilla blocks, players and mobs need explicit integration to appear; do not claim them as reflected until tested. No new imagery API or paid data source is required for reflecting already-rendered geometry."
+  "limits": "Neither approach creates interiors. Vanilla blocks, players and mobs need explicit integration to appear; do not claim them as reflected until tested. No new imagery API or paid data source is required for reflecting already-rendered geometry.",
+  "prototypeEvidence": "experiments/reflections/validation.json",
+  "prototypeNotes": [
+    "Actual campus reflections now appear on matching Galileo glass planes.",
+    "Nine native phases cover off/on/off, four stationary viewpoints, night, resource reload and return to daylight.",
+    "Minecraft 1.21.1 requires an explicitly managed extra hardware texture unit beyond its twelve cached units.",
+    "West comparison median FPS 85.5 off, 68 on, 86.5 off again on the tested M1 Max.",
+    "Continuous camera motion, destruction, integration and full release validation remain unfinished."
+  ]
 }
