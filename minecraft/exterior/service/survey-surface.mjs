@@ -11,10 +11,14 @@ import {prepareSourceRetirement} from './source-retirement.mjs';
 export function attachSurveySurface(service, directory, {voxelizeArea,collectRegionTiles,mcPositions,sampleColor,correctedTileCacheBytes=128*1024*1024}={}) {
   const manifest=JSON.parse(fs.readFileSync(path.join(directory,'manifest.json'),'utf8'));
   const supplemental=supplementalSurfaces(manifest.supplementalSurfaces);
-  const retireSource=prepareSourceRetirement(manifest.architecture?.riverbank?.sourceRetirement);
+  const retireSource=prepareSourceRetirement(service.cfg?.water===false?[]:manifest.architecture?.riverbank?.sourceRetirement);
+  const riverSurvey=manifest.architecture?.riverbank?.waterGround;
+  const channel=riverSurvey?supplementalSurfaces([{rings:riverSurvey.rings,terrainGuide:riverSurvey.terrainGuide}]):null;
+  const channelCeiling=Math.max(-Infinity,...(manifest.architecture?.riverbank?.sourceRetirement??[]).map(r=>r.y1));
+  const channelAt=(x,z)=>service.cfg?.water===false?null:channel?.at(x,z)??null;
   const ground=manifest.tiles.filter(t=>t.kind==='ground'||t.kind==='reconstruction'||t.kind==='vegetation');
   const collisionGround=[...ground,...(manifest.photoFacades?.collisionTiles??[])];
-  const columnGround=new Set([...(manifest.architecture?.physicsISite?.groundTiles??[]),...(manifest.architecture?.physicsLibrary?.groundTiles??[]),...(manifest.architecture?.physicsContainer?.groundTiles??[]),...(manifest.architecture?.p1Complex?.groundTiles??[]),...(manifest.architecture?.physicsWoodland?.groundTiles??[]),...(manifest.architecture?.physicsNewLaboratory?.groundTiles??[]),...(manifest.architecture?.physicsLaboratorySite?.groundTiles??[]),...(manifest.architecture?.physicsII?.groundTiles??[]),...(manifest.architecture?.physicsWSI?.groundTiles??[]),...(manifest.architecture?.physicsZNN?.groundTiles??[])]);
+  const columnGround=new Set([...(manifest.architecture?.physicsISite?.groundTiles??[]),...(manifest.architecture?.physicsLibrary?.groundTiles??[]),...(manifest.architecture?.physicsContainer?.groundTiles??[]),...(manifest.architecture?.p1Complex?.groundTiles??[]),...(manifest.architecture?.physicsWoodland?.groundTiles??[]),...(manifest.architecture?.physicsNewLaboratory?.groundTiles??[]),...(manifest.architecture?.physicsLaboratorySite?.groundTiles??[]),...(manifest.architecture?.physicsII?.groundTiles??[]),...(manifest.architecture?.physicsWSI?.groundTiles??[]),...(manifest.architecture?.physicsZNN?.groundTiles??[]),...(manifest.architecture?.riverbank?.groundTiles??[])]);
   const photoCollisionGrid=new Map(),photoCollisionCache=new Map();
   for(const r of manifest.photoFacades?.collisionRetirement??[]){
     const bounds=[Math.min(...r.ring.map(p=>p[0])),Math.min(...r.ring.map(p=>p[1])),Math.max(...r.ring.map(p=>p[0])),Math.max(...r.ring.map(p=>p[1]))];
@@ -263,10 +267,21 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
       if(!matches(frame))return output;
       const shift=manifest.origin[2]-frame.h0,x0=cx*16,z0=cz*16;
       const assets=collisionGround.filter(t=>t.bounds[0][0]<=x0+17&&t.bounds[1][0]>=x0-1&&t.bounds[0][2]<=z0+17&&t.bounds[1][2]>=z0-1);
-      if(!assets.length)return output;
+      if(!assets.length&&!channel)return output;
+      const branchAssets=channel?assets.filter(t=>t.kind==='vegetation'):[];
+      const branchVox=branchAssets.length?voxelizeArea(frame,branchAssets.map(t=>assetMeshes(frame,t)),x0,z0,16,minY,span,{surfaceOnly:true,water:[]}).vox:null;
       const {vox}=voxelizeArea(frame,assets.map(t=>assetMeshes(frame,t)),x0,z0,16,minY,span,{fallbackGround:63,water:[]});
       for(let z=0;z<16;z++)for(let x=0;x<16;x++){
-        const px=x0+x+.5,pz=z0+z+.5,base=terrain(px,pz),top=surface(px,pz);if(base===null)continue;
+        const px=x0+x+.5,pz=z0+z+.5,base=terrain(px,pz),top=surface(px,pz);
+        if(base===null){
+          const water=channelAt(px,pz);if(!water)continue;
+          const lower=Math.floor(water.floor+shift-.5)+1;
+          for(let y=0;y<span;y++){
+            const wy=y+minY;if(wy<lower||wy>channelCeiling+shift)continue;
+            const i=(y*16+z)*16+x;output[i]=branchVox?.[i]??0;
+          }
+          continue;
+        }
         const level=base+shift;
         for(let y=0;y<span;y++){
           const wy=y+minY;if(wy<level-4)continue;
@@ -295,7 +310,16 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           else if(output[i]===21)output[i]=4;
         }
       }
-      for(let i=0;i<output.length;i++)if(patch[i]!==255)output[i]=patch[i];return output;
+      for(let z=0;z<16;z++)for(let x=0;x<16;x++){
+        const preserveFluid=matches(frame)&&channelAt(cx*16+x+.5,cz*16+z+.5)!==null;
+        for(let y=0;y<span;y++){
+          const i=(y*16+z)*16+x;
+          // The upstream median can be one voxel above the local estimate.
+          // Never erase its actual fluid while removing old canopy proxies.
+          if(patch[i]!==255&&!(preserveFluid&&output[i]===23))output[i]=patch[i];
+        }
+      }
+      return output;
     };
   }
   return {manifest,renderTiles:ids.size,stats:()=>({removedSourceTriangles:removed,clippedSourceTriangles:clipped})};

@@ -8,14 +8,14 @@ import {attachSurveySurface} from './survey-surface.mjs';
 const origin={lat:48.265,lon:11.671,h0:519.7618173672081};
 test('column-centre collision is restricted to listed Physics ground assets',t=>{
  let meshes;
- const names=['physics.ect','core.ect','building.ect','tree.ect','woodland.ect','laboratory.ect','site.ect','physics-ii.ect','wsi.ect','znn.ect'];
- const kinds=['ground','ground','reconstruction','vegetation','ground','ground','ground','ground','ground','ground'];
+ const names=['physics.ect','core.ect','building.ect','tree.ect','woodland.ect','laboratory.ect','site.ect','physics-ii.ect','wsi.ect','znn.ect','riverbank.ect'];
+ const kinds=['ground','ground','reconstruction','vegetation','ground','ground','ground','ground','ground','ground','ground'];
  const tiles=names.map((file,i)=>({file,kind:kinds[i],runtimeId:100+i,bounds:[[0,0,0],[16,4,16]]}));
- const {service,dir}=fixture(t,null,{tiles,architecture:{physicsISite:{groundTiles:['physics.ect','building.ect']},physicsWoodland:{groundTiles:['woodland.ect']},physicsNewLaboratory:{groundTiles:['laboratory.ect']},physicsLaboratorySite:{groundTiles:['site.ect']},physicsII:{groundTiles:['physics-ii.ect']},physicsWSI:{groundTiles:['wsi.ect']},physicsZNN:{groundTiles:['znn.ect']}}},
+ const {service,dir}=fixture(t,null,{tiles,architecture:{physicsISite:{groundTiles:['physics.ect','building.ect']},physicsWoodland:{groundTiles:['woodland.ect']},physicsNewLaboratory:{groundTiles:['laboratory.ect']},physicsLaboratorySite:{groundTiles:['site.ect']},physicsII:{groundTiles:['physics-ii.ect']},physicsWSI:{groundTiles:['wsi.ect']},physicsZNN:{groundTiles:['znn.ect']},riverbank:{groundTiles:['riverbank.ect']}}},
    {voxelizeArea:(_frame,assets)=>{meshes=assets;return {vox:new Uint8Array(16*16*8)};}});
  for(const name of names)fs.writeFileSync(path.join(dir,name),tile([[0,1,0],[16,1,0],[0,1,16]]));
  service.campusCollision({...origin,mcToEcef:(x,y,z)=>[x,y,z]},0,0,0,8);
- assert.deepEqual(meshes.map(m=>m.primitives[0].campusHeightfield),[true,false,false,false,true,true,true,true,true,true]);
+ assert.deepEqual(meshes.map(m=>m.primitives[0].campusHeightfield),[true,false,false,false,true,true,true,true,true,true,true]);
 });
 function tile(positions){
  const b=Buffer.alloc(32+16+positions.length*20+4);b.write('ECT1');b.writeInt32LE(1,4);b.writeInt32LE(positions.length,32);b.writeInt32LE(1,36);b.writeInt32LE(1,40);b.fill(255,44,48);
@@ -436,4 +436,44 @@ test('explicit river canopy retirement works beyond all terrain grids and preser
  const bytes=tile([[37,8,3],[38,8,3],[37,8,4]]),bridge=fixture(t,bytes,extra);
  assert.deepEqual(await bridge.service.renderTile(origin,1_100_000_007),bytes);
  assert.deepEqual(await bridge.service.renderTile({...origin,lat:49},1_100_000_007),bytes);
+});
+
+test('channel collision clears old canopy, keeps actual branches and native fluid, and protects the bridge',async t=>{
+ const survey={rings:[{ring:[[32,0],[44,0],[44,16],[32,16]],holes:[[[37,4],[39,4],[39,8],[37,8]]]}],terrainGuide:{width:2,height:2,points:[[32,4.2,0],[44,4.2,0],[32,4.2,16],[44,4.2,16]]}};
+ const trees={file:'river-tree.ect',kind:'vegetation',runtimeId:501,bounds:[[32,4,0],[44,12,16]]};
+ const extra={tiles:[trees],architecture:{riverbank:{waterGround:survey,sourceRetirement:[{rings:survey.rings,y0:2,y1:13}]}}};
+ let surfaceCalls=0;
+ const {service,dir}=fixture(t,null,extra,{voxelizeArea:(_f,assets,_x,_z,w,_y,h,opts)=>{
+  const vox=new Uint8Array(w*w*h);
+  if(opts.surfaceOnly){surfaceCalls++;assert.equal(assets.length,1);vox[(8*16+3)*16+2]=8;}
+  else vox.fill(4); // Ground inference must never fill the channel below branches.
+  return {vox};
+ }});
+ fs.writeFileSync(path.join(dir,trees.file),tile([[34,8,3],[35,9,3],[34,8,4]]));
+ const frame={...origin,mcToEcef:(...p)=>p};
+ const patch=service.campusCollision(frame,2,0,0,16),at=(y,x=2,z=3)=>patch[(y*16+z)*16+x];
+ assert.equal(at(3),255);assert.equal(at(4),0);assert.equal(at(8),8);assert.equal(at(5),0);assert.equal(at(14),255);
+ assert.equal(at(8,6,5),255);assert.equal(at(8,15,3),255);assert.equal(surfaceCalls,1);
+ assert.ok(service.campusCollision({...frame,lat:49},2,0,0,16).every(v=>v===255));
+ // Give the upstream generator a higher fluid voxel than the local sample.
+ const upstream=new Uint8Array(16*16*16);upstream[(4*16+3)*16+2]=23;
+ const waterFixture=fixture(t,null,extra,{voxelizeArea:(_f,_a,_x,_z,w,_y,h)=>({vox:new Uint8Array(w*w*h)})});
+ fs.writeFileSync(path.join(waterFixture.dir,trees.file),tile([[34,8,3],[35,9,3],[34,8,4]]));
+ // Reattach to a separate service whose original chunk owns that fluid.
+ const svc={cfg:{},renderSelect:async()=>({tiles:[],attribution:[]}),renderTile:async()=>null,chunk:async()=>upstream};
+ attachSurveySurface(svc,waterFixture.dir,{voxelizeArea:(_f,_a,_x,_z,w,_y,h)=>({vox:new Uint8Array(w*w*h)})});
+ const result=await svc.chunk(frame,2,0,0,16);assert.equal(result[(4*16+3)*16+2],23);
+ service.cfg={water:false};assert.ok(service.campusCollision(frame,2,0,0,16).every(v=>v===255));
+});
+
+test('disabled native water retains the photographic channel surface and its original collision',async t=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-water-off-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+ const points=[];for(let z=0;z<=20;z+=10)for(let x=0;x<=20;x+=10)points.push([x,0,z]);
+ const rings=[{ring:[[30,0],[40,0],[40,10],[30,10]],holes:[]}];
+ const riverbank={sourceRetirement:[{kind:'water-channel',rings,y0:2,y1:20}],waterGround:{rings,terrainGuide:{width:2,height:2,points:[[30,4,0],[40,4,0],[30,4,10],[40,4,10]]}}};
+ fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify({origin:Object.values(origin),tiles:[],terrainGuide:{width:3,height:3,points},architecture:{riverbank}}));
+ const bytes=tile([[32,4,2],[34,4,2],[32,4,4]]),service={cfg:{water:false},renderSelect:async()=>({tiles:[],attribution:[]}),renderTile:async()=>bytes,chunk:async()=>new Uint8Array(4096)};
+ attachSurveySurface(service,dir,{voxelizeArea:()=>({vox:new Uint8Array(4096)})});
+ assert.deepEqual(await service.renderTile(origin,1_100_000_007),bytes);
+ assert.ok(service.campusCollision({...origin,mcToEcef:(...p)=>p},2,0,0,16).every(v=>v===255));
 });

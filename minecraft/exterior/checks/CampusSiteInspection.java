@@ -319,7 +319,7 @@ public final class CampusSiteInspection {
         }
         if(camera.has("screenRays"))row.add("screenRays",screenRays(mc,loaded,displayed,camera.getAsJsonArray("screenRays")));
         if (camera.has("probes")) row.add("probes", probe(mc, loaded, displayed, camera.getAsJsonArray("probes")));
-        boolean missingWater=false;
+        boolean missingWater=false,blockedWater=false;
         if(camera.has("waterColumns")){
             var columns=new JsonArray();
             for(var item:camera.getAsJsonArray("waterColumns")){
@@ -331,11 +331,23 @@ public final class CampusSiteInspection {
                 }
                 var column=control.deepCopy();column.add("waterBlockY",heights);columns.add(column);
                 if(heights.isEmpty())missingWater=true;
+                int clearance=camera.has("waterClearanceBlocks")?camera.get("waterClearanceBlocks").getAsInt():0;
+                if(clearance<0||clearance>4)throw new IllegalArgumentException("Invalid water clearance check");
+                if(!heights.isEmpty()&&clearance>0){
+                    int top=heights.get(heights.size()-1).getAsInt();var above=new JsonArray();
+                    for(int y=top+1;y<=top+clearance;y++){
+                        var state=mc.level.getBlockState(new net.minecraft.core.BlockPos(x,y,z));
+                        var cell=new JsonObject();cell.addProperty("y",y);cell.addProperty("state",state.toString());above.add(cell);
+                        if(!state.isAir())blockedWater=true;
+                    }
+                    column.add("clearanceStates",above);
+                }
             }
-            row.add("waterColumns",columns);row.addProperty("waterColumnsPass",!missingWater);
+            row.add("waterColumns",columns);row.addProperty("waterColumnsPass",!missingWater);row.addProperty("waterClearancePass",!blockedWater);
         }
         frames.add(row);
         if(missingWater){writeReport("FAIL: mapped river columns contain no native water");throw new AssertionError("Mapped river columns contain no native water; inspect captured column heights and image");}
+        if(blockedWater){writeReport("FAIL: river clearance contains solid source or reconstructed blocks");throw new AssertionError("River clearance blocked; inspect captured native states");}
         boolean needsGravity=plan.has("gravityProbes")&&!plan.getAsJsonArray("gravityProbes").isEmpty();
         writeReport(phase==cameras.size()-1&&!needsGravity?"PASS: inspection cameras captured; visual assessment required":"RUNNING");
         if (++phase == cameras.size()) { if(!needsGravity)mc.stop();return; }

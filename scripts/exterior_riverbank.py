@@ -114,9 +114,9 @@ def build(ctx):
         for replacement in sub['replacements']:
             region=Polygon(replacement['ring'],replacement.get('holes',[])).difference(bridge_mc)
             for polygon in polygons(region):
-                retirement.append({'rings':[{'ring':list(polygon.exterior.coords),'holes':[list(h.coords)for h in polygon.interiors]}],'y0':replacement['y0'],'y1':replacement['y1']})
+                retirement.append({'kind':'canopy','rings':[{'ring':list(polygon.exterior.coords),'holes':[list(h.coords)for h in polygon.interiors]}],'y0':replacement['y0'],'y1':replacement['y1']})
         heights=np.asarray(raw_guide['points'])[:,1]
-        retirement.append({'rings':water_ground['rings'],'y0':float(heights.min())-1,'y1':float(heights.max())+32})
+        retirement.append({'kind':'water-channel','rings':water_ground['rings'],'y0':float(heights.min())-1,'y1':float(heights.max())+32})
     meta['tiles'].extend(ground_tiles+tree_tiles);meta['supplementalSurfaces'].append(surface)
     coverage=out/'riverbank-coverage.geojson';coverage.write_text(json.dumps({'ground':mapping(area),'riverReach':mapping(original),'extent':mapping(extent),'canopy':mapping(canopy),'protectedBridge':mapping(bridge),'river':mapping(river.intersection(extent))},separators=(',',':'))+'\n')
     record = meta['architecture']['riverbank'] = {'sourceFile':source.name,'sourceSha256':sha(source),'generatorFile':'scripts/exterior_riverbank.py','generatorSha256':sha(Path(__file__)),'qualification':spec['qualification']}
@@ -128,7 +128,7 @@ def build(ctx):
                    'transitionGeneratorSha256':sha(root/'scripts/exterior_physics_ii.py'),
                    'wsiTransitionGeneratorSha256':sha(root/'scripts/exterior_physics_wsi.py'),
                    'canopyGeneratorSha256':sha(root/'scripts/exterior_physics_ii_landscape.py'),
-                   'status':'Unintegrated development bank geometry; channel canopy clipping, native water/collision integration and visual checks pending'})
+                   'status':'Development riverbank with bounded channel cleanup and DGM-guided water; packaged native and visual checks pending'})
     ids = [t['runtimeId'] for t in meta['tiles'] if 'runtimeId' in t]
     assert len(ids)==len(set(ids)), 'Runtime tile ID collision'
     assert area.intersection(prior).area < 1e-6

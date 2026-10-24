@@ -203,6 +203,24 @@ assert znn_check['sourceSha256']==znn['sourceSha256']
 assert znn_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-znn.py')
 assert set(znn_check['tileSha256'])==set(znn['groundTiles']+znn['treeTiles']+[znn['meshFile'],znn['roofFile']])
 assert all(digest(DATA/name)==value for name,value in znn_check['tileSha256'].items())
+riverbank=json.loads((DATA/'manifest.json').read_text())['architecture']['riverbank']
+riverbank_spec=json.loads((SOURCE/riverbank['sourceFile']).read_text())
+assert digest(SOURCE/riverbank['sourceFile'])==riverbank['sourceSha256']
+for path,key in [(ROOT/riverbank['generatorFile'],'generatorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(ROOT/'scripts/exterior_physics_ii.py','transitionGeneratorSha256'),(ROOT/'scripts/exterior_physics_wsi.py','wsiTransitionGeneratorSha256'),(ROOT/'scripts/exterior_physics_ii_landscape.py','canopyGeneratorSha256')]:assert digest(path)==riverbank[key]
+assert digest(DATA/riverbank['coverageFile'])==riverbank['coverageSha256']
+for source in riverbank_spec['osm']:
+ assert digest(SOURCE/source['sourceFile'])==source['sha256']
+ assert digest(DATA/source['sourceFile'])==source['sha256']
+assert pinned_water['features'][0]['surveyGround']==riverbank['waterGround']
+assert riverbank['sourceRetirement'][-1]['kind']=='water-channel'
+assert riverbank['sourceRetirement'][-1]['rings']==riverbank['waterGround']['rings']
+riverbank_check=json.loads((DATA/'riverbank-validation.json').read_text())
+assert riverbank_check['status'].startswith('PASS:')
+assert riverbank_check['manifestSha256']==digest(DATA/'manifest.json')
+assert riverbank_check['sourceSha256']==riverbank['sourceSha256']
+assert riverbank_check['validatorSha256']==digest(ROOT/'scripts/validate-riverbank.py')
+assert set(riverbank_check['tileSha256'])==set(riverbank['groundTiles']+riverbank['treeTiles'])
+assert all(digest(DATA/name)==value for name,value in riverbank_check['tileSha256'].items())
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -234,6 +252,12 @@ compiled=work/'mod/build/libs/realworldmc-1.0.3.jar'
 if not compiled.is_file():raise SystemExit('Expected remapped release JAR missing.')
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
+
+WSI riverbanks: BVV DGM1/DOP20/DOM20 bank terrain and estimated crowns;
+pinned OSM river and wooden footbridge geometry. Native water uses a
+DGM-guided elevation estimate, not surveyed bathymetry. Corridor extent,
+bridge guards, tree species and crown shape are estimates. Channel cleanup
+retains bridge geometry and native fluid. See riverbank.json and riverbank-osm.xml.
 
 ZNN / TUM5115: BVV surveyed envelope, stepped roof, DOP20 roof pixels and
 DGM1 approach terrain. Recessed window bands, projecting shading rails, pale
@@ -525,6 +549,9 @@ with zipfile.ZipFile(release) as original:
    if 'osmReference'in body:write(target,'src/minecampus-exterior/'+body['osmReference']['sourceFile'],(SOURCE/body['osmReference']['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['coverageFile'],(DATA/physics_ii['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['materialDerivedFile'],(DATA/physics_ii['materialDerivedFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+riverbank['sourceFile'],(SOURCE/riverbank['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+riverbank['coverageFile'],(DATA/riverbank['coverageFile']).read_bytes())
+  for source in riverbank_spec['osm']:write(target,'src/minecampus-exterior/'+source['sourceFile'],(SOURCE/source['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-znn.json',(SOURCE/znn['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-znn-reference.json',(SOURCE/znn_spec['reference']).read_bytes())
   write(target,'src/minecampus-exterior/'+znn['coverageFile'],(DATA/znn['coverageFile']).read_bytes())

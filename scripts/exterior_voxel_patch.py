@@ -23,6 +23,14 @@ def patch_voxel(source):
     replace("import { sampleColor } from './tiles.mjs';", "import { sampleColor } from './tiles.mjs';\nimport { surveyedWaterGround } from './water-survey.mjs';")
     replace('  const mask = rasterizePolygons(features, x0, z0, w);',
             '  const mask = rasterizePolygons(features, x0, z0, w);\n  g0 = surveyedWaterGround(features, g0, x0, z0, w);')
+    replace('  removeIsolated(vox, colors, w, height);', '''  if (opts.surfaceOnly) {
+    // Actual branch/trunk occupancy over a channel, without inventing a ground
+    // column below it. Only local reconstructed vegetation uses this path.
+    for (const [i, acc] of colors)
+      vox[i] = classify(acc[0]/acc[3], acc[1]/acc[3], acc[2]/acc[3], 3);
+    return {vox};
+  }
+  removeIsolated(vox, colors, w, height);''')
     # Encode last: classification, filling, water and shoreline retain their original material codes.
     replace('  return { vox, ground, surfaceColumns:', '''  for (let i = 0; i < vox.length; i++) {
     if (terrainTops[i] && !fullGeometry[i] && !water?.isWater[i % plane])
