@@ -121,3 +121,5 @@ def build(ctx):
     meta['photoFacades']['collisionRetirement'].extend(dict(p,y0=base-2,y1=float(points[:,1].max())+4) for p in retirement)
     meta['architecture']['physicsZNN']={'building':bid,'sourceFile':source.name,'sourceSha256':sha(source),'generatorFile':'scripts/exterior_physics_znn.py','generatorSha256':sha(Path(__file__)),'meshFile':mesh,'roofFile':roof_file,'surveyWalls':walls,'roofTriangles':len(roof)//3,'baseMC':base,'openingControls':controls,'railControls':rails,'opaqueControls':opaque_controls,'retirement':retirement,'qualification':spec['qualification'],'status':'Unintegrated development geometry; surrounding ground, native materials and visual validation still required'}
     print('ZNN:',len(walls),'survey walls;',len(roof)//3,'roof triangles;',len(controls),'window bands;',len(rails),'projecting shading rails',flush=True)
+    from exterior_physics_znn_landscape import build as build_landscape
+    build_landscape(ctx, spec, surveys)

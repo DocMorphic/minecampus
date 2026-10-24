@@ -190,6 +190,19 @@ assert wsi_check['sourceSha256']==wsi['sourceSha256']
 assert wsi_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-wsi.py')
 assert set(wsi_check['tileSha256'])==set(wsi['groundTiles']+wsi['treeTiles']+[wsi['meshFile'],wsi['roofFile']])
 assert all(digest(DATA/name)==value for name,value in wsi_check['tileSha256'].items())
+znn=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsZNN']
+znn_spec=json.loads((SOURCE/znn['sourceFile']).read_text())
+assert digest(SOURCE/znn['sourceFile'])==znn['sourceSha256']
+assert digest(SOURCE/znn_spec['reference'])==znn_spec['referenceSha256']
+for path,key in [(ROOT/znn['generatorFile'],'generatorSha256'),(ROOT/znn['landscapeGeneratorFile'],'landscapeGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(ROOT/'scripts/exterior_physics_ii.py','transitionGeneratorSha256'),(ROOT/'scripts/exterior_physics_wsi.py','wsiTransitionGeneratorSha256'),(ROOT/'scripts/exterior_physics_ii_landscape.py','canopyGeneratorSha256')]:assert digest(path)==znn[key]
+assert digest(DATA/znn['coverageFile'])==znn['coverageSha256']
+znn_check=json.loads((DATA/'physics-znn-validation.json').read_text())
+assert znn_check['status'].startswith('PASS:')
+assert znn_check['manifestSha256']==digest(DATA/'manifest.json')
+assert znn_check['sourceSha256']==znn['sourceSha256']
+assert znn_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-znn.py')
+assert set(znn_check['tileSha256'])==set(znn['groundTiles']+znn['treeTiles']+[znn['meshFile'],znn['roofFile']])
+assert all(digest(DATA/name)==value for name,value in znn_check['tileSha256'].items())
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -221,6 +234,13 @@ compiled=work/'mod/build/libs/realworldmc-1.0.3.jar'
 if not compiled.is_file():raise SystemExit('Expected remapped release JAR missing.')
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
+
+ZNN / TUM5115: BVV surveyed envelope, stepped roof, DOP20 roof pixels and
+DGM1 approach terrain. Recessed window bands, projecting shading rails, pale
+cladding and the ochre south panel are qualified estimates from exterior
+references. Tree placement follows public DOP20/DOM20/DGM1; crowns and species
+are estimates. No interiors or reference-photo pixels. See physics-znn.json
+and physics-znn-reference.json.
 
 Physik II / TUM5107: BVV surveyed main, stair and bridge envelopes and original
 DOP20 roof pixels. Recessed windows, silver panels, bridge clearance and facade
@@ -503,6 +523,9 @@ with zipfile.ZipFile(release) as original:
    if 'osmReference'in body:write(target,'src/minecampus-exterior/'+body['osmReference']['sourceFile'],(SOURCE/body['osmReference']['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['coverageFile'],(DATA/physics_ii['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['materialDerivedFile'],(DATA/physics_ii['materialDerivedFile']).read_bytes())
+  write(target,'src/minecampus-exterior/physics-znn.json',(SOURCE/znn['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/physics-znn-reference.json',(SOURCE/znn_spec['reference']).read_bytes())
+  write(target,'src/minecampus-exterior/'+znn['coverageFile'],(DATA/znn['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-wsi.json',(SOURCE/wsi['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+wsi_spec['groundTransition']['sourceFile'],(SOURCE/wsi_spec['groundTransition']['sourceFile']).read_bytes())
   for item in wsi_spec['northLandscapeBoundary']['osm']:write(target,'src/minecampus-exterior/'+item['sourceFile'],(SOURCE/item['sourceFile']).read_bytes())

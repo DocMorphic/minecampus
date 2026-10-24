@@ -5,10 +5,10 @@
   "referenceSha256": "3df82309daadad7167717be2bc70383482a6c5c5e6e59a3942465b87d6d3abe8",
   "runtimeId": 1000030041,
   "surveyBoundsUtm": [
-    698560,
+    698550,
     5349520,
-    698700,
-    5349640
+    698710,
+    5349670
   ],
   "cleanupMarginMetres": 1.5,
   "neighbourGuardMetres": 0.5,
@@ -191,5 +191,62 @@
       255
     ]
   ],
-  "qualification": "BVV survey fixes the envelope and stepped roof; facade opening dimensions, rail profiles, materials, entrance detail and south opaque panel dimensions are estimates. No interiors; no reference photographs or private projected pixels redistributed."
+  "qualification": "BVV survey fixes the envelope and stepped roof; facade opening dimensions, rail profiles, materials, entrance detail and south opaque panel dimensions are estimates. No interiors; no reference photographs or private projected pixels redistributed.",
+  "apronMetres": 20,
+  "groundTileMetres": 20,
+  "groundRuntimeStart": 1000060600,
+  "treeRuntimeStart": 1000040700,
+  "canopyExtent": {
+    "boundsUtm": [
+      698550,
+      5349520,
+      698710,
+      5349670
+    ],
+    "resolutionMetres": 0.5,
+    "componentSeedsUTM": [
+      [
+        698656.25,
+        5349636.25
+      ],
+      [
+        698589.75,
+        5349629.75
+      ],
+      [
+        698637.25,
+        5349632.75
+      ],
+      [
+        698650.25,
+        5349623.25
+      ],
+      [
+        698606.75,
+        5349604.75
+      ],
+      [
+        698657.75,
+        5349605.25
+      ],
+      [
+        698639.25,
+        5349595.75
+      ],
+      [
+        698646.25,
+        5349591.75
+      ],
+      [
+        698654.25,
+        5349585.75
+      ],
+      [
+        698643.25,
+        5349577.75
+      ]
+    ],
+    "groundMarginMetres": 2,
+    "qualification": "BVV DOP20 green pixels and DOM20 minus DGM1 height over 3m select complete canopy components touching the estimated 20m apron. Ground margin of 2m is an estimate; tree species and crown shapes remain estimated."
+  }
 }

@@ -4152,43 +4152,158 @@
     "unchangedPriorRenderFiles": 298
   },
   "physicsWSIPinnedWater42": {
-    "status": "PASS: boundary and service checks; fresh native water inspection running",
+    "status": "FAIL: mapped river columns contain no native water",
+    "artifactSha256": "9eff4f67f85e1f2597f741bb1ebe6a0850d4ea5e439735a0838dc84fad0f61ef",
+    "cameraCapturesReviewed": 8,
+    "standingControlsCompleted": 0,
+    "waterColumns": 35,
+    "wetColumns": 34,
+    "dryColumns": [
+      {
+        "x": 399,
+        "z": -491,
+        "sourceUTM": [
+          698596,
+          5349708
+        ],
+        "waterBlockY": []
+      }
+    ],
+    "nativeShapeChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "visualAccepted": false,
+    "installed": false,
+    "released": false,
+    "visualDefects": [
+      "Water now visible, but coarse source riverbank canopy remains a wall of melted geometry.",
+      "Exposed vanilla dirt/gravel blocks interrupt both river edges.",
+      "Northwest retained-terrain join has a steep rise; northeast trees have exposed angular branches.",
+      "Baked aerial cars and pale ground halos remain; neighboring source buildings visibly warped."
+    ],
+    "remaining": [
+      "Diagnose the dry river column against source boundary and high-bank exclusion; do not assume polygon interiors must all be water.",
+      "Replace riverbank vegetation and exposed ground using source-informed bank geometry.",
+      "Complete standing controls after the water failure is resolved."
+    ],
+    "files": {
+      "campus-physics-wsi-pinned-water-42-result.json": "1cbd506b9508c04889f2201d0acc1f56eacd46cc6f09bfa474d05f07049154f4",
+      "physics-wsi-pinned-water-42-client.log": "f0acc7ff0aef2147a93160bb2836b5accdba5286e691e1f3cc2f8ae9f8249c16",
+      "campus-physics-wsi-pinned-water-42-0.png": "743d30cfe813c786f0fba2535a04ae4bb810d3f72750691b9972ac0e0701029d",
+      "campus-physics-wsi-pinned-water-42-1.png": "5005f34cf851ef4e4c1d93aff0dadc47bc2f9004595866ba0e5f30f056aa8674",
+      "campus-physics-wsi-pinned-water-42-2.png": "594bba022a4161082584bf3606b63ec96bf35d25dc33d153d932c2a46328635b",
+      "campus-physics-wsi-pinned-water-42-3.png": "79f3d4ed2ee74c568989d0f0eb2d31a19c53e4e1a037ccf297e4a57c9b6650d2",
+      "campus-physics-wsi-pinned-water-42-4.png": "5f83e33b888fadcd095342914ad441611e0421319d26297ed11eb46dfaa834f9",
+      "campus-physics-wsi-pinned-water-42-5.png": "fc341de940b4eb7747edeae7a3f5f88f1c8c397de2696e983c8c10f4c6d86ece",
+      "campus-physics-wsi-pinned-water-42-6.png": "3ed2b783bce49545ed69a14e31e52a017dfc5440beb80a8658e78df6fc684e8e",
+      "campus-physics-wsi-pinned-water-42-7.png": "e87f4e0c0354e4ca5e606c25cf453143e46c8fa6d72d54f668fd090a6a5b04f4",
+      "physics-wsi-pinned-water-42-views-review-0.jpg": "09d31e0c36f5ec80d0bd19cff70e6ee261c66082f636513ab30199ea71eac015",
+      "physics-wsi-pinned-water-42-views-review-3.jpg": "08bf95de928c262e6f36849f6898dd82b728fefa6c695a488d974b9ce0fe679a",
+      "physics-wsi-pinned-water-42-views-review-6.jpg": "589a6b210eef61cbc0f56f4737edc496e700d183b4c7e274cf9b5f3bb68e667e"
+    },
+    "dryColumnDiagnosis": {
+      "source": "Private QA region readback and public DGM1/DOM20",
+      "column": [
+        399,
+        -491
+      ],
+      "insidePinnedRiver": true,
+      "distanceToBoundaryMetres": 1.064427661402945,
+      "DGM1Metres": 471.634033203125,
+      "DOM20Metres": 486.30999755859375,
+      "neighborDGM1RangeMetres": [
+        471.5880126953125,
+        471.6150207519531
+      ],
+      "nativeObstruction": "Dirt through Y61; map_stone begins at Y62 and extends through source vegetation. Neighboring columns contain water Y59-60.",
+      "inference": "Consistent with source canopy classified as a high bank by upstream water carving; exact g0 decision not instrumented yet.",
+      "remaining": "Validate source-informed bank/river surface and replace canopy geometry; do not weaken the failed water check."
+    }
+  },
+  "physicsZNNTerrain43": {
+    "status": "PASS: source validation, service checks, build and embedded artifact; native QA running",
+    "validation": {
+      "status": "PASS: surveyed ZNN shell, roof, source terrain and complete canopy coverage; native verification pending",
+      "manifestSha256": "ae4d5b279248fcdd7172ca85f1a0c3f77d68eaa38eae8f42cc284b3e7bc927c5",
+      "sourceSha256": "151867587212b296ba16977f54ccb711c8022f4754d8f77ff2a7bf4df5040265",
+      "validatorSha256": "e69c40297328f6536380da81e3af7ac367490e4e3d08dfffee92e19a9df4e53b",
+      "generatorSha256": "7ecdf4068a6c7d1788f56c91293d3bcc6f7bb61daf8b755d158a748c6e372bef",
+      "roofVertexErrorMetres": 1.919299289867399e-05,
+      "roofFootprintErrorSquareMetres": 0.0018247883251893986,
+      "roofTriangles": 23,
+      "surveyWallFaces": 13,
+      "windowBandControls": 17,
+      "shadingRailControls": 51,
+      "opaquePanelControls": 1,
+      "maximumGroundCoordinateErrorMetres": 1.5719916405032563e-05,
+      "oldGroundOverlapSquareMetres": 0.0,
+      "groundAreaSquareMetres": 3631.411091125136,
+      "treeCount": 6,
+      "canopyComponents": 10,
+      "tileSha256": {
+        "DEBY_LOD2_8486665-znn-exterior.ect": "63bafd95e115bbfe32bc20d7a16366e13f4fa4dff2429699c14bde9e93c0e730",
+        "DEBY_LOD2_8486665-photo-roof.ect": "84c4d535cfc8c9017d787d03832fd7c33d2939460467e86d9f0e14686f849a7a",
+        "znn-vegetation-0-0.ect": "807ff2c42dde93c6300f36b063a45a319dd0cb1327ee11c614b966e9079ef5da",
+        "physics-znn-ground-698600-5349560.ect": "13e2dc36b2c21f72deebb2de1c270097e8753fd2d8a5fde8ae50386beb6380fb",
+        "physics-znn-ground-698620-5349560.ect": "cf48295a21fbf400ac98f393b1ea184acf9f71ed366a709f7d91a311db95fe5e",
+        "physics-znn-ground-698580-5349580.ect": "6b806557dfd63520e40b5978888279e9c69484a4beb31f647f1eff131d07fbd2",
+        "physics-znn-ground-698600-5349580.ect": "3832584e3d9871f7d5bae6e5e9262a80e3517c667942301eb0f8255847054245",
+        "physics-znn-ground-698620-5349580.ect": "11b382b4c59d81eec0416c0e65ec894c745d990657c1fc5d78a6178107eef2ff",
+        "physics-znn-ground-698640-5349580.ect": "0adbbe2928a3cfa8dd76b9abf65929c7e1f7e5f35c079f699c90bb29649d7011",
+        "physics-znn-ground-698660-5349580.ect": "f4c221c013a01b7b9a6118d6cdba520ff004436bbcb602876a90bfd8a1f7d9c0",
+        "physics-znn-ground-698580-5349600.ect": "0c46b140f288cabeede499839e15cf67570abc0afa8d7091dbb79a17f5e1d37f",
+        "physics-znn-ground-698600-5349600.ect": "0d419ce756faf2c214db9a6b708e1320e20c539624a06ce044a05b35c04bc092",
+        "physics-znn-ground-698620-5349600.ect": "cbbaf14ee481b962bc105850ea4ad7b5cdbe7b581e5e918e88bc8e5bced50d50",
+        "physics-znn-ground-698640-5349600.ect": "f7a64e6915c168c1d5ab0f6e2b28952aaaeedeb27b37fe3489a7bf0eef8276de",
+        "physics-znn-ground-698660-5349600.ect": "76ec611ec1e1209743f95d5c62b73cb242de796f411867a5d26d93449abf3129",
+        "physics-znn-ground-698580-5349620.ect": "6b5e8c23d7d0b9a54a41c9e4a3d544334330a0af68bc85d6903667d0ce219f4b",
+        "physics-znn-ground-698600-5349620.ect": "820a9c9df7030d9fd64da86de32b34a92d6f4b9382691cff54d8f1522e937150",
+        "physics-znn-ground-698620-5349620.ect": "173c70fe629ef18bbc2a56da7601460f7b6960376960f7346ac86be14fa7bcb6",
+        "physics-znn-ground-698640-5349620.ect": "b79ed249eaf64b70c79394b869eebd709374bf48c99b3aae70a11a3313dc554d",
+        "physics-znn-ground-698600-5349640.ect": "4b774e418bf456a6d06cf4b90e79c355fa9dd6d1343ddca9c3ff733aa313c520",
+        "physics-znn-ground-698620-5349640.ect": "5a0deac6d6f1028a5d698ee315eaaa15dec3a6f04db98f825b64296daaae3686",
+        "physics-znn-ground-698640-5349640.ect": "5c2206fdd26ffc1fee90ec0ce05436f9f4b7dd5b57ad9bb4d0c9e51417ef981b"
+      },
+      "qualification": "Independent raw survey/roof pixel and mesh-ray checks. Source terrain and coverage checked independently; outer ground joins, gameplay, lighting and visual acceptance remain unverified."
+    },
+    "preservedPriorRenderFiles": 476,
+    "visualAccepted": false,
+    "installed": false,
     "artifact": {
-      "status": "PASS: exact embedded WSI manifest, source records, geometry and service",
-      "assetFiles": 52,
-      "artifactSha256": "9eff4f67f85e1f2597f741bb1ebe6a0850d4ea5e439735a0838dc84fad0f61ef"
-    },
-    "boundaryValidation": {
-      "status": "PASS: pinned public river boundary, projection, closure and bounds",
-      "manifestSha256": "065c7ddb93642765a5022b498fcacfa46187f95791bf68b65df8fa9ce7ad5e5d",
-      "sourceSha256": "717c56d87dbb9068caf6c77a1eef1f1b1f9594ca21cadccabe70526b4c99571d",
-      "generatorSha256": "311fbec4653453aa13789430c946483aff62d3391b029f347cd6a357896ed83e",
-      "validatorSha256": "5ef399b6cda3acf43104273c8b76d55889c0f300ded4252c9686de9f3ee24ca5",
-      "segments": 165,
-      "maximumCoordinateErrorMetres": 1.1368683772161603e-13,
-      "qualification": "Boundary-only validation; upstream water level, bed and visible banks still require native verification."
-    },
-    "geometryPreservation": {
-      "status": "PASS: pinned-water candidate changes no packaged ECT geometry or texture bytes",
-      "unchangedEctFiles": 476,
-      "sourceCandidate": "physics-wsi-40"
+      "status": "PASS: exact embedded ZNN manifest, source records, geometry and service",
+      "assetFiles": 23,
+      "artifactSha256": "8295ef4d8aff9a4156d6af70166586119af85b1a84b951d4285df88ab601eb46"
     },
     "serviceTests": {
       "passed": 46,
-      "failed": 0,
-      "newRegression": "Pinned river survives a thrown live OSM failure; preserves other-region lookup and respects cfg.water=false."
+      "failed": 0
     },
-    "native": {
-      "status": "RUNNING; no completed water or visual acceptance claimed",
-      "plan": "physics-wsi-pinned-water-42",
-      "cameraViews": 8,
+    "nativePlan": {
+      "cameras": 8,
+      "wallCollisionControls": 5,
       "standingControls": 12,
-      "waterColumns": 35,
-      "freshIsolatedWorld": true
+      "world": "campus-check-physics-znn-candidate-43",
+      "copiedChunks": 0,
+      "copiedPlayerData": 0
     },
-    "visualAccepted": false,
-    "releaseAccepted": false,
-    "installed": false,
-    "qualification": "Provides public river boundaries to existing upstream water generation. Water levels and beds still use its estimation; native fluid presence, levels, bank gaps and retained source vegetation require review."
+    "remaining": [
+      "Review all native approach, facade, roof and standing captures",
+      "Resolve any source/terrain boundary or body-clearance failures",
+      "Refine facade, vegetation and ground appearance against source references",
+      "Riverbank candidate42 remains visually failed and has one dry water control"
+    ]
   }
 }

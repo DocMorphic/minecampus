@@ -124,5 +124,94 @@ for control in rec['opaqueControls']:
   if len(ds):hits.append((float(ds.min()),i))
  assert min(hits)[1]==4 and abs(min(hits)[0]-.8)<.0001,(control,hits)
 assert len(rec['railControls'])==51 and len(rec['opaqueControls'])==1
-result={'status':'PASS: surveyed ZNN shell/roof and source-informed facade geometry; native verification pending','manifestSha256':sha(out/'manifest.json'),'sourceSha256':sha(r/'minecraft/exterior'/rec['sourceFile']),'validatorSha256':sha(Path(__file__)),'generatorSha256':rec['generatorSha256'],'roofVertexErrorMetres':roof_vertex_error,'roofFootprintErrorSquareMetres':roof_shape_error,'roofTriangles':23,'surveyWallFaces':13,'windowBandControls':len(rec['openingControls']),'shadingRailControls':len(rec['railControls']),'opaquePanelControls':len(rec['opaqueControls']),'tileSha256':{name:sha(out/name)for name in [rec['meshFile'],rec['roofFile']]},'qualification':'Independent raw survey/roof pixel and mesh-ray checks. Does not verify surrounding terrain, gameplay, lighting or visual acceptance.'}
+def utm_ring(ring):
+ q=np.asarray(ring);points=origin+q[:,0,None]*basis[0]+q[:,1,None]*basis[2]+basis[1];e,n,_=inverse.transform(*points.T);return np.column_stack([e,n])
+def surface_area(items):
+ return unary_union([box(*m['boundsUtm']),*[Polygon(utm_ring(p['ring']),[utm_ring(h)for h in p.get('holes',[])])for s in items for p in s['rings']]])
+idx=next(i for i,s in enumerate(m['supplementalSurfaces'])if s['name']=='physics-znn-site');prior=surface_area(m['supplementalSurfaces'][:idx]);wsi_idx=next(i for i,s in enumerate(m['supplementalSurfaces'])if s['name']=='physics-wsi-site');wsi_prior=surface_area(m['supplementalSurfaces'][:wsi_idx]);oldidx=next(i for i,s in enumerate(m['supplementalSurfaces'])if s['name']=='physics-ii-site');prior_ground=surface_area(m['supplementalSurfaces'][:oldidx])
+transition=read(r/'minecraft/exterior/physics-ii-ground-transition.json')
+def independent_correction(record, earlier):
+ valid_edges=[];missing_edges=[]
+ for line in record['lines']:
+  values=line.get('joinDelta',line['delta'])
+  for i in range(len(values)-1):
+   edge=LineString(line['utm'][i:i+2]);ds=values[i:i+2]
+   if None in ds:missing_edges.append(edge)
+   else:valid_edges.append((edge,ds))
+ missing_geometry=unary_union(missing_edges)
+ def calculate(xy):
+  from shapely import points,distance,line_locate_point
+  pts=points(xy);best=np.full(len(xy),np.inf);residual=np.zeros(len(xy))
+  for edge,ds in valid_edges:
+   d=distance(pts,edge);replace=d<best;along=line_locate_point(edge,pts,normalized=True);residual[replace]=(ds[0]*(1-along)+ds[1]*along)[replace];best[replace]=d[replace]
+  def smooth(v):
+   v=np.clip(v,0,1);return v*v*(3-2*v)
+  if 'nearestEdgeBlendMetres' in record:
+   assert record['nearestEdgeBlendMetres']==.25
+   numerator=np.zeros(len(xy));denominator=np.zeros(len(xy))
+   for edge,ds in valid_edges:
+    d=distance(pts,edge);along=line_locate_point(edge,pts,normalized=True)
+    weight=smooth(1-(d-best)/record['nearestEdgeBlendMetres'])
+    numerator+=weight*(ds[0]*(1-along)+ds[1]*along);denominator+=weight
+   residual=numerator/denominator
+  missing_fade=smooth(distance(pts,missing_geometry)/record['priorFadeMetres'])if not missing_geometry.is_empty else np.ones(len(xy))
+  return residual*smooth(1-best/record['widthMetres'])*smooth(distance(pts,earlier)/record['priorFadeMetres'])*missing_fade
+ return calculate
+inherited_correction=independent_correction(transition,prior_ground)
+wsi_spec=read(r/'minecraft/exterior/physics-wsi.json')
+transition_path=r/'minecraft/exterior'/wsi_spec['groundTransition']['sourceFile'];assert sha(transition_path)==wsi_spec['groundTransition']['sha256'];assert sha(out/transition_path.name)==sha(transition_path);inputs[transition_path.name]=sha(transition_path)
+outer_transition=read(transition_path);assert outer_transition['inheritedTransitionSha256']==sha(r/'minecraft/exterior/physics-ii-ground-transition.json')
+outer_correction=independent_correction(outer_transition,wsi_prior)
+def correction(xy):
+ return inherited_correction(xy)+outer_correction(xy)
+areas=[];mcareas=[];ground_error=0;hashes={name:sha(out/name)for name in [rec['meshFile'],rec['roofFile'],*rec['treeTiles']]}
+with rasterio.open(r/'.cache/campus-dgm-east.tif')as dem,rasterio.open(r/'.cache/campus-dop-east.tif')as dop:
+ data=dem.read(1).astype(float)
+ for name in rec['groundTiles']:
+  v,texture=decode(out/name)[0];e,n=map(int,Path(name).stem.split('-')[-2:]);step=spec['groundTileMetres'];xy=np.column_stack([e+v[:,3]*step,n+step-v[:,4]*step]);expected=world(xy,sample(dem,data,xy[:,0],xy[:,1])+correction(xy));error=float(np.max(np.abs(expected-v[:,:3])));assert error<.001,(name,error,xy[np.argmax(np.max(np.abs(expected-v[:,:3]),axis=1))].tolist());ground_error=max(ground_error,error)
+  areas.append(union_all(polygons(xy.reshape(-1,3,2))));mcareas.append(union_all(polygons(v[:,:3].reshape(-1,3,3)[:,:,[0,2]])));c,row=(~dop.transform)*(e,n+step);rgb=dop.read([1,2,3],window=rasterio.windows.Window(round(c),round(row),step*5,step*5)).transpose(1,2,0);assert np.array_equal(np.frombuffer(texture,dtype='uint8').reshape(step*5,step*5,4)[:,:,:3],rgb);hashes[name]=sha(out/name)
+area=unary_union(areas);mcarea=unary_union(mcareas);coverage=read(out/rec['coverageFile']);assert area.symmetric_difference(shape(coverage['ground'])).area<.01
+others=unary_union([Polygon(p[0][:,:2],[h[:,:2]for h in p[1:]]).buffer(0)for bid,items in surveys.items()if bid!=spec['building']for k,p in items if k=='GroundSurface'])
+assert area.intersection(others.buffer(.4999)).area<.01
+assert area.intersection(prior).area<.005
+explicit_extent=unary_union([Polygon(rings[0][:,:2],[h[:,:2]for h in rings[1:]])for kind,rings in raw if kind=='GroundSurface']).buffer(spec['apronMetres']).union(shape(coverage['canopy']).buffer(spec['canopyExtent']['groundMarginMetres']))
+assert shape(coverage['extent']).symmetric_difference(explicit_extent).area<.001
+assert sha(out/rec['coverageFile'])==rec['coverageSha256']
+for path,key in [(rec['landscapeGeneratorFile'],'landscapeGeneratorSha256'),('scripts/exterior_vegetation.py','vegetationGeneratorSha256'),('scripts/exterior_physics_ii.py','transitionGeneratorSha256'),('scripts/exterior_physics_wsi.py','wsiTransitionGeneratorSha256'),('scripts/exterior_physics_ii_landscape.py','canopyGeneratorSha256')]:assert sha(r/path)==rec[key]
+# Independently recover the selected complete canopy components from source rasters.
+from scipy import ndimage
+from rasterio.features import rasterize,shapes
+from rasterio.transform import from_origin
+cp=spec['canopyExtent'];left,bottom,right,top=cp['boundsUtm'];res=cp['resolutionMetres'];width,height=int((right-left)/res),int((top-bottom)/res);transform=from_origin(left,top,res,res)
+xy=np.array([(left+(i+.5)*res,top-(j+.5)*res)for j in range(height)for i in range(width)])
+owned=unary_union([Polygon(p[0][:,:2],[h[:,:2]for h in p[1:]]).buffer(0)for k,p in raw if k=='GroundSurface'])
+with rasterio.open(r/'.cache/campus-dop-east.tif')as dop,rasterio.open(r/'.cache/campus-dgm-east.tif')as dem,rasterio.open(r/'.cache/32698_5349_20_DOM.tif')as dom:
+ rgb=np.array(list(dop.sample(xy))).astype(float);h=np.array(list(dom.sample(xy)))[:,0]-np.array(list(dem.sample(xy)))[:,0]
+ occupied=rasterize([(others.union(owned).buffer(.5),1)],out_shape=(height,width),transform=transform,dtype='uint8')>0
+ mask=((rgb[:,1]>rgb[:,0]*1.025)&(rgb[:,1]>rgb[:,2]+2)&(h>3)).reshape(height,width)&~occupied
+ labels,_=ndimage.label(ndimage.binary_closing(mask,iterations=2)&~occupied)
+ components=[];seen=set()
+ for e,n in cp['componentSeedsUTM']:
+  lab=int(labels[int((top-n)/res),int((e-left)/res)]);assert lab>0 and lab not in seen;seen.add(lab);pixels=labels==lab
+  assert not (pixels[0].any()or pixels[-1].any()or pixels[:,0].any()or pixels[:,-1].any())
+  region=unary_union([shape(g)for g,v in shapes(pixels.astype('uint8'),mask=pixels,transform=transform)if v==1]);assert region.area>=3 and region.intersects(owned.buffer(spec['apronMetres']));components.append(region)
+ assert unary_union(components).symmetric_difference(shape(coverage['canopy'])).area<.001
+assert len(components)==len(rec['canopyComponents'])==10
+expected=shape(coverage['extent']).difference(others.buffer(.5)).difference(prior.buffer(.002));assert area.symmetric_difference(expected).area<.02
+# Existing ground geometry remains disjoint, including at close footprint guards.
+overlap=0
+for tile in m['tiles']:
+ if tile['kind']!='ground'or tile['file']in rec['groundTiles']:continue
+ lo,hi=tile['bounds']
+ if not mcarea.intersects(box(lo[0],lo[2],hi[0],hi[2])):continue
+ for v,_ in decode(out/tile['file']):overlap+=mcarea.intersection(union_all(polygons(v[:,:3].reshape(-1,3,3)[:,:,[0,2]]))).area
+assert overlap<.005,overlap
+surface=m['supplementalSurfaces'][idx];trees=surface['vegetation']['trees'];assert len(trees)==rec['treeCount']
+oldtrees=[*m['vegetation']['trees'],*[t for s in m['supplementalSurfaces'][:idx]for t in s.get('vegetation',{}).get('trees',[])]]
+with rasterio.open(r/'.cache/campus-dop-east.tif')as dop,rasterio.open(r/'.cache/campus-dgm-east.tif')as dem,rasterio.open(r/'.cache/32698_5349_20_DOM.tif')as dom:
+ for t in trees:
+  q=np.asarray([t['utm']]);rgb=next(dop.sample(q));height=float(next(dom.sample(q))[0]-next(dem.sample(q))[0]);assert rgb[1]>rgb[0]*1.025 and rgb[1]>rgb[2]+2 and height>3
+  assert area.buffer(.001).covers(Point(q[0]));assert not others.buffer(1.19).covers(Point(q[0]));assert all(np.linalg.norm(q[0]-np.array(old['utm']))>2 for old in oldtrees)
+assert len({t['runtimeId']for t in m['tiles']if 'runtimeId'in t})==sum('runtimeId'in t for t in m['tiles'])
+result={'status':'PASS: surveyed ZNN shell, roof, source terrain and complete canopy coverage; native verification pending','manifestSha256':sha(out/'manifest.json'),'sourceSha256':sha(r/'minecraft/exterior'/rec['sourceFile']),'validatorSha256':sha(Path(__file__)),'generatorSha256':rec['generatorSha256'],'roofVertexErrorMetres':roof_vertex_error,'roofFootprintErrorSquareMetres':roof_shape_error,'roofTriangles':23,'surveyWallFaces':13,'windowBandControls':len(rec['openingControls']),'shadingRailControls':len(rec['railControls']),'opaquePanelControls':len(rec['opaqueControls']),'maximumGroundCoordinateErrorMetres':ground_error,'oldGroundOverlapSquareMetres':overlap,'groundAreaSquareMetres':area.area,'treeCount':len(trees),'canopyComponents':len(components),'tileSha256':hashes,'qualification':'Independent raw survey/roof pixel and mesh-ray checks. Source terrain and coverage checked independently; outer ground joins, gameplay, lighting and visual acceptance remain unverified.'}
 (out/'physics-znn-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
