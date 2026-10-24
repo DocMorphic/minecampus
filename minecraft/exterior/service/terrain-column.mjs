@@ -14,3 +14,18 @@ export function terrainColumnHeight(triangle, x, z) {
   const height = ay + b * (by - ay) + c * (cy - ay);
   return Number.isFinite(height) ? height : null;
 }
+
+// Round measured ground to the nearest sixteenth, representing integer tops as
+// a full block below that height. This also works at negative world elevations.
+export function terrainColumnSupport(surfaceY) {
+  if (!Number.isFinite(surfaceY)) throw new RangeError('Invalid terrain height');
+  const units = Math.round(surfaceY * 16);
+  const y = Math.ceil(units / 16) - 1;
+  return { y, height: units - y * 16 };
+}
+
+export function terrainSupportCode(material, height) {
+  if (material < 1 || material > 9 || height === 16) return material;
+  if (!Number.isInteger(height) || height < 1 || height > 16) throw new RangeError('Invalid terrain support');
+  return 32 + (material - 1) * 16 + height - 1;
+}

@@ -5,6 +5,7 @@ Never reads provider configuration or saved worlds.
 """
 import argparse,hashlib,io,json,os,re,shutil,subprocess,urllib.request,zipfile
 from pathlib import Path
+from exterior_voxel_patch import patch_voxel
 ROOT=Path(__file__).resolve().parents[1];SOURCE=ROOT/'minecraft/exterior';CACHE=ROOT/'.cache/exterior-build';OUT=ROOT/'dist-minecraft';DATA=OUT/'exterior'
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--java-home',default=os.environ.get('JAVA_HOME'));args=parser.parse_args()
 if not args.java_home:raise SystemExit('Supply --java-home with a JDK 21 installation.')
@@ -471,18 +472,7 @@ with zipfile.ZipFile(release) as original:
           res.writeHead(200,{'content-type':'application/octet-stream','content-length':bytes.length});return res.end(bytes);
         }
 '''+needle);data=s.encode()
-   if entry.filename=='src/voxel.mjs':
-    s=data.decode()
-    needle="import { sampleColor } from './tiles.mjs';"
-    assert s.count(needle)==1
-    s=s.replace(needle,needle+"\nimport { terrainColumnHeight } from './terrain-column.mjs';")
-    needle='''              if (!single) {'''
-    assert s.count(needle)==1
-    s=s.replace(needle,'''              if (prim.campusHeightfield) {
-                const surfaceY = terrainColumnHeight(tri, x, z);
-                if (surfaceY === null || y !== Math.floor(surfaceY - 0.5)) continue;
-              } else if (!single) {''')
-    data=s.encode()
+   if entry.filename=='src/voxel.mjs':data=patch_voxel(data.decode()).encode()
    write(target,entry.filename,data)
   write(target,'src/terrain-column.mjs',(SOURCE/'service/terrain-column.mjs').read_bytes())
   write(target,'src/minecampus-survey.mjs',(SOURCE/'service/survey-surface.mjs').read_bytes())

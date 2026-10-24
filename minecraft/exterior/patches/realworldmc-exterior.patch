@@ -234,3 +234,26 @@ diff --git a/mod/src/main/java/dev/realworldmc/BundledService.java b/mod/src/mai
                                  output.write(buffer, 0, read);
                              }
                          }
+diff --git a/mod/src/main/java/dev/realworldmc/EarthBlocks.java b/mod/src/main/java/dev/realworldmc/EarthBlocks.java
+--- a/mod/src/main/java/dev/realworldmc/EarthBlocks.java
++++ b/mod/src/main/java/dev/realworldmc/EarthBlocks.java
+@@ -48,7 +48,7 @@
+ 	}
+ 
+ 	private static Block register(String name, BlockBehaviour.Properties props) {
+-		return Registry.register(BuiltInRegistries.BLOCK, RealWorldMC.id(name), new MapBlock(props));
++		return Registry.register(BuiltInRegistries.BLOCK, RealWorldMC.id(name), new CampusTerrainBlock(props));
+ 	}
+ 
+ 	public static void init() {
+@@ -71,6 +71,10 @@
+ 		BY_CODE[24] = Blocks.GRAVEL.defaultBlockState();
+ 		BY_CODE[25] = Blocks.GRASS_BLOCK.defaultBlockState();
+ 		BY_CODE[26] = Blocks.SAND.defaultBlockState();
++        // 32..175 encode nine existing map materials at 1..16 sixteenth heights.
++        // Original IDs and codes remain full blocks for old saves and solid geometry.
++        for(int material=1;material<=9;material++)for(int height=1;height<=16;height++)
++            BY_CODE[32+(material-1)*16+height-1]=BY_CODE[material].setValue(CampusTerrainBlock.HEIGHT,height);
+ 	}
+ 
+ 	public static BlockState byCode(int code) {

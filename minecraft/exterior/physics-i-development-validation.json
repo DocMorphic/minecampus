@@ -3758,5 +3758,152 @@
       "sample13": "FAIL: player stands64.0m versus63.46815759664534m support; error0.5318424033546592m",
       "supportToleranceMetres": 0.51
     }
+  },
+  "physicsFractionalTerrain38": {
+    "status": "PASS: packaged fractional terrain and80native shoulder controls; visual review and continuous routes recorded separately",
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 304409053,
+      "sha256": "b8392a7b29f251a75adc702defabe3efd58de85e77ff9f4064fe2f24b58244b2",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "5ba1797f64f4e8f269fbead73bf35f5cdbc55708346e950becd9ef7032e75e64",
+      "rendererSourceFingerprint": "a22b30a3a2709234",
+      "bundleSha256": "736e430ea86bbd12d105325d0a99750a8a99289b6baa1956ab14ac3bda4b981d",
+      "tiles": 267,
+      "bundleUnpackedBytes": 682991768,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "standingControls": 80,
+    "maxNativeSupportErrorMetres": 0.16138104606139336,
+    "supportToleranceMetres": 0.51,
+    "blockStates": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "priorRouteLocalSamples": 260,
+    "priorRouteMaxErrorMetres": 0.04753219477549209,
+    "legacyExactLocalErrorMetres": -0.013546447614935175,
+    "nativeRetainedColumn68": "Clear body space at new support height; unknown service codes remain explicit and do not overwrite source terrain.",
+    "renderMeshChange": false,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "viewsReviewed": 2,
+    "standingCapturesReviewed": 80,
+    "findings": [
+      "All82captures reviewed; no new rendered geometry. Ground folds, pale/blurred aerial detail and residual outer source defects remain visible.",
+      "All80native supports pass with body clearance and no lateral displacement.",
+      "Existing map IDs default to full cubes; all144height states pass native shape, save-state round-trip, network-ID round-trip and cut-material identity checks.",
+      "Actual saved QA region records fractional heights at the exact prior failure.",
+      "Five continuous routes now pass with zero jumps; visual defects remain explicit. TNT/mining placement persistence still needs a dedicated fractional-state regression before release."
+    ],
+    "continuousRoutes": {
+      "status": "PASS: five continuous native walking routes; FAIL: visual release standard",
+      "terminalExit": 0,
+      "capturesReviewed": 46,
+      "routes": [
+        {
+          "label": "Northern shoulder parallel to WSI",
+          "travelledMetres": 42.4259707042847,
+          "movementTicks": 198,
+          "jumps": 0,
+          "serverEndpoint": [
+            374.34852990710664,
+            63.4375,
+            -436.52521828241055,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "capture": "campus-physics-wsi-fractional-routes-38-route-0-end.png"
+        },
+        {
+          "label": "Across WSI transition toward facade",
+          "travelledMetres": 3.8417233816716285,
+          "movementTicks": 19,
+          "jumps": 0,
+          "serverEndpoint": [
+            331.82799574383046,
+            63.75,
+            -439.7175075919386,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "capture": "campus-physics-wsi-fractional-routes-38-route-1-end.png"
+        },
+        {
+          "label": "Mapped footpath 295418158",
+          "travelledMetres": 66.346874741849,
+          "movementTicks": 309,
+          "jumps": 0,
+          "serverEndpoint": [
+            361.3122768577035,
+            63.125,
+            -365.07966813341505,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "capture": "campus-physics-wsi-fractional-routes-38-route-2-end.png"
+        },
+        {
+          "label": "Mapped footpath 317014213",
+          "travelledMetres": 57.56338836710192,
+          "movementTicks": 268,
+          "jumps": 0,
+          "serverEndpoint": [
+            407.19189422584947,
+            63.875,
+            -377.19865020915154,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "capture": "campus-physics-wsi-fractional-routes-38-route-3-end.png"
+        },
+        {
+          "label": "Mapped footpath 241031086",
+          "travelledMetres": 28.44515852235892,
+          "movementTicks": 133,
+          "jumps": 0,
+          "serverEndpoint": [
+            354.6255728717474,
+            64.0625,
+            -393.93933066671724,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "capture": "campus-physics-wsi-fractional-routes-38-route-4-end.png"
+        }
+      ],
+      "totalTravelMetres": 198.6231157172662,
+      "jumps": 0,
+      "visualAccepted": false,
+      "releaseAccepted": false,
+      "findings": [
+        "All46captures reviewed. New shoulder routes and three unchanged mapped footpaths complete with ordinary forward input, zero jumps, grounded endpoints and clear server-side player bodies.",
+        "Floating scan vegetation, distorted cars/parking geometry and exposed transition margins are conspicuous along the north WSI shoulder.",
+        "The mapped route ending near ZNN visually enters its warped retained scan despite passing body clearance. This remains a release-blocking geometry defect.",
+        "Ground folds, pale blurred aerial ground and white base halos persist. Passing collision checks does not establish visual acceptance."
+      ]
+    },
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "nextActions": [
+      "Reconstruct the conspicuous north WSI parking/vegetation boundary using bounded source-informed coverage; retain ordinary player blocks and unresolved source areas.",
+      "Reconstruct ZNN from surveyed envelope and the two reviewed primary project photos in .cache/physics-znn-source-39; verify mapped-route endpoint visually remains outside the reconstructed facade.",
+      "Run dedicated fractional TNT/mining/placement and edit-persistence regression before any release. Keep the full visual goal active; no installation or publication."
+    ]
   }
 }

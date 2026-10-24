@@ -9,6 +9,7 @@ import net.minecraft.client.Screenshot;
 /** QA-only, source-study cameras and optional surface controls in an isolated world. */
 public final class CampusSiteInspection {
     private static JsonObject plan;
+    private static JsonObject fractionalSupportChecks;
     private static int phase, ticks;
     private static final JsonArray frames = new JsonArray();
     private static final JsonArray gravity = new JsonArray();
@@ -154,6 +155,7 @@ public final class CampusSiteInspection {
         var report = new JsonObject();
         report.addProperty("status",status);
         report.addProperty("rendererJar",Path.of(MapRenderer.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getFileName().toString());
+        if(fractionalSupportChecks!=null)report.add("fractionalSupportChecks",fractionalSupportChecks);
         report.add("plan",plan);report.add("frames",frames);report.add("gravity",gravity);
         if(gravityFailureDetails!=null)report.add("gravityFailure",gravityFailureDetails);
         Files.writeString(Path.of("campus-"+plan.get("name").getAsString()+"-result.json"),new GsonBuilder().setPrettyPrinting().create().toJson(report));
@@ -244,6 +246,7 @@ public final class CampusSiteInspection {
         // Called only while the parent reports full streaming/upload readiness.
         // Wait again at each position rather than using the prior camera's state.
         var cameras = cameras();
+        if(fractionalSupportChecks==null&&plan.has("checkFractionalSupports")&&plan.get("checkFractionalSupports").getAsBoolean())fractionalSupportChecks=CampusFractionalSupportChecks.verify(mc);
         if(ticks==0&&phase<cameras.size()){
             var view=cameras.get(phase).getAsJsonObject();
             if(view.has("guiScale")){
