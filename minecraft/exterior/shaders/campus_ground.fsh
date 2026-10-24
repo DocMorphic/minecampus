@@ -49,6 +49,11 @@ float campusShadow(vec3 p) {
     if(CampusShadowStrength<=0.0)return 0.0;
     vec3 n=normalize(cross(dFdx(p),dFdy(p)));
     if(dot(n,CameraPosition-p)<0.0)n=-n;
+    // A nearly parallel receiver has an ill-conditioned light-space plane.
+    // Fade shadow reception over the last three degrees, where direct solar
+    // irradiance already tends to zero, instead of inventing depth gradients.
+    float grazingWeight=smoothstep(.005,.05,abs(dot(n,CampusSunDirection)));
+    if(grazingWeight<=0.0)return 0.0;
     vec4 projected=CampusShadowMatrix*vec4(p+n*.01,1.0);
     vec3 at=projected.xyz/projected.w*.5+.5;
     if(any(lessThan(at,vec3(0)))||any(greaterThan(at,vec3(1))))return 0.0;
@@ -63,7 +68,7 @@ float campusShadow(vec3 p) {
         shade+=compare>nearest?1.0:0.0;
     }
     float edge=1.0-smoothstep(.80,.98,max(abs(at.x*2.0-1.0),abs(at.y*2.0-1.0)));
-    return shade/9.0*edge;
+    return shade/9.0*edge*grazingWeight;
 }
 
 

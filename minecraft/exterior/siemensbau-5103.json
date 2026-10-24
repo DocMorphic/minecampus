@@ -1,0 +1,862 @@
+{
+  "building": "DEBY_LOD2_5284457",
+  "runtimeId": 1000030026,
+  "expectedWallCount": 6,
+  "surveyWallsSha256": "3101654c4796dbfb962a6454ca1d9f64a648476c386e879e9a32dbf6c967d0ce",
+  "reference": "photos/siemensbau-5103-reference.json",
+  "referenceSha256": "d24d653732567e65cce503982c7dc382d59c6641fe54180990b9233a81642db8",
+  "qualification": "A source-informed exterior reconstruction, not an as-built model. Unobserved openings on the south and occluded north are provisional continuations of the observed office-window rhythm. No interiors.",
+  "recessMetres": 0.16,
+  "frameMetres": 0.065,
+  "sourceRetirement": {
+    "collarMetres": 2.75,
+    "neighbourGuardMetres": 0.5,
+    "roofPaddingMetres": 0.8
+  },
+  "faces": {
+    "0": {
+      "basis": "Observed north rhythm through 42 m; final occluded section inferred",
+      "openings": [
+        {
+          "alongMetres": [
+            0.7,
+            2.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            2.8,
+            4.1
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            4.5,
+            5.75
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            10.1,
+            12.5
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            13.2,
+            14.55
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            15.0,
+            16.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            16.8,
+            18.1
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            18.55,
+            19.9
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            20.3,
+            21.65
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            22.05,
+            23.4
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            23.8,
+            25.1
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            25.55,
+            26.8
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            29.0,
+            30.2
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            30.65,
+            31.95
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            32.45,
+            33.75
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            34.2,
+            35.55
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            36.0,
+            37.25
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            39.4,
+            41.1
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            6.15,
+            7.7
+          ],
+          "heightAboveBase": [
+            0.08,
+            2.9
+          ],
+          "kind": "door",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            8.1,
+            9.4
+          ],
+          "heightAboveBase": [
+            0.08,
+            2.9
+          ],
+          "kind": "door",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            27.2,
+            28.45
+          ],
+          "heightAboveBase": [
+            0.08,
+            2.9
+          ],
+          "kind": "door",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            37.8,
+            39.0
+          ],
+          "heightAboveBase": [
+            0.08,
+            2.9
+          ],
+          "kind": "door",
+          "basis": "local north projection"
+        },
+        {
+          "alongMetres": [
+            42.9,
+            44.25
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred continuation behind adjacent building"
+        },
+        {
+          "alongMetres": [
+            44.75,
+            46.1
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred continuation behind adjacent building"
+        },
+        {
+          "alongMetres": [
+            46.6,
+            47.95
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred continuation behind adjacent building"
+        },
+        {
+          "alongMetres": [
+            48.45,
+            49.800000000000004
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred continuation behind adjacent building"
+        },
+        {
+          "alongMetres": [
+            50.3,
+            51.65
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred continuation behind adjacent building"
+        },
+        {
+          "alongMetres": [
+            52.15,
+            53.5
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred continuation behind adjacent building"
+        },
+        {
+          "alongMetres": [
+            54.0,
+            55.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred continuation behind adjacent building"
+        },
+        {
+          "alongMetres": [
+            55.85,
+            57.2
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred continuation behind adjacent building"
+        }
+      ]
+    },
+    "1": {
+      "basis": "Blurry east projection shows three vertical opening groups; dimensions/kinds inferred",
+      "openings": [
+        {
+          "alongMetres": [
+            1.3,
+            2.8
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "east projection estimate"
+        },
+        {
+          "alongMetres": [
+            5.2,
+            6.7
+          ],
+          "heightAboveBase": [
+            0.08,
+            2.9
+          ],
+          "kind": "door",
+          "basis": "east projection estimate"
+        },
+        {
+          "alongMetres": [
+            9.3,
+            10.8
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "east projection estimate"
+        }
+      ]
+    },
+    "2": {
+      "basis": "Short west junction retained solid; no invented passage interior",
+      "openings": []
+    },
+    "3": {
+      "basis": "Short west return retained solid",
+      "openings": []
+    },
+    "4": {
+      "basis": "West narrow-court projection; approximate openings, not the Telefonzentrale west photo",
+      "openings": [
+        {
+          "alongMetres": [
+            1.1,
+            2.45
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "west projection estimate"
+        },
+        {
+          "alongMetres": [
+            3.05,
+            4.4
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "west projection estimate"
+        },
+        {
+          "alongMetres": [
+            5.0,
+            6.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "west projection estimate"
+        },
+        {
+          "alongMetres": [
+            7,
+            8.2
+          ],
+          "heightAboveBase": [
+            0.08,
+            2.9
+          ],
+          "kind": "door",
+          "basis": "west projection estimate"
+        }
+      ]
+    },
+    "5": {
+      "basis": "Provisional rhythm inferred from north; southern scan does not establish exact window/door placement",
+      "openings": [
+        {
+          "alongMetres": [
+            1.0,
+            2.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            2.8,
+            4.15
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            4.6,
+            5.95
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            6.4,
+            7.75
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            8.2,
+            9.55
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            10.0,
+            11.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            11.8,
+            13.15
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            13.6,
+            14.95
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            15.4,
+            16.75
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            17.2,
+            18.55
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            19.0,
+            20.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            20.8,
+            22.150000000000002
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            22.6,
+            23.950000000000003
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            24.400000000000002,
+            25.750000000000004
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            26.2,
+            27.55
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            28.0,
+            29.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            29.8,
+            31.150000000000002
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            31.6,
+            32.95
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            33.4,
+            34.75
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            35.2,
+            36.550000000000004
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            37.0,
+            38.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            38.800000000000004,
+            40.150000000000006
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            40.6,
+            41.95
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            42.4,
+            43.75
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            44.2,
+            45.550000000000004
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            46.0,
+            47.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            47.800000000000004,
+            49.150000000000006
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            49.6,
+            50.95
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            51.4,
+            52.75
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            53.2,
+            54.550000000000004
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        },
+        {
+          "alongMetres": [
+            55.0,
+            56.35
+          ],
+          "heightAboveBase": [
+            0.95,
+            2.9
+          ],
+          "kind": "window",
+          "basis": "inferred south rhythm"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,720 @@
+{
+  "status": "ACCEPTED DEVELOPMENT CHECKPOINT: smooth grazing attenuation verified on exact package; broader campus realism remains unfinished",
+  "date": "2026-10-24",
+  "artifactUnderDiagnostic": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 236030338,
+    "sha256": "187a4f6d605fb7f3780b8b11645bbadc725d3ba8105a32eb386c90fb303df7b0",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "3845853c846e3ddb8b9cca1494c13519cd65a885dd9e7a79d9beb48bf4e0bba9",
+    "rendererSourceFingerprint": "2f7dfbf3dba0f89f",
+    "bundleSha256": "ee04a0b66e6fe90a78e3ea52893935802a67b3923f43972d487d147a791157cb",
+    "tiles": 104
+  },
+  "mechanism": "Smoothly attenuate map-mesh shadow reception when the absolute geometric-normal/sun dot product falls from 0.05 to 0.005. Retain the original normal bias, receiver-plane calculation and 3x3 comparison filter elsewhere. This suppresses unstable reception on nearly parallel surfaces; it is an empirical rendering approximation.",
+  "scope": "Global map-mesh shadow receiver; no change to caster resolution, strength, time-of-day logic or vanilla game shadows.",
+  "reference": "https://learn.microsoft.com/en-us/windows/desktop/DxTechArts/cascaded-shadow-maps",
+  "trials": [
+    {
+      "name": "diagnosis",
+      "observation": "Disabling shadow reception removes triangular wall noise; diagnostic only.",
+      "benchmark": {
+        "status": "PASS: same-scene baseline/candidate/baseline samples captured",
+        "note": "Six one-second FPS readings per phase after six seconds of warmup; a local comparison, not a universal performance guarantee.",
+        "phases": [
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              70,
+              68,
+              69,
+              70,
+              70,
+              69
+            ],
+            "medianFps": 69.5
+          },
+          {
+            "phase": "candidate",
+            "fpsSamples": [
+              72,
+              73,
+              72,
+              70,
+              72,
+              72
+            ],
+            "medianFps": 72.0
+          },
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              69,
+              70,
+              70,
+              70,
+              70,
+              70
+            ],
+            "medianFps": 70.0
+          }
+        ]
+      },
+      "inputShaders": {
+        "benchmark-baseline.fsh": "c1b67018ff9426ca7e996ced64646783c41edfc7fbdcd3c185fb36dbbffcbf26",
+        "benchmark-candidate.fsh": "dac7a79270ad5d9e05d08e830329c78cb543cc2ae7708429fe3d249cf189fde5"
+      },
+      "captures": {
+        "campus-benchmark-1.png": "30a53253914fc5eca90182b239c833c3310befb9c509bf1d669981e86694cb70",
+        "campus-benchmark-0.png": "a97f54137e35c46b69a5d1fb273e8988c7a2cac128b2d817ed93d6db2c56ce61",
+        "campus-benchmark-2.png": "a97f54137e35c46b69a5d1fb273e8988c7a2cac128b2d817ed93d6db2c56ce61"
+      },
+      "camera": "188.695929 64.000000 -268.975546 10.235570 0.000000",
+      "timingNote": "Retrospective archive after run completion; setup stopped at absent optional options.txt, but shader/camera setup succeeded before launch. Log birthtime provides launch lower bound."
+    },
+    {
+      "name": "plane-trial",
+      "observation": "Moving derivatives before normal bias alone does not remove the defect.",
+      "benchmark": {
+        "status": "PASS: same-scene baseline/candidate/baseline samples captured",
+        "note": "Six one-second FPS readings per phase after six seconds of warmup; a local comparison, not a universal performance guarantee.",
+        "phases": [
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              64,
+              65,
+              65,
+              62,
+              63,
+              64
+            ],
+            "medianFps": 64.0
+          },
+          {
+            "phase": "candidate",
+            "fpsSamples": [
+              62,
+              64,
+              66,
+              64,
+              65,
+              65
+            ],
+            "medianFps": 64.5
+          },
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              64,
+              64,
+              68,
+              63,
+              60,
+              63
+            ],
+            "medianFps": 63.5
+          }
+        ]
+      },
+      "inputShaders": {
+        "benchmark-baseline.fsh": "c1b67018ff9426ca7e996ced64646783c41edfc7fbdcd3c185fb36dbbffcbf26",
+        "benchmark-candidate.fsh": "6343d8e17b845da6b773bcec85ec65fc92e2e0be2270c005c59a05906b569ae1"
+      },
+      "captures": {
+        "campus-benchmark-1.png": "9c3ce64cceffd3e78024403c85374d41ea62504a6ac9591505ceebf579769258",
+        "campus-benchmark-0.png": "a97f54137e35c46b69a5d1fb273e8988c7a2cac128b2d817ed93d6db2c56ce61",
+        "campus-benchmark-2.png": "a97f54137e35c46b69a5d1fb273e8988c7a2cac128b2d817ed93d6db2c56ce61"
+      },
+      "camera": "188.695929 64.000000 -268.975546 10.235570 0.000000",
+      "timingNote": "Captured before launch"
+    },
+    {
+      "name": "grazing-trial",
+      "observation": "Avoiding receiver-plane extrapolation at grazing incidence removes the visible triangular noise while keeping the shadow pass enabled.",
+      "benchmark": {
+        "status": "PASS: same-scene baseline/candidate/baseline samples captured",
+        "note": "Six one-second FPS readings per phase after six seconds of warmup; a local comparison, not a universal performance guarantee.",
+        "phases": [
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              69,
+              66,
+              70,
+              69,
+              70,
+              68
+            ],
+            "medianFps": 69.0
+          },
+          {
+            "phase": "candidate",
+            "fpsSamples": [
+              69,
+              70,
+              69,
+              69,
+              68,
+              70
+            ],
+            "medianFps": 69.0
+          },
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              69,
+              69,
+              69,
+              69,
+              67,
+              69
+            ],
+            "medianFps": 69.0
+          }
+        ]
+      },
+      "inputShaders": {
+        "benchmark-baseline.fsh": "c1b67018ff9426ca7e996ced64646783c41edfc7fbdcd3c185fb36dbbffcbf26",
+        "benchmark-candidate.fsh": "915ed524402326eb8124d4e45524d1b898447ef0000e0abcbe6ae3cf5d605677"
+      },
+      "captures": {
+        "campus-benchmark-1.png": "bdceabc0099be725bd9d43c79e7659dedd8cf613033181af720ace7eaf5c48b6",
+        "campus-benchmark-0.png": "a97f54137e35c46b69a5d1fb273e8988c7a2cac128b2d817ed93d6db2c56ce61",
+        "campus-benchmark-2.png": "a97f54137e35c46b69a5d1fb273e8988c7a2cac128b2d817ed93d6db2c56ce61"
+      },
+      "camera": "188.695929 64.000000 -268.975546 10.235570 0.000000",
+      "timingNote": "Captured before launch"
+    },
+    {
+      "name": "filter-trial",
+      "observation": "The first grazing fallback removes triangle artifacts but leaves periodic vertical shadow-filter bands. A compact bilinear comparison filter removes those bands in the same camera.",
+      "artifact": {
+        "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+        "size": 236030528,
+        "sha256": "59870768389093297f1b1cc59905917433ccc9aa686468dad0ce563a1f75502f",
+        "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+        "sourcePatchSha256": "3845853c846e3ddb8b9cca1494c13519cd65a885dd9e7a79d9beb48bf4e0bba9",
+        "rendererSourceFingerprint": "9850778412f049a1",
+        "bundleSha256": "ee04a0b66e6fe90a78e3ea52893935802a67b3923f43972d487d147a791157cb",
+        "tiles": 104
+      },
+      "benchmark": {
+        "status": "PASS: same-scene baseline/candidate/baseline samples captured",
+        "note": "Six one-second FPS readings per phase after six seconds of warmup; a local comparison, not a universal performance guarantee.",
+        "phases": [
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              69,
+              68,
+              67,
+              68,
+              68,
+              67
+            ],
+            "medianFps": 68.0
+          },
+          {
+            "phase": "candidate",
+            "fpsSamples": [
+              67,
+              67,
+              67,
+              66,
+              67,
+              68
+            ],
+            "medianFps": 67.0
+          },
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              70,
+              66,
+              70,
+              69,
+              70,
+              69
+            ],
+            "medianFps": 69.5
+          }
+        ]
+      },
+      "inputShaders": {
+        "benchmark-baseline.fsh": "30c1bdb3260ae64a9a506168e43bb48aaded5fb60eba229e8bb4b78533ba663e",
+        "benchmark-candidate.fsh": "84b9d6c366ca040b8e451f4a193974d3b757e5566dc49fb503227fe2115ea22d"
+      },
+      "captures": {
+        "campus-benchmark-1.png": "54d2db5c7a69d824aec467c271a05a64c942209ceb7b1172f063ffc2507e856e",
+        "campus-benchmark-0.png": "00bb75d6a9a26adab76d7175eef1b46f903a0e83a3e9cef22afedf2834c6e3b2",
+        "campus-benchmark-2.png": "00bb75d6a9a26adab76d7175eef1b46f903a0e83a3e9cef22afedf2834c6e3b2"
+      },
+      "camera": "188.695929 64.000000 -268.975546 10.235570 0.000000"
+    },
+    {
+      "name": "smooth-grazing-galileo",
+      "observation": "Reviewed: wall stripes and triangular noise absent; wall texture retained. Exact packaged route remains to be verified.",
+      "benchmark": {
+        "status": "PASS: same-scene baseline/candidate/baseline samples captured",
+        "note": "Six one-second FPS readings per phase after six seconds of warmup; a local comparison, not a universal performance guarantee.",
+        "phases": [
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              94,
+              92,
+              93,
+              96,
+              95,
+              95
+            ],
+            "medianFps": 94.5
+          },
+          {
+            "phase": "candidate",
+            "fpsSamples": [
+              94,
+              95,
+              94,
+              93,
+              93,
+              89
+            ],
+            "medianFps": 93.5
+          },
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              85,
+              86,
+              87,
+              88,
+              87,
+              90
+            ],
+            "medianFps": 87.0
+          }
+        ]
+      },
+      "inputShaders": {
+        "benchmark-baseline.fsh": "fffe2102aefc17ef138f81d74a3cd1288d593ba7ab3e4268470b5f40c6a9b969",
+        "benchmark-candidate.fsh": "558c394f4fdc9a7ac0f1f462b4aeb0dc2db13be6d14afe1c0dd66c6036f62235"
+      },
+      "captures": {
+        "campus-benchmark-1.png": "59862200a643ed55d76c8f3b8258c24023309d01bf5aa0f6331a7f35118c993d",
+        "campus-benchmark-0.png": "4ce5f569c63f15ece92a7289631ad7ccec5603797c7e178dba1ed1658e689cb8",
+        "campus-benchmark-2.png": "4ce5f569c63f15ece92a7289631ad7ccec5603797c7e178dba1ed1658e689cb8",
+        "campus-material-benchmark.json": "a39e7c97d7c079d79f2ee2f3956aeb6b145a285af2861e85a1572a7d80c5b4a0",
+        "campus-material-benchmark-phase-2.json": "7cfcb457a8c9c4f863ea3ef090646934e8dfbf1271491b48078be56ff4492e1d",
+        "campus-material-benchmark-phase-1.json": "3f5ad47613837ac4fd84d4fa796c7f176a2403ffeb6adc8bc6b10c84d68154cd",
+        "campus-material-benchmark-phase-0.json": "fb0d4c9b579b3e741366cbab19be087a5b8c039028c2db4f45a228a90459e3c5"
+      }
+    },
+    {
+      "name": "smooth-grazing-siemensbau",
+      "observation": "Reviewed: wall stripes and triangular noise absent; wall texture retained. Exact packaged route remains to be verified.",
+      "benchmark": {
+        "status": "PASS: same-scene baseline/candidate/baseline samples captured",
+        "note": "Six one-second FPS readings per phase after six seconds of warmup; a local comparison, not a universal performance guarantee.",
+        "phases": [
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              62,
+              65,
+              64,
+              62,
+              64,
+              63
+            ],
+            "medianFps": 63.5
+          },
+          {
+            "phase": "candidate",
+            "fpsSamples": [
+              63,
+              63,
+              62,
+              63,
+              65,
+              68
+            ],
+            "medianFps": 63.0
+          },
+          {
+            "phase": "baseline",
+            "fpsSamples": [
+              63,
+              64,
+              67,
+              64,
+              64,
+              64
+            ],
+            "medianFps": 64.0
+          }
+        ]
+      },
+      "inputShaders": {
+        "benchmark-baseline.fsh": "fffe2102aefc17ef138f81d74a3cd1288d593ba7ab3e4268470b5f40c6a9b969",
+        "benchmark-candidate.fsh": "558c394f4fdc9a7ac0f1f462b4aeb0dc2db13be6d14afe1c0dd66c6036f62235"
+      },
+      "captures": {
+        "campus-benchmark-1.png": "abb78bab113462565e999b3b6ee3ccccdd1c9c6f8c08d3a0962546e6db7f1a9f",
+        "campus-benchmark-0.png": "cd4683207a516afd2f393ca7ed340900e7d042bb84e8a55d15d1f3e12df9bc7e",
+        "campus-benchmark-2.png": "cd4683207a516afd2f393ca7ed340900e7d042bb84e8a55d15d1f3e12df9bc7e",
+        "campus-material-benchmark.json": "8ba3e4e8e4463c5ea0d78543d73d5eafb104f684b923d0cd1da00e9183bbe2d6",
+        "campus-material-benchmark-phase-2.json": "b63a91e56ff58106077ecdff52cd1710461aeb801508daacc505bd15f7f09910",
+        "campus-material-benchmark-phase-1.json": "fa38a32d5c9d2bb5e873e1f58b431bd08341819ec30d5ab72c385caf9b813702",
+        "campus-material-benchmark-phase-0.json": "bb44ff0581e9a2b8540b62b3392e786918e6987995b26ff2e0c9ea28aba6c94d"
+      }
+    }
+  ],
+  "images": [
+    {
+      "phase": "before",
+      "image": "../../docs/screenshots/campus-siemensbau-shadow-before.jpg",
+      "sha256": "bd59d2e46c36740defd81fc82d8babaf44c707cc1fdad40a329a31ecdc63c336",
+      "nativePngSha256": "a97f54137e35c46b69a5d1fb273e8988c7a2cac128b2d817ed93d6db2c56ce61"
+    },
+    {
+      "phase": "disabled-diagnostic",
+      "image": "../../docs/screenshots/campus-siemensbau-shadow-disabled-diagnostic.jpg",
+      "sha256": "c32c37161e5aaa93dc9ea743c75d3b642c7545878922d1c58940695047b00819",
+      "nativePngSha256": "30a53253914fc5eca90182b239c833c3310befb9c509bf1d669981e86694cb70"
+    },
+    {
+      "phase": "grazing-correction",
+      "image": "../../docs/screenshots/campus-siemensbau-shadow-grazing-correction.jpg",
+      "sha256": "c6d8190a4f566557d7ed051e44405589f9b1fad7b0ffa18c44cd4d608ca30515",
+      "nativePngSha256": "bdceabc0099be725bd9d43c79e7659dedd8cf613033181af720ace7eaf5c48b6"
+    },
+    {
+      "phase": "compact-filter",
+      "image": "../../docs/screenshots/campus-siemensbau-shadow-filtered.jpg",
+      "sha256": "db44ffaafae428e466e7cb0eedf0af7e187b8e2b7183ec9887e844f0b3c8d336",
+      "nativePngSha256": "54d2db5c7a69d824aec467c271a05a64c942209ceb7b1172f063ffc2507e856e"
+    }
+  ],
+  "qualifications": [
+    "These are controlled QA shader overrides, not installed release screenshots.",
+    "The earlier per-fragment material-distance experiment did not resolve the defect and was reverted before packaging.",
+    "The approximately three-degree fade is empirical. It reduces received shadow strength near parallel sunlight and does not establish physically exact illumination.",
+    "Frames are static at Minecraft noon; they do not establish temporal stability, full-campus realism or a general performance gain.",
+    "Siemensbau openings and materials remain qualified reconstructions; source coverage does not establish exact as-built details."
+  ],
+  "regression": {
+    "camera": "campus-galileo-court-floor.png",
+    "baselineArtifactSha256": "949d518e117f173e61180582ea4efeeda15e3fe466cc9b89ed9a207549c76c50",
+    "candidateArtifactSha256": "52c56210942529c977a331760360f34fa8bec9479c399a3a9539ddf0b2776a79",
+    "observation": "New vertical stripe pattern on courtyard retaining walls; viewed against exact dev.20 same-camera baseline. Broad quality acceptance failed despite structural and functional checks."
+  },
+  "rejectedFilterMechanism": "The receiver-plane depth gradient is ill-conditioned when a wall is nearly parallel to sunlight. At absolute geometric-normal/light dot product <=0.05, retain ordinary biased depth comparisons instead of extrapolating that gradient. Compute gradients from unoffset position before normal bias. At grazing incidence, a compact 2x2 bilinear comparison filter avoids extending the 3x3 kernel beyond thin coping shadows; comparisons are interpolated, not raw depth.",
+  "rejectedPackagedCandidate": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 236030723,
+    "sha256": "52c56210942529c977a331760360f34fa8bec9479c399a3a9539ddf0b2776a79",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "3845853c846e3ddb8b9cca1494c13519cd65a885dd9e7a79d9beb48bf4e0bba9",
+    "rendererSourceFingerprint": "e1d61409561c5b69",
+    "bundleSha256": "ee04a0b66e6fe90a78e3ea52893935802a67b3923f43972d487d147a791157cb",
+    "tiles": 104
+  },
+  "rejectedPackagedInspection": {
+    "frames": 14,
+    "structuralRays": 68,
+    "nativeColliders": 2,
+    "allFramesReviewed": true,
+    "publicPlan": "checks/siemensbau-5103-inspection.json",
+    "planSha256": "442f2de441a9f549f28da7e3d39aca4ffb956e08d00e3644cce486a60eb24c69",
+    "reportSha256": "6886261541229eb2293e49a19a90cab144204c8577f6bab1f35fa0820bfcd78c",
+    "qualification": "Obstructed north-east and west study views are not clear target acceptance views; closer gap/oblique views are retained."
+  },
+  "rejectedPackagedShadowFunctional": {
+    "report": {
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-52c5621094.jar",
+      "latestCapture": "reloaded",
+      "clientDayTime": 6000,
+      "shadowStrength": 0.28,
+      "newTntEdits": 28,
+      "changedDepthSamples": 13225,
+      "restoredDepthResidualSamples": 0,
+      "noonMeanLuminance": 113.37797142094017,
+      "nightMeanLuminance": 22.91486378205128,
+      "reloadDepthResidualSamples": 0,
+      "reloadedMaterials": [
+        {
+          "material": "concrete_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "concrete_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "grass_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "grass_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "ground_surfaces",
+          "minFilter": 9987,
+          "maxLod": 12.0
+        },
+        {
+          "material": "brick_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "asphalt_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "asphalt_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "soil_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "soil_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        }
+      ],
+      "status": "PASS: actual TNT changed native shadow depth, restoration recovered it, and sky-consistent morning/evening/night lighting rendered",
+      "depthCropSize": 512,
+      "depthDifferenceThreshold": 1e-05,
+      "lightingChecks": 5,
+      "lighting": [
+        {
+          "phase": "noon",
+          "dayTime": 6000,
+          "gpuMaterialDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 409
+        },
+        {
+          "phase": "morning",
+          "dayTime": 1000,
+          "gpuMaterialDirection": [
+            0.8861938,
+            0.46331468,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 554
+        },
+        {
+          "phase": "evening",
+          "dayTime": 11000,
+          "gpuMaterialDirection": [
+            -0.8861939,
+            0.46331462,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 589
+        },
+        {
+          "phase": "night",
+          "dayTime": 18000,
+          "gpuMaterialDirection": [
+            -8.742278e-08,
+            1.0,
+            -0.0
+          ],
+          "gpuShadowStrength": 0.0,
+          "shadowUpdates": 598
+        },
+        {
+          "phase": "reloaded-noon",
+          "dayTime": 6000,
+          "gpuMaterialDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 673
+        }
+      ]
+    },
+    "reportSha256": "281f3fe2203aaa4f1d64b3dd2e430317f1c7992b846dceb842203ccc2a78ed0c",
+    "sevenCapturesReviewed": true
+  },
+  "packagedCandidate": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 236030425,
+    "sha256": "3902fde6af38009e7f6f105ed62bf55d53adb959abfc39f8e773561a71cd2024",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "3845853c846e3ddb8b9cca1494c13519cd65a885dd9e7a79d9beb48bf4e0bba9",
+    "rendererSourceFingerprint": "d2e09293a00ea564",
+    "bundleSha256": "ee04a0b66e6fe90a78e3ea52893935802a67b3923f43972d487d147a791157cb",
+    "tiles": 104
+  },
+  "packagedShadowFunctional": {
+    "report": {
+      "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-3902fde6af.jar",
+      "latestCapture": "reloaded",
+      "clientDayTime": 6000,
+      "shadowStrength": 0.28,
+      "newTntEdits": 28,
+      "changedDepthSamples": 13314,
+      "restoredDepthResidualSamples": 0,
+      "noonMeanLuminance": 114.57659755608974,
+      "nightMeanLuminance": 22.91433237624644,
+      "reloadDepthResidualSamples": 0,
+      "reloadedMaterials": [
+        {
+          "material": "concrete_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "concrete_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "grass_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "grass_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "ground_surfaces",
+          "minFilter": 9987,
+          "maxLod": 12.0
+        },
+        {
+          "material": "brick_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "asphalt_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "asphalt_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "soil_diff",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        },
+        {
+          "material": "soil_normal",
+          "minFilter": 9987,
+          "maxLod": 10.0
+        }
+      ],
+      "status": "PASS: actual TNT changed native shadow depth, restoration recovered it, and sky-consistent morning/evening/night lighting rendered",
+      "depthCropSize": 512,
+      "depthDifferenceThreshold": 1e-05,
+      "lightingChecks": 5,
+      "lighting": [
+        {
+          "phase": "noon",
+          "dayTime": 6000,
+          "gpuMaterialDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 393
+        },
+        {
+          "phase": "morning",
+          "dayTime": 1000,
+          "gpuMaterialDirection": [
+            0.8861938,
+            0.46331468,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 536
+        },
+        {
+          "phase": "evening",
+          "dayTime": 11000,
+          "gpuMaterialDirection": [
+            -0.8861939,
+            0.46331462,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 570
+        },
+        {
+          "phase": "night",
+          "dayTime": 18000,
+          "gpuMaterialDirection": [
+            -8.742278e-08,
+            1.0,
+            -0.0
+          ],
+          "gpuShadowStrength": 0.0,
+          "shadowUpdates": 577
+        },
+        {
+          "phase": "reloaded-noon",
+          "dayTime": 6000,
+          "gpuMaterialDirection": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "gpuShadowStrength": 0.28,
+          "shadowUpdates": 651
+        }
+      ]
+    },
+    "sevenCapturesReviewed": true,
+    "reportSha256": "053f1082bf81a153a8f0d081fba46115b7a7ae86d5bfb2b4d9ee84fea372402c"
+  },
+  "packagedInspection": {
+    "frames": 14,
+    "structuralRays": 68,
+    "nativeColliders": 2,
+    "allFramesReviewed": true,
+    "publicPlan": "checks/siemensbau-5103-inspection.json",
+    "qualification": "Two wide context views are obstructed by neighbouring buildings; close and oblique views provide the target-wall evidence.",
+    "reportSha256": "b1dcd2815c97d195048817506e15ea173808f20a19c00a1954915397db1b1d36"
+  },
+  "packagedFullRoute": {
+    "artifactSha256": "3902fde6af38009e7f6f105ed62bf55d53adb959abfc39f8e773561a71cd2024",
+    "views": 57,
+    "checks": 40,
+    "allFramesReviewed": true,
+    "evidence": "siemensbau-5103-development-validation.json",
+    "regressionView": "campus-galileo-court-floor.png",
+    "observation": "Prior vertical shadow bands absent from Galileo retaining and MLZ walls; concrete texture and ground shadows retained."
+  }
+}

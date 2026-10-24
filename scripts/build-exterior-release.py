@@ -33,6 +33,8 @@ ramps=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoRam
 assert hashlib.sha256((SOURCE/ramps['sourceFile']).read_bytes()).hexdigest()==ramps['sourceSha256']
 mlz=json.loads((DATA/'manifest.json').read_text())['architecture']['mlzExteriors']
 assert hashlib.sha256((SOURCE/mlz['sourceFile']).read_bytes()).hexdigest()==mlz['sourceSha256']
+siemensbau=json.loads((DATA/'manifest.json').read_text())['architecture']['siemensbauExterior']
+assert hashlib.sha256((SOURCE/siemensbau['sourceFile']).read_bytes()).hexdigest()==siemensbau['sourceSha256']
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -64,6 +66,12 @@ compiled=work/'mod/build/libs/realworldmc-1.0.3.jar'
 if not compiled.is_file():raise SystemExit('Expected remapped release JAR missing.')
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
+
+Siemensbau / TUM 5103: surveyed envelope and orthophoto roof retained.
+North opening groups follow locally observed provider photography; obscured
+north/south openings, end divisions, materials and recesses remain estimates.
+The public package includes no provider image or source tile for this study.
+No interiors. See siemensbau-5103.json for qualifications and observations.
 
 MLZ UYW/UYL exteriors: BVV survey envelopes and roof geometry retained.
 Per-face openings, panel joints and recesses inferred from official state
@@ -257,6 +265,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/galileo-facade-reference.json',(SOURCE/'photos/galileo-facade-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-frontage-grade.json',(SOURCE/'galileo-frontage-grade.json').read_bytes())
   write(target,'src/minecampus-exterior/mlz-exteriors.json',(SOURCE/'mlz-exteriors.json').read_bytes())
+  write(target,'src/minecampus-exterior/siemensbau-5103.json',(SOURCE/'siemensbau-5103.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-east-neighbours-reference.json',(SOURCE/'photos/galileo-east-neighbours-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-east-ramps.json',(SOURCE/'galileo-east-ramps.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-east-ramp-reference.json',(SOURCE/'photos/galileo-east-ramp-reference.json').read_bytes())

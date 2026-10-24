@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-24",
+  "building": "DEBY_LOD2_5284457",
+  "tumBuilding": "5103",
+  "name": "Betriebsgeb\u00e4ude II / Verwaltung (Siemensbau)",
+  "references": [
+    {
+      "url": "https://status.lrz.de/issues/muenchner-wissenschaftsnetz-mwn/2025-08-05-schwenk-garching/",
+      "use": "LRZ identifies TUM 5103 as Betriebsgeb\u00e4ude II (Siemensbau), Boltzmannstr. 10."
+    },
+    {
+      "url": "https://nav.tum.de/building/5103",
+      "use": "TUM building identity and single ground-floor record."
+    }
+  ],
+  "surveyWallsSha256": "3101654c4796dbfb962a6454ca1d9f64a648476c386e879e9a32dbf6c967d0ce",
+  "localObservation": {
+    "artifactSha256": "949d518e117f173e61180582ea4efeeda15e3fe466cc9b89ed9a207549c76c50",
+    "baselineFrames": 7,
+    "sourceProjectionCoverageByFace": [
+      {
+        "wall": 0,
+        "width": 581,
+        "height": 38,
+        "coverage": 0.742775613733128
+      },
+      {
+        "wall": 1,
+        "width": 126,
+        "height": 38,
+        "coverage": 0.8423141186299081
+      },
+      {
+        "wall": 2,
+        "width": 19,
+        "height": 38,
+        "coverage": 0.3601108033240997
+      },
+      {
+        "wall": 3,
+        "width": 19,
+        "height": 38,
+        "coverage": 0.7146814404432132
+      },
+      {
+        "wall": 4,
+        "width": 89,
+        "height": 38,
+        "coverage": 0.9000591366055588
+      },
+      {
+        "wall": 5,
+        "width": 581,
+        "height": 38,
+        "coverage": 0.41366971645982425
+      }
+    ],
+    "note": "Private provider imagery was inspected locally; no provider image or mesh is included in this reference. The north-facing window/entrance rhythm is visible over roughly the first 42 m. The remaining north wall is largely occluded by adjacent BVV DEBY_LOD2_5284446. The southern scan is severely incomplete. End elevations have blurry observations. Fine opening sizes, colours and divisions are estimates."
+  },
+  "neighbours": {
+    "telefonzentrale": "DEBY_LOD2_8486669 joins the west via a short passage. Its four-window west photograph is not a reference for Siemensbau.",
+    "northEast": "DEBY_LOD2_5284446 approaches within about 1.436 m. Do not retire its mesh."
+  },
+  "qualification": "A source-informed exterior reconstruction, not an as-built model. Unobserved openings on the south and occluded north are provisional continuations of the observed office-window rhythm. No interiors."
+}

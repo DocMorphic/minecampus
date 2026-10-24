@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-24",
+  "status": "Source study only; existing mesh unchanged",
+  "building": "DEBY_LOD2_5284446",
+  "tumBuilding": "5104",
+  "name": "RCM-Technikum",
+  "address": "Boltzmannstr. 16, 85748 Garching b. M\u00fcnchen",
+  "identityReferences": [
+    {
+      "url": "https://nav.tum.de/building/5104",
+      "use": "Official building identity, address and coordinate. Four room records; no public exterior photograph on this page."
+    },
+    {
+      "url": "https://www.lrz.de/services/netz/mwn-netzkonzept/mwn-netzkonzept.pdf",
+      "use": "Names building 5104 among the Siemenshallen; identity context only."
+    },
+    {
+      "url": "https://www.openstreetmap.org/way/109087270",
+      "use": "Cached campus mapping tags this matching footprint as industrial at house number 16."
+    }
+  ],
+  "identityMatch": {
+    "officialCoordinateMC": [
+      217.32378527767446,
+      -264.3344606399778
+    ],
+    "officialCoordinateInsideSurveyRoofFootprint": true,
+    "osmSurveyFootprintIntersectionOverUnion": 0.9035899119995341,
+    "note": "Coordinate conversion uses the local campus tangent frame; OSM is corroboration, not survey geometry."
+  },
+  "survey": {
+    "boundsMC": [
+      [
+        199.87897887140824,
+        63.64159552164796,
+        -272.62556556375046
+      ],
+      [
+        234.08530860685835,
+        71.85758205221413,
+        -254.52603966386982
+      ]
+    ],
+    "faces": 5,
+    "roofTriangles": 4,
+    "wallsSha256": "df564741343c59a33177d63c0038ee7727e3553fe80fe0a193dc3ae0b73b03a7",
+    "observations": "Tall main hall and a lower eastern strip; retain the stepped roof and neighbouring Siemensbau footprint."
+  },
+  "localPhotoStudy": {
+    "sourceTiles": 7,
+    "coverageByFace": [
+      {
+        "wall": 0,
+        "width": 126,
+        "height": 43,
+        "coverage": 0.9091915836101883
+      },
+      {
+        "wall": 1,
+        "width": 326,
+        "height": 83,
+        "coverage": 0.7555621258038289
+      },
+      {
+        "wall": 2,
+        "width": 126,
+        "height": 83,
+        "coverage": 0.9241728820042073
+      },
+      {
+        "wall": 3,
+        "width": 126,
+        "height": 40,
+        "coverage": 0.7422619047619048
+      },
+      {
+        "wall": 4,
+        "width": 325,
+        "height": 83,
+        "coverage": 0.7435773864689528
+      }
+    ],
+    "observations": [
+      "South/north projections contain large missing lower regions and tree/adjacent-building occlusion.",
+      "The upper hall appears mostly pale solid wall in these low-resolution observations.",
+      "The western end has a lower dark opening and smaller dark details; exact opening sizes, materials and function are unresolved.",
+      "The lower eastern strip is strongly occluded."
+    ],
+    "qualification": "Local provider imagery inspected privately. No provider image or mesh is redistributed in this reference. Projection coverage measures filled pixels, not architectural accuracy."
+  },
+  "next": [
+    "Capture independent native walk-level and aerial baseline views around this body.",
+    "Resolve door/vent positions from available photographs without inventing repetitive window strips.",
+    "Reconstruct the source-supported exterior envelope and stepped roof; keep unknown details explicitly provisional.",
+    "Bound cleanup to this body with neighbour guards and verify shared-lane visibility/collision."
+  ]
+}
