@@ -3125,5 +3125,56 @@
       "Diagnose the eastern neighboring building and route1 endpoint source-ground gaps.",
       "Refine grass edges, wall halos, parking and planting before broad gameplay/preview acceptance. Overall goal stays active."
     ]
+  },
+  "physicsWSIBaseline36": {
+    "status": "PASS: baseline capture only; building remains unreconstructed",
+    "terminalExit": 0,
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 301559475,
+      "sha256": "0dc3e3b39cbb0cdd8e118ddb2f4a50ae153ae690e63323b220af6da0fcf12336",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "129a58eebbced74e176c8e3f5e98ece80c5a96c4ae9c9c99050605f6ae1af8c7",
+      "rendererSourceFingerprint": "a16c96e74e16db9f",
+      "bundleSha256": "3de14fa03bfa8b3c996f45c5dbaa5201905488962c6bf71c60d8dddc892774d8",
+      "tiles": 248,
+      "bundleUnpackedBytes": 675145195,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "viewsReviewed": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "visualAccepted": false,
+    "findings": [
+      "South frontage is severely distorted; current container masks part of the south-west approach. South-east view gives a useful long-facade comparison.",
+      "West end has a warped roof and opaque wall; east end is obscured by fused tree geometry. Building replacement must address this adjoining tree/ground area as well.",
+      "North frontage shows tall pale vertical framing, clear upper/lower window bands and a darker middle zone. Do not blindly repeat the photograph-supported three-tier south layout here.",
+      "North-west parking foreground contains large fused cars and trees and abrupt gravel-to-source joins. These remain unacceptable.",
+      "Both aerial views confirm the raised pitched central roof volume, side roof areas and retained vents. Preserve the surveyed33roof triangles and public DOP appearance."
+    ],
+    "research": "minecraft/exterior/photos/physics-wsi-reference.json",
+    "nextActions": [
+      "Digitize the three south window tiers and projecting frames against the survey plane; qualify unresolved north/end details.",
+      "Implement WSI envelope and adjoining continuous ground using a separate generator with independent roof/wall/clearance validation.",
+      "Match these eight baseline cameras and repeat affected walking routes before acceptance."
+    ]
   }
 }
