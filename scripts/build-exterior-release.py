@@ -172,6 +172,17 @@ assert wsi['northLandscapeBoundary']==wsi_spec['northLandscapeBoundary']
 for item in wsi_spec['northLandscapeBoundary']['osm']:
  assert digest(SOURCE/item['sourceFile'])==item['sha256']
  assert digest(DATA/item['sourceFile'])==item['sha256']
+pinned_water=json.loads((DATA/'manifest.json').read_text())['pinnedWater']
+assert pinned_water['sourceSha256']==digest(SOURCE/pinned_water['sourceFile'])
+assert pinned_water['generatorSha256']==digest(ROOT/pinned_water['generatorFile'])
+assert pinned_water['osm']==wsi_spec['northLandscapeBoundary']['osm']
+assert len(pinned_water['features'])==1 and pinned_water['features'][0]['id']=='way/'+wsi_spec['northLandscapeBoundary']['riverWay']
+water_check=json.loads((DATA/'pinned-water-validation.json').read_text())
+assert water_check['status'].startswith('PASS:')
+assert water_check['manifestSha256']==digest(DATA/'manifest.json')
+assert water_check['sourceSha256']==pinned_water['sourceSha256']
+assert water_check['generatorSha256']==pinned_water['generatorSha256']
+assert water_check['validatorSha256']==digest(ROOT/'scripts/validate-pinned-water.py')
 wsi_check=json.loads((DATA/'physics-wsi-validation.json').read_text())
 assert wsi_check['status'].startswith('PASS:')
 assert wsi_check['manifestSha256']==digest(DATA/'manifest.json')

@@ -1,0 +1,195 @@
+{
+  "building": "DEBY_LOD2_8486665",
+  "name": "ZNN / TUM 5115",
+  "reference": "photos/physics-znn-reference.json",
+  "referenceSha256": "3df82309daadad7167717be2bc70383482a6c5c5e6e59a3942465b87d6d3abe8",
+  "runtimeId": 1000030041,
+  "surveyBoundsUtm": [
+    698560,
+    5349520,
+    698700,
+    5349640
+  ],
+  "cleanupMarginMetres": 1.5,
+  "neighbourGuardMetres": 0.5,
+  "windowRecessMetres": 0.19,
+  "frameWidthMetres": 0.055,
+  "mullionPitchMetres": 1.35,
+  "panelPitchMetres": 1.35,
+  "jointDepthMetres": 0.035,
+  "roofPlantFaces": [
+    1,
+    2,
+    8,
+    11
+  ],
+  "openings": {
+    "0": [
+      [
+        0.34913514587420835,
+        0.75,
+        13.452427251432898,
+        3.35
+      ],
+      [
+        0.34913514587420835,
+        4.85,
+        13.452427251432898,
+        7.3
+      ],
+      [
+        0.34913514587420835,
+        8.9,
+        13.452427251432898,
+        11.35
+      ]
+    ],
+    "3": [
+      [
+        0.35,
+        0.75,
+        45.60173309580716,
+        3.35
+      ],
+      [
+        0.35,
+        4.85,
+        45.60173309580716,
+        7.3
+      ],
+      [
+        0.35,
+        8.9,
+        45.60173309580716,
+        11.35
+      ]
+    ],
+    "4": [
+      [
+        -2.5539104160309614,
+        0.75,
+        22.569856940966215,
+        3.35
+      ],
+      [
+        -2.5539104160309614,
+        4.85,
+        22.569856940966215,
+        7.3
+      ],
+      [
+        -2.5539104160309614,
+        8.9,
+        22.569856940966215,
+        11.35
+      ]
+    ],
+    "5": [
+      [
+        0.34910721017289437,
+        0.75,
+        31.77934522653556,
+        3.35
+      ],
+      [
+        0.34910721017289437,
+        4.85,
+        31.77934522653556,
+        7.3
+      ],
+      [
+        0.34910721017289437,
+        8.9,
+        31.77934522653556,
+        11.35
+      ]
+    ],
+    "9": [
+      [
+        -3.3314688809449993,
+        0.75,
+        1.9169980345540991,
+        3.35
+      ],
+      [
+        -3.3314688809449993,
+        4.85,
+        1.9169980345540991,
+        7.3
+      ],
+      [
+        -3.3314688809449993,
+        8.9,
+        1.9169980345540991,
+        11.35
+      ]
+    ],
+    "10": [
+      [
+        -2.1725246018376287,
+        4.85,
+        16.629708068830364,
+        7.3
+      ],
+      [
+        -2.1725246018376287,
+        8.9,
+        16.629708068830364,
+        11.35
+      ]
+    ]
+  },
+  "opaqueOchrePanels": {
+    "10": [
+      [
+        -2.222524601837629,
+        0.55,
+        16.679708068830365,
+        3.5
+      ]
+    ]
+  },
+  "shadingRail": {
+    "depthMetres": 0.24,
+    "heightMetres": 0.055,
+    "offsetsBelowOpeningTopMetres": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "qualification": "Photographed projecting horizontal rails; exact section and offsets estimated."
+  },
+  "materialColours": [
+    [
+      205,
+      208,
+      207,
+      255
+    ],
+    [
+      31,
+      49,
+      59,
+      255
+    ],
+    [
+      146,
+      155,
+      159,
+      255
+    ],
+    [
+      52,
+      58,
+      62,
+      255
+    ],
+    [
+      173,
+      126,
+      58,
+      255
+    ]
+  ],
+  "qualification": "BVV survey fixes the envelope and stepped roof; facade opening dimensions, rail profiles, materials, entrance detail and south opaque panel dimensions are estimates. No interiors; no reference photographs or private projected pixels redistributed."
+}

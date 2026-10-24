@@ -409,3 +409,18 @@ test('bounded complete-envelope cleanup preserves the outside of a source triang
   assert.ok(Math.abs(area-2)<1e-6,'Exactly the2m² outside the rebuilt footprint must survive');
  }
 });
+
+test('pinned river survives a live OSM outage without changing foreign regions or disabled water',async t=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-water-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+ const points=[];for(let z=0;z<=20;z+=10)for(let x=0;x<=20;x+=10)points.push([x,0,z]);
+ const river={id:'way/river',minx:30,maxx:40,minz:30,maxz:40,segs:[30,30,40,30,40,30,40,40,40,40,30,40,30,40,30,30]};
+ fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify({origin:Object.values(origin),tiles:[],terrainGuide:{width:3,height:3,points},pinnedWater:{features:[river]}}));
+ let calls=0,fail=true;const other={id:'other'};
+ const service={cfg:{},renderSelect:async()=>({tiles:[],attribution:[]}),renderTile:async()=>null,chunk:async()=>null,waterFor:async()=>{calls++;if(fail)throw Error('OSM offline');return [other];}};
+ attachSurveySurface(service,dir);
+ const result=await service.waterFor(origin,25,25,16);assert.equal(result.length,1);assert.equal(result[0].id,river.id);assert.deepEqual([...result[0].segs],river.segs);
+ fail=false;assert.deepEqual((await service.waterFor(origin,25,25,16)).map(f=>f.id),['other','way/river']);
+ assert.deepEqual(await service.waterFor(origin,0,0,16),[other]);
+ assert.deepEqual(await service.waterFor({...origin,lat:1},25,25,16),[other]);
+ const before=calls;service.cfg.water=false;assert.deepEqual(await service.waterFor(origin,25,25,16),[]);assert.equal(calls,before);
+});

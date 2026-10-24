@@ -26,6 +26,21 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     return intervals.some(([a,b])=>y>=a&&y<=b);
   }
   const matches=frame=>Math.abs(frame.lat-manifest.origin[0])<1e-7 && Math.abs(frame.lon-manifest.origin[1])<1e-7;
+  // A live OSM outage must not erase a river whose public polygon is packaged.
+  // Keep the upstream lookup for other waterways and respect its off switch.
+  if(manifest.pinnedWater?.features?.length && typeof service.waterFor==='function'){
+    const waterFor=service.waterFor.bind(service);
+    const pinned=manifest.pinnedWater.features.map(f=>({...f,segs:Float64Array.from(f.segs)}));
+    service.waterFor=async(frame,x0,z0,w)=>{
+      if(service.cfg?.water===false)return [];
+      if(!matches(frame))return waterFor(frame,x0,z0,w);
+      const local=pinned.filter(f=>f.maxx>=x0&&f.minx<=x0+w&&f.maxz>=z0&&f.minz<=z0+w);
+      if(!local.length)return waterFor(frame,x0,z0,w);
+      let live;
+      try{live=await waterFor(frame,x0,z0,w);}catch{live=[];}
+      return [...live,...local];
+    };
+  }
   const ids=new Map(ground.map((t,i)=>[t.runtimeId??1_000_000_000+i,t]));
   const replacements=(manifest.replacements??[]).map(p=>({...p,bounds:[Math.min(...p.ring.map(v=>v[0])),Math.min(...p.ring.map(v=>v[1])),Math.max(...p.ring.map(v=>v[0])),Math.max(...p.ring.map(v=>v[1]))]}));
   function inside(x,z,ring){let yes=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>z)!==(b[1]>z)&&x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])yes=!yes;}return yes;}

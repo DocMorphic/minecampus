@@ -319,7 +319,23 @@ public final class CampusSiteInspection {
         }
         if(camera.has("screenRays"))row.add("screenRays",screenRays(mc,loaded,displayed,camera.getAsJsonArray("screenRays")));
         if (camera.has("probes")) row.add("probes", probe(mc, loaded, displayed, camera.getAsJsonArray("probes")));
+        boolean missingWater=false;
+        if(camera.has("waterColumns")){
+            var columns=new JsonArray();
+            for(var item:camera.getAsJsonArray("waterColumns")){
+                var control=item.getAsJsonObject();int x=control.get("x").getAsInt(),z=control.get("z").getAsInt();
+                var heights=new JsonArray();
+                for(int y=40;y<=100;y++){
+                    var state=mc.level.getBlockState(new net.minecraft.core.BlockPos(x,y,z));
+                    if(state.getFluidState().is(net.minecraft.tags.FluidTags.WATER))heights.add(y);
+                }
+                var column=control.deepCopy();column.add("waterBlockY",heights);columns.add(column);
+                if(heights.isEmpty())missingWater=true;
+            }
+            row.add("waterColumns",columns);row.addProperty("waterColumnsPass",!missingWater);
+        }
         frames.add(row);
+        if(missingWater){writeReport("FAIL: mapped river columns contain no native water");throw new AssertionError("Mapped river columns contain no native water; inspect captured column heights and image");}
         boolean needsGravity=plan.has("gravityProbes")&&!plan.getAsJsonArray("gravityProbes").isEmpty();
         writeReport(phase==cameras.size()-1&&!needsGravity?"PASS: inspection cameras captured; visual assessment required":"RUNNING");
         if (++phase == cameras.size()) { if(!needsGravity)mc.stop();return; }

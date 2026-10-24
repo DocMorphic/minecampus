@@ -1,0 +1,37 @@
+{
+  "name": "Zentrum fuer Nanotechnologie und Nanomaterialien / TUM 5115",
+  "building": "DEBY_LOD2_8486665",
+  "identity": {
+    "osmWay": "97406841",
+    "footprintIoU": 0.975165,
+    "officialBuilding": "https://nav.tum.de/building/5115",
+    "qualification": "Identity inferred from footprint agreement and official address, not an official identifier crosswalk."
+  },
+  "references": [
+    {
+      "url": "https://www.ee.cit.tum.de/nan/news/article/new-building-of-center-for-nanotechnology-and-nanomaterials-znn-garching/",
+      "observations": "Three laboratory levels and a recessed entrance toward the common square."
+    },
+    {
+      "url": "https://www.runds.de/leistungsspektrum/referenz/zentrum-fuer-nanotechnologie-und-nanomaterialien-der-tu-muenchen.html",
+      "observations": "Engineering photographs show pale panel bands, three glazed tiers, projecting horizontal shading rails, dark rooftop plant cladding and an ochre opaque area on the south end. Used for observation only; photographs are not packaged."
+    },
+    {
+      "source": "Private survey-aligned projections",
+      "wallsReviewed": [
+        0,
+        5,
+        3,
+        4,
+        9,
+        10
+      ],
+      "observations": "North face4 has glazing on all three levels; south face10 has an opaque lower zone. Together with the long east face3, this supports interpreting the engineering photograph as a southeast view. Orientation and dimensions remain inferred."
+    }
+  ],
+  "geometry": {
+    "surveyWalls": 13,
+    "surveyRoofTriangles": 23
+  },
+  "qualification": "BVV survey fixes the envelope and stepped roof; facade opening dimensions, rail profiles, materials, entrance detail and south opaque panel dimensions are estimates. No interiors; no reference photographs or private projected pixels redistributed."
+}

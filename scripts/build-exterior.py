@@ -272,6 +272,8 @@ from exterior_physics_ii import build as build_physics_ii
 build_physics_ii(globals())
 from exterior_physics_wsi import build as build_physics_wsi
 build_physics_wsi(globals())
+from exterior_pinned_water import build as build_pinned_water
+build_pinned_water(globals())
 metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}
 for stale in ['galileo-facade-rectified.jpg']:
  if (OUT/stale).exists():(OUT/stale).unlink()

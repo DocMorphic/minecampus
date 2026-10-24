@@ -3971,7 +3971,7 @@
     ]
   },
   "physicsWSIRiverBoundary40": {
-    "status": "PASS: source and exact packaged controls; native visual inspection running",
+    "status": "PASS: eight native camera checks and twelve standing controls; FAIL: visual acceptance",
     "sourceValidation": {
       "status": "PASS: raw surveyed roof/pixels, recessed windows, projecting frames, source terrain and preserved neighboring ground",
       "manifestSha256": "8be9066047a1c631ad0b13ac659daa74946ec62127bd62c4eaec7a4000b3e1cb",
@@ -4090,11 +4090,105 @@
       "overlapCases": 4
     },
     "native": {
-      "status": "RUNNING; no completed native acceptance claimed",
-      "plan": "physics-wsi-river-boundary-40",
+      "status": "PASS: eight native camera checks and twelve standing controls; FAIL: visual acceptance",
+      "artifactSha256": "a65f5a9539bf03ac751b96952a5240ea49ef2fcd2df665aa921a62e2b6d668ad",
+      "cameraCapturesReviewed": 8,
+      "standingCapturesReviewed": 12,
+      "maxNativeSupportErrorMetres": 0.06353921989605738,
+      "blockStates": {
+        "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+        "states": 144,
+        "legacyDefaults": 9
+      },
+      "preservation": {
+        "originalSaves": {
+          "unchangedFiles": 121
+        },
+        "previewSaves": {
+          "unchangedFiles": 121
+        },
+        "previewSettings": {
+          "unchangedFiles": 4
+        }
+      },
+      "visualAccepted": false,
+      "releaseAccepted": false,
+      "visualDefects": [
+        "Both riverbank views show substantial sky gaps and coarse retained vegetation; no convincing visible river surface.",
+        "The northern parking/lawn still has baked cars, blurred imagery and pale base halos.",
+        "ZNN and other neighboring source buildings remain visibly warped."
+      ],
+      "runtimeFinding": "The current local service log repeatedly records OSM unavailable; skipping optional water during cooldown. A pinned public river polygon is already available for an offline fallback."
+    }
+  },
+  "physicsZNNGeometry41": {
+    "status": "PASS: independent geometry checks; not integrated into packaged game",
+    "validation": {
+      "status": "PASS: surveyed ZNN shell/roof and source-informed facade geometry; native verification pending",
+      "manifestSha256": "36c526b1a03172e244d47225db006c480f3f9b3752c352f0768d7eeebd6d49eb",
+      "sourceSha256": "c711902188bd931f806ac8b66befa897835523f8d81b96a9d1acdf9d9b19cc41",
+      "validatorSha256": "ac19b022af6a01bd8dbb6148d08bae8ebbf1e70341ca699559bf0f66aab37f06",
+      "generatorSha256": "4f3be17605aba4dd390e3281048661d990ad8fc5b0f328ffa06cbc8cc98d667c",
+      "roofVertexErrorMetres": 1.919299289867399e-05,
+      "roofFootprintErrorSquareMetres": 0.0018247883251893986,
+      "roofTriangles": 23,
+      "surveyWallFaces": 13,
+      "windowBandControls": 17,
+      "shadingRailControls": 51,
+      "opaquePanelControls": 1,
+      "tileSha256": {
+        "DEBY_LOD2_8486665-znn-exterior.ect": "63bafd95e115bbfe32bc20d7a16366e13f4fa4dff2429699c14bde9e93c0e730",
+        "DEBY_LOD2_8486665-photo-roof.ect": "84c4d535cfc8c9017d787d03832fd7c33d2939460467e86d9f0e14686f849a7a"
+      },
+      "qualification": "Independent raw survey/roof pixel and mesh-ray checks. Does not verify surrounding terrain, gameplay, lighting or visual acceptance."
+    },
+    "remaining": [
+      "Surrounding-ground integration and facade/roof material bindings",
+      "Native matched approach views, wall collisions and standing checks",
+      "Source-informed entrance and facade refinements after visual review"
+    ],
+    "visualAccepted": false,
+    "installed": false,
+    "unchangedPriorRenderFiles": 298
+  },
+  "physicsWSIPinnedWater42": {
+    "status": "PASS: boundary and service checks; fresh native water inspection running",
+    "artifact": {
+      "status": "PASS: exact embedded WSI manifest, source records, geometry and service",
+      "assetFiles": 52,
+      "artifactSha256": "9eff4f67f85e1f2597f741bb1ebe6a0850d4ea5e439735a0838dc84fad0f61ef"
+    },
+    "boundaryValidation": {
+      "status": "PASS: pinned public river boundary, projection, closure and bounds",
+      "manifestSha256": "065c7ddb93642765a5022b498fcacfa46187f95791bf68b65df8fa9ce7ad5e5d",
+      "sourceSha256": "717c56d87dbb9068caf6c77a1eef1f1b1f9594ca21cadccabe70526b4c99571d",
+      "generatorSha256": "311fbec4653453aa13789430c946483aff62d3391b029f347cd6a357896ed83e",
+      "validatorSha256": "5ef399b6cda3acf43104273c8b76d55889c0f300ded4252c9686de9f3ee24ca5",
+      "segments": 165,
+      "maximumCoordinateErrorMetres": 1.1368683772161603e-13,
+      "qualification": "Boundary-only validation; upstream water level, bed and visible banks still require native verification."
+    },
+    "geometryPreservation": {
+      "status": "PASS: pinned-water candidate changes no packaged ECT geometry or texture bytes",
+      "unchangedEctFiles": 476,
+      "sourceCandidate": "physics-wsi-40"
+    },
+    "serviceTests": {
+      "passed": 46,
+      "failed": 0,
+      "newRegression": "Pinned river survives a thrown live OSM failure; preserves other-region lookup and respects cfg.water=false."
+    },
+    "native": {
+      "status": "RUNNING; no completed water or visual acceptance claimed",
+      "plan": "physics-wsi-pinned-water-42",
       "cameraViews": 8,
       "standingControls": 12,
+      "waterColumns": 35,
       "freshIsolatedWorld": true
-    }
+    },
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "installed": false,
+    "qualification": "Provides public river boundaries to existing upstream water generation. Water levels and beds still use its estimation; native fluid presence, levels, bank gaps and retained source vegetation require review."
   }
 }
