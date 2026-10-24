@@ -33,7 +33,7 @@ public final class CampusCollision {
         ServerTickEvents.END_SERVER_TICK.register(CampusCollision::tick);
         ServerLifecycleEvents.SERVER_STOPPED.register(server->{epoch++;inFlight.clear();unavailable=false;changedBlocks=0;});
     }
-    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v59");}
+    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v60");}
     private static void tick(MinecraftServer server){
         if(unavailable||server.getTickCount()%10!=0)return;
         var level=server.overworld();
@@ -59,11 +59,10 @@ public final class CampusCollision {
         int generation=epoch;inFlight.add(key);
         IO.execute(()->{
             try{
-                String q="/campus/collision?"+ServiceClient.originQuery(region.latitude(),region.longitude(),region.groundHeight())+"&cx="+cx+"&cz="+cz+"&minY="+MIN_Y+"&height="+HEIGHT;
-                byte[] codes=ServiceClient.getBytes(q,Duration.ofSeconds(30));
-                if(codes.length!=16*16*HEIGHT)throw new java.io.IOException("Invalid survey collision response length");
+                String q="/campus/collision?"+ServiceClient.originQuery(region.latitude(),region.longitude(),region.groundHeight())+"&cx="+cx+"&cz="+cz+"&minY="+MIN_Y+"&height="+HEIGHT+"&wood=1";
+                CampusCollisionPacket packet=CampusCollisionPacket.decode(ServiceClient.getBytes(q,Duration.ofSeconds(30)),16*16*HEIGHT);
                 level.getServer().execute(()->{
-                    try{if(generation==epoch&&level.getChunkSource().getChunkNow(pos.x,pos.z)==chunk)apply(level,chunk,codes);}
+                    try{if(generation==epoch&&level.getChunkSource().getChunkNow(pos.x,pos.z)==chunk)apply(level,chunk,packet);}
                     finally{inFlight.remove(key);}
                 });
             }catch(Exception e){
@@ -74,17 +73,18 @@ public final class CampusCollision {
             }
         });
     }
-    private static void apply(ServerLevel level,LevelChunk chunk,byte[] codes){
+    private static void apply(ServerLevel level,LevelChunk chunk,CampusCollisionPacket packet){
+        byte[] codes=packet.codes();int[] woodProfiles=packet.woodProfiles();
         var history=MapEdits.storage(level);var base=chunk.getPos();var position=new BlockPos.MutableBlockPos();int changes=0;
         updating.set(true);
         try{
             for(int y=0;y<HEIGHT;y++)for(int z=0;z<16;z++)for(int x=0;x<16;x++){
-                int code=codes[(y*16+z)*16+x]&255;if(code==255)continue;
+                int index=(y*16+z)*16+x,code=codes[index]&255;if(code==255)continue;
                 position.set(base.getMinBlockX()+x,MIN_Y+y,base.getMinBlockZ()+z);
                 if(history.original.containsKey(position.asLong()))continue;
                 var before=level.getBlockState(position);
                 if(!before.isAir()&&!EarthBlocks.isMapBlock(before))continue;
-                var after=EarthBlocks.byCode(code);
+                var after=woodProfiles[index]>=0?CampusWoodBlock.byProfile(woodProfiles[index]):EarthBlocks.byCode(code);
                 if(before!=after&&level.setBlock(position,after,Block.UPDATE_CLIENTS|Block.UPDATE_KNOWN_SHAPE))changes++;
             }
         }finally{updating.set(false);}

@@ -237,7 +237,26 @@ public final class CampusSiteInspection {
             }
             var chunk=player.chunkPosition();
             if(!dev.realworldmc.CampusCollision.aligned(server.overworld(),chunk.x,chunk.z))throw new AssertionError("Walking probe chunk has not completed collision alignment");
-            var row=control.deepCopy();row.addProperty("standingY",player.getY());row.addProperty("supportExpectedY",supportExpected);row.addProperty("onGround",player.onGround());row.addProperty("horizontalError",horizontalError);row.addProperty("bodyClear",freeBody);gravity.add(row);
+            var row=control.deepCopy();row.addProperty("standingY",player.getY());row.addProperty("supportExpectedY",supportExpected);row.addProperty("onGround",player.onGround());row.addProperty("horizontalError",horizontalError);row.addProperty("bodyClear",freeBody);
+            if(control.has("requireFineWood")&&control.get("requireFineWood").getAsBoolean()){
+                var profiles=new JsonArray();var level=server.overworld();
+                for(int bx=(int)Math.floor(x)-2;bx<=(int)Math.floor(x)+2;bx++)
+                for(int bz=(int)Math.floor(z)-2;bz<=(int)Math.floor(z)+2;bz++)
+                for(int by=(int)Math.floor(expected)+1;by<=(int)Math.floor(expected)+3;by++){
+                    var pos=new net.minecraft.core.BlockPos(bx,by,bz);var state=level.getBlockState(pos);
+                    if(!(state.getBlock() instanceof dev.realworldmc.CampusWoodBlock))continue;
+                    var saved=net.minecraft.nbt.NbtUtils.writeBlockState(state);
+                    var restored=net.minecraft.nbt.NbtUtils.readBlockState(server.registryAccess().lookupOrThrow(net.minecraft.core.registries.Registries.BLOCK),saved);
+                    if(restored!=state)throw new AssertionError("Fine wood state did not survive NBT round trip");
+                    var shape=state.getCollisionShape(level,pos).bounds();var entry=new JsonObject();
+                    entry.addProperty("position",pos.toShortString());entry.addProperty("profile",dev.realworldmc.CampusWoodBlock.profile(state));
+                    var bounds=new JsonArray();for(double value:new double[]{shape.minX,shape.minY,shape.minZ,shape.maxX,shape.maxY,shape.maxZ})bounds.add(value);
+                    entry.add("bounds",bounds);profiles.add(entry);
+                }
+                if(profiles.isEmpty())throw new AssertionError("No fine wood proxies beside retained collision regression point");
+                row.add("fineWoodProfiles",profiles);row.addProperty("woodProfileNbtRoundTrip",true);
+            }
+            gravity.add(row);
             gravityIndex++;gravityQueued=false;
         }catch(Throwable error){gravityFailure=error;}});
     }

@@ -15,7 +15,7 @@ test('column-centre collision is restricted to listed Physics ground assets',t=>
    {voxelizeArea:(_frame,assets)=>{meshes=assets;return {vox:new Uint8Array(16*16*8)};}});
  for(const name of names)fs.writeFileSync(path.join(dir,name),tile([[0,1,0],[16,1,0],[0,1,16]]));
  service.campusCollision({...origin,mcToEcef:(x,y,z)=>[x,y,z]},0,0,0,8);
- assert.deepEqual(meshes.map(m=>m.primitives[0].campusHeightfield),[true,false,false,false,true,true,true,true,true,true,true]);
+ assert.deepEqual(meshes.map(m=>m.primitives[0].campusHeightfield),[true,false,false,true,true,true,true,true,true,true]);
 });
 function tile(positions){
  const b=Buffer.alloc(32+16+positions.length*20+4);b.write('ECT1');b.writeInt32LE(1,4);b.writeInt32LE(positions.length,32);b.writeInt32LE(1,36);b.writeInt32LE(1,40);b.fill(255,44,48);
@@ -442,18 +442,12 @@ test('channel collision clears old canopy, keeps actual branches and native flui
  const survey={rings:[{ring:[[32,0],[44,0],[44,16],[32,16]],holes:[[[37,4],[39,4],[39,8],[37,8]]]}],terrainGuide:{width:2,height:2,points:[[32,4.2,0],[44,4.2,0],[32,4.2,16],[44,4.2,16]]}};
  const trees={file:'river-tree.ect',kind:'vegetation',runtimeId:501,bounds:[[32,4,0],[44,12,16]]};
  const extra={tiles:[trees],architecture:{riverbank:{waterGround:survey,sourceRetirement:[{rings:survey.rings,y0:2,y1:13}]}}};
- let surfaceCalls=0;
- const {service,dir}=fixture(t,null,extra,{voxelizeArea:(_f,assets,_x,_z,w,_y,h,opts)=>{
-  const vox=new Uint8Array(w*w*h);
-  if(opts.surfaceOnly){surfaceCalls++;assert.equal(assets.length,1);vox[(8*16+3)*16+2]=8;}
-  else vox.fill(4); // Ground inference must never fill the channel below branches.
-  return {vox};
- }});
+ const {service,dir}=fixture(t,null,extra,{voxelizeArea:()=>{throw Error('Tree geometry must not enter terrain inference');}});
  fs.writeFileSync(path.join(dir,trees.file),tile([[34,8,3],[35,9,3],[34,8,4]]));
  const frame={...origin,mcToEcef:(...p)=>p};
  const patch=service.campusCollision(frame,2,0,0,16),at=(y,x=2,z=3)=>patch[(y*16+z)*16+x];
  assert.equal(at(3),255);assert.equal(at(4),0);assert.equal(at(8),8);assert.equal(at(5),0);assert.equal(at(14),255);
- assert.equal(at(8,6,5),255);assert.equal(at(8,15,3),255);assert.equal(surfaceCalls,1);
+ assert.equal(at(8,6,5),255);assert.equal(at(8,15,3),255);
  assert.ok(service.campusCollision({...frame,lat:49},2,0,0,16).every(v=>v===255));
  // Give the upstream generator a higher fluid voxel than the local sample.
  const upstream=new Uint8Array(16*16*16);upstream[(4*16+3)*16+2]=23;
@@ -476,4 +470,20 @@ test('disabled native water retains the photographic channel surface and its ori
  attachSurveySurface(service,dir,{voxelizeArea:()=>({vox:new Uint8Array(4096)})});
  assert.deepEqual(await service.renderTile(origin,1_100_000_007),bytes);
  assert.ok(service.campusCollision({...origin,mcToEcef:(...p)=>p},2,0,0,16).every(v=>v===255));
+});
+
+test('fine tree packets exclude terrain inference and preserve fractional supports and solids',t=>{
+ const specs=[{file:'ground.ect',kind:'ground',runtimeId:500,bounds:[[0,0,0],[16,1,16]]},{file:'tree.ect',kind:'vegetation',runtimeId:501,bounds:[[2,0,3],[3,5,4]]}];
+ const {service,dir}=fixture(t,null,{tiles:specs},{voxelizeArea:(_frame,assets,_x,_z,w,_y,h)=>{
+  assert.equal(assets.length,1,'Only the ground enters terrain filling');
+  const vox=new Uint8Array(w*w*h);vox[3*16+2]=45;vox[(4*16+3)*16+2]=7;return {vox};
+ }});
+ fs.writeFileSync(path.join(dir,'ground.ect'),tile([[0,.875,0],[16,.875,0],[0,.875,16]]));
+ fs.writeFileSync(path.join(dir,'tree.ect'),tile([[2.1,.5,3.1],[2.2,5,3.1],[2.3,.5,3.3]]));
+ const frame={...origin,mcToEcef:(...p)=>p},packet=service.campusCollisionPacket(frame,0,0,0,8),cells=2048;
+ assert.equal(packet[3*16+2],45);assert.equal(packet[(4*16+3)*16+2],7);assert.equal(packet[(2*16+3)*16+2],8);
+ assert.equal(packet[(2*16+3)*16+3],0,'No dirt or coarse wood beside the visible trunk');
+ const hints=new Map();for(let p=cells+8;p<packet.length;p+=4)hints.set(packet.readUInt16LE(p),packet.readUInt16LE(p+2));
+ assert.ok(hints.has((2*16+3)*16+2));assert.ok(!hints.has(3*16+2));assert.ok(!hints.has((4*16+3)*16+2));
+ const foreign=service.campusCollisionPacket({...frame,lat:49},0,0,0,8);assert.ok(foreign.subarray(0,cells).every(v=>v===255));assert.equal(foreign.readUInt32LE(cells+4),0);
 });

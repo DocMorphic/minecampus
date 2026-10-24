@@ -244,6 +244,13 @@ for p in (SOURCE/'native').glob('*.java'):shutil.copy2(p,work/'mod/src/main/java
 for p in (SOURCE/'client').glob('*.java'):shutil.copy2(p,work/'mod/src/client/java/dev/realworldmc/client'/p.name)
 for p in (SOURCE/'assets').rglob('*.png'):
  target=work/'mod/src/main/resources/assets/realworldmc'/p.relative_to(SOURCE/'assets');target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,target)
+# The fine wood proxy retains the original wood model, drops and tool category.
+resources=work/'mod/src/main/resources'
+for folder in ['assets/earthcraft/blockstates','data/earthcraft/loot_table/blocks']:
+ shutil.copy2(resources/folder/'map_wood.json',resources/folder/'campus_wood.json')
+axe=resources/'data/minecraft/tags/block/mineable/axe.json';axe_data=json.loads(axe.read_text())
+if 'earthcraft:campus_wood' not in axe_data['values']:axe_data['values'].append('earthcraft:campus_wood')
+axe.write_text(json.dumps(axe_data)+'\n')
 shader=work/'mod/src/main/resources/assets/realworldmc/shaders/core';shader.mkdir(parents=True,exist_ok=True)
 for p in (SOURCE/'shaders').glob('*'):shutil.copy2(p,shader/p.name)
 env=dict(os.environ,JAVA_HOME=str(Path(args.java_home).resolve()))
@@ -527,7 +534,8 @@ with zipfile.ZipFile(release) as original:
     s=s.replace(needle,'''        case '/campus/collision': {
           if(!service.campusCollision)return json(res,{error:'Survey collision data unavailable'},404);
           const frame=service.frame(num(q,'lat'),num(q,'lon'),num(q,'h'));
-          const bytes=service.campusCollision(frame,num(q,'cx'),num(q,'cz'),num(q,'minY'),num(q,'height'));
+          const collision=q.get('wood')==='1'?service.campusCollisionPacket:service.campusCollision;
+          const bytes=collision(frame,num(q,'cx'),num(q,'cz'),num(q,'minY'),num(q,'height'));
           res.writeHead(200,{'content-type':'application/octet-stream','content-length':bytes.length});return res.end(bytes);
         }
 '''+needle);data=s.encode()
@@ -536,6 +544,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/terrain-column.mjs',(SOURCE/'service/terrain-column.mjs').read_bytes())
   write(target,'src/water-survey.mjs',(SOURCE/'service/water-survey.mjs').read_bytes())
   write(target,'src/source-retirement.mjs',(SOURCE/'service/source-retirement.mjs').read_bytes())
+  write(target,'src/wood-shapes.mjs',(SOURCE/'service/wood-shapes.mjs').read_bytes())
+  write(target,'src/collision-packet.mjs',(SOURCE/'service/collision-packet.mjs').read_bytes())
   write(target,'src/minecampus-survey.mjs',(SOURCE/'service/survey-surface.mjs').read_bytes())
   write(target,'src/photo-facades.mjs',(SOURCE/'service/photo-facades.mjs').read_bytes())
   write(target,'src/supplemental-surfaces.mjs',(SOURCE/'service/supplemental-surfaces.mjs').read_bytes())

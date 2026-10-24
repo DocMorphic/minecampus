@@ -5,6 +5,8 @@ import path from 'node:path';
 import {preparePhotographicFacades,retiresPhotoSurface} from './photo-facades.mjs';
 import {supplementalSurfaces} from './supplemental-surfaces.mjs';
 import {prepareSourceRetirement} from './source-retirement.mjs';
+import {woodShapes} from './wood-shapes.mjs';
+import {encodeCollisionPacket} from './collision-packet.mjs';
 
 /** Replaces noisy ground with surveyed terrain and substitutes explicit photo-textured
  * reconstructions only where their survey footprint is known. */
@@ -243,9 +245,21 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     state.pending.set(id,request);
     try{return await request;}finally{state.pending.delete(id);}
   };
-  const decodedAssets=new Map();
+  const decodedAssets=new Map(),decodedWood=new Map();
+  function woodTriangles(spec,shift){
+    let triangles=decodedWood.get(spec.file);
+    if(!triangles){
+      const bytes=fs.readFileSync(path.join(directory,spec.file)),anchor=[8,16,24].map(i=>bytes.readDoubleLE(i)),count=bytes.readInt32LE(32);
+      triangles=[];
+      // Vegetation part0 is reconstructed wood; later parts are visual leaves.
+      for(let i=0;i<count;i+=3)triangles.push([0,1,2].map(j=>[0,1,2].map(k=>bytes.readFloatLE(48+(i+j)*20+k*4)+anchor[k])));
+      decodedWood.set(spec.file,triangles);
+    }
+    return shift===0?triangles:triangles.map(t=>t.map(([x,y,z])=>[x,y+shift,z]));
+  }
   function assetMeshes(frame,spec) {
-    if(decodedAssets.has(spec.file))return decodedAssets.get(spec.file);
+    const cacheKey=spec.file+':'+frame.lat+':'+frame.lon+':'+frame.h0;
+    if(decodedAssets.has(cacheKey))return decodedAssets.get(cacheKey);
     const bytes=fs.readFileSync(path.join(directory,spec.file)),count=bytes.readInt32LE(4),anchor=[8,16,24].map(i=>bytes.readDoubleLE(i));
     const primitives=[];let offset=32;const shift=manifest.origin[2]-frame.h0;
     for(let part=0;part<count;part++){
@@ -259,18 +273,22 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
       offset+=n*20;const texture={width:w,height:h,data:bytes.subarray(offset,offset+w*h*4)};offset+=w*h*4;
       primitives.push({positions,uvs,indices,texture,color:[180,180,180],campusHeightfield:spec.kind==='ground'&&columnGround.has(spec.file)});
     }
-    const mesh={primitives,copyright:manifest.attribution};decodedAssets.set(spec.file,mesh);return mesh;
+    const mesh={primitives,copyright:manifest.attribution};decodedAssets.set(cacheKey,mesh);return mesh;
   }
   if(voxelizeArea){
-    service.campusCollision=(frame,cx,cz,minY,span)=>{
+    function collisionData(frame,cx,cz,minY,span){
       const output=new Uint8Array(16*16*span);output.fill(255);
-      if(!matches(frame))return output;
+      const profiles=new Map(),result={codes:output,profiles};
+      if(!matches(frame))return result;
       const shift=manifest.origin[2]-frame.h0,x0=cx*16,z0=cz*16;
       const assets=collisionGround.filter(t=>t.bounds[0][0]<=x0+17&&t.bounds[1][0]>=x0-1&&t.bounds[0][2]<=z0+17&&t.bounds[1][2]>=z0-1);
-      if(!assets.length&&!channel)return output;
-      const branchAssets=channel?assets.filter(t=>t.kind==='vegetation'):[];
-      const branchVox=branchAssets.length?voxelizeArea(frame,branchAssets.map(t=>assetMeshes(frame,t)),x0,z0,16,minY,span,{surfaceOnly:true,water:[]}).vox:null;
-      const {vox}=voxelizeArea(frame,assets.map(t=>assetMeshes(frame,t)),x0,z0,16,minY,span,{fallbackGround:63,water:[]});
+      if(!assets.length&&!channel)return result;
+      // Trees cannot participate in terrain inference: a low branch otherwise
+      // becomes a column of dirt filling the air below the visible wood.
+      const branchAssets=assets.filter(t=>t.kind==='vegetation');
+      const solidAssets=assets.filter(t=>t.kind!=='vegetation');
+      const shapes=woodShapes(branchAssets.flatMap(t=>woodTriangles(t,shift)),{x0,z0,minY,height:span});
+      const vox=solidAssets.length?voxelizeArea(frame,solidAssets.map(t=>assetMeshes(frame,t)),x0,z0,16,minY,span,{fallbackGround:63,water:[]}).vox:new Uint8Array(output.length);
       for(let z=0;z<16;z++)for(let x=0;x<16;x++){
         const px=x0+x+.5,pz=z0+z+.5,base=terrain(px,pz),top=surface(px,pz);
         if(base===null){
@@ -278,7 +296,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           const lower=Math.floor(water.floor+shift-.5)+1;
           for(let y=0;y<span;y++){
             const wy=y+minY;if(wy<lower||wy>channelCeiling+shift)continue;
-            const i=(y*16+z)*16+x;output[i]=branchVox?.[i]??0;
+            const i=(y*16+z)*16+x;output[i]=0;
           }
           continue;
         }
@@ -291,8 +309,15 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           output[i]=code;
         }
       }
-      return output;
-    };
+      for(const [i,profile]of shapes){
+        // Preserve measured fractional supports, buildings, water and protected
+        // source columns. Only explicitly cleared air can acquire a tree proxy.
+        if(output[i]===0){output[i]=8;profiles.set(i,profile);}
+      }
+      return result;
+    }
+    service.campusCollision=(...args)=>collisionData(...args).codes;
+    service.campusCollisionPacket=(...args)=>{const {codes,profiles}=collisionData(...args);return encodeCollisionPacket(codes,profiles);};
     const chunk=service.chunk.bind(service);
     service.chunk=async(frame,cx,cz,minY,span)=>{
       const original=await chunk(frame,cx,cz,minY,span),patch=service.campusCollision(frame,cx,cz,minY,span);

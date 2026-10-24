@@ -237,7 +237,7 @@ diff --git a/mod/src/main/java/dev/realworldmc/BundledService.java b/mod/src/mai
 diff --git a/mod/src/main/java/dev/realworldmc/EarthBlocks.java b/mod/src/main/java/dev/realworldmc/EarthBlocks.java
 --- a/mod/src/main/java/dev/realworldmc/EarthBlocks.java
 +++ b/mod/src/main/java/dev/realworldmc/EarthBlocks.java
-@@ -48,7 +48,7 @@
+@@ -48,10 +48,11 @@
  	}
  
  	private static Block register(String name, BlockBehaviour.Properties props) {
@@ -246,7 +246,11 @@ diff --git a/mod/src/main/java/dev/realworldmc/EarthBlocks.java b/mod/src/main/j
  	}
  
  	public static void init() {
-@@ -71,6 +71,10 @@
++        CampusWoodBlock.init();
+ 		// Codes must match service/src/voxel.mjs (M).
+ 		BY_CODE[0] = Blocks.AIR.defaultBlockState();
+ 		BY_CODE[1] = MAP_GRASS.defaultBlockState();
+@@ -71,6 +72,10 @@
  		BY_CODE[24] = Blocks.GRAVEL.defaultBlockState();
  		BY_CODE[25] = Blocks.GRASS_BLOCK.defaultBlockState();
  		BY_CODE[26] = Blocks.SAND.defaultBlockState();
@@ -257,3 +261,12 @@ diff --git a/mod/src/main/java/dev/realworldmc/EarthBlocks.java b/mod/src/main/j
  	}
  
  	public static BlockState byCode(int code) {
+@@ -90,7 +95,7 @@
+         if(block==MAP_ASPHALT)return Blocks.GRAY_CONCRETE.defaultBlockState();
+         if(block==MAP_PLASTER)return Blocks.WHITE_TERRACOTTA.defaultBlockState();
+         if(block==MAP_BRICK)return Blocks.BRICKS.defaultBlockState();
+-        if(block==MAP_WOOD)return Blocks.OAK_PLANKS.defaultBlockState();
++        if(block==MAP_WOOD || block instanceof CampusWoodBlock)return Blocks.OAK_PLANKS.defaultBlockState();
+         if(block==MAP_SAND)return Blocks.SANDSTONE.defaultBlockState();
+         return isMapBlock(state)?Blocks.STONE.defaultBlockState():state;
+     }
