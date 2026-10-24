@@ -1,0 +1,270 @@
+{
+  "status": "Read-only diagnosis; no terrain modified",
+  "artifactSha256": "78db6f22790fcf0ca76364c376def1382df27b079d1da6b69431c89fd818f805",
+  "groundFiles": [
+    "ground-698200-5349100.ect",
+    "ground-698200-5349200.ect",
+    "ground-698200-5349300.ect",
+    "ground-698300-5349100.ect",
+    "ground-698300-5349200.ect",
+    "ground-698300-5349300.ect",
+    "ground-698300-5349400.ect"
+  ],
+  "westernDiagnosticControls": [
+    {
+      "x": 55,
+      "z": -65,
+      "sourceMeshY": 64.80931413540965
+    },
+    {
+      "x": 58,
+      "z": -65,
+      "sourceMeshY": 64.88848238018933
+    },
+    {
+      "x": 61,
+      "z": -65,
+      "sourceMeshY": 64.889844505585
+    },
+    {
+      "x": 64,
+      "z": -65,
+      "sourceMeshY": 64.87804214828317
+    },
+    {
+      "x": 67,
+      "z": -65,
+      "sourceMeshY": 64.85388932675839
+    },
+    {
+      "x": 70,
+      "z": -65,
+      "sourceMeshY": 64.82379818553225
+    },
+    {
+      "x": 73,
+      "z": -65,
+      "sourceMeshY": 64.79067452317926
+    },
+    {
+      "x": 55,
+      "z": -63,
+      "sourceMeshY": 64.81402815253661
+    },
+    {
+      "x": 58,
+      "z": -63,
+      "sourceMeshY": 64.86888730657
+    },
+    {
+      "x": 61,
+      "z": -63,
+      "sourceMeshY": 64.90926794248247
+    },
+    {
+      "x": 64,
+      "z": -63,
+      "sourceMeshY": 64.95029683313453
+    },
+    {
+      "x": 67,
+      "z": -63,
+      "sourceMeshY": 64.80000868858129
+    },
+    {
+      "x": 70,
+      "z": -63,
+      "sourceMeshY": 64.80604011404445
+    },
+    {
+      "x": 73,
+      "z": -63,
+      "sourceMeshY": 64.79406553094366
+    },
+    {
+      "x": 55,
+      "z": -61,
+      "sourceMeshY": 64.8387891595256
+    },
+    {
+      "x": 58,
+      "z": -61,
+      "sourceMeshY": 64.88215286147245
+    },
+    {
+      "x": 61,
+      "z": -61,
+      "sourceMeshY": 64.88309022809904
+    },
+    {
+      "x": 64,
+      "z": -61,
+      "sourceMeshY": 64.05563137397074
+    },
+    {
+      "x": 67,
+      "z": -61,
+      "sourceMeshY": 63.029259411916904
+    },
+    {
+      "x": 70,
+      "z": -61,
+      "sourceMeshY": 64.26985634182024
+    },
+    {
+      "x": 73,
+      "z": -61,
+      "sourceMeshY": 64.79534735589654
+    },
+    {
+      "x": 55,
+      "z": -59,
+      "sourceMeshY": 64.88306126712506
+    },
+    {
+      "x": 58,
+      "z": -59,
+      "sourceMeshY": 64.92012115311991
+    },
+    {
+      "x": 61,
+      "z": -59,
+      "sourceMeshY": 64.91492899075197
+    },
+    {
+      "x": 64,
+      "z": -59,
+      "sourceMeshY": 63.72754756070959
+    },
+    {
+      "x": 67,
+      "z": -59,
+      "sourceMeshY": 62.57639194998298
+    },
+    {
+      "x": 70,
+      "z": -59,
+      "sourceMeshY": 64.50991853448517
+    },
+    {
+      "x": 73,
+      "z": -59,
+      "sourceMeshY": 64.80463336739814
+    }
+  ],
+  "interpretation": "Heights are from the packaged mesh before runtime cuts. Compare with native damaged/undamaged geometry before treating any visible pit as a source defect. The completed east-side site also has genuine ramps and level changes.",
+  "westernPitUtm": [
+    698278.872470134,
+    5349264.733324747
+  ],
+  "westernPitObservation": "The encoded undamaged mesh drops from about Y64.9 to Y62.58 at MC(67,-59), so this particular depression predates runtime TNT cuts. Whether it is a real site feature still needs photo/plan and survey-date comparison.",
+  "rawDgmHeightControls": [
+    {
+      "utm": [
+        698278.872470134,
+        5349264.733324747
+      ],
+      "heightDHHN2016": 472.8379202887213
+    },
+    {
+      "utm": [
+        698273.872470134,
+        5349264.733324747
+      ],
+      "heightDHHN2016": 475.02999765552187
+    },
+    {
+      "utm": [
+        698283.872470134,
+        5349264.733324747
+      ],
+      "heightDHHN2016": 475.03314614817
+    },
+    {
+      "utm": [
+        698278.872470134,
+        5349259.733324747
+      ],
+      "heightDHHN2016": 475.062658795488
+    },
+    {
+      "utm": [
+        698278.872470134,
+        5349269.733324747
+      ],
+      "heightDHHN2016": 475.1040705976543
+    },
+    {
+      "utm": [
+        698268.872470134,
+        5349264.733324747
+      ],
+      "heightDHHN2016": 475.1564814545245
+    },
+    {
+      "utm": [
+        698288.872470134,
+        5349264.733324747
+      ],
+      "heightDHHN2016": 475.0865536477543
+    },
+    {
+      "utm": [
+        698278.872470134,
+        5349254.733324747
+      ],
+      "heightDHHN2016": 474.180641308038
+    },
+    {
+      "utm": [
+        698278.872470134,
+        5349274.733324747
+      ],
+      "heightDHHN2016": 475.3413361923865
+    }
+  ],
+  "date": "2026-10-24",
+  "sources": {
+    "survey": [
+      {
+        "name": "697_5349.tif",
+        "size": 2644168,
+        "sha256": "2ce5487ce6c4bd96a64e396cf17acda3fa42d72c08fbbe80bb3337f7732184d2",
+        "url": "https://download1.bayernwolke.de/a/dgm/dgm1/697_5349.tif"
+      },
+      {
+        "name": "698_5349.tif",
+        "size": 2680170,
+        "sha256": "949f653cfb93f056f134c8285f3a515d5bde29e47beb88075f024bcdc67ff32e",
+        "url": "https://download1.bayernwolke.de/a/dgm/dgm1/698_5349.tif"
+      }
+    ],
+    "orthophoto": [
+      {
+        "name": "32697_5349.tif",
+        "size": 62499350,
+        "sha256": "035b3ada6b919fb6eaa48318e011f837d593188b4d42c882f9ea20b409a3c3cc",
+        "url": "https://download1.bayernwolke.de/a/dop20/data/32697_5349.tif"
+      },
+      {
+        "name": "32698_5349.tif",
+        "size": 65916935,
+        "sha256": "8a78e3fc301332e607e514b8bca545d64e3b1a956ecf02a723301b0982ab0dae",
+        "url": "https://download1.bayernwolke.de/a/dop20/data/32698_5349.tif"
+      }
+    ],
+    "landscapeArchitect": "https://slam.green/projekt/galileo-neue-mitte-am-hochschulcampus-garching-muenchen/",
+    "landscapePlan": "https://slam.green/wp-content/uploads/2024/07/1005_Lageplan_0-2048x799.jpg"
+  },
+  "observations": [
+    "The local DGM at the western diagnostic depression is 472.84 m DHHN2016; four cardinal controls 5 m away are 475.03\u2013475.10 m. This depression exists in the source raster and encoded mesh independently of runtime TNT.",
+    "The pinned DOP20 crop shows a paved frontage at this location, including adjacent vehicles; the landscape design plan shows a continuous western paved route. This supports investigating a bounded finished-grade reconstruction but is not a measured current surface.",
+    "The landscape architect describes genuine northern sunken space and eastern garage/delivery access. Preserve these features; do not flatten all low terrain."
+  ],
+  "nextSteps": [
+    "Identify the entire western depression boundary and nearby separate dips in DGM coordinates.",
+    "Cross-check completed-site photos and the orthophoto to distinguish obsolete/artifactual pits from real drainage or access structures. Source acquisition dates are not established in this record.",
+    "If justified, infer only a bounded transition from the surrounding surveyed paving; explicitly label it reconstructed grading, preserve other tiles/footprints and test native gravity plus visual before/after."
+  ],
+  "implemented": false
+}
