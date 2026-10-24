@@ -591,7 +591,7 @@
   "qualification": "Opening rectangles, cladding divisions, frame profiles, materials, bridge underside and occluded details are approximate source-informed estimates. Provider pixels are not bundled. Roof geometry and roof pixels are retained from the public survey. No interiors. Window levels and group boundaries are digitized from private survey-aligned source projections; hidden lower openings and opposite bridge windows remain estimates. Ground continues from DGM1, retains DOP20 appearance and avoids prior surface overlap. Tree forms/species are inferred from public canopy data. An estimated 2.5m outer shoulder joins retained source ground using sampled height residuals; the transition is not measured DGM terrain. The20m study envelope covers walking approaches. Mapped asphalt and grass use pinned OSM; low green ground below0.7m DOM-DGM is a separate lawn inference. Outer ground joins are estimated from source residuals.",
   "groundTransition": {
     "sourceFile": "physics-ii-ground-transition.json",
-    "sha256": "b7d86c00dc2eba6b252df60a4090082e4613689e3bb9ce56ece3651d93d2560e"
+    "sha256": "a729765b8ef8aa86614e9639fafc0f3f6d97c7ced0ae90c5a6f08bfddc64e165"
   },
   "landscape": {
     "osm": [
@@ -710,7 +710,27 @@
       ],
       "pathVergeMetres": 2.5,
       "maximumEnclosedVoidSquareMetres": 1.0,
-      "qualification": "Complete mapped polygons and footway corridors with estimated 2.5m verges. Enclosed voids up to 1m\u00b2 between these landscape patches are filled before preserving all earlier terrain and surveyed building exclusions."
+      "qualification": "Complete mapped polygons and footway corridors with estimated 2.5m verges. Enclosed voids up to 1m\u00b2 between these landscape patches are filled before preserving all earlier terrain and surveyed building exclusions.",
+      "continuityPatches": [
+        {
+          "name": "parking-tree-verge",
+          "seedUTM": [
+            698499.5243665711,
+            5349616.923603832
+          ],
+          "maximumEnclosedAreaSquareMetres": 55,
+          "qualification": "Pinned BVV DOP20 shows uninterrupted roadside tree verge between parking boundary and canopy buffer. Fill this enclosed coverage gap with DGM1 ground; building and previous-terrain exclusions still apply."
+        },
+        {
+          "name": "parking-footway-strip",
+          "seedUTM": [
+            698500.3032712267,
+            5349565.097272641
+          ],
+          "maximumEnclosedAreaSquareMetres": 12,
+          "qualification": "Pinned BVV DOP20 shows continuous footway/parking ground across this narrow enclosed gap. Existing core ground is preserved; only the uncovered5.50m\u00b2 strip is added."
+        }
+      ]
     },
     "gravelParking": {
       "way": "683348588",

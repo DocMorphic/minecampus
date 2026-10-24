@@ -199,7 +199,8 @@ and physics-ii-reference.json.
 
 The expanded Physik II landscape follows OSM parking, grass and footway
 boundaries (ODbL 1.0, © OpenStreetMap contributors) and BVV DGM1 heights.
-Verge widths and sub-square-metre gap continuity are inferred. Gravel finish
+Verge widths are inferred; enclosed ground continuity follows the separately
+documented BVV aerial-source controls. Gravel finish
 on the new parking ground is inferred from a nearby pebblestone aisle and
 aerial appearance; generic gravel_ground_01 scan by Rob Tuytel / Poly Haven,
 CC0 1.0, https://polyhaven.com/a/gravel_ground_01, at three-metre scale.

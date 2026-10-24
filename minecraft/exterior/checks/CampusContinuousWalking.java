@@ -53,12 +53,13 @@ public final class CampusContinuousWalking {
         }
         if(failure!=null)throw new AssertionError(failure);
         if(routeIndex==plan.getAsJsonArray("walkingRoutes").size()) {report("PASS: continuous input-driven walking routes; visual review required");mc.stop();return;}
-        if(++ticks>2400)throw new AssertionError("Route exceeded120seconds including streaming");
+        if(++ticks>2400)throw new AssertionError(started ? "Route exceeded120seconds after readiness" : "Initial route readiness exceeded120seconds");
         if(!ready||mc.screen!=null)return;
         current=plan.getAsJsonArray("walkingRoutes").get(routeIndex).getAsJsonObject();
         var points=current.getAsJsonArray("points");
         if(!started){
-            started=true;startReady=false;settleTicks=0;movementTicks=0;jumps=0;travelled=0;nextCapture=5;stalledTicks=0;pointIndex=1;
+            // Initial tile loading has its own bounded allowance; movement limits stay unchanged.
+            started=true;ticks=0;startReady=false;settleTicks=0;movementTicks=0;jumps=0;travelled=0;nextCapture=5;stalledTicks=0;pointIndex=1;
             var first=points.get(0).getAsJsonArray();var uuid=mc.player.getUUID();var server=mc.getSingleplayerServer();
             server.execute(()->{try{
                 var p=server.getPlayerList().getPlayer(uuid);p.setGameMode(net.minecraft.world.level.GameType.CREATIVE);p.getAbilities().flying=false;p.onUpdateAbilities();

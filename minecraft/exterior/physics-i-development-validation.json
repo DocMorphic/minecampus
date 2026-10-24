@@ -2856,5 +2856,274 @@
       "Replace neighboring warped building envelopes and remove associated retained source blobs.",
       "Refine inferred ground boundaries, aerial wall halos and regular courtyard planting; retain outer parking failures until repaired."
     ]
+  },
+  "physicsIIContinuity35": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 301559475,
+      "sha256": "0dc3e3b39cbb0cdd8e118ddb2f4a50ae153ae690e63323b220af6da0fcf12336",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "129a58eebbced74e176c8e3f5e98ece80c5a96c4ae9c9c99050605f6ae1af8c7",
+      "rendererSourceFingerprint": "a16c96e74e16db9f",
+      "bundleSha256": "3de14fa03bfa8b3c996f45c5dbaa5201905488962c6bf71c60d8dddc892774d8",
+      "tiles": 248,
+      "bundleUnpackedBytes": 675145195,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "sourceChecksPassed": 8,
+    "nativeChecksPass": true,
+    "cameraViewsReviewed": 8,
+    "standingCapturesReviewed": 8,
+    "firstCaptureSeconds": 108.6,
+    "fps": [
+      73,
+      114,
+      114,
+      116,
+      55,
+      77,
+      110,
+      63
+    ],
+    "maxStandingSupportErrorMetres": 0.42027757954260636,
+    "additionalGroundSquareMetres": 56.841562327452,
+    "totalGroundSquareMetres": 8926.815731116314,
+    "changedGroundTiles": 5,
+    "allNonGroundTilesUnchanged": true,
+    "sourceControls": {
+      "retainedLines": 9,
+      "removedLines": [
+        {
+          "line": 9,
+          "sampleCount": 182,
+          "qualification": "Former enclosed landscape boundary now covered by source-confirmed continuous ground."
+        },
+        {
+          "line": 10,
+          "sampleCount": 81,
+          "qualification": "Former enclosed landscape boundary now covered by source-confirmed continuous ground."
+        }
+      ],
+      "acceptedSamples": 1228,
+      "missingSamples": 102,
+      "estimatedControls": 21,
+      "qualification": "No new source observations or enlarged residual tolerances; exact retained34controls."
+    },
+    "matchedGapComparison": {
+      "status": "PASS: dominant residual enclosed western opening now covered by displayed terrain; original five rays remain covered",
+      "controls": [
+        {
+          "u": 0.4638671875,
+          "v": 0.4670138888888889,
+          "blockSamples": true,
+          "baselineSkyPixels": 22,
+          "beforePixel": [
+            180,
+            208,
+            255
+          ],
+          "afterPixel": [
+            180,
+            208,
+            255
+          ],
+          "groundHits": []
+        },
+        {
+          "u": 0.1103515625,
+          "v": 0.46770833333333334,
+          "blockSamples": true,
+          "baselineSkyPixels": 23,
+          "beforePixel": [
+            180,
+            208,
+            255
+          ],
+          "afterPixel": [
+            180,
+            208,
+            255
+          ],
+          "groundHits": []
+        },
+        {
+          "u": 0.3111328125,
+          "v": 0.48020833333333335,
+          "blockSamples": true,
+          "baselineSkyPixels": 1127,
+          "beforePixel": [
+            180,
+            208,
+            255
+          ],
+          "afterPixel": [
+            209,
+            210,
+            201
+          ],
+          "groundHits": [
+            {
+              "tile": 1000060409,
+              "distance": 19.593687
+            }
+          ]
+        }
+      ],
+      "fixedRegion": {
+        "normalised": [
+          0,
+          0.46,
+          0.5,
+          0.56
+        ],
+        "beforeSkyPixels": 1237,
+        "afterSkyPixels": 84
+      },
+      "qualification": "Two tiny distant blue components are tracked separately; this does not accept the outer parking or neighboring building quality."
+    },
+    "newRoutePreflightSamples": 260,
+    "newRoutePreflightFailures": 0,
+    "continuousWalking": {
+      "status": "PASS: physical traversal; visual acceptance remains false",
+      "run": "physics-ii-routes-35c",
+      "metres": 153.60582678139792,
+      "reviewedCaptures": 35
+    },
+    "localVisualImprovement": true,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "findings": [
+      "Matched34/35west comparison reviewed. Dominant residual strip is filled and the original five rays remain covered. Fixed-region sky count1237\u219284; original33baseline19476. Two tiny distant components remain without ground hits, so this is not complete exterior acceptance.",
+      "Views1\u20134retain the improved northern approaches and container-side ground. The parking verge previously interrupted by a narrow retained strip is now continuous. Adjacent building/outer-tree defects remain unchanged.",
+      "Views5\u20137and standing0\u20133reviewed: repaired coverage is stable; the far parking scan blobs and warped neighboring building are intentionally retained as unfinished findings.",
+      "All8standing captures reviewed, including both newly filled ground controls. Support/body clearance pass at unchanged0.51m tolerance. The repaired coverage reads continuously; surrounding source defects remain."
+    ],
+    "nextActions": [
+      "Reconstruct WSI DEBY_LOD2_5323120 and adjoining ground from surveyed envelope, official identity and facade references; maintain matched route views.",
+      "Diagnose the eastern neighboring building and route1 endpoint source-ground gaps.",
+      "Refine grass edges, wall halos, parking and planting before broad gameplay/preview acceptance. Overall goal stays active."
+    ]
+  },
+  "physicsIIContinuousRoutes35c": {
+    "status": "PASS: physical traversal; visual acceptance remains false",
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 301559475,
+      "sha256": "0dc3e3b39cbb0cdd8e118ddb2f4a50ae153ae690e63323b220af6da0fcf12336",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "129a58eebbced74e176c8e3f5e98ece80c5a96c4ae9c9c99050605f6ae1af8c7",
+      "rendererSourceFingerprint": "a16c96e74e16db9f",
+      "bundleSha256": "3de14fa03bfa8b3c996f45c5dbaa5201905488962c6bf71c60d8dddc892774d8",
+      "tiles": 248,
+      "bundleUnpackedBytes": 675145195,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "routes": [
+      {
+        "label": "Mapped footpath 295418158",
+        "travelledMetres": 67.26737817545153,
+        "movementTicks": 313,
+        "jumps": 1,
+        "serverEndpoint": [
+          361.3385617102927,
+          63.0,
+          -365.0760533584801,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "capture": "campus-physics-ii-routes-35c-route-0-end.png"
+      },
+      {
+        "label": "Mapped footpath 317014213",
+        "travelledMetres": 57.81768453165866,
+        "movementTicks": 276,
+        "jumps": 1,
+        "serverEndpoint": [
+          407.3932208965583,
+          64.0,
+          -377.16571751579653,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "capture": "campus-physics-ii-routes-35c-route-1-end.png"
+      },
+      {
+        "label": "Mapped footpath 241031086",
+        "travelledMetres": 28.520764074287733,
+        "movementTicks": 139,
+        "jumps": 1,
+        "serverEndpoint": [
+          354.623437699838,
+          64.0,
+          -393.95957577167536,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "capture": "campus-physics-ii-routes-35c-route-2-end.png"
+      }
+    ],
+    "totalTravelMetres": 153.60582678139792,
+    "jumpInputs": 3,
+    "capturesReviewed": 35,
+    "serverTeleports": {
+      "total": 4,
+      "initialCamera": 1,
+      "routeStarts": 3,
+      "midRoute": 0
+    },
+    "preflight": {
+      "samples": 260,
+      "supportFailures": 0,
+      "bodyClearanceFailures": 0,
+      "unchangedToleranceMetres": 0.51,
+      "legacyLimitation": "The old exact OSM241031086@6.30m sample still has0.513546m support error. New sample spacing does not erase this historical failure."
+    },
+    "priorAttempt": {
+      "name": "physics-ii-routes-35b",
+      "terminalExit": 1,
+      "failure": "Shared initial streaming and movement budget expired after63.19m/300movement ticks. No traversal pass.",
+      "retryChange": "QA timer resets once at route readiness; separate bounded120second startup and120second route allowances. Existing60second movement,5second stall,2m ground deviation,discontinuity,flight and endpoint checks unchanged. Same JAR and byte-identical route coordinates."
+    },
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "findings": [
+      "All35captures reviewed. Three mapped routes traversed by normal forward/jump input with no flight or mid-route teleport; server endpoints confirm grounded clear arrival.",
+      "Route0 reads continuously over the repaired northern path, with no main western gap in this view. Raster-stepped grass boundaries and bright wall-foot halos remain.",
+      "Route1 at25\u201350m exposes narrow reconstructed path shoulders joining much lower-looking retained surfaces, with blue openings near the source building. Its final captures are dominated by warped neighboring geometry. Physical traversal is not visual acceptance.",
+      "Route2 approaches WSI on a narrow reconstructed strip, then meets the retained warped entrance frontage. The building and adjoining ground need a coordinated reconstruction.",
+      "Outer parking car/tree blobs and regular courtyard planting remain unfinished."
+    ],
+    "nextActions": [
+      "Reconstruct WSI DEBY_LOD2_5323120 and adjoining ground from surveyed envelope, official identity and facade references; maintain matched route views.",
+      "Diagnose the eastern neighboring building and route1 endpoint source-ground gaps.",
+      "Refine grass edges, wall halos, parking and planting before broad gameplay/preview acceptance. Overall goal stays active."
+    ]
   }
 }

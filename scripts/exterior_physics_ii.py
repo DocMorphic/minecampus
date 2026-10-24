@@ -129,7 +129,7 @@ def build(ctx):
     base_extent=base_extent.union(mapped_extent(root,spec['landscape']))
     canopy,canopy_records=canopy_extension(cache,spec['landscape'],unary_union([other_utm,*[b['utm']for b in bodydata]]),base_extent)
     landscape_extent=base_extent.union(canopy.buffer(spec['landscape']['canopyExtent']['groundMarginMetres']))
-    landscape_extent=close_small_voids(landscape_extent,spec['landscape']['coverage']['maximumEnclosedVoidSquareMetres'])
+    landscape_extent=close_small_voids(landscape_extent,spec['landscape']['coverage'])
     area=landscape_extent.difference(other_utm.buffer(.5)).difference(prior.buffer(.002))
     step=spec['groundTileMetres'];lo=(np.floor(np.array(area.bounds[:2])/step)*step).astype(int);hi=(np.ceil(np.array(area.bounds[2:])/step)*step).astype(int);groundtiles=[];treetiles=[]
     layers,features,path_guard=classify(root,cache,spec,area,unary_union([b['utm']for b in bodydata]))

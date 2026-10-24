@@ -7,7 +7,7 @@ from rasterio.features import rasterize,shapes
 from rasterio.transform import from_origin
 from pyproj import Transformer
 from PIL import Image
-from shapely.geometry import Polygon,LineString,shape,mapping
+from shapely.geometry import Polygon,LineString,Point,shape,mapping
 from shapely.ops import unary_union
 from exterior_physics_i import polygons
 
@@ -78,8 +78,23 @@ def mapped_extent(root, specification):
     return unary_union(regions)
 
 
-def close_small_voids(region, maximum_area):
-    return unary_union([Polygon(p.exterior, [h for h in p.interiors if Polygon(h).area > maximum_area]) for p in polygons(region)])
+def close_small_voids(region, policy):
+    patches = policy.get('continuityPatches', [])
+    matched = set()
+    result = []
+    for polygon in polygons(region):
+        retained = []
+        for ring in polygon.interiors:
+            hole = Polygon(ring)
+            selected = [i for i, patch in enumerate(patches) if hole.contains(Point(patch['seedUTM']))]
+            for i in selected:
+                assert i not in matched and hole.area <= patches[i]['maximumEnclosedAreaSquareMetres']
+                matched.add(i)
+            if not selected and hole.area > policy['maximumEnclosedVoidSquareMetres']:
+                retained.append(ring)
+        result.append(Polygon(polygon.exterior, retained))
+    assert matched == set(range(len(patches))), 'Continuity control no longer identifies an enclosed source gap'
+    return unary_union(result)
 
 
 def classify(root,cache,spec,area,owned_footprints):
