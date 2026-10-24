@@ -445,6 +445,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             for(Object w:want){var id=w.getClass().getDeclaredField("id");id.setAccessible(true);if(!loaded.containsKey(id.getInt(w)))ready=false;}
             if(((java.util.List<?>)df.get(renderer)).size()!=want.size())ready=false;
             readyTicks=ready?readyTicks+1:0;
+            if(Boolean.getBoolean("minecampus.continuousWalking")){CampusContinuousWalking.tick(mc,ticks>=200&&readyTicks>=40);return;}
             if(ticks<200 || readyTicks<40)return;
             if(Boolean.getBoolean("minecampus.siteInspection")){CampusSiteInspection.tick(mc);return;}
             if(Boolean.getBoolean("minecampus.altitudeFunctional")){CampusAltitudeChecks.tick(mc);return;}

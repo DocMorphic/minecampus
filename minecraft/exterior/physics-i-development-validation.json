@@ -2492,5 +2492,108 @@
       "Replace regular courtyard stems with source-bounded clustered planting and improve mapped parking materials after checking aerial evidence.",
       "Complete broader route/gameplay/lifecycle checks before a safe preview update; overall realism goal remains active."
     ]
+  },
+  "physicsIIContinuousRoutes33c": {
+    "status": "PASS: native traversal; visual and height limitations retained",
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 294200647,
+      "sha256": "e2db47241e679056d2c17b57b880a41421be3b145a9bf0f5965907c4ef90ae1a",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "129a58eebbced74e176c8e3f5e98ece80c5a96c4ae9c9c99050605f6ae1af8c7",
+      "rendererSourceFingerprint": "3d1529a2dfab1cb7",
+      "bundleSha256": "4e607428b24296eec2bfc11ff2657bdeb55b4aafc2b99a0029f8f7c289f0bc3e",
+      "tiles": 236,
+      "bundleUnpackedBytes": 668222555,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "routes": [
+      {
+        "label": "Mapped footpath 295418158",
+        "travelledMetres": 56.54888481190461,
+        "movementTicks": 271,
+        "jumps": 2,
+        "serverEndpoint": [
+          361.3557996318223,
+          63.0,
+          -365.0735354220018,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "capture": "campus-physics-ii-routes-33c-route-0-end.png"
+      },
+      {
+        "label": "Mapped footpath 317014213",
+        "travelledMetres": 17.060241586875083,
+        "movementTicks": 80,
+        "jumps": 0,
+        "serverEndpoint": [
+          368.67080083174955,
+          63.0,
+          -378.5370052216341,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "capture": "campus-physics-ii-routes-33c-route-1-end.png"
+      },
+      {
+        "label": "Mapped footpath 241031086",
+        "travelledMetres": 19.19899236453968,
+        "movementTicks": 97,
+        "jumps": 1,
+        "serverEndpoint": [
+          353.3884357172696,
+          64.0,
+          -384.7212360997109,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "capture": "campus-physics-ii-routes-33c-route-2-end.png"
+      }
+    ],
+    "totalTravelMetres": 92.80811876331937,
+    "jumpInputs": 3,
+    "capturesReviewed": 23,
+    "serverTeleports": {
+      "total": 4,
+      "initialCamera": 1,
+      "routeStarts": 3,
+      "midRoute": 0
+    },
+    "preflight": {
+      "samples": 160,
+      "supportFailures": 2,
+      "bodyClearanceFailures": 0,
+      "unchangedToleranceMetres": 0.51,
+      "worstSupportErrorMetres": 0.5312182873171167
+    },
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "findings": [
+      "All3mapped routes traversed by ordinary forward/jump input without flight, placement or mid-route teleport. Grounded clear server endpoints confirmed. All23route captures reviewed.",
+      "Long eastward route shows the reconstructed smaller northern container coherently; the larger neighboring source structure and foliage remain badly distorted. A small residual sloping source fragment protrudes near the lower western extension.",
+      "Route1 at15m/end and route2 at10m/15m/end expose abrupt raised edges and source-surface joins where the detailed ground stops. These are higher-priority visual defects than more facade detail.",
+      "Two strict source-height preflight failures remain. Native movement success does not erase those failures or establish full route visual acceptance."
+    ],
+    "nextActions": [
+      "Diagnose visible ground joins from route1/2endpoints and weststanding16using live screen rays/source triangles and independent survey geometry.",
+      "Fill source-ground gaps and continuous path joins with bounded surveyed ground while preserving neighboring buildings and user edits.",
+      "Improve courtyard planting and mapped parking materials, then wider gameplay/lifecycle/preview checks. Overall goal remains active."
+    ]
   }
 }
