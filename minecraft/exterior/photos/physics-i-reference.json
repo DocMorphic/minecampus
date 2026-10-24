@@ -1,0 +1,693 @@
+{
+  "date": "2026-10-24",
+  "status": "Source study for the next checkpoint; Physics I geometry is not yet changed",
+  "building": "DEBY_LOD2_5323136",
+  "tumBuilding": "5101",
+  "name": "Physik I main courtyard building",
+  "address": "James-Franck-Str. 1, 85748 Garching b. M\u00fcnchen",
+  "identityReferences": [
+    {
+      "url": "https://nav.tum.de/building/5101",
+      "use": "Official building number, identity and address."
+    },
+    {
+      "url": "https://www.openstreetmap.org/relation/51109",
+      "use": "Independent mapped building footprint and 5101 identity, matched against original BVV ground rings including courtyard holes."
+    }
+  ],
+  "architecturalReference": {
+    "url": "https://webarchiv.typo3.tum.de/static/AR/fak-ar/fileadmin/w00bfl/www/02_Aktuell/04_Publikationen/01_Buecher/TUM_Bauten_Kunst_Beispielseiten.compressed.pdf",
+    "pdfSha256": "8d1e1e87fe756dc055664b9aff0b7e74d8a337bbeaf3fe834e3818f6fb79f55b",
+    "pdfPageOneBased": 22,
+    "printedPages": [
+      226,
+      227
+    ],
+    "visualReview": "Complete spread inspected, including main building photograph, courtyard photograph, library photograph, ground plan and section. Reference is historical, not a current as-built record. Images are not bundled.",
+    "observations": [
+      "Three-storey main building around three courtyards, with lecture halls occupying parts of the two western courts.",
+      "Long window bands and exposed-aggregate precast parapets are characteristic of the main building.",
+      "A separate library wing lies to the south and is connected by a bridge. This body is not included in the present BVV target.",
+      "The plan and section support preserving the courtyard voids and distinct lecture-hall roofs."
+    ]
+  },
+  "identityMatch": {
+    "building": "DEBY_LOD2_5323136",
+    "tumBuilding": "5101",
+    "osmRelation": 51109,
+    "osmTags": {
+      "addr": "main",
+      "addr:city": "Garching bei M\u00fcnchen",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:postcode": "85748",
+      "addr:street": "James-Franck-Stra\u00dfe",
+      "building": "university",
+      "building:levels": "3",
+      "name": "TUM Physik I",
+      "operator": "Technische Universit\u00e4t M\u00fcnchen",
+      "ref": "5101",
+      "roof:levels": "0",
+      "roof:shape": "flat",
+      "type": "multipolygon"
+    },
+    "bvvFootprintArea": 8468.867515074402,
+    "osmFootprintArea": 8853.634334356739,
+    "footprintIntersectionOverUnion": 0.9246214627950945,
+    "bvvBoundsUTM": [
+      698489.94,
+      5349417.22,
+      698649.6,
+      5349511.54
+    ],
+    "surveyWallSurfaces": 80,
+    "surveyRoofPolygons": 27,
+    "currentTerrainBoundsUTM": [
+      697900,
+      5349000,
+      698500,
+      5349600
+    ],
+    "qualification": "Horizontal comparison in EPSG:25832 uses original survey rings including courtyard holes, not flattened manifest rings."
+  },
+  "survey": {
+    "id": "DEBY_LOD2_5323136",
+    "walls": 80,
+    "roofTriangles": 150,
+    "boundsMC": [
+      [
+        283.9824952096251,
+        61.61655585270509,
+        -297.95210673481654
+      ],
+      [
+        445.3515574533101,
+        75.39811834146542,
+        -198.8586129105961
+      ]
+    ],
+    "footprintArea": 8468.810160531584,
+    "courtyardHoles": 3,
+    "planSha256": "46bfd64374bb7b943abc03911a5f96cecf6141d74c04a2f1921d779eb8829073",
+    "sources": {
+      "campus-east.gml": "a0b6db38424bec366b494ed539191941f48173bad8c7be546d070ca57cb6a3e2",
+      "campus-west.gml": "958be6835080f8d6455f6d3f295df0dc9a50421559c0058cc4d6e3b2c6690f18",
+      "campus-dop-east.tif": "8a78e3fc301332e607e514b8bca545d64e3b1a956ecf02a723301b0982ab0dae",
+      "campus-dgm-east.tif": "949f653cfb93f056f134c8285f3a515d5bde29e47beb88075f024bcdc67ff32e"
+    }
+  },
+  "coverageFinding": {
+    "currentTerrainBoundsUTM": [
+      697900,
+      5349000,
+      698500,
+      5349600
+    ],
+    "targetBoundsUTM": [
+      698489.94,
+      5349417.22,
+      698649.6,
+      5349511.54
+    ],
+    "existingPinnedOrthophotoBoundsUTM": [
+      698000,
+      5349000,
+      699000,
+      5350000
+    ],
+    "orthophotoMetresPerPixel": 0.2,
+    "observations": [
+      "The target intersects the current survey boundary but extends roughly 150 m beyond its eastern edge.",
+      "The current facade builder excludes bodies not entirely within that boundary, leaving Physics I on its coarse source mesh.",
+      "The existing pinned DOP20 and DGM1 inputs cover the entire building. Per-building roof imagery can be sampled without changing the original campus-wide image or terrain meshes.",
+      "Native collision also depends on the current terrain guide. Supplemental coverage must explicitly handle collision and source cleanup, not just add a visible facade."
+    ]
+  },
+  "localPhotoStudy": {
+    "reviewedMajorFaces": [
+      0,
+      1,
+      6,
+      7,
+      9,
+      10,
+      12,
+      13,
+      15,
+      20,
+      24,
+      26,
+      27,
+      28,
+      33,
+      35,
+      36,
+      37,
+      38,
+      40,
+      41,
+      44,
+      45,
+      47,
+      48,
+      52,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      64,
+      65,
+      71,
+      75,
+      78,
+      79
+    ],
+    "coverageByFace": [
+      {
+        "wall": 0,
+        "width": 511,
+        "height": 115,
+        "coverage": 0.4295584106185655
+      },
+      {
+        "wall": 1,
+        "width": 407,
+        "height": 127,
+        "coverage": 0.6028168469113351
+      },
+      {
+        "wall": 2,
+        "width": 511,
+        "height": 12,
+        "coverage": 0.8126223091976517
+      },
+      {
+        "wall": 3,
+        "width": 33,
+        "height": 127,
+        "coverage": 0.6203769983297542
+      },
+      {
+        "wall": 4,
+        "width": 63,
+        "height": 42,
+        "coverage": 0.890400604686319
+      },
+      {
+        "wall": 5,
+        "width": 46,
+        "height": 12,
+        "coverage": 0.6992753623188406
+      },
+      {
+        "wall": 6,
+        "width": 250,
+        "height": 84,
+        "coverage": 0.6416190476190476
+      },
+      {
+        "wall": 7,
+        "width": 1022,
+        "height": 127,
+        "coverage": 0.9607608980384301
+      },
+      {
+        "wall": 8,
+        "width": 63,
+        "height": 41,
+        "coverage": 0.8265582655826558
+      },
+      {
+        "wall": 9,
+        "width": 96,
+        "height": 44,
+        "coverage": 0.05965909090909091
+      },
+      {
+        "wall": 10,
+        "width": 259,
+        "height": 115,
+        "coverage": 0.7382239382239382
+      },
+      {
+        "wall": 11,
+        "width": 46,
+        "height": 11,
+        "coverage": 0.5296442687747036
+      },
+      {
+        "wall": 12,
+        "width": 244,
+        "height": 89,
+        "coverage": 0.4412875299318475
+      },
+      {
+        "wall": 13,
+        "width": 129,
+        "height": 89,
+        "coverage": 0.20817002003309817
+      },
+      {
+        "wall": 14,
+        "width": 499,
+        "height": 13,
+        "coverage": 0.2532757823338986
+      },
+      {
+        "wall": 15,
+        "width": 92,
+        "height": 44,
+        "coverage": 0.2739624505928854
+      },
+      {
+        "wall": 16,
+        "width": 63,
+        "height": 41,
+        "coverage": 0.6600851722802943
+      },
+      {
+        "wall": 17,
+        "width": 63,
+        "height": 127,
+        "coverage": 0.1216097987751531
+      },
+      {
+        "wall": 18,
+        "width": 499,
+        "height": 13,
+        "coverage": 0.12301526129181439
+      },
+      {
+        "wall": 19,
+        "width": 511,
+        "height": 12,
+        "coverage": 0.8928571428571429
+      },
+      {
+        "wall": 20,
+        "width": 255,
+        "height": 89,
+        "coverage": 0.282088565763384
+      },
+      {
+        "wall": 21,
+        "width": 48,
+        "height": 12,
+        "coverage": 0.6961805555555556
+      },
+      {
+        "wall": 22,
+        "width": 6,
+        "height": 44,
+        "coverage": 0.24621212121212122
+      },
+      {
+        "wall": 23,
+        "width": 5,
+        "height": 89,
+        "coverage": 0.038202247191011236
+      },
+      {
+        "wall": 24,
+        "width": 504,
+        "height": 127,
+        "coverage": 0.7713098362704662
+      },
+      {
+        "wall": 25,
+        "width": 511,
+        "height": 12,
+        "coverage": 0.8129484670580561
+      },
+      {
+        "wall": 26,
+        "width": 92,
+        "height": 44,
+        "coverage": 0.005434782608695652
+      },
+      {
+        "wall": 27,
+        "width": 535,
+        "height": 127,
+        "coverage": 0.8283464566929134
+      },
+      {
+        "wall": 28,
+        "width": 247,
+        "height": 84,
+        "coverage": 0.9813475997686524
+      },
+      {
+        "wall": 29,
+        "width": 63,
+        "height": 41,
+        "coverage": 0.7646147890050329
+      },
+      {
+        "wall": 30,
+        "width": 72,
+        "height": 89,
+        "coverage": 0.06725967540574282
+      },
+      {
+        "wall": 31,
+        "width": 48,
+        "height": 12,
+        "coverage": 0.6163194444444444
+      },
+      {
+        "wall": 32,
+        "width": 62,
+        "height": 41,
+        "coverage": 0.9256490952006294
+      },
+      {
+        "wall": 33,
+        "width": 510,
+        "height": 84,
+        "coverage": 0.9010270774976658
+      },
+      {
+        "wall": 34,
+        "width": 244,
+        "height": 13,
+        "coverage": 0
+      },
+      {
+        "wall": 35,
+        "width": 511,
+        "height": 38,
+        "coverage": 0.9820269852713976
+      },
+      {
+        "wall": 36,
+        "width": 259,
+        "height": 115,
+        "coverage": 0.25663924794359577
+      },
+      {
+        "wall": 37,
+        "width": 253,
+        "height": 44,
+        "coverage": 0.2978799856270212
+      },
+      {
+        "wall": 38,
+        "width": 254,
+        "height": 38,
+        "coverage": 0.9739950269374223
+      },
+      {
+        "wall": 39,
+        "width": 46,
+        "height": 11,
+        "coverage": 0.6324110671936759
+      },
+      {
+        "wall": 40,
+        "width": 104,
+        "height": 30,
+        "coverage": 0.6496794871794872
+      },
+      {
+        "wall": 41,
+        "width": 499,
+        "height": 44,
+        "coverage": 0.007788303880488249
+      },
+      {
+        "wall": 42,
+        "width": 70,
+        "height": 44,
+        "coverage": 0.02922077922077922
+      },
+      {
+        "wall": 43,
+        "width": 62,
+        "height": 44,
+        "coverage": 0
+      },
+      {
+        "wall": 44,
+        "width": 254,
+        "height": 38,
+        "coverage": 0.8699751346871115
+      },
+      {
+        "wall": 45,
+        "width": 454,
+        "height": 127,
+        "coverage": 0.8936834437545527
+      },
+      {
+        "wall": 46,
+        "width": 62,
+        "height": 42,
+        "coverage": 0.7557603686635944
+      },
+      {
+        "wall": 47,
+        "width": 511,
+        "height": 38,
+        "coverage": 0.9801730353280461
+      },
+      {
+        "wall": 48,
+        "width": 739,
+        "height": 127,
+        "coverage": 0.9616101776181901
+      },
+      {
+        "wall": 49,
+        "width": 511,
+        "height": 12,
+        "coverage": 0.8941617742987606
+      },
+      {
+        "wall": 50,
+        "width": 511,
+        "height": 12,
+        "coverage": 0.9024787997390737
+      },
+      {
+        "wall": 51,
+        "width": 5,
+        "height": 89,
+        "coverage": 0.10112359550561797
+      },
+      {
+        "wall": 52,
+        "width": 127,
+        "height": 44,
+        "coverage": 0.01055833929849678
+      },
+      {
+        "wall": 53,
+        "width": 62,
+        "height": 42,
+        "coverage": 0.7300307219662059
+      },
+      {
+        "wall": 54,
+        "width": 54,
+        "height": 8,
+        "coverage": 1
+      },
+      {
+        "wall": 55,
+        "width": 46,
+        "height": 12,
+        "coverage": 0.6431159420289855
+      },
+      {
+        "wall": 56,
+        "width": 511,
+        "height": 115,
+        "coverage": 0.6829235088913469
+      },
+      {
+        "wall": 57,
+        "width": 244,
+        "height": 44,
+        "coverage": 0.06939269746646796
+      },
+      {
+        "wall": 58,
+        "width": 511,
+        "height": 84,
+        "coverage": 0.798574224210232
+      },
+      {
+        "wall": 59,
+        "width": 98,
+        "height": 44,
+        "coverage": 0.046846011131725415
+      },
+      {
+        "wall": 60,
+        "width": 499,
+        "height": 89,
+        "coverage": 0.2832856724685326
+      },
+      {
+        "wall": 61,
+        "width": 259,
+        "height": 89,
+        "coverage": 0.1090191314910416
+      },
+      {
+        "wall": 62,
+        "width": 235,
+        "height": 89,
+        "coverage": 0.44857757590246233
+      },
+      {
+        "wall": 63,
+        "width": 72,
+        "height": 89,
+        "coverage": 0.19241573033707865
+      },
+      {
+        "wall": 64,
+        "width": 244,
+        "height": 44,
+        "coverage": 0.060823397913561845
+      },
+      {
+        "wall": 65,
+        "width": 739,
+        "height": 127,
+        "coverage": 0.5921174602836351
+      },
+      {
+        "wall": 66,
+        "width": 6,
+        "height": 44,
+        "coverage": 0
+      },
+      {
+        "wall": 67,
+        "width": 245,
+        "height": 13,
+        "coverage": 0.03422291993720565
+      },
+      {
+        "wall": 68,
+        "width": 73,
+        "height": 8,
+        "coverage": 1
+      },
+      {
+        "wall": 69,
+        "width": 63,
+        "height": 41,
+        "coverage": 0.8424312814556717
+      },
+      {
+        "wall": 70,
+        "width": 63,
+        "height": 41,
+        "coverage": 0.740611691831204
+      },
+      {
+        "wall": 71,
+        "width": 99,
+        "height": 44,
+        "coverage": 0.021808999081726354
+      },
+      {
+        "wall": 72,
+        "width": 63,
+        "height": 42,
+        "coverage": 0.9285714285714286
+      },
+      {
+        "wall": 73,
+        "width": 62,
+        "height": 41,
+        "coverage": 0.7541306058221873
+      },
+      {
+        "wall": 74,
+        "width": 63,
+        "height": 41,
+        "coverage": 0.9578010065814944
+      },
+      {
+        "wall": 75,
+        "width": 235,
+        "height": 89,
+        "coverage": 0.5361224001912503
+      },
+      {
+        "wall": 76,
+        "width": 511,
+        "height": 12,
+        "coverage": 0.9024787997390737
+      },
+      {
+        "wall": 77,
+        "width": 59,
+        "height": 44,
+        "coverage": 0.02580893682588598
+      },
+      {
+        "wall": 78,
+        "width": 105,
+        "height": 30,
+        "coverage": 0.8876190476190476
+      },
+      {
+        "wall": 79,
+        "width": 244,
+        "height": 89,
+        "coverage": 0.15325105912691103
+      }
+    ],
+    "observations": [
+      "North and south external elevations show three long dark opening bands separated by pale concrete parapets.",
+      "East and west external elevations have denser pale vertical divisions and solid end sections; exact bay dimensions need calibration.",
+      "The lower levels and most courtyard/lecture-hall faces contain substantial missing or obstructed observations.",
+      "Dark source imagery is only a qualitative reference; arbitrary missing regions must not be represented as surveyed architectural detail."
+    ],
+    "qualification": "Private projection of existing provider imagery; no provider images or meshes are redistributed. Pixel coverage measures projection completeness, not accuracy."
+  },
+  "next": [
+    "Native baseline complete and reviewed: replace the warped outer facade and inspect clearer courtyard views alongside measured ground/collision coverage.",
+    "Append supplemental geometry and per-building roof sampling without changing the 105 existing render meshes, 83 photographic survey plans or original terrain/mask bounds.",
+    "Preserve the original survey rings, courtyard holes and 150 roof triangles. Treat unsupported facade dimensions and divisions as estimates.",
+    "Add bounded supplemental surveyed ground, collision and source/vegetation cleanup where needed. Protect neighbours and courtyard voids; verify both sides of the old survey boundary.",
+    "Inspect native before/after views and structural/collision controls before installing a new package."
+  ],
+  "nativeBaseline": {
+    "artifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86",
+    "views": 12,
+    "allReviewed": true,
+    "planSha256": "a5c19d0d8730c2fffaa954ad0318c51279cd372c5bf89eb885c6b7ee35db8f2b",
+    "reportSha256": "0e572a48fe32642506686f741d0e9ec16175c940b3282850bf8839809414aa23",
+    "captureHashes": {
+      "campus-physics-i-baseline-0.png": "aa4f0dca7934b57805dc239d33bda24402246bf7676e042fc5f39f1fb378ab34",
+      "campus-physics-i-baseline-1.png": "5716c629d4236b54950c80053e2a4f4ba72f22d49f2196c5760c748157c4f87c",
+      "campus-physics-i-baseline-2.png": "0f7edbcc5e824fff6e261c879e4bec627abf2c0028facb510106ab78f601c911",
+      "campus-physics-i-baseline-3.png": "36a25e68d25d55189f3226ade0fb51fbf4adc52144b724c92c7037d2373d3a19",
+      "campus-physics-i-baseline-4.png": "74f20910fd6973431cc35862ba63dd97660490928191b95a1de5b1ea33231ff8",
+      "campus-physics-i-baseline-5.png": "7f609e4e7ab389ac520dbd253c7f6b3b1311bfac741fee173fd457bbb5cf75ec",
+      "campus-physics-i-baseline-6.png": "db02fd132cbc4fcd4b8ce5cb2add7a7524ba92defcb0de153545947baa267ab9",
+      "campus-physics-i-baseline-7.png": "e705d0571c9b377634a52a64bf9b5ab4890cf543fe0e880112e5e701e88b67bc",
+      "campus-physics-i-baseline-8.png": "51c2be2da96a6231bb905526f1fb33fb9481053f45d4e987096f06897ddbb22d",
+      "campus-physics-i-baseline-9.png": "062a64ed2d2c478e320501ac26e401d63ffd76b8a5d4232dfadff7ea5d4a74ad",
+      "campus-physics-i-baseline-10.png": "77c2e5482a19f8dc72b52682412aafb11b4ebf78e2a8c69c4e07a454dc1927c7",
+      "campus-physics-i-baseline-11.png": "96e4d8bb66ebe7597a2b9c8b434719a6d34b72251e058890ae1f8e9c7b71486e"
+    },
+    "observations": [
+      "Frames 0\u20134 show badly folded source parapets/window bands on west, north, east and southwest approaches. The source images have recognizable window rhythms but triangles distort them strongly.",
+      "Frame 5 is partly obscured by an unreconstructed tree. Neither image clarity nor window positions here are sufficient to claim exact details.",
+      "Frame 6 repeats the warped south ribbon windows and a coarse tree in front.",
+      "Frames 7\u20139 show severe courtyard source defects: bulky canopy sheets, occluded walls, and missing/underside views from survey-estimated ground-level cameras. These are failure evidence, not adequate reference photos. Ground and vegetation coverage must accompany the building work.",
+      "Frames 10\u201311 aerial views preserve recognizable three-courtyard layout, but hide walking-height errors. Aerial quality alone cannot close this checkpoint."
+    ]
+  }
+}
