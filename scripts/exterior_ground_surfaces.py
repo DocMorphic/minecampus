@@ -22,11 +22,12 @@ def build(ctx):
  grs_site,grs_stats=build_grs_courtyard(ctx,data["features"]+paths+site)
  from exterior_promenade import build as build_promenade
  promenade,promenade_stats=build_promenade(ctx,data['features']+paths+site+grs_site)
+ crosspaths,crosspath_stats=build_promenade(ctx,data['features']+paths+site+grs_site+promenade,'crosspaths.json','crosspath-surfaces.geojson')
  toUtm=Transformer.from_crs(4326,25832,always_xy=True).transform
  bounds=metadata['boundsUtm'];limit=box(*bounds);size=4096;span=672
  layers={k:[]for k in ['grass','paving','asphalt','soil','preserve']};areas={k:0 for k in layers};features=[]
  preview=Image.open(out/'campus-orthophoto.jpg').convert('RGB');draw=ImageDraw.Draw(preview)
- for feature in data['features']+paths+site+grs_site+promenade:
+ for feature in data['features']+paths+site+grs_site+promenade+crosspaths:
   p=transform(toUtm,shape(feature['geometry']));p=p if p.is_valid else p.buffer(0);p=p.intersection(limit)
   if p.is_empty:continue
   material=feature['properties']['material'];areas[material]+=p.area
@@ -61,5 +62,6 @@ def build(ctx):
  metadata['groundSurfaces']['cosSite']=site_stats
  metadata['groundSurfaces']['grsCourtyard']=grs_stats
  metadata['groundSurfaces']['promenade']=promenade_stats
+ metadata['groundSurfaces']['crosspaths']=crosspath_stats
  metadata['groundSurfaces']['maskSampling']={'samplesPerAxis':samples,'method':'Area-averaged polygon coverage; preserve masks applied before averaging','note':'Interior classifications unchanged; edge pixels contain fractional material coverage.'}
  print('Ground materials:',len(features),'mapped polygons;',metadata['groundSurfaces']['areasSquareMetres'],flush=True)

@@ -485,3 +485,22 @@ The ground mask now averages 16 coverage samples per pixel, reducing staircase e
 All 97 render tiles, terrain and architecture guides remain unchanged. Existing material interiors are preserved; previous boundary pixels intentionally gain fractional coverage. The renderer classes and shaders remain byte-identical to dev.11. Short transverse paths still retain photographic surfaces, and a lighter textured strip near the eastern facade remains from the aerial image's baked shading. This is an incremental ground-material improvement; broader campus reconstruction remains unfinished.
 
 The dev.12 package passes 37 native views, 34 ordinary checks, 37-frame GPU lighting validation, 27 service tests and three updater tests. The preview update preserves all 121 save files and local settings. [Exact artifact and preservation evidence](promenade-development-validation.json).
+
+
+## Crossing and entrance-path materials
+
+Five main crossings and three short connecting ways add about 611 m² of asphalt along the promenade. [OSM source records and orthophoto width estimates](crosspaths.json) distinguish mapped facts from the inferred dimensions. Two mapped lines sit beside their visible pavement in the aerial image and receive explicit lateral offsets. The southern crossing widens at its eastern apron, following the source image and a native walking review.
+
+![Northern crossing before](../../docs/screenshots/campus-crosspath-north-before.jpg)
+
+![Same northern crossing with asphalt](../../docs/screenshots/campus-crosspath-north-after.jpg)
+
+![Southern crossing before](../../docs/screenshots/campus-crosspath-south-before.jpg)
+
+![Southern crossing and inferred wider apron](../../docs/screenshots/campus-crosspath-south-after.jpg)
+
+All prior material channels except added asphalt remain byte-identical. Existing asphalt coverage never decreases, all 97 render tiles and the prior promenade polygons are unchanged, and there is no new overlap with surveyed building footprints. The renderer classes and shaders retain dev.12's bytes. Pale unmapped margins still remain near the sculpture and other junctions.
+
+The northern view also shows a stretched terrain bank. Native rays and source mapping identify Galileo's sunken courtyard, which still needs retaining walls and stair geometry. It is a separate unfinished mesh repair, recorded in [the source study](photos/galileo-north-court-reference.json).
+
+The dev.13 package passes 39 native route views, 35 ordinary checks, GPU lighting validation at every view, 27 service tests and three updater tests. The installed preview preserves all 121 save files and local settings. [Exact artifact and preservation evidence](crosspath-development-validation.json).

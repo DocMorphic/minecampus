@@ -1,0 +1,730 @@
+{
+  "status": "Read-only source study; not yet reconstructed",
+  "date": "2026-10-24",
+  "identity": "Galileo northern sunken courtyard (Tiefhof), adjacent to the promenade and IAS",
+  "primaryProjectPage": "https://slam.green/projekt/galileo-neue-mitte-am-hochschulcampus-garching-muenchen/",
+  "projectEvidence": "Landscape architect identifies a northern lower courtyard with concrete seating elements and grass. Its published west-elevation photograph shows a bounded sunken court with concrete retaining walls. The Senkgarten section is design evidence and must be checked against the completed-site image and orthophoto before using its planting or water details.",
+  "referenceImages": [
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/SCC_Munich_Exterior_04-1024x683.jpg",
+      "file": "SCC_Munich_Exterior_04-1024x683.jpg",
+      "sha256": "4fa310efd83a74b86f60d0ba7214bfd599a59f917e871d77ca827b33d89fc430",
+      "use": "Reference study only; not redistributed in game or repository",
+      "credit": "Realotel Garching Hotelbetriebs GmbH, via SLAM Schaar Landschaftsarchitekten"
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/MUCCG_Exterior_03-1024x683.jpg",
+      "file": "MUCCG_Exterior_03-1024x683.jpg",
+      "sha256": "8ca72a5f9aeffa00625fcc1b735d857a976e2ea0acec744b58dc4787b20f852c",
+      "use": "Reference study only; not redistributed in game or repository",
+      "credit": "Realotel Garching Hotelbetriebs GmbH, via SLAM Schaar Landschaftsarchitekten"
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/MUCCG_Exterior_09-1024x683.jpg",
+      "file": "MUCCG_Exterior_09-1024x683.jpg",
+      "sha256": "1e1118c0e89b4fa496adf3d79c2ec90cda70ea42b3f6e9e3e686b49d65493f18",
+      "use": "Reference study only; not redistributed in game or repository",
+      "credit": "Realotel Garching Hotelbetriebs GmbH, via SLAM Schaar Landschaftsarchitekten"
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/1005_Teifhof_Schnitt.jpg",
+      "file": "1005_Teifhof_Schnitt.jpg",
+      "sha256": "7a5897677780c34de7ffa3983fb0123cab3e106462cc5a82d4180d765d49ff2c",
+      "use": "Reference only, not redistributed",
+      "credit": "SLAM Schaar Landschaftsarchitekten; photograph credited to Realotel Garching Hotelbetriebs GmbH"
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/SCC_Munich_Exterior_02-1024x683.jpg",
+      "file": "SCC_Munich_Exterior_02-1024x683.jpg",
+      "sha256": "08abe30cd377d1f57f2f222efc389abf579a3ae0e5ddb5ea653d95263776f3c5",
+      "use": "Reference only, not redistributed",
+      "credit": "SLAM Schaar Landschaftsarchitekten; photograph credited to Realotel Garching Hotelbetriebs GmbH"
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/1005_Lageplan_0-2048x799.jpg",
+      "file": "1005_Lageplan_0-2048x799.jpg",
+      "sha256": "47db2a50de1fbf1351c1c119304760e4a1f8b55798479bb2b98ad681f49eba63",
+      "use": "Reference study only; not redistributed",
+      "credit": "SLAM Schaar Landschaftsarchitekten"
+    }
+  ],
+  "referenceUse": "Images are studied locally only; no image pixels are embedded in game assets or redistributed here. Dimensions and less-visible details will be estimates.",
+  "osmSource": {
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.6720,48.2660,11.6730,48.2669",
+    "sha256": "3d2633cc237e669f905ef89d6532eb2a51ac358a043dfe1c840e8d8fb1bb8932",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors",
+    "features": [
+      {
+        "osmWay": 579584070,
+        "version": 6,
+        "timestamp": "2026-06-20T15:01:15Z",
+        "sourceUrl": "https://www.openstreetmap.org/way/579584070",
+        "tags": {
+          "level": "-1",
+          "man_made": "courtyard",
+          "name": "Tiefhof"
+        },
+        "coordinates": [
+          [
+            11.672321,
+            48.2665153
+          ],
+          [
+            11.6725663,
+            48.266486
+          ],
+          [
+            11.6725105,
+            48.2662778
+          ],
+          [
+            11.6724426,
+            48.2662862
+          ],
+          [
+            11.6723516,
+            48.2662974
+          ],
+          [
+            11.672265,
+            48.266308
+          ],
+          [
+            11.6722693,
+            48.266324
+          ],
+          [
+            11.6722735,
+            48.2663395
+          ],
+          [
+            11.672321,
+            48.2665153
+          ]
+        ],
+        "coordinatesMC": [
+          [
+            98.0792716389324,
+            -168.50915415245498
+          ],
+          [
+            116.2919476885456,
+            -165.25120720399065
+          ],
+          [
+            112.1494657103092,
+            -142.09831637533696
+          ],
+          [
+            107.10810321224747,
+            -143.0323371596181
+          ],
+          [
+            100.35164090397495,
+            -144.27770445841225
+          ],
+          [
+            93.92186773761175,
+            -145.456362372612
+          ],
+          [
+            94.24109809389941,
+            -147.23564181249367
+          ],
+          [
+            94.5529045209991,
+            -148.95931883973319
+          ],
+          [
+            98.0792716389324,
+            -168.50915415245498
+          ]
+        ],
+        "studyRole": "Courtyard reconstruction reference"
+      },
+      {
+        "osmWay": 983606071,
+        "version": 3,
+        "timestamp": "2021-10-20T17:05:23Z",
+        "sourceUrl": "https://www.openstreetmap.org/way/983606071",
+        "tags": {
+          "barrier": "wall",
+          "level": "0",
+          "material": "concrete",
+          "wall": "concrete"
+        },
+        "coordinates": [
+          [
+            11.6725105,
+            48.2662778
+          ],
+          [
+            11.6725663,
+            48.266486
+          ],
+          [
+            11.672321,
+            48.2665153
+          ],
+          [
+            11.6722735,
+            48.2663395
+          ]
+        ],
+        "coordinatesMC": [
+          [
+            112.1494657103092,
+            -142.09831637533696
+          ],
+          [
+            116.2919476885456,
+            -165.25120720399065
+          ],
+          [
+            98.0792716389324,
+            -168.50915415245498
+          ],
+          [
+            94.5529045209991,
+            -148.95931883973319
+          ]
+        ],
+        "studyRole": "Courtyard reconstruction reference"
+      },
+      {
+        "osmWay": 983606072,
+        "version": 8,
+        "timestamp": "2025-07-23T19:03:56Z",
+        "sourceUrl": "https://www.openstreetmap.org/way/983606072",
+        "tags": {
+          "handrail": "yes",
+          "highway": "steps",
+          "incline": "down",
+          "level": "0;-1",
+          "lit": "yes",
+          "ramp": "no",
+          "step_count": "27",
+          "surface": "concrete",
+          "tactile_paving": "no",
+          "width": "4"
+        },
+        "coordinates": [
+          [
+            11.6723007,
+            48.2665157
+          ],
+          [
+            11.6722538,
+            48.266342
+          ]
+        ],
+        "coordinatesMC": [
+          [
+            96.57207179197239,
+            -168.55360972051153
+          ],
+          [
+            93.09024359200804,
+            -149.23730594431734
+          ]
+        ],
+        "studyRole": "Courtyard reconstruction reference"
+      },
+      {
+        "osmWay": 1389306573,
+        "version": 1,
+        "timestamp": "2025-05-24T13:41:09Z",
+        "sourceUrl": "https://www.openstreetmap.org/way/1389306573",
+        "tags": {
+          "amenity": "fountain",
+          "drinking_water": "no",
+          "height": "2",
+          "lit": "no",
+          "name": "Wasserwand"
+        },
+        "coordinates": [
+          [
+            11.6721241,
+            48.2667741
+          ],
+          [
+            11.6721225,
+            48.2667688
+          ],
+          [
+            11.6722661,
+            48.266752
+          ],
+          [
+            11.6722677,
+            48.2667573
+          ],
+          [
+            11.6721241,
+            48.2667741
+          ]
+        ],
+        "coordinatesMC": [
+          [
+            83.45975006744125,
+            -197.2886743819092
+          ],
+          [
+            83.34096556469528,
+            -196.69928803072924
+          ],
+          [
+            94.00270698525472,
+            -194.8312213187511
+          ],
+          [
+            94.12149043508784,
+            -195.42060792092033
+          ],
+          [
+            83.45975006744125,
+            -197.2886743819092
+          ]
+        ],
+        "studyRole": "Nearby feature outside courtyard; do not include in this reconstruction"
+      },
+      {
+        "osmWay": 1416810359,
+        "version": 1,
+        "timestamp": "2025-07-23T19:03:56Z",
+        "sourceUrl": "https://www.openstreetmap.org/way/1416810359",
+        "tags": {
+          "conveying": "forward",
+          "highway": "steps",
+          "incline": "up",
+          "level": "0;-1",
+          "lit": "yes",
+          "surface": "metal"
+        },
+        "coordinates": [
+          [
+            11.6724342,
+            48.265982
+          ],
+          [
+            11.6724514,
+            48.2660437
+          ]
+        ],
+        "coordinatesMC": [
+          [
+            106.48506870271959,
+            -109.20387563310194
+          ],
+          [
+            107.76198746661757,
+            -116.06522556813157
+          ]
+        ],
+        "studyRole": "Nearby feature outside courtyard; do not include in this reconstruction"
+      },
+      {
+        "osmWay": 1416810360,
+        "version": 1,
+        "timestamp": "2025-07-23T19:03:56Z",
+        "sourceUrl": "https://www.openstreetmap.org/way/1416810360",
+        "tags": {
+          "conveying": "forward",
+          "highway": "steps",
+          "incline": "up",
+          "level": "0;-1",
+          "lit": "yes",
+          "surface": "metal"
+        },
+        "coordinates": [
+          [
+            11.6724196,
+            48.2659835
+          ],
+          [
+            11.6724368,
+            48.2660453
+          ]
+        ],
+        "coordinatesMC": [
+          [
+            105.40105887820194,
+            -109.37066234624436
+          ],
+          [
+            106.67797868922678,
+            -116.2431324693165
+          ]
+        ],
+        "studyRole": "Nearby feature outside courtyard; do not include in this reconstruction"
+      },
+      {
+        "osmWay": 1416810361,
+        "version": 1,
+        "timestamp": "2025-07-23T19:03:56Z",
+        "sourceUrl": "https://www.openstreetmap.org/way/1416810361",
+        "tags": {
+          "barrier": "fence",
+          "level": "0"
+        },
+        "coordinates": [
+          [
+            11.6724563,
+            48.2660432
+          ],
+          [
+            11.6724695,
+            48.2660415
+          ],
+          [
+            11.672451,
+            48.265972
+          ],
+          [
+            11.672392,
+            48.265979
+          ],
+          [
+            11.6724105,
+            48.2660485
+          ],
+          [
+            11.6724305,
+            48.2660463
+          ]
+        ],
+        "coordinatesMC": [
+          [
+            108.12579856979636,
+            -116.00963018285672
+          ],
+          [
+            109.10586192694731,
+            -115.82060109043894
+          ],
+          [
+            107.73244000471156,
+            -108.0918528488001
+          ],
+          [
+            103.35184985756356,
+            -108.87020382685999
+          ],
+          [
+            104.72527747825715,
+            -116.59895085995174
+          ],
+          [
+            106.21022085474975,
+            -116.35432831402638
+          ]
+        ],
+        "studyRole": "Nearby feature outside courtyard; do not include in this reconstruction"
+      }
+    ]
+  },
+  "orthophotoSha256": "0c65db3c43a9fa2c546ffe22266ea8015106c2bb3eb30cc064ce6162a8933339",
+  "nativeDiagnosis": [
+    {
+      "ray": {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.74,
+        "v": 0.445,
+        "fov": 76.99999332427979,
+        "tile": 1000000027,
+        "x": 116.7005386352539,
+        "y": 63.50264883041382,
+        "z": -164.28711318969727,
+        "block": "earthcraft:map_grass",
+        "blockPosition": "115, 63, -164",
+        "structureBehindVegetation": 1000000027,
+        "structureDistance": 57.033752,
+        "structureTriangle": [
+          116.314453125,
+          62.843809328878024,
+          -164.1143341064453,
+          117.31388092041016,
+          64.48674985011826,
+          -164.07957458496094,
+          116.34925079345703,
+          63.030767641866305,
+          -165.1137237548828
+        ]
+      },
+      "utm": [
+        698324.8797902255,
+        5349371.686035919
+      ],
+      "lonlat": [
+        11.672571802911694,
+        48.2664773303756
+      ],
+      "nearestSurveyBuildings": [
+        [
+          23.05245947625655,
+          "DEBY_LOD2_107614323"
+        ],
+        [
+          31.23345946531649,
+          "DEBY_LOD2_31360854"
+        ],
+        [
+          34.069889315937196,
+          "DEBY_LOD2_107614301"
+        ],
+        [
+          40.44099249820204,
+          "DEBY_LOD2_8486677"
+        ]
+      ]
+    },
+    {
+      "ray": {
+        "frameGroundHeight": 519.7618173672081,
+        "u": 0.81,
+        "v": 0.46,
+        "fov": 76.99999332427979,
+        "tile": 1000000027,
+        "x": 114.9096908569336,
+        "y": 63.2583794593811,
+        "z": -156.16612815856934,
+        "block": "earthcraft:map_stone",
+        "blockPosition": "114, 63, -156",
+        "structureBehindVegetation": 1000000027,
+        "structureDistance": 52.326866,
+        "structureTriangle": [
+          114.03729248046875,
+          60.7550222500206,
+          -156.188720703125,
+          115.03673553466797,
+          63.62400647243271,
+          -156.1540069580078,
+          114.07208251953125,
+          60.73202344020615,
+          -157.1881103515625
+        ]
+      },
+      "utm": [
+        698323.3725729714,
+        5349363.507650946
+      ],
+      "lonlat": [
+        11.672547680315517,
+        48.266404303317294
+      ],
+      "nearestSurveyBuildings": [
+        [
+          14.741352107899086,
+          "DEBY_LOD2_107614323"
+        ],
+        [
+          37.31249328661783,
+          "DEBY_LOD2_31360854"
+        ],
+        [
+          40.10487627793701,
+          "DEBY_LOD2_107614301"
+        ],
+        [
+          46.76825591709935,
+          "DEBY_LOD2_8486677"
+        ]
+      ]
+    }
+  ],
+  "courtStudy": {
+    "boundsMC": [
+      93.92186773761175,
+      -168.50915415245498,
+      116.2919476885456,
+      -142.09831637533696
+    ],
+    "areaSquareMetres": 434.60537370685086,
+    "terrainGuideYRange": [
+      60.19368247789497,
+      63.840842312424215
+    ]
+  },
+  "nextWork": "Fit retaining walls and staircase geometry to mapped court edges and survey heights; verify orientation against the completed exterior photograph. Keep the lower courtyard and neighbours intact. Repair stretched slope presentation without flattening the real sunken space; leave building interiors outside scope. The mapped Wasserwand is north of this court, and the escalators are south inside the building; exclude those nearby features from the courtyard reconstruction.",
+  "fineDgmStudy": {
+    "sourceFiles": [
+      "campus-dgm-west.tif",
+      "campus-dgm-east.tif"
+    ],
+    "sourceMetres": 1,
+    "qualification": "Raw DGM profile; not inferred finished stair risers. Border interpolation smooths walls. Do not derive equal stair treads across the entire OSM line without accounting for landings.",
+    "interiorSamples": 874,
+    "interiorHeightDHHN2016Percentiles": {
+      "minimum": 470.45088777795615,
+      "p10": 470.50113002199714,
+      "median": 470.5589286670631,
+      "p90": 470.91703344982375,
+      "maximum": 471.0196974251391
+    },
+    "stairLineLengthMetres": 19.627622324266163,
+    "stairProfile": [
+      {
+        "distanceFromNorthMetres": 0.0,
+        "heightDHHN2016": 474.76
+      },
+      {
+        "distanceFromNorthMetres": 0.503,
+        "heightDHHN2016": 474.546
+      },
+      {
+        "distanceFromNorthMetres": 1.007,
+        "heightDHHN2016": 474.323
+      },
+      {
+        "distanceFromNorthMetres": 1.51,
+        "heightDHHN2016": 474.091
+      },
+      {
+        "distanceFromNorthMetres": 2.013,
+        "heightDHHN2016": 473.952
+      },
+      {
+        "distanceFromNorthMetres": 2.516,
+        "heightDHHN2016": 473.923
+      },
+      {
+        "distanceFromNorthMetres": 3.02,
+        "heightDHHN2016": 473.91
+      },
+      {
+        "distanceFromNorthMetres": 3.523,
+        "heightDHHN2016": 473.91
+      },
+      {
+        "distanceFromNorthMetres": 4.026,
+        "heightDHHN2016": 473.804
+      },
+      {
+        "distanceFromNorthMetres": 4.529,
+        "heightDHHN2016": 473.578
+      },
+      {
+        "distanceFromNorthMetres": 5.033,
+        "heightDHHN2016": 473.372
+      },
+      {
+        "distanceFromNorthMetres": 5.536,
+        "heightDHHN2016": 473.193
+      },
+      {
+        "distanceFromNorthMetres": 6.039,
+        "heightDHHN2016": 473.1
+      },
+      {
+        "distanceFromNorthMetres": 6.543,
+        "heightDHHN2016": 473.106
+      },
+      {
+        "distanceFromNorthMetres": 7.046,
+        "heightDHHN2016": 473.083
+      },
+      {
+        "distanceFromNorthMetres": 7.549,
+        "heightDHHN2016": 473.023
+      },
+      {
+        "distanceFromNorthMetres": 8.052,
+        "heightDHHN2016": 472.864
+      },
+      {
+        "distanceFromNorthMetres": 8.556,
+        "heightDHHN2016": 472.589
+      },
+      {
+        "distanceFromNorthMetres": 9.059,
+        "heightDHHN2016": 472.404
+      },
+      {
+        "distanceFromNorthMetres": 9.562,
+        "heightDHHN2016": 472.332
+      },
+      {
+        "distanceFromNorthMetres": 10.065,
+        "heightDHHN2016": 472.292
+      },
+      {
+        "distanceFromNorthMetres": 10.569,
+        "heightDHHN2016": 472.286
+      },
+      {
+        "distanceFromNorthMetres": 11.072,
+        "heightDHHN2016": 472.217
+      },
+      {
+        "distanceFromNorthMetres": 11.575,
+        "heightDHHN2016": 472.057
+      },
+      {
+        "distanceFromNorthMetres": 12.079,
+        "heightDHHN2016": 471.868
+      },
+      {
+        "distanceFromNorthMetres": 12.582,
+        "heightDHHN2016": 471.643
+      },
+      {
+        "distanceFromNorthMetres": 13.085,
+        "heightDHHN2016": 471.502
+      },
+      {
+        "distanceFromNorthMetres": 13.588,
+        "heightDHHN2016": 471.486
+      },
+      {
+        "distanceFromNorthMetres": 14.092,
+        "heightDHHN2016": 471.471
+      },
+      {
+        "distanceFromNorthMetres": 14.595,
+        "heightDHHN2016": 471.454
+      },
+      {
+        "distanceFromNorthMetres": 15.098,
+        "heightDHHN2016": 471.348
+      },
+      {
+        "distanceFromNorthMetres": 15.601,
+        "heightDHHN2016": 471.093
+      },
+      {
+        "distanceFromNorthMetres": 16.105,
+        "heightDHHN2016": 470.879
+      },
+      {
+        "distanceFromNorthMetres": 16.608,
+        "heightDHHN2016": 470.747
+      },
+      {
+        "distanceFromNorthMetres": 17.111,
+        "heightDHHN2016": 470.642
+      },
+      {
+        "distanceFromNorthMetres": 17.615,
+        "heightDHHN2016": 470.577
+      },
+      {
+        "distanceFromNorthMetres": 18.118,
+        "heightDHHN2016": 470.543
+      },
+      {
+        "distanceFromNorthMetres": 18.621,
+        "heightDHHN2016": 470.56
+      },
+      {
+        "distanceFromNorthMetres": 19.124,
+        "heightDHHN2016": 470.575
+      },
+      {
+        "distanceFromNorthMetres": 19.628,
+        "heightDHHN2016": 470.59
+      }
+    ]
+  },
+  "nativeDiagnosisArtifactSha256": "9a07ca4d84984c56ee397ec246482bc9e0b39ecc6e5d29c32fd9d22317e757b4"
+}

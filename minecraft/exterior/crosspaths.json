@@ -1,0 +1,386 @@
+{
+  "ways": [
+    {
+      "osmWay": 28193721,
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/28193721/full",
+      "sourceSha256": "b6f043e78a4ed15b1182b1372900f75c43a5c3029b949d496c996af52b5ab489",
+      "version": 28,
+      "timestamp": "2023-09-06T11:14:38Z",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6715774,
+          48.2663124
+        ],
+        [
+          11.6716505,
+          48.2663389
+        ],
+        [
+          11.6718499,
+          48.2664152
+        ],
+        [
+          11.6722692,
+          48.2665739
+        ]
+      ],
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 3,
+          "widthMetres": 2.5,
+          "leftOffsetMetres": 0
+        }
+      ],
+      "widthEvidence": "Approximately 2.5 m diagonal strip in three orthophoto transects; intersections excluded by prior materials."
+    },
+    {
+      "osmWay": 172826857,
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/172826857/full",
+      "sourceSha256": "0af685ab1bb2c084afd3e2f8e65fc1a3684d26c8cc6a3ca2b9a4910890519402",
+      "version": 7,
+      "timestamp": "2023-09-19T11:48:04Z",
+      "tags": {
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6714841,
+          48.266325
+        ],
+        [
+          11.6715774,
+          48.2663124
+        ]
+      ],
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 1,
+          "widthMetres": 3,
+          "leftOffsetMetres": 0
+        }
+      ],
+      "widthEvidence": "Short western connection partly obscured by trees; 3 m width inferred from its continuation."
+    },
+    {
+      "osmWay": 403912532,
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/403912532/full",
+      "sourceSha256": "872dd2403e00d42cc4fa8c0c2042a62ae1dc96163b9bb324546b748170d5ef89",
+      "version": 13,
+      "timestamp": "2026-05-15T08:44:14Z",
+      "tags": {
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6721634,
+          48.2660887
+        ],
+        [
+          11.6721394,
+          48.2660916
+        ],
+        [
+          11.6721062,
+          48.2660954
+        ],
+        [
+          11.6718319,
+          48.2660578
+        ],
+        [
+          11.6715659,
+          48.2660205
+        ],
+        [
+          11.6715013,
+          48.2660119
+        ],
+        [
+          11.6714017,
+          48.266023
+        ]
+      ],
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 6,
+          "widthMetres": 4.3,
+          "leftOffsetMetres": 0.3
+        }
+      ],
+      "widthEvidence": "Approximately 4.3 m wide crossing with a small left offset; shadowed eastern junction is bounded by existing promenade."
+    },
+    {
+      "osmWay": 403912530,
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/403912530/full",
+      "sourceSha256": "7f3dd5fb16deda996ddcd85ddcb8e2cd60ac26324ddc7b92979c3c0c3f94cb0b",
+      "version": 7,
+      "timestamp": "2023-09-12T19:12:50Z",
+      "tags": {
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6717708,
+          48.2654964
+        ],
+        [
+          11.6717026,
+          48.2655086
+        ],
+        [
+          11.6714383,
+          48.2655701
+        ],
+        [
+          11.6713852,
+          48.2655774
+        ]
+      ],
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 3,
+          "widthMetres": 6.4,
+          "leftOffsetMetres": -3.0
+        }
+      ],
+      "widthEvidence": "Map line sits along the north edge in the orthophoto. A 3 m left offset and 6.4 m corridor cover the visible wider pavement; width is estimated, not an OSM width tag."
+    },
+    {
+      "osmWay": 1013697500,
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/1013697500/full",
+      "sourceSha256": "03504c29cb3b79efa6bc0861951c1b70e4131f1dce82ee2debc335f991e57adf",
+      "version": 2,
+      "timestamp": "2023-09-06T11:14:40Z",
+      "tags": {
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6718357,
+          48.2655733
+        ],
+        [
+          11.671802,
+          48.2655785
+        ]
+      ],
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 1,
+          "widthMetres": 4.5,
+          "leftOffsetMetres": -1.8
+        }
+      ],
+      "widthEvidence": "Short northern entrance connection; inferred 4.5 m width and left offset, with existing promenade priority."
+    },
+    {
+      "osmWay": 14854252,
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/14854252/full",
+      "sourceSha256": "bfd980b5867a7edce83c05e76b3c947097ec4f550ad5f542806d1ba83bc63e1c",
+      "version": 19,
+      "timestamp": "2025-03-12T00:31:50Z",
+      "tags": {
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "wheelchair": "yes"
+      },
+      "coordinates": [
+        [
+          11.6712351,
+          48.2648188
+        ],
+        [
+          11.6712811,
+          48.2648124
+        ],
+        [
+          11.6714216,
+          48.2647897
+        ],
+        [
+          11.671755,
+          48.2647362
+        ]
+      ],
+      "segments": [
+        {
+          "fromDistanceMetres": 0,
+          "toDistanceMetres": 22,
+          "widthMetres": 3.8,
+          "leftOffsetMetres": -1.8
+        },
+        {
+          "fromDistanceMetres": 22,
+          "toDistanceMetres": 39.68,
+          "widthMetres": 6.0,
+          "leftOffsetMetres": -0.6
+        }
+      ],
+      "widthEvidence": "The map line sits north of the narrow pavement. The first 22 m use an estimated 3.8 m width and 1.8 m right offset. The eastern junction apron widens to 6 m with a 0.6 m right offset, following the orthophoto and native walking view. The widening station is inferred; existing lawns and facade footprints retain precedence."
+    },
+    {
+      "osmWay": 953220045,
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/953220045/full",
+      "sourceSha256": "ef8c653691018a1e45d39546300a12145b89a28ff602015e2f6fda98be305b6d",
+      "version": 4,
+      "timestamp": "2023-09-12T19:12:50Z",
+      "tags": {
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6719582,
+          48.2654613
+        ],
+        [
+          11.6717926,
+          48.2654899
+        ],
+        [
+          11.6717708,
+          48.2654964
+        ]
+      ],
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 2,
+          "widthMetres": 4.5,
+          "leftOffsetMetres": 0
+        }
+      ],
+      "widthEvidence": "Short eastern entrance connection partly under building shadow; estimated 4.5 m width."
+    },
+    {
+      "osmWay": 20402277,
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/way/20402277/full",
+      "sourceSha256": "6ce4badf6c28de2aa0196256cf498b43b9ee2d181e7e36bdb621e80a957766f3",
+      "version": 17,
+      "timestamp": "2023-09-06T11:14:39Z",
+      "tags": {
+        "bicycle": "yes",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "good",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          11.6716618,
+          48.26437
+        ],
+        [
+          11.6715541,
+          48.2643333
+        ],
+        [
+          11.6712412,
+          48.2642213
+        ],
+        [
+          11.6710482,
+          48.2641581
+        ],
+        [
+          11.6709785,
+          48.2641391
+        ]
+      ],
+      "segments": [
+        {
+          "fromVertex": 0,
+          "toVertex": 4,
+          "widthMetres": 2.5,
+          "leftOffsetMetres": 0
+        }
+      ],
+      "widthEvidence": "Approximately 2.5 m diagonal strip in orthophoto transects; the road crossing retains existing materials."
+    }
+  ],
+  "fetchedDate": "2026-10-24",
+  "status": "Source-informed inferred widths and offsets; no surveyed path widths",
+  "license": "ODbL-1.0 for OSM geometry; CC-BY-4.0 for BVV orthophoto-derived estimates",
+  "attribution": "© OpenStreetMap contributors; © Bayerische Vermessungsverwaltung",
+  "orthophotoSha256": "0c65db3c43a9fa2c546ffe22266ea8015106c2bb3eb30cc064ce6162a8933339",
+  "texturePaddingInsideFootprintsMetres": 0,
+  "derivation": "Eight mapped asphalt crossing/entrance paths use widths and lateral offsets estimated from BVV DOP20. Existing materials and complete building footprints take priority. Source line direction defines positive left offset. Tree shadows, imagery age and entrance geometry limit accuracy. No geometry, grade or collision changes.",
+  "nativeMaterialControls": [
+    {
+      "osmWay": 28193721,
+      "x": 55.514,
+      "z": -152.988,
+      "distanceFromBoundaryMetres": 1.213
+    },
+    {
+      "osmWay": 172826857,
+      "x": 39.038,
+      "z": -146.715,
+      "distanceFromBoundaryMetres": 0.908
+    },
+    {
+      "osmWay": 403912532,
+      "x": 51.726,
+      "z": -115.218,
+      "distanceFromBoundaryMetres": 2.149
+    },
+    {
+      "osmWay": 403912530,
+      "x": 46.978,
+      "z": -61.605,
+      "distanceFromBoundaryMetres": 1.357
+    },
+    {
+      "osmWay": 1013697500,
+      "x": 61.735,
+      "z": -65.616,
+      "distanceFromBoundaryMetres": 0.725
+    },
+    {
+      "osmWay": 14854252,
+      "x": 33.304,
+      "z": 25.714,
+      "distanceFromBoundaryMetres": 1.896
+    },
+    {
+      "osmWay": 953220045,
+      "x": 61.795,
+      "z": -53.557,
+      "distanceFromBoundaryMetres": 1.606
+    },
+    {
+      "osmWay": 20402277,
+      "x": 23.353,
+      "z": 83.647,
+      "distanceFromBoundaryMetres": 1.206
+    }
+  ]
+}

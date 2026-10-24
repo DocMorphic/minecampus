@@ -9,12 +9,12 @@ import math
 import numpy as np
 from pyproj import Transformer
 from shapely.geometry import LineString, Polygon, box, mapping, shape
-from shapely.ops import transform, unary_union
+from shapely.ops import transform, unary_union, substring
 
 
-def build(ctx, existing):
+def build(ctx, existing, source_name="promenade-paths.json", derived_name="promenade-surfaces.geojson"):
     root, out, meta = [ctx[k] for k in ['ROOT', 'OUT', 'metadata']]
-    source = root / 'minecraft/exterior/promenade-paths.json'
+    source = root / 'minecraft/exterior' / source_name
     spec = json.loads(source.read_text())
     assert hashlib.sha256((out / 'campus-orthophoto.jpg').read_bytes()).hexdigest() == spec['orthophotoSha256']
     to_utm = Transformer.from_crs(4326, 25832, always_xy=True).transform
@@ -39,11 +39,20 @@ def build(ctx, existing):
         coords = [to_utm(*p) for p in way['coordinates']]
         corridors = []
         for segment in way['segments']:
-            start, end = segment['fromVertex'], segment['toVertex']
             width, offset = segment['widthMetres'], segment['leftOffsetMetres']
-            assert 0 <= start < end < len(coords)
-            assert math.isfinite(width) and 1 <= width <= 12 and math.isfinite(offset) and abs(offset) < width / 2
-            line = LineString(coords[start:end + 1]).offset_curve(offset, join_style=2)
+            assert math.isfinite(width) and 1 <= width <= 12 and math.isfinite(offset) and abs(offset) <= 6
+            if 'fromDistanceMetres' in segment:
+                start, end = segment['fromDistanceMetres'], segment['toDistanceMetres']
+                full = LineString(coords)
+                assert math.isfinite(start) and math.isfinite(end) and 0 <= start < end <= full.length + .01
+                # Overlap station joins by 1 mm to avoid a zero-area seam after
+                # geographic round-tripping of adjacent, differently offset strips.
+                line = substring(full, max(0, start - .001), min(end + .001, full.length))
+            else:
+                start, end = segment['fromVertex'], segment['toVertex']
+                assert 0 <= start < end < len(coords)
+                line = LineString(coords[start:end + 1])
+            line = line.offset_curve(offset, join_style=2)
             corridors.append(line.buffer(width / 2, cap_style=2, join_style=2))
         surface = unary_union(corridors).intersection(limit).difference(excluded)
         assert not surface.is_empty and surface.intersection(excluded).area < 1e-6
@@ -54,7 +63,7 @@ def build(ctx, existing):
         }, 'geometry': mapping(transform(to_geo, surface))})
         areas[str(way['osmWay'])] = round(surface.area, 2)
         excluded = excluded.union(surface)
-    target = out / 'promenade-surfaces.geojson'
+    target = out / derived_name
     target.write_text(json.dumps({'type': 'FeatureCollection', 'features': features,
         'attribution': '© OpenStreetMap contributors; © Bayerische Vermessungsverwaltung',
         'license': 'OSM-derived path geometry: ODbL-1.0; orthophoto-derived width estimates: CC-BY-4.0',
@@ -63,5 +72,5 @@ def build(ctx, existing):
         'derivedFile': target.name, 'derivedSha256': hashlib.sha256(target.read_bytes()).hexdigest(),
         'areasSquareMetres': areas, 'orthophotoSha256': spec['orthophotoSha256'],
         'texturePaddingInsideFootprintsMetres': padding, 'note': spec['derivation']}
-    print('Promenade asphalt:', sum(areas.values()), 'm²; previous materials preserved, facade texture margin', padding, 'm', flush=True)
+    print(source_name, 'asphalt:', sum(areas.values()), 'm²; previous materials preserved, facade texture margin', padding, 'm', flush=True)
     return features, stats

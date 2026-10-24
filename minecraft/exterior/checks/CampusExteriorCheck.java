@@ -40,7 +40,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png", "campus-promenade-lawn-path.png", "campus-promenade-east-path.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png", "campus-promenade-lawn-path.png", "campus-promenade-east-path.png", "campus-crosspath-south.png", "campus-crosspath-north.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -78,7 +78,9 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "262 64 -255 90 20",
         "262 64 -255 90 -15",
         "60 66 -100 180 10",
-        "80 65 -100 0 10"
+        "80 65 -100 0 10",
+        "35 65 24 -100 12",
+        "65 66 -140 -150 10"
     };
 
     @Override public void onInitializeClient() {
@@ -447,11 +449,12 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 return;
             }
             if(stage==35&&Boolean.getBoolean("minecampus.requirePromenade"))CampusPromenadeChecks.verify(mc,loaded);
+            if(stage==37&&Boolean.getBoolean("minecampus.requireCrosspaths"))CampusCrosspathChecks.verify(mc,loaded);
             if(Boolean.getBoolean("minecampus.requireRuntimeShadows"))CampusShadowChecks.record(mc,stage,NAMES.length);
             try (var image=Screenshot.takeScreenshot(mc.getMainRenderTarget())) {
                 image.writeToFile(Path.of(NAMES[stage]));
             }
-            if(stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12||stage==14||stage==15||stage==16||stage==17||stage==18||stage==19||stage==21||stage==22||stage==23||stage==24||stage==25||stage==26||stage==27||stage>=28&&stage<=34){
+            if(stage==38||stage==0||stage==3||stage==5||stage==6||stage==9||stage==10||stage==12||stage==14||stage==15||stage==16||stage==17||stage==18||stage==19||stage==21||stage==22||stage==23||stage==24||stage==25||stage==26||stage==27||stage>=28&&stage<=34){
                 var picks=new com.google.gson.JsonArray();
                 var camera=mc.gameRenderer.getMainCamera();
                 var fovMethod=net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("getFov",net.minecraft.client.Camera.class,float.class,boolean.class);fovMethod.setAccessible(true);
@@ -513,6 +516,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         }
                     }
                 }
+                if(stage==38)pixelsToPick=new float[][]{{.74f,.445f},{.81f,.46f}};
                 if(stage==34){pixelsToPick[0]=new float[]{.61f,.30f};pixelsToPick[1]=new float[]{.61f,.42f};}
                 for(float[] pixel:pixelsToPick){
                     var forward=new org.joml.Vector3f(camera.getLookVector());
@@ -664,6 +668,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     Files.writeString(Path.of("campus-telefonzentrale-result.txt"),"PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope");
                 }
             }
+            if(Boolean.getBoolean("minecampus.crosspathReview")&&stage==38){Files.writeString(Path.of("campus-crosspath-review-result.txt"),"PASS: four promenade and cross-path walking frames captured");mc.stop();return;}
             if(Boolean.getBoolean("minecampus.promenadeReview")&&stage==36){Files.writeString(Path.of("campus-promenade-review-result.txt"),"PASS: both promenade walking frames captured");mc.stop();return;}
             if(Boolean.getBoolean("minecampus.inspectOnly")){Files.writeString(Path.of("campus-inspection-result.txt"),"PASS: isolated inspection frame");mc.stop();return;}
             ++stage;

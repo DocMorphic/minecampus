@@ -11,6 +11,9 @@ import java.nio.file.*;
 public final class CampusPromenadeChecks {
     public static void verify(Minecraft mc,java.util.Map<?,?> loaded)throws Exception{
         double[][] points={{30275349,5.515,15.875},{32458178,62.714,-23.075},{386192514,60.228,-90.700},{617369303,35.228,-76.411},{32458178,82.148982,-97.193730},{32458178,81.967341,-96.261060},{32458178,81.596075,-94.214627}};
+        verifyControls(mc,loaded,points,"promenade","four mapped path controls and three facade-seam controls");
+    }
+    public static void verifyControls(Minecraft mc,java.util.Map<?,?> loaded,double[][] points,String name,String description)throws Exception{
         var location=ResourceLocation.fromNamespaceAndPath("realworldmc","textures/campus/ground_surfaces.png");
         int texture=mc.getTextureManager().getTexture(location).getId();
         if(com.mojang.blaze3d.systems.RenderSystem.getShaderTexture(5)!=texture)throw new AssertionError("Promenade mask is not bound to the campus material sampler");
@@ -40,7 +43,7 @@ public final class CampusPromenadeChecks {
             }
         }finally{GlStateManager._glBindFramebuffer(GL30.GL_READ_FRAMEBUFFER,previous);GL30.glDeleteFramebuffers(fbo);}
         var result=new JsonObject();result.addProperty("rendererJar",Path.of(source.toURI()).getFileName().toString());result.add("controls",report);
-        Files.writeString(Path.of("campus-promenade-controls.json"),new GsonBuilder().setPrettyPrinting().create().toJson(result));
-        Files.writeString(Path.of("campus-promenade-result.txt"),"PASS: four mapped path controls and three facade-seam controls reach loaded surveyed ground and the active GPU asphalt mask");
+        Files.writeString(Path.of("campus-"+name+"-controls.json"),new GsonBuilder().setPrettyPrinting().create().toJson(result));
+        Files.writeString(Path.of("campus-"+name+"-result.txt"),"PASS: "+description+" reach loaded surveyed ground and the active GPU asphalt mask");
     }
 }
