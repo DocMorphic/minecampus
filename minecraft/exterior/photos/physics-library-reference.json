@@ -1,0 +1,53 @@
+{
+  "building": "DEBY_LOD2_5323121",
+  "candidateIdentity": "Physics library annex south of Physics I",
+  "surveyBoundsUTM": [
+    [
+      698572.44,
+      5349392.8,
+      474.232
+    ],
+    [
+      698594.05,
+      5349425.18,
+      487.42
+    ]
+  ],
+  "groundAreaSquareMetres": 450.8091500009134,
+  "surfaceCounts": {
+    "GroundSurface": 1,
+    "WallSurface": 9,
+    "RoofSurface": 2
+  },
+  "officialReferences": [
+    {
+      "url": "https://ub.tum.de/teilbibliothek-physik",
+      "finding": "Official current description places library in a separate front body, first floor, reached by external stairs or bridge from main building."
+    },
+    {
+      "url": "https://www2023.ph.tum.de/latest/news/wiedereroeffnung-bib/index.html",
+      "finding": "2014 reopening notice locates the annex south of main Physics I."
+    },
+    {
+      "url": "https://www.ub.tum.de/aktuelles/ein-neues-dach-fuer-die-teilbibliothek-physik",
+      "finding": "2019 roof renovation notice; historical roof cannot be assumed current."
+    }
+  ],
+  "status": "Source reference for exterior reconstruction; dimensions explicitly qualified in physics-library.json",
+  "architecturalReference": {
+    "sha256": "8d1e1e87fe756dc055664b9aff0b7e74d8a337bbeaf3fe834e3818f6fb79f55b",
+    "pageOneBased": 22,
+    "url": "https://webarchiv.typo3.tum.de/AR/fak-ar/fileadmin/w00bfl/www/02_Aktuell/04_Publikationen/01_Buecher/TUM_Bauten_Kunst_Beispielseiten.compressed.pdf",
+    "observations": [
+      "Library photograph shows a raised glazed body on concrete columns, broad tapered lower concrete edge, dark upper fascia and upper window/louvre bays.",
+      "A bridge attaches at the rear; precise dimensions and concealed elevations require survey/provider correspondence.",
+      "This is historical reference imagery; current exterior and 2019 roof changes need checking. No source pixels bundled."
+    ]
+  },
+  "identityEvidence": {
+    "bvvBuilding": "DEBY_LOD2_5323121",
+    "osmPart": 1158899741,
+    "osmCoverageOfBvvGround": 0.798,
+    "qualification": "Footprint correspondence plus official description of southern annex; whole campus amenity polygon is excluded from building identity evidence."
+  }
+}

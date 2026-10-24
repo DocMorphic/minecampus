@@ -248,6 +248,28 @@ from exterior_galileo_court import build as build_galileo_court
 build_galileo_court(globals())
 from exterior_galileo_ramps import build as build_galileo_ramps
 build_galileo_ramps(globals())
+from exterior_physics_i import build as build_physics_i
+build_physics_i(globals())
+from exterior_physics_site import build as build_physics_site
+build_physics_site(globals())
+from exterior_physics_vegetation import build as build_physics_vegetation
+build_physics_vegetation(globals())
+from exterior_physics_ground import build as build_physics_ground
+build_physics_ground(globals())
+from exterior_physics_library import build as build_physics_library
+build_physics_library(globals())
+from exterior_physics_container import build as build_physics_container
+build_physics_container(globals())
+from exterior_p1_complex import build as build_p1_complex
+build_p1_complex(globals())
+from exterior_physics_woodland import build as build_physics_woodland
+build_physics_woodland(globals())
+from exterior_physics_new_laboratory import build as build_physics_new_laboratory
+build_physics_new_laboratory(globals())
+from exterior_physics_laboratory_site import build as build_physics_laboratory_site
+build_physics_laboratory_site(globals())
+from exterior_physics_ii import build as build_physics_ii
+build_physics_ii(globals())
 metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}
 for stale in ['galileo-facade-rectified.jpg']:
  if (OUT/stale).exists():(OUT/stale).unlink()

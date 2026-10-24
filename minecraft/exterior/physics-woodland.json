@@ -1,0 +1,39 @@
+{
+  "boundsUTM": [
+    698580,
+    5349200,
+    698850,
+    5349580
+  ],
+  "landControlUTM": [
+    698650,
+    5349450
+  ],
+  "waterWay": "998481303",
+  "osm": {
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.675781250870026,48.264677874824045,11.681938881403548,48.269033267497875",
+    "license": "ODbL1.0",
+    "attribution": "\u00a9 OpenStreetMap contributors",
+    "cachePath": "physics-woodland-source/woodland-osm.xml",
+    "sourceFile": "physics-woodland-osm.xml",
+    "retrievedSnapshotSha256": "8560e5810b6446e8bcd2606136c3a73ae1890111e05d3d64117dc498960dfb70",
+    "sha256": "8ebae204c5cc82a91f44814fd81b60f6bb02c6434a7fae131a792823c80a4e28",
+    "qualification": "Versioned public subset of the retrieved OSM snapshot. River, woodland/grass and paths relevant to the study; no provider pixels or credentials."
+  },
+  "groundRuntimeStart": 1000060200,
+  "treeRuntimeStart": 1000010200,
+  "groundTileMetres": 40,
+  "neighbourGuardMetres": 0.5,
+  "oldSurfaceGuardMetres": 0.002,
+  "pathWidthsMetres": {
+    "asphalt": 2.5,
+    "paving_stones": 2,
+    "grass_paver": 2,
+    "unpaved": 1.2,
+    "dirt": 1,
+    "grass": 1.5,
+    "pebblestone": 1.5,
+    "chipseal": 2.5
+  },
+  "qualification": "Campus-side component west of the OSM Garchinger M\u00fchlbach, within a bounded central-campus study. River boundary is mapped; north/south study limits are not claimed as physical woodland edges. DGM1 ground and DOM20/DOP20 canopy. Preserve older ground/trees, existing building footprints and water. Tree species, branches, path widths without tags and soil cover are estimates. Inferred trunks are excluded from mapped path corridors with an additional0.35m allowance."
+}

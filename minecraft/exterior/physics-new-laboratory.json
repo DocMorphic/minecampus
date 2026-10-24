@@ -1,0 +1,112 @@
+{
+  "building": "DEBY_LOD2_108698299",
+  "name": "TUM5117 new Physics laboratory",
+  "runtimeId": 1000030033,
+  "groundRuntimeId": 1000060104,
+  "reference": "photos/physics-new-laboratory-reference.json",
+  "referenceSha256": "b5c8b9ab19cc97236feac2ededf1caf2616b34f5b88f518720078fef64d1e697",
+  "outerFaces": [
+    3,
+    4,
+    6,
+    7,
+    9,
+    11,
+    12,
+    17
+  ],
+  "courtyardFaces": [
+    0,
+    2,
+    16,
+    19
+  ],
+  "roofPlantFaces": [
+    1,
+    5,
+    8,
+    10,
+    13,
+    14,
+    15,
+    18
+  ],
+  "ribbonBandsBelowRoof": [
+    [
+      4.65,
+      3.85
+    ],
+    [
+      9.1,
+      8.3
+    ]
+  ],
+  "courtyardBandsBelowRoof": [
+    [
+      14.45,
+      10.9
+    ],
+    [
+      9.55,
+      6.0
+    ],
+    [
+      4.65,
+      1.1
+    ]
+  ],
+  "groundScreenBelowRoof": [
+    14.7,
+    11.6
+  ],
+  "perforatedStripHeightMetres": 1.28,
+  "panelWidthMetres": 2.4,
+  "panelJointMetres": 0.012,
+  "windowRecessMetres": 0.32,
+  "windowMullionPitchMetres": 1.2,
+  "frameWidthMetres": 0.055,
+  "finPitchMetres": 0.38,
+  "finThicknessMetres": 0.035,
+  "finDepthMetres": 0.45,
+  "cleanupMarginMetres": 4.0,
+  "materialColours": [
+    [
+      214,
+      218,
+      218,
+      255
+    ],
+    [
+      39,
+      51,
+      59,
+      255
+    ],
+    [
+      202,
+      209,
+      209,
+      255
+    ],
+    [
+      30,
+      35,
+      38,
+      255
+    ],
+    [
+      0,
+      0,
+      0,
+      255
+    ],
+    [
+      202,
+      209,
+      209,
+      255
+    ]
+  ],
+  "qualification": "BVV envelope and original DOP20 roof preserved. Completed-building photographs inform outer zinc-panel, narrow glazing, perforated-strip and ground-fin character; GARC_17 background informs courtyard glazing. Dimensions, levels, finish and hidden details are estimates. Fine perforation is shaded, not physical holes. DGM1 ground may include construction-era grade; no finished-threshold claim. No interiors. Cylindrical equipment is not placed without location evidence. Opaque panel backing closes oblique joint views; generic CC0 zinc texture uses an estimated1m repeat, not a calibrated sample of this building.",
+  "jointBackingDepthMetres": 0.03
+}

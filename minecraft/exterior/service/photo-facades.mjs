@@ -2,6 +2,7 @@
 // persisted or bundled: the existing authenticated tile client supplies them.
 import fs from 'node:fs';
 import path from 'node:path';
+import {surfaceBoundaryClipper} from './supplemental-surfaces.mjs';
 
 function inside(x,y,ring){let yes=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])yes=!yes;}return yes;}
 
@@ -138,7 +139,9 @@ export async function preparePhotographicFacades(service,directory,frame,origin,
  for(const patch of patches)for(let x=Math.floor((patch.bounds[0][0]-6)/20);x<=Math.floor((patch.bounds[1][0]+6)/20);x++)for(let z=Math.floor((patch.bounds[0][2]-6)/20);z<=Math.floor((patch.bounds[1][2]+6)/20);z++){
   const key=x+','+z;if(!grid.has(key))grid.set(key,[]);grid.get(key).push(patch);
  }
- return {tiles,bytes,patches,grid,copyright:[...copyright],metrics};
+ const complete=patches.filter(p=>p.completeEnvelope&&p.manualRoof&&p.retirementBoundary?.length&&p.walls.length&&p.walls.every(w=>w.accepted));
+ const clipper=surfaceBoundaryClipper(complete.map(p=>({rings:p.retirementBoundary,y0:p.bounds[0][1]-2,y1:p.bounds[1][1]+3})));
+ return {tiles,bytes,patches,grid,copyright:[...copyright],metrics,completeEnvelopeFragments:clipper.outsideFragments};
 }
 
 
@@ -149,6 +152,11 @@ export function retiresPhotoSurface(photo,x,y,z){
   const [lo,hi]=patch.bounds;
   if(x<lo[0]-6||x>hi[0]+6||z<lo[2]-6||z>hi[2]+6||y<lo[1]-2||y>hi[1]+3)continue;
   if(patch.retirementBoundary&&!patch.retirementBoundary.some(p=>inside(x,z,p.ring)&&!(p.holes??[]).some(h=>inside(x,z,h))))continue;
+  // A fully rebuilt, explicitly bounded envelope also owns obsolete surfaces
+  // deep inside its footprint. Finite-wall/roof bands alone leave folded scan
+  // roofs inside broad lecture halls. Courtyard and neighbour exclusions above
+  // still apply; partial photographic facades retain their narrower ownership.
+  if(patch.completeEnvelope&&patch.manualRoof&&patch.retirementBoundary?.length&&patch.walls.length&&patch.walls.every(w=>w.accepted))return true;
   // Roof ownership uses the exact surveyed triangles rather than a building
   // bounding rectangle: courtyards and roof-height changes remain open.
   const key=Math.floor(x*2)+','+Math.floor(z*2);

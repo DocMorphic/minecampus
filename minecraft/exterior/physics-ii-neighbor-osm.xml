@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<osm version="0.6" generator="Minecampus public source subset">
+  <node id="11185711000" visible="true" version="1" changeset="141160926" timestamp="2023-09-12T12:21:59Z" user="map per" uid="11758604" lat="48.2684930" lon="11.6757299" />
+  <node id="11185711001" visible="true" version="1" changeset="141160926" timestamp="2023-09-12T12:21:59Z" user="map per" uid="11758604" lat="48.2684252" lon="11.6757129" />
+  <node id="11185711002" visible="true" version="1" changeset="141160926" timestamp="2023-09-12T12:21:59Z" user="map per" uid="11758604" lat="48.2684613" lon="11.6753878" />
+  <node id="11185711003" visible="true" version="1" changeset="141160926" timestamp="2023-09-12T12:21:59Z" user="map per" uid="11758604" lat="48.2685291" lon="11.6754048" />
+  <way id="1207162368" visible="true" version="1" changeset="141160926" timestamp="2023-09-12T12:21:59Z" user="map per" uid="11758604">
+    <nd ref="11185711000" />
+    <nd ref="11185711001" />
+    <nd ref="11185711002" />
+    <nd ref="11185711003" />
+    <nd ref="11185711000" />
+    <tag k="building" v="container" />
+  </way>
+</osm>

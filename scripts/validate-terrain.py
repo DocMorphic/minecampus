@@ -4,7 +4,7 @@ Optional --before-manifest reports the previous 2m mesh's representation error.
 These are errors relative to the source raster, not real-world survey accuracy.
 """
 from pathlib import Path
-import argparse,json,math,struct
+import argparse,json,math,struct,subprocess,sys
 import numpy as np
 import rasterio
 from rasterio.merge import merge
@@ -34,7 +34,7 @@ if frontage:
  from shapely import prepare
  prepare(frontage_excluded)
 for spec in m['tiles']:
- if spec['kind']!='ground':continue
+ if spec['kind']!='ground' or spec['file'].startswith('physics-ground-'):continue
  data=(out/spec['file']).read_bytes();parts,*anchor=struct.unpack_from('<i3d',data,4);assert parts==1
  count=struct.unpack_from('<i',data,32)[0];v=np.frombuffer(data,dtype='<f4',count=count*5,offset=48).reshape(-1,5)
  # Independently recover the visible surface underneath the native gravity probe.
@@ -111,3 +111,7 @@ if args.before_manifest:
   e=error[mask];return {'sampleCount':len(e),'absoluteHeightErrorP50P95P99MaxMetres':np.percentile(e,[50,95,99,100]).tolist(),'over25cm':int(np.count_nonzero(e>.25))}
  result['previousTwoMetreMesh']={'wholeCampus':stats(np.ones(len(error),bool)),'outsideProtectedFootprints':stats(outside),'terraceWindow':stats(terrace),'terraceOutsideProtectedFootprints':stats(terrace&outside)}
 (out/'terrain-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+# Supplemental 40m tiles use a different lattice and explicit neighbour holes.
+# Their source raster, coverage and seams are checked by the matching validator.
+if m.get('supplementalSurfaces'):
+ subprocess.run([sys.executable,str(root/'scripts/validate-physics-site.py'),'--directory',str(out)],check=True)

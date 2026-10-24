@@ -16,7 +16,7 @@ import org.lwjgl.opengl.*;
 import java.nio.file.Path;
 import java.util.*;
 
-/** Same-frame campus mesh reflections on a nearby surviving Galileo pane plane. */
+/** Same-frame campus mesh reflections on a nearby surviving reconstructed pane plane. */
 public final class CampusReflections {
     public static boolean enabled=true;
     public static long frames,planeSwitches;
@@ -31,10 +31,12 @@ public final class CampusReflections {
     private record PlaneCache(float[] vertices,List<Plane> values){}
     private static final Map<MapTile,PlaneCache> planes=new WeakHashMap<>();
     private static Object lastWorld;
+    public static boolean supports(int tile){return tile==1_000_000_100||tile==1_000_000_101||tile==1_000_030_028||tile==1_000_030_029||tile==1_000_030_030||tile==1_000_030_033||(tile>=1_000_030_035&&tile<=1_000_030_039);}
     public static final class Plane {
         public final Vector4f equation;
         public AABB bounds;
         public final int tile;
+        private final List<Vector3f[]> triangles=new ArrayList<>();
         Plane(Vector4f equation,AABB bounds,int tile){this.equation=equation;this.bounds=bounds;this.tile=tile;}
     }
     public static void clear(){
@@ -52,16 +54,45 @@ public final class CampusReflections {
                 var n=new Vector3f(b).sub(a).cross(new Vector3f(c).sub(a));
                 if(n.lengthSquared()<1e-10)continue;n.normalize();
                 if(Math.abs(n.y)>.05)continue;
-                if(Math.abs(n.x)>Math.abs(n.z)?n.x<0:n.z<0)n.negate();
+                // Physics I's generated panes carry validated outward winding.
+                // Preserve it instead of merging front and back orientations.
+                if(tile.data.id!=1_000_030_028&&tile.data.id!=1_000_030_029&&tile.data.id!=1_000_030_030&&tile.data.id!=1_000_030_033&&!(tile.data.id>=1_000_030_035&&tile.data.id<=1_000_030_039)&&(Math.abs(n.x)>Math.abs(n.z)?n.x<0:n.z<0))n.negate();
                 float d=-n.dot(a);
                 var bounds=new AABB(Math.min(a.x,Math.min(b.x,c.x)),Math.min(a.y,Math.min(b.y,c.y)),Math.min(a.z,Math.min(b.z,c.z)),Math.max(a.x,Math.max(b.x,c.x)),Math.max(a.y,Math.max(b.y,c.y)),Math.max(a.z,Math.max(b.z,c.z)));
                 Plane found=null;
                 for(var p:result)if(p.equation.x*n.x+p.equation.y*n.y+p.equation.z*n.z>.99999f&&Math.abs(p.equation.w-d)<.025f){found=p;break;}
-                if(found==null)result.add(new Plane(new Vector4f(n,d),bounds,t.data.id));else found.bounds=found.bounds.minmax(bounds);
+                if(found==null){found=new Plane(new Vector4f(n,d),bounds,t.data.id);result.add(found);}else found.bounds=found.bounds.minmax(bounds);
+                if(t.data.id==1_000_030_028||t.data.id==1_000_030_029||t.data.id==1_000_030_030||t.data.id==1_000_030_033||(t.data.id>=1_000_030_035&&t.data.id<=1_000_030_039))found.triangles.add(new Vector3f[]{a,b,c});
             }
             planes.put(tile,new PlaneCache(v,result));return result;
     }
     private static Vector3f point(MapTile tile,float[] v,int i){return new Vector3f((float)(v[i]+tile.data.anchorX),(float)(v[i+1]+tile.data.anchorY),(float)(v[i+2]+tile.data.anchorZ));}
+    /** Clip actual panes in homogeneous space; a long rotated AABB can span
+     * the view even when all of its glass is behind the camera. */
+    private static double visibleArea(Plane plane,Matrix4f projection){
+        double total=0;
+        for(var triangle:plane.triangles){
+            List<Vector4f> polygon=new ArrayList<>(3);
+            for(var point:triangle)polygon.add(new Vector4f(point,1).mul(projection));
+            for(int edge=0;edge<6&&!polygon.isEmpty();edge++){
+                var clipped=new ArrayList<Vector4f>();
+                var prior=polygon.get(polygon.size()-1);float before=clipDistance(prior,edge);
+                for(var point:polygon){
+                    float after=clipDistance(point,edge);
+                    if((before>=0)!=(after>=0))clipped.add(new Vector4f(prior).lerp(point,before/(before-after)));
+                    if(after>=0)clipped.add(point);
+                    prior=point;before=after;
+                }
+                polygon=clipped;
+            }
+            if(polygon.size()<3)continue;
+            double area=0;var prior=polygon.get(polygon.size()-1);
+            for(var point:polygon){area+=(double)prior.x/prior.w*point.y/point.w-(double)point.x/point.w*prior.y/prior.w;prior=point;}
+            total+=Math.abs(area)*.5;
+        }
+        return total;
+    }
+    private static float clipDistance(Vector4f p,int edge){return p.w+(edge%2==0?1:-1)*(edge<2?p.x:edge<4?p.y:p.z);}
     /** Called by MapRenderer after damage refresh and before the material draw. */
     public static void render(WorldRenderContext context,List<MapTile> tiles,ShaderInstance caster,ShaderInstance material){
         if(material==null)return;
@@ -72,17 +103,21 @@ public final class CampusReflections {
         if(textureUnits==0)textureUnits=GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS);
         if(textureUnits<13)return;
         var eye=context.camera().getPosition();var eye4=new Vector4f((float)eye.x,(float)eye.y,(float)eye.z,1);
+        var screenProjection=new Matrix4f(context.projectionMatrix()).mul(context.positionMatrix()).translate(-(float)eye.x,-(float)eye.y,-(float)eye.z);
         Plane best=null;double bestScore=0,priorScore=0;
         for(var tile:tiles){
-            if(tile.data.id!=1_000_000_100&&tile.data.id!=1_000_000_101||tile.isEmpty(1))continue;
+            if(!supports(tile.data.id)||tile.isEmpty(1))continue;
             for(var p:panes(tile)){
-                double distance=Math.abs(p.equation.dot(eye4));if(distance<.6||distance>60)continue;
+                double side=p.equation.dot(eye4);
+                if((tile.data.id==1_000_030_028||tile.data.id==1_000_030_029||tile.data.id==1_000_030_030||tile.data.id==1_000_030_033||(tile.data.id>=1_000_030_035&&tile.data.id<=1_000_030_039))&&side<=.6)continue;
+                double distance=Math.abs(side);if(distance<.6||distance>60)continue;
                 if(context.frustum()!=null&&!context.frustum().isVisible(p.bounds.inflate(.1)))continue;
                 double dx=Math.max(p.bounds.minX-eye.x,Math.max(0,eye.x-p.bounds.maxX));
                 double dy=Math.max(p.bounds.minY-eye.y,Math.max(0,eye.y-p.bounds.maxY));
                 double dz=Math.max(p.bounds.minZ-eye.z,Math.max(0,eye.z-p.bounds.maxZ));
                 double area=Math.hypot(p.bounds.getXsize(),p.bounds.getZsize())*p.bounds.getYsize();
                 double score=area/(36+dx*dx+dy*dy+dz*dz);
+                if(tile.data.id==1_000_030_028||tile.data.id==1_000_030_029||tile.data.id==1_000_030_030||tile.data.id==1_000_030_033||(tile.data.id>=1_000_030_035&&tile.data.id<=1_000_030_039))score=visibleArea(p,screenProjection);
                 if(p==selected)priorScore=score;
                 if(score>bestScore){best=p;bestScore=score;}
             }
@@ -154,6 +189,9 @@ public final class CampusReflections {
         GL11.glBindTexture(GL11.GL_TEXTURE_2D,target.getColorTextureId());
         GL13.glActiveTexture(priorUnit);
         material.safeGetUniform("PlanarTexture").set(12);
+        // Physics I's older dark glazing needs a subdued scene contribution.
+        // This is a visual estimate, not a measured optical property.
+        material.safeGetUniform("PlanarBaseWeight").set((best.tile==1_000_030_028||best.tile==1_000_030_029||best.tile==1_000_030_030||best.tile==1_000_030_033||(best.tile>=1_000_030_035&&best.tile<=1_000_030_039))?.28f:.65f);
         material.safeGetUniform("PlanarPlane").set(plane.x,plane.y,plane.z,plane.w);
         material.safeGetUniform("PlanarMatrix").set(projectionToTexture);material.safeGetUniform("PlanarStrength").set(1f);
     }

@@ -1,0 +1,145 @@
+{
+  "identity": {
+    "building": "DEBY_LOD2_108698299",
+    "identity": "TUM5117 Paula-Hahn-Weinheimerstr.1",
+    "navSource": "https://nav.tum.de/building/5117",
+    "navCoordinates": {
+      "lat": 48.26771330477636,
+      "lon": 11.676628724658922,
+      "source": "navigatum"
+    },
+    "navUTM": [
+      698621.1168035953,
+      5349519.543033222
+    ],
+    "distanceToSurveyFootprintMetres": 0.0,
+    "boundsUTM": [
+      698588.23,
+      5349505.86,
+      698659.55,
+      5349570.06
+    ],
+    "architectSource": "https://www.cn-architekten.at/projekt/institut-physik-campus-garching-tu-muenchen",
+    "observations": [
+      "Architect campus/site plans place the square courtyard building between PhysicsI south and P1 east.",
+      "Completed facade photo has galvanized panels, narrow horizontal glazing, ground-level vertical fins.",
+      "Architect says2020\u20132025 realization. Source scan is visibly unfinished/rough."
+    ],
+    "qualification": "Identity is supported by NavigaTUM position and architect site plan. Model not built yet; source photo is reference only, not bundled."
+  },
+  "architectDescription": {
+    "storeys": "Ground floor plus two upper floors around a courtyard",
+    "exterior": "Suspended galvanized metal sheets and vertical fins; narrow horizontal window bands; perforated areas above provide shading",
+    "source": "https://www.cn-architekten.at/projekt/institut-physik-campus-garching-tu-muenchen"
+  },
+  "reviewedReferences": [
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2025/04/GARC_04\u00a9cukrowicz-nachbaur-architekten.jpg",
+      "sha256": "cc8a4a7ef960405c198095a825844c2839db0d2db6cdbaca6a41cfd3c19abb04",
+      "role": "Private visual reference; image pixels are not included"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2025/04/01-SITUATION-CAMPUS-WEB-GENORDET-16zu9-scaled.jpg",
+      "sha256": "394b5d57aabc26c00f2f64b1dd47409c2f5dd6be177f467b55f0575b257dad03",
+      "role": "Private visual reference; image pixels are not included"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2025/04/01-SITUATION-WEB-16zu9-1.jpg",
+      "sha256": "4d2d822d8304ac9f062bd13f7a7e8c979a679aeef8059d52bb66b27c5e08981f",
+      "role": "Private visual reference; image pixels are not included"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2016/10/GARC_05\u00a9cukrowicz-nachbaur-architekten-scaled.jpg",
+      "sha256": "be17b7a1fff5c54400cae9ce6640733ed1d1d3bcafc28c916bbda2d613c4b229",
+      "role": "Private visual reference; image pixels are not included"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2016/10/GARC_02\u00a9cukrowicz-nachbaur-architekten.jpg",
+      "sha256": "f0395625a4706eb92a1b59f893249b499a5034be7ce0f2b4fa632429b8db4d86",
+      "role": "Private visual reference; image pixels are not included"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2025/04/GARC_03\u00a9cukrowicz-nachbaur-architekten.jpg",
+      "sha256": "b64b6a30b6b637a35c5e3f30a8ee3038d45bc47cc2d58f1a33a0f88c3b1d4f2f",
+      "role": "Private visual reference; image pixels are not included"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2016/10/GARC_13\u00a9cukrowicz-nachbaur-architekten.jpg",
+      "sha256": "4f46f1e66c2650d36f573930b29a7924078c4ee5b3fd8d329a777daa440033c7",
+      "role": "Private reference; no image pixels bundled"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2016/10/GARC_08\u00a9cukrowicz-nachbaur-architekten.jpg",
+      "sha256": "843fd8d918677b29533c4092c03c0fe1a7e3dfb85d71949c85af9b441f638b66",
+      "role": "Private reference; no image pixels bundled"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2025/04/GARC_09\u00a9cukrowicz-nachbaur-architekten.jpg",
+      "sha256": "8773f202a195dd37487861a2847297e59166d200d6df5bc97984f915592119f1",
+      "role": "Private reference; no image pixels bundled"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2016/10/GARC_10\u00a9cukrowicz-nachbaur-architekten.jpg",
+      "sha256": "e4bceb3945193d5e0a16f3f6e7761fb856bd64175d8fb4582a43fbe726667b72",
+      "role": "Private reference; no image pixels bundled"
+    },
+    {
+      "url": "https://www.cn-architekten.at/wp-content/uploads/2016/10/GARC_17\u00a9cukrowicz-nachbaur-architekten.jpg",
+      "sha256": "1a6b85cb99fc200ba7dd195bf0568269c98d37d94a9f13a1c2c35aba17945a47",
+      "role": "Private reference; no image pixels bundled"
+    }
+  ],
+  "observations": [
+    "Four completed exterior photographs show two narrow recessed upper window bands, three-row solid/perforated cladding bands, regular panel joints and a tall ground-floor fin screen.",
+    "The close frontal photograph supports the distinction between solid upper panels and subtly perforated panels immediately above the glazing; a single flat grey material would lose this detail.",
+    "The exterior corners continue window bands around both sides. Window mullions and opaque infill vary within the band.",
+    "Facade photograph GARC_05 includes the older PhysicsI building to the left, independently supporting adjacency.",
+    "Campus and local site plans identify the courtyard block north of PhysicsI and west of P1.",
+    "Close exterior images GARC_08 and GARC_09 resolve perforated panels directly above the narrow glazing strips. GARC_10 resolves zinc-like mottled finish and projecting fins.",
+    "In GARC_17, the courtyard exterior visible through the foreground glazing has taller window panes, dark spandrels and slim vertical mullions. Its appearance differs from the outer metal facade. Only that background exterior informs reconstruction; no interior is being modeled.",
+    "GARC_08 shows several cylindrical louvred structures. Their locations and scale have not been established; do not invent placements."
+  ],
+  "surveyGeometry": {
+    "building": "DEBY_LOD2_108698299",
+    "walls": 20,
+    "roofTriangles": 32,
+    "outerWallFaces": [
+      3,
+      4,
+      6,
+      7,
+      9,
+      11,
+      12,
+      17
+    ],
+    "courtyardWallFaces": [
+      0,
+      2,
+      16,
+      19
+    ],
+    "roofPlantWallFaces": [
+      1,
+      5,
+      8,
+      10,
+      13,
+      14,
+      15,
+      18
+    ],
+    "classificationMethod": "Ground-level wall midpoint within 1cm of the surveyed outer or courtyard ring; higher walls classified as roof plant. All20 faces assigned once."
+  },
+  "reconstructionStatus": "Source research only; no model or release accepted.",
+  "qualification": "BVV establishes envelope and position. Photographs establish material character and pattern, but panel dimensions, recess depths, fin spacing, exact elevations and unphotographed courtyard/roof details still need estimation or further evidence. Do not apply an exterior fin pattern indiscriminately to courtyard walls. No interiors.",
+  "terrainCaution": {
+    "sampledOuterWallGroundRangeMC": [
+      61.44927702736064,
+      63.22742480792553
+    ],
+    "surveyWallBaseMC": 61.315,
+    "interpretation": "The sampled terrain dips by approximately1.8m around the north/south midpoint relative to other sides. Possible construction-era grading or retaining levels must be investigated against native baseline and finished-site references before assigning finished floor/threshold elevations. DGM1 is not automatically a finished-site surface.",
+    "finishedGradeVerified": false
+  }
+}

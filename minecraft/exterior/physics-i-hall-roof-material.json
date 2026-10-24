@@ -1,0 +1,108 @@
+{
+  "building": "DEBY_LOD2_5323136",
+  "runtimeId": 1000030028,
+  "part": 4,
+  "materialDetail": 18,
+  "reference": "photos/physics-i-reference.json",
+  "referenceSha256": "394230f7259601106027c8f4dbe86104295deae6b0df7324b2f9a9a0a1f5def8",
+  "sourcePhotograph": "Architectural reference PDF page 22, printed page 227, upper-right courtyard photograph. Reference is historical; image is not bundled.",
+  "qualification": "Seamed grey sloping roof cladding is source-supported. Half-metre panel spacing, seam profile, colour and roughness are estimates, not measured as-built detail. Render-only treatment; no roof mesh or collision changes.",
+  "regionMinMC": [
+    352.68,
+    65.93,
+    -267.59
+  ],
+  "regionMaxMC": [
+    374.17,
+    73.14,
+    -241.28
+  ],
+  "absoluteNormalYRange": [
+    0.2,
+    0.97
+  ],
+  "surveyRoofTriangleIndices": [
+    0,
+    7,
+    8,
+    113,
+    122,
+    123,
+    124,
+    125,
+    146,
+    147,
+    148,
+    149
+  ],
+  "surveyRoofAreaSquareMetres": 484.391,
+  "panelPitchMetres": 0.5,
+  "unchanged": "All roof vertices and UVs, other Physics roof surfaces, facade parts and other buildings.",
+  "upwardSourceNormals": [
+    [
+      0.6653289842406342,
+      0.5559133421048144,
+      0.4982947910616583
+    ],
+    [
+      0.172264258782634,
+      0.5719184302368986,
+      -0.8020189114362776
+    ],
+    [
+      0.012341618413731015,
+      0.8017141320082276,
+      0.5975802331011496
+    ],
+    [
+      0.4758358604862624,
+      0.6710283505468342,
+      -0.5685958025150142
+    ],
+    [
+      0.3913781108687607,
+      0.6546364121720695,
+      0.6467413255632275
+    ],
+    [
+      -0.5196565115014121,
+      0.6351605411431628,
+      0.5714264581106719
+    ],
+    [
+      0.8801199234352393,
+      0.42052772872014366,
+      -0.22033009270144116
+    ],
+    [
+      -0.2584403427962383,
+      0.5378268649641298,
+      0.8024654837051988
+    ],
+    [
+      -0.17918252775779933,
+      0.7461084993943183,
+      -0.6412610458135469
+    ],
+    [
+      -0.1670900010924143,
+      0.9583585907439871,
+      -0.23158096442094708
+    ],
+    [
+      0.7217556153644356,
+      0.5871860189901661,
+      -0.366444280610825
+    ],
+    [
+      -0.2762881480525459,
+      0.9556042847012587,
+      0.10239780420638875
+    ]
+  ],
+  "panelCoordinateOriginMC": [
+    363,
+    68,
+    -254
+  ]
+}

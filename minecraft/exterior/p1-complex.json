@@ -1,0 +1,121 @@
+{
+  "reference": "photos/p1-complex-reference.json",
+  "referenceSha256": "57c71b82023ad0d3073f9eb7a8e36bc26c53f0981666475249025dd60269767c",
+  "qualification": "Private source projections reviewed for all 32 garage and six utility wall faces. Coverage/occlusion varies greatly; no provider or contractor pixels bundled. Garage bay widths, floor pitch, rail spacing, depth, colours and obscured details are estimates. Utility doors/joints approximate. No interiors; parking bays use shallow exterior recesses. The 1.8m-wide surveyed return face remains solid because a full-depth recess would intersect its adjoining wall. Twin external cylindrical service structures use DOP20 shapes and DOM20 cap positions/heights; function, lower supports, pipework and rounded cap shape remain estimated.",
+  "buildings": [
+    {
+      "building": "DEBY_LOD2_108180780",
+      "name": "Parkhaus P1 / TUM5142",
+      "kind": "garage",
+      "runtimeId": 1000030031,
+      "groundRuntimeId": 1000060102,
+      "cleanupMarginMetres": 3,
+      "closedFaces": [
+        6
+      ],
+      "bayPitchMetres": 3.2,
+      "floorPitchMetres": 2.65,
+      "parapetMetres": 0.95,
+      "beamDepthMetres": 0.38,
+      "recessMetres": 1.1,
+      "materialColours": [
+        [
+          179,
+          179,
+          169,
+          255
+        ],
+        [
+          125,
+          133,
+          133,
+          255
+        ],
+        [
+          28,
+          33,
+          34,
+          255
+        ],
+        [
+          84,
+          88,
+          87,
+          255
+        ]
+      ]
+    },
+    {
+      "building": "DEBY_LOD2_108698310",
+      "name": "P1 neighbouring service building",
+      "kind": "utility",
+      "runtimeId": 1000030032,
+      "groundRuntimeId": 1000060103,
+      "cleanupMarginMetres": 3,
+      "doors": {
+        "1": [
+          [
+            1.6,
+            0.05,
+            3.15,
+            2.6
+          ]
+        ],
+        "0": [
+          [
+            16.5,
+            0.05,
+            17.65,
+            2.5
+          ]
+        ]
+      },
+      "materialColours": [
+        [
+          194,
+          191,
+          179,
+          255
+        ],
+        [
+          127,
+          133,
+          131,
+          255
+        ],
+        [
+          46,
+          53,
+          53,
+          255
+        ],
+        [
+          115,
+          118,
+          111,
+          255
+        ]
+      ],
+      "fixtures": [
+        {
+          "name": "west cylindrical service structure",
+          "centreUTM": [
+            698665.825925926,
+            5349474.903703704
+          ],
+          "radiusMetres": 1.1,
+          "capHeightUTM": 480.9200134277344
+        },
+        {
+          "name": "east cylindrical service structure",
+          "centreUTM": [
+            698668.1549019607,
+            5349474.615686275
+          ],
+          "radiusMetres": 1.1,
+          "capHeightUTM": 480.82000732421875
+        }
+      ]
+    }
+  ]
+}

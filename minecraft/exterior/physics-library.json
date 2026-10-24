@@ -1,0 +1,55 @@
+{
+  "building": "DEBY_LOD2_5323121",
+  "name": "Physics library annex",
+  "runtimeId": 1000030029,
+  "groundRuntimeId": 1000060100,
+  "reference": "photos/physics-library-reference.json",
+  "levelsAboveSurveyBase": {
+    "underside": 3.7,
+    "concreteEdgeTop": 5.5,
+    "lowerGlassTop": 8.0,
+    "upperGlassBottom": 8.15,
+    "fasciaBottom": 10.85,
+    "bridgeFloor": 5.25
+  },
+  "facadeBays": 6,
+  "southUpperLouvreBays": [
+    0,
+    1,
+    4,
+    5
+  ],
+  "recessMetres": 0.16,
+  "lowerEdgeInsetMetres": 0.85,
+  "columnWidthMetres": 0.9,
+  "columnInsetMetres": 4.0,
+  "cleanupMarginMetres": 3,
+  "materialColours": [
+    [
+      176,
+      173,
+      159,
+      255
+    ],
+    [
+      48,
+      66,
+      72,
+      255
+    ],
+    [
+      65,
+      71,
+      73,
+      255
+    ],
+    [
+      47,
+      51,
+      52,
+      255
+    ]
+  ],
+  "qualification": "BVV footprint, upper envelope, bridge outline and DOP20 roof retained. Raised undercroft and facade character follow a historical TUM photograph. Floor levels, pier positions, tapered edge dimensions, louvre spacing, glazing recess, colours and hidden elevations are estimates. Survey LoD2 solid walls beneath the elevated body are intentionally removed to represent the photographed open exterior. No interiors. External staircase detail remains unresolved.",
+  "referenceSha256": "f6b6d0cb5312c8a2941ff97acbbaeb3a8dbc8d77cc896af71b7690e76c08cc97"
+}

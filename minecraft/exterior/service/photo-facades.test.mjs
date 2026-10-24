@@ -73,3 +73,13 @@ test('bounded source retirement protects adjacent walls and roofs, including bou
  assert.equal(retiresPhotoSurface(bounded,3,2,.4),true,'owned wall is removed');
  assert.equal(retiresPhotoSurface(bounded,3,4,.4),true,'owned roof is removed');
 });
+
+test('complete surveyed envelope removes folded interior scan roofs while preserving courtyard, neighbours and vertical limits',async()=>{
+ const {retiresPhotoSurface}=await import('./photo-facades.mjs');
+ const boundary=[{ring:[[0,0],[30,0],[30,30],[0,30]],holes:[[[20,20],[25,20],[25,25],[20,25]]]}];
+ const patch={bounds:[[0,0,0],[30,10,30]],walls:[{...wall,accepted:true}],roofTriangles:[],roofCache:new Map(),manualRoof:true,completeEnvelope:true,retirementBoundary:boundary};
+ const photo={patches:[patch]};
+ assert.equal(retiresPhotoSurface(photo,15,5,15),true,'folded roof far from finite walls is retired');
+ for(const point of [[22,5,22],[31,5,15],[15,14,15],[15,-3,15]])assert.equal(retiresPhotoSurface(photo,...point),false,'courtyard, neighbour or vertical exclusion survives');
+ for(const change of [{completeEnvelope:false},{manualRoof:false},{retirementBoundary:undefined},{walls:[{...wall,accepted:false}]}])assert.equal(retiresPhotoSurface({patches:[{...patch,...change}]},15,5,15),false,'partial or unbounded ownership cannot erase interior geometry');
+});

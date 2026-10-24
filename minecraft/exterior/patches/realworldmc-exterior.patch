@@ -51,7 +51,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -422,17 +444,64 @@
+@@ -422,17 +444,72 @@
  		RenderSystem.depthMask(true);
  		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
@@ -63,8 +63,8 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +        }else {CampusShadows.bind(campusGroundShader,0f);CampusReflections.disable(campusGroundShader);}
  
  		for (MapTile t : tiles) {
-+            // Minecampus reserves these 36 ids for its 100m surveyed ground tiles.
-+            boolean surveyed=t!=null && t.data.id>=1_000_000_000 && t.data.id<1_000_000_036 && campusGroundShader!=null;
++            // Original ground ids and the supplemental survey range use ground materials.
++            boolean surveyed=t!=null && ((t.data.id>=1_000_000_000 && t.data.id<1_000_000_036)||(t.data.id>=1_000_060_000 && t.data.id<1_000_061_000)) && campusGroundShader!=null;
 +            boolean campus=campusPass;
 +            ShaderInstance tileShader=campus ? campusGroundShader : shader;
 +            if(campus && t!=null) {
@@ -79,6 +79,10 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				(float) (t.data.anchorX - cam.x), (float) (t.data.anchorY - cam.y), (float) (t.data.anchorZ - cam.z));
  			for (int i = 0; i < t.partCount(); i++) {
  				if (t.isEmpty(i)) continue;
++                if(campus)CampusMaterials.bindConcrete(t.data.id==1_000_030_033&&(i==0||i==2||i==5)?2:((t.data.id==1_000_030_028||t.data.id==1_000_030_029||t.data.id==1_000_030_031||t.data.id==1_000_030_032)&&i==0?1:0));
++                boolean physicsGround=campus&&surveyed;
++                if(campus)CampusMaterials.bindGround(physicsGround?(t.data.id>=1_000_060_400&&t.data.id<1_000_060_500?4:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?3:t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?2:1):0);
++                if(physicsGround)tileShader.safeGetUniform("MaterialDetail").set(t.data.id>=1_000_060_400&&t.data.id<1_000_060_500?24f:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?23f:(t.data.id>=1_000_060_100&&t.data.id<=1_000_060_104)?15f:(t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?20f:19f));
 +                if(campus && t.data.id>=1_000_000_100 && t.data.id<1_000_000_102)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==2?16f:9f));
 +                if(campus && t.data.id>=1_000_000_200 && t.data.id<1_000_000_203)
@@ -101,8 +105,12 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?13f:((i==1||i==3)?7f:11f));
 +                if(campus && t.data.id==1_000_030_008)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?12f:(i==2?6f:7f));
-+                if(campus && t.data.id>=1_000_030_023 && t.data.id<=1_000_030_027)
-+                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0?7f:(i==4?1f:0f)));
++                if(campus && t.data.id>=1_000_030_023 && t.data.id<=1_000_030_039)
++                    tileShader.safeGetUniform("MaterialDetail").set(t.data.id>=1_000_030_035?(i==1?6f:(i==4?0f:16f)):t.data.id==1_000_030_034?16f:t.data.id==1_000_030_033?(i==1?6f:(i==0||i==2?21f:(i==5?22f:(i==4?1f:16f)))):t.data.id>=1_000_030_031?(i==0?17f:(i==1||i==3||i==5?16f:(i==4?1f:0f))):(i==1?6f:(i==0?(t.data.id==1_000_030_030?16f:7f):(i==4?1f:0f))));
++                if(campus && (t.data.id==1_000_030_028||t.data.id==1_000_030_029) && i==0)
++                    tileShader.safeGetUniform("MaterialDetail").set(17f);
++                if(campus && t.data.id==1_000_030_028 && i==4)
++                    tileShader.safeGetUniform("MaterialDetail").set(18f);
 +                if(campus && t.data.id==1_000_030_022)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?14f:(i==2?0f:1f));
 +                if(campus && t.data.id==1_000_030_020)
@@ -117,7 +125,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  			}
  		}
  		VertexBuffer.unbind();
-@@ -455,6 +524,7 @@
+@@ -455,6 +532,7 @@
  	private void markDirty(java.util.function.Predicate<MapTile> test) {
  		RenderSystem.recordRenderCall(() -> {
  			for (MapTile t : loaded.values()) if (test.test(t)) t.dirty = true;
@@ -136,17 +144,16 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/RealWorldMCClient.java b
          HelpScreen.register();
          ClientTickEvents.END_CLIENT_TICK.register(dev.realworldmc.client.map.OsmTileCache::tick);
  
-@@ -58,8 +59,11 @@
+@@ -58,8 +59,10 @@
  			// Attribution required by the Google Map Tiles API terms.
  			String attr = SpaceFlight.body()==CelestialBody.EARTH ? renderer.attributionText : SpaceFlight.body().credits;
  			int color = dev.realworldmc.CreditFade.HUD.color(mc.screen instanceof net.minecraft.client.gui.screens.ChatScreen);
 -			graphics.drawString(font, attr, 4, h - 12, color, true);
 -            ActionBar.render(graphics,h-25,ActionBar.flightControls());
-+			var credits=font.split(net.minecraft.network.chat.Component.literal(attr),graphics.guiWidth()-8);
-+            for(int i=0;i<credits.size();i++)graphics.drawString(font,credits.get(i),4,h-12-(credits.size()-1-i)*font.lineHeight,color,true);
-+            ActionBar.render(graphics,h-25-(credits.size()-1)*font.lineHeight,ActionBar.flightControls());
++            int creditTop=CampusCredits.render(graphics,attr,color);
++            ActionBar.render(graphics,creditTop-13,ActionBar.flightControls());
 +            String loading=renderer.campusLoading();
-+            if(!loading.isEmpty())graphics.drawString(font,loading,4,h-40-(credits.size()-1)*font.lineHeight,0xFFFFDE8A,true);
++            if(!loading.isEmpty())graphics.drawString(font,loading,4,creditTop-28,0xFFFFDE8A,true);
              SpaceDestinations.hud(graphics);
  		});
  	}
@@ -201,8 +208,29 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapTile.java b/mod/src/c
          }
          int length=vertices==null?source.length:vertices.size();
          float[] draw=vertices==null?source:vertices.elements();
-+        if(i==1&&data.id>=1_000_000_100&&data.id<1_000_000_102)
++        if(i==1&&CampusReflections.supports(data.id))
 +            reflectionGlass=vertices==null?source:java.util.Arrays.copyOf(draw,length);
          empty[i]=length==0;if(empty[i])return;
          try(ByteBufferBuilder bytes=new ByteBufferBuilder(length/5*DefaultVertexFormat.POSITION_TEX.getVertexSize())) {
              BufferBuilder bb=new BufferBuilder(bytes,VertexFormat.Mode.TRIANGLES,DefaultVertexFormat.POSITION_TEX);
+diff --git a/mod/src/main/java/dev/realworldmc/BundledService.java b/mod/src/main/java/dev/realworldmc/BundledService.java
+--- a/mod/src/main/java/dev/realworldmc/BundledService.java
++++ b/mod/src/main/java/dev/realworldmc/BundledService.java
+@@ -10,6 +10,8 @@
+ /** Extracts release-owned code separately from the user's keys, cache and logs. */
+ public final class BundledService {
+     private static final String RESOURCE = "/realworldmc-service.zip";
++    // The exterior bundle includes surveyed meshes and the Windows runtime.
++    static final long MAX_UNPACKED_BYTES = 1024L * 1024 * 1024;
+     private BundledService() {}
+ 
+     public static Path prepare(Path dataDirectory) throws IOException {
+@@ -69,7 +71,7 @@
+                             int read;
+                             while ((read = input.read(buffer)) != -1) {
+                                 total += read;
+-                                if (total > 512L * 1024 * 1024) throw new IOException("Bundle exceeds extraction limit");
++                                if (total > MAX_UNPACKED_BYTES) throw new IOException("Bundle exceeds extraction limit");
+                                 output.write(buffer, 0, read);
+                             }
+                         }

@@ -229,6 +229,14 @@
       "values": [
         0
       ]
+    },
+    {
+      "name": "PlanarBaseWeight",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0.65
+      ]
     }
   ]
 }

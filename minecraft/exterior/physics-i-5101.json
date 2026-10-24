@@ -1,0 +1,513 @@
+{
+  "building": "DEBY_LOD2_5323136",
+  "tumBuilding": "5101",
+  "runtimeId": 1000030028,
+  "sourceCleanupMarginMetres": 3,
+  "reference": "photos/physics-i-reference.json",
+  "referenceSha256": "394230f7259601106027c8f4dbe86104295deae6b0df7324b2f9a9a0a1f5def8",
+  "wallCount": 80,
+  "roofTriangles": 150,
+  "surveyWallsSha256": "f7d51dfec5550a4ad9a2139f93cc88e5150fcb1ff1a6068c29127fe124513151",
+  "qualification": "Source-informed exterior candidate, not an as-built model. BVV survey envelope, courtyard holes and roofs are retained. Window heights, bays, fins, frame divisions, recesses and colours are estimates guided by the historical TUM reference and partial private projections. Unobserved hall surfaces use closed dark cladding. No interiors.",
+  "materialColours": [
+    [
+      182,
+      181,
+      171,
+      255
+    ],
+    [
+      45,
+      55,
+      59,
+      255
+    ],
+    [
+      122,
+      128,
+      128,
+      255
+    ],
+    [
+      68,
+      70,
+      68,
+      255
+    ]
+  ],
+  "windowLevelsAboveBase": [
+    [
+      1.7,
+      4.15
+    ],
+    [
+      5.3,
+      7.75
+    ],
+    [
+      8.9,
+      11.35
+    ]
+  ],
+  "recessMetres": 0.24,
+  "majorBayPitchMetres": 6.2,
+  "mullionPitchMetres": 1.55,
+  "finPitchMetres": 1.25,
+  "faces": {
+    "0": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "1": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "2": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "3": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "4": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "5": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "6": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "7": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "8": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "9": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "10": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "11": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "12": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "13": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "14": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "15": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "16": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "17": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "18": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "19": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "20": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "21": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "22": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "23": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "24": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "25": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "26": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "27": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "28": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "29": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "30": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "31": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "32": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "33": {
+      "profile": "fins",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "34": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "35": {
+      "profile": "fins",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "36": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "37": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "38": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "39": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "40": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "41": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "42": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "43": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "44": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "45": {
+      "profile": "ribbon",
+      "basis": "Three window/parapet bands visible on northwestern outer wall in source projection 45. Bay dimensions and frame divisions remain estimated."
+    },
+    "46": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "47": {
+      "profile": "fins",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "48": {
+      "profile": "fins",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated.",
+      "alongMetres": [
+        [
+          12.5,
+          62.3
+        ],
+        [
+          70,
+          73.2
+        ]
+      ]
+    },
+    "49": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "50": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "51": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "52": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "53": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "54": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "55": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "56": {
+      "profile": "fins",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "57": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "58": {
+      "profile": "fins",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "59": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "60": {
+      "profile": "fins",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    },
+    "61": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "62": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "63": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "64": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "65": {
+      "profile": "fins",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated.",
+      "alongMetres": [
+        [
+          0.5,
+          6.2
+        ],
+        [
+          10.5,
+          63
+        ],
+        [
+          68,
+          73.3
+        ]
+      ]
+    },
+    "66": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "67": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "68": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "69": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "70": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "71": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "72": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "73": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "74": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "75": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "76": {
+      "profile": "solid",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "77": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "78": {
+      "profile": "hall",
+      "basis": "Surveyed surface; details unresolved. Closed inferred material preserves the envelope."
+    },
+    "79": {
+      "profile": "ribbon",
+      "basis": "Observed general window/parapet rhythm; detailed dimensions and obscured segments are estimated."
+    }
+  },
+  "site": {
+    "boundsUTM": [
+      698500,
+      5349340,
+      698700,
+      5349520
+    ],
+    "tileOriginsUTM": [
+      [
+        698500,
+        5349400
+      ],
+      [
+        698500,
+        5349440
+      ],
+      [
+        698500,
+        5349480
+      ],
+      [
+        698540,
+        5349400
+      ],
+      [
+        698540,
+        5349440
+      ],
+      [
+        698540,
+        5349480
+      ],
+      [
+        698580,
+        5349400
+      ],
+      [
+        698580,
+        5349440
+      ],
+      [
+        698580,
+        5349480
+      ],
+      [
+        698620,
+        5349400
+      ],
+      [
+        698620,
+        5349440
+      ],
+      [
+        698620,
+        5349480
+      ],
+      [
+        698500,
+        5349360
+      ],
+      [
+        698540,
+        5349360
+      ],
+      [
+        698580,
+        5349360
+      ],
+      [
+        698620,
+        5349360
+      ],
+      [
+        698500,
+        5349320
+      ],
+      [
+        698540,
+        5349320
+      ],
+      [
+        698580,
+        5349320
+      ],
+      [
+        698620,
+        5349320
+      ],
+      [
+        698660,
+        5349320
+      ],
+      [
+        698660,
+        5349360
+      ],
+      [
+        698660,
+        5349400
+      ],
+      [
+        698660,
+        5349440
+      ],
+      [
+        698660,
+        5349480
+      ]
+    ],
+    "qualification": "Southern and eastern roadside extension covers the native-ray-identified source trees near UTM698542,5349370;698555,5349367;698665,5349350. Original tile ID order is retained. DGM1/DOP20 terrain and DOM20-supported trees; neighbouring surveyed footprints retain a 0.5m guard."
+  }
+}

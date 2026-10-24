@@ -113,6 +113,51 @@
       "sourcePhysicalRepeatMetres": 1.3,
       "runtimeRepeatMetres": 1.3,
       "scaleQualification": "Leaf litter and soil material is an approximation for the COS planting bed, not a scan of that bed."
+    },
+    {
+      "name": "physics_concrete_diff",
+      "asset": "granular_concrete",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/granular_concrete/granular_concrete_diff_1k.jpg",
+      "sha256": "2c2efcdff062fbcd91d8aeee8134ef2849817378d70189ff024683d7f09e2fd2",
+      "license": "CC0 1.0",
+      "assetPage": "https://polyhaven.com/a/granular_concrete",
+      "authors": "Michael Jenkins (photography); Dario Barresi (processing)",
+      "sourcePhysicalRepeatMetres": 2.4,
+      "runtimeRepeatMetres": 2.4,
+      "adaptation": "JPEG decoded to RGB PNG without resizing or recolouring. Runtime diffuse grain is normalized to the estimated Physics I concrete colour. Generic material scan, not a photograph of this building.",
+      "resourceSha256": "5e2584e2c67be7aaffeb1c63fc6c53593ad249022f5a5d88f1a6c7685563a158",
+      "meanLuminance": 0.40425465965645
+    },
+    {
+      "name": "physics_concrete_normal",
+      "asset": "granular_concrete",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/granular_concrete/granular_concrete_nor_gl_1k.jpg",
+      "sha256": "f1ebde28f46d5660d991c3b72fe9333c0fd0a966403ab1dadf5a9c7b16523806",
+      "license": "CC0 1.0",
+      "assetPage": "https://polyhaven.com/a/granular_concrete",
+      "authors": "Michael Jenkins (photography); Dario Barresi (processing)",
+      "sourcePhysicalRepeatMetres": 2.4,
+      "runtimeRepeatMetres": 2.4,
+      "adaptation": "JPEG decoded to RGB PNG without resizing or recolouring. Runtime diffuse grain is normalized to the estimated Physics I concrete colour. Generic material scan, not a photograph of this building.",
+      "resourceSha256": "3d8e8ca59566610a776c30b70f82d2e6be77e2c08d7b0cc8eea363d1e942ea20"
+    },
+    {
+      "name": "galvanized_diff",
+      "asset": "Light grey galvanized slightly scuffed dirty seamless metal steel texture",
+      "authors": "Sisters.seamless",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Light_grey_galvanized_slightly_scuffed_dirty_seamless_metal_steel_texture.jpg",
+      "assetPage": "https://commons.wikimedia.org/wiki/File:Light_grey_galvanized_slightly_scuffed_dirty_seamless_metal_steel_texture.jpg",
+      "license": "CC0 1.0",
+      "sha256": "35c3e222c9b52647fe9a9dbacb94f016664089bca3ff8c21862466736a5e3748",
+      "resourceSha256": "d3fe26407624ffabb6d011284df6447db6fb31a6ebf845455ace2b2a6b0b4441",
+      "runtimeRepeatMetres": 1.0,
+      "sourcePhysicalRepeatMetres": null,
+      "meanRgb": [
+        0.5824886692379243,
+        0.6024938480439443,
+        0.6075035462029709
+      ],
+      "adaptation": "JPEG decoded to RGB PNG without resizing or recolouring. Generic photographed zinc surface, not a campus sample. Source physical size is unknown;1m runtime repeat and facade colour are estimates."
     }
   ],
   "changes": "JPEG converted to PNG for the Minecraft resource loader; sampled as repeating colour detail and tangent-space normals."

@@ -1,0 +1,12 @@
+{
+  "building": "DEBY_LOD2_108698311",
+  "tumBuilding": "5140",
+  "identitySource": "https://nav.tum.de/building/5140",
+  "geometry": "BVV LoD2 survey, pinned project geodata; DOP20 roof imagery",
+  "observations": [
+    "Two-storey pale modular body and dark flat-roof trim.",
+    "Two rows of mostly paired windows visible on both long sides.",
+    "Short sides mostly closed; north face partly occluded."
+  ],
+  "qualification": "Window rectangles digitized approximately from privately reviewed source projections. Panel pitch, window recess, frames, colours and hidden details are estimates, not as-built. Provider pixels are not included. No interiors."
+}

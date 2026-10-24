@@ -1,0 +1,2496 @@
+{
+  "status": "LOCAL CHECKPOINT ONLY: fresh woodland improves; existing-world dirt, river boundary, remaining buildings and release checks are unresolved",
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 281523705,
+    "sha256": "9615fbabc0cb4b54196ba307f1e7d619e3daee31416b7a37e553577bb7940109",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "3d6b7d052b710910d7bce4b5edcf6ecfa1ab33ca649ff3d5ec985097a2aa9db8",
+    "rendererSourceFingerprint": "0ac9926df6779645",
+    "bundleSha256": "0e3992e9c4cc25546a01f3880aec3160b4348ebce23ca72b33e99c928af90b5c",
+    "tiles": 193,
+    "bundleUnpackedBytes": 632053502,
+    "bundleUnpackedLimit": 1073741824
+  },
+  "installed": false,
+  "releaseAccepted": false,
+  "staticScope": {
+    "status": "PASS: additive Physics I candidate; native visual acceptance remains pending",
+    "priorRenderMeshesUnchanged": 105,
+    "priorPhotoPlansUnchanged": 83,
+    "priorRoofsAndCollisionFilesUnchanged": 83,
+    "newBuildingWallFaces": 80,
+    "newRoofTriangles": 150,
+    "courtyardHoles": 3,
+    "newGroundTiles": 16,
+    "rasterProtectionBoundaryCells": 52,
+    "rasterRetirementFringeSquareMetres": 13.021928213423175,
+    "neighbourRetirementOverlapSquareMetres": 0.0,
+    "newTrees": 31,
+    "newVegetationGroups": 2,
+    "oldTerrainBoundsAndGuideUnchanged": true,
+    "sourceSha256": "9837d049a06459bb9f662a009723acb6767fe60c8509fd9eddfd17d4f1e91c2a",
+    "qualification": "Source-informed exterior candidate, not an as-built model. BVV survey envelope, courtyard holes and roofs are retained. Window heights, bays, fins, frame divisions, recesses and colours are estimates guided by the historical TUM reference and partial private projections. Unobserved hall surfaces use closed dark cladding. No interiors."
+  },
+  "groundSourceValidation": {
+    "status": "PASS: supplemental ground matches DGM1/DOP20 and bounded neighbour exclusions",
+    "tileCount": 16,
+    "vertexRecordsChecked": 127965,
+    "maximumSourcePositionErrorMetres": 2.1865941141472773e-05,
+    "maximumTileSeamErrorMetres": 0.0,
+    "missingCoverageSquareMetres": 0.0027785068636650306,
+    "excessCoverageSquareMetres": 0.002854785369284883,
+    "qualification": "Source representation accuracy only; not a claim of millimetre real-world survey accuracy."
+  },
+  "serviceTests": {
+    "passed": 37,
+    "observedShardRetainedBeforeAndRemovedAfter": true,
+    "textureBytesPreserved": true,
+    "boundaryFragmentsPreserveOriginalHeightPlaneWindingAndUV": true,
+    "neighbourHoleClippingTested": true
+  },
+  "nativeChecks": {
+    "cameraViewsReviewed": 11,
+    "standingCapturesReviewed": 13,
+    "nativeColliderChecks": 4,
+    "maxStandingSupportErrorMetres": 0.5069435168241796,
+    "maxStandingCentreErrorMetres": 0.554347209843705,
+    "worldScope": "Fresh generation; existing-world results stored separately in woodlandCheckpoint"
+  },
+  "earlierGlazingCheckpoint": {
+    "artifactSha256": "9e46961cb1dfdb550e5d6062f7305dfdd32a235d27507765ef24e64ea0c40859",
+    "cameraViewsReviewed": 15,
+    "standingCapturesReviewed": 8,
+    "courtyardReflectionPointAndWallVerified": true
+  },
+  "frontageReview": {
+    "artifactSha256": "77d28d10bb0b2a0ed57c907b1a936ac32c370e7cf6689527243ca800f36decd9",
+    "cameraViewsReviewed": 19,
+    "releaseAccepted": false,
+    "findings": "Large old-seam fragments removed, remaining small seam shard and outer gap observed. A seven-metre walking-test drop hit branches and displaced the player; later check uses two metres below canopy and verifies horizontal position."
+  },
+  "preservation": {
+    "originalSaveFilesUnchanged": 121,
+    "previewSaveFilesUnchanged": 121,
+    "previewSettingsUnchanged": 4,
+    "installedArtifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+  },
+  "remaining": [
+    "Outer DOP/provider imagery transition and coarse roadside neighbours still need work.",
+    "Unresolved blank courtyard walls remain visibly flat; third-courtyard foreground wall identified as source face75, whose reference detail is not resolved.",
+    "Compact attribution verified in static day/night captures; chat-screen and continuous transition regression still pending.",
+    "Existing-save migration must preserve ambiguous vanilla blocks and edits.",
+    "Full campus, gameplay and reflection lifecycle/night regression still pending.",
+    "Physics library external staircase detail and wider frontage furnishing remain unresolved; no interiors."
+  ],
+  "previousSeamCheckpoint": {
+    "artifactSha256": "7b73e8514a91a640db81c913bdeec6e001bfebb914124d938eaa5771d509504e",
+    "cameraViewsReviewed": 3,
+    "standingCapturesReviewed": 10,
+    "qualification": "Old shard removed; outer hole still visible in that earlier artifact."
+  },
+  "materialCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 249077585,
+      "sha256": "601500989efd8c4bdfa70ab06b86a61f7a63b1ad0af46f974b409171c9e60471",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "9f417ea47a6a5e63f1e5cf009199abeff1effacce9b8e5607382b02606b39180",
+      "rendererSourceFingerprint": "300530c74ad86833",
+      "bundleSha256": "2f10f8119c7e7098532ce03fba8c15b109b291af6568ea79aa172eee30ba1aec",
+      "tiles": 124,
+      "bundleUnpackedBytes": 537719796,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "baselineArtifactSha256": "ffdad5ebaf676a2d57b3e60a1beb2e850b2444f96af07035241c2e44d89336a4",
+    "matchedViewsReviewedPerArtifact": 4,
+    "nativeChecksPass": true,
+    "geometryAndCollisionUnchanged": true,
+    "source": "https://polyhaven.com/a/granular_concrete",
+    "license": "CC0",
+    "repeatScaleMetres": 2.4,
+    "qualification": "Generic material grain with estimated building colour; not an actual Physics I facade photograph. Matched overview and west/south/middle-courtyard close views reviewed. Same reflection planes, strength and base weight; all reflection state checks pass. Full nineteen-view Physics route and ten standing probes also pass; all 29 route captures reviewed.",
+    "installed": false,
+    "releaseAccepted": false,
+    "fullPhysicsRoutePass": true
+  },
+  "previousBoundaryCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 244860240,
+      "sha256": "ffdad5ebaf676a2d57b3e60a1beb2e850b2444f96af07035241c2e44d89336a4",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "4d23b97a27ab68154685d7a205a271d90d9119e1493f61b223f6fd7ea24adee1",
+      "rendererSourceFingerprint": "11617122b5d74f50",
+      "bundleSha256": "9f12f761a8a31c6c208a128b95162e0c7fef504d9189fb54c6c5fdb171212897",
+      "tiles": 124,
+      "bundleUnpackedBytes": 537719447,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecks": {
+      "cameraViewsReviewed": 4,
+      "standingCapturesReviewed": 10,
+      "surfaceControls": 3,
+      "nativeWallControls": 1,
+      "gravityProbes": 10,
+      "maxStandingMeshDifferenceMetres": 0.5032383589644951,
+      "maxHorizontalErrorMetres": 0.0,
+      "oldSeamShardFirstHitControl": true,
+      "reportSha256": "700ee1ab2696434af7c844a1de47fad2bbd0f5a95feed2e898905bfd2ffcf135",
+      "logSha256": "aff85e68a090535443708f6f4b6e4e914b7967920b68084d1645ab449b6346c4",
+      "qualification": "Isolated QA world; all fourteen captures reviewed. Local boundary/standing checks pass. Full campus/gameplay/night/reflection lifecycle and existing-world acceptance remain pending.",
+      "southernBoundaryHoleAbsentInBothDirections": true,
+      "southernBoundaryFirstHitDistanceMetres": 5.156373
+    }
+  },
+  "previousFullRouteCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 249077585,
+      "sha256": "601500989efd8c4bdfa70ab06b86a61f7a63b1ad0af46f974b409171c9e60471",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "9f417ea47a6a5e63f1e5cf009199abeff1effacce9b8e5607382b02606b39180",
+      "rendererSourceFingerprint": "300530c74ad86833",
+      "bundleSha256": "2f10f8119c7e7098532ce03fba8c15b109b291af6568ea79aa172eee30ba1aec",
+      "tiles": 124,
+      "bundleUnpackedBytes": 537719796,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecks": {
+      "cameraViewsReviewed": 19,
+      "standingCapturesReviewed": 10,
+      "surfaceControls": 13,
+      "nativeWallControls": 8,
+      "screenRays": 52,
+      "gravityProbes": 10,
+      "maxStandingMeshDifferenceMetres": 0.5032383589644951,
+      "maxHorizontalErrorMetres": 0,
+      "reportSha256": "f21c54af62a4f745940ef2c8d912f79c78d710be09f63ecba5c85159118c1115",
+      "logSha256": "da503e138d744a7e97a75fa45c5a7ff55398064368720d787880f4c4438060c2",
+      "qualification": "Isolated QA world; all nineteen camera and ten standing captures reviewed. Full Physics route passes. Full campus/gameplay/night/reflection lifecycle and existing-world acceptance remain pending."
+    }
+  },
+  "hallRoofCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 249078675,
+      "sha256": "28a700fbbd2183b1a368ba67488f76fcffee934508ff72bd6bcc1de43d930227",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "1c89d92a96d2feeda1de56932f0b6e95dc3da669205d04e500e04d4dca74599a",
+      "rendererSourceFingerprint": "16cb53cb46508543",
+      "bundleSha256": "2f10f8119c7e7098532ce03fba8c15b109b291af6568ea79aa172eee30ba1aec",
+      "tiles": 124,
+      "bundleUnpackedBytes": 537719796,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "specification": "physics-i-hall-roof-material.json",
+    "selectedSourceRoofTriangles": 12,
+    "selectedRoofAreaSquareMetres": 484.39063508310073,
+    "shaderNormalMaximumComponentError": 4.985878376828623e-10,
+    "geometryCollisionAndServiceUnchanged": true,
+    "baselineArtifactSha256": "601500989efd8c4bdfa70ab06b86a61f7a63b1ad0af46f974b409171c9e60471",
+    "cameraViewsReviewed": 7,
+    "nativeChecksPass": true,
+    "installed": false,
+    "releaseAccepted": false,
+    "qualification": "Panel seams and weathered grey finish are visually supported by the architectural photo; pitch and material response are estimates. Source-normal mapping avoids the faint unstable derivative-based seam result of the initial pass. Static nearby views and midnight inspected, not a continuous motion benchmark."
+  },
+  "previousHallMaterialCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 249078675,
+      "sha256": "28a700fbbd2183b1a368ba67488f76fcffee934508ff72bd6bcc1de43d930227",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "1c89d92a96d2feeda1de56932f0b6e95dc3da669205d04e500e04d4dca74599a",
+      "rendererSourceFingerprint": "16cb53cb46508543",
+      "bundleSha256": "2f10f8119c7e7098532ce03fba8c15b109b291af6568ea79aa172eee30ba1aec",
+      "tiles": 124,
+      "bundleUnpackedBytes": 537719796,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecks": {
+      "cameraViewsReviewed": 7,
+      "matchedMaterialViews": 4,
+      "adjacentOrientationViews": 2,
+      "midnightViews": 1,
+      "gravityProbesOnThisArtifact": 0,
+      "qualification": "Seven local native views reviewed on this exact artifact. Geometry, collision and service resources are byte-identical to the preceding nineteen-view/ten-standing checkpoint. These local material views do not replace full-campus, gameplay or reflection lifecycle regression.",
+      "matchedReportSha256": "c9fad5e2ea1d9c4927535ffff25825b95080482437a4b234ebc1ee50861428a8",
+      "orientationAndNightReportSha256": "4b2da539690b54948ed86f4669ecc82af34341355cc6c4d0674b4eaf86b13082",
+      "scopeReportSha256": "4ca871df428b4afd2876e0efd8da6529b523acd0792355042873fa47953437f1"
+    }
+  },
+  "groundMaterialCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 249186675,
+      "sha256": "dca80a30400634e6c98823b255b72a1db8ebe351bf61cbf9354034e1acbfc0cd",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "db9515a14c2f557a2c0234b3d9b3711e8e687577099bffc276a62ac592bae4a9",
+      "rendererSourceFingerprint": "604d2d0270862e95",
+      "bundleSha256": "c405285bfc30ad11953aa6d041001a72b46b92a26be49c02b086ec45375028c1",
+      "tiles": 124,
+      "bundleUnpackedBytes": 537773651,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "sourceFile": "physics-ground-surfaces.geojson",
+    "sourceWayCount": 47,
+    "areaSquareMetres": {
+      "grass": 6991.355755214452,
+      "paving": 294.43356701387233,
+      "asphalt": 1432.4594617152097
+    },
+    "westernOverlapMetres": 20,
+    "boundaryBlendMetres": 8,
+    "independentMaterialControls": 41,
+    "independentBoundaryBlendControls": 8,
+    "unchangedGeometryFiles": 291,
+    "originalGroundAtlasUnchanged": true,
+    "cameraViewsReviewed": 7,
+    "nativeChecksPass": true,
+    "installed": false,
+    "releaseAccepted": false,
+    "qualification": "Grass polygons and hard-surface paths from cached OSM snapshot. Untagged widths are explicit estimates, not surveyed curbs. The original atlas is retained outside bounded overlay coverage. Woodland material remains absent."
+  },
+  "previousGroundMaterialCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 249186675,
+      "sha256": "dca80a30400634e6c98823b255b72a1db8ebe351bf61cbf9354034e1acbfc0cd",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "db9515a14c2f557a2c0234b3d9b3711e8e687577099bffc276a62ac592bae4a9",
+      "rendererSourceFingerprint": "604d2d0270862e95",
+      "bundleSha256": "c405285bfc30ad11953aa6d041001a72b46b92a26be49c02b086ec45375028c1",
+      "tiles": 124,
+      "bundleUnpackedBytes": 537773651,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecks": {
+      "cameraViewsReviewed": 7,
+      "groundCloseViews": 2,
+      "courtyardView": 1,
+      "groundBoundaryAndFrontageViews": 3,
+      "cosMaterialControlViews": 1,
+      "gravityProbesOnThisArtifact": 0,
+      "reportSha256": "51927196a61de0e8158138bbfa265a166f1a6d8b7716809a59c4f1c2e1fb2c17",
+      "logSha256": "2b2aeb977a7d50a478b042c3e0245f730bbe6e7652ca2e50a14a9d457367592a",
+      "qualification": "All seven captures reviewed on this exact artifact. 291 ECT files and collision/service code remain unchanged. Full-campus/gameplay/night/reflection lifecycle acceptance remains pending."
+    },
+    "groundMaterialCheckpoint": {
+      "artifact": {
+        "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+        "size": 249186675,
+        "sha256": "dca80a30400634e6c98823b255b72a1db8ebe351bf61cbf9354034e1acbfc0cd",
+        "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+        "sourcePatchSha256": "db9515a14c2f557a2c0234b3d9b3711e8e687577099bffc276a62ac592bae4a9",
+        "rendererSourceFingerprint": "604d2d0270862e95",
+        "bundleSha256": "c405285bfc30ad11953aa6d041001a72b46b92a26be49c02b086ec45375028c1",
+        "tiles": 124,
+        "bundleUnpackedBytes": 537773651,
+        "bundleUnpackedLimit": 1073741824
+      },
+      "sourceFile": "physics-ground-surfaces.geojson",
+      "sourceWayCount": 47,
+      "areaSquareMetres": {
+        "grass": 6991.355755214452,
+        "paving": 294.43356701387233,
+        "asphalt": 1432.4594617152097
+      },
+      "westernOverlapMetres": 20,
+      "boundaryBlendMetres": 8,
+      "independentMaterialControls": 41,
+      "independentBoundaryBlendControls": 8,
+      "unchangedGeometryFiles": 291,
+      "originalGroundAtlasUnchanged": true,
+      "cameraViewsReviewed": 7,
+      "nativeChecksPass": true,
+      "installed": false,
+      "releaseAccepted": false,
+      "qualification": "Grass polygons and hard-surface paths from cached OSM snapshot. Untagged widths are explicit estimates, not surveyed curbs. The original atlas is retained outside bounded overlay coverage. Woodland material remains absent."
+    }
+  },
+  "woodlandMaterialCheckpoint": {
+    "status": "PASS",
+    "geometryFilesUnchanged": 291,
+    "oldCoreAtlasUnchanged": true,
+    "physicsRgbChannelsByteIdentical": true,
+    "otherManifestFieldsUnchanged": true,
+    "materialMap": {
+      "sourceFile": "physics-ground-surfaces.geojson",
+      "sourceSha256": "5312ca952ddcf910292cdd37ee10c7831fe359f01644819b689b7778f3cbe756",
+      "maskFile": "assets/textures/campus/physics_ground_surfaces.png",
+      "maskSha256": "6e8ae426e4bf175ab7b29e41eb08042da3a6b48012248bd2746493315f8cd2f2",
+      "derivedFile": "physics-ground-surfaces.geojson",
+      "derivedSha256": "6441e0bd40d19c0d6d810b7a3cf51ec66ac25ba48c666a0f4c54c86ea50cb5c1",
+      "generatorSha256": "55314dc055ade9d12024310f9ac4a5fe5e2ca3b607e4360a0dabd4c2ea69375d",
+      "maskBoundsMC": [
+        [
+          256,
+          -384
+        ],
+        [
+          512,
+          -128
+        ]
+      ],
+      "maskSize": [
+        2048,
+        2048
+      ],
+      "maskChannels": [
+        "grass",
+        "paving",
+        "asphalt",
+        "soil = 1 - alpha"
+      ],
+      "materialBoundsUTM": [
+        698480,
+        5349380,
+        698660,
+        5349520
+      ],
+      "westernOverlapMetres": 20,
+      "boundaryBlendMetres": 8,
+      "blendOriginMC": [
+        272.0157342970497,
+        -167.19895939658457
+      ],
+      "blendMcToLocalUtm": [
+        [
+          0.9993971515404563,
+          0.03479282824482144
+        ],
+        [
+          0.03479283601191631,
+          -0.999396904990027
+        ]
+      ],
+      "shaderMappingSha256": "5b6eab2d2ac80065d65cdfdecac965b854cf315af327ab0be4991f969a117223",
+      "areaSquareMetres": {
+        "grass": 6991.355755214452,
+        "paving": 294.43356701387233,
+        "asphalt": 1432.4594617152097,
+        "soil": 184.53829093166718
+      },
+      "buildingOverlapSquareMetres": 0.0,
+      "qualification": "OSM polygons and tagged paths. Untagged widths are explicit estimates; not surveyed curbs or individual paving units. Building footprints excluded. Bounded overlay on surveyed ground, with original material map retained outside coverage. Twenty-metre western overlap and eight-metre boundary blend. Leaf litter/soil under mapped woodland is an appearance estimate; the OSM canopy tag does not survey the floor cover. No terrain or collision changes."
+    },
+    "retainedGeographicClassificationControls": 41,
+    "woodlandPixelContainmentSamples": 251,
+    "woodlandOnlyAtlasPixels": 12028,
+    "independentBoundaryControls": [
+      {
+        "utm": [
+          698479,
+          5349430
+        ],
+        "coordinateErrorMetres": 5.958415658424698e-06,
+        "blend": 0.0,
+        "expected": 0.0
+      },
+      {
+        "utm": [
+          698480,
+          5349430
+        ],
+        "coordinateErrorMetres": 5.963948132015062e-06,
+        "blend": 1.667280920807206e-12,
+        "expected": 0.0
+      },
+      {
+        "utm": [
+          698482,
+          5349430
+        ],
+        "coordinateErrorMetres": 5.960898302515005e-06,
+        "blend": 0.15625083825215658,
+        "expected": 0.15625
+      },
+      {
+        "utm": [
+          698484,
+          5349430
+        ],
+        "coordinateErrorMetres": 5.9353913437476535e-06,
+        "blend": 0.5000011128858769,
+        "expected": 0.5
+      },
+      {
+        "utm": [
+          698486,
+          5349430
+        ],
+        "coordinateErrorMetres": 5.890422685617125e-06,
+        "blend": 0.843750828339877,
+        "expected": 0.84375
+      },
+      {
+        "utm": [
+          698488,
+          5349430
+        ],
+        "coordinateErrorMetres": 5.828593096168788e-06,
+        "blend": 1.0,
+        "expected": 1.0
+      },
+      {
+        "utm": [
+          698500,
+          5349430
+        ],
+        "coordinateErrorMetres": 5.036038281502897e-06,
+        "blend": 1.0,
+        "expected": 1.0
+      },
+      {
+        "utm": [
+          698656,
+          5349430
+        ],
+        "coordinateErrorMetres": 6.936266694879123e-05,
+        "blend": 0.5000130055000517,
+        "expected": 0.5
+      },
+      {
+        "utm": [
+          698530,
+          5349384
+        ],
+        "coordinateErrorMetres": 5.9614624134951555e-06,
+        "blend": 0.4999998200863851,
+        "expected": 0.5
+      },
+      {
+        "utm": [
+          698530,
+          5349516
+        ],
+        "coordinateErrorMetres": 3.87310042668787e-05,
+        "blend": 0.5000062171184146,
+        "expected": 0.5
+      }
+    ],
+    "qualification": "Woodland boundary follows OSM; floor appearance is an estimate. Geometric/raster invariants do not establish visual acceptance."
+  },
+  "previousWoodlandMaterialCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 249146296,
+      "sha256": "b68da89316aebecfa2e8deed5d7a1974ec39190b9e746d6d4445fec22c3ab994",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "db9515a14c2f557a2c0234b3d9b3711e8e687577099bffc276a62ac592bae4a9",
+      "rendererSourceFingerprint": "9ad0ec7adb1dca9a",
+      "bundleSha256": "aa916eb61f76fdc15a2add17b698d9f46e14d01db78e59d86260a820a77d4c74",
+      "tiles": 124,
+      "bundleUnpackedBytes": 537775566,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecks": {
+      "cameraViewsReviewed": 8,
+      "nightViews": 1,
+      "gravityProbesOnThisArtifact": 0,
+      "reportSha256": "288d5e7e895572a7625c3f9c15933e71d7e44876e7d3f337beed2c2d5192a4d5",
+      "logSha256": "f6ec53662f9b6b8ba3c8469684647f8a59161e1bc8914b29a3b6130248af64f9",
+      "qualification": "Eight local captures reviewed on this exact artifact; terrain/collision unchanged. Does not replace full-campus/gameplay/reflection lifecycle checks."
+    },
+    "woodlandMaterialCheckpoint": {
+      "status": "PASS",
+      "geometryFilesUnchanged": 291,
+      "oldCoreAtlasUnchanged": true,
+      "physicsRgbChannelsByteIdentical": true,
+      "otherManifestFieldsUnchanged": true,
+      "materialMap": {
+        "sourceFile": "physics-ground-surfaces.geojson",
+        "sourceSha256": "5312ca952ddcf910292cdd37ee10c7831fe359f01644819b689b7778f3cbe756",
+        "maskFile": "assets/textures/campus/physics_ground_surfaces.png",
+        "maskSha256": "6e8ae426e4bf175ab7b29e41eb08042da3a6b48012248bd2746493315f8cd2f2",
+        "derivedFile": "physics-ground-surfaces.geojson",
+        "derivedSha256": "6441e0bd40d19c0d6d810b7a3cf51ec66ac25ba48c666a0f4c54c86ea50cb5c1",
+        "generatorSha256": "55314dc055ade9d12024310f9ac4a5fe5e2ca3b607e4360a0dabd4c2ea69375d",
+        "maskBoundsMC": [
+          [
+            256,
+            -384
+          ],
+          [
+            512,
+            -128
+          ]
+        ],
+        "maskSize": [
+          2048,
+          2048
+        ],
+        "maskChannels": [
+          "grass",
+          "paving",
+          "asphalt",
+          "soil = 1 - alpha"
+        ],
+        "materialBoundsUTM": [
+          698480,
+          5349380,
+          698660,
+          5349520
+        ],
+        "westernOverlapMetres": 20,
+        "boundaryBlendMetres": 8,
+        "blendOriginMC": [
+          272.0157342970497,
+          -167.19895939658457
+        ],
+        "blendMcToLocalUtm": [
+          [
+            0.9993971515404563,
+            0.03479282824482144
+          ],
+          [
+            0.03479283601191631,
+            -0.999396904990027
+          ]
+        ],
+        "shaderMappingSha256": "5b6eab2d2ac80065d65cdfdecac965b854cf315af327ab0be4991f969a117223",
+        "areaSquareMetres": {
+          "grass": 6991.355755214452,
+          "paving": 294.43356701387233,
+          "asphalt": 1432.4594617152097,
+          "soil": 184.53829093166718
+        },
+        "buildingOverlapSquareMetres": 0.0,
+        "qualification": "OSM polygons and tagged paths. Untagged widths are explicit estimates; not surveyed curbs or individual paving units. Building footprints excluded. Bounded overlay on surveyed ground, with original material map retained outside coverage. Twenty-metre western overlap and eight-metre boundary blend. Leaf litter/soil under mapped woodland is an appearance estimate; the OSM canopy tag does not survey the floor cover. No terrain or collision changes."
+      },
+      "retainedGeographicClassificationControls": 41,
+      "woodlandPixelContainmentSamples": 251,
+      "woodlandOnlyAtlasPixels": 12028,
+      "independentBoundaryControls": [
+        {
+          "utm": [
+            698479,
+            5349430
+          ],
+          "coordinateErrorMetres": 5.958415658424698e-06,
+          "blend": 0.0,
+          "expected": 0.0
+        },
+        {
+          "utm": [
+            698480,
+            5349430
+          ],
+          "coordinateErrorMetres": 5.963948132015062e-06,
+          "blend": 1.667280920807206e-12,
+          "expected": 0.0
+        },
+        {
+          "utm": [
+            698482,
+            5349430
+          ],
+          "coordinateErrorMetres": 5.960898302515005e-06,
+          "blend": 0.15625083825215658,
+          "expected": 0.15625
+        },
+        {
+          "utm": [
+            698484,
+            5349430
+          ],
+          "coordinateErrorMetres": 5.9353913437476535e-06,
+          "blend": 0.5000011128858769,
+          "expected": 0.5
+        },
+        {
+          "utm": [
+            698486,
+            5349430
+          ],
+          "coordinateErrorMetres": 5.890422685617125e-06,
+          "blend": 0.843750828339877,
+          "expected": 0.84375
+        },
+        {
+          "utm": [
+            698488,
+            5349430
+          ],
+          "coordinateErrorMetres": 5.828593096168788e-06,
+          "blend": 1.0,
+          "expected": 1.0
+        },
+        {
+          "utm": [
+            698500,
+            5349430
+          ],
+          "coordinateErrorMetres": 5.036038281502897e-06,
+          "blend": 1.0,
+          "expected": 1.0
+        },
+        {
+          "utm": [
+            698656,
+            5349430
+          ],
+          "coordinateErrorMetres": 6.936266694879123e-05,
+          "blend": 0.5000130055000517,
+          "expected": 0.5
+        },
+        {
+          "utm": [
+            698530,
+            5349384
+          ],
+          "coordinateErrorMetres": 5.9614624134951555e-06,
+          "blend": 0.4999998200863851,
+          "expected": 0.5
+        },
+        {
+          "utm": [
+            698530,
+            5349516
+          ],
+          "coordinateErrorMetres": 3.87310042668787e-05,
+          "blend": 0.5000062171184146,
+          "expected": 0.5
+        }
+      ],
+      "qualification": "Woodland boundary follows OSM; floor appearance is an estimate. Geometric/raster invariants do not establish visual acceptance."
+    }
+  },
+  "creditLayoutCheckpoint": {
+    "cameraViewsReviewed": 4,
+    "actualGuiScales": [
+      6,
+      2,
+      4,
+      6
+    ],
+    "nativeChecksPass": true,
+    "releaseAccepted": false,
+    "findings": [
+      "Full attribution remains visible, wrapped over two compact lines at three tested GUI scales.",
+      "No doubled shadow treatment; a translucent backing retains contrast in daytime and midnight.",
+      "Geometry, collision, materials and service code byte-identical to candidate17. Only UI code, client class registration and notices differ.",
+      "Roadside meshes remain visibly distorted outside reconstructed coverage."
+    ],
+    "qualification": "Static HUD checks. Does not establish chat-screen or continuous transition behavior; full-campus/gameplay/lifecycle acceptance remains open."
+  },
+  "latestRoadsideAttempt": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 255122599,
+      "sha256": "9419871f4cd155c96c476ac6ebde95db88c7f2100aeef943e8600c2f6a716014",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "84a8852743b64ee2eb1a02b89d281db9ba0a9504f9e120b75d7e26b7fb8478a7",
+      "rendererSourceFingerprint": "e73c3fd364f567b6",
+      "bundleSha256": "b55d7a13091b9869329ae197676d5cc5b2209b445452a956961ad8071c7d8af4",
+      "tiles": 135,
+      "bundleUnpackedBytes": 555502557,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeStatus": "FAIL: native walking check: Probe 12 standing Y=66.0, mesh Y=65.10300175799269, onGround=true, horizontal error=0.0",
+    "cameraViewsReviewed": 24,
+    "successfulStandingCapturesReviewed": 12,
+    "failedStandingCapturesReviewed": 1,
+    "releaseAccepted": false,
+    "files": {
+      "campus-physics-i-roadside-candidate-19b-result.json": "661c802691b2133838032fbbd8b14513594d97861987d8c182a966c65feaf740",
+      "physics-i-roadside-candidate-19b-client.log": "fb7ceca825ba77fbe594dc5810ef2f544f7df7c51c9360a14e2929e9d35c6494",
+      "campus-physics-i-roadside-candidate-19b-0.png": "88528ae8300a8ea8c236c93a880f4db508a62b247ead29f890d29e74b08efaec",
+      "campus-physics-i-roadside-candidate-19b-reflection-0.png": "1ee111e42c917d05a37bc2d90ff790b9316c19ef95193a236abfc065a794d27e",
+      "campus-physics-i-roadside-candidate-19b-1.png": "f641ac6925b7b8a895a82b534e61889658b7b63d5e43c8cf4fc54f1fc715b061",
+      "campus-physics-i-roadside-candidate-19b-reflection-1.png": "edd1a936ba89e28d15849665eb599c31e7048d86f296f199c5f9648a27781ed3",
+      "campus-physics-i-roadside-candidate-19b-2.png": "ac18dab9d5acdd054c79410614c70b3905d57103857e34c41ae31f6b9618dacd",
+      "campus-physics-i-roadside-candidate-19b-reflection-2.png": "ac257dac96e63cddc9790e18f5d8a37d5c515a0821196608de8a49686f0cb815",
+      "campus-physics-i-roadside-candidate-19b-3.png": "3b21238dff8ceeb3b7c01209fb7186fdfd0b21039d5f23d6d0f0eafa05c60345",
+      "campus-physics-i-roadside-candidate-19b-reflection-3.png": "6e08aa6dade383ba7c91b8fa98f015dc1abbab3aeaa20c33db9eec0f2612c058",
+      "campus-physics-i-roadside-candidate-19b-4.png": "c6c42e9d4ad6e77f5ff3e2215005ec5785d77ff0b79a9c34a3cc19f84d7fce4b",
+      "campus-physics-i-roadside-candidate-19b-reflection-4.png": "caae8be9ec46712e2647e19901ebaf5a99de4d52e7edcc06825893fac2a7432d",
+      "campus-physics-i-roadside-candidate-19b-5.png": "e523c57b5339771be63ae33ad97c66ebb31d0d83de361d27cf1f9cd358e17b6a",
+      "campus-physics-i-roadside-candidate-19b-reflection-5.png": "73dd1eb9dfc14d78fca773b4bc7a1a4857ef933cc7e276b176b7f9439e477994",
+      "campus-physics-i-roadside-candidate-19b-6.png": "60704b30a68a605f5c1e9a86b8f821898606f80b724b918bc3029291d47ba668",
+      "campus-physics-i-roadside-candidate-19b-reflection-6.png": "1392085e5635d43b9cb3868fcbeb20d16a30a57cdeadd2e8148de1b94bbee606",
+      "campus-physics-i-roadside-candidate-19b-7.png": "73888cb773c02c75fa1693d626dc4cc541d12b9cca72603acf3101ea169e2fea",
+      "campus-physics-i-roadside-candidate-19b-reflection-7.png": "728a3633d7206db4a2af8d2c5111676e99788ad711127485fc07a39368410fc5",
+      "campus-physics-i-roadside-candidate-19b-8.png": "13f6350e76e770de7143fc1425b816b69ccba7835dbf98e472fa44a3e8801c94",
+      "campus-physics-i-roadside-candidate-19b-reflection-8.png": "a6be9d6665d08f49ac567610e4fa9de622ca29090e5f6a7bfee382acea531981",
+      "campus-physics-i-roadside-candidate-19b-9.png": "f3c5c2cf9697d825673681421f42f6ba396edc6e7cffe3b6ea337ddc04b704d3",
+      "campus-physics-i-roadside-candidate-19b-reflection-9.png": "6cf6d1fe0e25cd83009dbe98f854ea220ae8b2232af71bc317f4b629b4097e73",
+      "campus-physics-i-roadside-candidate-19b-10.png": "c2f34d39edde5953aec73112fdfb545c678983221abd642f08a8b3fdea1fa2d6",
+      "campus-physics-i-roadside-candidate-19b-reflection-10.png": "0477c8ca9e2ba997ae911e6c2f95098e325fd125488e0b5a4895ccf061f07d80",
+      "campus-physics-i-roadside-candidate-19b-11.png": "aaac3785770d61ce4782297516c96fdb20740a9497001de76802b0fdf01e262a",
+      "campus-physics-i-roadside-candidate-19b-reflection-11.png": "d3efad5c69f73e016cbf665458d2dcdf74ae1fb1ad053809d2934cb5c22e5a8c",
+      "campus-physics-i-roadside-candidate-19b-12.png": "c598f4a37cbf746815a0eb006b0121aeaf968bd7964a0f5c7b28bd4a45f04e20",
+      "campus-physics-i-roadside-candidate-19b-reflection-12.png": "db21f3c7d88bdfd537c5a551d163557580059fc88fe58f2921de1ab152f71cd5",
+      "campus-physics-i-roadside-candidate-19b-13.png": "ac9a0a021c7bc9df42ccc0244bd3ff1eac0d0359efff88315151e04970519082",
+      "campus-physics-i-roadside-candidate-19b-reflection-13.png": "3376e73e454f53de8eae21c0f8096055ff262d390d998ee02a9a5a7b68ebe6d7",
+      "campus-physics-i-roadside-candidate-19b-14.png": "63fad915c1351882afb38e45978a8d6ef501c84b1f924085fa27b756ff94ace8",
+      "campus-physics-i-roadside-candidate-19b-reflection-14.png": "240d0cf3e0e626147f26f57cefe38157de85c5bdd6eb45e802899f689b31cf7a",
+      "campus-physics-i-roadside-candidate-19b-15.png": "9cf71c3b92f50377f44ff12d2bce3bdf657892c80c58ad52958e81209483e355",
+      "campus-physics-i-roadside-candidate-19b-reflection-15.png": "86185a6144dd382e16a241a359f88bb87272de6832aa2814ecac2a96a61e7d2f",
+      "campus-physics-i-roadside-candidate-19b-16.png": "18d3c8d36ed8eb253915460a89110e6b49d2f308f3c05d46643c0bac91349494",
+      "campus-physics-i-roadside-candidate-19b-reflection-16.png": "3f69c2cadccf241413bffa0e312914ee811dc42631ea99726876cf456e95fa7b",
+      "campus-physics-i-roadside-candidate-19b-17.png": "1aac0bab08896e67f80b349ac9895c881bb296a733302af6ad24b2138606d3b9",
+      "campus-physics-i-roadside-candidate-19b-reflection-17.png": "1916fc8495177582fa25ba97389a58b4176e4238934adcef3de7aa4b1052dd35",
+      "campus-physics-i-roadside-candidate-19b-18.png": "5f4fc754da6427443a8d6625dabfacb09fac9ecb0c56f94ab694cd4a2a7921e8",
+      "campus-physics-i-roadside-candidate-19b-reflection-18.png": "43c0d463a513bd7dd0d65779bcbe7c858012c0dd53b4dd150b853f24a2d983aa",
+      "campus-physics-i-roadside-candidate-19b-19.png": "1d04025e01913115ce301c68c1b940afb8d9ffd48bd9b93a5990ff9f2ebbfb88",
+      "campus-physics-i-roadside-candidate-19b-reflection-19.png": "a093cc4c5b8e1f42ca12e4ef1490b6e4d8ce2f022fb0a2533a48bd58d3b74773",
+      "campus-physics-i-roadside-candidate-19b-20.png": "31e7a9f520810313dc4bc804ca7a4bf8565aed07c682e869cf127ed2bde52c5d",
+      "campus-physics-i-roadside-candidate-19b-reflection-20.png": "a0344e830a432d2efdc10635e872417b274f29051e8c7871f588712c041673e1",
+      "campus-physics-i-roadside-candidate-19b-21.png": "c858df21c22409eab7866f47920766838b301afb54b34a2da3cde945826eec81",
+      "campus-physics-i-roadside-candidate-19b-reflection-21.png": "52b98dd9cd435bebed212918f9e3d5f1fff812a7e9b3ed14ef11ce063c1dcfd2",
+      "campus-physics-i-roadside-candidate-19b-22.png": "c95cf4da71626abc0ab6529832cc033aa7bfb630716262b81f834b14b4257fd9",
+      "campus-physics-i-roadside-candidate-19b-reflection-22.png": "3e626eb6f96977c7646cf74904a2e57bce0cb7ee772d1797499f0fbe5f77b08d",
+      "campus-physics-i-roadside-candidate-19b-23.png": "869e19925e2d1d76c389db97b313137119bf4674c1c4b3bb06c35e64397e4b7d",
+      "campus-physics-i-roadside-candidate-19b-reflection-23.png": "af854655cb7b892d286018a9af26f568dd2c04cde04405ea851449420557e5ba",
+      "campus-physics-i-roadside-candidate-19b-walk-0.png": "3aa98eb893cd73393f62ffd55c45ed0b56d11fec3bda355ecc1b9b7dae544d0e",
+      "campus-physics-i-roadside-candidate-19b-walk-1.png": "bd4cc94059cdb3d9e1dd21c7bd6b9a42d277547be66e0b5fc4aa2bdf048dbc56",
+      "campus-physics-i-roadside-candidate-19b-walk-2.png": "92a24256af1b3af92fdc2b46b27909769fcd2452d1b1056eb79aac2e40e8e8ef",
+      "campus-physics-i-roadside-candidate-19b-walk-3.png": "474175c64ae81b3eee6fb63a421b09c0a1d938b715d93150e32d7692bf20392c",
+      "campus-physics-i-roadside-candidate-19b-walk-4.png": "dfad42041b86fe77212837a538e071d66b327d3c78e94a13e29ffa1b75d9bd05",
+      "campus-physics-i-roadside-candidate-19b-walk-5.png": "b88f6b4258b727d26ea8d024e467ae8460a589aedd746f2694afc9e0310759be",
+      "campus-physics-i-roadside-candidate-19b-walk-6.png": "97b66b6da5b03a4acc4cf759b73f966d17eb09331374522393305af959303795",
+      "campus-physics-i-roadside-candidate-19b-walk-7.png": "9709d2e7b2c5c22f7204671af34c7ad1fff3d318854eb09377504595e5e19c20",
+      "campus-physics-i-roadside-candidate-19b-walk-8.png": "9a106866536de325a556e1ae0ba8e5aea35bd88496222c0bedea9524e6420ad1",
+      "campus-physics-i-roadside-candidate-19b-walk-9.png": "061d96a69acf0562e5631817a665a131fec381fa79ebba3e57281c90176f197e",
+      "campus-physics-i-roadside-candidate-19b-walk-10.png": "9076f75e0a92b9420ac6be3a3ba1d3146fcd1fa166ed316fe1ba0329bc98ab74",
+      "campus-physics-i-roadside-candidate-19b-walk-11.png": "30acea84a8d2db1d7da398e9502feca247be941b28814f754707d00c37e5534e",
+      "campus-physics-i-roadside-candidate-19b-walking-failure.png": "7d831adcec43dfdc0f97d04823103b1a5b8a29884e211751fc7d02cd76c99761"
+    },
+    "preservation": {
+      "originalSaveFilesUnchanged": 121,
+      "previewSaveFilesUnchanged": 121,
+      "previewSettingsUnchanged": 4,
+      "installedArtifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+    },
+    "findings": [
+      "55 additional source-supported trees and nine additional ground tiles improve roadside coverage.",
+      "Eastern standing probe fails: support top 66.0 versus terrain 65.103; source triangle analysis confirms corner-based voxelization overshoot.",
+      "Native screen ray at woodland u=.1,v=.36 meets vanilla stone at 39m before the next render mesh at 75.96m. Visible boundary filler remains unresolved.",
+      "Broad campus, gameplay and lifecycle acceptance still pending."
+    ]
+  },
+  "previousCreditCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 249147815,
+      "sha256": "c24979c27c6c628b3ab59665760bc6b2893d54583dbae599bee9442f1b702897",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "84a8852743b64ee2eb1a02b89d281db9ba0a9504f9e120b75d7e26b7fb8478a7",
+      "rendererSourceFingerprint": "7b477f0d1dedfcb7",
+      "bundleSha256": "ff64c8cd6dea67fa62c3de30e4cf307b47d33b86ea4e5a0f380a6794eeed2b40",
+      "tiles": 124,
+      "bundleUnpackedBytes": 537775792,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecks": {
+      "cameraViewsReviewed": 4,
+      "nightViews": 1,
+      "actualGuiScales": [
+        6,
+        2,
+        4,
+        6
+      ],
+      "gravityProbesOnThisArtifact": 0,
+      "reportSha256": "6541878814d7a4fbe930bc09b7d8af3283210119696ff06023bcc1f887896f50",
+      "logSha256": "070e2b291ff901737092d364f5b09df90f722ce6a6059a16fbc37173c208fcd8",
+      "qualification": "Static HUD checks. Does not establish chat-screen or continuous transition behavior; full-campus/gameplay/lifecycle acceptance remains open."
+    },
+    "creditLayoutCheckpoint": {
+      "cameraViewsReviewed": 4,
+      "actualGuiScales": [
+        6,
+        2,
+        4,
+        6
+      ],
+      "nativeChecksPass": true,
+      "releaseAccepted": false,
+      "findings": [
+        "Full attribution remains visible, wrapped over two compact lines at three tested GUI scales.",
+        "No doubled shadow treatment; a translucent backing retains contrast in daytime and midnight.",
+        "Geometry, collision, materials and service code byte-identical to candidate17. Only UI code, client class registration and notices differ.",
+        "Roadside meshes remain visibly distorted outside reconstructed coverage."
+      ],
+      "qualification": "Static HUD checks. Does not establish chat-screen or continuous transition behavior; full-campus/gameplay/lifecycle acceptance remains open."
+    }
+  },
+  "collisionCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 255123463,
+      "sha256": "12b0eff90190b1c3d45415f6b5bd757da48699acd680737a6f0868819642c90e",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "84a8852743b64ee2eb1a02b89d281db9ba0a9504f9e120b75d7e26b7fb8478a7",
+      "rendererSourceFingerprint": "4780d746de0896b1",
+      "bundleSha256": "67942934b329ba11005b0f3d586f770453164497e29267cfe99b4210a84edb69",
+      "tiles": 135,
+      "bundleUnpackedBytes": 555503888,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecksPass": true,
+    "cameraViewsReviewed": 4,
+    "standingCapturesReviewed": 13,
+    "maxStandingHeightErrorMetres": 0.4967616410355049,
+    "maxHorizontalErrorMetres": 0,
+    "easternSupportBefore": 66,
+    "easternSupportAfter": 65,
+    "easternMeshHeight": 65.10300175799269,
+    "serviceTestsPass": 40,
+    "files": {
+      "campus-physics-i-collision-candidate-20-result.json": "6c88609b2233fd3cbfba666dc405de0d6cb444a501bdb5c0cc1c4fc4e420c2a3",
+      "physics-i-collision-candidate-20-client.log": "7bf307e97e5234d65df1bdad65b89410601ac78646c3d89639348cd9f16f2b2c",
+      "physics-collision-service-20.json": "cd88a48f3a0ce3090b5ad5285f24eada74c5db75834dad857f61d3226a2ec1e3",
+      "check-physics-collision-20.mjs": "4f460e010ee646e6cc72fdbe93f2c3b8a187ae81dcee717b5c38e6f6d55adfc0",
+      "physics-i-collision-scope-20.json": "b8e3c37f6802a52bf8ea226bf58a49b4acdb538fd6896543d201682d250123fc",
+      "physics-collision-service-tests-20.log": "da6b3d81433f63d6e5c80dad50adbe673a29ac356263f972da418dcad6ff37e5",
+      "campus-physics-i-collision-candidate-20-0.png": "a6ff23e1c6cd82f03a39f5ea1557d7912cc6b0b4398d6e4a5723dacb95c2987a",
+      "campus-physics-i-collision-candidate-20-reflection-0.png": "7ea56b702e01ab6f82cca03d7d78932ccd8413a291c1e0ca66d194062ce51d49",
+      "campus-physics-i-collision-candidate-20-1.png": "e316f9ca3b766b365b0028c14a6120c22d490b238794bb52cda269369e7db138",
+      "campus-physics-i-collision-candidate-20-reflection-1.png": "c79b811524c6b166917bfdff7e3543788794246045c03571b570a54925c89f19",
+      "campus-physics-i-collision-candidate-20-2.png": "1ba8aa48c5e961f9b58508abc72dd265221bb9a448ada2ab013527fe3ca3ad96",
+      "campus-physics-i-collision-candidate-20-reflection-2.png": "ea90763a39c6be292dc1422d6fc977f612dc10a1e8193e79ab125a5c41457ee2",
+      "campus-physics-i-collision-candidate-20-3.png": "0a17e10a4e3c8fe7d9ae9bb9f5f968a0de3e7df9de56dc0efa764a3e63138d9c",
+      "campus-physics-i-collision-candidate-20-reflection-3.png": "fb63b0c86109a0142dee873911ba6753e97347dcebe5c3369d84299832636118",
+      "campus-physics-i-collision-candidate-20-walk-0.png": "8aa24566e84099cc0614ebba65fd2bf8eb629f864505c99d128f36f33402b36f",
+      "campus-physics-i-collision-candidate-20-walk-1.png": "3d6c26fcec0f4cd1802f75ebe4b3e7bb145f2b2e2768b6f2392481e049f90428",
+      "campus-physics-i-collision-candidate-20-walk-2.png": "0d3fc4cdeaae072f025b91051df04d055e3b8b4925ba0073cdde877ebb324bee",
+      "campus-physics-i-collision-candidate-20-walk-3.png": "f060ba0efc58a0559091a53e9865fd6de38d6c9c99d3c505d5a57e615ab0a6cf",
+      "campus-physics-i-collision-candidate-20-walk-4.png": "c328e14c359c6f125ed6943de6521796612306c6df0e1afab87bd4f83e39cc46",
+      "campus-physics-i-collision-candidate-20-walk-5.png": "b88f6b4258b727d26ea8d024e467ae8460a589aedd746f2694afc9e0310759be",
+      "campus-physics-i-collision-candidate-20-walk-6.png": "e04fe30d211b8533bbbbc82c5b2d830806f769f7ae119cd7ac7c034fc1456851",
+      "campus-physics-i-collision-candidate-20-walk-7.png": "ae5250575bc81ca6e28eaefd32c2af26ae8c5a4ac675888c5b8949a4e34a7d51",
+      "campus-physics-i-collision-candidate-20-walk-8.png": "ba83be3ab574a6710a01d04780668812070129afcf73cd25b2f10e2a698cc776",
+      "campus-physics-i-collision-candidate-20-walk-9.png": "e54f60c4be1144ac0fb38520414a510d3a48d5fe81755f6a5dd8b5b8124e6e40",
+      "campus-physics-i-collision-candidate-20-walk-10.png": "d67a191c8f85ba270beb019ce0bcd5bc0a750420d9303c05d5dd13fd232774d2",
+      "campus-physics-i-collision-candidate-20-walk-11.png": "752c3c4d8072a9eac26da0d054f08b724edea2fbf4d1c0a863e0ae6f3b27b61a",
+      "campus-physics-i-collision-candidate-20-walk-12.png": "4ef041e0c5792794a69c29ed87224577a08843a46ecae8c5c6a2ef4fac686f22"
+    },
+    "releaseAccepted": false,
+    "qualification": "All original standing controls retained, same thresholds. Geometry, materials and rendering identical to 19b. Local collision correction only; woodland boundary, blank courtyard, neighbours and broad campus/gameplay/lifecycle acceptance remain open.",
+    "preservation": {
+      "originalSaveFilesUnchanged": 121,
+      "previewSaveFilesUnchanged": 121,
+      "previewSettingsUnchanged": 4,
+      "installedArtifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+    }
+  },
+  "previousCollisionCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 255123463,
+      "sha256": "12b0eff90190b1c3d45415f6b5bd757da48699acd680737a6f0868819642c90e",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "84a8852743b64ee2eb1a02b89d281db9ba0a9504f9e120b75d7e26b7fb8478a7",
+      "rendererSourceFingerprint": "4780d746de0896b1",
+      "bundleSha256": "67942934b329ba11005b0f3d586f770453164497e29267cfe99b4210a84edb69",
+      "tiles": 135,
+      "bundleUnpackedBytes": 555503888,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecks": {
+      "cameraViewsReviewed": 4,
+      "standingCapturesReviewed": 13,
+      "maxStandingHeightErrorMetres": 0.4967616410355049,
+      "maxHorizontalErrorMetres": 0,
+      "qualification": "All original standing controls retained, same thresholds. Geometry, materials and rendering identical to 19b. Local collision correction only; woodland boundary, blank courtyard, neighbours and broad campus/gameplay/lifecycle acceptance remain open."
+    },
+    "collisionCheckpoint": {
+      "artifact": {
+        "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+        "size": 255123463,
+        "sha256": "12b0eff90190b1c3d45415f6b5bd757da48699acd680737a6f0868819642c90e",
+        "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+        "sourcePatchSha256": "84a8852743b64ee2eb1a02b89d281db9ba0a9504f9e120b75d7e26b7fb8478a7",
+        "rendererSourceFingerprint": "4780d746de0896b1",
+        "bundleSha256": "67942934b329ba11005b0f3d586f770453164497e29267cfe99b4210a84edb69",
+        "tiles": 135,
+        "bundleUnpackedBytes": 555503888,
+        "bundleUnpackedLimit": 1073741824
+      },
+      "nativeChecksPass": true,
+      "cameraViewsReviewed": 4,
+      "standingCapturesReviewed": 13,
+      "maxStandingHeightErrorMetres": 0.4967616410355049,
+      "maxHorizontalErrorMetres": 0,
+      "easternSupportBefore": 66,
+      "easternSupportAfter": 65,
+      "easternMeshHeight": 65.10300175799269,
+      "serviceTestsPass": 40,
+      "files": {
+        "campus-physics-i-collision-candidate-20-result.json": "6c88609b2233fd3cbfba666dc405de0d6cb444a501bdb5c0cc1c4fc4e420c2a3",
+        "physics-i-collision-candidate-20-client.log": "7bf307e97e5234d65df1bdad65b89410601ac78646c3d89639348cd9f16f2b2c",
+        "physics-collision-service-20.json": "cd88a48f3a0ce3090b5ad5285f24eada74c5db75834dad857f61d3226a2ec1e3",
+        "check-physics-collision-20.mjs": "4f460e010ee646e6cc72fdbe93f2c3b8a187ae81dcee717b5c38e6f6d55adfc0",
+        "physics-i-collision-scope-20.json": "b8e3c37f6802a52bf8ea226bf58a49b4acdb538fd6896543d201682d250123fc",
+        "physics-collision-service-tests-20.log": "da6b3d81433f63d6e5c80dad50adbe673a29ac356263f972da418dcad6ff37e5",
+        "campus-physics-i-collision-candidate-20-0.png": "a6ff23e1c6cd82f03a39f5ea1557d7912cc6b0b4398d6e4a5723dacb95c2987a",
+        "campus-physics-i-collision-candidate-20-reflection-0.png": "7ea56b702e01ab6f82cca03d7d78932ccd8413a291c1e0ca66d194062ce51d49",
+        "campus-physics-i-collision-candidate-20-1.png": "e316f9ca3b766b365b0028c14a6120c22d490b238794bb52cda269369e7db138",
+        "campus-physics-i-collision-candidate-20-reflection-1.png": "c79b811524c6b166917bfdff7e3543788794246045c03571b570a54925c89f19",
+        "campus-physics-i-collision-candidate-20-2.png": "1ba8aa48c5e961f9b58508abc72dd265221bb9a448ada2ab013527fe3ca3ad96",
+        "campus-physics-i-collision-candidate-20-reflection-2.png": "ea90763a39c6be292dc1422d6fc977f612dc10a1e8193e79ab125a5c41457ee2",
+        "campus-physics-i-collision-candidate-20-3.png": "0a17e10a4e3c8fe7d9ae9bb9f5f968a0de3e7df9de56dc0efa764a3e63138d9c",
+        "campus-physics-i-collision-candidate-20-reflection-3.png": "fb63b0c86109a0142dee873911ba6753e97347dcebe5c3369d84299832636118",
+        "campus-physics-i-collision-candidate-20-walk-0.png": "8aa24566e84099cc0614ebba65fd2bf8eb629f864505c99d128f36f33402b36f",
+        "campus-physics-i-collision-candidate-20-walk-1.png": "3d6c26fcec0f4cd1802f75ebe4b3e7bb145f2b2e2768b6f2392481e049f90428",
+        "campus-physics-i-collision-candidate-20-walk-2.png": "0d3fc4cdeaae072f025b91051df04d055e3b8b4925ba0073cdde877ebb324bee",
+        "campus-physics-i-collision-candidate-20-walk-3.png": "f060ba0efc58a0559091a53e9865fd6de38d6c9c99d3c505d5a57e615ab0a6cf",
+        "campus-physics-i-collision-candidate-20-walk-4.png": "c328e14c359c6f125ed6943de6521796612306c6df0e1afab87bd4f83e39cc46",
+        "campus-physics-i-collision-candidate-20-walk-5.png": "b88f6b4258b727d26ea8d024e467ae8460a589aedd746f2694afc9e0310759be",
+        "campus-physics-i-collision-candidate-20-walk-6.png": "e04fe30d211b8533bbbbc82c5b2d830806f769f7ae119cd7ac7c034fc1456851",
+        "campus-physics-i-collision-candidate-20-walk-7.png": "ae5250575bc81ca6e28eaefd32c2af26ae8c5a4ac675888c5b8949a4e34a7d51",
+        "campus-physics-i-collision-candidate-20-walk-8.png": "ba83be3ab574a6710a01d04780668812070129afcf73cd25b2f10e2a698cc776",
+        "campus-physics-i-collision-candidate-20-walk-9.png": "e54f60c4be1144ac0fb38520414a510d3a48d5fe81755f6a5dd8b5b8124e6e40",
+        "campus-physics-i-collision-candidate-20-walk-10.png": "d67a191c8f85ba270beb019ce0bcd5bc0a750420d9303c05d5dd13fd232774d2",
+        "campus-physics-i-collision-candidate-20-walk-11.png": "752c3c4d8072a9eac26da0d054f08b724edea2fbf4d1c0a863e0ae6f3b27b61a",
+        "campus-physics-i-collision-candidate-20-walk-12.png": "4ef041e0c5792794a69c29ed87224577a08843a46ecae8c5c6a2ef4fac686f22"
+      },
+      "releaseAccepted": false,
+      "qualification": "All original standing controls retained, same thresholds. Geometry, materials and rendering identical to 19b. Local collision correction only; woodland boundary, blank courtyard, neighbours and broad campus/gameplay/lifecycle acceptance remain open.",
+      "preservation": {
+        "originalSaveFilesUnchanged": 121,
+        "previewSaveFilesUnchanged": 121,
+        "previewSettingsUnchanged": 4,
+        "installedArtifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+      }
+    }
+  },
+  "libraryCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 255274567,
+      "sha256": "69e0b45f69bd11e697bcd87aa1885afe61eaf15a82956dc0e47e9e4e56c8fdd1",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "fb3d9e964d9163cf201da5ef43b1701a1420f6369139b2fdba43892bd39f7aab",
+      "rendererSourceFingerprint": "6c1d86064edbf94a",
+      "bundleSha256": "6f64550b9f4b7992c8c21a7bd3053caa31d297a571d4b0233ecd836086db751a",
+      "tiles": 137,
+      "bundleUnpackedBytes": 555896712,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecksPass": true,
+    "cameraViewsReviewed": 9,
+    "standingCapturesReviewed": 15,
+    "standingWorldTime": 6000,
+    "nightCameraViews": 1,
+    "nativeGlazingColliderChecks": 4,
+    "bodyClearanceControls": 2,
+    "maxStandingHeightErrorMetres": 0.4967616410355049,
+    "maxHorizontalErrorMetres": 0,
+    "serviceTestsPass": 40,
+    "originalRenderTilesUnchanged": 135,
+    "originalFacadePlansUnchanged": 84,
+    "releaseAccepted": false,
+    "findings": [
+      "Library upper outline and roof are surveyed; open column-supported lower exterior, louvres, glazing and tapered concrete edge are source-informed estimates.",
+      "Five matched baseline views show replaced coarse source facade and restored visible ground below bridge.",
+      "Corner perimeter closes correctly and detailed paving is visible under the raised body.",
+      "All fifteen standing probes pass with unchanged thresholds; covered-space starts are explicit to avoid teleporting into ceilings, and actual player body clearance is asserted.",
+      "Native library reflection plane is selected in close views; daytime and midnight views retain full attribution."
+    ],
+    "qualification": "Local exterior checkpoint. Exact facade, pier and floor dimensions remain estimates; external stair detail unresolved. Broad campus, gameplay, transitions and existing-user-world rollout remain unaccepted.",
+    "files": {
+      "campus-physics-library-candidate-21b-result.json": "e9fd498a3e2d89a9928fce3a33e27383cb4636d5d18bcc201e8b54365fc4fefa",
+      "physics-library-candidate-21b-client.log": "cf7c6f04d36e5e089e6f254d88832ec3928cd8dca5a245f78fb699d9ddd05639",
+      "physics-library-service-21b.json": "f9401fb9cd3b4eae25623f95f8f977e2737fca32e6df03fb7e07735e713e2598",
+      "check-physics-library-21b.mjs": "e5f47b3c293496b01b4922dbed882f3b193b747b63e9c07547094834fada1057",
+      "physics-library-scope-21b.json": "c17a3ea9474525becd9399c8624855626e38bbd2d892b2f7b5d45c81e39d097f",
+      "physics-library-geometry-validation-21b.log": "2f71f6a741101d7146cbd506234fb6b7e30124c446c439eac4b068bf4125c87a",
+      "physics-library-site-validation-21b.log": "b4bc39ecb89f99720ca0013765443bd04c756391e0cd5ba25136a7c8ee209d44",
+      "physics-library-render-validation-21b.log": "9b935fd569becb83d252cfc9244a480663f2cc99638014fdaf52e16101e2e494",
+      "physics-library-service-tests-21b.log": "9c0c33ba295534937b10f2cc91576bb1329ca5504e8e04627b5d99c3e8405e2f",
+      "physics-library-validation.json": "2f71f6a741101d7146cbd506234fb6b7e30124c446c439eac4b068bf4125c87a",
+      "campus-physics-library-candidate-21b-0.png": "933fbfa53a4c42f918f6788124224d03b5021ef237e87930ac2da846d6a74f27",
+      "campus-physics-library-candidate-21b-reflection-0.png": "8e56c06c62c72d31a543c3358dfcbbc33d90e346a805864324f86a7d34995511",
+      "campus-physics-library-candidate-21b-1.png": "a2f01a91c35b6ea2cd3c7f5007eafcb4db186c4e484cd499ff1ed7129ada828e",
+      "campus-physics-library-candidate-21b-reflection-1.png": "39320461d1292d0693bde31ae449066ae0a162250f94e53d5743f366c66b5ef5",
+      "campus-physics-library-candidate-21b-2.png": "4b429106f7b31143b12d8a87f3ef65bc7a63650050243c23fcb049ad1ad34005",
+      "campus-physics-library-candidate-21b-reflection-2.png": "2bb80ee801aadfc9a5a799c87bac6f5256ffc379b6f3c5ac612286efe27341ad",
+      "campus-physics-library-candidate-21b-3.png": "99753f430e0eda4922249b36828db66640474e2fb09276e52db62885f0b06843",
+      "campus-physics-library-candidate-21b-reflection-3.png": "cff75a8ac3d92960f5455c29bc13e5efda1f88bee69599ab7ce59acd4331cc73",
+      "campus-physics-library-candidate-21b-4.png": "b33c50bee1ebec68b10d6bf4f7fd5c999227a5ca332664f3fc8dab4c2e49356e",
+      "campus-physics-library-candidate-21b-reflection-4.png": "396c7f6b29dff5616502c699aebb452efd7385b0071f92f3ce69c891a2f30cd6",
+      "campus-physics-library-candidate-21b-5.png": "f2027e4595f61e124c33ded80ae6b4ee33a6b324d56021822298f6d0c201ac15",
+      "campus-physics-library-candidate-21b-reflection-5.png": "857702d6bac73431acd0c3c604cf22d45ff6debd116a063e057e80bbac89a684",
+      "campus-physics-library-candidate-21b-6.png": "139be2b429e6019401bb2e8da4d694b5c040d6614c9777e838dc3f4c827c9d8d",
+      "campus-physics-library-candidate-21b-reflection-6.png": "010de77618d2b5cce3ae870b2b7086e5ad343e76fc3b5ae1b01504123e6cc368",
+      "campus-physics-library-candidate-21b-7.png": "1cb418f1bae7514be4b8e6f04fabd83d79f2d16f85119976cd02dfc1c23c0978",
+      "campus-physics-library-candidate-21b-8.png": "a44458a7ab2d21f26306ddec89bfb71f34ac4c37d6856a1498301fc281625045",
+      "campus-physics-library-candidate-21b-reflection-8.png": "9e229761b8c4c4f759d6c00e32f874b166d15fd532a58a6ed6107282d2e78410",
+      "campus-physics-library-candidate-21b-walk-0.png": "411f0c164068bdfe14cb9d2662323a22ece8ce9dceaef20a0a5891735749ac60",
+      "campus-physics-library-candidate-21b-walk-1.png": "6e96aedfd1ae9d219820d799f8fc48cedbadeb6ab04c53136ca5e13b319e8a4a",
+      "campus-physics-library-candidate-21b-walk-2.png": "adec949ef95a52a961f9d33ed224901f30a9fb59daef078553e8d8789006500b",
+      "campus-physics-library-candidate-21b-walk-3.png": "a54a1e5200c2a503b678136cad948891679590c332b210c19c454fc2f4e0be31",
+      "campus-physics-library-candidate-21b-walk-4.png": "9d214448bbd7b782e0fcb50670e3671e04559e4d96f6900d623277d112dd0bcd",
+      "campus-physics-library-candidate-21b-walk-5.png": "b88f6b4258b727d26ea8d024e467ae8460a589aedd746f2694afc9e0310759be",
+      "campus-physics-library-candidate-21b-walk-6.png": "a8132690d150f16990ef5d557e848070f6d898839251e14c8d43887148856688",
+      "campus-physics-library-candidate-21b-walk-7.png": "1a374fcecbd898a836e602fe0c3e3029a747bf598ce1505f109c1a71da9887d4",
+      "campus-physics-library-candidate-21b-walk-8.png": "3fc80621dbf6e468fa8c9b695a50e8ddf5669e46e402b63fd667ac9c038238c5",
+      "campus-physics-library-candidate-21b-walk-9.png": "6399fb7c8bd600d4a097b7d6094eb29542a97b0a0a8573e55ee84904e4b985d2",
+      "campus-physics-library-candidate-21b-walk-10.png": "c18bc03bd816a03d8dff88d74cb5fad7aea92a0157dc3b564ee4ffd668df9f53",
+      "campus-physics-library-candidate-21b-walk-11.png": "c3ae9732e02d20b40230c94c580de099ce00ab53464c0a4ef59b1222ed470cb8",
+      "campus-physics-library-candidate-21b-walk-12.png": "f64ad14ec433ffe86488f1d99dea23eb4b37b95aa2095f0c0857cde2d905a467",
+      "campus-physics-library-candidate-21b-walk-13.png": "c2ede9c40196f160770ffd6d08dbcba2a902591d27215929d7b52933682d575f",
+      "campus-physics-library-candidate-21b-walk-14.png": "c0f1b09fb7e5b1d955c6fb6072a49b2a0e4166314a0171db26beb8e547e3db8c"
+    },
+    "preservation": {
+      "originalSaveFilesUnchanged": 121,
+      "previewSaveFilesUnchanged": 121,
+      "previewSettingsUnchanged": 4,
+      "installedArtifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+    }
+  },
+  "previousLibraryCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 255274567,
+      "sha256": "69e0b45f69bd11e697bcd87aa1885afe61eaf15a82956dc0e47e9e4e56c8fdd1",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "fb3d9e964d9163cf201da5ef43b1701a1420f6369139b2fdba43892bd39f7aab",
+      "rendererSourceFingerprint": "6c1d86064edbf94a",
+      "bundleSha256": "6f64550b9f4b7992c8c21a7bd3053caa31d297a571d4b0233ecd836086db751a",
+      "tiles": 137,
+      "bundleUnpackedBytes": 555896712,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecks": {
+      "cameraViewsReviewed": 9,
+      "standingCapturesReviewed": 15,
+      "nightCameraViews": 1,
+      "nativeGlazingColliderChecks": 4,
+      "bodyClearanceControls": 2,
+      "maxStandingHeightErrorMetres": 0.4967616410355049,
+      "maxHorizontalErrorMetres": 0,
+      "qualification": "Local exterior checkpoint. Exact facade, pier and floor dimensions remain estimates; external stair detail unresolved. Broad campus, gameplay, transitions and existing-user-world rollout remain unaccepted."
+    }
+  },
+  "containerCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 255355676,
+      "sha256": "863006309576fb4db63b948e4d09e24409514141f7c3a70b74fa5180ea868887",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "075eed185cbf86c573b36359f4fd357a96e93128ddbe282c8ec5355c962fadc0",
+      "rendererSourceFingerprint": "9adc6aa7b3df5503",
+      "bundleSha256": "09c1f9dc0904345a4b0410687b98ee9f0dd887948a79ecd4a6442bc51aa4257e",
+      "tiles": 139,
+      "bundleUnpackedBytes": 556149868,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecksPass": true,
+    "cameraViewsReviewed": 7,
+    "standingCapturesReviewed": 8,
+    "standingWorldTime": 6000,
+    "nightCameraViews": 1,
+    "nativeGlazingColliderChecks": 5,
+    "maxStandingHeightErrorMetres": 0.49795952422546463,
+    "maxHorizontalErrorMetres": 0,
+    "serviceTestsPass": 40,
+    "originalRenderTilesUnchanged": 137,
+    "originalFacadePlansUnchanged": 85,
+    "releaseAccepted": false,
+    "westSourceFragmentRaysClear": 4,
+    "nativeContainerReflectionVerified": true,
+    "findings": [
+      "The 0.5m footprint guard is filled with DGM1 ground; the estimated plinth extends into terrain.",
+      "Observed source fragments up to 2.758m outside the surveyed wall are removed within a 3.5m footprint boundary excluding neighbours.",
+      "All old render tiles and facade plans remain unchanged."
+    ],
+    "qualification": "Local TUM5140 exterior checkpoint. Exact openings, panels, colours and concealed details remain estimates. Broad campus, gameplay, transitions and existing-user-world rollout remain unaccepted.",
+    "files": {
+      "campus-physics-container-candidate-22b-result.json": "4689c494335017162dddedd4987aa809f9fc5250c1e338820635abdd04ba2c96",
+      "physics-container-candidate-22b-client.log": "e38cba841969878858e1dfc3e72fcf79eddd0778901916fe0ed73bbdf38ce097",
+      "physics-container-service-22b.json": "172325fe250a7db28ea72292c73c7d551050efe3c18f1038a91ffdb66241f927",
+      "check-physics-container-22b.mjs": "c05986ad61403e3d6ffe9fd18b38f894f0afa11ee72cdd697cecd4fa39764d78",
+      "physics-container-scope-22b.json": "6d6b41c1c8f993bb77cf70e0133409faf212a6d51b434127207281081a5bbbc9",
+      "physics-container-geometry-validation-22b.log": "e19b49bbc1c57d839a2749f6496ffd38fd6efcde77acb583fd7f4a350d377dab",
+      "physics-container-library-validation-22b.log": "a9e99572c831927fa99485877826d7366b60307e8e999a5b052150c0f265638e",
+      "physics-container-site-validation-22b.log": "a1baabab47b2f10631d854497b84677f3c86a02f1258b57e21e9ef5382a3841b",
+      "physics-container-render-validation-22b.log": "d0c3d397b00fc5317e19d8cb49bf5502bf2a926446eeb3eba64e52828292d10c",
+      "physics-container-service-tests-22b.log": "97f4efd17fead7d2903176f7364e908f4747dacce1b7bd7b459c1f391a106f9f",
+      "physics-container-validation.json": "e19b49bbc1c57d839a2749f6496ffd38fd6efcde77acb583fd7f4a350d377dab",
+      "campus-physics-container-candidate-22b-0.png": "bc622653fdadb0137ecbc75543cf0a1711056fdb77f49814e149b3f3182a0964",
+      "campus-physics-container-candidate-22b-reflection-0.png": "11b00a4b1d20ed9f35a971c5abca3329030f3b0418797e08daf8fb250bf5fb67",
+      "campus-physics-container-candidate-22b-1.png": "51a4f53af3f2cd86ccf40d25346d124fb6ee259467848dae6f7376f049e18f2d",
+      "campus-physics-container-candidate-22b-reflection-1.png": "66d57ad61ae01a08db7bdbbe122b1ff54d2072b513d09edb60bb6968529f2251",
+      "campus-physics-container-candidate-22b-2.png": "a10516dc60c7691a70763c653ee74a68d5864e8c13f0eb1d01c75dad73c20b89",
+      "campus-physics-container-candidate-22b-reflection-2.png": "667717599c4f0769749db855c38ce40f332d5fae842989b5dc3987a6346da790",
+      "campus-physics-container-candidate-22b-3.png": "360a71c51a2de70e444158cdf3133037e26c8458ceb62a60f965fb84c0d4b7ef",
+      "campus-physics-container-candidate-22b-reflection-3.png": "8feec9ad4146e001827fa9d3442a9a94925cb289f9fad0b9a410a661fc9f0743",
+      "campus-physics-container-candidate-22b-4.png": "8fc5bad312b376fb59a1052b4a4d4065ebad95329c4fcf58ea4dd77bb3853832",
+      "campus-physics-container-candidate-22b-reflection-4.png": "30dd4bcfdbd3d8097a3188e7faac1da79f556360ba1d115a2bb7b9fbf3340296",
+      "campus-physics-container-candidate-22b-5.png": "e307ddc80ceff7d779d26e71e4d3b8f03c09e65239ab3d52fb02fb305d48e72a",
+      "campus-physics-container-candidate-22b-reflection-5.png": "99e87b3728b339a8076452997e34858f368b0ee4b0d402b310d30d776d0c1b4e",
+      "campus-physics-container-candidate-22b-6.png": "23c19a8e767b406898ce0e9aea98c95a13c972dbd18f5e6ff92cf58e3f449dba",
+      "campus-physics-container-candidate-22b-reflection-6.png": "d9588958615ecdc0abe8c3222cb611e208ab5a1f2bc79622325b1f56eeeb7cd2",
+      "campus-physics-container-candidate-22b-walk-0.png": "84011f5d747e80803f7ce4795156de64f47df40d48f19d781ae083e1a735c101",
+      "campus-physics-container-candidate-22b-walk-1.png": "90041e99d09d23795db4a2ae5bc6eb5885f020ed27440ec1bc091cf1ab57489f",
+      "campus-physics-container-candidate-22b-walk-2.png": "2ace0a92fb5af1314f0a94eef2e9ba667e4e4339ce5051f8fec854dc9b540091",
+      "campus-physics-container-candidate-22b-walk-3.png": "0f52ecc9169c73290871a4c6a7b5126937e517b46f525ea3427382b7c472ca37",
+      "campus-physics-container-candidate-22b-walk-4.png": "81df2f862e5f3466f35b42dcca6a378dd6ee7b3bbee32c714b883322987ebcfd",
+      "campus-physics-container-candidate-22b-walk-5.png": "3cc57b89215ce132ea4a0c671dba0745522737ac1b2eab3e023cd4fee1ede63d",
+      "campus-physics-container-candidate-22b-walk-6.png": "3b463e49e692813962afa5818344a952be200db2f1a7976d9027f86b263b6479",
+      "campus-physics-container-candidate-22b-walk-7.png": "35aab6a59fb86efa29a69cce44991ba4def2d3ad91cb25d09c2a97bbbac1076b"
+    },
+    "preservation": {
+      "originalSaveFilesUnchanged": 121,
+      "previewSaveFilesUnchanged": 121,
+      "previewSettingsUnchanged": 4,
+      "installedArtifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+    }
+  },
+  "previousContainerCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 255355676,
+      "sha256": "863006309576fb4db63b948e4d09e24409514141f7c3a70b74fa5180ea868887",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "075eed185cbf86c573b36359f4fd357a96e93128ddbe282c8ec5355c962fadc0",
+      "rendererSourceFingerprint": "9adc6aa7b3df5503",
+      "bundleSha256": "09c1f9dc0904345a4b0410687b98ee9f0dd887948a79ecd4a6442bc51aa4257e",
+      "tiles": 139,
+      "bundleUnpackedBytes": 556149868,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecks": {
+      "cameraViewsReviewed": 7,
+      "standingCapturesReviewed": 8,
+      "nightCameraViews": 1,
+      "nativeGlazingColliderChecks": 5,
+      "maxStandingHeightErrorMetres": 0.49795952422546463,
+      "maxHorizontalErrorMetres": 0,
+      "qualification": "Local TUM5140 exterior checkpoint. Exact openings, panels, colours and concealed details remain estimates. Broad campus, gameplay, transitions and existing-user-world rollout remain unaccepted."
+    }
+  },
+  "p1Checkpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 256023674,
+      "sha256": "ef54dd656eea122a8608613b203d7977a8d938570fe1ca78b00227d324f9ac1a",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "6a46acca63563b6f2105914b1bbd75969e41e3b98a7e811e8eb56c772286a764",
+      "rendererSourceFingerprint": "add6152d17522d35",
+      "bundleSha256": "933bf47b3727ceaa6433664377c721e58b171a3b5d19a5f93d1f643e12e2d918",
+      "tiles": 143,
+      "bundleUnpackedBytes": 558383216,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "nativeChecksPass": true,
+    "cameraViewsReviewed": 10,
+    "standingCapturesReviewed": 9,
+    "nightCameraViews": 1,
+    "nativeColliderChecks": 7,
+    "maxStandingSupportErrorMetres": 0.5069435168241796,
+    "maxStandingCentreErrorMetres": 0.554347209843705,
+    "maxHorizontalErrorMetres": 0,
+    "supportExpectation": "First six P1 controls use exact highest mesh point under the0.6m player footprint; three earlier regression controls keep centre expectations. Tolerance remains0.51m.",
+    "serviceTestsPass": 40,
+    "originalRenderTilesUnchanged": 139,
+    "originalFacadePlansUnchanged": 86,
+    "releaseAccepted": false,
+    "findings": [
+      "Both former floating utility fragments are replaced by grounded twin cylindrical structures; native cap and facade collisions pass.",
+      "P1 east apron now completes native alignment; all nine standing controls pass with no horizontal movement and clear player bodies.",
+      "Garage recesses and grating render in daytime and midnight; actual bay layout remains estimated.",
+      "Prior library undercroft/bridge standing regression views remain open and clear.",
+      "Physics east view still has a blue terrain gap and coarse woodland outside the reconstructed boundary.",
+      "Garage north approach still includes coarse construction-site foreground.",
+      "TUM5117 northwest of P1 remains a visibly distorted source building; architect photos and site plan now located."
+    ],
+    "qualification": "Local P1 complex exterior checkpoint. Exact bay dimensions, levels, rails, cylinder sides/caps and hidden details remain estimates. Wider campus, gameplay, transitions and user-world rollout remain unaccepted.",
+    "files": {
+      "campus-p1-complex-candidate-23b-result.json": "ef640f7291e6357f6e10f397f302c1bd6e0717d3223a06f4ba5b80a28e308c01",
+      "p1-complex-candidate-23b-client.log": "6574c2ad687bfe4eeaef4184e5ebd3d4c7cb8d48d81f7faaf69aa0f7961b2034",
+      "p1-complex-service-23b.json": "999c817e51aab74003e005eefa5fe004839712cb13c43f7b5b2c9175fedbc76c",
+      "check-p1-complex-23b.mjs": "349a3c95bf20730b58ec9806483968b0b1787aa6f3dcd1d3d8733b09f89546ca",
+      "p1-complex-scope-23b.json": "81e28a76830342cdf8aa7cf03ca777c7762fa29411b215fd4b0089e8a6503440",
+      "p1-complex-geometry-validation-23b.log": "2ebb43ea7a73e0b73779844855fd3762c68bf6b739751db4b59f63d4af16f69f",
+      "p1-complex-library-validation-23b.log": "cc821937bd8855f49c56a3d49d7137beff8941a784d5b69ae8dda5d59bc01971",
+      "p1-complex-container-validation-23b.log": "12ae49702d684dd4a871795d0b8fe51540327c01ae80313474bdc8d84262d53c",
+      "p1-complex-site-validation-23b.log": "3f918bf94be81eba3a3593c5d27786ca91272d90dbd2a88e1d51c8619e307a31",
+      "p1-complex-service-tests-23b.log": "7323988b7ab46126c9bb2a44f3a695c4c43a58c54b163be3d3f69fd5d6e0cb23",
+      "p1-complex-footprint-verification-23b.json": "c9e329bc9f1d6ef35c3c993a05f452ca20fe1f43d0bde03f507955c76029f1a3",
+      "verify-p1-support-footprint-23b.py": "4c4707617de0e9fab72eb5ea4ce10cbc823f1e51fdd5118d8dc258d932212bad",
+      "p1-complex-preservation-23b.json": "5eef92af5df0296acf0bd76f7b13a32a632a5a7ded5db3a958180e50ce39dacf",
+      "p1-complex-validation.json": "2ebb43ea7a73e0b73779844855fd3762c68bf6b739751db4b59f63d4af16f69f",
+      "campus-p1-complex-candidate-23b-0.png": "947d613e0957d5b729c0068e68f36af7bd8dd2b460b6e1c09886a73dbfc62966",
+      "campus-p1-complex-candidate-23b-1.png": "046d8e4c08d3ea7f804963fd15280c55181b257bf932cd46147962b4ed1797ff",
+      "campus-p1-complex-candidate-23b-2.png": "a2ba75a67bc0859193412014817a4a3db23e79060f7cbfb95edb0d9c0ca4b403",
+      "campus-p1-complex-candidate-23b-3.png": "9d56f4061854c64d988a56e7ad7abdffd80696a9d481a5e77d3b3025b93f414d",
+      "campus-p1-complex-candidate-23b-4.png": "d433f1787532788449b582b498dfd25cd4aa12c2cef488b84641d6cf532e5284",
+      "campus-p1-complex-candidate-23b-5.png": "e77403e981dd2dd0d35dad956b9e1a5e79ea9d1fcf15449ccd274992b107a59a",
+      "campus-p1-complex-candidate-23b-6.png": "6d6e90a9fe14b99c4914a7d92f3cb939a67dd300d6ac201aff77a29ba201baa0",
+      "campus-p1-complex-candidate-23b-7.png": "8cef4bf7919c45b538a387e3a863b3c46d29d73e4dfbe1363568403a17604694",
+      "campus-p1-complex-candidate-23b-8.png": "c2b5b1252ae1a94e9646866adf9780f1afd108ebbfa0c1cd7d43988c91c6b161",
+      "campus-p1-complex-candidate-23b-9.png": "bb8b17d7a0f147cd0bdbe1cfe5bc73930fa620be10491d15124f7529ccfd22b9",
+      "campus-p1-complex-candidate-23b-walk-0.png": "40b96b9c1bec9ad536d0d2bd2283b5170f8dad98230081bbd7bec97c0fd6878e",
+      "campus-p1-complex-candidate-23b-walk-1.png": "a9f57be7f6e8e38aa05f80d18b1a0c92231b69634e9589d1ead5ced4864ba7b0",
+      "campus-p1-complex-candidate-23b-walk-2.png": "077b7091c503d08c1382cdd5d357c75667302a47cd9afe0a3703d752c2d4f414",
+      "campus-p1-complex-candidate-23b-walk-3.png": "ac746ba2e9616b314bd0c739c7c92ebd5b0b7f37e936b514a9e1520896b564f5",
+      "campus-p1-complex-candidate-23b-walk-4.png": "e7e39ecdca8d54f5734fc278be41b27f7d82e92e79352e9448cb74cadb31a7e6",
+      "campus-p1-complex-candidate-23b-walk-5.png": "c253be6ebd6d1cc4e6e269a7c39ddbbe4bc893d85d4cd3edd4e008a07f672089",
+      "campus-p1-complex-candidate-23b-walk-6.png": "f396d3e2bf1bec27ccd3451ba0b3d99a3537bf068fd60a9d142c08814dc04610",
+      "campus-p1-complex-candidate-23b-walk-7.png": "c2ede9c40196f160770ffd6d08dbcba2a902591d27215929d7b52933682d575f",
+      "campus-p1-complex-candidate-23b-walk-8.png": "b06f414e56e3f3cbf9b49a431831f9e93699324e4ec4b646f96f1677078fc56a"
+    },
+    "preservation": {
+      "originalSaveFilesUnchanged": 121,
+      "previewSaveFilesUnchanged": 121,
+      "previewSettingsUnchanged": 4,
+      "installedArtifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86"
+    }
+  },
+  "woodlandCheckpoint": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 281523705,
+      "sha256": "9615fbabc0cb4b54196ba307f1e7d619e3daee31416b7a37e553577bb7940109",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "3d6b7d052b710910d7bce4b5edcf6ecfa1ab33ca649ff3d5ec985097a2aa9db8",
+      "rendererSourceFingerprint": "0ac9926df6779645",
+      "bundleSha256": "0e3992e9c4cc25546a01f3880aec3160b4348ebce23ca72b33e99c928af90b5c",
+      "tiles": 193,
+      "bundleUnpackedBytes": 632053502,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "status": "LOCAL CHECKPOINT ONLY: fresh woodland improves; existing-world dirt, river boundary, remaining buildings and release checks are unresolved",
+    "newGroundTiles": 41,
+    "newGroundAreaSquareMetres": 35784,
+    "newTrees": 144,
+    "newVegetationGroups": 9,
+    "previousRenderTilesUnchanged": 143,
+    "previousFacadePlansUnchanged": 88,
+    "packagedServiceTestsPassed": 40,
+    "packagedPathSamplesPassed": 226,
+    "existingWorld": {
+      "artifact": {
+        "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+        "size": 281523705,
+        "sha256": "9615fbabc0cb4b54196ba307f1e7d619e3daee31416b7a37e553577bb7940109",
+        "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+        "sourcePatchSha256": "3d6b7d052b710910d7bce4b5edcf6ecfa1ab33ca649ff3d5ec985097a2aa9db8",
+        "rendererSourceFingerprint": "0ac9926df6779645",
+        "bundleSha256": "0e3992e9c4cc25546a01f3880aec3160b4348ebce23ca72b33e99c928af90b5c",
+        "tiles": 193,
+        "bundleUnpackedBytes": 632053502,
+        "bundleUnpackedLimit": 1073741824
+      },
+      "world": "campus-check-physics-roadside-19b",
+      "nativeChecksPass": true,
+      "cameraViewsReviewed": 11,
+      "standingCapturesReviewed": 13,
+      "nativeColliderChecks": 4,
+      "maxStandingSupportErrorMetres": 0.5069435168241796,
+      "maxStandingCentreErrorMetres": 0.554347209843705,
+      "releaseAccepted": false,
+      "review": {
+        "cameraViewsReviewed": 11,
+        "standingCapturesReviewed": 13,
+        "visualAccepted": false,
+        "findings": [
+          "All11 camera views and13 standing captures reviewed, including midnight and daylight return.",
+          "Survey-guided terrain and reconstructed trees replace the coarse canopy within the added footprint.",
+          "Many ordinary vanilla dirt blocks remain visible around the woodland in this previously generated QA world; preserving these blocks is intentional because provenance cannot establish absence of user edits.",
+          "P1 garage, utility cylinders, container and library regression views remain intact.",
+          "River/outside-footprint coarse geometry and the unreconstructed5117 facade remain visible."
+        ],
+        "qualification": "Automated standing and collider checks passed. This does not establish continuous native route clearance or acceptable old-world appearance. Fresh-generation comparison is separate and pending."
+      },
+      "files": {
+        "campus-physics-woodland-candidate-24-result.json": "4ea951d11ba68d1f2f11441415e9a2cf70c21984ad6b9f28b0f20b089e9e698b",
+        "physics-woodland-candidate-24-client.log": "574e02c1ef7a9482294d9b5aa4b9c5712f8bf00f9a89c35be8935034121781df",
+        "campus-physics-woodland-candidate-24-0.png": "301c98031a1e7d755fdbaaaf965cc57091fafedc384387f9f4e3fc41bec746c4",
+        "campus-physics-woodland-candidate-24-1.png": "d0c86165ff7a3ac8fe48c3d339a611edc26f2a2519d8cbeeba18008b1b2acfcf",
+        "campus-physics-woodland-candidate-24-2.png": "e8d5666a228148ab35596b1d11bff5f8b56b829354b8c8940e1cd4ccd3b5f834",
+        "campus-physics-woodland-candidate-24-3.png": "96d87922e8816b5abe177759ca9cca275143aa3c33bba291f05212f21c35fba8",
+        "campus-physics-woodland-candidate-24-4.png": "bcca58154b277e03495f0cf1f45731af7e1dbaf2e25255c49868132ad3b385b5",
+        "campus-physics-woodland-candidate-24-5.png": "57479837283e1bc62e8031a228278ec83d506b24f808c848f52bcbce53abb642",
+        "campus-physics-woodland-candidate-24-6.png": "9af2576080f5d31db1d5e96ba75fedec11c2513a98efd06d6a709ba1819327e9",
+        "campus-physics-woodland-candidate-24-7.png": "f558b85da7b0d659b7f71f6ac5c40f301b9bf4c5a5de27ae9efec54af8aee9c0",
+        "campus-physics-woodland-candidate-24-8.png": "6a4ee017dbeeca2a239466ed328f6eada7dacb965c4200fdf0f4731371686fcd",
+        "campus-physics-woodland-candidate-24-9.png": "56c8f97a3ee6585c9257527e2742d5c568943debf0a3f27f02359f0d97f86fc3",
+        "campus-physics-woodland-candidate-24-10.png": "31f79f879c275123bef7a9594be7786b6d1964d9ee9d213ed5106a9177fe917a",
+        "campus-physics-woodland-candidate-24-walk-0.png": "78a25bb2affbeed7a2e44e38a302c49f2aef125cff5cb50fda8467d85883abc6",
+        "campus-physics-woodland-candidate-24-walk-1.png": "ff35004330addd07cf0f260176f38697b1be31f8d49ecfba9b695de2c416d193",
+        "campus-physics-woodland-candidate-24-walk-2.png": "9815a966bf4d01e7b5d92198a672846365b76eda26bcef157b835dc997d346ab",
+        "campus-physics-woodland-candidate-24-walk-3.png": "cd9f5a9de4bf3b42516a41cdf435528f849f6f4af42aa72c140954ef07844097",
+        "campus-physics-woodland-candidate-24-walk-4.png": "235c2c7d4664100d891566c4b29ea9a4ddd807114e5d0b4f6fe8d8d764529755",
+        "campus-physics-woodland-candidate-24-walk-5.png": "61fa36d0de7af36e840a8e2f71fabf4ee3a7a91f02213c649b6b1f31e06636ae",
+        "campus-physics-woodland-candidate-24-walk-6.png": "a8bddc79b2ac59abc47891e5c5e2665f81c4cfbf9b6654fdcb07010264571e94",
+        "campus-physics-woodland-candidate-24-walk-7.png": "3cf8fdc0d5d125a85a98b41bb176d7a430ab5429c3d605eb0b14eb2360fb016f",
+        "campus-physics-woodland-candidate-24-walk-8.png": "63b767b0dbbcf3a66fd5d66624c1db0e32dd81b209fc2fbf31acfd52f2c8474a",
+        "campus-physics-woodland-candidate-24-walk-9.png": "255df0dde57d5ad80a5e75d939cc6947d2cb597d49c6db0c8be7a6aeed1966dc",
+        "campus-physics-woodland-candidate-24-walk-10.png": "9541c711fa70eeb4709c166d378d6112d06c7e694105481c07271adc6b819d1d",
+        "campus-physics-woodland-candidate-24-walk-11.png": "564e77e0ecd1581c624da29aaa2bc705d83878db51a190507ab280725aaa34e7",
+        "campus-physics-woodland-candidate-24-walk-12.png": "a9148ad120114d4902e59c1c3030794fc873ca11c43c51b958445d944ef07f7e",
+        "woodland-service-24.json": "3ce80e75cfc9e51c431cc18b856efbdf1a4c147c0283fe9954193cae52a2d3ca",
+        "woodland-path-clearance-24.json": "2a185fe768696d86019a9623bce2da337b295fde1cce56d08a615fe025ea47b9",
+        "woodland-preservation-24.json": "5eef92af5df0296acf0bd76f7b13a32a632a5a7ded5db3a958180e50ce39dacf",
+        "woodland-scope-24.json": "c1af407b14b8076449a81e8c40825d6df696252ccf268582896cd931d0232eea",
+        "woodland-path-samples-24.json": "6c1509d4c78473b79fc0cad200f18964c26974c5a7b77ae72fb1b639cd453fda",
+        "woodland-container-validation-24.log": "1a2c4a51e9260bf147bd24f02d52a95d77b5723c16f4f7263324117a5862087b",
+        "woodland-p1-validation-24.log": "c4f0bc78ec0c78fc2a3e95a2b611bb68ebf875110ec0e0adc854bc362cbe1abb",
+        "woodland-path-clearance-24.log": "59e1ff03f56ca9b111e9d5b5ac1e2709066f81f9e4686df358e7a85aba119381",
+        "woodland-site-validation-24.log": "5773ec0957bfc25eb3b0487747f0742838f0e406e0917dbeeaf7196e0a583b69",
+        "woodland-library-validation-24.log": "83c4137cf6c52545b1e9f9966a78e7bb7dd7401213853b1a45853328df1755bb",
+        "woodland-validation-24.log": "7784c4e2810a69b546d4b50568499a92c73544336e31fa763a30d589ea1242e5",
+        "woodland-service-tests-24.log": "ca81bae6075a7e965427994334af95ece27c123a1654222be35aba52f5f144a3",
+        "woodland-build-24.log": "1f40bdba4c10056f7cb796d7e1dab399f96fa9e8b97439cbbc1cd7e5ee692591",
+        "woodland-release-build-24.log": "739512df2601708d0a37c00c090c694c407525db366e0236c1dec4158654eb13",
+        "woodland-service-validation-24.log": "9b4475e78bfd608b2c5978122329e5db0e09d12a34f631f6a99b30f6d11e23f8"
+      }
+    },
+    "freshWorld": {
+      "artifact": {
+        "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+        "size": 281523705,
+        "sha256": "9615fbabc0cb4b54196ba307f1e7d619e3daee31416b7a37e553577bb7940109",
+        "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+        "sourcePatchSha256": "3d6b7d052b710910d7bce4b5edcf6ecfa1ab33ca649ff3d5ec985097a2aa9db8",
+        "rendererSourceFingerprint": "0ac9926df6779645",
+        "bundleSha256": "0e3992e9c4cc25546a01f3880aec3160b4348ebce23ca72b33e99c928af90b5c",
+        "tiles": 193,
+        "bundleUnpackedBytes": 632053502,
+        "bundleUnpackedLimit": 1073741824
+      },
+      "world": "campus-check-woodland-fresh-24",
+      "nativeChecksPass": true,
+      "cameraViewsReviewed": 11,
+      "standingCapturesReviewed": 13,
+      "nativeColliderChecks": 4,
+      "maxStandingSupportErrorMetres": 0.5069435168241796,
+      "maxStandingCentreErrorMetres": 0.554347209843705,
+      "releaseAccepted": false,
+      "review": {
+        "cameraViewsReviewed": 11,
+        "standingCapturesReviewed": 13,
+        "visualAccepted": false,
+        "reconstructedWoodlandAccepted": true,
+        "findings": [
+          "All11 camera views and13 standing captures reviewed, including midnight and daylight return.",
+          "The large ordinary dirt piles visible in the existing QA world are absent from the reconstructed woodland in this fresh world.",
+          "The144 inferred trees and surveyed ground produce an open forest floor with usable sampled routes; no new trunk blocks the four checked standing positions.",
+          "P1 garage/utility, cylinders, container and library ground controls remain intact.",
+          "Coarse source geometry remains at the river boundary and outside reconstruction coverage. Some ground material transitions and aerial-image shadows remain visible.",
+          "TUM5117 remains conspicuously unreconstructed in background views."
+        ],
+        "performanceObservation": {
+          "secondsFromSetupToFirstStableCapture": 504.7,
+          "capturedFps": [
+            52,
+            49,
+            55,
+            55,
+            50,
+            115,
+            80,
+            117,
+            72,
+            54,
+            55
+          ],
+          "qualification": "Isolated first-load QA observation with streamed surroundings and fresh chunk generation, not a controlled gameplay benchmark. Initial loading is too slow to call release-ready."
+        },
+        "qualification": "Only the bounded woodland replacement is accepted as a local improvement. Entire-view realism, old-world migration, continuous native route clearance, broad gameplay and release acceptance remain open."
+      },
+      "files": {
+        "campus-physics-woodland-fresh-24-result.json": "9b555001b716f1cbaf6b2398b030de911e74f0dae2596838c951eeaf9f47d8e1",
+        "physics-woodland-fresh-24-client.log": "2e8e40f081ab84e0a7bce9dbb7fba67350076348c85f6691e0d91624209e3ee8",
+        "campus-physics-woodland-fresh-24-0.png": "39b367c57486876462a8921ea1d20ba568b0eff1d09bfd57155fb5c84847688f",
+        "campus-physics-woodland-fresh-24-1.png": "9aafc63cba9d0fb05dd4bfa12b352ae5511d8f8809416c14f46732972a75210c",
+        "campus-physics-woodland-fresh-24-2.png": "90d9534c9502b41d68b6c486d0ac8a8599da9f58c23bd1b74976f6afcd0187a0",
+        "campus-physics-woodland-fresh-24-3.png": "22b68cb3895114acdfe15284a98eb245548b5c378f68b027991684491f0dad82",
+        "campus-physics-woodland-fresh-24-4.png": "e421bed152f87448881e91d8f5c243d1061534dbf7471ff78ac8c35b98bd5861",
+        "campus-physics-woodland-fresh-24-5.png": "e65ffb34f21337eadfd08f34bc7335fe6841555bd811bfc92616d8cca14f4d14",
+        "campus-physics-woodland-fresh-24-6.png": "ceb1582c62bd39fd1742e9d1a75e1db62e9a503945d9c0966a4afee3a8ac7aad",
+        "campus-physics-woodland-fresh-24-7.png": "b81213245ed0c180a1a3649276cc096dcfcb7939cd333d40ee48570e52dbd0fa",
+        "campus-physics-woodland-fresh-24-8.png": "9fe500c4587b22966b79b7b85dc1aa0376b3c2dee22b0cd363136434ffec0766",
+        "campus-physics-woodland-fresh-24-9.png": "56fe72d51ca0020b1c93b5844d54ef66dd43267033f31631374ed12571aadf06",
+        "campus-physics-woodland-fresh-24-10.png": "90d9534c9502b41d68b6c486d0ac8a8599da9f58c23bd1b74976f6afcd0187a0",
+        "campus-physics-woodland-fresh-24-walk-0.png": "541990a492abee1101b2bf4b5e017c8b2fde30bcb7a2123a6924a9639d2f4fe3",
+        "campus-physics-woodland-fresh-24-walk-1.png": "015369ac3d622c28bae6dabb0654886b0ab89393ff28a290f5eaaa50f44004d1",
+        "campus-physics-woodland-fresh-24-walk-2.png": "cf190bf97f590c81e02f73c6a52c0c5fca60be31a78df547d7fcddc43740673b",
+        "campus-physics-woodland-fresh-24-walk-3.png": "0d352f7b506b37b9d9573728b9ac4f78c7022f636d2dbcba02f1c01ea5d364f4",
+        "campus-physics-woodland-fresh-24-walk-4.png": "0f2d71a7ee8866b3c7a86a55b6bed8ac38f2bb3c9e00291ceda42c8897afc110",
+        "campus-physics-woodland-fresh-24-walk-5.png": "49973c67de502f8cd87e90edbde632588c94a079495ccf6f17901d39236efb0a",
+        "campus-physics-woodland-fresh-24-walk-6.png": "034d0a9931986824116680bcbef19c6421ef77413afaae5aa705b87e63e19711",
+        "campus-physics-woodland-fresh-24-walk-7.png": "ac746ba2e9616b314bd0c739c7c92ebd5b0b7f37e936b514a9e1520896b564f5",
+        "campus-physics-woodland-fresh-24-walk-8.png": "e7e39ecdca8d54f5734fc278be41b27f7d82e92e79352e9448cb74cadb31a7e6",
+        "campus-physics-woodland-fresh-24-walk-9.png": "c253be6ebd6d1cc4e6e269a7c39ddbbe4bc893d85d4cd3edd4e008a07f672089",
+        "campus-physics-woodland-fresh-24-walk-10.png": "674ab775646aa967de180b9e5e1206cb6f9a8b3281a8c707007584b26264df24",
+        "campus-physics-woodland-fresh-24-walk-11.png": "91f6c4d35a47a6fe2372bd5baf8167641b62f58b8302b7b5e36a155b3aa382ff",
+        "campus-physics-woodland-fresh-24-walk-12.png": "debceda147ec8e185d77c8110591293f10174fd4d9c404bb791538c4c7d33cd6",
+        "woodland-service-24.json": "3ce80e75cfc9e51c431cc18b856efbdf1a4c147c0283fe9954193cae52a2d3ca",
+        "woodland-path-clearance-24.json": "2a185fe768696d86019a9623bce2da337b295fde1cce56d08a615fe025ea47b9",
+        "woodland-preservation-24.json": "5eef92af5df0296acf0bd76f7b13a32a632a5a7ded5db3a958180e50ce39dacf",
+        "woodland-scope-24.json": "c1af407b14b8076449a81e8c40825d6df696252ccf268582896cd931d0232eea",
+        "woodland-path-samples-24.json": "6c1509d4c78473b79fc0cad200f18964c26974c5a7b77ae72fb1b639cd453fda",
+        "woodland-container-validation-24.log": "1a2c4a51e9260bf147bd24f02d52a95d77b5723c16f4f7263324117a5862087b",
+        "woodland-p1-validation-24.log": "c4f0bc78ec0c78fc2a3e95a2b611bb68ebf875110ec0e0adc854bc362cbe1abb",
+        "woodland-path-clearance-24.log": "59e1ff03f56ca9b111e9d5b5ac1e2709066f81f9e4686df358e7a85aba119381",
+        "woodland-site-validation-24.log": "5773ec0957bfc25eb3b0487747f0742838f0e406e0917dbeeaf7196e0a583b69",
+        "woodland-library-validation-24.log": "83c4137cf6c52545b1e9f9966a78e7bb7dd7401213853b1a45853328df1755bb",
+        "woodland-validation-24.log": "7784c4e2810a69b546d4b50568499a92c73544336e31fa763a30d589ea1242e5",
+        "woodland-service-tests-24.log": "ca81bae6075a7e965427994334af95ece27c123a1654222be35aba52f5f144a3",
+        "woodland-build-24.log": "1f40bdba4c10056f7cb796d7e1dab399f96fa9e8b97439cbbc1cd7e5ee692591",
+        "woodland-release-build-24.log": "739512df2601708d0a37c00c090c694c407525db366e0236c1dec4158654eb13",
+        "woodland-service-validation-24.log": "9b4475e78bfd608b2c5978122329e5db0e09d12a34f631f6a99b30f6d11e23f8"
+      }
+    },
+    "releaseAccepted": false,
+    "qualification": "Fresh-generation evidence does not resolve migration of untracked ordinary blocks. User saves and installed dev22 are preserved. Terrain, woodland species, path widths and material details remain approximations; river-edge scan artifacts and unreconstructed buildings are still visible."
+  },
+  "laboratory25c": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 282484599,
+      "sha256": "33837f0713cdcc19b3d8259a17c6b9baf675979645fa3e853952008a75ba2c77",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "bdac63ba9725fb703b9e87686cc7c9109076d6cdc9c54c9d55c6384ad87acbf0",
+      "rendererSourceFingerprint": "ae1385a1bbc794b0",
+      "bundleSha256": "1ea0dfabc45d6e4e44c3b549438be81a523b14409337fc99029fcdfd1d459cea",
+      "tiles": 195,
+      "bundleUnpackedBytes": 634904783,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsReviewed": 12,
+    "standingCapturesReviewed": 11,
+    "nativeColliderChecks": 4,
+    "firstCaptureSeconds": 99.3,
+    "fps": [
+      81,
+      56,
+      60,
+      80,
+      102,
+      54,
+      91,
+      105,
+      109,
+      106,
+      106,
+      75
+    ],
+    "maxStandingSupportErrorMetres": 0.5002910148181456,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "findings": [
+      "Surveyed laboratory walls and preserved roof are recognizable. Narrow outer glazing, ground fins and reflective courtyard glazing respond to night/day.",
+      "Matched south facade, southwest corner and courtyard views no longer show the close purple source fragments seen in25b.",
+      "All11 native support/body-clearance checks pass including previous north failure; existing woodland and library controls retained.",
+      "Original north camera is inside adjacent building8486665. Added outdoor north view has4.50m minimum survey footprint clearance and shows the newlab facade.",
+      "West-side construction-era source clutter and untreated neighbouring structures remain.",
+      "Recessed joints remove coplanar overlay geometry but narrow backing still permits bright oblique seams; extend opaque backing behind panels and verify grazing rays.",
+      "Current fine procedural zinc reads too flat/concrete-like. Evaluated a CC0 galvanized texture; not bundled.",
+      "Courtyard/site ground, woodland boundary, broad gameplay/lifecycle and safe existing-save rollout remain unfinished."
+    ],
+    "nextActions": [
+      "Fix physical joint backing and grazing-angle coverage",
+      "Improve zinc appearance using the researched material at a qualified scale",
+      "Use recorded west/courtyard screen rays and current survey imagery to bound further site cleanup; preserve neighbour structures",
+      "Verify final component and broad campus/gameplay before any release/install"
+    ],
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    }
+  },
+  "laboratory25d": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 283330132,
+      "sha256": "cc15f2fdd32e5945ea2764138cab57f71c9490da7ef9205b30bd091ba93b0cc3",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "6e0e1c7fa73888103a8d70af4742b26891880bf9d78258ea6f765d195009f29a",
+      "rendererSourceFingerprint": "b5385cd40c4ecde9",
+      "bundleSha256": "ffb4447bdf2cc9d05e9b722a4c4c696de66a0761a7afb2c3589cbe98c1149207",
+      "tiles": 195,
+      "bundleUnpackedBytes": 634645602,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsReviewed": 14,
+    "standingCapturesReviewed": 11,
+    "nativeColliderChecks": 4,
+    "firstCaptureSeconds": 105.3,
+    "fps": [
+      79,
+      52,
+      56,
+      75,
+      97,
+      49,
+      84,
+      107,
+      108,
+      107,
+      106,
+      75,
+      56,
+      51
+    ],
+    "maxStandingSupportErrorMetres": 0.5002910148181456,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "localMaterialImprovementAccepted": true,
+    "findings": [
+      "All14 camera and11 standing captures reviewed. Continuous dark backing closes the bright grazing-angle panel gaps seen in25c.",
+      "Photographed zinc grain and perforation appearance visible in the two labelled flight diagnostics; brighter estimated colour follows the architectural reference.1m repeat is not source-calibrated.",
+      "The16 independent grazing-ray regressions fail on25c and pass on25d. Roof, laboratory ground,193 earlier render tiles and88 facade plans remain unchanged.",
+      "Native day/night response and all11 support/body-clearance controls pass; woodland and library material appearance stays intact after sampler reuse.",
+      "Fine joints still alias at distance; no continuous-motion or resource-reload acceptance is inferred from static captures.",
+      "Remaining west source debris is outside the E698580 edge of the earlier woodland patch, not inside neighbouring buildings. A875.23m2 extension has been studied with survey and OSM bridge exclusions.",
+      "Broader source structures, site landscape, river transitions, gameplay/lifecycle and safe rollout remain unfinished."
+    ],
+    "nextActions": [
+      "Build the surveyed west-site gap from the study at.cache/laboratory-west-site-26/study.json, retaining old ground and neighbour/bridge coverage",
+      "Map asphalt paths and grass with the versioned7-way OSM subset; preserve unknown material qualifications and source heights",
+      "Check vegetation and fence coverage before retiring the old outdoor scan",
+      "Run matched west views and new native standing controls, then continue broader campus quality/regression work"
+    ],
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    }
+  },
+  "laboratorySite26b": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 285337205,
+      "sha256": "c4d978826e23aa2547adafbf132e0ef56dd01b7fa0ed9299116d4fb1a1a41d6b",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "0eba5af09223f02c7200986376f14a782fec81f5ff558dd5158e5f03d3ab7565",
+      "rendererSourceFingerprint": "52a7fb062484b45f",
+      "bundleSha256": "08114beaaf8b365937839506d77e641adf0031e8e0fe80db517e72241b80240f",
+      "tiles": 203,
+      "bundleUnpackedBytes": 641576686,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsReviewed": 9,
+    "standingCapturesReviewed": 14,
+    "nativeColliderChecks": 2,
+    "firstCaptureSeconds": 86.0,
+    "fps": [
+      81,
+      107,
+      113,
+      60,
+      76,
+      113,
+      113,
+      109,
+      77
+    ],
+    "maxStandingSupportErrorMetres": 0.5002910148181456,
+    "localGroundCleanupAccepted": true,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "findings": [
+      "Reviewed all9 camera and14 standing captures from the exact packaged JAR. The large blue/green outdoor scan blobs in the matched west approach are gone; geometric screen rays now reach ground/laboratory instead.",
+      "Added875.231807m2 of DGM1 ground with DOP20 pixels, mapped paths/grass, one canopy-derived tree and50m OSM-aligned railing. Untagged widths, rail dimensions and tree forms are estimates.",
+      "Independent validator checks8647 material pixel controls, terrain coordinates, building/bridge guards, earlier-ground separation and railing alignment. All195 previous ECT meshes and all prior facade plans remain byte-identical.",
+      "The first run is retained as a failed checkpoint: one proposed ground-standing point was16cm from the actual fence; its0.6m footprint intersects the railing. A separate top-rail collision ray also exceeded the quantized proxy top.",
+      "The revised standing point is clear of the fence; the mid-height upright has native collision. This establishes player-body obstruction, not exact thin-rail collision: top rail64.116m versus full-block proxy top64m remains a limitation.",
+      "Night/day captures respond correctly, and existing courtyard glazing and library undercroft/bridge controls remain intact.",
+      "Physik II still has severely distorted original scan walls and base gaps. Unclassified ground retains blurred aerial appearance and the courtyard/site fixtures remain incomplete.",
+      "No full-campus, continuous-motion, gameplay/lifecycle or existing-save rollout acceptance is inferred. No installation or public release was performed."
+    ],
+    "nextActions": [
+      "Reconstruct Physik II /5107 /DEBY_LOD2_5323119 using surveyed geometry and primary exterior references; source study is in.cache/laboratory-west-neighbour-source-27/study.json.",
+      "Inspect and reconstruct the Physik II connecting bridge and base against ground without inventing interiors.",
+      "Improve unclassified site ground and source-supported landscape/fixtures, preserving adjacent reconstructed meshes.",
+      "Continue broader campus quality/gameplay/lifecycle checks and safe preservation-first rollout."
+    ],
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    }
+  },
+  "physicsII27": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 287952192,
+      "sha256": "395a6ecfadc251de26e38a89e4d159aee525869b74efd8aaad9937f24a6d6255",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "04d3f62d01dbf2d37f7196250bc0e4ce5cec0e135d1eb33054b2f58795314e51",
+      "rendererSourceFingerprint": "b7a61daa2666b230",
+      "bundleSha256": "0ad12cf44c550ba1de09b321a6607839c46f97989e0a0f148dd2d74a7b163a44",
+      "tiles": 217,
+      "bundleUnpackedBytes": 649507377,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsCaptured": 12,
+    "standingCapturesCaptured": 11,
+    "nativeColliderChecks": 5,
+    "firstCaptureSeconds": 99.6,
+    "fps": [
+      66,
+      109,
+      82,
+      57,
+      75,
+      72,
+      86,
+      68,
+      116,
+      87,
+      87,
+      77
+    ],
+    "maxStandingSupportErrorMetres": 0.24379529019732615,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "cameraViewsReviewed": 12,
+    "standingCapturesReviewed": 11,
+    "localEnvelopeImprovement": true,
+    "findings": [
+      "All12 native camera views and11 standing captures reviewed. Physik II main, south stair and raised bridge have surveyed envelopes,75 unchanged roof triangles with original DOP20 pixels,37 recessed opening groups, panel joints with solid backing and glazing reflections. Dimensions and materials inferred from references remain estimates.",
+      "Independent checks verify original roof vertices/pixels,37 outward panes,43 joint backing controls,2293.9888m2 DGM1 ground, zero overlap with earlier ground,3.2592m central bridge clearance and92.75m2 of measured courtyard planting. All203 prior render meshes and89 prior facade plans remain unchanged.",
+      "The independent full-survey check caught a northern neighbouring body omitted by the earlier Physics I search bounds. Physik II now requests broader survey bounds; its terrain and retirement masks exclude that body. The default earlier search behaviour is unchanged.",
+      "Five native wall/glass collision checks and11 standing/body-clearance controls pass. Maximum footprint-support error0.2438m with unchanged0.51m tolerance. Bridge centre and both approaches remain passable; library controls still pass. Night/day captures respond correctly.",
+      "Two initial service ground-only probes overlapped block-sized wall proxies despite their continuous-space clearance. Revised controls are farther from the walls. This does not claim sub-block collision accuracy. Diagnostic evidence is retained.",
+      "Courtyard shrubs are sampled from green DOP20 cells and0.7\u20134.2m DOM20 minus DGM1 height bounds, with a wall setback. Species, stems and leaf arrangements are estimates using CC0 foliage. Flexible shrub detail is explicitly non-colliding; tall tree trunks elsewhere retain their existing collision.",
+      "The empty-tree detection fix was reproduced against woodland and laboratory-site generators; all58 existing vegetation/terrain assets from those runs remain byte-identical and prior supplemental surfaces remain unchanged.",
+      "Visual acceptance remains false: sky gaps are visible at the western/northern/southern terrain boundary, coarse scan fragments remain outside the bounded patch, a protected northern body produces visible fragments near the main wall, and unclassified ground retains a blurred aerial appearance.",
+      "The reused isolated QA world contains ordinary dirt blocks near the south stair and courtyard. These are retained because there is no reliable provenance for deleting ordinary blocks. A fresh-generation comparison is required; no user-save cleanup is authorized by this checkpoint.",
+      "All242 original/preview save files and4 settings files remain unchanged. No installation, push or public release was performed. Full-campus, motion, gameplay/lifecycle and safe rollout acceptance remain open."
+    ],
+    "nextActions": [
+      "Run the same217-tile packaged candidate in a newly generated isolated QA world (copy only QA level.dat and data/earthcraft_regions.dat, never user saves) to separate preserved old dirt from new generation. Do not delete ordinary blocks in existing worlds.",
+      "Investigate sky gaps around Physik II. Compare finite supplemental ground coverage to photo facade retirement and whole-triangle removal at boundaries; preserve source fragments outside owned coverage or extend surveyed ground with source-supported site coverage.",
+      "Inspect the protected north body DEBY_LOD2_41731133 against raw survey and references; reconstruct it if supported rather than erasing its protected source geometry blindly.",
+      "Improve source-supported ground materials, north/west landscaping and the courtyard planting appearance; check possible existing tree/bridge intersections.",
+      "Continue broader campus/gameplay/lifecycle validation and preservation-first playable rollout. Keep the overall goal active."
+    ]
+  },
+  "physicsIIFresh27": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 287952192,
+      "sha256": "395a6ecfadc251de26e38a89e4d159aee525869b74efd8aaad9937f24a6d6255",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "04d3f62d01dbf2d37f7196250bc0e4ce5cec0e135d1eb33054b2f58795314e51",
+      "rendererSourceFingerprint": "b7a61daa2666b230",
+      "bundleSha256": "0ad12cf44c550ba1de09b321a6607839c46f97989e0a0f148dd2d74a7b163a44",
+      "tiles": 217,
+      "bundleUnpackedBytes": 649507377,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsCaptured": 12,
+    "standingCapturesCaptured": 11,
+    "nativeColliderChecks": 5,
+    "firstCaptureSeconds": 389.6,
+    "fps": [
+      68,
+      108,
+      84,
+      56,
+      75,
+      72,
+      86,
+      68,
+      117,
+      87,
+      87,
+      78
+    ],
+    "maxStandingSupportErrorMetres": 0.24379529019732615,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "cameraViewsReviewed": 12,
+    "standingCapturesReviewed": 11,
+    "findings": [
+      "All23 native captures reviewed. Fresh generation has no previously observed ordinary dirt piles at the south stair and courtyard. Source terrain-edge voids and protected northern scan fragments still appear.",
+      "The same27 JAR passed all11 standing controls and5 wall checks. First capture required389.6seconds with cold generation/streaming; later views rendered56\u2013117fps.",
+      "No user chunks or inventory were copied: only two QA metadata files initialized this isolated world. Existing worlds remain preserved."
+    ]
+  },
+  "physicsIIBoundary28": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 287964835,
+      "sha256": "9792b24e7c20b55b6a2a3578236beb7a96a5326e8ec62f6ceaf87b5e6bfc4ca4",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "04d3f62d01dbf2d37f7196250bc0e4ce5cec0e135d1eb33054b2f58795314e51",
+      "rendererSourceFingerprint": "b7a61daa2666b230",
+      "bundleSha256": "0198c57badf2e7afff743ff6508881e9755f306c1b31939c6cc70254324e7b69",
+      "tiles": 217,
+      "bundleUnpackedBytes": 649543023,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsCaptured": 12,
+    "standingCapturesCaptured": 11,
+    "nativeColliderChecks": 5,
+    "firstCaptureSeconds": 96.6,
+    "fps": [
+      67,
+      102,
+      84,
+      57,
+      74,
+      70,
+      85,
+      67,
+      116,
+      87,
+      86,
+      76
+    ],
+    "maxStandingSupportErrorMetres": 0.24379529019732615,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "cameraViewsReviewed": 12,
+    "standingCapturesReviewed": 11,
+    "boundaryVisualAccepted": false,
+    "visualComparison": [
+      {
+        "view": 1,
+        "beforeVoidPixels": 33570,
+        "afterVoidPixels": 33570,
+        "targetedRays": 2,
+        "targetedRaysWithoutVisibleMesh": 2
+      },
+      {
+        "view": 2,
+        "beforeVoidPixels": 153625,
+        "afterVoidPixels": 153628,
+        "targetedRays": 3,
+        "targetedRaysWithoutVisibleMesh": 3
+      },
+      {
+        "view": 3,
+        "beforeVoidPixels": 143772,
+        "afterVoidPixels": 143772,
+        "targetedRays": 2,
+        "targetedRaysWithoutVisibleMesh": 2
+      },
+      {
+        "view": 5,
+        "beforeVoidPixels": 42278,
+        "afterVoidPixels": 42278,
+        "targetedRays": 1,
+        "targetedRaysWithoutVisibleMesh": 1
+      }
+    ],
+    "findings": [
+      "Candidate28 preserves all217 ECT render meshes and89 earlier facade plans. Physik II retirement now follows rounded terrain buffers and the0.5m neighbour guard; retirement without replacement ground falls from14.6878m2 to0.3164m2.",
+      "Complete-envelope source retirement now clips triangle fragments at finite polygon and height boundaries instead of discarding entire crossing triangles. Source vertex attributes, UVs and save-datum offsets are preserved. The regression fails on the27 embedded service and passes on28; all45 service tests pass. An independent Shapely comparison passes162 cases across9 real envelopes (maximum area error1.43e-11m2,523ms).",
+      "All12 views and11 standing captures were reviewed. Five wall/glass checks and all11 standing/body-clearance controls pass. First capture96.6seconds;57\u2013116fps in captured views. This does not establish visual acceptance.",
+      "The four matched terrain-gap image regions are essentially unchanged, and all8 targeted screen rays still have no visible mesh hit. The clipping repair is valid but is not the solution to these dominant sky gaps. Preserve this failed visual checkpoint.",
+      "Independent raw-source ray sampling locates original source ground0.420\u20130.612m below the DGM surface at7 western/southern/northern probes. Those viewing rays enter the new terrain coverage already0.131\u20130.404m below its surface. The abrupt vertical transition, not only polygon ownership, must be resolved.",
+      "The bridge-approach source ray first meets an old fold1.46m above survey ground; it is not included in the seven ground-height comparisons. Do not treat that outlier as a terrain datum correction.",
+      "The small northern protected body DEBY_LOD2_41731133 has4survey walls and2roof triangles, height473.44\u2013482.071m. A private source study has4wall projections; three show dark glazing/silver frames, one is largely occluded. Geometry remains protected pending reconstruction.",
+      "Fresh27 comparison also passed all23 captures and11standing checks. Previously observed ordinary dirt piles are absent in fresh generation; original user saves/edits were not removed. Broad campus, continuous movement, gameplay/lifecycle and safe rollout acceptance remain unfinished."
+    ],
+    "nextActions": [
+      "Build continuous surveyed ground across the Physics II walking approaches instead of leaving isolated4m aprons, using the existing DGM1/DOP20 and DOM20 datasets, OSM paths/land cover and all neighbouring survey footprints. Study roughly20m or campus-site coverage, not arbitrary deletion of surrounding architecture.",
+      "Resolve and verify the remaining vertical transition wherever new survey terrain meets original source terrain. The seven raw-source/DGM differences are0.420\u20130.612m. Keep rendering and collision consistent; do not claim success by merely moving the visible seam or inserting arbitrary skirts.",
+      "Reconstruct the northern body DEBY_LOD2_41731133 from its4survey walls,2roof triangles and qualified private projections in.cache/physics-ii-north-source-28; preserve its roof/source attribution and shared-wall contacts.",
+      "Improve ground material classification and nearby vegetation, check existing tree/bridge intersections, then run matched walking/aerial/night views and targeted previously empty rays.",
+      "Keep both user save collections, inventory, edits, settings and credentials preserved. No release or installation acceptance until the broader objective is proven."
+    ]
+  },
+  "physicsIITransition29": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 287981601,
+      "sha256": "246498ed4bd0badd01a7abd81908987ad07fa344b44a2ebb954175a8c8b764e7",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "04d3f62d01dbf2d37f7196250bc0e4ce5cec0e135d1eb33054b2f58795314e51",
+      "rendererSourceFingerprint": "e64bda0de081092e",
+      "bundleSha256": "7e1fca0212aecadfd71f181bc3b4d708be3002b14af430c1b3df3e157820c3b7",
+      "tiles": 217,
+      "bundleUnpackedBytes": 649581650,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsCaptured": 12,
+    "standingCapturesCaptured": 14,
+    "nativeColliderChecks": 5,
+    "firstCaptureSeconds": 105.9,
+    "fps": [
+      62,
+      98,
+      78,
+      53,
+      69,
+      68,
+      84,
+      67,
+      116,
+      85,
+      85,
+      76
+    ],
+    "maxStandingSupportErrorMetres": 0.3930166475327468,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "cameraViewsReviewed": 12,
+    "standingCapturesReviewed": 14,
+    "dominantBoundaryRepairVerified": true,
+    "boundaryFullyAccepted": false,
+    "visualComparison": [
+      {
+        "view": 1,
+        "beforeVoidPixels": 33570,
+        "afterVoidPixels": 119,
+        "reductionPercent": 99.64551683050342,
+        "targetedRays": 2,
+        "targetedRaysWithoutVisibleMesh": 0
+      },
+      {
+        "view": 2,
+        "beforeVoidPixels": 153625,
+        "afterVoidPixels": 267,
+        "reductionPercent": 99.82620016273393,
+        "targetedRays": 3,
+        "targetedRaysWithoutVisibleMesh": 0
+      },
+      {
+        "view": 3,
+        "beforeVoidPixels": 143772,
+        "afterVoidPixels": 6773,
+        "reductionPercent": 95.28906880338313,
+        "targetedRays": 2,
+        "targetedRaysWithoutVisibleMesh": 0
+      },
+      {
+        "view": 5,
+        "beforeVoidPixels": 42278,
+        "afterVoidPixels": 26106,
+        "reductionPercent": 38.25157292208714,
+        "targetedRays": 1,
+        "targetedRaysWithoutVisibleMesh": 0
+      }
+    ],
+    "findings": [
+      "Candidate29 introduces a qualified2.5m joining shoulder inside the existing Physik II ground coverage.378of395 sampled boundary controls have usable source ground;17missing controls remain unfilled with correction fading nearby. Residuals range from-0.675to+0.167m. This is estimated grading, not a new terrain survey.",
+      "Only5of217render tiles change. All ground pixels and UVs, roofs, buildings and planting remain unchanged. The maximum emitted height adjustment is0.6382m. The terrain guide uses the same correction; native collision cache moves tov46.",
+      "All8previously empty rays hit terrain in both the encoded-mesh check and actual Minecraft. Matched west/south low-screen sky-colour counts fall99.65%/99.83%; north95.29%; bridge-approach38.25%. These are fixed image-region metrics, not a proof that every remaining sky-coloured pixel is a terrain hole.",
+      "All12camera views and14standing captures were reviewed. Five wall/glass collision checks and14standing/body-clearance controls pass with the unchanged0.51m support tolerance. Native night/day and courtyard/bridge views still render. Save preservation is checked separately below.",
+      "Residual gaps and conspicuously folded source geometry remain at the protected northern body, surrounding trees and wider walking approaches. The north-apron standing capture shows old dark source fragments projecting through the facade. The new south-shoulder standing view looks across the road and exposes a long gap at the opposite older survey boundary, outside the repaired Physik II shoulder. The courtyard planting still has overly regular thin stems. The campus-wide visual goal is not complete.",
+      "A separate mesh-quality study flags6changed narrow edge triangles with steep normals near the northern join. Some high computed slopes also exist in unchanged nearly-degenerate source-boundary triangles. A Delaunay experiment lowers the substantial-triangle peak from2.67to1.11but does not eliminate steep area; it is not shipped. Revisit with northern-body/site coverage, do not silently call this resolved.",
+      "Original user saves, preview saves and settings remain unchanged. Candidate29 is an isolated QA artifact; no installation, GitHub push or public release occurred."
+    ],
+    "nextActions": [
+      "Reconstruct the small northern body DEBY_LOD2_41731133 from4survey walls and2roof triangles, using the qualified private projections already in.cache/physics-ii-north-source-28. Preserve roof pixels and proper shared-wall contacts; extend materials/reflections to its new runtime ID. This addresses the conspicuous dark fragments and protected ground gap seen in the north-apron capture.",
+      "Extend continuous surveyed ground and source-informed vegetation through the wider Physik II walking approaches. Use DGM1/DOP20/DOM20 and existingOSM, retaining neighbouring surveyed buildings and respecting earlier ground ownership. Avoid just shifting source-height gaps outward.",
+      "Adapt sampled source-height joins to the new outer boundary; validate missing controls and improve thin boundary triangulation. The unshipped Delaunay study is in.cache/physics-ii-triangulation-study-29.json. Check both mesh normals and real walking controls.",
+      "Improve material classification, remaining coarse trees and courtyard shrub form, then repeat representative walking/aerial/night views. Broad campus/gameplay/lifecycle and safe rollout acceptance remain outstanding.",
+      "Keep both user save collections, inventory, edits, settings and credentials preserved. Keep the goal active until the visual standard is supported by evidence."
+    ]
+  },
+  "physicsIINorthInfill30": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 287988751,
+      "sha256": "7d57e81d962c7f038bcc67cedb06ff0dbb9f5eab4bb351af5dbb1dd25ee4c847",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "60f8e33fa0acdba8ce69a26b701d5bbd8b718e2e80abde5e975f44125b57c891",
+      "rendererSourceFingerprint": "40ab2a03f899aeaf",
+      "bundleSha256": "b5f8d61c725bf1407c6f23ccf32349bda2aa4a8c514db296cad83820ff18ecd2",
+      "tiles": 218,
+      "bundleUnpackedBytes": 649619655,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsCaptured": 14,
+    "standingCapturesCaptured": 16,
+    "nativeColliderChecks": 7,
+    "firstCaptureSeconds": 107.6,
+    "fps": [
+      65,
+      105,
+      83,
+      56,
+      74,
+      70,
+      84,
+      67,
+      116,
+      84,
+      86,
+      74,
+      60,
+      56
+    ],
+    "maxStandingSupportErrorMetres": 0.39302117426726113,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "cameraViewsReviewed": 14,
+    "standingCapturesReviewed": 16,
+    "northInfillVisualVerified": true,
+    "terrainBoundaryFullyAccepted": false,
+    "visualComparison": [
+      {
+        "view": 1,
+        "beforeVoidPixels": 33570,
+        "afterVoidPixels": 113,
+        "reductionPercent": 99.66338993148645,
+        "targetedRays": 2,
+        "targetedRaysWithoutVisibleMesh": 0
+      },
+      {
+        "view": 2,
+        "beforeVoidPixels": 153625,
+        "afterVoidPixels": 267,
+        "reductionPercent": 99.82620016273393,
+        "targetedRays": 3,
+        "targetedRaysWithoutVisibleMesh": 0
+      },
+      {
+        "view": 3,
+        "beforeVoidPixels": 143772,
+        "afterVoidPixels": 7247,
+        "reductionPercent": 94.95938012964973,
+        "targetedRays": 2,
+        "targetedRaysWithoutVisibleMesh": 0
+      },
+      {
+        "view": 5,
+        "beforeVoidPixels": 42278,
+        "afterVoidPixels": 25837,
+        "reductionPercent": 38.88783764605706,
+        "targetedRays": 1,
+        "targetedRaysWithoutVisibleMesh": 0
+      }
+    ],
+    "findings": [
+      "Candidate30 reconstructs northern infill DEBY_LOD2_41731133 as runtime1000030038, using4BVVsurvey walls and2original roof triangles. Three attached faces are removed; independent decoded-mesh validation reports0m2ofhidden wall area. The10.54m exposed north face has two source-estimated glazing groups, dark glass and pale metal frames. The function/interior is not inferred.",
+      "The main envelope loses the corresponding overlapping wall/window regions. Source roof pixels and geometry are retained. Reflection and material rendering include the new body; native collision advances tov47. There are218tiles. One building tile is added; only the main body and5ground tiles change among earlier render assets.",
+      "Ground coverage increases from2293.9888to2343.8514m2 by filling the former protected infill gap. Source-height controls are regenerated:380measured controls,18missing/rejected. Five missing points in two short bounded runs use explicitly recorded linear estimates;13remain unresolved. Measured arrays keep nulls at estimated points. Two isolated discontinuities were rejected before interpolation.",
+      "All14camera views and16standing captures were reviewed. Native execution exits0withBUILD SUCCESSFUL. Seven wall/glass controls include two direct rays and native block colliders on the northern glazing. All16standing/body-clearance checks pass with unchanged0.51m tolerance; maximum error0.3931m. First capture107.6s; captured views56\u2013116fps.",
+      "The matched north-apron walking capture no longer has dark source fragments projecting through the wall; it now shows the reconstructed glazed infill and continuous adjacent ground. New front and east-oblique views support the local visual improvement.",
+      "All8previously empty terrain rays still hit geometry. Fixed-region sky-colour counts remain dramatically lower than27, but the north count rises from6773in29to7247in30. Remaining gaps are not resolved: the south-shoulder view still exposes a long opposite-side gap and source fragments on that older facade. These image metrics do not classify every sky-coloured pixel as a hole.",
+      "Rough source trees, vehicle-shaped scan folds, aerial-image ground blotches, overly regular courtyard shrub stems and wider ground joins still prevent campus-wide visual acceptance. User saves/settings remain unchanged; no installation, GitHub push or public release occurred.",
+      "A separate source-coverage study for a20m Physik II landscape envelope yields4303.19m2total ground and1959.34m2additional coverage after excluding other buildings and previous surfaces. Existing OSM contains4intersecting asphalt footways,3grass polygons and a bridge; public raster samples find281.75m2ofadditional tall-green area and503.75m2oflow-green area. This is a study, not a shipped expansion or a tree count."
+    ],
+    "nextActions": [
+      "Expand the Physik II landscape from the isolated4m apron to source-supported walking approaches. The20m-envelope study is.cache/physics-ii-landscape-study-30.json with a reviewed DOP20/OSM overlay at.cache/physics-ii-landscape-study-30.png. It adds about1959m2 ofground while preserving prior terrain and neighbouring BVV footprints. Rebuild vegetation from DOM20/DGM1/DOP20 and exclude existing tree centres/footpaths; do not delete unmodelled buildings.",
+      "Add ground material classification for mapped asphalt paths and grass using the existing versioned OSM inputs and source raster evidence. The current PhII ground largely retains blurry aerial colours. Follow the existing laboratory/woodland material-mask pipeline; keep path-width and species estimates explicit.",
+      "Regenerate source-height controls at the expanded outer boundary, keep measured versus interpolated points distinct, validate unknown spans and improve thin edge triangulation. Expansion must close joins rather than merely moving gaps outward. The Delaunay study from29 is unshipped and does not by itself solve steep area.",
+      "Improve the courtyard shrub form: the measured patch and source height bounds remain useful, but repeated thin stems at regular sample spacing look artificial. Preserve the source region and improve grouping/branch form with qualified species estimates.",
+      "Check the opposite older survey boundary and facade visible in the south-shoulder walking capture. Continue broad walking/aerial/night inspection and gameplay/lifecycle/safe-rollout checks. Keep the full goal active until the requested standard is supported by evidence; preserve saves, inventory, edits, settings and credentials."
+    ]
+  },
+  "physicsIILandscape31": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 290143365,
+      "sha256": "8550b559157a763ebec7a9fa13e855cc83da3e0fbb6863e209670c7c03400f22",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "54764ffefa56c137de7f522569088eb97996258c3773e385d2fb91df142468e6",
+      "rendererSourceFingerprint": "e8c8fbf7430f7510",
+      "bundleSha256": "eb06b5a3f5d565e310419635bbddb4d596e8733373c9f15e2c9e27dfdde258be",
+      "tiles": 227,
+      "bundleUnpackedBytes": 655989400,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 1,
+    "nativeChecksPass": false,
+    "cameraViewsCaptured": 21,
+    "cameraViewsReviewed": 21,
+    "standingCapturesCaptured": 18,
+    "standingCapturesReviewed": 18,
+    "failureCaptureReviewed": true,
+    "nativeColliderChecks": 7,
+    "firstCaptureSeconds": 108.2,
+    "fps": [
+      60,
+      99,
+      77,
+      54,
+      70,
+      66,
+      79,
+      62,
+      115,
+      81,
+      80,
+      73,
+      57,
+      47,
+      98,
+      113,
+      114,
+      92,
+      110,
+      106,
+      107
+    ],
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "gravityFailure": {
+      "probe": 18,
+      "control": {
+        "label": "Mapped path 317014213",
+        "sourceUTM": [
+          698560.0321832651,
+          5349590.788797249
+        ],
+        "target": [
+          359.33317793704947,
+          62.88937110096903,
+          -375.07494917376664
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060416,
+        "part": 0,
+        "look": [
+          90,
+          8
+        ],
+        "dropHeight": 3,
+        "requireBodyClearance": true,
+        "supportHeight": 63.05189753805172,
+        "supportQualification": "Exact maximum of ground under0.6m footprint; unchanged0.51m tolerance."
+      },
+      "serverPosition": "(358.91247958577287, 63.0, -374.65425082249004)",
+      "horizontalError": 0.5949573140433664,
+      "bodyClear": true,
+      "supportExpectedY": 63.05189753805172,
+      "velocity": "(0.0, -0.0784000015258789, 0.0)",
+      "onGround": true,
+      "flying": false,
+      "collisionAligned": true,
+      "supportBlocks": [
+        {
+          "position": "358, 61, -375",
+          "state": "Block{minecraft:dirt}"
+        },
+        {
+          "position": "358, 62, -375",
+          "state": "Block{earthcraft:map_grass}"
+        },
+        {
+          "position": "358, 63, -375",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "359, 61, -375",
+          "state": "Block{minecraft:dirt}"
+        },
+        {
+          "position": "359, 62, -375",
+          "state": "Block{earthcraft:map_grass}"
+        },
+        {
+          "position": "359, 63, -375",
+          "state": "Block{minecraft:air}"
+        }
+      ],
+      "capture": "campus-physics-ii-landscape-31-walking-failure.png",
+      "clientPosition": "(358.91247958577287, 63.0, -374.65425082249004)"
+    },
+    "unexecutedGravityProbes": [
+      19,
+      20,
+      21
+    ],
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "findings": [
+      "Candidate31 expands Physik II ground from2343.85to4303.19m2;18ground tiles,4new source-informed trees,804.17m2grass and233.84m2asphalt. Existing architecture and courtyard shrubs are unchanged. 227total tiles, collisionv48.",
+      "All21camera views,18successful standing captures and1failure capture reviewed. Eight earlier terrain rays still hit geometry. Fixed low-region sky-colour counts west/south/north/bridge are0/0/2925/25020. Matched south-shoulder view closes the earlier opposite-side ground gap; projecting fragments on that older facade remain.",
+      "Northern tree-line still shows large old photographic canopy shells beside new trees and open ground at the outer boundary. Courtyard stems remain artificial. No overall visual acceptance.",
+      "Native run exits1: standing probe18 at mapped path317014213 is pushed0.594957m sideways. Current mesh point is0.40156m inside coverage, but touched block359,-376 has its centre0.04085m outside. Packaged service returns255 (leave unchanged) for that column, and offline native save shows old earthcraft:map_stone atY63/64/67/68. This is a coverage/collision-boundary failure, not an ordinary-player-block issue. Do not delete user dirt or weaken0.1m horizontal tolerance.",
+      "Service-only support checks passed22controls but ignored255columns and never proved body clearance. Native failure demonstrates this limitation. New checks must report unknown colliders rather than treating them as cleared.",
+      "Public-raster canopy study identifies four northern green components crossing the boundary (component IDs1/15/17/19 in frozen study). Their complete source extents fit within the study bounds. Source components54/76 are courtyard/southern overlaps and should not drive the northern extension. Study is not shipped.",
+      "121original save files,121preview save files and4settings files remain byte-identical. No installation, push or public release. Goal remains active."
+    ],
+    "nextActions": [
+      "Extend northern ground to complete source-backed canopy groups1/15/17/19, including the adjoining mapped path and adequate ground beyond the crowns. Preserve all other BVV footprints and earlier terrain. Derive source polygon from pinned raster evidence; avoid another arbitrary circular crop.",
+      "Regenerate boundary source-height controls for the new irregular extent. Verify full original failure location including every block touched by the player, and rerun same native standing probes without moving/loosening them. Add exact packaged body-clearance/unknown-column checks.",
+      "Review matched tree-line, path, aerial and night views in the packaged build; finish remaining three standing controls and broader actual walking routes. Then address artificial courtyard planting and older facade fragments."
+    ]
+  },
+  "physicsIICanopy32": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 294136948,
+      "sha256": "284435d1d7fc07b7dbc0675d2ded4008caab8d37bf45628d48b884c0eb0a14f9",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "54764ffefa56c137de7f522569088eb97996258c3773e385d2fb91df142468e6",
+      "rendererSourceFingerprint": "4ddcd3bb4277944a",
+      "bundleSha256": "31337dd3bba3420f43ba37a607b006310a43d029883982c5d936013ad1a36e53",
+      "tiles": 235,
+      "bundleUnpackedBytes": 668028569,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsCaptured": 23,
+    "standingCapturesCaptured": 24,
+    "nativeColliderChecks": 7,
+    "firstCaptureSeconds": 109.4,
+    "fps": [
+      62,
+      99,
+      73,
+      51,
+      69,
+      69,
+      80,
+      63,
+      114,
+      78,
+      77,
+      68,
+      55,
+      52,
+      100,
+      115,
+      115,
+      99,
+      113,
+      114,
+      113,
+      85,
+      64
+    ],
+    "maxStandingSupportErrorMetres": 0.5020561444107159,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "cameraViewsReviewed": 23,
+    "standingCapturesReviewed": 24,
+    "canopyLocalImprovementVerified": true,
+    "terrainBoundaryFullyAccepted": false,
+    "formerFailedPath": {
+      "label": "Mapped path 317014213",
+      "standingY": 64.0,
+      "supportExpectedY": 63.53608643251498,
+      "horizontalError": 0.0,
+      "bodyClear": true,
+      "onGround": true
+    },
+    "visualComparison": [
+      {
+        "view": 1,
+        "beforeVoidPixels": 33570,
+        "afterVoidPixels": 0,
+        "reductionPercent": 100.0,
+        "targetedRays": 2,
+        "targetedRaysWithoutVisibleMesh": 0
+      },
+      {
+        "view": 2,
+        "beforeVoidPixels": 153625,
+        "afterVoidPixels": 0,
+        "reductionPercent": 100.0,
+        "targetedRays": 3,
+        "targetedRaysWithoutVisibleMesh": 0
+      },
+      {
+        "view": 3,
+        "beforeVoidPixels": 143772,
+        "afterVoidPixels": 2925,
+        "reductionPercent": 97.96552875386027,
+        "targetedRays": 2,
+        "targetedRaysWithoutVisibleMesh": 0
+      },
+      {
+        "view": 5,
+        "beforeVoidPixels": 42278,
+        "afterVoidPixels": 25020,
+        "reductionPercent": 40.82028478168315,
+        "targetedRays": 1,
+        "targetedRaysWithoutVisibleMesh": 0
+      }
+    ],
+    "findings": [
+      "Candidate32 follows four complete northern green canopy components from pinned DOP20/DOM20/DGM1, with separately qualified2.5mground margins. Their source areas are1006.75/156.5/93.5/116m2. Independent source-cell reconstruction matches. Ground grows4303.19to5776.48m2;24ground tiles and11trees in3groups.235totaltiles;collisionv49. Existing architecture and courtyard shrub mesh are unchanged.",
+      "Outer ground controls regenerate on the irregular source canopy extent:655accepted,55missing/rejected,11explicit short-gap estimates,44unresolved. Broader160m material mask fits expanded terrain;5646independent material controls pass. No overlap with prior terrain, independent area error0.0002102m2. All7neighbor validators pass.",
+      "Packaged JAR and39embedded PhII assets match frozen sources. Enhanced exact-service checker verifies standing support plus all0.6m x1.8m body cells; unknown255cells are failures. Negative regression on31 detects exactly the previously failed path18 with2unknown body cells. All24controls pass32. Separate drop-space diagnostics retain the known overhead bridge collider; standing space and unchanged native tests remain clear.",
+      "Native run exits0withBUILD SUCCESSFUL:23camera views and24standing captures all reviewed,7wall/glass collider checks pass. Former failed path18 keeps identical horizontal coordinates, now standsY64with0horizontal displacement andclearbody. Maximum standing support error0.50206m within unchanged0.51m. First capture109.4s; views51\u2013115fps. These are standing/drop tests, not continuous route traversal.",
+      "Matched northwestern path and aerial views remove the large cropped canopy shell and fill its previous ground void; tree trunks and crowns are distinct. Northern path walking views have clearer passages. Smaller holes/source fragments remain near retained neighboring buildings and outside coverage. All8previously empty screen rays remain covered, with31fixed-region pixel counts unchanged.",
+      "New northwestern view21 and standing22 expose an ordinary-looking dirt pile in the reused isolated QA world. Its origin is not proven by appearance; do not delete it or infer absence of player ownership from missing edit records. A fresh isolated geography QA world is required to distinguish saved legacy blocks from fresh generation.",
+      "BVV neighbor DEBY_LOD2_108698314 intersects the new extent: footprint162.0173m2, E698525.78..698550.43/N5349596.21..5349606.87, heights474.21..480.21. Its geometry remains unreconstructed, with coarse facade/canopy remnants near northern paths. Join audit finds45.567m ofinner ground boundary near retained buildings not covered by outer-edge height controls. This is a diagnostic, not proof all such segments are visible holes.",
+      "Blurry parking/vehicle colours, sparse regular courtyard shrub stems, neighboring source geometry, residual joins and broader gameplay/lifecycle/route verification still prevent full acceptance. Original121savefiles,preview121savefiles,and4settings remain byte-identical. No installation,GitHub push orrelease."
+    ],
+    "nextActions": [
+      "Run focused fresh-world check32b using the same32JAR, copying only isolated QA level.dat andearthcraft_regions.dat to a newQA world. Inspect the dirt pile location and same northern path controls; preserve the reused world and alluser worlds. Do not delete ordinary blocks.",
+      "Inspect source/native rays at remaining northern inner joins and BVV buildingDEBY_LOD2_108698314. Outer-edge controls miss45.567m near retained building footprints. Reconstruct this actual6m-high neighboring envelope if source references justify its facade; retain original survey roof/footprint and qualified window estimates. Do not broadly remove protected source geometry without replacement.",
+      "Improve courtyard shrub clustering/branch form and blurred parking/ground material patches. Cached full OSM paving study finds no relevant parking/service geometries in the current footprint; do not invent mapped paving attribution.",
+      "Continue representative continuous walking routes, broader campus aerial/night/gameplay checks and safe rollout. Goal remains active."
+    ]
+  },
+  "physicsIICanopyFresh32b": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 294136948,
+      "sha256": "284435d1d7fc07b7dbc0675d2ded4008caab8d37bf45628d48b884c0eb0a14f9",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "54764ffefa56c137de7f522569088eb97996258c3773e385d2fb91df142468e6",
+      "rendererSourceFingerprint": "4ddcd3bb4277944a",
+      "bundleSha256": "31337dd3bba3420f43ba37a607b006310a43d029883982c5d936013ad1a36e53",
+      "tiles": 235,
+      "bundleUnpackedBytes": 668028569,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsCaptured": 5,
+    "standingCapturesCaptured": 5,
+    "nativeColliderChecks": 0,
+    "firstCaptureSeconds": 268.3,
+    "fps": [
+      82,
+      58,
+      111,
+      112,
+      115
+    ],
+    "maxStandingSupportErrorMetres": 0.5020561444107159,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "cameraViewsReviewed": 5,
+    "standingCapturesReviewed": 5,
+    "freshGenerationDirtPileAbsent": true,
+    "findings": [
+      "Same packaged32JAR, separate newly generatedQA world. OnlyQA level.dat andearthcraft_regions.dat copied; no chunks orplayerdata copied, no existing blocks deleted.",
+      "All5native camera views and5standing captures reviewed; run exits0. Former31path18 and northern source controls pass. First capture268.3s; view rates58\u2013115fps.",
+      "The ordinary-looking dirt pile visible in32view21andwalking22 is absent from fresh32bview0andwalking0 at the matched location. This distinguishes saved legacy state from fresh32generation, but does not prove who placed the old blocks. Preserve them in the old world.",
+      "Source geometry gaps and distorted neighboring container remain in fresh views, confirming those are current scene issues and motivating the source-backed container reconstruction.",
+      "Original121savefiles,preview121savefiles,and4settings remain byte-identical. No installed or public release."
+    ]
+  },
+  "physicsIINeighbor33": {
+    "artifact": {
+      "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+      "size": 294200647,
+      "sha256": "e2db47241e679056d2c17b57b880a41421be3b145a9bf0f5965907c4ef90ae1a",
+      "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+      "sourcePatchSha256": "129a58eebbced74e176c8e3f5e98ece80c5a96c4ae9c9c99050605f6ae1af8c7",
+      "rendererSourceFingerprint": "3d1529a2dfab1cb7",
+      "bundleSha256": "4e607428b24296eec2bfc11ff2657bdeb55b4aafc2b99a0029f8f7c289f0bc3e",
+      "tiles": 236,
+      "bundleUnpackedBytes": 668222555,
+      "bundleUnpackedLimit": 1073741824
+    },
+    "terminalExit": 0,
+    "nativeChecksPass": true,
+    "cameraViewsCaptured": 30,
+    "standingCapturesCaptured": 28,
+    "nativeColliderChecks": 10,
+    "firstCaptureSeconds": 117.5,
+    "fps": [
+      65,
+      99,
+      78,
+      55,
+      70,
+      68,
+      79,
+      62,
+      115,
+      81,
+      80,
+      72,
+      59,
+      55,
+      99,
+      114,
+      116,
+      101,
+      114,
+      114,
+      115,
+      82,
+      63,
+      51,
+      73,
+      106,
+      75,
+      107,
+      52,
+      52
+    ],
+    "maxStandingSupportErrorMetres": 0.5020561444107159,
+    "visualAccepted": false,
+    "releaseAccepted": false,
+    "preservation": {
+      "originalSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSaves": {
+        "unchangedFiles": 121
+      },
+      "previewSettings": {
+        "unchangedFiles": 4
+      }
+    },
+    "cameraViewsReviewed": 30,
+    "standingCapturesReviewed": 28,
+    "localBuildingImprovement": true,
+    "findings": [
+      "The surveyed northern container now has a coherent stepped envelope, lower western extension, paired recessed panes and preserved surveyed roof. Allthree planned window rays hit body39and native colliders. Reflections work but include the still-poor adjacent source building.",
+      "Views14,18,21show the small container as clean geometry; the larger northern multi-storey building remains strongly distorted in15,16,20,21and25. This replacement must not be described as fixing that larger building.",
+      "View27still shows a visible boundary/possible sky wedge outside the northern apron; more source-ground join work is needed.",
+      "The current fresh32bQA world has no old dirt pile inmatchedview21. Existing paths and earlier architecture remain recognizable.",
+      "Courtyard view8still has repetitive straight stems. Parking retains blurred vehicle imagery. Ground-mask boundaries remain conspicuous in14/17andnewapron27.",
+      "Mainandcontainer nighttime/daylight-return pairs work; night is dark rather than a measured night scan.",
+      "Standingview16exposes additional blue ground voids and retained source fragments west of the reconstructed area. Prioritize continuous survey-ground coverage and joins there rather than expanding building detail alone."
+    ],
+    "routePreflight": {
+      "status": "FAIL",
+      "samples": 160,
+      "supportFailures": 2,
+      "bodyClearanceFailures": 0,
+      "errorsMetres": [
+        -0.5312182873171167,
+        -0.5135464476149352
+      ],
+      "qualification": "The unchanged0.51m test is retained. Continuous traversal is prepared but not run. The2cmworst excess is additional column-grid/footprint sampling error beyond nearest-integer cell-centre height."
+    },
+    "sourceSummary": {
+      "building": "DEBY_LOD2_108698314",
+      "osmWay": "1207162368",
+      "identity": "Northern container; institutional identity not inferred",
+      "walls": 8,
+      "originalRoofTriangles": 6,
+      "newOpeningGroups": 28,
+      "totalOpeningGroups": 65,
+      "groundAreaSquareMetres": 6070.474822786839,
+      "groundTiles": 24,
+      "trees": 11,
+      "acceptedGroundControls": 762,
+      "missingOrRejectedGroundControls": 56,
+      "estimatedShortGapControls": 11,
+      "unresolvedControls": 45,
+      "qualification": "Visible north openings inform layout; hidden south rhythm, material colours and dimensions remain qualified estimates."
+    },
+    "nextActions": [
+      "Run prepared continuous walking routes33c using the same packaged JAR; preserve two failed0.51m terrain checks in diagnostic results.",
+      "Inspect the northern outer-edge gap visible inview27 and the larger distorted building behind the repaired container.",
+      "Replace regular courtyard stems with source-bounded clustered planting and improve mapped parking materials after checking aerial evidence.",
+      "Complete broader route/gameplay/lifecycle checks before a safe preview update; overall realism goal remains active."
+    ]
+  }
+}

@@ -76,7 +76,44 @@ uniform sampler2D PlanarTexture;
 uniform mat4 PlanarMatrix;
 uniform vec4 PlanarPlane;
 uniform float PlanarStrength;
+uniform float PlanarBaseWeight;
 
+// Exact normals of the twelve surveyed hall roof triangles, upward-facing.
+// Snapping the derivative estimate prevents metre-scale UV drift from per-pixel
+// normal roundoff; geometry and its silhouette are not altered.
+const vec3 PhysicsHallNormals[12]=vec3[12](
+    vec3(0.665328984,0.555913342,0.498294791),
+    vec3(0.172264259,0.571918430,-0.802018911),
+    vec3(0.012341618,0.801714132,0.597580233),
+    vec3(0.475835860,0.671028351,-0.568595803),
+    vec3(0.391378111,0.654636412,0.646741326),
+    vec3(-0.519656512,0.635160541,0.571426458),
+    vec3(0.880119923,0.420527729,-0.220330093),
+    vec3(-0.258440343,0.537826865,0.802465484),
+    vec3(-0.179182528,0.746108499,-0.641261046),
+    vec3(-0.167090001,0.958358591,-0.231580964),
+    vec3(0.721755615,0.587186019,-0.366444281),
+    vec3(-0.276288148,0.955604285,0.102397804)
+);
+
+// BEGIN GENERATED PHYSICS GROUND MAPPING
+vec2 physicsGroundUv(vec2 position) { return vec2(position.x-256.0,-112.0-position.y)/256.0; }
+float physicsGroundBlend(vec2 position) {
+    vec2 local=mat2(0.9993971583,0.0347926405,0.0347926334,-0.9993969108)*(position-vec2(270.6240320653,-127.2232715119));
+    float edge=min(min(local.x,220.0-local.x),min(local.y,180.0-local.y));
+    return smoothstep(0.0,8.0,edge);
+}
+// END GENERATED PHYSICS GROUND MAPPING
+
+// BEGIN GENERATED WOODLAND GROUND MAPPING
+vec2 woodlandGroundUv(vec2 position) { return vec2(position.x-352.0,32.0-position.y)/512.0; }
+// END GENERATED WOODLAND GROUND MAPPING
+// BEGIN GENERATED LABORATORY SITE MAPPING
+vec2 laboratorySiteUv(vec2 position) { return vec2(position.x-336.0,-272.0-position.y)/128.0; }
+// END GENERATED LABORATORY SITE MAPPING
+// BEGIN GENERATED PHYSICS II SITE MAPPING
+vec2 physicsIISiteUv(vec2 position) { return vec2(position.x-272.0,-272.0-position.y)/160.0; }
+// END GENERATED PHYSICS II SITE MAPPING
 void main() {
     vec3 planarRadiance=vec3(0); float planarWeight=0.;
     vec4 color=texture(Sampler0,texCoord0);
@@ -91,7 +128,19 @@ void main() {
     // The aerial image supplies surveyed colour and markings. Only close-range
     // material grain is reconstructed; it does not invent additional geometry.
     float proximity=1.0-smoothstep(10.0,28.0,viewDistance);
-    if(((MaterialDetail>0.5&&MaterialDetail<1.5)||abs(MaterialDetail-15.0)<.1)&&viewDistance<110.0) {
+    // Only the twelve surveyed slopes of the middle Physics courtyard halls.
+    // Other Physics roof surfaces retain their photographic ground treatment.
+    bool physicsRoof=abs(MaterialDetail-18.0)<.1;
+    vec3 physicsRoofNormal=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
+    if(physicsRoofNormal.y<0.0)physicsRoofNormal=-physicsRoofNormal;
+    bool physicsHall=physicsRoof&&physicsRoofNormal.y>.2&&physicsRoofNormal.y<.97
+        &&all(greaterThanEqual(worldPosition,vec3(352.68,65.93,-267.59)))
+        &&all(lessThanEqual(worldPosition,vec3(374.17,73.14,-241.28)));
+    bool physicsIIGround=abs(MaterialDetail-24.0)<.1;
+    bool laboratoryGround=abs(MaterialDetail-23.0)<.1;
+    bool woodlandGround=abs(MaterialDetail-20.0)<.1;
+    bool physicsGround=abs(MaterialDetail-19.0)<.1||woodlandGround||laboratoryGround||physicsIIGround;
+    if(((MaterialDetail>0.5&&MaterialDetail<1.5)||abs(MaterialDetail-15.0)<.1||(physicsRoof&&!physicsHall)||physicsGround)&&viewDistance<110.0) {
         vec3 geometric=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
         if(geometric.y<0.0)geometric=-geometric;
         vec3 weights=pow(abs(geometric),vec3(4.0));
@@ -111,6 +160,16 @@ void main() {
         vec4 surfaceMask=texture(Sampler5,clamp(surfaceUv,0.0,1.0));
         vec3 mapped=surfaceMask.rgb;float soil=1.0-surfaceMask.a;
         if(any(lessThan(surfaceUv,vec2(0)))||any(greaterThan(surfaceUv,vec2(1)))){mapped=vec3(0);soil=0.0;}
+        if(physicsGround){
+            vec2 physicsUv=physicsIIGround?physicsIISiteUv(worldPosition.xz):laboratoryGround?laboratorySiteUv(worldPosition.xz):woodlandGround?woodlandGroundUv(worldPosition.xz):physicsGroundUv(worldPosition.xz);
+            if(all(greaterThanEqual(physicsUv,vec2(0)))&&all(lessThanEqual(physicsUv,vec2(1)))){
+                vec4 overlay=texture(Sampler6,physicsUv);
+                float blend=(woodlandGround||laboratoryGround||physicsIIGround)?1.0:physicsGroundBlend(worldPosition.xz),woodland=1.0-overlay.a;
+                float coverage=clamp(dot(overlay.rgb,vec3(1))+woodland,0.0,1.0)*blend;
+                mapped=mapped*(1.0-coverage)+overlay.rgb*blend;
+                soil=soil*(1.0-coverage)+woodland*blend;
+            }
+        }
         if(abs(MaterialDetail-15.0)<.1){mapped=vec3(0,1,0);soil=0.0;}
         float mappedTotal=mapped.r+mapped.g+mapped.b+soil;
         float mappedAmount=clamp(mappedTotal,0.0,1.0);
@@ -160,6 +219,50 @@ void main() {
             vec3 sun=CampusSunDirection;
             color.rgb*=mix(1.0,(.55+.45*max(dot(n,sun),0.0))/.91,proximity);
         }
+    }
+    if(physicsHall) {
+        // Source photograph supports seamed grey cladding, but the 0.5 m
+        // panel spacing and fine surface response are reconstruction estimates.
+        vec3 n=physicsRoofNormal;
+        float alignment=-1.0;
+        for(int i=0;i<12;i++){
+            float match=dot(physicsRoofNormal,PhysicsHallNormals[i]);
+            if(match>alignment){alignment=match;n=PhysicsHallNormals[i];}
+        }
+        vec3 across=normalize(cross(vec3(0,1,0),n));
+        float u=dot(worldPosition-vec3(363,68,-254),across),panel=u/.5;
+        float signedEdge=(fract(panel+.5)-.5)*.5;
+        float aa=max(fwidth(u),.001);
+        float ridge=1.0-smoothstep(.006-aa,.014+aa,abs(signedEdge));
+        float visibility=1.0-smoothstep(.04,.15,aa);
+        ridge*=visibility;
+        n=normalize(n+across*sign(signedEdge)*ridge*.85);
+        float variation=.96+.08*hash(vec2(floor(panel+.5),floor(n.x*100.0)));
+        float aerialLum=dot(color.rgb,vec3(.299,.587,.114));
+        vec3 metal=vec3(.43,.45,.46)*clamp(aerialLum/.5,.65,1.2)*variation;
+        metal*=.985+.03*noise(worldPosition.xz*35.0);
+        metal*=1.0-.18*ridge;
+        metal*=.60+.40*max(dot(n,CampusSunDirection),0.0);
+        vec3 view=normalize(CameraPosition-worldPosition);
+        vec3 halfVector=normalize(view+CampusSunDirection);
+        metal+=vec3(.08)*pow(max(dot(n,halfVector),0.0),35.0)*max(dot(n,CampusSunDirection),0.0);
+        float range=1.0-smoothstep(45.0,110.0,viewDistance);
+        color.rgb=mix(color.rgb,metal,range);
+    }
+    if(abs(MaterialDetail-17.0)<.1) {
+        // Physics I: generic CC0 exposed aggregate at its 2.4 m scan scale.
+        // Retain the estimated building colour; this is material grain, not
+        // claimed photographic coverage of the actual facade.
+        vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
+        if(dot(n,CameraPosition-worldPosition)<0.0)n=-n;
+        vec3 weights=pow(abs(n),vec3(4.0));weights/=max(dot(weights,vec3(1)),.0001);
+        vec3 p=worldPosition/2.4;
+        vec3 grain=groundTexture(Sampler1,p,weights);
+        float lum=dot(grain,vec3(.299,.587,.114));
+        color.rgb*=mix(1.0,clamp(lum/.40425466,.4,1.6),.85);
+        vec3 detail=groundNormalDetail(Sampler2,p,weights);detail-=n*dot(detail,n);
+        n=normalize(n+detail*.30*proximity);
+        color.rgb*=.68+.32*max(dot(n,CampusSunDirection),0.0);
     }
     if(abs(MaterialDetail-14.0)<.1) {
         vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
@@ -225,7 +328,7 @@ if(glass>.5&&PlanarStrength>0.0&&abs(dot(PlanarPlane,vec4(worldPosition,1.0)))<.
     if(projected.w>0.0&&all(greaterThanEqual(uv,vec2(0)))&&all(lessThanEqual(uv,vec2(1)))){
         vec3 scene=texture(PlanarTexture,uv).rgb;
         planarRadiance=scene*vec3(.90,.96,1.0);
-        planarWeight=(.65+.30*fresnel)*PlanarStrength;
+        planarWeight=(PlanarBaseWeight+(.95-PlanarBaseWeight)*fresnel)*PlanarStrength;
     }
 }
 
@@ -239,6 +342,29 @@ if(glass>.5&&PlanarStrength>0.0&&abs(dot(PlanarPlane,vec4(worldPosition,1.0)))<.
                 metal*=mix(1.0,clamp(lum/.5112,.7,1.2),proximity*.4);
             }
             color.rgb=mix(metal,glazing,glass);
+        }
+    }
+    // New Physics laboratory: CC0 photographed zinc and visually perforated screens.
+    // Generic material by Sisters.seamless; the1m repeat is an estimate.
+    if(abs(MaterialDetail-21.0)<.1||abs(MaterialDetail-22.0)<.1) {
+        vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
+        vec3 view=normalize(CameraPosition-worldPosition);
+        if(dot(n,view)<0.0)n=-n;
+        vec3 tangent=abs(n.y)<.8?normalize(vec3(-n.z,0,n.x)):vec3(1,0,0);
+        vec2 uv=vec2(dot(worldPosition,tangent),worldPosition.y);
+        vec3 zinc=texture(Sampler1,uv).rgb;
+        vec3 grain=clamp(zinc/vec3(.58248867,.60249385,.60750355),vec3(.65),vec3(1.35));
+        float diffuse=.84+.16*max(dot(n,CampusSunDirection),0.0);
+        float highlight=pow(max(dot(reflect(-CampusSunDirection,n),view),0.0),18.0);
+        color.rgb=color.rgb*grain*diffuse+vec3(.075)*highlight;
+        if(abs(MaterialDetail-22.0)<.1) {
+            vec2 grid=uv/.032;
+            grid.x+=.5*mod(floor(grid.y),2.0);
+            float hole=length(fract(grid)-.5);
+            float aa=max(fwidth(hole),.025);
+            float dots=1.0-smoothstep(.15-aa,.15+aa,hole);
+            float resolved=1.0-smoothstep(.35,.9,max(fwidth(grid.x),fwidth(grid.y)));
+            color.rgb*=1.0-.38*mix(.071,dots,resolved);
         }
     }
     if(MaterialDetail>3.5&&MaterialDetail<5.5) {

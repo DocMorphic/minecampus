@@ -1,0 +1,649 @@
+{
+  "name": "Physik II /TUM5107, south connection and northern infill and separate northern container",
+  "reference": "photos/physics-ii-reference.json",
+  "referenceSha256": "f919f20183168527f781836c3a70c45180d1264b312992bcada2472a788d09fd",
+  "bodies": [
+    {
+      "name": "main",
+      "building": "DEBY_LOD2_5323119",
+      "runtimeId": 1000030035,
+      "openings": {
+        "12": [
+          [
+            4.6,
+            4.4,
+            14.8,
+            6.45
+          ],
+          [
+            15.3,
+            4.4,
+            29.2,
+            6.45
+          ],
+          [
+            29.9,
+            4.4,
+            40,
+            6.45
+          ],
+          [
+            7.5,
+            0.35,
+            14.8,
+            2.45
+          ],
+          [
+            15.3,
+            0.35,
+            28.8,
+            2.45
+          ],
+          [
+            30.4,
+            0.35,
+            36.5,
+            2.45
+          ]
+        ],
+        "18": [
+          [
+            4.5,
+            4.4,
+            18.9,
+            6.45
+          ],
+          [
+            20.4,
+            4.4,
+            22,
+            6.45
+          ],
+          [
+            30.2,
+            4.4,
+            40.1,
+            6.45
+          ],
+          [
+            6.7,
+            0.35,
+            18.9,
+            2.45
+          ],
+          [
+            20.4,
+            0.35,
+            28,
+            2.45
+          ],
+          [
+            30.2,
+            0.35,
+            40.1,
+            2.45
+          ]
+        ],
+        "11": [
+          [
+            -10.24452998182703,
+            4.4,
+            3.8554700181729693,
+            6.45
+          ],
+          [
+            -9.04452998182703,
+            0.35,
+            3.9554700181729707,
+            2.45
+          ]
+        ],
+        "17": [
+          [
+            3.4,
+            4.4,
+            13.3,
+            6.45
+          ],
+          [
+            3.4,
+            0.35,
+            13.3,
+            2.45
+          ]
+        ],
+        "8": [
+          [
+            3.5,
+            4.4,
+            12.8,
+            6.45
+          ],
+          [
+            2,
+            0.35,
+            12.8,
+            2.45
+          ]
+        ],
+        "3": [
+          [
+            -7.679506481943722,
+            4.4,
+            -1.8795064819437224,
+            6.45
+          ],
+          [
+            -8.679506481943722,
+            0.35,
+            -2.179506481943722,
+            2.45
+          ]
+        ],
+        "1": [
+          [
+            1,
+            4.4,
+            7.3,
+            6.45
+          ],
+          [
+            1,
+            0.35,
+            7.3,
+            2.45
+          ]
+        ],
+        "2": [
+          [
+            1,
+            4.4,
+            13.5,
+            6.45
+          ],
+          [
+            1,
+            0.35,
+            13.5,
+            2.45
+          ]
+        ],
+        "5": [
+          [
+            1,
+            4.4,
+            13.2,
+            6.45
+          ],
+          [
+            1,
+            0.35,
+            13.2,
+            2.45
+          ]
+        ],
+        "7": [
+          [
+            6.9,
+            4.4,
+            13.2,
+            6.45
+          ],
+          [
+            6.9,
+            0.35,
+            13.2,
+            2.45
+          ]
+        ],
+        "13": [
+          [
+            0.4,
+            0.5,
+            6.2,
+            3.1
+          ],
+          [
+            0.4,
+            4.4,
+            6.2,
+            7.2
+          ]
+        ]
+      }
+    },
+    {
+      "name": "stair",
+      "building": "DEBY_LOD2_41731131",
+      "runtimeId": 1000030036,
+      "openings": {
+        "4": [
+          [
+            0.15,
+            0.08,
+            3.1,
+            2.55
+          ]
+        ]
+      }
+    },
+    {
+      "name": "bridge",
+      "building": "DEBY_LOD2_41731385",
+      "runtimeId": 1000030037,
+      "undersideAboveSurveyBaseMetres": 3.35,
+      "openings": {
+        "0": [
+          [
+            13.7,
+            4.7,
+            14.3,
+            5.3
+          ],
+          [
+            16.5,
+            4.7,
+            17.1,
+            5.3
+          ],
+          [
+            19.1,
+            4.7,
+            19.7,
+            5.3
+          ]
+        ],
+        "3": [
+          [
+            3.5,
+            4.7,
+            4.1,
+            5.3
+          ],
+          [
+            6.1,
+            4.7,
+            6.7,
+            5.3
+          ],
+          [
+            8.9,
+            4.7,
+            9.5,
+            5.3
+          ]
+        ]
+      }
+    },
+    {
+      "name": "north-infill",
+      "building": "DEBY_LOD2_41731133",
+      "runtimeId": 1000030038,
+      "openings": {
+        "3": [
+          [
+            0.18,
+            0.25,
+            10.35,
+            3.45
+          ],
+          [
+            0.18,
+            3.85,
+            10.35,
+            7.35
+          ]
+        ]
+      },
+      "qualification": "Only northern face3 is exposed. Two glazing groups and their mullions are estimated from a low-resolution source projection. Roof and envelope come from BVV; attached interior faces are removed.",
+      "materialColours": [
+        [
+          179,
+          185,
+          190,
+          255
+        ],
+        [
+          31,
+          42,
+          53,
+          255
+        ],
+        [
+          183,
+          188,
+          191,
+          255
+        ],
+        [
+          69,
+          74,
+          78,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "north-container",
+      "building": "DEBY_LOD2_108698314",
+      "runtimeId": 1000030039,
+      "landscapeApronMetres": 4,
+      "materialColours": [
+        [
+          179,
+          185,
+          188,
+          255
+        ],
+        [
+          30,
+          43,
+          56,
+          255
+        ],
+        [
+          221,
+          222,
+          219,
+          255
+        ],
+        [
+          100,
+          108,
+          111,
+          255
+        ]
+      ],
+      "panelPitchMetres": 3.0,
+      "floorJointAboveBaseMetres": 3.0,
+      "mullionPitchMetres": 0.95,
+      "mullionWidthMetres": 0.045,
+      "windowHorizontalSplitFraction": null,
+      "frameWidthMetres": 0.06,
+      "windowRecessMetres": 0.1,
+      "openings": {
+        "3": [
+          [
+            -5.6,
+            0.75,
+            -3.6999999999999997,
+            2.0
+          ],
+          [
+            -2.55,
+            0.75,
+            -0.6499999999999999,
+            2.0
+          ],
+          [
+            0.6,
+            0.75,
+            2.5,
+            2.0
+          ],
+          [
+            3.65,
+            0.75,
+            5.55,
+            2.0
+          ],
+          [
+            6.75,
+            0.75,
+            8.65,
+            2.0
+          ],
+          [
+            9.85,
+            0.75,
+            11.75,
+            2.0
+          ],
+          [
+            12.95,
+            0.75,
+            14.85,
+            2.0
+          ],
+          [
+            15.95,
+            0.75,
+            17.849999999999998,
+            2.0
+          ],
+          [
+            0.6,
+            3.8,
+            2.5,
+            5.1
+          ],
+          [
+            3.65,
+            3.8,
+            5.55,
+            5.1
+          ],
+          [
+            6.75,
+            3.8,
+            8.65,
+            5.1
+          ],
+          [
+            9.85,
+            3.8,
+            11.75,
+            5.1
+          ],
+          [
+            12.95,
+            3.8,
+            14.85,
+            5.1
+          ],
+          [
+            15.95,
+            3.8,
+            17.849999999999998,
+            5.1
+          ]
+        ],
+        "5": [
+          [
+            0.6,
+            0.75,
+            2.5,
+            2.0
+          ],
+          [
+            3.65,
+            0.75,
+            5.55,
+            2.0
+          ],
+          [
+            6.75,
+            0.75,
+            8.65,
+            2.0
+          ],
+          [
+            9.85,
+            0.75,
+            11.75,
+            2.0
+          ],
+          [
+            12.95,
+            0.75,
+            14.85,
+            2.0
+          ],
+          [
+            15.95,
+            0.75,
+            17.849999999999998,
+            2.0
+          ],
+          [
+            0.6,
+            3.8,
+            2.5,
+            5.05
+          ],
+          [
+            3.65,
+            3.8,
+            5.55,
+            5.05
+          ],
+          [
+            6.75,
+            3.8,
+            8.65,
+            5.05
+          ],
+          [
+            9.85,
+            3.8,
+            11.75,
+            5.05
+          ],
+          [
+            12.95,
+            3.8,
+            14.85,
+            5.05
+          ],
+          [
+            15.95,
+            3.8,
+            17.849999999999998,
+            5.05
+          ]
+        ],
+        "7": [
+          [
+            2.1,
+            3.8,
+            2.85,
+            5.1
+          ],
+          [
+            3.45,
+            3.8,
+            4.1,
+            5.1
+          ]
+        ]
+      },
+      "osmReference": {
+        "sourceFile": "physics-ii-neighbor-osm.xml",
+        "sha256": "17510ff50614a52b7da8a46fa5aab77a2166ccbb2259b1b4d824f0080272b087",
+        "retrievedSnapshotSha256": "fa8af7b5d37d767707b157ebd469f31eabc85dee6c547bf668786fac910eb8f4",
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.6749,48.2681,11.6761,48.26885",
+        "objectUrl": "https://www.openstreetmap.org/way/1207162368",
+        "way": "1207162368",
+        "license": "ODbL1.0",
+        "attribution": "\u00a9 OpenStreetMap contributors"
+      },
+      "qualification": "BVV supplies eight wall planes, stepped six-triangle roof and the 162m2 footprint. OSM labels the matching footprint building=container (IoU0.817); no institutional identity or use is inferred. The private northern wall projection shows eight lower and six upper paired openings; eastern upper windows are partially visible. Positions, profiles and colours are estimates. The tree-obscured southern opening rhythm is an explicitly estimated counterpart, not measured photographic coverage. No interiors."
+    }
+  ],
+  "frameWidthMetres": 0.065,
+  "windowRecessMetres": 0.16,
+  "mullionPitchMetres": 1.45,
+  "mullionWidthMetres": 0.055,
+  "panelPitchMetres": 1.5,
+  "panelJointMetres": 0.012,
+  "jointDepthMetres": 0.035,
+  "groundTileMetres": 20,
+  "groundRuntimeStart": 1000060400,
+  "treeRuntimeStart": 1000010400,
+  "apronMetres": 20,
+  "cleanupMarginMetres": 4,
+  "materialColours": [
+    [
+      179,
+      185,
+      190,
+      255
+    ],
+    [
+      49,
+      62,
+      76,
+      255
+    ],
+    [
+      53,
+      71,
+      89,
+      255
+    ],
+    [
+      69,
+      74,
+      78,
+      255
+    ]
+  ],
+  "qualification": "Opening rectangles, cladding divisions, frame profiles, materials, bridge underside and occluded details are approximate source-informed estimates. Provider pixels are not bundled. Roof geometry and roof pixels are retained from the public survey. No interiors. Window levels and group boundaries are digitized from private survey-aligned source projections; hidden lower openings and opposite bridge windows remain estimates. Ground continues from DGM1, retains DOP20 appearance and avoids prior surface overlap. Tree forms/species are inferred from public canopy data. An estimated 2.5m outer shoulder joins retained source ground using sampled height residuals; the transition is not measured DGM terrain. The20m study envelope covers walking approaches. Mapped asphalt and grass use pinned OSM; low green ground below0.7m DOM-DGM is a separate lawn inference. Outer ground joins are estimated from source residuals.",
+  "groundTransition": {
+    "sourceFile": "physics-ii-ground-transition.json",
+    "sha256": "8806750de3b0577e623208519868e91140b208cb8347af6397c3a4f0d505c94d"
+  },
+  "landscape": {
+    "osm": [
+      {
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.675781250870026,48.264677874824045,11.681938881403548,48.269033267497875",
+        "license": "ODbL1.0",
+        "attribution": "\u00a9 OpenStreetMap contributors",
+        "cachePath": "physics-woodland-source/woodland-osm.xml",
+        "sourceFile": "physics-woodland-osm.xml",
+        "retrievedSnapshotSha256": "8560e5810b6446e8bcd2606136c3a73ae1890111e05d3d64117dc498960dfb70",
+        "sha256": "8ebae204c5cc82a91f44814fd81b60f6bb02c6434a7fae131a792823c80a4e28",
+        "qualification": "Versioned public subset of the retrieved OSM snapshot. River, woodland/grass and paths relevant to the study; no provider pixels or credentials."
+      },
+      {
+        "sourceFile": "physics-laboratory-site-osm.xml",
+        "sha256": "1e5b1ef695a11dc65da9b2483a4eeeeca3dc1dcf86403351c96a866bbf05b525",
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.675662262056049,48.26755996626953,11.67623825582651,48.26826638338482",
+        "retrievedSnapshotSha256": "e5ba55a1e62ac4821655d43b701f695bb11966dbdd2378ef202136bb9fb951b6",
+        "license": "ODbL1.0",
+        "attribution": "\u00a9 OpenStreetMap contributors"
+      }
+    ],
+    "defaultPathWidthMetres": 2.5,
+    "qualification": "Mapped asphalt footways and grass; default path widths and low-green ground classification are estimates. Trees follow public canopy data; species/branch forms are estimates.",
+    "canopyExtent": {
+      "boundsUtm": [
+        698480,
+        5349458,
+        698620,
+        5349620
+      ],
+      "resolutionMetres": 0.5,
+      "componentSeedsUTM": [
+        [
+          698519.5,
+          5349594.25
+        ],
+        [
+          698558,
+          5349592.25
+        ],
+        [
+          698542,
+          5349593
+        ],
+        [
+          698577,
+          5349585.5
+        ]
+      ],
+      "groundMarginMetres": 2.5,
+      "qualification": "Complete northern green canopy components intersecting the original20m landscape, identified from pinned DOP20/DOM20/DGM1. Seeds select source regions, not surveyed tree trunks. Branch form, species and margin are estimates. Existing surveyed buildings and earlier reconstructed ground remain excluded."
+    }
+  }
+}

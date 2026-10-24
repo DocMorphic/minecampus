@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Verify the complete generated render stream, not just source file existence."""
 from pathlib import Path
-import base64,json,math,struct
+import argparse,base64,json,math,struct
 ROOT=Path(__file__).resolve().parents[1]
-folder=ROOT/'dist-minecraft/exterior';manifest=json.loads((folder/'manifest.json').read_text())
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--directory',type=Path,default=ROOT/'dist-minecraft/exterior')
+folder=parser.parse_args().directory;manifest=json.loads((folder/'manifest.json').read_text())
 triangles=0;texture_bytes=0;aux_triangles=0;aux_bytes=0
 photo_spec=json.loads((folder/manifest['photoFacades']['file']).read_text()) if manifest.get('photoFacades') else {'plans':[]}
 extra=[{'file':p['roofFile'],'bounds':p['bounds']}for p in photo_spec['plans']]+manifest.get('photoFacades',{}).get('collisionTiles',[])
@@ -27,7 +29,17 @@ for spec in [*manifest['tiles'],*extra]:
   for p in positions:
    assert all(spec['bounds'][0][c]-.01<=p[c]<=spec['bounds'][1][c]+.01 for c in range(3)),(spec['file'],p,spec['bounds'])
  assert offset==len(data),(spec['file'],offset,len(data))
-assert sum(t['kind']=='ground' for t in manifest['tiles'])==36
+original_ground=[t for t in manifest['tiles'] if t['kind']=='ground' and t['file'].startswith('ground-')]
+supplemental_ground=list(manifest.get('architecture',{}).get('physicsISite',{}).get('groundTiles',[]))
+supplemental_ground+=manifest.get('architecture',{}).get('physicsLibrary',{}).get('groundTiles',[])
+supplemental_ground+=manifest.get('architecture',{}).get('physicsContainer',{}).get('groundTiles',[])
+supplemental_ground+=manifest.get('architecture',{}).get('p1Complex',{}).get('groundTiles',[])
+supplemental_ground+=manifest.get('architecture',{}).get('physicsWoodland',{}).get('groundTiles',[])
+supplemental_ground+=manifest.get('architecture',{}).get('physicsNewLaboratory',{}).get('groundTiles',[])
+supplemental_ground+=manifest.get('architecture',{}).get('physicsLaboratorySite',{}).get('groundTiles',[])
+supplemental_ground+=manifest.get('architecture',{}).get('physicsII',{}).get('groundTiles',[])
+assert len(original_ground)==36
+assert {t['file'] for t in manifest['tiles'] if t['kind']=='ground'}=={t['file'] for t in original_ground}|set(supplemental_ground)
 assert sum(t['kind']=='reconstruction' for t in manifest['tiles'])>=5
 assert len(manifest.get('vegetation',{}).get('trees',[]))>100
 assert len(manifest['buildings'])>=106

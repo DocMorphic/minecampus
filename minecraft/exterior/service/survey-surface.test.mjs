@@ -6,15 +6,26 @@ import path from 'node:path';
 import {attachSurveySurface} from './survey-surface.mjs';
 
 const origin={lat:48.265,lon:11.671,h0:519.7618173672081};
+test('column-centre collision is restricted to listed Physics ground assets',t=>{
+ let meshes;
+ const names=['physics.ect','core.ect','building.ect','tree.ect','woodland.ect','laboratory.ect','site.ect','physics-ii.ect'];
+ const kinds=['ground','ground','reconstruction','vegetation','ground','ground','ground','ground'];
+ const tiles=names.map((file,i)=>({file,kind:kinds[i],runtimeId:100+i,bounds:[[0,0,0],[16,4,16]]}));
+ const {service,dir}=fixture(t,null,{tiles,architecture:{physicsISite:{groundTiles:['physics.ect','building.ect']},physicsWoodland:{groundTiles:['woodland.ect']},physicsNewLaboratory:{groundTiles:['laboratory.ect']},physicsLaboratorySite:{groundTiles:['site.ect']},physicsII:{groundTiles:['physics-ii.ect']}}},
+   {voxelizeArea:(_frame,assets)=>{meshes=assets;return {vox:new Uint8Array(16*16*8)};}});
+ for(const name of names)fs.writeFileSync(path.join(dir,name),tile([[0,1,0],[16,1,0],[0,1,16]]));
+ service.campusCollision({...origin,mcToEcef:(x,y,z)=>[x,y,z]},0,0,0,8);
+ assert.deepEqual(meshes.map(m=>m.primitives[0].campusHeightfield),[true,false,false,false,true,true,true,true]);
+});
 function tile(positions){
  const b=Buffer.alloc(32+16+positions.length*20+4);b.write('ECT1');b.writeInt32LE(1,4);b.writeInt32LE(positions.length,32);b.writeInt32LE(1,36);b.writeInt32LE(1,40);b.fill(255,44,48);
  positions.forEach((p,i)=>[...p,.25,.75].forEach((n,j)=>b.writeFloatLE(n,48+i*20+j*4)));b.set([12,34,56,255],b.length-4);return b;
 }
-function fixture(t,bytes,extra={},deps,sourceTiles=[]){
+function fixture(t,bytes,extra={},deps,sourceTiles=[],loader){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-survey-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
  const points=[];for(let z=0;z<=20;z+=10)for(let x=0;x<=20;x+=10)points.push([x,0,z]);
  fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify({origin:Object.values(origin),attribution:'BVV CC BY 4.0',tiles:[],terrainGuide:{width:3,height:3,points},walls:[{points:[[10,0,3],[10,10,3],[10,10,17],[10,0,17]]}],...extra}));
- const service={renderSelect:async()=>({tiles:sourceTiles,attribution:[]}),renderTile:async()=>bytes,chunk:async(_frame,_cx,_cz,_minY,span)=>new Uint8Array(16*16*span)};const check=attachSurveySurface(service,dir,deps);return {service,check,dir};
+ const service={renderSelect:async()=>({tiles:sourceTiles,attribution:[]}),renderTile:loader??(async()=>bytes),chunk:async(_frame,_cx,_cz,_minY,span)=>new Uint8Array(16*16*span)};const check=attachSurveySurface(service,dir,deps);return {service,check,dir};
 }
 test('survey removes source ground while retaining texture bytes and triangle header integrity',async t=>{
  const {service,check}=fixture(t,tile([[4,.4,4],[8,.8,4],[4,.5,8]]));const b=await service.renderTile(origin,1_100_000_007);
@@ -31,6 +42,29 @@ test('unrelated regions, roof equipment and distant geometry retain original pos
  assert.deepEqual(await service.renderSelect({...origin,lat:49},[0,0,0]),{tiles:[],attribution:[]});
 });
 test('provider misses remain misses',async t=>{const {service}=fixture(t,null);assert.equal(await service.renderTile(origin,1_100_000_007),null);});
+
+test('survey sampling reaches all mesh edges without extrapolating beyond coverage',async t=>{
+ for(const points of [
+  [[19.5,.4,4],[20,.4,4],[19.5,.4,5]],
+  [[0,.4,4],[.5,.4,4],[0,.4,5]],
+  [[4,.4,0],[5,.4,0],[4,.4,.5]],
+  [[4,.4,19.5],[5,.4,19.5],[4,.4,20]]
+ ]){
+  const {service}=fixture(t,tile(points));
+  assert.equal((await service.renderTile(origin,1_100_000_007)).readInt32LE(32),0);
+ }
+ const outside=tile([[20.01,.4,4],[20.5,.4,4],[20.01,.4,5]]);
+ const {service}=fixture(t,outside);
+ assert.deepEqual(await service.renderTile(origin,1_100_000_007),outside);
+ const high=fixture(t,tile([[19.5,18,4],[20,18,4],[19.5,18,5]]),{
+  surfaceGuide:{width:3,height:3,heights:Array(9).fill(7),tolerance:3}
+ });
+ assert.equal((await high.service.renderTile(origin,1_100_000_007)).readInt32LE(32),0);
+ const mask=Buffer.alloc(400);for(let row=0;row<20;row++)mask[row*20+19]=1;
+ const wall=tile([[19.5,3,4],[19.5,5,4],[19.5,3,5]]);
+ const protectedEdge=fixture(t,wall,{protectionGrid:{width:20,height:20,metresPerPixel:1,data:mask.toString('base64')}});
+ assert.deepEqual(await protectedEdge.service.renderTile(origin,1_100_000_007),wall);
+});
 
 test('outdoor cleanup removes low floating debris while keeping surveyed building faces',async t=>{
  const mask=Buffer.alloc(20*20);for(let row=0;row<20;row++)for(let col=9;col<13;col++)mask[row*20+col]=1;
@@ -108,6 +142,7 @@ test('airborne photographic startup waits for readiness, preserves old tiles and
  const prim={positions,uvs:new Float32Array([0,1,1,1,1,0,0,0]),indices:new Uint32Array([0,1,2,0,2,3])};
  const service={client:{},meshesFor:async()=>[{copyright:'test provider',primitives:[prim]}],renderSelect:async()=>({tiles:[{id:7,parent:0,chain:[],fine:true}],pending:0,attribution:[]}),renderTile:async()=>source};
  attachSurveySurface(service,dir,{collectRegionTiles:async()=>[{}],mcPositions:(frame,p)=>p.positions,sampleColor:(p,u,v,out)=>out.splice(0,3,60,90,120)});
+ assert.deepEqual(await service.renderTile(frame,1_200_000_007),source); // Cache before facade preparation.
  const initial=await service.renderSelect(frame,[5,160,6]);assert.equal(initial.pending,1);assert.equal(initial.tiles[0].id,1_100_000_007);
  let result;
  for(let i=0;i<30;i++){await new Promise(r=>setTimeout(r,5));result=await service.renderSelect(frame,[5,160,6]);if(result.pending===0)break;}
@@ -156,7 +191,7 @@ test('fresh survey chunks hide source filler even in protected margins, without 
  attachSurveySurface(service,dir,{voxelizeArea:()=>{throw Error('no collision assets needed for filler normalization');}});
  const result=await service.chunk(origin,0,0,-10,4);
  for(let y=0;y<4;y++)assert.equal(result[y*256+8*16+8],[3,4,22,23][y]);
- assert.equal(result[0],20); // Outside the covered guide's inner margin.
+ assert.equal(result[0],3); // The surveyed edge is covered too; no artificial inner margin.
  assert.deepEqual(await service.chunk({...origin,lat:49},0,0,-10,4),source);
  assert.deepEqual(await service.chunk(origin,5,5,-10,4),source);
  assert.equal(source[8*16+8],20); // Do not mutate cached source voxel bytes.
@@ -253,4 +288,124 @@ test('ramp planes vary collision height along the run and preserve neighbouring 
  assert.equal(at(3,-8,11),255);assert.equal(at(3,-4,11),7);
  const shifted=service.campusCollision({...frame,h0:frame.h0-2},0,0,-12,20);
  assert.equal(shifted[((-8+12)*16+11)*16+8],255);
+});
+
+function supplementalFixture() {
+ const points=[];for(let z=0;z<=16;z+=8)for(let x=32;x<=48;x+=8)points.push([x,2+(x-32)/8,z]);
+ return {name:'east',terrainGuide:{width:3,height:3,points},rings:[{ring:[[32,0],[48,0],[48,16],[32,16]],holes:[[[40,4],[44,4],[44,8],[40,8]]]}],protectedFootprints:[{ring:[[36,2],[38,2],[38,14],[36,14]],holes:[]}],outdoorReconstructed:false};
+}
+test('supplemental ground clips low source mesh only in its bounded coverage; holes and canopy remain',async t=>{
+ const extra={supplementalSurfaces:[supplementalFixture()]};
+ const low=fixture(t,tile([[34,2.5,4],[35,2.6,4],[34,2.5,5]]),extra);
+ assert.equal((await low.service.renderTile(origin,1_100_000_007)).readInt32LE(32),0);
+ for(const positions of [[[41,2.5,5],[42,2.5,5],[41,2.5,6]],[[49,2.5,5],[50,2.5,5],[49,2.5,6]],[[34,12,4],[35,12,4],[34,12,5]]]){
+  const bytes=tile(positions),f=fixture(t,bytes,extra);
+  assert.deepEqual(await f.service.renderTile(origin,1_100_000_007),bytes);
+ }
+ const bytes=tile([[34,4.5,4],[35,4.6,4],[34,4.5,5]]),shift=fixture(t,bytes,extra);
+ assert.equal((await shift.service.renderTile({...origin,h0:origin.h0-2},1_100_000_007)).readInt32LE(32),0);
+});
+test('outdoor boundary clipping preserves outside ground, winding, UVs and neighbour holes',async t=>{
+ const patch=supplementalFixture();patch.outdoorReconstructed=true;
+ const extra={supplementalSurfaces:[patch],protectionGrid:{width:20,height:20,metresPerPixel:1,data:Buffer.alloc(400).toString('base64')}};
+ for(const [positions,area,insideOutside]of [
+  [[[46,6,10],[49,6,10],[46,6,13]],.5,p=>p[0]>=48-1e-6],
+  [[[44,6,10],[49,6,10],[49,6,14]],3.6,p=>p[0]>=48-1e-6],
+  [[[39,6,5],[41,6,5],[39,6,7]],.5,p=>p[0]>=40-1e-6&&p[0]<=44+1e-6]
+ ]){
+  const bytes=tile(positions);
+  positions.forEach((p,i)=>{bytes.writeFloatLE(p[0]/64,48+i*20+12);bytes.writeFloatLE(p[2]/32,48+i*20+16);});
+  const {service,check}=fixture(t,bytes,extra),result=await service.renderTile(origin,1_100_000_007),vertices=[];
+  for(let i=0;i<result.readInt32LE(32);i++){
+   const at=48+i*20,p=[0,1,2].map(k=>result.readFloatLE(at+k*4));vertices.push(p);assert.ok(insideOutside(p));assert.equal(p[1],6);
+   assert.ok(Math.abs(result.readFloatLE(at+12)-p[0]/64)<1e-6);assert.ok(Math.abs(result.readFloatLE(at+16)-p[2]/32)<1e-6);
+  }
+  let actual=0;
+  for(let i=0;i<vertices.length;i+=3){const [a,b,c]=vertices.slice(i,i+3),signed=((b[0]-a[0])*(c[2]-a[2])-(b[2]-a[2])*(c[0]-a[0]))/2;assert.ok(signed>0);actual+=signed;}
+  assert.ok(Math.abs(actual-area)<1e-5);assert.deepEqual([...result.subarray(-4)],[12,34,56,255]);assert.equal(check.stats().clippedSourceTriangles,1);
+ }
+ // Complete outside geometry, including its original bytes, is preserved.
+ const bytes=tile([[49,6,10],[50,6,10],[49,6,13]]),outside=fixture(t,bytes,extra);
+ assert.deepEqual(await outside.service.renderTile(origin,1_100_000_007),bytes);
+});
+test('supplemental collision follows measured slope and datum while protecting excluded holes and untreated walls',t=>{
+ const spec={file:'east.ect',kind:'ground',runtimeId:1_000_060_000,bounds:[[32,0,0],[48,14,16]]};
+ const extra={tiles:[spec],supplementalSurfaces:[supplementalFixture()]};
+ const {service,dir}=fixture(t,null,extra,{voxelizeArea:()=>({vox:new Uint8Array(16*16*20).fill(7)})});
+ fs.writeFileSync(path.join(dir,spec.file),tile([[32,2,0],[48,4,0],[32,2,16]]));
+ const frame={...origin,mcToEcef:(...p)=>p};
+ const result=service.campusCollision(frame,2,0,-8,20),at=(x,y,z)=>result[((y+8)*16+z)*16+x-32];
+ assert.equal(at(34,-3,3),255);assert.equal(at(34,-1,3),7);
+ assert.equal(at(46,-1,3),255);assert.equal(at(46,1,3),7);
+ assert.equal(at(41,6,5),255); // excluded neighbour/courtyard hole
+ assert.equal(at(37,8,5),255); // protected building without reconstruction
+ assert.equal(at(34,8,5),7);
+ const shifted=service.campusCollision({...frame,h0:frame.h0-2},2,0,-8,20);
+ assert.equal(shifted[((-1+8)*16+3)*16+2],255);
+ assert.ok(service.campusCollision({...frame,lat:49},2,0,-8,20).every(v=>v===255));
+});
+test('explicit reconstructed facade enables collision in its supplemental protected footprint',t=>{
+ const spec={file:'wall.ect',kind:'reconstruction',runtimeId:1_000_030_028,bounds:[[36,0,2],[38,14,14]]};
+ const extra={tiles:[spec],supplementalSurfaces:[supplementalFixture()],photoFacades:{collisionRetirement:[{ring:[[36,2],[38,2],[38,14],[36,14]],holes:[],y0:2,y1:14}]}};
+ const {service,dir}=fixture(t,null,extra,{voxelizeArea:()=>({vox:new Uint8Array(16*16*20).fill(7)})});
+ fs.writeFileSync(path.join(dir,spec.file),tile([[37,2,2],[37,14,2],[37,2,14]]));
+ const data=service.campusCollision({...origin,mcToEcef:(...p)=>p},2,0,-8,20);
+ assert.equal(data[((8+8)*16+5)*16+5],7);
+});
+
+test('supplemental canopy cleanup removes only reconstructed outdoor canopy and preserves low protected walls',async t=>{
+ const patch=supplementalFixture();patch.outdoorReconstructed=true;
+ patch.surfaceGuide={heights:Array(9).fill(8)};
+ patch.vegetationOverhang={mask:Buffer.alloc(9,1).toString('base64'),roofCeilings:Array(9).fill(6)};
+ const extra={supplementalSurfaces:[patch],protectionGrid:{width:20,height:20,metresPerPixel:1,data:Buffer.alloc(400).toString('base64')}};
+ const tree=fixture(t,tile([[34,9,3],[35,10,3],[34,9,4]]),extra);
+ assert.equal((await tree.service.renderTile(origin,1_100_000_007)).readInt32LE(32),0);
+ const overhang=fixture(t,tile([[37,10,3],[37,11,3],[37,10,4]]),extra);
+ assert.equal((await overhang.service.renderTile(origin,1_100_000_007)).readInt32LE(32),0);
+ for(const positions of [[[37,4.5,3],[37,5.5,3],[37,4.5,4]],[[41,10,5],[42,10,5],[41,10,6]],[[49,10,3],[50,10,3],[49,10,4]]]){
+  const bytes=tile(positions),f=fixture(t,bytes,extra);assert.deepEqual(await f.service.renderTile(origin,1_100_000_007),bytes);
+ }
+});
+
+test('corrected tiles share concurrent work, retry failures and invalidate a changed datum',async t=>{
+ const bytes=tile([[4,.4,4],[8,.8,4],[4,.5,8]]);let calls=0,release;
+ const {service}=fixture(t,bytes,{},undefined,[],async()=>{calls++;await new Promise(r=>release=r);return bytes;});
+ const frame={...origin},a=service.renderTile(frame,1_100_000_007),b=service.renderTile(frame,1_100_000_007);
+ assert.equal(calls,1);release();const [x,y]=await Promise.all([a,b]);assert.strictEqual(x,y);
+ assert.strictEqual(await service.renderTile(frame,1_100_000_007),x);assert.equal(calls,1);
+ frame.h0-=2;const c=service.renderTile(frame,1_100_000_007);assert.equal(calls,2);release();await c;
+ let attempts=0;
+ const retry=fixture(t,bytes,{},undefined,[],async()=>{attempts++;if(attempts===1)throw Error('temporary');return attempts===2?null:bytes;}).service;
+ await assert.rejects(retry.renderTile(frame,1_100_000_007),/temporary/);
+ assert.equal(await retry.renderTile(frame,1_100_000_007),null);
+ assert.ok(await retry.renderTile(frame,1_100_000_007));assert.equal(attempts,3);
+});
+test('corrected tile cache evicts least recently used bytes and never retains oversized tiles',async t=>{
+ const bytes=tile([[25,3,4],[26,4,4],[25,3,5]]);let calls=0;
+ const {service}=fixture(t,bytes,{}, {correctedTileCacheBytes:bytes.length*2},[],async()=>{calls++;return bytes;});
+ const frame={...origin},get=id=>service.renderTile(frame,1_100_000_000+id);
+ await get(1);await get(2);await get(1);await get(3);assert.equal(calls,3);
+ await get(1);assert.equal(calls,3);await get(2);assert.equal(calls,4);
+ let largeCalls=0;
+ const small=fixture(t,bytes,{}, {correctedTileCacheBytes:bytes.length-1},[],async()=>{largeCalls++;return bytes;}).service;
+ await small.renderTile(frame,1_100_000_007);await small.renderTile(frame,1_100_000_007);assert.equal(largeCalls,2);
+});
+
+test('bounded complete-envelope cleanup preserves the outside of a source triangle in any save datum',async t=>{
+ for(const shift of [0,7]){
+  const points=[[34,2,2],[38,2,2],[34,2,6]],source=tile(points);source.writeDoubleLE(shift,16);
+  points.forEach(([x,y,z],i)=>{source.writeFloatLE((x-34)/4,48+i*20+12);source.writeFloatLE((z-2)/4,48+i*20+16);});
+  const {service,dir}=fixture(t,source,{photoFacades:{file:'photo-facades.json'}},{collectRegionTiles(){throw Error('manual only');}},[{id:7,parent:0,chain:[]}]);
+  fs.writeFileSync(path.join(dir,'photo-facades.json'),JSON.stringify({plans:[{id:'bounded',manualRoof:true,completeEnvelope:true,bounds:[[30,0,0],[36,8,8]],retirementBoundary:[{ring:[[30,0],[36,0],[36,8],[30,8]],holes:[]}],walls:[{reconstructed:true}]}]}));
+  const frame={...origin,h0:origin.h0-shift};let selected;
+  for(let i=0;i<100;i++){selected=await service.renderSelect(frame,[35,4,4]);if(!selected.pending)break;await new Promise(r=>setTimeout(r,1));}
+  assert.equal(selected.pending??0,0);
+  const b=await service.renderTile(frame,1_200_000_007);assert.deepEqual([...b.subarray(-4)],[12,34,56,255]);
+  const count=b.readInt32LE(32),vertices=[];assert.ok(count>=3);
+  for(let i=0;i<count;i++){
+   const p=Array.from({length:5},(_,k)=>b.readFloatLE(48+i*20+k*4));assert.ok(p[0]>=36-1e-6);assert.ok(Math.abs(p[1]+b.readDoubleLE(16)-(2+shift))<1e-6);assert.ok(Math.abs(p[3]-(p[0]-34)/4)<1e-6);assert.ok(Math.abs(p[4]-(p[2]-2)/4)<1e-6);vertices.push(p);
+  }
+  let area=0;for(let i=0;i<count;i+=3){const [a,c,d]=vertices.slice(i,i+3);area+=Math.abs((c[0]-a[0])*(d[2]-a[2])-(c[2]-a[2])*(d[0]-a[0]))/2;}
+  assert.ok(Math.abs(area-2)<1e-6,'Exactly the2m² outside the rebuilt footprint must survive');
+ }
 });

@@ -1,0 +1,36 @@
+{
+  "name": "Physik II /TUM5107, stair, connecting bridge and northern infill and separate northern container building",
+  "identitySource": "https://nav.tum.de/building/5107",
+  "descriptionSource": "https://www.ph.nat.tum.de/e11/kontakt/",
+  "geometry": "Pinned BVV LoD2 envelopes and DOP20 roof imagery. Separate main, stair, bridge and northern infill bodies. Separate BVV northern container envelope DEBY_LOD2_108698314, retaining its stepped roof.",
+  "observations": [
+    "University identifies silver two-storey building and a blue entrance below its bridge.",
+    "Privately inspected source projections show two window levels, grouped long-side openings, a central open courtyard, silver panel cladding and small punched bridge windows.",
+    "The connecting bridge is raised with an open route below; full-height LoD2 walls do not describe that clearance.",
+    "Northern body DEBY_LOD2_41731133 contacts the main envelope on three sides; only its10.54m northern face is exposed. The private low-resolution projection of that face shows dark glazing in two groups with pale framing. Its function is not verified; it is described only as northern infill."
+  ],
+  "qualification": "Opening rectangles, cladding divisions, frame profiles, materials, bridge underside and occluded details are approximate source-informed estimates. Provider pixels are not bundled. Roof geometry and roof pixels are retained from the public survey. No interiors. Northern infill window divisions and frame spacing are estimates from the low-resolution exposed-face reference; no interior or function is inferred.",
+  "planting": "Courtyard shrub regions follow green DOP20 samples on a 0.5 m grid and DOM20 minus DGM1 heights between 0.7 and 4.2 m. A 1.2 m courtyard wall setback excludes roof-edge returns; connected patches below 3 square metres are omitted. Positions and measured height bounds are source-derived, while species, branches and leaf cards are artistic estimates using attributed CC0 Poly Haven foliage.",
+  "northContainer": {
+    "building": "DEBY_LOD2_108698314",
+    "osmReference": {
+      "sourceFile": "physics-ii-neighbor-osm.xml",
+      "sha256": "17510ff50614a52b7da8a46fa5aab77a2166ccbb2259b1b4d824f0080272b087",
+      "retrievedSnapshotSha256": "fa8af7b5d37d767707b157ebd469f31eabc85dee6c547bf668786fac910eb8f4",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.6749,48.2681,11.6761,48.26885",
+      "objectUrl": "https://www.openstreetmap.org/way/1207162368",
+      "way": "1207162368",
+      "license": "ODbL1.0",
+      "attribution": "\u00a9 OpenStreetMap contributors"
+    },
+    "surveyHeightMetres": 6,
+    "sourceWallCount": 8,
+    "sourceRoofTriangles": 6,
+    "observations": [
+      "The northern private survey projection exposes two rows of paired windows, with eight groups below and six above, a low western extension and light frames.",
+      "Eastern upper windows are partly visible. The southern and western projections are substantially obscured by trees or missing pixels.",
+      "Openings on the obscured southern face repeat the observed modular rhythm as a qualified estimate. No room layout or institutional identity is inferred."
+    ],
+    "qualification": "BVV supplies eight wall planes, stepped six-triangle roof and the 162m2 footprint. OSM labels the matching footprint building=container (IoU0.817); no institutional identity or use is inferred. The private northern wall projection shows eight lower and six upper paired openings; eastern upper windows are partially visible. Positions, profiles and colours are estimates. The tree-obscured southern opening rhythm is an explicitly estimated counterpart, not measured photographic coverage. No interiors."
+  }
+}

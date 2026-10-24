@@ -1,0 +1,33 @@
+{
+  "identity": {
+    "garage": "https://nav.tum.de/building/5142",
+    "garageOsmWay": "683348599",
+    "garageSurveyOverlap": 0.9994662210492914,
+    "utilityOsmWay": "988698314",
+    "utilitySurveyOverlap": 0.9355861728679589
+  },
+  "constructionReference": "https://www.spie-sng.de/referenzen/technische-universitaet-muenchen/",
+  "constructionImage": "https://www.spie-sng.de/wp-content/uploads/9.-Parkhaus-mit-Parkleitsystem.jpg",
+  "observations": [
+    "Garage source views show horizontal concrete bands, vertical supports and dark open bays.",
+    "Contractor project photograph shows concrete parapets, steel beams and fine metal grid at open perimeter bays; exact correspondence of that photograph is project-associated, not surveyed.",
+    "Utility source views show largely closed pale walls, a west-end door and a small feature on the long north wall.",
+    "DOP20 resolves two pale circular structures beside the utility west/south corner; DOM20 resolves separate cap plateaux around 480.92m and 480.82m UTM elevation. Function, pipework, lower supports and precise cap profile are unverified."
+  ],
+  "qualification": "Private source projections reviewed for all 32 garage and six utility wall faces. Coverage/occlusion varies greatly; no provider or contractor pixels bundled. Garage bay widths, floor pitch, rail spacing, depth, colours and obscured details are estimates. Utility doors/joints approximate. No interiors; parking bays use shallow exterior recesses.",
+  "fixtureEvidence": {
+    "surfaceModel": {
+      "cachePath": "32698_5349_20_DOM.tif",
+      "sha256": "a16ad045851ad19fdcae31cee1b035e5b79f2d2015f4cba3edddf9816b1ca874",
+      "url": "https://download1.bayernwolke.de/a/dom20/DOM/32698_5349_20_DOM.tif"
+    },
+    "orthophoto": {
+      "cachePath": "campus-dop-east.tif",
+      "sha256": "8a78e3fc301332e607e514b8bca545d64e3b1a956ecf02a723301b0982ab0dae",
+      "url": "https://download1.bayernwolke.de/a/dop20/data/32698_5349.tif"
+    },
+    "license": "CC BY 4.0",
+    "attribution": "\u00a9 Bayerische Vermessungsverwaltung",
+    "method": "Split the 210 connected DOM20 cells above 478.65m at easting698667.0. Cap centres are means of the108/102 cell centres, cap elevations their medians. Radii1.1m estimated from the20cm cells and circular DOP20 silhouettes."
+  }
+}

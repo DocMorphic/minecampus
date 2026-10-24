@@ -21,7 +21,9 @@ def build(ctx):
  for item in spec['inputs']:
   p=cache/item['cachePath']
   if not p.exists() or hashlib.sha256(p.read_bytes()).hexdigest()!=item['sha256']:raise ValueError('Vegetation input missing or changed: '+item['cachePath'])
- bounds=metadata['boundsUtm'];resolution=.5;w=h=1200;transform=from_origin(bounds[0],bounds[3],resolution,resolution)
+ bounds=metadata['boundsUtm'];resolution=.5;w=int((bounds[2]-bounds[0])/resolution);h=int((bounds[3]-bounds[1])/resolution);transform=from_origin(bounds[0],bounds[3],resolution,resolution)
+ grid_w=metadata['terrainGuide']['width'];grid_h=metadata['terrainGuide']['height']
+ protection_w=int(bounds[2]-bounds[0]);protection_h=int(bounds[3]-bounds[1])
  dom=np.zeros((h,w),np.float32);dem=dom.copy()
  for files,target in [(['32697_5349_20_DOM.tif','32698_5349_20_DOM.tif'],dom),(['campus-dgm-west.tif','campus-dgm-east.tif'],dem)]:
   for filename in files:
@@ -46,8 +48,8 @@ def build(ctx):
    shape=Polygon(rings[0][:,:2],[r[:,:2]for r in rings[1:]])
    if not shape.is_valid:shape=shape.buffer(0)
    if not shape.is_empty and shape.area>.01:protectionShapes.append(shape.buffer(1.5))
- protection=rasterize([(p,1)for p in protectionShapes],out_shape=(600,600),transform=from_origin(bounds[0],bounds[3],1,1),dtype='uint8')
- metadata['protectionGrid']={'width':600,'height':600,'metresPerPixel':1,'data':base64.b64encode(protection.tobytes()).decode()}
+ protection=rasterize([(p,1)for p in protectionShapes],out_shape=(protection_h,protection_w),transform=from_origin(bounds[0],bounds[3],1,1),dtype='uint8')
+ metadata['protectionGrid']={'width':protection_w,'height':protection_h,'metresPerPixel':1,'data':base64.b64encode(protection.tobytes()).decode()}
  occupied=rasterize([(p,1) for p in footprints],out_shape=(h,w),transform=transform,dtype='uint8')>0
  rgb=np.array(Image.open(out/'campus-orthophoto.jpg').resize((w,h))).astype(float)
  green=(rgb[:,:,1]>rgb[:,:,0]*1.025)&(rgb[:,:,1]>rgb[:,:,2]+2)
@@ -63,11 +65,11 @@ def build(ctx):
  # it lets the runtime reject detached source fragments above surveyed objects.
  upper=ndimage.maximum_filter(np.maximum(0,canopy),size=7)
  tops=[];terrainPoints=metadata['terrainGuide']['points']
- for j in range(301):
-  row=min(1199,max(0,1199-j*4))
-  for i in range(301):
-   col=min(1199,max(0,i*4));tops.append(round(float(terrainPoints[j*301+i][1]+upper[row,col]),3))
- metadata['surfaceGuide']={'width':301,'height':301,'heights':tops,'tolerance':3.0,'source':'BVV DOM20 top envelope; maximum 3.5m neighbourhood, compared only in the local survey footprint'}
+ for j in range(grid_h):
+  row=min(h-1,max(0,h-1-j*4))
+  for i in range(grid_w):
+   col=min(w-1,max(0,i*4));tops.append(round(float(terrainPoints[j*grid_w+i][1]+upper[row,col]),3))
+ metadata['surfaceGuide']={'width':grid_w,'height':grid_h,'heights':tops,'tolerance':3.0,'source':'BVV DOM20 top envelope; maximum 3.5m neighbourhood, compared only in the local survey footprint'}
  # Detect photographed foliage overhanging low roofs and footprint buffers.
  # Keep the actual building below the surveyed roof ceiling, while allowing the
  # old scan canopy above it to be retired alongside the reconstructed trees.
@@ -90,14 +92,23 @@ def build(ctx):
  crownMask=ndimage.binary_closing((foliage|shadedFoliage)&(dom-roofElevation>1.5),iterations=1)
  ceiling=ndimage.maximum_filter(roofElevation-dem,size=7)
  roofCeilings=[]
- for j in range(301):
-  row=min(1199,max(0,1199-j*4))
-  for i in range(301):
-   col=min(1199,max(0,i*4));roofCeilings.append(round(float(terrainPoints[j*301+i][1]+ceiling[row,col]),3))
- metadata['vegetationOverhang']={'width':301,'height':301,'roofCeilings':roofCeilings}
+ for j in range(grid_h):
+  row=min(h-1,max(0,h-1-j*4))
+  for i in range(grid_w):
+   col=min(w-1,max(0,i*4));roofCeilings.append(round(float(terrainPoints[j*grid_w+i][1]+ceiling[row,col]),3))
+ metadata['vegetationOverhang']={'width':grid_w,'height':grid_h,'roofCeilings':roofCeilings}
 
  mask=(canopy>3)&foliage&~occupied
  mask=ndimage.binary_closing(mask,iterations=2)&~occupied
+ # Optional irregular extension footprint. Existing callers retain exactly the
+ # original detector; new trunks stay on the rebuilt side of a river/boundary.
+ if ctx.get('allowedTreeRegionUTM') is not None:
+  mask&=rasterize([(ctx['allowedTreeRegionUTM'],1)],out_shape=(h,w),transform=transform,dtype='uint8')>0
+ # Supplemental surveys must not plant a second trunk beside an existing tree
+ # just across the original coverage boundary. The original build passes none.
+ for e,north in ctx.get('excludedTreeCentresUTM',[]):
+  rr,cc=np.ogrid[:h,:w]
+  mask&=((bounds[0]+(cc+.5)*resolution-e)**2+(bounds[3]-(rr+.5)*resolution-north)**2>=9)
  labels,n=ndimage.label(mask)
  counts=np.bincount(labels.ravel());mask&=counts[labels]>=10
  smoothed=ndimage.gaussian_filter(canopy,1.3)
@@ -107,10 +118,10 @@ def build(ctx):
  for row,col in coords:
   value=smoothed[row,col]
   if not any((row-r)**2+(col-c)**2<(max(2.5,min(5.0,value*.23))/resolution)**2 for r,c in chosen):chosen.append((int(row),int(col)))
- centers=np.asarray(chosen)
+ centers=np.asarray(chosen,dtype=int).reshape(-1,2)
  crownLabels,_=ndimage.label(crownMask|mask)
  pixels=np.argwhere(crownMask|mask);pixelLabels=crownLabels[tuple(pixels.T)]
- seedLabels=crownLabels[tuple(centers.T)];owner=np.full(len(pixels),-1,dtype=int)
+ seedLabels=crownLabels[centers[:,0],centers[:,1]];owner=np.full(len(pixels),-1,dtype=int)
  for label in np.unique(seedLabels):
   if not label:continue
   seeds=np.flatnonzero(seedLabels==label);members=np.flatnonzero(pixelLabels==label)
@@ -148,7 +159,7 @@ def build(ctx):
  # Cover each 2m guide cell before downsampling the 0.5m mask. Retire only
  # foliage belonging to a crown actually emitted above.
  overhang=ndimage.maximum_filter(supported&(dom-roofElevation>1.5),size=5)
- metadata['vegetationOverhang']['mask']=base64.b64encode(bytes(int(overhang[min(1199,max(0,1199-j*4)),min(1199,i*4)])for j in range(301)for i in range(301))).decode()
+ metadata['vegetationOverhang']['mask']=base64.b64encode(bytes(int(overhang[min(h-1,max(0,h-1-j*4)),min(w-1,i*4)])for j in range(grid_h)for i in range(grid_w))).decode()
  metadata['vegetationOverhang']['source']='BVV DOP20/DOM20 foliage connected to surveyed tree candidates, at least 1.5m above the LoD2 roof or terrain; conservative local roof maximum'
  metadata['vegetation']={'source':'BVV DOM20/DGM1/DOP20; algorithmic crowns, reconstructed branches and species appearance','trees':trees}
  leaf=Image.open(cache/'tree-source/textures/jacaranda_tree_leaves_diff_1k.jpg').convert('RGBA')

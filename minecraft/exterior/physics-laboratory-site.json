@@ -1,0 +1,32 @@
+{
+  "boundsUTM": [
+    698550,
+    5349500,
+    698590,
+    5349580
+  ],
+  "osm": {
+    "sourceFile": "physics-laboratory-site-osm.xml",
+    "sha256": "1e5b1ef695a11dc65da9b2483a4eeeeca3dc1dcf86403351c96a866bbf05b525",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.675662262056049,48.26755996626953,11.67623825582651,48.26826638338482",
+    "retrievedSnapshotSha256": "e5ba55a1e62ac4821655d43b701f695bb11966dbdd2378ef202136bb9fb951b6",
+    "license": "ODbL1.0",
+    "attribution": "\u00a9 OpenStreetMap contributors"
+  },
+  "groundRuntimeStart": 1000060300,
+  "treeRuntimeStart": 1000010300,
+  "railingRuntimeId": 1000030034,
+  "groundTileMetres": 20,
+  "neighbourGuardMetres": 0.5,
+  "oldSurfaceGuardMetres": 0.002,
+  "defaultPathWidthMetres": 2,
+  "railing": {
+    "heightMetres": 1.1,
+    "postPitchMetres": 1.8,
+    "postRadiusMetres": 0.025,
+    "picketPitchMetres": 0.14,
+    "picketRadiusMetres": 0.01,
+    "railRadiusMetres": 0.02
+  },
+  "qualification": "BVV DGM1 ground and DOP20 imagery in the missing west-site strip; preserve previous terrain and surveyed/OSM building and bridge footprints. Paths, grass and railing alignment from a versioned OSM subset. Untagged path widths, railing dimensions/finish and tree species/branches are estimates. Unclassified ground retains source aerial appearance; no finished-construction-grade claim."
+}
