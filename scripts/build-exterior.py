@@ -246,6 +246,8 @@ from exterior_ground_surfaces import build as build_ground_surfaces
 build_ground_surfaces(globals())
 from exterior_galileo_court import build as build_galileo_court
 build_galileo_court(globals())
+from exterior_galileo_ramps import build as build_galileo_ramps
+build_galileo_ramps(globals())
 metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}
 for stale in ['galileo-facade-rectified.jpg']:
  if (OUT/stale).exists():(OUT/stale).unlink()

@@ -1,0 +1,295 @@
+{
+  "date": "2026-10-24",
+  "status": "Read-only next reconstruction study; no neighbouring building geometry changed",
+  "observedProblem": "UYW and UYL appear prominently in the east-ramp walking views as distorted photographic walls. Their repair remains part of the campus realism goal.",
+  "sources": [
+    {
+      "url": "https://nav.tum.de/building/uyw",
+      "facts": "TUM identifies 5257 as Werkstatt u. B\u00fcrogeb\u00e4ude FRM II (UYW), Lichtenbergstr. 1."
+    },
+    {
+      "url": "https://www.stbaro.bayern.de/hochbau/projekte/B15H.E1505200.01.html",
+      "facts": "The state building office identifies two four-storey workshop/laboratory buildings completed in 2020, designed by HENN, with large precast-concrete facade panels.",
+      "imageUrl": "https://www.stbaro.bayern.de/hochbau/projekte/B15H.E1505200.01.T600.jpg",
+      "imageSha256": "fa4545ae7d6d869a8c354e4fc33fa19a96304af42d6f7ba879f4548024ba793f",
+      "credit": "Stefan M\u00fcller-Naumann",
+      "use": "Visual research reference only; image is not redistributed or used as a texture.",
+      "visibleObservations": "Light grey large panels with thin joints, three recessed horizontal upper window bands, different ground-floor window/entrance arrangements and flat roofs. The view is between the buildings, so it does not establish every exterior face."
+    },
+    {
+      "url": "https://www.stbaro.bayern.de/mam/hochbau/neue_geb\u00e4ude_f\u00fcr_die_forschungs-neutronenquelle_heinz_maier-leibnitz.mp4",
+      "linkedFrom": "https://www.stbaro.bayern.de/hochbau/projekte/B15H.E1505200.01.html",
+      "credit": "FRM II / TUM",
+      "sha256": "f62a22a734dfe664b67ee016b0ba7353a875a0d69aba93139df7198466fbd1d6",
+      "use": "Exterior research reference only; video and frames are not redistributed or used as textures.",
+      "reviewedExteriorFramesSeconds": [
+        12,
+        28,
+        348
+      ],
+      "observations": [
+        "The 12-second view shows Galileo rather than the two MLZ neighbours; do not transfer that vertical facade pattern.",
+        "The 28-second view shows an MLZ long outer face with separated upper ribbon windows, an asymmetric middle row, low dark ground-floor groups, stepped flat roof and pale concrete skin.",
+        "The 348-second oblique view exposes both buildings, end elevations, different window-group distributions, tall service doors and lower grassed roof terraces beside higher plant volumes.",
+        "These views contradict a uniform repeated four-row ribbon treatment; map each visible face to its survey envelope before constructing window groups."
+      ],
+      "frameHashes": {
+        "12": "0689b04110ad4c066f2356c4d618f5f61229bc08ec78d96af55425ccb84573e2",
+        "28": "711c4c56df1c9d87840a5e926d87d3fa63e2faa3345724f2c1339ce34135b00d",
+        "348": "22943a543b86cca529af13924fa3843b907c93597acbd69149d7d37a3ff51068"
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "osmWay": 774866202,
+      "tags": {
+        "building": "yes",
+        "building:levels": "4",
+        "name": "UYW",
+        "ref": "5257"
+      },
+      "matches": [
+        {
+          "surveyId": "DEBY_LOD2_108180785",
+          "intersectionAreaSquareMetres": 935.3542982412937,
+          "surveyFootprintAreaSquareMetres": 962.2612024575433,
+          "boundsMC": [
+            [
+              160.4203254584331,
+              63.86590473343,
+              -139.0514915007891
+            ],
+            [
+              218.7415722711303,
+              84.46878385108297,
+              -113.56097237237634
+            ]
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://api.openstreetmap.org/api/0.6/way/774866202/full",
+        "sha256": "06a289111aeaafdf4758738dc437a741fff6a5b1faad63d218c955b5ef3e4735",
+        "version": 6,
+        "timestamp": "2021-10-27T18:24:15Z",
+        "retrieved": "2026-10-24",
+        "license": "ODbL 1.0"
+      },
+      "mappingNote": "Live OSM coordinates verified against the cached registration to within 1 mm numerical tolerance; this is not a claim of real-world map accuracy.",
+      "coordinatesMC": [
+        [
+          166.51285931060556,
+          -140.30930725298822
+        ],
+        [
+          217.70627795532346,
+          -131.1811511768028
+        ],
+        [
+          215.14530910295434,
+          -116.89125081151724
+        ],
+        [
+          193.91054794262163,
+          -120.68256086856127
+        ],
+        [
+          192.59662830317393,
+          -113.34300749562681
+        ],
+        [
+          159.97233298351057,
+          -119.14687088970095
+        ],
+        [
+          162.5260153497802,
+          -133.38114013243467
+        ],
+        [
+          165.19148705829866,
+          -132.90303784050047
+        ],
+        [
+          166.51285931060556,
+          -140.30930725298822
+        ]
+      ],
+      "utm": [
+        [
+          698375.4962983632,
+          5349349.455768413
+        ],
+        [
+          698426.9763854055,
+          5349342.114259341
+        ],
+        [
+          698424.9141399025,
+          5349327.743892341
+        ],
+        [
+          698403.5602962753,
+          5349330.794107584
+        ],
+        [
+          698402.502529171,
+          5349323.413275205
+        ],
+        [
+          698369.6960093728,
+          5349328.078560826
+        ],
+        [
+          698371.752908318,
+          5349342.393076807
+        ],
+        [
+          698374.4334043427,
+          5349342.0080010155
+        ],
+        [
+          698375.4962983632,
+          5349349.455768413
+        ]
+      ],
+      "maximumCachedCoordinateDifferenceMetres": 0.0
+    },
+    {
+      "osmWay": 774866203,
+      "tags": {
+        "building": "yes",
+        "name": "UYL",
+        "ref": "5258"
+      },
+      "matches": [
+        {
+          "surveyId": "DEBY_LOD2_108180786",
+          "intersectionAreaSquareMetres": 502.9964894576186,
+          "surveyFootprintAreaSquareMetres": 503.97850994196654,
+          "boundsMC": [
+            [
+              154.56443906484546,
+              63.816974854401806,
+              -102.03223926834156
+            ],
+            [
+              207.59022250916536,
+              81.11937519053025,
+              -77.71094886801134
+            ]
+          ]
+        },
+        {
+          "surveyId": "DEBY_LOD2_108180787",
+          "intersectionAreaSquareMetres": 469.91518961612604,
+          "surveyFootprintAreaSquareMetres": 471.2386939193265,
+          "boundsMC": [
+            [
+              176.90501172366606,
+              63.96661518088977,
+              -102.50950163981167
+            ],
+            [
+              212.7501145400398,
+              84.9983991057133,
+              -83.73688881937251
+            ]
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://api.openstreetmap.org/api/0.6/way/774866203/full",
+        "sha256": "d5581082734c08ab8eb60206cc22cdf3547f33295d4a813a873e4cfbe17bdcc0",
+        "version": 6,
+        "timestamp": "2022-07-20T11:30:22Z",
+        "retrieved": "2026-10-24",
+        "license": "ODbL 1.0"
+      },
+      "mappingNote": "Live OSM coordinates verified against the cached registration to within 1 mm numerical tolerance; this is not a claim of real-world map accuracy.",
+      "coordinatesMC": [
+        [
+          154.36014359106775,
+          -87.08641386311501
+        ],
+        [
+          157.15883958269842,
+          -102.48833480384201
+        ],
+        [
+          178.4975881432183,
+          -98.630167090334
+        ],
+        [
+          179.27704849722795,
+          -102.88933031260967
+        ],
+        [
+          212.96320538327564,
+          -96.79648217558861
+        ],
+        [
+          210.7659372893395,
+          -84.70845149084926
+        ],
+        [
+          207.93709326861426,
+          -85.21988856140524
+        ],
+        [
+          206.5563679416664,
+          -77.64679979719222
+        ],
+        [
+          154.36014359106775,
+          -87.08641386311501
+        ]
+      ],
+      "utm": [
+        [
+          698365.20266235,
+          5349295.842216887
+        ],
+        [
+          698367.4638018061,
+          5349311.33220354
+        ],
+        [
+          698388.9238961496,
+          5349308.21878899
+        ],
+        [
+          698389.5547002144,
+          5349312.502497624
+        ],
+        [
+          698423.4324946384,
+          5349307.585346373
+        ],
+        [
+          698421.6571224119,
+          5349295.428172457
+        ],
+        [
+          698418.8121929596,
+          5349295.840878804
+        ],
+        [
+          698417.6957857192,
+          5349288.224327837
+        ],
+        [
+          698365.20266235,
+          5349295.842216887
+        ]
+      ],
+      "maximumCachedCoordinateDifferenceMetres": 0.0
+    }
+  ],
+  "nextWork": [
+    "Use the verified OSM/BVV envelope matches; inspect roof and facade subdivisions before construction.",
+    "Register the video exterior views (28 s and 348 s) to individual survey faces, preserving asymmetric window groups and stepped plant roofs; record estimated dimensions explicitly.",
+    "Preserve survey roofs and reconstruct concrete panel joints, recessed ribbon glazing and exterior entrance recesses only.",
+    "Include both ramp approach views and opposite sides in native visual verification."
+  ]
+}

@@ -46,7 +46,7 @@ for spec in m['tiles']:
    f=((px-a[:,0])*w[:,2]-(pz-a[:,2])*w[:,0])/det;g=(u[:,0]*(pz-a[:,2])-u[:,2]*(px-a[:,0]))/det
    hit=(f>=0)&(g>=0)&(f+g<=1);heights.extend((a[:,1]+f*u[:,1]+g*w[:,1])[hit].tolist())
  _,ids=np.unique(v[:,3:5],axis=0,return_index=True);v=v[ids]
- clipped=spec['file'] in {t['file']for t in m.get('architecture',{}).get('galileoCourt',{}).get('alteredGroundTiles',[])}
+ clipped=spec['file'] in {t['file']for name in ['galileoCourt','galileoRamps'] for t in m.get('architecture',{}).get(name,{}).get('alteredGroundTiles',[])}
  if not clipped:assert len(v)==102*102
  e,n=map(int,Path(spec['file']).stem.split('-')[1:]);x=np.round(e+v[:,3].astype(float)*100,3);y=np.round(n+100-v[:,4].astype(float)*100,3);actual=v[:,:3].astype(float)+anchor
  interior=(v[:,3]>0)&(v[:,3]<1)&(v[:,4]>0)&(v[:,4]<1)
@@ -54,8 +54,8 @@ for spec in m['tiles']:
   key=(xx,yy)
   if key in seams:maxSeam=max(maxSeam,float(np.max(np.abs(point-seams[key]))))
   else:seams[key]=point
- # The courtyard adds interpolated cut-boundary vertices. Their barycentric
- # positions/UVs and the exact missing area are checked by validate-galileo-court.
+ # Courtyard/ramp cuts add interpolated boundary vertices. Their original
+ # positions/UVs and exact missing areas are checked by the bounded validators.
  if clipped:interior&=(np.abs(np.mod(x,1)-.5)<1e-6)&(np.abs(np.mod(y,1)-.5)<1e-6)
  x=x[interior];y=y[interior];actual=actual[interior]
  np.testing.assert_allclose(np.mod(x,1),.5,atol=1e-6);np.testing.assert_allclose(np.mod(y,1),.5,atol=1e-6)
@@ -81,7 +81,14 @@ for spec in m['tiles']:
   frontageCount+=int(np.count_nonzero(frontage_changed));gradedCount+=int(np.count_nonzero(frontage_changed&~graded))
  want=expected(x,y,height)
  errors.extend(np.linalg.norm(actual-want,axis=1));expectedPoints.append(want);sampleXY.append(np.column_stack((x,y)))
-assert 359000<=len(errors)<=360000 and max(errors)<.001 and maxSeam<.00001,(len(errors),max(errors),maxSeam)
+cut_polygons=[]
+court=m.get('architecture',{}).get('galileoCourt')
+if court:cut_polygons.append(Polygon(court['cutRingMC'],court['cutHolesMC']))
+cut_polygons.extend(Polygon(r)for r in m.get('architecture',{}).get('galileoRamps',{}).get('cutRingsMC',[]))
+left,bottom,right,top=m['boundsUtm'];grid=np.array([(x,y)for y in np.arange(bottom+.5,top)for x in np.arange(left+.5,right)])
+col,row=(~tr)*(grid[:,0],grid[:,1]);grid_mc=expected(grid[:,0],grid[:,1],dgm[row.astype(int),col.astype(int)])
+expected_centres=len(grid)-int(np.count_nonzero(contains_xy(unary_union(cut_polygons),grid_mc[:,0],grid_mc[:,2])))
+assert len(errors)==expected_centres and max(errors)<.001 and maxSeam<.00001,(len(errors),expected_centres,max(errors),maxSeam)
 result={'status':'PASS: encoded terrain matches DGM1 plus explicit site grading, with adjoining tile seams preserved','sourceSampleCount':len(errors),'unalteredDgmSamples':len(errors)-gradedCount,'inferredSiteGradingSamples':gradedCount,'apronGradingSamples':apronCount,'galileoFrontageGradingSamples':frontageCount,'maximumPositionErrorMetres':max(errors),'maximumTileSeamErrorMetres':maxSeam,'note':'Source representation accuracy only; not a claim of millimetre real-world survey accuracy. Explicit site grading is approximate finished terrain, not measured DGM.'}
 assert len(bankHeights)==1 and abs(bankHeights[0]-62.378458)<.00001,bankHeights
 result['nativeBankProbe']={'positionMC':[14.5,-228.5],'meshHeight':bankHeights[0],'expectedProxyTop':round(bankHeights[0]),'toleranceMetres':.51}

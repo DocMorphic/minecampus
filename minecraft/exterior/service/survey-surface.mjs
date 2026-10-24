@@ -71,7 +71,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
   }
   function terrain(x,z){
     const override=(terrainOverrideGrid.get(Math.floor(x/16)+','+Math.floor(z/16))??[]).find(r=>inside(x,z,r.ring));
-    if(override)return override.height;
+    if(override)return override.plane ? override.plane[0]*x+override.plane[1]*z+override.plane[2] : override.height;
     const dx=x-a[0],dz=z-a[2],s=(dx*vz-dz*vx)/det,t=(ux*dz-uz*dx)/det;
     if(s<.2||t<.2||s>width-1.2||t>height-1.2)return null;
     const i=Math.floor(s),j=Math.floor(t),fx=s-i,fz=t-j;

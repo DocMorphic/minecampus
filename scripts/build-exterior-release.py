@@ -29,6 +29,8 @@ facade=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoFa
 assert hashlib.sha256((SOURCE/facade['sourceFile']).read_bytes()).hexdigest()==facade['sourceSha256']
 frontage=json.loads((DATA/'manifest.json').read_text())['frontageGrading']
 assert hashlib.sha256((SOURCE/frontage['sourceFile']).read_bytes()).hexdigest()==frontage['sourceSha256']
+ramps=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoRamps']
+assert hashlib.sha256((SOURCE/ramps['sourceFile']).read_bytes()).hexdigest()==ramps['sourceSha256']
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -60,6 +62,11 @@ compiled=work/'mod/build/libs/realworldmc-1.0.3.jar'
 if not compiled.is_file():raise SystemExit('Expected remapped release JAR missing.')
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
+
+Galileo east ramps: exterior runs follow OSM driveways and pinned BVV DGM1
+profiles. Width, retaining walls, caps and shallow portal recesses are inferred
+from DOP20 and the SLAM site plan; no underground interior is reconstructed.
+See galileo-east-ramps.json and galileo-east-ramp-reference.json.
 
 Galileo western frontage: three small source-terrain depressions replaced by
 two bounded paving grades inferred from surrounding BVV DGM1 controls.
@@ -241,6 +248,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/galileo-north-court-reference.json',(SOURCE/'photos/galileo-north-court-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-facade-reference.json',(SOURCE/'photos/galileo-facade-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-frontage-grade.json',(SOURCE/'galileo-frontage-grade.json').read_bytes())
+  write(target,'src/minecampus-exterior/galileo-east-ramps.json',(SOURCE/'galileo-east-ramps.json').read_bytes())
+  write(target,'src/minecampus-exterior/galileo-east-ramp-reference.json',(SOURCE/'photos/galileo-east-ramp-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site.json',(SOURCE/'cos-site.json').read_bytes())
   write(target,'src/minecampus-exterior/cos-site-surfaces.geojson',(DATA/'cos-site-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/grs-courtyard-surfaces.geojson',(DATA/'grs-courtyard-surfaces.geojson').read_bytes())

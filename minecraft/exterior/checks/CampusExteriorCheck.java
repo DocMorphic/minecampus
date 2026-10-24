@@ -13,7 +13,7 @@ import java.nio.file.Path;
 /** Hidden, isolated native-client captures; not included in the distributed datapack. */
 public final class CampusExteriorCheck implements ClientModInitializer {
     private static final String WORLD=System.getProperty("minecampus.checkWorld","campus-check");
-    private boolean opened, moved, walkingStarted, courtWalking, gradeWalking;
+    private boolean opened, moved, walkingStarted, courtWalking, gradeWalking, rampsWalking;
     private volatile boolean gameplayVerified, terraceVerified, frontageVerified;
     private volatile boolean frontageQueued;
     private boolean terraceStarted, terraceCheckQueued;
@@ -40,7 +40,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
     private volatile int expectedJournal;
     private volatile boolean collisionVerified;
     private volatile boolean collisionProofQueued;
-    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png", "campus-promenade-lawn-path.png", "campus-promenade-east-path.png", "campus-crosspath-south.png", "campus-crosspath-north.png", "campus-galileo-court-upper.png", "campus-galileo-court-floor.png", "campus-galileo-court-stairs.png", "campus-galileo-west.png", "campus-galileo-southwest.png", "campus-galileo-east.png", "campus-galileo-aerial.png", "campus-galileo-north-detail.png", "campus-galileo-grade-overview.png", "campus-galileo-grade-walking.png"};
+    private static final String[] NAMES = {"campus-final-ground.png", "campus-final-aerial.png", "campus-tnt.png", "campus-route-west.png", "campus-route-south.png", "campus-route-north.png", "campus-source-check.png", "campus-ias.png", "campus-photo-north.png", "campus-former-mensa.png", "campus-mensa-terrace.png", "campus-paving-detail.png", "campus-warehouse-east.png", "campus-road-detail.png", "campus-telefonzentrale-west.png", "campus-cos-southwest.png", "campus-cos-south.png", "campus-cos-aerial.png", "campus-cos-forecourt.png", "campus-cos-planting.png", "campus-cos-north.png", "campus-grs-north.png", "campus-grs-west.png", "campus-grs-tower-north.png", "campus-grs-tower-courtyard.png", "campus-grs-connectors-aerial.png", "campus-grs-main-west.png", "campus-grs-main-east.png", "campus-grs-iii-west.png", "campus-grs-iii-south.png", "campus-grs-iii-east.png", "campus-grs-iii-tower.png", "campus-grs-iii-aerial.png", "campus-grs-courtyard-path.png", "campus-grs-courtyard-connector.png", "campus-promenade-lawn-path.png", "campus-promenade-east-path.png", "campus-crosspath-south.png", "campus-crosspath-north.png", "campus-galileo-court-upper.png", "campus-galileo-court-floor.png", "campus-galileo-court-stairs.png", "campus-galileo-west.png", "campus-galileo-southwest.png", "campus-galileo-east.png", "campus-galileo-aerial.png", "campus-galileo-north-detail.png", "campus-galileo-grade-overview.png", "campus-galileo-grade-walking.png", "campus-galileo-ramps-overview.png", "campus-galileo-ramp-north.png", "campus-galileo-ramp-south.png"};
     private static final String[] CAMERAS = {
         "39.961711 65.797294 -62.90048 -103.360657 4.800037",
         "-60 120 120 -153.435 20.44",
@@ -90,7 +90,10 @@ public final class CampusExteriorCheck implements ClientModInitializer {
         "25 110 -180 -37 27",
         "104 65 -156 0 -20",
         "58 70 -59 -90 35",
-        "67 65 -42 180 14"
+        "67 65 -42 180 14",
+        "151 100 -116 90 70",
+        "144 64.4 -142 10 22",
+        "136 64.4 -104 10 22"
     };
 
     @Override public void onInitializeClient() {
@@ -135,6 +138,14 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                 }
             }
             if (mc.player==null || mc.getSingleplayerServer()==null || mc.getOverlay()!=null) return;
+            if(rampsWalking){
+                if(CampusGalileoRampChecks.tick(mc)){
+                    rampsWalking=false;
+                    if(Boolean.getBoolean("minecampus.galileoRampsReview")){Files.writeString(Path.of("campus-galileo-ramps-review-result.txt"),"PASS: three ramp views and six native gravity probes");mc.stop();return;}
+                    ++stage;moved=false;
+                }
+                return;
+            }
             if(gradeWalking){
                 if(CampusGalileoGradeChecks.tick(mc)){
                     gradeWalking=false;
@@ -706,6 +717,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                     Files.writeString(Path.of("campus-telefonzentrale-result.txt"),"PASS: all four west-window rays hit the reconstruction on the correct 5130 survey envelope");
                 }
             }
+            if(stage==51&&Boolean.getBoolean("minecampus.requireGalileoRamps")){CampusGalileoRampChecks.begin(mc,loaded);rampsWalking=true;return;}
+            if(Boolean.getBoolean("minecampus.galileoRampsReview")&&stage==51){Files.writeString(Path.of("campus-galileo-ramps-review-result.txt"),"PASS: three isolated ramp views captured");mc.stop();return;}
             if(stage==48&&Boolean.getBoolean("minecampus.requireGalileoGrade")){CampusGalileoGradeChecks.begin(mc,loaded);gradeWalking=true;return;}
             if(stage==41&&Boolean.getBoolean("minecampus.requireGalileoCourt")){CampusGalileoCourtChecks.begin(mc,loaded);courtWalking=true;return;}
             if(Boolean.getBoolean("minecampus.galileoGradeReview")&&stage==48){Files.writeString(Path.of("campus-galileo-grade-review-result.txt"),"PASS: two isolated frontage views captured");mc.stop();return;}

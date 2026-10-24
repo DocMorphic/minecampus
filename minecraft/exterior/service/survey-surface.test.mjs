@@ -226,3 +226,17 @@ test('bounded lower floors and stair overrides guide collision without affecting
  assert.equal(shifted[((-9+12)*16+8)*16+8],255); // origin-height shift retained
  assert.ok(service.campusCollision({...frame,lat:49},0,0,-12,20).every(x=>x===255));
 });
+
+test('ramp planes vary collision height along the run and preserve neighbouring terrain',t=>{
+ const spec={file:'ramp.ect',kind:'reconstruction',runtimeId:1_000_030_022,bounds:[[0,-20,0],[16,2,16]]};
+ const ring=[[4,4],[12,4],[12,12],[4,12]];
+ const {service,dir}=fixture(t,null,{tiles:[spec],terrainOverrides:[{ring,plane:[0,-.5,0]}]},{voxelizeArea:()=>({vox:new Uint8Array(16*16*20).fill(7)})});
+ fs.writeFileSync(path.join(dir,spec.file),tile([[4,-2,4],[12,-2,4],[4,-6,12]]));
+ const frame={...origin,mcToEcef:(...p)=>p};
+ const result=service.campusCollision(frame,0,0,-12,20),at=(x,y,z)=>result[((y+12)*16+z)*16+x];
+ assert.equal(at(8,-8,4),255);assert.equal(at(8,-6,4),7);
+ assert.equal(at(8,-8,11),7);assert.equal(at(8,-10,11),255);
+ assert.equal(at(3,-8,11),255);assert.equal(at(3,-4,11),7);
+ const shifted=service.campusCollision({...frame,h0:frame.h0-2},0,0,-12,20);
+ assert.equal(shifted[((-8+12)*16+11)*16+8],255);
+});
