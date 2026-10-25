@@ -73,6 +73,13 @@ assert west_check['status'].startswith('PASS:') and west_check['manifestSha256']
 assert west_check['validatorSha256']==digest(ROOT/'scripts/validate-atom-ei-west-entrance.py')
 assert west_check['meshSha256']==west['meshSha256']
 
+reactor=json.loads((DATA/'manifest.json').read_text())['architecture']['reactorExterior']
+for path,key in [(SOURCE/reactor['sourceFile'],'sourceSha256'),(ROOT/reactor['generatorFile'],'generatorSha256'),(SOURCE/reactor['referenceFile'],'referenceSha256'),(DATA/reactor['derivedFile'],'derivedSha256'),(DATA/reactor['meshFile'],'meshSha256'),(DATA/reactor['roofFile'],'roofSha256')]:assert digest(path)==reactor[key]
+reactor_check=json.loads((DATA/'reactor-exterior-validation.json').read_text())
+assert reactor_check['status'].startswith('PASS:') and reactor_check['manifestSha256']==digest(DATA/'manifest.json')
+assert reactor_check['validatorSha256']==digest(ROOT/'scripts/validate-reactor-exterior.py')
+assert reactor_check['meshSha256']==reactor['meshSha256'] and reactor_check['roofSha256']==reactor['roofSha256']
+
 court=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoCourt']
 assert hashlib.sha256((SOURCE/court['sourceFile']).read_bytes()).hexdigest()==court['sourceSha256']
 facade=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoFacade']
@@ -792,6 +799,10 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/atom-ei-west-entrance.json',(SOURCE/'atom-ei-west-entrance.json').read_bytes())
   write(target,'src/minecampus-exterior/atom-ei-entrances-reference.json',(SOURCE/'photos/atom-ei-entrances-reference.json').read_bytes())
   for name in ['atom-ei-west-entrance-surfaces.json','atom-ei-west-entrance-validation.json']:
+   write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
+  write(target,'src/minecampus-exterior/reactor-exterior.json',(SOURCE/'reactor-exterior.json').read_bytes())
+  write(target,'src/minecampus-exterior/reactor-exterior-research.json',(SOURCE/'photos/reactor-exterior-research.json').read_bytes())
+  for name in ['reactor-surfaces.json','reactor-exterior-validation.json']:
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/atom-ei.json',(SOURCE/'atom-ei.json').read_bytes())
   write(target,'src/minecampus-exterior/atom-ei-exterior-research.json',(SOURCE/'photos/atom-ei-exterior-research.json').read_bytes())

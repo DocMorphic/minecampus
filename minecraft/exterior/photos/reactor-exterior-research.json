@@ -1,5 +1,5 @@
 {
-  "status": "Exterior survey and public reference identified; reconstruction pending",
+  "status": "Candidate 80 exterior reconstruction implemented; geometric and native validation pending",
   "building": "DEBY_LOD2_5323135",
   "priority": "Large unreconstructed reactor/connecting-wing envelope visible beside the Atom-Ei; assess together with the smaller north projection rather than limiting the goal to the west entrance.",
   "survey": {
@@ -44,7 +44,8 @@
   "observations": [
     "The taller volume has silver/light-grey rectangular cladding panels and an arched roof with a raised curved edge.",
     "Several narrow vertical window groups and smaller dark service openings interrupt the taller facades.",
-    "The lower wings show repeated glazed bands, pale wall divisions, flat roofs and glazed rooflights."
+    "The lower wings show repeated glazed bands, pale wall divisions, flat roofs and glazed rooflights.",
+    "The west end of the lower connecting body has a curved concrete elevation with a narrow upper window band in the 2017 TUM Atom-Ei photograph."
   ],
   "limitations": [
     "Fine panel, frame and opening dimensions require qualified estimates from the exterior views.",
@@ -57,5 +58,9 @@
     "Add exterior cladding, observed window groups and roof-edge details from the official footage.",
     "Create a bounded retirement plan with protection for adjacent buildings; test the east extent beyond the original central terrain footprint.",
     "Verify close north/west approaches, retained Atom-Ei views, roof views and collision in the actual packaged game."
-  ]
+  ],
+  "additionalReference": {
+    "referenceRecord": "photos/atom-ei-exterior-research.json",
+    "use": "2017 TUM Atom-Ei exterior photograph shows the adjacent concrete west arc and narrow upper window band; inferred registration from the surveyed curved outline."
+  }
 }

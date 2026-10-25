@@ -1,0 +1,295 @@
+{
+  "status": "Candidate 80 development checkpoint: geometry and packaged-service checks pass; native inspection fails on surviving east scan geometry",
+  "building": "DEBY_LOD2_5323135",
+  "candidate": 80,
+  "alignmentVersion": 81,
+  "geometry": {
+    "status": "PASS: encoded measured barrel, retained lower roof, complete exterior and protected neighbours",
+    "manifestSha256": "8a19750577b73afae479f1ccb203a5c523bf9db5cdf58d4e3a3113d4ebe1e712",
+    "validatorSha256": "940d99461d6b3d3f892de1be6c111ff542ea3600c3f9d2e88ea6687d9a2f6090",
+    "sourceSha256": "0d1b64928a57c46f74100c85dae085d24b5a647aa1fd00ac275984d69f15546d",
+    "meshSha256": "94647a189825a02f2a1935f2b3b807d4809e1057b400a6c0e60f7935a2a3dbb5",
+    "roofSha256": "9c90c6f5805376412983669a818f147104035983765f1bc69411077ef86e62be",
+    "observedBarrelVertices": 33,
+    "maximumEncodedVertexErrorMetres": 1.5485633454369506e-05,
+    "barrelTriangles": 10496,
+    "barrelBoundaryEdges": 430,
+    "retainedLowerRoofTriangles": 46,
+    "partAreasSquareMetres": [
+      1359.4524622444978,
+      4500.063076253483,
+      252.67643492312624,
+      1550.021031380368,
+      60.57076454596633,
+      4321.287566913799,
+      311.24217044798246
+    ],
+    "completeSurveyWalls": 55,
+    "curvedGablesClosed": 5,
+    "maximumDatumGuideResidualMetres": 0.0,
+    "protectedNeighbourOverlapSquareMetres": 0.0,
+    "priorRenderTilesUnchanged": 427,
+    "inspectionPlanSha256": "62b4680a9c5480d9661873635644e3a33a67f5682f24c5a896de23918a7e7b97",
+    "outdoorNorthWestRoutes": 3,
+    "visualAcceptance": false,
+    "qualification": "Geometry checks do not establish facade accuracy or visual acceptance; native walking and image review remain required."
+  },
+  "artifact": {
+    "status": "PASS: exact embedded FRM II mesh and shader; all prior render/collision inputs and facade plans unchanged",
+    "artifactSha256": "fe1e75bdbd90bed01cb1760709d2f9ac5794ee802cb9c2dbaf61998e3f05b4ac",
+    "rendererSourceFingerprint": "04595eea4d4599d1",
+    "renderTiles": 428,
+    "alignmentVersion": 81,
+    "previousRenderTilesByteIdentical": 427,
+    "previousRenderCollisionInputsByteIdentical": 607,
+    "unchangedServiceModules": 24
+  },
+  "requiredSourceValidators": [
+    {
+      "validator": "validate-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mlz-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-canopies.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-west-entrance.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-library.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-container.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-p1-complex.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-woodland.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-new-laboratory.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-laboratory-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-ii.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-pinned-water.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-wsi.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn-west.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-cala.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-lmu.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-courtyard.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-riverbank.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-north-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mensa-terrace.py",
+      "exitCode": 0
+    }
+  ],
+  "packagedServiceChecks": {
+    "status": "PASS: surveyed wall and roof controls retain collision; measured north/west walking routes clear at both datums",
+    "wallChecks": 110,
+    "roofChecks": 48,
+    "results": [
+      {
+        "label": "mlz courtyard standing",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.89908177890647,
+        "residual": -0.024081778906470674,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.995528146961206,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 0,
+        "standingY": 63.8125,
+        "expected": 63.786881936432195,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "mlz courtyard standing",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.89908177890646,
+        "residual": -0.02408177890646357,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.9955281469612,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 2,
+        "standingY": 65.8125,
+        "expected": 65.7868819364322,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      }
+    ],
+    "qualification": "East/south walking routes need ground extension. Native migration and visual acceptance are separate."
+  },
+  "nativeVerification": {
+    "status": "FAIL: inspection geometry control",
+    "exitCode": 1,
+    "requestedCameraViews": 14,
+    "capturedCameraViews": 7,
+    "completedGeometryCameraChecks": 6,
+    "requestedStandingControls": 5,
+    "completedStandingControls": 0,
+    "reviewedCaptures": 13,
+    "failureCamera": "east curved gable elevated diagnostic",
+    "failure": "Unexpected visible geometry at screen 0.5,0.5: {\"tile\":1200024936,\"part\":0,\"distance\":16.675766,\"triangle\":[[379.4520893096924,87.2083306312561,-80.40157413482666],[380.06892013549805,89.25076818466187,-84.30378532409668],[379.2466678619385,90.28346866369247,-79.58010387420654]]}",
+    "qualification": "Inspection stops at the first failed visible-geometry assertion; remaining cameras and native gravity have not passed."
+  },
+  "preservation": {
+    "sourceCandidate79Unchanged": 112,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV81AlignedChunks": 119,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "visualReview": {
+    "accepted": false,
+    "observations": [
+      "The curved roof, silver cladding, lower window bands and rooflights render in actual Minecraft; the northeast view establishes the larger building shape.",
+      "Large provider fragments obscure the northwest ground view and hang in front of the north wing.",
+      "The east source facade remains in front of the new cladding; the visible-geometry assertion correctly fails.",
+      "The lower wing has exposed ground-edge gaps. Existing Atom-Ei/MLZ appearance is retained."
+    ],
+    "nextActions": [
+      "Replace the bounded exterior ground strips and remnants around the north/south approaches using surveyed terrain and orthophoto evidence, retaining other building footprints.",
+      "Classify the east overlap against adjacent building DEBY_LOD2_8486666 and its surveyed roof height; retire the upper false facade without erasing the lower adjoining building.",
+      "Re-run the full camera and standing plan without weakening the east first-hit assertion; assess finer roof-edge/frame details after the obstructions are removed.",
+      "Continue the north Atom-Ei projection, remaining source fragments and broader campus-route work."
+    ]
+  },
+  "visualAcceptance": false,
+  "installedPreviewChanged": false,
+  "publicBinaryRelease": false,
+  "screenshots": [
+    {
+      "path": "docs/screenshots/reactor-development-overview.png",
+      "sha256": "fe7c62de898273d4c86346a796ab2b6e10e4fac46eac21eb17b86936df390df6"
+    },
+    {
+      "path": "docs/screenshots/reactor-north-source-fragments.png",
+      "sha256": "5c7e7f18a83f20e48ea99534d7540036ca6baf40adcfcb80c16de438fb6b62e0"
+    },
+    {
+      "path": "docs/screenshots/reactor-east-source-overlap.png",
+      "sha256": "da685d52edaa09ce4cf7c23615cdedb96f62d05e8190be1d761beb6e8ba0c959"
+    }
+  ]
+}

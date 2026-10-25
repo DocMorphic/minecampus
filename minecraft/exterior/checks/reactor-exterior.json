@@ -1,0 +1,1189 @@
+{
+  "name": "reactor-candidate-80",
+  "purpose": "Verify the complete surveyed FRM II exterior, curved roof, connecting wings and neighboring Atom-Ei views; check walking on all reachable sides.",
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610
+  ],
+  "cameras": [
+    {
+      "label": "mlz courtyard",
+      "position": "153 65 -110 -100 -8",
+      "sourceRouteIndex": 53,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "north entrance walk",
+      "position": "176.15 65 -115.71 -100 18",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "west glazing and opaque projection",
+      "position": "215.36986392680356 64.01802351639101 -103.85151086969181 -77.56866628845549 4.8298777354960345",
+      "worldTime": 6000,
+      "reflections": true,
+      "reflectionTile": 1000030050,
+      "reflectionBaseWeight": 0.28,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000030050,
+          "expectedPart": 3
+        }
+      ]
+    },
+    {
+      "label": "northwest connector",
+      "position": "300 64.0955281469612 -127 -25.016893478100023 -7.857752715026182",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "north entrance wing",
+      "position": "348 63.8868819364322 -132 -12.094757077012101 -9.877700903619909",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "northeast exterior elevated diagnostic",
+      "position": "392 92 -121 33.17851165939275 20.50886466274307",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "east curved gable elevated diagnostic",
+      "position": "395 92 -83 86.18592516570965 17.08312649625216",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030051
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "south tower approach elevated diagnostic",
+      "position": "356 82 -42 176.18592516570965 -5.244837811548195",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "south connector elevated diagnostic",
+      "position": "303 82 -46 -171.0273733851036 39.0781568776712",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "concrete west arc",
+      "position": "267 64.10117695124457 -73 -155.55604521958347 -27.458152099886952",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "northwest elevated overview",
+      "position": "307 87 -146 -34.54836705601131 5.107867698576408",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "barrel and rooflights",
+      "position": "326 111 -115 -42.357454705935275 26.179791543406672",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030051
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "west gable detail",
+      "position": "311 88 -87 -78.69006752597979 -5.333178286723001",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030051
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "northwest evening",
+      "position": "307 87 -146 -34.54836705601131 5.107867698576408",
+      "worldTime": 11000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "mlz courtyard standing",
+      "target": [
+        153.0,
+        63.89489918593911,
+        -110.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89908177890647,
+      "requireBodyClearance": true,
+      "look": [
+        -100.0,
+        -8.0
+      ],
+      "sourceRouteIndex": 53
+    },
+    {
+      "label": "north walk standing",
+      "target": [
+        176.15,
+        64.00350978356846,
+        -115.71
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.00350978356846,
+      "requireBodyClearance": true,
+      "look": [
+        -100,
+        12
+      ]
+    },
+    {
+      "label": "northwest connector",
+      "target": [
+        300,
+        63.995528146961206,
+        -127
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060016,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.995528146961206,
+      "requireBodyClearance": true,
+      "look": [
+        -25.016893478100023,
+        -7.857752715026182
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "north entrance wing",
+      "target": [
+        348,
+        63.786881936432195,
+        -132
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060017,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.786881936432195,
+      "requireBodyClearance": true,
+      "look": [
+        -12.094757077012101,
+        -9.877700903619909
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "concrete west arc",
+      "target": [
+        267,
+        64.00117695124457,
+        -73
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.00117695124457,
+      "requireBodyClearance": true,
+      "look": [
+        -155.55604521958347,
+        -27.458152099886952
+      ],
+      "reactorExterior": true
+    }
+  ],
+  "qualification": "East-facing cameras sit above the adjoining surveyed building, not on an outdoor walking route. Two southern approaches lack encoded ground and are elevated diagnostics pending ground extension. North/west standing controls are outside surveyed footprints on encoded terrain. Visual acceptance is separate.",
+  "canopyGlassEvidence": true,
+  "diagnosticBounds": [
+    [
+      266,
+      63,
+      -121
+    ],
+    [
+      384,
+      98,
+      -53
+    ]
+  ],
+  "surfaceControls": [
+    {
+      "label": "survey wall 0",
+      "position": [
+        269.5612586044346,
+        70.97993777204249,
+        -83.08371852404564
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 1",
+      "position": [
+        313.6032842246537,
+        73.25317339947826,
+        -72.25755119085666
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 2",
+      "position": [
+        273.2577112943036,
+        67.49222493006148,
+        -101.02922280502158
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 3",
+      "position": [
+        267.5258460645543,
+        70.88908000522896,
+        -80.08939203615957
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 4",
+      "position": [
+        365.2883190963503,
+        79.36038516601879,
+        -98.28246308142155
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 5",
+      "position": [
+        331.23238585066116,
+        68.5960268646172,
+        -111.84535041553016
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 6",
+      "position": [
+        339.8315116818335,
+        68.64250758819479,
+        -58.977601865531135
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 7",
+      "position": [
+        309.67908436400216,
+        68.59746759442068,
+        -109.9207521631733
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 8",
+      "position": [
+        376.936463406972,
+        76.23040603285408,
+        -69.38600957037902
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 9",
+      "position": [
+        336.876504042583,
+        72.69270991022117,
+        -60.17218002018928
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 10",
+      "position": [
+        376.1426091276105,
+        79.13082210992299,
+        -64.78121815865713
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 11",
+      "position": [
+        274.5373672465357,
+        67.41543044131141,
+        -105.78757108386087
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 12",
+      "position": [
+        379.4071317424614,
+        65.59287809395897,
+        -70.43421110978365
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 13",
+      "position": [
+        340.8545230734043,
+        68.5952701451599,
+        -118.63800323314938
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 14",
+      "position": [
+        272.5383434091436,
+        67.41554272498317,
+        -106.52089769170796
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 15",
+      "position": [
+        376.5481082171091,
+        69.61557018054346,
+        -96.372719033309
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 16",
+      "position": [
+        378.5638348247148,
+        68.59272261326109,
+        -99.09087493033446
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 17",
+      "position": [
+        375.00724206826567,
+        70.31993508016484,
+        -58.146607362917784
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 18",
+      "position": [
+        374.8901286201754,
+        77.85969386199349,
+        -96.63737239458112
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 19",
+      "position": [
+        278.21808203026694,
+        68.59950906475935,
+        -108.5211823940593
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 20",
+      "position": [
+        343.6881889719828,
+        86.27528805350084,
+        -99.73598400992478
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 21",
+      "position": [
+        272.05005309268904,
+        67.42190784541485,
+        -106.29108123145643
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 22",
+      "position": [
+        334.41929331687874,
+        80.67948739401315,
+        -72.27808483905301
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 23",
+      "position": [
+        272.9487354089752,
+        71.23732999446644,
+        -91.95789115506147
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 24",
+      "position": [
+        270.0721151689393,
+        67.41626429576449,
+        -79.75054844460077
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 25",
+      "position": [
+        271.1977899813318,
+        71.07581548542024,
+        -86.30872917669507
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 26",
+      "position": [
+        273.4354041663271,
+        67.51656573541916,
+        -99.23529153429344
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 27",
+      "position": [
+        316.9044249597211,
+        68.64398858270737,
+        -61.56685268977822
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 28",
+      "position": [
+        344.0676536458498,
+        72.66190592957561,
+        -101.94788059295911
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 29",
+      "position": [
+        377.5374515283416,
+        75.52867479558985,
+        -72.85418789284823
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 30",
+      "position": [
+        273.18694191561355,
+        67.5999699800101,
+        -93.34371518405037
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 31",
+      "position": [
+        267.94019203312325,
+        70.88305799037694,
+        -79.7280910544676
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 32",
+      "position": [
+        272.5669913326652,
+        67.44456244767282,
+        -104.56538792978124
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 33",
+      "position": [
+        268.5873072416031,
+        70.93367348085309,
+        -81.55001085297549
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 34",
+      "position": [
+        272.96617410792095,
+        67.46822391220776,
+        -102.8104406647473
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 35",
+      "position": [
+        369.8301927824309,
+        68.59316239570524,
+        -116.47856337101437
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 36",
+      "position": [
+        376.823025972868,
+        86.22956933899262,
+        -94.06703995915176
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 37",
+      "position": [
+        339.65679149306493,
+        79.39685067605704,
+        -59.69089861251439
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 38",
+      "position": [
+        378.6592423903462,
+        74.7162106777629,
+        -79.40242816402723
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 39",
+      "position": [
+        337.2538513281653,
+        80.87700728876557,
+        -62.36680314571283
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 40",
+      "position": [
+        272.4637463462857,
+        71.1790435057192,
+        -89.90685853717042
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 41",
+      "position": [
+        381.90876702643953,
+        68.59234993287845,
+        -109.61751082107412
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 42",
+      "position": [
+        370.224477870666,
+        80.86696737016221,
+        -56.69558228958502
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 43",
+      "position": [
+        273.4928220600584,
+        67.5412466446025,
+        -97.43554141307372
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 44",
+      "position": [
+        378.00111903012606,
+        65.59300516145463,
+        -66.74090404218015
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 45",
+      "position": [
+        378.99770394716296,
+        65.59289858823627,
+        -72.4696830874456
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 46",
+      "position": [
+        380.67214874975133,
+        70.27230163561363,
+        -91.1277468891381
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 47",
+      "position": [
+        270.43367905940585,
+        71.02754051901864,
+        -84.67099109035037
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 48",
+      "position": [
+        272.6178974888034,
+        68.64680276408,
+        -75.94302527399682
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 49",
+      "position": [
+        377.7437206427371,
+        85.48531852416271,
+        -74.06787975178584
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 50",
+      "position": [
+        349.1787380330484,
+        79.3928319496798,
+        -58.048615940467926
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 51",
+      "position": [
+        297.86439741729066,
+        72.08096087395046,
+        -101.74694307764469
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 52",
+      "position": [
+        271.860138028236,
+        71.12509564133381,
+        -87.99336953575148
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 53",
+      "position": [
+        273.4165760256913,
+        67.57060358464472,
+        -95.43698848779805
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "survey wall 54",
+      "position": [
+        378.6596904195056,
+        67.28207891477449,
+        -96.00232181067535
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "roof triangle 0",
+      "position": [
+        339.00586473169,
+        91.72960439580602,
+        -95.98930405486054
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 458",
+      "position": [
+        339.89035566946745,
+        94.72165634333969,
+        -92.19176537119226
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 917",
+      "position": [
+        340.40283994886954,
+        96.2470456066654,
+        -83.25702540254282
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 1375",
+      "position": [
+        339.762759516176,
+        95.62940119283856,
+        -73.57038598231513
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 1834",
+      "position": [
+        340.7121514771041,
+        93.24313829787616,
+        -67.17651568754387
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 2292",
+      "position": [
+        348.28441260925666,
+        93.38400390186877,
+        -93.3563531752892
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 2751",
+      "position": [
+        348.6394551612187,
+        95.76601042802422,
+        -86.4870030718713
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 3209",
+      "position": [
+        348.49512730891644,
+        96.2011268656208,
+        -76.70625855879365
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 3668",
+      "position": [
+        348.575778622502,
+        94.58928841436823,
+        -68.24549403618202
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 4126",
+      "position": [
+        355.92048635642544,
+        91.78902830379815,
+        -93.0912605169121
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 4585",
+      "position": [
+        356.7834224776174,
+        94.76573107389883,
+        -89.17261770532593
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 5043",
+      "position": [
+        356.7695850331327,
+        96.26192824675638,
+        -80.16790247631297
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 5502",
+      "position": [
+        356.6506811999728,
+        95.5871208304646,
+        -70.53417613138409
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 5960",
+      "position": [
+        356.592450875602,
+        93.0411644908985,
+        -64.24029926108064
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 6419",
+      "position": [
+        364.14203546298774,
+        93.65267596758092,
+        -90.26925931820927
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 6877",
+      "position": [
+        364.9822478804647,
+        95.83481342643734,
+        -83.24772132707062
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 7336",
+      "position": [
+        364.3443852583353,
+        96.17500009716275,
+        -73.5729328023541
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 7794",
+      "position": [
+        364.42130990755453,
+        94.41198168317324,
+        -65.10452322825854
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 8253",
+      "position": [
+        371.82643448668733,
+        92.18078000242481,
+        -90.28376298957433
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 8711",
+      "position": [
+        373.10051584248066,
+        94.96162503202716,
+        -85.78172916477381
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 9170",
+      "position": [
+        373.0394649564135,
+        96.29282313505833,
+        -76.51926773044049
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 9628",
+      "position": [
+        373.02723202861443,
+        95.52802450694446,
+        -67.5020189484092
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 10087",
+      "position": [
+        372.99216265714836,
+        92.95301180391083,
+        -61.34666797027171
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "roof triangle 10546",
+      "position": [
+        341.47783345369754,
+        74.16210748410317,
+        -100.11790750421922
+      ],
+      "kind": "roof"
+    }
+  ]
+}

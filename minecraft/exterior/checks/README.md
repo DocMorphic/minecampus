@@ -250,3 +250,10 @@ Candidate 78 derives all six west controls from the encoded terrain and validate
 Candidate 78 completed the full inspection with exit 0: 13 camera views, 13 standing/body checks and 35 reviewed captures. The bounded west provider-fragment count is zero in seven matched views. Preserve this plan when correcting the remaining pane-to-pane joints; successful collision checks do not establish full visual acceptance.
 
 Candidate 79 completes the same 13-view/13-standing inspection with exit 0 and 35 reviewed captures. The validator now requires all five internal pane edges to be shared exactly in the exported float32 mesh, and reproduces their absence in the preceding 78 mesh. The close-up joint lines are resolved in the game; wider campus quality remains open. Evidence: `../atom-west-joints-development-validation.json`.
+
+
+## FRM II exterior development checkpoint
+
+`reactor-exterior.json` specifies candidate 80's 14 cameras, five standing controls and 79 wall/roof service controls. Run `scripts/validate-reactor-exterior.py` with the geodata Python, then `node scripts/test-exterior-reactor.mjs <packaged-service-root> dist-minecraft/exterior`. Geometry validation checks the encoded roof observations, manifold shell, unchanged lower roof, measured collision datum, protected neighbours and outdoor north/west probe positions. The packaged-service test checks wall/roof solidity and standing clearance at both save datums.
+
+Candidate 80 fails native visible-geometry verification at camera 6 (east curved gable): a provider source facade occludes the reconstructed body. Seven views and 13 images were captured; six camera checks complete, zero native standing controls complete. Do not remove the east `expectedTile` assertion to obtain a pass. The north approach also contains large provider fragments. East shots are above a separate adjoining building; southern ground-level checks remain pending actual terrain extension. Source/service passes do not establish native or visual acceptance. See `../reactor-development-validation.json`.

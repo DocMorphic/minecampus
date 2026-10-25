@@ -300,6 +300,8 @@ from exterior_atom_ei_canopies import build as build_atom_ei_canopies
 build_atom_ei_canopies(globals())
 from exterior_atom_ei_west_entrance import build as build_atom_ei_west_entrance
 build_atom_ei_west_entrance(globals())
+from exterior_reactor import build as build_reactor
+build_reactor(globals())
 metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}
 for stale in ['galileo-facade-rectified.jpg']:
  if (OUT/stale).exists():(OUT/stale).unlink()
