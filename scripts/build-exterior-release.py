@@ -598,6 +598,7 @@ with zipfile.ZipFile(release) as original:
     assert Path(name).name==name
     write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/manifest.json',(DATA/'manifest.json').read_bytes())
+  write(target,'src/minecampus-exterior/'+restoration['sourceFile'],(DATA/restoration['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/NOTICE.txt',notices.encode())
   write(target,'src/minecampus-exterior/cos-reference.json',(SOURCE/'photos/cos-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-reference.json',(SOURCE/'photos/grs-reference.json').read_bytes())
