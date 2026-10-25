@@ -1,5 +1,5 @@
 {
-  "status": "DRAFT64: packaged service verified; saved-world native verification pending",
+  "status": "PASS64: packaged service, native standing and preservation verified; visual acceptance false",
   "artifactSha256": "be68fe491e4cf3a397e1a6eaff9c93794025096fcc2c46c2b76a51f6ddbf06ac",
   "rendererSourceFingerprint": "ee79aadc0079959f",
   "alignmentVersion": 73,
@@ -183,14 +183,37 @@
     "previewSettingsPreserved": 4
   },
   "nativeCandidate": {
-    "status": "RUNNING",
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
     "cameraViews": 24,
     "standingChecks": 12,
     "reflectionEvidence": true,
     "captureWalking": true,
-    "sourceSaveFiles": 60
+    "sourceSaveFiles": 60,
+    "exitCode": 0,
+    "reviewedImages": 53,
+    "imageBreakdown": {
+      "main": 24,
+      "reflection": 17,
+      "walking": 12
+    },
+    "maximumStandingResidualMetres": 0.09951039454824695
   },
   "visualAcceptance": false,
   "installedPreview": "dev22 unchanged",
-  "qualification": "Original 36 central terrain tiles now use the existing fractional heightfield voxelization. Meshes, imagery, buildings, geometry and ordinary-block preservation policy are unchanged. Native migration and full visual acceptance remain pending."
+  "qualification": "Original 36 central terrain tiles now use fractional heightfield voxelization. Geometry and imagery are unchanged. The native saved-world run passes all 24 camera and 12 standing controls. All 53 captures were reviewed; wider exterior visual quality remains below the goal.",
+  "preservation": {
+    "sourceCentral63Unchanged": 60,
+    "priorAlignmentJournalsUnchanged": true,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "visualReview": [
+    "The promenade standing probe now rests near the visible path instead of the previous full-block ledge.",
+    "Central paths remain connected and the main reconstructed landmarks remain recognizable in aerial and ground views.",
+    "Former Mensa terrace, GRS forecourt and MLZ courtyard retain conspicuous blurred aerial objects and shadows.",
+    "GRS courtyard grades and planted-bed materials are uneven; Galileo court walls are plain and facade detail remains repetitive.",
+    "Coarse surrounding scan geometry and sparse architectural detail remain visible."
+  ]
 }

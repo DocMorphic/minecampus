@@ -1,0 +1,29 @@
+{
+  "building": "DEBY_LOD2_5284422",
+  "surfaceId": "DEBY_LOD2_5284422_74fb75f5-9fbd-4751-ac8c-981a0566777a",
+  "roofFile": "DEBY_LOD2_5284422-photo-roof.ect",
+  "runtimeId": 1000050038,
+  "expectedAreaSquareMetres": 834.6829596660214,
+  "reference": {
+    "url": "https://www.ed.tum.de/en/ed/news-single-view-start/article/tum-ed-bezieht-alte-mensa-in-garching-nach-umbau/",
+    "date": "2025-04-14",
+    "photographer": "Susanne Hoecht / TUM",
+    "use": "Reference only; no reference pixels redistributed",
+    "observed": "Rectangular grey paving on the southern raised terrace, with tree margins and freestanding sculpture."
+  },
+  "paving": {
+    "unitMetres": [
+      0.2,
+      0.1
+    ],
+    "jointMetres": 0.004,
+    "pixelsPerMetre": 64,
+    "baseColour": [
+      156,
+      158,
+      150
+    ],
+    "seed": 6510
+  },
+  "qualification": "BVV supplies the terrace boundary, level and orientation. Paver size, joint width, colour and wear are estimates from the exterior reference; this is a reconstructed material, not a measured paving inventory. Other roofs, source retirement, terrace height, sculpture and interior remain unchanged."
+}

@@ -303,6 +303,16 @@ assert north_check['status'].startswith('PASS:')
 assert north_check['manifestSha256']==digest(DATA/'manifest.json')
 assert north_check['validatorSha256']==digest(ROOT/'scripts/validate-north-ground.py')
 assert north_check['maskSha256']==north['maskSha256']
+terrace=json.loads((DATA/'manifest.json').read_text())['architecture']['mensaTerrace']
+terrace_check=json.loads((DATA/'mensa-terrace-validation.json').read_text())
+assert terrace_check['status'].startswith('PASS:')
+assert terrace_check['manifestSha256']==digest(DATA/'manifest.json')
+assert terrace_check['validatorSha256']==digest(ROOT/'scripts/validate-mensa-terrace.py')
+assert terrace['sourceSha256']==terrace_check['sourceSha256']==digest(SOURCE/terrace['sourceFile'])
+assert terrace['generatorSha256']==terrace_check['generatorSha256']==digest(ROOT/terrace['generatorFile'])
+assert terrace['roofSha256']==terrace_check['roofSha256']==digest(DATA/terrace['roofFile'])
+assert terrace['atlasSha256']==terrace_check['atlasSha256']==digest(DATA/terrace['atlasFile'])
+for name,value in terrace_check['rawInputs'].items():assert digest(ROOT/'.cache'/name)==value
 subprocess.run(['python3',str(ROOT/'scripts/validate-foliage-rendering.py'),'--directory',str(DATA)],env={**os.environ,'JAVA_HOME':args.java_home},check=True)
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
@@ -666,6 +676,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-survey.mjs',(SOURCE/'service/survey-surface.mjs').read_bytes())
   write(target,'src/photo-facades.mjs',(SOURCE/'service/photo-facades.mjs').read_bytes())
   write(target,'src/supplemental-surfaces.mjs',(SOURCE/'service/supplemental-surfaces.mjs').read_bytes())
+  write(target,'src/minecampus-exterior/'+terrace['sourceFile'],(SOURCE/terrace['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/mensa-terrace-validation.json',(DATA/'mensa-terrace-validation.json').read_bytes())
   write(target,'src/minecampus-exterior/physics-i-5101.json',(SOURCE/'physics-i-5101.json').read_bytes())
   write(target,'src/minecampus-exterior/physics-i-reference.json',(SOURCE/'photos/physics-i-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/physics-ii.json',(SOURCE/'physics-ii.json').read_bytes())
