@@ -1,8 +1,8 @@
 {
   "candidate": 84,
-  "status": "Packaged renderer range fix and corrected skyline controls; native comparison running",
+  "status": "Native inspection PASS; all 52 captures reviewed; overall visual acceptance remains false",
   "artifact": {
-    "status": "PASS: packaged retirement revision; all render/collision meshes, ground datums, service modules and shader unchanged",
+    "status": "PASS: renderer range revision; all render/collision meshes, ground datums, service modules and shader sources unchanged",
     "artifactSha256": "f67c91f0c6b8e1b5b35a41fa9f0ca99fcf43c14c9f26d3555fcf5d3af06f3a45",
     "rendererSourceFingerprint": "b99b46b3ee0a51d1",
     "renderTiles": 459,
@@ -32,7 +32,7 @@
   },
   "reusedValidation": {
     "sourceCandidate": 83,
-    "qualification": "All 28 source validations remain applicable to the unchanged manifest and data. The east-hall validator was rerun for the updated camera plan. Service modules and all 641 render/collision files are unchanged, so collision tests are not repeated. Native visual and standing verification remains pending."
+    "qualification": "All 28 source validations remain applicable to the unchanged manifest and data. The east-hall validator was rerun for the updated camera plan. Service modules and all 641 render/collision files are unchanged, so collision tests are not repeated. Native visual and standing verification completed independently for this exact artifact."
   },
   "rayEnvelopeControls": [
     {
@@ -187,14 +187,72 @@
     "qualification": "Restores existing close-range material grain and mapped-material handling on the omitted ground tiles; does not reconstruct missing pavement, cars or shadows."
   },
   "nativeInspection": {
-    "status": "RUNNING",
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
     "plannedViews": 20,
     "plannedStandingChecks": 12,
     "sourceCandidate": 82,
     "sourceWorldFiles": 127,
     "skylineEmptyRayAssertions": 2,
-    "remainingMeasuredHallAssertions": 3
+    "remainingMeasuredHallAssertions": 3,
+    "exitCode": 0,
+    "completedViews": 20,
+    "completedStandingChecks": 12,
+    "reviewedCaptures": 52,
+    "maximumSupportErrorMetres": 0.05899021643153901,
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "resultSha256": "a2dd0cb6100f22e3eaa3feef8db582cddb69d966c7fa414054626e338ae1a150"
   },
   "visualAcceptance": false,
-  "installation": "User preview unchanged; no new public binary release."
+  "installation": "User preview unchanged; no new public binary release.",
+  "preservation": {
+    "sourceCandidate82Unchanged": 127,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV84AlignedChunks": 202,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "visualReview": {
+    "hallCleanup": "North and south end-projection silhouettes and east roof edge are clear of the tracked source remnants. The five retained screen assertions pass.",
+    "ground": "Detailed grain now renders on the previously omitted tiles. Baked aerial cars and shadows remain; the surrounding pavement classes are incomplete.",
+    "remaining": [
+      "Southern UTA source fragment remains visible in frame 8.",
+      "Saved ordinary dirt remains beside the western corridor and was preserved.",
+      "Window divisions and facade finish remain estimates; further architectural reference work is required.",
+      "Untreated surrounding structures, coarse imagery, vegetation and roof detail prevent overall acceptance."
+    ],
+    "reflectionCaptures": "Twenty auxiliary reflection buffers reviewed separately from the twenty main views and twelve walking captures; clipping and omitted transparent surfaces in those buffers are not counted as primary-view defects."
+  },
+  "screenshots": {
+    "southern-fragment": {
+      "file": "photos/reactor-east-candidate-84-southern-fragment.png",
+      "sha256": "95074da484bba9dda1e7fa969866b39de8942ef27ed42441493d2db9b984de22",
+      "frame": 8
+    },
+    "north-clean": {
+      "file": "photos/reactor-east-candidate-84-north-clean.png",
+      "sha256": "2407c3e89e255ebd5472f09f5e1f1f06e75c0f40e9f16995520cb9812767a4a0",
+      "frame": 16
+    },
+    "east-edge-clean": {
+      "file": "photos/reactor-east-candidate-84-east-edge-clean.png",
+      "sha256": "aba328abbdaa97917a1bb0de8a70ac12cf3c59e73d7fb19fe52c38d68cdd66ca",
+      "frame": 17
+    },
+    "south-clean": {
+      "file": "photos/reactor-east-candidate-84-south-clean.png",
+      "sha256": "e8267f5cf5af2ee8efe36ef4d9911aa85b75523222f20a3d87da004e64fcbc73",
+      "frame": 18
+    },
+    "aerial": {
+      "file": "photos/reactor-east-candidate-84-aerial.png",
+      "sha256": "058519c4e3dcf402a2281644b6fe2b0662144dcbf5c67f1cd95e6262b34a801b",
+      "frame": 19
+    }
+  }
 }

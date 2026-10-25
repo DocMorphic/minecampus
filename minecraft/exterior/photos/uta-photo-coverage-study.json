@@ -1,0 +1,49 @@
+{
+  "status": "Coverage study only; no native replacement or visual acceptance",
+  "buildingId": "DEBY_LOD2_5323191",
+  "minimumCoveragePerWall": 0.8,
+  "maximumFillDistanceMetres": 2,
+  "metrics": [
+    {
+      "id": "DEBY_LOD2_5323191",
+      "accepted": true,
+      "acceptedWalls": 5,
+      "reconstructedWalls": 0,
+      "totalWalls": 6,
+      "coverage": 0.9561531788325691,
+      "walls": [
+        {
+          "coverage": 0.011695906432748537,
+          "maxFillDistance": 2.4921063152465264,
+          "unfilled": 0
+        },
+        {
+          "coverage": 1,
+          "maxFillDistance": 0,
+          "unfilled": 0
+        },
+        {
+          "coverage": 0.9250598836546139,
+          "maxFillDistance": 0.9968731937723175,
+          "unfilled": 0
+        },
+        {
+          "coverage": 0.9684446014364771,
+          "maxFillDistance": 0.6978113583920726,
+          "unfilled": 0
+        },
+        {
+          "coverage": 0.9660526315789474,
+          "maxFillDistance": 0.8987086321089055,
+          "unfilled": 0
+        },
+        {
+          "coverage": 0.9746098915630785,
+          "maxFillDistance": 0.7992256059420082,
+          "unfilled": 0
+        }
+      ]
+    }
+  ],
+  "qualification": "Aggregate acceptance means at least one supported wall, not full building acceptance. Rejected wall 0 is a 0.254 m surveyed return. Provider pixels remain transient and are not included."
+}
