@@ -2,6 +2,7 @@
 """Verify terrain, neighbour heights and replacement bounds against public surveys."""
 import argparse,ast,hashlib,json,math,struct,sys
 from pathlib import Path
+from exterior_ground_provenance import ground_generator_matches
 import numpy as np
 import rasterio,mapbox_earcut
 from pyproj import Transformer
@@ -13,7 +14,7 @@ root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root/'scripts'))
 from exterior_physics_i import nearby_surveys,survey_plan
 parser=argparse.ArgumentParser();parser.add_argument('--directory',type=Path,default=root/'dist-minecraft/exterior');parser.add_argument('--baseline',type=Path);args=parser.parse_args();out=args.directory
 read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();m=read(out/'manifest.json');record=m['architecture']['reactorSite'];spec=read(root/'minecraft/exterior'/record['sourceFile']);d=read(out/record['derivedFile'])
-for p,key in [(root/'minecraft/exterior'/record['sourceFile'],'sourceSha256'),(root/record['generatorFile'],'generatorSha256'),(root/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(root/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(root/'minecraft/exterior/vegetation-sources.json','vegetationSourceSha256'),(out/record['derivedFile'],'derivedSha256')]:assert sha(p)==record[key],p
+for p,key in [(root/'minecraft/exterior'/record['sourceFile'],'sourceSha256'),(root/record['generatorFile'],'generatorSha256'),(root/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(root/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(root/'minecraft/exterior/vegetation-sources.json','vegetationSourceSha256'),(out/record['derivedFile'],'derivedSha256')]:assert sha(p)==record[key] or (key=='groundGeneratorSha256' and ground_generator_matches(p,record[key])),p
 for source in read(root/'minecraft/exterior/vegetation-sources.json')['inputs']:assert sha(root/'.cache'/source['cachePath'])==source['sha256']
 source=read(root/'minecraft/exterior/sources.json')
 for e,name in zip(source['lod2'],['campus-east.gml','campus-west.gml']):assert sha(root/'.cache'/name)==e['sha256']
@@ -47,7 +48,9 @@ def decode(p):
 new_parts=[decode(out/name)[0]for name in record['groundTiles']];tri=np.concatenate([v[:,:3].reshape(-1,3,3)for v,p in new_parts]);new=unary_union([Polygon(t[:,[0,2]])for t in tri]);assert abs(new.area-d['ground']['areaSquareMetres'])<.02
 old=[]
 for t in m['tiles']:
- if t['kind']!='ground' or t['file']in record['groundTiles']:continue
+ # UTA is generated after this site; it cannot be an input to the earlier
+ # ground blend. Including it changes the nearest historical support sample.
+ if t['kind']!='ground' or t['file']in record['groundTiles'] or t['file']in m['architecture'].get('utaSite',{}).get('groundTiles',[]):continue
  lo,hi=t['bounds']
  if not new.buffer(spec['groundBlendMetres']+1).intersects(box(lo[0],lo[2],hi[0],hi[2])):continue
  for v,_ in decode(out/t['file']):

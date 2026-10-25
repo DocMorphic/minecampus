@@ -1,6 +1,6 @@
 {
-  "name": "uta-candidate-85",
-  "purpose": "Compare surveyed, per-wall photographic UTA exterior and retained hall routes; preserve unsupported return and neighbouring sources.",
+  "name": "uta-candidate-86",
+  "purpose": "Check continuous surveyed approach ground and preserved observed rooftop equipment, with retained UTA walls and reactor routes.",
   "captureWalking": true,
   "reflectionEvidence": true,
   "checkFractionalSupports": true,
@@ -574,6 +574,12 @@
         {
           "u": 0.5,
           "v": 0.5,
+          "expectedTile": 1200025132,
+          "blockSamples": true
+        },
+        {
+          "u": 0.4590797304591575,
+          "v": 0.4314445052024329,
           "expectedTile": 1000050103,
           "blockSamples": true
         }
@@ -872,6 +878,50 @@
       "part": 5,
       "dropHeight": 2,
       "supportHeight": 69.62290400570674,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        30
+      ]
+    },
+    {
+      "label": "UTA west approach ground",
+      "target": [
+        299.25,
+        64.08798789978027,
+        -39.25
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061102,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.08798789978027,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        30
+      ]
+    },
+    {
+      "label": "UTA south approach ground",
+      "target": [
+        313.25,
+        64.09127044677734,
+        -24.25
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061103,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.09127044677734,
       "requireBodyClearance": true,
       "look": [
         0,

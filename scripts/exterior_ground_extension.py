@@ -105,6 +105,9 @@ def build(ctx, region, prefix, runtime_id, blend_metres=2):
                                 if abs(normal[1])<max(2e-8,longest*precision*4):continue
                                 if normal[1]<0:q=q[::-1]
                                 vertices.extend(q.tolist())
+                # Boolean differences can leave a tile made entirely of
+                # sub-float32 slivers; it has no representable terrain.
+                if not vertices:continue
                 v=np.asarray(vertices);xy=utm(v);textured,pixels=roof_texture(cache,np.column_stack([xy,np.zeros(len(v)),v]));filename=f'{prefix}-{x}-{z}.ect';(out/filename).write_bytes(encode([(textured,pixels)]))
                 tile={'file':filename,'kind':'ground','runtimeId':runtime_id+len(tiles),'bounds':[v.min(0).tolist(),v.max(0).tolist()]};tiles.append(tile);points.extend(v.tolist())
         gl=np.floor(np.array(area.bounds[:2])).astype(int);gh=np.ceil(np.array(area.bounds[2:])).astype(int)

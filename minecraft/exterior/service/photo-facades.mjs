@@ -6,6 +6,10 @@ import {surfaceBoundaryClipper} from './supplemental-surfaces.mjs';
 
 function inside(x,y,ring){let yes=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])yes=!yes;}return yes;}
 
+export function preservesPhotoSource(regions,x,y,z){
+ return (regions??[]).some(r=>y>=r.y0&&y<=r.y1&&inside(x,z,r.ring)&&!(r.holes??[]).some(h=>inside(x,z,h)));
+}
+
 /** Orthographic texture reprojection onto one measured wall. Closest source
  * surface wins along the wall normal, rather than foreground trees winning a
  * conventional front-to-back depth test. Gaps are explicit in coverage metrics. */
@@ -148,7 +152,12 @@ export async function preparePhotographicFacades(service,directory,frame,origin,
 /** Keep unsupported courtyard faces. Retire only source surfaces assigned to an
  * accepted survey wall, plus the narrow layer occupied by a measured roof. */
 export function retiresPhotoSurface(photo,x,y,z){
- for(const patch of photo.grid?(photo.grid.get(Math.floor(x/20)+','+Math.floor(z/20))??[]):(photo.patches??[])){
+ const candidates=photo.grid?(photo.grid.get(Math.floor(x/20)+','+Math.floor(z/20))??[]):(photo.patches??[]);
+ // Observed roof objects can sit inside the generic roof-cleanup band.
+ // Preserve their complete source envelope before considering any adjacent
+ // photographic patch, so one wall cannot remove another patch's equipment.
+ if(candidates.some(p=>preservesPhotoSource(p.sourcePreservation,x,y,z)))return false;
+ for(const patch of candidates){
   const [lo,hi]=patch.bounds;
   if(x<lo[0]-6||x>hi[0]+6||z<lo[2]-6||z>hi[2]+6||y<lo[1]-2||y>hi[1]+3)continue;
   if(patch.retirementBoundary&&!patch.retirementBoundary.some(p=>inside(x,z,p.ring)&&!(p.holes??[]).some(h=>inside(x,z,h))))continue;

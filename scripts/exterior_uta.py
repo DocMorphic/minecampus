@@ -12,6 +12,7 @@ from shapely.ops import unary_union
 
 from exterior_physics_i import nearby_surveys, survey_plan, roof_texture, polygons
 from exterior_terrain import ElevationSampler
+from exterior_ground_extension import build as extend_ground
 
 
 def build(ctx):
@@ -23,6 +24,16 @@ def build(ctx):
     surveys = nearby_surveys(cache, spec['siteBoundsUTM'])
     footprint, walls, roof, points = survey_plan(ctx, next(s for key, s in surveys if key == bid))
     assert len(walls) == 6 and len(roof) // 3 == 4
+    raw_foot = lambda surfaces: unary_union([Polygon(r[0][:, :2], [h[:, :2] for h in r[1:]]).buffer(0)
+                                            for kind, r in surfaces if kind == 'GroundSurface'])
+    own_utm = raw_foot(next(s for key, s in surveys if key == bid))
+    all_feet_utm = unary_union([raw_foot(s) for _, s in surveys])
+    ground_domain = own_utm.buffer(spec['groundMarginMetres']).difference(all_feet_utm.buffer(spec['groundBuildingGuardMetres']))
+    ground = extend_ground(ctx, ground_domain, 'uta-approach-ground', spec['groundRuntimeId'], spec['groundBlendMetres'])
+    assert spec['groundRuntimeId'] + len(ground['groundTiles']) < 1_000_061_300
+    # Only the terrain is replaced here. Unreconstructed trees and objects
+    # above the existing low-ground cleanup band retain their source geometry.
+    meta['supplementalSurfaces'][-1]['outdoorReconstructed'] = False
     neighbours = unary_union([
         Polygon(mc(r[0])[:, [0, 2]], [mc(h)[:, [0, 2]] for h in r[1:]]).buffer(0)
         for key, surfaces in surveys if key != bid
@@ -70,6 +81,10 @@ def build(ctx):
             'roofFile': roof_file, 'collisionFile': collision_file, 'bounds': bounds, 'walls': walls,
             'roofTriangles': roof[:, 3:6].reshape(-1, 3, 3).tolist(), 'retirement': rings,
             'retirementBoundary': rings}
+    equipment = {k: spec['preservedRoofEquipment'][k] for k in ('ring', 'holes', 'y0', 'y1')}
+    assert footprint.buffer(.5).covers(Polygon(equipment['ring']))
+    assert Polygon(equipment['ring']).intersection(neighbours).area < 1e-8
+    plan['sourcePreservation'] = [equipment]
     plans['plans'].append(plan)
     plans_file.write_text(json.dumps(plans, separators=(',', ':')))
     meta['photoFacades']['buildings'].append(bid)
@@ -78,6 +93,7 @@ def build(ctx):
     # solid profiles quantize horizontal bounds but retain whole-block height.
     meta['photoFacades']['collisionTiles'].append({'file': collision_file, 'bounds': bounds, 'kind': 'reconstruction', 'collisionHeightfieldParts': [1]})
     meta['photoFacades']['collisionRetirement'].extend(dict(r, y0=bounds[0][1]-2, y1=bounds[1][1]+5) for r in rings)
+    meta['photoFacades'].setdefault('sourcePreservation', []).append(equipment)
     meta['supplementalSurfaces'].append({'name': 'uta-envelope-datum', 'rings': serialize(datum_region),
         'terrainGuide': {'width': int((hi[0]-lo[0])/2+1), 'height': int((hi[1]-lo[1])/2+1), 'points': grid.tolist()},
         'protectedFootprints': [], 'outdoorReconstructed': False})
@@ -88,4 +104,9 @@ def build(ctx):
               'collisionSha256': sha(out/collision_file), 'datumSourceSha256': sha(cache/'campus-dgm-east.tif'),
               'qualification': spec['qualification']}
     meta['architecture']['utaExterior'] = record
+    derived = out/'uta-site-surfaces.json'
+    derived.write_text(json.dumps(ground, indent=2)+'\n')
+    meta['architecture']['utaSite'] = {'groundTiles': ground['groundTiles'], 'derivedFile': derived.name,
+        'derivedSha256': sha(derived), 'groundGeneratorSha256': sha(root/'scripts/exterior_ground_extension.py'),
+        'qualification': 'DGM1/DOP20 approach ground with exact joins to existing meshes. No complete outdoor-object retirement: existing vegetation is retained.'}
     print('UTA: six measured wall planes, four roof triangles; per-face photographic acceptance required', flush=True)

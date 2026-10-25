@@ -4,6 +4,17 @@
   "cleanupMarginMetres": 2.75,
   "neighbourGuardMetres": 0.25,
   "datumMarginMetres": 1.0,
+  "groundMarginMetres": 8.0,
+  "groundBuildingGuardMetres": 0.005,
+  "groundBlendMetres": 2.0,
+  "groundRuntimeId": 1000061100,
+  "preservedRoofEquipment": {
+    "ring": [[315.8, -46.2], [321.2, -46.2], [321.2, -33.3], [315.8, -33.3]],
+    "holes": [],
+    "y0": 69.2,
+    "y1": 72.2,
+    "basis": "Bounded exterior fan strip observed in DOP20 and native84 source geometry; 0.2 m horizontal guard around the diagnosed strip. Preserve original visible geometry and source collision rather than treating the equipment as bare roof."
+  },
   "reference": "photos/reactor-south-exterior-research.json",
   "qualification": "BVV supplies the six exterior wall planes, four roof triangles and DGM1 datum. DOP20 supplies the roof image. Facade pixels are projected transiently from the configured provider only when each face independently passes the existing coverage and fill-distance thresholds. Unsupported faces retain their original source mesh; no complete detailed or visually accepted building is claimed."
 }

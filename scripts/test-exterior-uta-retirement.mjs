@@ -29,4 +29,9 @@ for(const [i,w]of walls.entries()){
 }
 for(const p of [[300,66,-40],[330,66,-40],[315,75,-40],[315,59,-40]]){assert.equal(retiresPhotoSurface(photo,...p),false,'outside owned envelope');preservedSamples++;}
 const unavailable={patches:[]};for(const f of fixtures){assert.equal(retiresPhotoSurface(unavailable,...f.point),false);preservedSamples++;}
+const roofStudy=JSON.parse(fs.readFileSync(new URL('../minecraft/exterior/photos/uta-roof-retirement-study.json',import.meta.url)));
+for(const f of [...roofStudy.removedExamples,...roofStudy.retainedExamples]){
+ assert.equal(retiresPhotoSurface(photo,...f.centroid),false,'Observed rooftop equipment remains intact');preservedSamples++;
+}
+assert.equal(retiresPhotoSurface(photo,310,70,-40),true,'Bare roof outside the equipment strip still retires its old scan');removedSamples++;
 console.log(JSON.stringify({status:'PASS: measured fragment samples owned by supported walls; unsupported return, exterior controls and unavailable-source fallback preserved',removedSamples,preservedSamples,qualification:'Uses recorded coverage to test geometry ownership. Live imagery coverage and native appearance must be checked separately.'},null,2));

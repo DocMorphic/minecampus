@@ -7,6 +7,7 @@ import math
 import struct
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from exterior_ground_provenance import ground_generator_matches
 
 import numpy as np
 import rasterio
@@ -30,7 +31,7 @@ m = read(out/'manifest.json'); rec = m['architecture']['physicsLMU']; src = root
 spec = read(src/rec['sourceFile']); sources = read(src/'sources.json')
 assert sha(src/rec['sourceFile']) == rec['sourceSha256']
 assert sha(root/rec['generatorFile']) == rec['generatorSha256']
-assert sha(root/'scripts/exterior_ground_extension.py') == rec['groundGeneratorSha256']
+assert ground_generator_matches(root/'scripts/exterior_ground_extension.py',rec['groundGeneratorSha256'])
 inputs = {}
 for item, name in zip(sources['lod2'], ['campus-east.gml','campus-west.gml']): inputs[name] = item['sha256']
 for kind, name in [('dgm1','campus-dgm-east.tif'),('dop20','campus-dop-east.tif')]: inputs[name] = sorted(sources[kind],key=lambda x:x['name'])[1]['sha256']

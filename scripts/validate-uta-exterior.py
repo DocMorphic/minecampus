@@ -6,8 +6,9 @@ import numpy as np
 import rasterio, mapbox_earcut
 from pyproj import Transformer
 from scipy.ndimage import map_coordinates
-from shapely.geometry import Polygon
-from shapely.ops import unary_union
+from shapely.geometry import Polygon, Point, box
+from shapely.ops import unary_union, nearest_points
+from shapely.strtree import STRtree
 from exterior_physics_i import nearby_surveys, survey_plan, roof_texture
 
 root=Path(__file__).resolve().parents[1]
@@ -61,20 +62,72 @@ with rasterio.open(root/'.cache/campus-dgm-east.tif')as dem:
 error=float(np.max(np.abs(mc(np.column_stack([en,h]))[:,1]-positions[:,1])));assert error<.001
 inspection=read(root/'minecraft/exterior/checks/uta-exterior.json');retained=read(root/'minecraft/exterior/checks/reactor-east.json')
 assert inspection['cameras'][:20]==retained['cameras'] and inspection['gravityProbes'][:12]==retained['gravityProbes']
-assert len(inspection['cameras'])==25 and len(inspection['gravityProbes'])==13
-probe=inspection['gravityProbes'][-1];x,_,z=probe['target'];heights=[]
+assert len(inspection['cameras'])==25 and len(inspection['gravityProbes'])==15
+assert inspection['cameras'][24]['screenRays'][0]['expectedTile']==1200025132
+assert inspection['cameras'][24]['screenRays'][1]['expectedTile']==plan['runtimeId']
+probe=inspection['gravityProbes'][12];x,_,z=probe['target'];heights=[]
 for q in np.asarray(plan['roofTriangles']):
  try:weights=np.linalg.solve(np.vstack([q[:,0],q[:,2],np.ones(3)]),[x,z,1])
  except np.linalg.LinAlgError:continue
  if (weights>=-1e-6).all():heights.append(float(weights@q[:,1]))
 assert heights and abs(max(heights)-probe['supportHeight'])<.001 and probe['tile']==plan['runtimeId']
+# New approach terrain is independently checked in its encoded float32 form.
+site=m['architecture']['utaSite'];ground=read(out/site['derivedFile'])
+assert sha(out/site['derivedFile'])==site['derivedSha256']
+assert sha(root/'scripts/exterior_ground_extension.py')==site['groundGeneratorSha256']
+assert site['groundTiles']==ground['groundTiles'] and len(site['groundTiles'])==5
+new_parts=[decode(out/name)for name in site['groundTiles']]
+tri=np.concatenate([parts[0][:,:3].reshape(-1,3,3)for parts,pixels in new_parts])
+new=unary_union([Polygon(t[:,[0,2]])for t in tri])
+assert abs(new.area-ground['areaSquareMetres'])<.02
+assert new.intersection(neighbours.union(foot)).area<.01
+assert new.difference(foot.buffer(spec['groundMarginMetres']+.01)).area<.01
+old=[]
+for tile in m['tiles']:
+ if tile['kind']!='ground' or tile['file']in site['groundTiles']:continue
+ lo,hi=tile['bounds']
+ if not new.buffer(spec['groundBlendMetres']+1).intersects(box(lo[0],lo[2],hi[0],hi[2])):continue
+ for part in decode(out/tile['file'])[0]:
+  for q in part[:,:3].reshape(-1,3,3):
+   poly=Polygon(q[:,[0,2]])
+   if poly.area>1e-8:old.append((poly,q))
+existing=unary_union([poly for poly,q in old]);overlap=new.intersection(existing).area;assert overlap<.01
+vertices=np.unique(tri.reshape(-1,3),axis=0)
+def utm(v):return np.column_stack(inverse.transform(*((v-[0,64,0])@basis+origin).T))[:,:2]
+en=utm(vertices)
+with rasterio.open(root/'.cache/campus-dgm-east.tif')as dem:
+ c,r=(~dem.transform)*(en[:,0],en[:,1]);height=map_coordinates(dem.read(1).astype(float),[r-.5,c-.5],order=1,prefilter=False)
+expected=mc(np.column_stack([en,height]))[:,1];old_tree=STRtree([poly for poly,q in old]);errors=[];seams=[]
+for q,h in zip(vertices,expected):
+ point=Point(q[0],q[2]);poly,t=old[int(old_tree.nearest(point))];near=nearest_points(poly,point)[0];distance=point.distance(poly);w=min(1,distance/spec['groundBlendMetres']);w=w*w*(3-2*w);weights=np.linalg.solve(np.vstack([t[:,0],t[:,2],np.ones(3)]),[near.x,near.y,1]);prior=float(weights@t[:,1]);errors.append(abs(q[1]-(prior*(1-w)+h*w)))
+ if distance<.001:seams.append(abs(q[1]-prior))
+assert max(errors)<.002 and seams and max(seams)<.002,(max(errors),max(seams))
+with rasterio.open(root/'.cache/campus-dop-east.tif')as dop:
+ for parts,pixels in new_parts:
+  v=parts[0];w,h,raw=pixels[0];e,n=utm(v[:,:3]).T;c,r=(~dop.transform)*(e,n);left=float(np.median(c-v[:,3]*w));top=float(np.median(r-v[:,4]*h));assert abs(left-round(left))<.002 and abs(top-round(top))<.002
+  expected=dop.read([1,2,3],window=rasterio.windows.Window(round(left),round(top),w,h)).transpose(1,2,0);actual=np.frombuffer(raw,dtype=np.uint8).reshape(h,w,4);assert np.array_equal(expected,actual[:,:,:3])
+assert not next(p for p in m['supplementalSurfaces']if p['name']=='uta-approach-ground')['outdoorReconstructed']
+equipment={k:spec['preservedRoofEquipment'][k]for k in ['ring','holes','y0','y1']}
+assert plan['sourcePreservation']==[equipment] and equipment in m['photoFacades']['sourcePreservation']
+assert Polygon(equipment['ring']).intersection(neighbours).area<1e-8
+assert foot.buffer(.5).covers(Polygon(equipment['ring']))
+for probe in inspection['gravityProbes'][13:]:
+ x,y,z=probe['target'];assert new.contains(Point(x,z)) and probe['tile']in [t['runtimeId']for t in m['tiles']if t['file']in site['groundTiles']]
+ heights=[]
+ for t in tri:
+  try:weights=np.linalg.solve(np.vstack([t[:,0],t[:,2],np.ones(3)]),[x,z,1])
+  except np.linalg.LinAlgError:continue
+  if(weights>=-1e-6).all():heights.append(float(weights@t[:,1]))
+ assert heights and abs(max(heights)-probe['supportHeight'])<.001
 unchanged=None
 if args.baseline:
- before=read(args.baseline/'manifest.json');assert before['tiles']==m['tiles'];assert before['supplementalSurfaces']==m['supplementalSurfaces'][:-1]
- assert read(args.baseline/'photo-facades.json')['plans']==plans['plans'][:-1]
- for k,v in before['architecture'].items():assert m['architecture'][k]==v
+ before=read(args.baseline/'manifest.json');assert before['tiles']==[t for t in m['tiles']if t['file']not in site['groundTiles']]
+ assert before['supplementalSurfaces']==[t for t in m['supplementalSurfaces']if t['name']!='uta-approach-ground']
+ previous_plans=read(args.baseline/'photo-facades.json')['plans'];current_plans=[{k:v for k,v in p.items()if k!='sourcePreservation'}if p['id']==spec['building']else p for p in plans['plans']];assert previous_plans==current_plans
+ for k,v in before['architecture'].items():
+  if k!='utaExterior':assert m['architecture'][k]==v
  names={t['file']for t in before['tiles']}|set(before['photoFacades']['roofFiles'])|{t['file']for t in before['photoFacades']['collisionTiles']}
  for name in names:assert sha(args.baseline/name)==sha(out/name),name
  unchanged=len(names)
-result={'status':'PASS: survey envelope, exact roof, terrain profiles, bounded ownership and retained inputs','manifestSha256':sha(out/'manifest.json'),'validatorSha256':sha(Path(__file__)),'sourceSha256':record['sourceSha256'],'roofSha256':record['roofSha256'],'collisionSha256':record['collisionSha256'],'walls':6,'roofTriangles':4,'terrainSamples':len(positions),'maximumTerrainResidualMetres':error,'neighbourOverlapSquareMetres':owned.intersection(neighbours).area,'priorRenderCollisionInputsUnchanged':unchanged,'inspectionPlanSha256':sha(root/'minecraft/exterior/checks/uta-exterior.json'),'visualAcceptance':False}
+result={'status':'PASS: survey envelope, exact roof, terrain profiles, bounded ownership and retained inputs','manifestSha256':sha(out/'manifest.json'),'validatorSha256':sha(Path(__file__)),'sourceSha256':record['sourceSha256'],'roofSha256':record['roofSha256'],'collisionSha256':record['collisionSha256'],'walls':6,'roofTriangles':4,'terrainSamples':len(positions),'maximumTerrainResidualMetres':error,'neighbourOverlapSquareMetres':owned.intersection(neighbours).area,'priorRenderCollisionInputsUnchanged':unchanged,'inspectionPlanSha256':sha(root/'minecraft/exterior/checks/uta-exterior.json'),'visualAcceptance':False,'groundTiles':len(site['groundTiles']),'groundAreaSquareMetres':new.area,'groundOverlapSquareMetres':overlap,'groundTerrainSamples':len(vertices),'maximumGroundResidualMetres':float(max(errors)),'maximumGroundSeamErrorMetres':float(max(seams)),'groundTileSha256':{name:sha(out/name)for name in site['groundTiles']},'preservedRoofEquipment':equipment}
 (out/'uta-exterior-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

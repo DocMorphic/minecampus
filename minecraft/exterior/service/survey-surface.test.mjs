@@ -37,6 +37,24 @@ function fixture(t,bytes,extra={},deps,sourceTiles=[],loader){
  fs.writeFileSync(path.join(dir,'manifest.json'),JSON.stringify({origin:Object.values(origin),attribution:'BVV CC BY 4.0',tiles:[],terrainGuide:{width:3,height:3,points},walls:[{points:[[10,0,3],[10,10,3],[10,10,17],[10,0,17]]}],...extra}));
  const service={renderSelect:async()=>({tiles:sourceTiles,attribution:[]}),renderTile:loader??(async()=>bytes),chunk:async(_frame,_cx,_cz,_minY,span)=>new Uint8Array(16*16*span)};const check=attachSurveySurface(service,dir,deps);return {service,check,dir};
 }
+test('bounded roof equipment retains upstream collision at both save datums',async t=>{
+ const ring=[[2,2],[8,2],[8,8],[2,8]],holes=[[[4,4],[6,4],[6,6],[4,6]]];
+ for(const shift of [0,2]){
+  const deps={voxelizeArea:()=>({vox:new Uint8Array(16*16*12)})};
+  const {service,dir}=fixture(t,null,{tiles:[{file:'ground.ect',kind:'ground',runtimeId:500,bounds:[[0,0,0],[16,1,16]]}],photoFacades:{sourcePreservation:[{ring,holes,y0:4,y1:7}],collisionRetirement:[{ring,holes:[],y0:1,y1:10}]}},deps);
+  fs.writeFileSync(path.join(dir,'ground.ect'),tile([[0,0,0],[16,0,0],[0,0,16]]));
+  const frame={...origin,h0:origin.h0-shift,mcToEcef:(...p)=>p};
+  const bytes=service.campusCollision(frame,0,0,shift,12),index=(x,y,z)=>(y*16+z)*16+x;
+  assert.equal(bytes[index(3,5,3)],255,'Provider owns the equipment cell');
+  for(const [x,y,z]of [[5,5,5],[1,5,3],[3,3,3],[3,7,3]])assert.equal(bytes[index(x,y,z)],0,'No preservation outside the bounded volume');
+  const upstream=new Uint8Array(16*16*12);upstream[index(3,5,3)]=4;upstream[index(5,5,5)]=4;
+  const live={renderSelect:async()=>({tiles:[],attribution:[]}),renderTile:async()=>null,chunk:async()=>upstream};
+  attachSurveySurface(live,dir,deps);
+  const merged=await live.chunk(frame,0,0,shift,12);
+  assert.equal(merged[index(3,5,3)],4);assert.equal(merged[index(5,5,5)],0);
+  assert.equal(upstream[index(5,5,5)],4,'Cached provider packet stays immutable');
+ }
+});
 test('survey removes source ground while retaining texture bytes and triangle header integrity',async t=>{
  const {service,check}=fixture(t,tile([[4,.4,4],[8,.8,4],[4,.5,8]]));const b=await service.renderTile(origin,1_100_000_007);
  assert.equal(b.readInt32LE(32),0);assert.equal(b.length,52);assert.deepEqual([...b.subarray(-4)],[12,34,56,255]);assert.equal(check.stats().removedSourceTriangles,1);

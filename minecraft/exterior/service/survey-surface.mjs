@@ -24,8 +24,9 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
   // The original 36 central-campus tiles are heightfields too. Using box
   // overlap there left full-height invisible ledges on the promenade slopes.
   const coreGround=manifest.tiles.filter(t=>t.kind==='ground'&&t.runtimeId>=1_000_000_000&&t.runtimeId<1_000_000_036).map(t=>t.file);
-  const columnGround=new Set([...coreGround,...(manifest.architecture?.physicsISite?.groundTiles??[]),...(manifest.architecture?.physicsLibrary?.groundTiles??[]),...(manifest.architecture?.physicsContainer?.groundTiles??[]),...(manifest.architecture?.p1Complex?.groundTiles??[]),...(manifest.architecture?.physicsWoodland?.groundTiles??[]),...(manifest.architecture?.physicsNewLaboratory?.groundTiles??[]),...(manifest.architecture?.physicsLaboratorySite?.groundTiles??[]),...(manifest.architecture?.physicsII?.groundTiles??[]),...(manifest.architecture?.physicsWSI?.groundTiles??[]),...(manifest.architecture?.physicsZNN?.groundTiles??[]),...(manifest.architecture?.riverbank?.groundTiles??[]),...(manifest.architecture?.physicsZNNWest?.groundTiles??[]),...(manifest.architecture?.physicsCALA?.groundTiles??[]),...(manifest.architecture?.physicsLMU?.groundTiles??[]),...(manifest.architecture?.physicsLMUCourtyard?.groundTiles??[]),...(manifest.architecture?.physicsLMUEast?.groundTiles??[]),...(manifest.architecture?.reactorSite?.groundTiles??[])]);
+  const columnGround=new Set([...coreGround,...(manifest.architecture?.physicsISite?.groundTiles??[]),...(manifest.architecture?.physicsLibrary?.groundTiles??[]),...(manifest.architecture?.physicsContainer?.groundTiles??[]),...(manifest.architecture?.p1Complex?.groundTiles??[]),...(manifest.architecture?.physicsWoodland?.groundTiles??[]),...(manifest.architecture?.physicsNewLaboratory?.groundTiles??[]),...(manifest.architecture?.physicsLaboratorySite?.groundTiles??[]),...(manifest.architecture?.physicsII?.groundTiles??[]),...(manifest.architecture?.physicsWSI?.groundTiles??[]),...(manifest.architecture?.physicsZNN?.groundTiles??[]),...(manifest.architecture?.riverbank?.groundTiles??[]),...(manifest.architecture?.physicsZNNWest?.groundTiles??[]),...(manifest.architecture?.physicsCALA?.groundTiles??[]),...(manifest.architecture?.physicsLMU?.groundTiles??[]),...(manifest.architecture?.physicsLMUCourtyard?.groundTiles??[]),...(manifest.architecture?.physicsLMUEast?.groundTiles??[]),...(manifest.architecture?.reactorSite?.groundTiles??[]),...(manifest.architecture?.utaSite?.groundTiles??[])]);
   const photoCollisionGrid=new Map(),photoCollisionCache=new Map();
+  const preservedPhotoSource=manifest.photoFacades?.sourcePreservation??[];
   for(const r of manifest.photoFacades?.collisionRetirement??[]){
     const bounds=[Math.min(...r.ring.map(p=>p[0])),Math.min(...r.ring.map(p=>p[1])),Math.max(...r.ring.map(p=>p[0])),Math.max(...r.ring.map(p=>p[1]))];
     for(let x=Math.floor(bounds[0]/20);x<=Math.floor(bounds[2]/20);x++)for(let z=Math.floor(bounds[1]/20);z<=Math.floor(bounds[3]/20);z++){
@@ -351,8 +352,12 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           continue;
         }
         const level=base+shift;
+        const preservedColumn=preservedPhotoSource.filter(r=>inside(px,pz,r.ring)&&!(r.holes??[]).some(h=>inside(px,pz,h)));
         for(let y=0;y<span;y++){
           const wy=y+minY;if(wy<level-4)continue;
+          // A bounded source object keeps its provider collision, including
+          // on a roof whose surrounding old collision is being replaced.
+          if(preservedColumn.some(r=>wy+.5-shift>=r.y0&&wy+.5-shift<=r.y1))continue;
           if(protectedAt(px,pz)&&wy>level+1.25&&!replaced([px,wy+.5-shift,pz])&&!photoCollisionAt(px,wy+.5-shift,pz)&&!oldCanopy(px,wy+.5-shift,pz)&&!(top!==null&&wy>top+shift+(manifest.surfaceGuide.tolerance??3)))continue;
           const i=(y*16+z)*16+x;let code=vox[i];
           if(code===2)code=1;if(code===20)code=3;if(code===21||code===22)code=4;

@@ -7,7 +7,7 @@ import {pathToFileURL} from 'node:url';
 const [serviceRoot,dataRoot='dist-minecraft/exterior']=process.argv.slice(2);
 if(!serviceRoot)throw Error('Usage: test-exterior-uta.mjs <service-root> [exterior-data]');
 const moduleAt=n=>import(pathToFileURL(path.resolve(serviceRoot,'src',n)).href);
-const {Frame}=await moduleAt('geo.mjs'),{voxelizeArea}=await moduleAt('voxel.mjs'),{attachSurveySurface}=await moduleAt('minecampus-survey.mjs'),{woodProfileBounds}=await moduleAt('wood-shapes.mjs');
+const {Frame}=await moduleAt('geo.mjs'),{voxelizeArea}=await moduleAt('voxel.mjs'),{attachSurveySurface}=await moduleAt('minecampus-survey.mjs'),{woodProfileBounds}=await moduleAt('wood-shapes.mjs'),{preservesPhotoSource}=await moduleAt('photo-facades.mjs');
 const read=p=>JSON.parse(fs.readFileSync(p));
 const m=read(path.join(dataRoot,'manifest.json')),plan=read(new URL('../minecraft/exterior/checks/uta-exterior.json',import.meta.url));
 const facade=read(path.join(dataRoot,'photo-facades.json')).plans.find(p=>p.id==='DEBY_LOD2_5323191');
@@ -22,7 +22,7 @@ function scene(directory,shift){
   for(let offset=count+8;offset<bytes.length;offset+=4)profiles.set(bytes.readUInt16LE(offset),bytes.readUInt16LE(offset+2));
   const value={bytes,profiles};packets.set(key,value);return value;
  }
- return function intersect(x,z,y0,y1,radius=.3){const cells=[];
+ const intersect=function(x,z,y0,y1,radius=.3){const cells=[];
   for(let bx=Math.floor(x-radius);bx<=Math.floor(x+radius);bx++)for(let bz=Math.floor(z-radius);bz<=Math.floor(z+radius);bz++)for(let y=Math.floor(y0);y<y1;y++){
    const cx=Math.floor(bx/16),cz=Math.floor(bz/16),{bytes,profiles}=packet(cx,cz),i=((y-minY)*16+bz-cz*16)*16+bx-cx*16,code=bytes[i];
    if(code===0||code===255||code===9)continue;
@@ -30,12 +30,17 @@ function scene(directory,shift){
    if(bx+c>x-radius&&bx+a<x+radius&&bz+d>z-radius&&bz+b<z+radius&&top>y0&&y<y1)cells.push({x:bx,y,z:bz,code,profile:profiles.get(i),top});
   }return cells;
  };
+ intersect.code=(x,y,z)=>{const bx=Math.floor(x),bz=Math.floor(z),cx=Math.floor(bx/16),cz=Math.floor(bz/16);return packet(cx,cz).bytes[((Math.floor(y)-minY)*16+bz-cz*16)*16+bx-cx*16];};
+ return intersect;
 }
-let wallChecks=0,roofChecks=0;
+let wallChecks=0,roofChecks=0,preservedRoofChecks=0;
 for(const shift of [0,2]){
  const intersect=scene(dataRoot,shift);
  for(const c of plan.surfaceControls){
   const [x,y,z]=c.position;
+  if(c.kind==='roof'&&preservesPhotoSource(facade.sourcePreservation,Math.floor(x)+.5,Math.floor(y)+.5,Math.floor(z)+.5)){
+   assert.equal(intersect.code(x,y+shift,z),255,`${c.label}: original equipment collision must remain provider-owned`);preservedRoofChecks++;continue;
+  }
   assert.ok(intersect(x,z,y+shift-.13,y+shift+.13,.16).length>0,`${c.label}: missing exterior collision at ${c.position}`);
   if(c.kind==='wall')wallChecks++;else roofChecks++;
  }
@@ -47,4 +52,4 @@ for(const shift of [0,2]){
   results.push({label:p.label,shift,standingY,expected,residual:standingY-expected,bodyClear:true});
  }
 }
-console.log(JSON.stringify({status:'PASS: six UTA walls and four roof triangles retain collision; previous reactor approaches and UTA roof support are clear at both datums',wallChecks,roofChecks,results,qualification:'Survey-plane collision is independent of provider photographic acceptance. Native migration and visual acceptance are separate.'},null,2));
+console.log(JSON.stringify({status:'PASS: UTA walls, clear roof and approaches retain support; observed rooftop equipment preserves provider collision at both datums',wallChecks,roofChecks,preservedRoofChecks,results,qualification:'Survey-plane collision is independent of provider photographic acceptance. Native migration and visual acceptance are separate.'},null,2));

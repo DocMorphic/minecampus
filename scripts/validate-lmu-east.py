@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Independently check the LMU east service building and adjoining mapped ground against raw public survey inputs."""
 from pathlib import Path
+from exterior_ground_provenance import ground_generator_matches
 import argparse,hashlib,json,math,struct,xml.etree.ElementTree as ET
 import numpy as np
 import rasterio
@@ -18,7 +19,7 @@ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--direc
 read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 m=read(out/'manifest.json');rec=m['architecture']['physicsLMUEast'];source=root/'minecraft/exterior'/rec['sourceFile'];spec=read(source)
 assert sha(source)==rec['sourceSha256']
-for path,key in [(rec['generatorFile'],'generatorSha256'),('scripts/exterior_ground_extension.py','groundGeneratorSha256'),('scripts/exterior_vegetation.py','vegetationGeneratorSha256'),('minecraft/exterior/vegetation-sources.json','vegetationSourceSha256')]:assert sha(root/path)==rec[key]
+for path,key in [(rec['generatorFile'],'generatorSha256'),('scripts/exterior_ground_extension.py','groundGeneratorSha256'),('scripts/exterior_vegetation.py','vegetationGeneratorSha256'),('minecraft/exterior/vegetation-sources.json','vegetationSourceSha256')]:assert sha(root/path)==rec[key] or (key=='groundGeneratorSha256' and ground_generator_matches(root/path,rec[key]))
 assert sha(out/rec['coverageFile'])==rec['coverageSha256']
 inputs={}
 for item in read(root/'minecraft/exterior/vegetation-sources.json')['inputs']:

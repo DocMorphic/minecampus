@@ -5,6 +5,7 @@ Never reads provider configuration or saved worlds.
 """
 import argparse,hashlib,io,json,os,re,shutil,subprocess,urllib.request,zipfile
 from pathlib import Path
+from exterior_ground_provenance import ground_generator_matches
 from exterior_voxel_patch import patch_voxel
 ROOT=Path(__file__).resolve().parents[1];SOURCE=ROOT/'minecraft/exterior';CACHE=ROOT/'.cache/exterior-build';OUT=ROOT/'dist-minecraft';DATA=OUT/'exterior'
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--java-home',default=os.environ.get('JAVA_HOME'));args=parser.parse_args()
@@ -81,7 +82,7 @@ assert reactor_check['validatorSha256']==digest(ROOT/'scripts/validate-reactor-e
 assert reactor_check['meshSha256']==reactor['meshSha256'] and reactor_check['roofSha256']==reactor['roofSha256']
 
 reactor_site=json.loads((DATA/'manifest.json').read_text())['architecture']['reactorSite']
-for path,key in [(SOURCE/reactor_site['sourceFile'],'sourceSha256'),(ROOT/reactor_site['generatorFile'],'generatorSha256'),(DATA/reactor_site['derivedFile'],'derivedSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(SOURCE/'vegetation-sources.json','vegetationSourceSha256')]:assert digest(path)==reactor_site[key]
+for path,key in [(SOURCE/reactor_site['sourceFile'],'sourceSha256'),(ROOT/reactor_site['generatorFile'],'generatorSha256'),(DATA/reactor_site['derivedFile'],'derivedSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(SOURCE/'vegetation-sources.json','vegetationSourceSha256')]:assert digest(path)==reactor_site[key] or (key=='groundGeneratorSha256' and ground_generator_matches(path,reactor_site[key]))
 reactor_site_check=json.loads((DATA/'reactor-site-validation.json').read_text())
 assert reactor_site_check['status'].startswith('PASS:') and reactor_site_check['manifestSha256']==digest(DATA/'manifest.json')
 assert reactor_site_check['validatorSha256']==digest(ROOT/'scripts/validate-reactor-site.py')
@@ -100,6 +101,11 @@ uta_check=json.loads((DATA/'uta-exterior-validation.json').read_text())
 assert uta_check['status'].startswith('PASS:') and uta_check['manifestSha256']==digest(DATA/'manifest.json')
 assert uta_check['validatorSha256']==digest(ROOT/'scripts/validate-uta-exterior.py')
 assert uta_check['roofSha256']==uta['roofSha256'] and uta_check['collisionSha256']==uta['collisionSha256']
+uta_site=json.loads((DATA/'manifest.json').read_text())['architecture']['utaSite']
+assert digest(DATA/uta_site['derivedFile'])==uta_site['derivedSha256']
+assert digest(ROOT/'scripts/exterior_ground_extension.py')==uta_site['groundGeneratorSha256']
+assert set(uta_check['groundTileSha256'])==set(uta_site['groundTiles'])
+for name,value in uta_check['groundTileSha256'].items():assert digest(DATA/name)==value
 
 court=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoCourt']
 assert hashlib.sha256((SOURCE/court['sourceFile']).read_bytes()).hexdigest()==court['sourceSha256']
@@ -284,7 +290,7 @@ assert all(digest(DATA/name)==value for name,value in znn_west_check['tileSha256
 cala=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsCALA']
 assert digest(SOURCE/cala['sourceFile'])==cala['sourceSha256']
 assert digest(ROOT/cala['generatorFile'])==cala['generatorSha256']
-assert digest(ROOT/'scripts/exterior_ground_extension.py')==cala['groundGeneratorSha256']
+assert ground_generator_matches(ROOT/'scripts/exterior_ground_extension.py',cala['groundGeneratorSha256'])
 cala_check=json.loads((DATA/'physics-cala-validation.json').read_text())
 assert cala_check['status'].startswith('PASS:')
 assert cala_check['manifestSha256']==digest(DATA/'manifest.json')
@@ -300,7 +306,7 @@ assert digest(DATA/cala['site']['materialFeaturesFile'])==cala['site']['material
 lmu=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsLMU']
 assert digest(SOURCE/lmu['sourceFile'])==lmu['sourceSha256']
 assert digest(ROOT/lmu['generatorFile'])==lmu['generatorSha256']
-assert digest(ROOT/'scripts/exterior_ground_extension.py')==lmu['groundGeneratorSha256']
+assert ground_generator_matches(ROOT/'scripts/exterior_ground_extension.py',lmu['groundGeneratorSha256'])
 lmu_check=json.loads((DATA/'physics-lmu-validation.json').read_text())
 assert lmu_check['status'].startswith('PASS:')
 assert lmu_check['manifestSha256']==digest(DATA/'manifest.json')
@@ -310,7 +316,7 @@ assert set(lmu_check['tileSha256'])==set(lmu['groundTiles']+[lmu['meshFile'],lmu
 assert all(digest(DATA/name)==value for name,value in lmu_check['tileSha256'].items())
 lmu_courtyard=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsLMUCourtyard']
 assert digest(SOURCE/lmu_courtyard['sourceFile'])==lmu_courtyard['sourceSha256']
-for path,key in [(ROOT/lmu_courtyard['generatorFile'],'generatorSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(SOURCE/'vegetation-sources.json','vegetationSourceSha256')]:assert digest(path)==lmu_courtyard[key]
+for path,key in [(ROOT/lmu_courtyard['generatorFile'],'generatorSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(SOURCE/'vegetation-sources.json','vegetationSourceSha256')]:assert digest(path)==lmu_courtyard[key] or (key=='groundGeneratorSha256' and ground_generator_matches(path,lmu_courtyard[key]))
 assert digest(DATA/lmu_courtyard['coverageFile'])==lmu_courtyard['coverageSha256']
 lc_check=json.loads((DATA/'lmu-courtyard-validation.json').read_text())
 assert lc_check['status'].startswith('PASS:') and lc_check['manifestSha256']==digest(DATA/'manifest.json')
@@ -321,7 +327,7 @@ lmu_east=json.loads((DATA/'manifest.json').read_text())['architecture']['physics
 lmu_east_spec=json.loads((SOURCE/lmu_east['sourceFile']).read_text())
 assert digest(SOURCE/lmu_east['sourceFile'])==lmu_east['sourceSha256']
 assert digest(SOURCE/lmu_east_spec['osm']['sourceFile'])==lmu_east_spec['osm']['sha256']
-for path,key in [(ROOT/lmu_east['generatorFile'],'generatorSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(SOURCE/'vegetation-sources.json','vegetationSourceSha256')]:assert digest(path)==lmu_east[key]
+for path,key in [(ROOT/lmu_east['generatorFile'],'generatorSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(SOURCE/'vegetation-sources.json','vegetationSourceSha256')]:assert digest(path)==lmu_east[key] or (key=='groundGeneratorSha256' and ground_generator_matches(path,lmu_east[key]))
 assert digest(DATA/lmu_east['coverageFile'])==lmu_east['coverageSha256']
 le_check=json.loads((DATA/'lmu-east-validation.json').read_text())
 assert le_check['status'].startswith('PASS:') and le_check['manifestSha256']==digest(DATA/'manifest.json')
@@ -825,6 +831,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/uta-exterior.json',(SOURCE/'uta-exterior.json').read_bytes())
   write(target,'src/minecampus-exterior/reactor-south-exterior-research.json',(SOURCE/'photos/reactor-south-exterior-research.json').read_bytes())
   write(target,'src/minecampus-exterior/uta-exterior-validation.json',(DATA/'uta-exterior-validation.json').read_bytes())
+  write(target,'src/minecampus-exterior/uta-site-surfaces.json',(DATA/'uta-site-surfaces.json').read_bytes())
   write(target,'src/minecampus-exterior/reactor-east-exterior-research.json',(SOURCE/'photos/reactor-east-exterior-research.json').read_bytes())
   for name in ['reactor-east-surfaces.json','reactor-east-validation.json']:
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())

@@ -7,6 +7,17 @@ import {bakeWall,acceptsFacade,preparePhotographicFacades} from './photo-facades
 const wall={anchor:[0,0,0],direction:[1,0,0],normal:[0,0,1],bounds:[[0,0],[4,4]],rings:[[[0,0],[4,0],[4,4],[0,4]]],vertices:[[0,0,0],[4,0,0],[4,4,0],[0,4,0]],indices:[0,1,2,0,2,3]};
 const mesh=(z,color,x=4)=>({mc:new Float64Array([0,0,z,x,0,z,x,4,z,0,4,z]),uvs:new Float32Array([0,1,1,1,1,0,0,0]),indices:new Uint32Array([0,1,2,0,2,3]),color});
 const options={pixelsPerMetre:4,maxProjectionDistance:6,sampleColor:(p,u,v,out)=>{out.splice(0,3,...p.color);}};
+test('observed roof equipment survives overlapping cleanup; holes and height exclusions remain eligible',async()=>{
+ const {retiresPhotoSurface}=await import('./photo-facades.mjs');
+ const patch={bounds:[[0,0,0],[4,4,4]],walls:[{...wall,accepted:true}],roofTriangles:[[[0,4,0],[4,4,0],[0,4,4]],[[4,4,0],[4,4,4],[0,4,4]]],roofCache:new Map()};
+ const region={ring:[[1,1],[3,1],[3,3],[1,3]],holes:[[[2,2],[2.5,2],[2.5,2.5],[2,2.5]]],y0:3.5,y1:5};
+ for(const patches of [[patch,{...patch,sourcePreservation:[region]}],[{...patch,sourcePreservation:[region]},patch]]){
+  const photo={patches};
+  assert.equal(retiresPhotoSurface(photo,1.5,4,1.5),false);
+  for(const p of [[2.25,4,2.25],[.5,4,1.5],[1.5,3.4,1.5],[1.5,5.1,1.5]])assert.equal(retiresPhotoSurface(photo,...p),true);
+  assert.equal(retiresPhotoSurface({grid:new Map([['0,0',patches]])},1.5,4,1.5),false);
+ }
+});
 test('survey-normal depth chooses the wall over a foreground fragment regardless of source order',()=>{
  for(const sources of [[mesh(.2,[180,120,70]),mesh(3,[10,90,10])],[mesh(3,[10,90,10]),mesh(.2,[180,120,70])]]){
   const b=bakeWall(wall,sources,options);assert.equal(b.coverage,1);assert.equal(b.unfilled,0);assert.deepEqual([...b.data.subarray(0,4)],[180,120,70,255]);assert.ok(acceptsFacade([b]));
