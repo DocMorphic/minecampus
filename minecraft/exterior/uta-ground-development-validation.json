@@ -1,6 +1,6 @@
 {
   "candidate": 86,
-  "status": "Packaged preflight passed; isolated native inspection running",
+  "status": "Visual terrain and fan-body repairs confirmed; native south approach collision remains too high",
   "visualAcceptance": false,
   "sourceChecks": {
     "status": "PASS: survey envelope, exact roof, terrain profiles, bounded ownership and retained inputs",
@@ -716,12 +716,820 @@
     }
   ],
   "native": {
-    "status": "RUNNING",
+    "status": "FAIL: transient provider tile ID assertion",
     "sourceWorld": "completed candidate84",
     "sourceSaveFiles": 132,
     "cameras": 25,
     "standingControls": 15,
     "alignmentVersion": 86,
-    "fullyReviewed": false
+    "fullyReviewed": true,
+    "capturedViews": 25,
+    "reviewedCaptures": 49,
+    "reflectionCaptures": 24,
+    "standingControlsCompleted": 0,
+    "exitCode": 1,
+    "failure": "Unexpected visible geometry at screen 0.5,0.5: {\"tile\":1200024792,\"part\":1,\"distance\":27.76806,\"triangle\":[[319.011926651001,71.6194076538086,-34.02421283721924],[318.8061180114746,71.61682891845703,-36.69407081604004],[316.33833503723145,71.61602306365967,-34.84555912017822]]}",
+    "preservation": {
+      "sourceCandidate84Unchanged": 132,
+      "priorAlignmentJournalsUnchanged": true,
+      "activeV86AlignedChunks": 207,
+      "inventoryAndExperienceUnchanged": true,
+      "originalSavesUnchanged": 121,
+      "previewSavesUnchanged": 121,
+      "previewSettingsUnchanged": 4
+    },
+    "visualFindings": [
+      "West and south blue ground gaps are filled by continuous textured terrain.",
+      "Rooftop fan bodies are present together with their tops in the aerial view.",
+      "Earlier hall cleanup remains intact and ordinary player blocks remain visible.",
+      "UTA wall photography is still blurred; the ground retains baked cars/shadows and neighbouring sources remain coarse."
+    ],
+    "evidence": [
+      {
+        "file": "photos/uta-candidate-86-west-ground-repaired.png",
+        "sha256": "c5cca05eea89d86742245c4a7f7c1bc73ffc0b7e6c8f248f9bc32d91d5efede1",
+        "nativeFrame": 21
+      },
+      {
+        "file": "photos/uta-candidate-86-north-roof-retained.png",
+        "sha256": "2d98a60719fd3a02b506da6ca6d9d74b794a5d6521b0ee0c988cb733a4d0e14a",
+        "nativeFrame": 22
+      },
+      {
+        "file": "photos/uta-candidate-86-south-ground-repaired.png",
+        "sha256": "6004024e362505427ea629c4b878c704f5823f22473ae7ab9d6a7bf4bdda1e7a",
+        "nativeFrame": 23
+      },
+      {
+        "file": "photos/uta-candidate-86-aerial-equipment-retained.png",
+        "sha256": "2127065639bcc2d6b195395a8bfe6df3b3eea28214cd33af7188e1ba5e227e8f",
+        "nativeFrame": 24
+      }
+    ]
+  },
+  "completion": {
+    "status": "FAIL: native walking check: Probe 14 standing Y=65.0, mesh Y=64.09127044677734, onGround=true, horizontal error=0.0",
+    "artifactUnchanged": true,
+    "cameras": 1,
+    "standingControls": 15,
+    "controlCorrection": "Compare the first-hit observed triangle within 0.1 mm and distance within 1 mm; the provider tile ID is transient.",
+    "sourceWorld": "separate copy of completed candidate84",
+    "sourceSaveFiles": 132,
+    "exitCode": 1,
+    "standingControlsPassed": 14,
+    "reviewedCaptures": 17,
+    "fullyReviewed": true,
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "aerialRays": [
+      {
+        "u": 0.5,
+        "v": 0.5,
+        "blockSamples": true,
+        "expectedTriangle": [
+          [
+            319.011926651001,
+            71.6194076538086,
+            -34.02421283721924
+          ],
+          [
+            318.8061180114746,
+            71.61682891845703,
+            -36.69407081604004
+          ],
+          [
+            316.33833503723145,
+            71.61602306365967,
+            -34.84555912017822
+          ]
+        ],
+        "triangleTolerance": 0.0001,
+        "expectedDistance": 27.76806,
+        "distanceTolerance": 0.001,
+        "liveFov": 76.99999332427979,
+        "cameraPosition": [
+          330.25,
+          89.61999988555908,
+          -18.25
+        ],
+        "direction": [
+          -0.43709216,
+          -0.6483294,
+          -0.62339354
+        ],
+        "firstVisibleVanillaBlock": {
+          "distance": 38.25,
+          "state": "Block{minecraft:stone}",
+          "position": [
+            313,
+            64,
+            -43
+          ]
+        },
+        "hits": [
+          {
+            "tile": 1200024912,
+            "part": 1,
+            "distance": 27.76806,
+            "triangle": [
+              [
+                319.011926651001,
+                71.6194076538086,
+                -34.02421283721924
+              ],
+              [
+                318.8061180114746,
+                71.61682891845703,
+                -36.69407081604004
+              ],
+              [
+                316.33833503723145,
+                71.61602306365967,
+                -34.84555912017822
+              ]
+            ]
+          },
+          {
+            "tile": 1000050103,
+            "part": 5,
+            "distance": 30.844202,
+            "triangle": [
+              [
+                323.7816162109375,
+                69.6223373413086,
+                -30.170305252075195
+              ],
+              [
+                304.1478271484375,
+                69.62364196777344,
+                -33.276283264160156
+              ],
+              [
+                306.6867370605469,
+                69.62346649169922,
+                -48.3770637512207
+              ]
+            ]
+          },
+          {
+            "tile": 1200024912,
+            "part": 0,
+            "distance": 31.249844,
+            "triangle": [
+              [
+                318.1889839172363,
+                69.3613772392273,
+                -37.51552772521973
+              ],
+              [
+                315.92671966552734,
+                69.35890865325928,
+                -38.13152313232422
+              ],
+              [
+                317.16074562072754,
+                69.3611216545105,
+                -36.6939697265625
+              ]
+            ]
+          }
+        ],
+        "qualification": "Geometric ray; transparent texture texels are not rejected."
+      },
+      {
+        "u": 0.4590797304591575,
+        "v": 0.4314445052024329,
+        "expectedTile": 1000050103,
+        "blockSamples": true,
+        "liveFov": 76.99999332427979,
+        "cameraPosition": [
+          330.25,
+          89.61999988555908,
+          -18.25
+        ],
+        "direction": [
+          -0.56534153,
+          -0.5582782,
+          -0.60721856
+        ],
+        "firstVisibleVanillaBlock": {
+          "distance": 38.75,
+          "state": "Block{minecraft:dirt}",
+          "position": [
+            308,
+            67,
+            -42
+          ]
+        },
+        "hits": [
+          {
+            "tile": 1000050103,
+            "part": 5,
+            "distance": 35.818615,
+            "triangle": [
+              [
+                323.7816162109375,
+                69.6223373413086,
+                -30.170305252075195
+              ],
+              [
+                304.1478271484375,
+                69.62364196777344,
+                -33.276283264160156
+              ],
+              [
+                306.6867370605469,
+                69.62346649169922,
+                -48.3770637512207
+              ]
+            ]
+          },
+          {
+            "tile": 1000050103,
+            "part": 1,
+            "distance": 42.893753,
+            "triangle": [
+              [
+                304.1478271484375,
+                69.62364959716797,
+                -33.276283264160156
+              ],
+              [
+                306.68646240234375,
+                63.941471099853516,
+                -48.37702178955078
+              ],
+              [
+                306.6867370605469,
+                69.62347412109375,
+                -48.3770637512207
+              ]
+            ]
+          },
+          {
+            "tile": 1000061020,
+            "part": 0,
+            "distance": 45.817043,
+            "triangle": [
+              [
+                305.0,
+                64.06155606349716,
+                -46.0
+              ],
+              [
+                305.0,
+                64.07382412990341,
+                -47.0
+              ],
+              [
+                304.0,
+                64.02923031886826,
+                -46.0
+              ]
+            ]
+          }
+        ],
+        "qualification": "Geometric ray; transparent texture texels are not rejected."
+      }
+    ],
+    "gravity": [
+      {
+        "label": "mlz courtyard standing",
+        "target": [
+          153.0,
+          63.89489918593911,
+          -110.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.89908177890647,
+        "requireBodyClearance": true,
+        "look": [
+          -100.0,
+          -8.0
+        ],
+        "sourceRouteIndex": 53,
+        "standingY": 63.875,
+        "supportExpectedY": 63.89908177890647,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 21,
+        "capture": "campus-uta-candidate-86-completion-walk-0.png",
+        "clientPosition": "(153.0, 63.875, -110.0)"
+      },
+      {
+        "label": "north walk standing",
+        "target": [
+          176.15,
+          64.00350978356846,
+          -115.71
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.00350978356846,
+        "requireBodyClearance": true,
+        "look": [
+          -100,
+          12
+        ],
+        "standingY": 64.0625,
+        "supportExpectedY": 64.00350978356846,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-1.png",
+        "clientPosition": "(176.15, 64.0625, -115.71)"
+      },
+      {
+        "label": "northwest connector",
+        "target": [
+          300,
+          63.995528146961206,
+          -127
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060016,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.995528146961206,
+        "requireBodyClearance": true,
+        "look": [
+          -25.016893478100023,
+          -7.857752715026182
+        ],
+        "reactorExterior": true,
+        "standingY": 64.0,
+        "supportExpectedY": 63.995528146961206,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-2.png",
+        "clientPosition": "(300.0, 64.0, -127.0)"
+      },
+      {
+        "label": "north entrance wing",
+        "target": [
+          348,
+          63.786881936432195,
+          -132
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060017,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.786881936432195,
+        "requireBodyClearance": true,
+        "look": [
+          -12.094757077012101,
+          -9.877700903619909
+        ],
+        "reactorExterior": true,
+        "standingY": 63.8125,
+        "supportExpectedY": 63.786881936432195,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-3.png",
+        "clientPosition": "(348.0, 63.8125, -132.0)"
+      },
+      {
+        "label": "south tower approach",
+        "target": [
+          356,
+          63.84211349487305,
+          -42
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061022,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.84211349487305,
+        "requireBodyClearance": true,
+        "look": [
+          176.18592516570965,
+          -52.28156901422033
+        ],
+        "reactorExterior": true,
+        "standingY": 63.875,
+        "supportExpectedY": 63.84211349487305,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-4.png",
+        "clientPosition": "(356.0, 63.875, -42.0)"
+      },
+      {
+        "label": "south connector",
+        "target": [
+          303,
+          64.03787994384766,
+          -46
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061020,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.03787994384766,
+        "requireBodyClearance": true,
+        "look": [
+          -171.0273733851036,
+          -6.648523883399627
+        ],
+        "reactorExterior": true,
+        "standingY": 64.0625,
+        "supportExpectedY": 64.03787994384766,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-5.png",
+        "clientPosition": "(303.0, 64.0625, -46.0)"
+      },
+      {
+        "label": "concrete west arc",
+        "target": [
+          267,
+          64.00117695124457,
+          -73
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000032,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.00117695124457,
+        "requireBodyClearance": true,
+        "look": [
+          -155.55604521958347,
+          -27.458152099886952
+        ],
+        "reactorExterior": true,
+        "standingY": 64.0,
+        "supportExpectedY": 64.00117695124457,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-6.png",
+        "clientPosition": "(267.0, 64.0, -73.0)"
+      },
+      {
+        "label": "east hall northwest corridor",
+        "target": [
+          384,
+          64.07557231088317,
+          -118
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060212,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.07557231088317,
+        "requireBodyClearance": true,
+        "look": [
+          -45.0,
+          -35.948713853176294
+        ],
+        "reactorEast": true,
+        "standingY": 64.125,
+        "supportExpectedY": 64.07557231088317,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-7.png",
+        "clientPosition": "(384.0, 64.125, -118.0)"
+      },
+      {
+        "label": "east hall southwest corridor",
+        "target": [
+          379,
+          63.954792558466174,
+          -60
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060203,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.954792558466174,
+        "requireBodyClearance": true,
+        "look": [
+          -129.8055710922652,
+          -43.16448456968555
+        ],
+        "reactorEast": true,
+        "standingY": 64.0,
+        "supportExpectedY": 63.954792558466174,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-8.png",
+        "clientPosition": "(379.0, 64.0, -60.0)"
+      },
+      {
+        "label": "east hall north approach",
+        "target": [
+          401,
+          63.86891512333618,
+          -136
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060018,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.86891512333618,
+        "requireBodyClearance": true,
+        "look": [
+          -12.528807709151511,
+          -34.81397080685201
+        ],
+        "reactorEast": true,
+        "standingY": 63.875,
+        "supportExpectedY": 63.86891512333618,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-9.png",
+        "clientPosition": "(401.0, 63.875, -136.0)"
+      },
+      {
+        "label": "east hall east approach",
+        "target": [
+          414,
+          63.8496980649334,
+          -85
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060208,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.8496980649334,
+        "requireBodyClearance": true,
+        "look": [
+          75.96375653207353,
+          -33.36573662165402
+        ],
+        "reactorEast": true,
+        "standingY": 63.875,
+        "supportExpectedY": 63.8496980649334,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-10.png",
+        "clientPosition": "(414.0, 63.875, -85.0)"
+      },
+      {
+        "label": "east hall south approach",
+        "target": [
+          389,
+          63.84360075918638,
+          -27
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060203,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.84360075918638,
+        "requireBodyClearance": true,
+        "look": [
+          174.28940686250036,
+          -32.63735413831023
+        ],
+        "reactorEast": true,
+        "standingY": 63.875,
+        "supportExpectedY": 63.84360075918638,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-11.png",
+        "clientPosition": "(389.0, 63.875, -27.0)"
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "target": [
+          315.0,
+          69.62290400570674,
+          -40.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000050103,
+        "part": 5,
+        "dropHeight": 2,
+        "supportHeight": 69.62290400570674,
+        "requireBodyClearance": true,
+        "look": [
+          0,
+          30
+        ],
+        "standingY": 69.625,
+        "supportExpectedY": 69.62290400570674,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-12.png",
+        "clientPosition": "(315.0, 69.625, -40.0)"
+      },
+      {
+        "label": "UTA west approach ground",
+        "target": [
+          299.25,
+          64.08798789978027,
+          -39.25
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061102,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.08798789978027,
+        "requireBodyClearance": true,
+        "look": [
+          0,
+          30
+        ],
+        "standingY": 64.125,
+        "supportExpectedY": 64.08798789978027,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uta-candidate-86-completion-walk-13.png",
+        "clientPosition": "(299.25, 64.125, -39.25)"
+      }
+    ],
+    "failure": {
+      "probe": 14,
+      "control": {
+        "label": "UTA south approach ground",
+        "target": [
+          313.25,
+          64.09127044677734,
+          -24.25
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061103,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.09127044677734,
+        "requireBodyClearance": true,
+        "look": [
+          0,
+          30
+        ]
+      },
+      "serverPosition": "(313.25, 65.0, -24.25)",
+      "horizontalError": 0.0,
+      "bodyClear": true,
+      "supportExpectedY": 64.09127044677734,
+      "velocity": "(0.0, -0.0784000015258789, 0.0)",
+      "onGround": true,
+      "flying": false,
+      "collisionAligned": true,
+      "supportBlocks": [
+        {
+          "position": "312, 63, -25",
+          "state": "Block{earthcraft:map_dirt}[campus_height=16]"
+        },
+        {
+          "position": "312, 64, -25",
+          "state": "Block{earthcraft:map_grass}[campus_height=2]"
+        },
+        {
+          "position": "312, 65, -25",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "312, 63, -24",
+          "state": "Block{earthcraft:map_stone}[campus_height=16]"
+        },
+        {
+          "position": "312, 64, -24",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "312, 65, -24",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "313, 63, -25",
+          "state": "Block{earthcraft:map_dirt}[campus_height=16]"
+        },
+        {
+          "position": "313, 64, -25",
+          "state": "Block{earthcraft:map_grass}[campus_height=1]"
+        },
+        {
+          "position": "313, 65, -25",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "313, 63, -24",
+          "state": "Block{earthcraft:map_stone}[campus_height=16]"
+        },
+        {
+          "position": "313, 64, -24",
+          "state": "Block{earthcraft:map_stone}[campus_height=16]"
+        },
+        {
+          "position": "313, 65, -24",
+          "state": "Block{minecraft:air}"
+        }
+      ],
+      "capture": "campus-uta-candidate-86-completion-walking-failure.png",
+      "clientPosition": "(313.25, 65.0, -24.25)"
+    },
+    "preservation": {
+      "sourceCandidate84Unchanged": 132,
+      "priorAlignmentJournalsUnchanged": true,
+      "activeV86AlignedChunks": 184,
+      "inventoryAndExperienceUnchanged": true,
+      "originalSavesUnchanged": 121,
+      "previewSavesUnchanged": 121,
+      "previewSettingsUnchanged": 4
+    },
+    "failureEvidence": {
+      "file": "photos/uta-candidate-86-south-collision-failure.png",
+      "sha256": "ef2160c8869726596d07bd7eee27818f56ae8fd288d2b7402ca83b8cf780f431"
+    }
+  },
+  "nextRepair": {
+    "groundMarginMetres": 9,
+    "basis": "Fixed south probe centre is 7.3597 m from the UTA footprint, but its occupied column centres are 8.0567 m and 8.2256 m away. They fell outside the 8 m extension. Include the full player footprint and require each support column to be aligned in preflight.",
+    "probeCoordinatesUnchanged": true
   }
 }

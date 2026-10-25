@@ -1,0 +1,468 @@
+{
+  "candidate": 87,
+  "status": "Packaged footprint correction passed preflight; native verification running",
+  "visualAcceptance": false,
+  "sourceChecks": {
+    "status": "PASS: survey envelope, exact roof, terrain profiles, bounded ownership and retained inputs",
+    "manifestSha256": "f1822bd143cd321729c61c001e3e82007fc793aa8a5de2d532a6a260049677f4",
+    "validatorSha256": "e347a196cf8407328f27f58a5532931ef7412c2c58524b3b86216755135e0ca6",
+    "sourceSha256": "6858d9b17d26e125224e6befd70d9c7169a494d0a64076cfa0ad7a90a612ea5d",
+    "roofSha256": "ec47c676764f4c55ad6a38b0769c8366f48b9ef8aa8a2371df83b2f4e2b244be",
+    "collisionSha256": "e824426c41abae532cf361b325a7db7056221297a270f3a50b864e059b0a265a",
+    "walls": 6,
+    "roofTriangles": 4,
+    "terrainSamples": 317,
+    "maximumTerrainResidualMetres": 0.0,
+    "neighbourOverlapSquareMetres": 0.0,
+    "priorRenderCollisionInputsUnchanged": 643,
+    "inspectionPlanSha256": "33f3d86de9d6daf4d6f1a1526ce657bcd8dbfb4152a3e7a5619895172a0c9468",
+    "visualAcceptance": false,
+    "groundTiles": 5,
+    "groundAreaSquareMetres": 439.2991244708246,
+    "groundOverlapSquareMetres": 1.506843300846548e-07,
+    "groundTerrainSamples": 680,
+    "maximumGroundResidualMetres": 2.3962583760805956e-05,
+    "maximumGroundSeamErrorMetres": 0.0,
+    "groundTileSha256": {
+      "uta-approach-ground-280--60.ect": "9a9209cfb99c3d97160d103fff65e8c59dd5a8fa8e27256978db09e6deb5fa8b",
+      "uta-approach-ground-300--60.ect": "d8c8e54fed1ad19d50e4156b6856a510a60dbdcd6ba3f8b1328f1adb03aadb9d",
+      "uta-approach-ground-280--40.ect": "e762375988ca5b4f5d78027c16ae1648c6eb690cf5b152c8c0109934acc3dc22",
+      "uta-approach-ground-300--40.ect": "ec6ce23294a6a7761b91ce6678ab04e27a3f9ae1ea27f1165fdb6c4480679640",
+      "uta-approach-ground-320--40.ect": "494f5113ef24b9a0fecabb75769e0f8318245a9733f64780e54ea310f48e7b97"
+    },
+    "preservedRoofEquipment": {
+      "ring": [
+        [
+          315.8,
+          -46.2
+        ],
+        [
+          321.2,
+          -46.2
+        ],
+        [
+          321.2,
+          -33.3
+        ],
+        [
+          315.8,
+          -33.3
+        ]
+      ],
+      "holes": [],
+      "y0": 69.2,
+      "y1": 72.2
+    }
+  },
+  "sourceValidators": [
+    {
+      "validator": "validate-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mlz-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-canopies.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-west-entrance.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-library.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-container.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-p1-complex.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-woodland.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-new-laboratory.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-laboratory-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-ii.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-pinned-water.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-wsi.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn-west.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-cala.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-lmu.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-courtyard.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-riverbank.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-north-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mensa-terrace.py",
+      "exitCode": 0
+    }
+  ],
+  "artifactVerification": {
+    "status": "PASS: revised UTA terrain packaged; all 643 other render/collision inputs and 24 service modules unchanged",
+    "artifactSha256": "ff9962bda9bbe2763cb02d980e4d052b6d8eeb97c43c87a9ae42bd4a7352d760",
+    "rendererSourceFingerprint": "67e1128d1fc16b5a",
+    "staticRenderTiles": 464,
+    "revisedGroundTiles": 5,
+    "photographicRuntimeId": 1000050103,
+    "alignmentVersion": 87,
+    "previousRenderTilesByteIdentical": 459,
+    "previousRenderCollisionInputsByteIdentical": 643,
+    "changedServiceModules": [],
+    "unchangedServiceModules": 24,
+    "previousSupplementalDatumsUnchanged": true
+  },
+  "packagedCollision": {
+    "status": "PASS: UTA walls, clear roof and approaches retain support; observed rooftop equipment preserves provider collision at both datums",
+    "wallChecks": 12,
+    "roofChecks": 6,
+    "preservedRoofChecks": 2,
+    "results": [
+      {
+        "label": "mlz courtyard standing",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.89908177890647,
+        "residual": -0.024081778906470674,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.995528146961206,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 0,
+        "standingY": 63.8125,
+        "expected": 63.786881936432195,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall northwest corridor",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.07557231088317,
+        "residual": 0.04942768911682549,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall southwest corridor",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.954792558466174,
+        "residual": 0.04520744153382594,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall north approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.86891512333618,
+        "residual": 0.006084876663820182,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall east approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.8496980649334,
+        "residual": 0.025301935066600834,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall south approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.84360075918638,
+        "residual": 0.03139924081362011,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "shift": 0,
+        "standingY": 69.625,
+        "expected": 69.62290400570674,
+        "residual": 0.0020959942932563536,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA west approach ground",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.08798789978027,
+        "residual": 0.03701210021972656,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south approach ground",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.09127044677734,
+        "residual": 0.03372955322265625,
+        "bodyClear": true
+      },
+      {
+        "label": "mlz courtyard standing",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.89908177890646,
+        "residual": -0.02408177890646357,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.9955281469612,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 2,
+        "standingY": 65.8125,
+        "expected": 65.7868819364322,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall northwest corridor",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.07557231088317,
+        "residual": 0.04942768911682549,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall southwest corridor",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.95479255846618,
+        "residual": 0.04520744153381884,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall north approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.86891512333618,
+        "residual": 0.006084876663820182,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall east approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84969806493339,
+        "residual": 0.02530193506660794,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall south approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84360075918639,
+        "residual": 0.031399240813613005,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "shift": 2,
+        "standingY": 71.625,
+        "expected": 71.62290400570674,
+        "residual": 0.0020959942932563536,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA west approach ground",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.08798789978027,
+        "residual": 0.03701210021972656,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south approach ground",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.09127044677734,
+        "residual": 0.03372955322265625,
+        "bodyClear": true
+      }
+    ],
+    "qualification": "Survey-plane collision is independent of provider photographic acceptance. Native migration and visual acceptance are separate."
+  },
+  "regression": {
+    "previousCandidate": 86,
+    "reproducedFailure": "UTA south approach ground: player footprint reaches unaligned provider collision at 312,-24",
+    "fixedProbeCoordinates": [
+      313.25,
+      -24.25
+    ],
+    "groundMarginBeforeMetres": 8,
+    "groundMarginAfterMetres": 9,
+    "extraAreaSquareMetres": 66.61219020673889
+  },
+  "native": {
+    "status": "RUNNING",
+    "cameraIndicesFromFullPlan": [
+      21,
+      23,
+      24
+    ],
+    "standingControls": 15,
+    "sourceSaveFiles": 132,
+    "sourceWorld": "completed candidate84",
+    "fullyReviewed": false
+  },
+  "remainingVisualWork": [
+    "Blurry UTA wall photography.",
+    "Baked cars and shadows in ground imagery.",
+    "Coarse neighbouring structures and source vegetation, including the south walking view."
+  ],
+  "installedPreviewChanged": false,
+  "binaryReleasePublished": false
+}

@@ -1,6 +1,6 @@
 {
-  "name": "uta-candidate-86",
-  "purpose": "Check continuous surveyed approach ground and preserved observed rooftop equipment, with retained UTA walls and reactor routes.",
+  "name": "uta-candidate-87",
+  "purpose": "Verify measured UTA terrain covers the full player footprint at the unchanged approaches, preserve observed rooftop equipment and retain established campus routes.",
   "captureWalking": true,
   "reflectionEvidence": true,
   "checkFractionalSupports": true,
@@ -574,8 +574,27 @@
         {
           "u": 0.5,
           "v": 0.5,
-          "expectedTile": 1200025132,
-          "blockSamples": true
+          "blockSamples": true,
+          "expectedTriangle": [
+            [
+              319.011926651001,
+              71.6194076538086,
+              -34.02421283721924
+            ],
+            [
+              318.8061180114746,
+              71.61682891845703,
+              -36.69407081604004
+            ],
+            [
+              316.33833503723145,
+              71.61602306365967,
+              -34.84555912017822
+            ]
+          ],
+          "triangleTolerance": 0.0001,
+          "expectedDistance": 27.76806,
+          "distanceTolerance": 0.001
         },
         {
           "u": 0.4590797304591575,

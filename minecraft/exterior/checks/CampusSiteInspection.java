@@ -130,6 +130,19 @@ public final class CampusSiteInspection {
                 double expected=control.get("expectedDistance").getAsDouble(),tolerance=control.get("distanceTolerance").getAsDouble();
                 if(hits.isEmpty()||Math.abs(hits.get(0).get("distance").getAsDouble()-expected)>tolerance)throw new AssertionError("Unexpected first-hit distance at screen "+u+","+v+": "+(hits.isEmpty()?"none":hits.get(0)));
             }
+            if(control.has("expectedTriangle")){
+                // Provider IDs depend on transient request order. Identify
+                // observed source geometry by its vertices instead.
+                if(hits.isEmpty())throw new AssertionError("Expected source triangle at screen "+u+","+v+": none");
+                var expected=control.getAsJsonArray("expectedTriangle");var actual=hits.get(0).getAsJsonArray("triangle");
+                double tolerance=control.get("triangleTolerance").getAsDouble();
+                if(expected.size()!=3||!Double.isFinite(tolerance)||tolerance<=0)throw new AssertionError("Invalid triangle control");
+                for(var vertex:expected){
+                    boolean found=false;
+                    for(var point:actual){double distance=0;for(int k=0;k<3;k++){double delta=vertex.getAsJsonArray().get(k).getAsDouble()-point.getAsJsonArray().get(k).getAsDouble();distance+=delta*delta;}if(distance<=tolerance*tolerance)found=true;}
+                    if(!found)throw new AssertionError("Unexpected source triangle at screen "+u+","+v+": "+hits.get(0));
+                }
+            }
             var nearest=new JsonArray();for(int i=0;i<Math.min(4,hits.size());i++)nearest.add(hits.get(i));row.add("hits",nearest);row.addProperty("qualification","Geometric ray; transparent texture texels are not rejected.");result.add(row);
         }
         return result;

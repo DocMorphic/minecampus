@@ -179,5 +179,30 @@
     }
   ],
   "qualification": "The original native geometry and DOP20 roof image identify a three-unit fan strip. Current generic roof retirement removes lower source triangles while retaining higher triangles. This diagnostic does not claim every triangle in the strip is an equipment surface.",
-  "reference": "DOP20 roof image and candidate85 aerial capture; exterior appearance only"
+  "reference": "DOP20 roof image and candidate85 aerial capture; exterior appearance only",
+  "nativeAerialControl": {
+    "triangle": [
+      [
+        319.011926651001,
+        71.6194076538086,
+        -34.02421283721924
+      ],
+      [
+        318.8061180114746,
+        71.61682891845703,
+        -36.69407081604004
+      ],
+      [
+        316.33833503723145,
+        71.61602306365967,
+        -34.84555912017822
+      ]
+    ],
+    "distance": 27.76806,
+    "observedTransientTileIds": [
+      1200025132,
+      1200024792
+    ],
+    "qualification": "The same first-hit triangle has different request-order tile IDs in native85 and native86. Validate its geometry and distance, not its ephemeral provider ID."
+  }
 }

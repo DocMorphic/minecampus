@@ -63,7 +63,7 @@ error=float(np.max(np.abs(mc(np.column_stack([en,h]))[:,1]-positions[:,1])));ass
 inspection=read(root/'minecraft/exterior/checks/uta-exterior.json');retained=read(root/'minecraft/exterior/checks/reactor-east.json')
 assert inspection['cameras'][:20]==retained['cameras'] and inspection['gravityProbes'][:12]==retained['gravityProbes']
 assert len(inspection['cameras'])==25 and len(inspection['gravityProbes'])==15
-assert inspection['cameras'][24]['screenRays'][0]['expectedTile']==1200025132
+assert inspection['cameras'][24]['screenRays'][0]['expectedTriangle']==read(root/'minecraft/exterior/photos/uta-roof-retirement-study.json')['nativeAerialControl']['triangle']
 assert inspection['cameras'][24]['screenRays'][1]['expectedTile']==plan['runtimeId']
 probe=inspection['gravityProbes'][12];x,_,z=probe['target'];heights=[]
 for q in np.asarray(plan['roofTriangles']):

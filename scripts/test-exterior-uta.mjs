@@ -46,6 +46,10 @@ for(const shift of [0,2]){
  }
  for(const p of controls){
   const [x,,z]=p.target,expected=p.supportHeight+shift;
+  if((m.architecture.utaSite?.groundTiles??[]).some(name=>m.tiles.find(t=>t.file===name)?.runtimeId===p.tile)){
+   for(let bx=Math.floor(x-.3);bx<=Math.floor(x+.3);bx++)for(let bz=Math.floor(z-.3);bz<=Math.floor(z+.3);bz++)
+    assert.notEqual(intersect.code(bx+.5,expected,bz+.5),255,`${p.label}: player footprint reaches unaligned provider collision at ${bx},${bz}`);
+  }
   const support=intersect(x,z,expected-.5,expected+p.dropHeight+.05),standingY=Math.max(...support.map(c=>c.top));
   assert.ok(Number.isFinite(standingY)&&Math.abs(standingY-expected)<.125,`${p.label}: support ${standingY} vs ${expected}`);
   assert.equal(intersect(x,z,standingY+.001,standingY+1.8).length,0,`${p.label}: approach obstructed`);
