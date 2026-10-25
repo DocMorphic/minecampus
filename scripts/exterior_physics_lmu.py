@@ -11,7 +11,7 @@ import numpy as np
 from PIL import Image
 from pyproj import Transformer
 from shapely import set_precision
-from shapely.geometry import Polygon, box
+from shapely.geometry import Polygon, LineString, box
 from shapely.ops import unary_union
 
 from exterior_physics_i import nearby_surveys, survey_plan, roof_texture, polygons
@@ -60,16 +60,21 @@ def build(ctx):
         def surface(poly,part,depth=0):
             for t in surface_triangles(poly): emit([pt(x,y,depth) for x,y in t],part,n)
 
-        def edge_sides(poly,part,front,back):
+        def edge_sides(poly,part,front,back,boundary=None):
             # Close every external and hole boundary so recesses/bands have
             # real depth when seen from the adjacent pavement.
             for p in polygons(poly):
                 for ring in [p.exterior,*p.interiors]:
                     for c,d in zip(ring.coords[:-1],ring.coords[1:]):
-                        q=[pt(*c,front),pt(*d,front),pt(*d,back),pt(*c,back)]
                         tangent=np.array(d)-np.array(c)
                         side=u*tangent[1]-np.array([0,1,0])*tangent[0]
-                        emit(q,part,side)
+                        edge=LineString([c,d])
+                        if boundary is not None:edge=edge.intersection(boundary)
+                        segments=[edge] if edge.geom_type=='LineString' else list(getattr(edge,'geoms',[]))
+                        for segment in segments:
+                            if segment.geom_type!='LineString' or segment.length<1e-8:continue
+                            for c0,d0 in zip(segment.coords[:-1],segment.coords[1:]):
+                                emit([pt(*c0,front),pt(*d0,front),pt(*d0,back),pt(*c0,back)],part,side)
 
         is_plant=face in spec['plantFaces']
         is_office=face in spec['officeFaces']
@@ -98,7 +103,7 @@ def build(ctx):
             beams.append(shape.intersection(box(left,top-spec['beamHeightMetres'],right,top)))
         beam_shape=unary_union(beams)
         surface(beam_shape,0)
-        edge_sides(beam_shape,0,0,-spec['recessMetres'])
+        front_pieces=[(beam_shape,0)]
         fill=shape.difference(beam_shape)
         windows=[]
         bays=max(1,round(width/spec['bayPitchMetres']))
@@ -141,7 +146,6 @@ def build(ctx):
                     p=target.representative_point()
                     local_controls.append({'kind':'estimated-window','face':face,'part':2,'position':pt(p.x,p.y,-recess).tolist(),'normal':n.tolist()})
         surface(fill.difference(unary_union(windows)),1,-spec['recessMetres'])
-        edge_sides(fill,1,0,-spec['recessMetres'])
         # Ground concrete piers and finer upper metal posts sit at the outer
         # survey envelope, leaving the glass visibly recessed behind them.
         for k in range(bays+1):
@@ -151,12 +155,19 @@ def build(ctx):
                 half=(spec['groundColumnWidthMetres'] if ground else spec['upperPostWidthMetres'])/2
                 post=fill.intersection(box(x-half,y0,x+half,y1))
                 surface(post,0 if ground else 3)
-                edge_sides(post,0 if ground else 3,0,-spec['recessMetres'])
+                front_pieces.append((post,0 if ground else 3))
             for y0,y1 in zip(levels,levels[1:]):
                 if y0<base+.6:continue
                 rail=fill.intersection(box(left,y0+.78,right,y0+.86))
                 if k==0:
                     surface(rail,3,-.04);edge_sides(rail,3,-.04,-.10)
+        # Shared beam/post interfaces are internal. Infill used to close those
+        # same planes again, producing visible coplanar stripes under every
+        # band. Only the exposed frame perimeter owns these return surfaces.
+        frame=unary_union([p for p,part in front_pieces])
+        for piece,part in front_pieces:
+            edge_sides(piece,part,0,-spec['recessMetres'],frame.boundary)
+        edge_sides(shape,1,0,-spec['recessMetres'],shape.boundary.difference(frame))
         controls.extend(local_controls[::max(1,len(local_controls)//3)][:3])
         facade_records.append({'face':face,'style':'estimated office frame' if is_office else 'estimated workshop frame','bays':bays,'windowCount':len(windows),'levels':levels,'surveyArea':shape.area})
         wall['reconstructed']=True
@@ -172,6 +183,15 @@ def build(ctx):
     # replacement only; landscaping and equipment remain separate work.
     neighbours=unary_union([Polygon(ctx['mc'](r[0])[:,[0,2]],[ctx['mc'](h)[:,[0,2]] for h in r[1:]]).buffer(0) for key,s in surveys if key!=bid for kind,r in s if kind=='GroundSurface'])
     owned=footprint.buffer(spec['cleanupMarginMetres'],join_style=2).difference(neighbours.buffer(.25))
+    # Connect the measured north frontage to the existing CALA street mesh.
+    # A narrow foundation collar left unsupported pavement between the two.
+    street=Polygon()
+    for face in spec.get('streetApronFaces',[]):
+        w=walls[face];a,u,n=[np.array(w[k]) for k in ('anchor','direction','normal')]
+        left,_,right,_=Polygon(w['rings'][0],w['rings'][1:]).bounds
+        p,q=a+u*left,a+u*right
+        street=street.union(Polygon(np.array([p,q,q+n*spec['streetApronMetres'],p+n*spec['streetApronMetres']])[:,[0,2]]))
+    owned=owned.union(street).difference(neighbours.buffer(.25))
     # Survey-height ground beneath the envelope also supplies the runtime's
     # bounded foundation datum. Without it, source collision cannot be migrated
     # outside the original campus grid. The open courtyard remains excluded.

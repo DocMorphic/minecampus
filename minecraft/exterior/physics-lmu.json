@@ -30,8 +30,92 @@
   "groundColumnWidthMetres": 0.32,
   "upperPostWidthMetres": 0.10,
   "cleanupMarginMetres": 2.1,
+  "streetApronFaces": [6],
+  "streetApronMetres": 6,
+  "streetApronQualification": "Native58 showed missing pavement between the north foundation collar and the retained CALA street mesh. The six-metre strip follows the surveyed north wall over public DOP20 pavement and DGM1 heights, overlaps existing land only for subtraction and edge blending, and excludes neighbouring surveyed buildings. It does not widen courtyard ownership.",
   "groundRuntimeId": 1000060900,
   "groundBlendMetres": 2,
+  "streetGroundRays": {
+    "camera": [
+      243.19907147208636,
+      65.46216489253416,
+      -460.37837133359125
+    ],
+    "controls": [
+      {
+        "u": 0.25,
+        "v": 0.68,
+        "direction": [
+          -0.03356559188997157,
+          -0.13419766798548058,
+          0.9903859535293977
+        ],
+        "distance": 10.709776129209033
+      },
+      {
+        "u": 0.25,
+        "v": 0.69,
+        "direction": [
+          -0.03433427836143513,
+          -0.1463289285314113,
+          0.9886399759286738
+        ],
+        "distance": 10.083250146090723
+      },
+      {
+        "u": 0.25,
+        "v": 0.7,
+        "direction": [
+          -0.03509320264966784,
+          -0.1583652345392283,
+          0.9867567682145
+        ],
+        "distance": 9.526192741868536
+      },
+      {
+        "u": 0.5,
+        "v": 0.65,
+        "direction": [
+          -0.5906989862626797,
+          -0.1180656421519932,
+          0.7982074991952156
+        ],
+        "distance": 12.032747138463295
+      },
+      {
+        "u": 0.5,
+        "v": 0.66,
+        "direction": [
+          -0.5895793539214551,
+          -0.13294353365049122,
+          0.7966945476718665
+        ],
+        "distance": 11.187151549268135
+      },
+      {
+        "u": 0.5,
+        "v": 0.67,
+        "direction": [
+          -0.5883371132795162,
+          -0.14767915839301524,
+          0.7950159163905189
+        ],
+        "distance": 10.501678700165566
+      },
+      {
+        "u": 0.75,
+        "v": 0.63,
+        "direction": [
+          -0.9447634413704222,
+          -0.07228090617767982,
+          0.31968345351620886
+        ],
+        "distance": 20.16786988399179
+      }
+    ],
+    "toleranceMetres": 0.03,
+    "qualification": "Fixed native58 north-view sky pixels. Rays are derived from its recorded camera and FOV; expected distances use the DGM-height pavement connection. These controls must hit encoded ground."
+  },
   "fineCollisionMaterials": [4,6,6,6,4],
   "qualification": "BVV fixes all53 wall rings, courtyard, stepped volumes and102 roof triangles. DOP20 supplies roof pixels. The two cited ground photographs guide the facade grammar. Bay counts, floor bands, recess depth, frame/post sizes, blinds, hidden elevations and colours are estimates, not an as-built survey. No interiors or reference-photo textures."
 }

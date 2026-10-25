@@ -69,6 +69,20 @@ def decode(path):
     assert offset==len(data);return parts
 parts=decode(out/rec['meshFile']);roof_parts=decode(out/rec['roofFile'])
 assert len(parts)==5 and len(roof_parts)==1
+# The native58 views exposed coplanar infill returns under structural bands.
+# Check the actual encoded band planes, independently of generator ownership.
+band_heights=[y-spec['beamHeightMetres'] for f in rec['facades'] for y in f.get('levels',[])[1:]]
+horizontal={}
+for part in [0,1]:
+    horizontal[part]=[(Polygon(t[:,[0,2]]),float(t[0,1])) for t in parts[part][0][:,:3].reshape(-1,3,3)
+                      if np.ptp(t[:,1])<1e-4 and Polygon(t[:,[0,2]]).area>1e-8]
+infill=horizontal[1];infill_tree=STRtree([p for p,y in infill]);soffit_overlap=0.
+for p,y in horizontal[0]:
+    if not any(abs(y-h)<1e-4 for h in band_heights):continue
+    for i in infill_tree.query(p):
+        other,z=infill[int(i)]
+        if abs(y-z)<1e-4:soffit_overlap+=p.intersection(other).area
+assert soffit_overlap<.001,('coplanar structural-band/infill returns',soffit_overlap)
 assert np.array_equal(parts[4][0],roof_parts[0][0]) and np.array_equal(parts[4][1],roof_parts[0][1])
 source_roofs=[p for k,p in raw if k=='RoofSurface']
 roof_points=np.concatenate([world(p) for rings in source_roofs for p in rings])
@@ -132,6 +146,13 @@ for control in rec['controls']:
     assert part_ids[hit]==control['part'] and abs(distance[hit]-.6)<.0001,(control,part_ids[hit],distance[hit])
     assert normals[hit]@n>.999,control
 new_files=rec['groundTiles'];new_parts=[decode(out/name)[0] for name in new_files];new_tri=np.concatenate([v[:,:3].reshape(-1,3,3) for v,pixels in new_parts]);region=unary_union([Polygon(t[:,[0,2]]) for t in new_tri])
+street_rays=spec['streetGroundRays'];ray_origin=np.array(street_rays['camera'])
+ga=new_tri[:,0];ge1=new_tri[:,1]-ga;ge2=new_tri[:,2]-ga;gt=ray_origin-ga;gq=np.cross(gt,ge1)
+for control in street_rays['controls']:
+    direction=np.array(control['direction']);gp=np.cross(direction,ge2);det=np.sum(ge1*gp,axis=1);safe=np.where(abs(det)>1e-10,det,1)
+    u=np.sum(gt*gp,axis=1)/safe;v=np.sum(direction*gq,axis=1)/safe;distance=np.sum(ge2*gq,axis=1)/safe
+    hits=distance[(abs(det)>1e-10)&(u>=0)&(v>=0)&(u+v<=1)&(distance>0)]
+    assert len(hits) and abs(float(hits.min())-control['distance'])<street_rays['toleranceMetres'],('north street gap',control,hits)
 assert all(np.cross(t[1]-t[0],t[2]-t[0])[1]>-1e-8 for t in new_tri)
 assert abs(region.area-rec['ground']['areaSquareMetres'])<.005
 old=[];search=region.buffer(spec['groundBlendMetres']+1)
@@ -186,5 +207,7 @@ for v,pixels in new_parts:
         assert np.max(abs(np.column_stack([(c-round(left))/width,(r-round(top))/height])-v[:,3:]))<1e-4
 files=[rec['meshFile'],rec['roofFile'],*new_files]
 result={'status':'PASS: raw survey envelope, encoded wall coverage, first-hit glass controls, courtyard/neighbour preservation and public roof pixels','manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'validatorSha256':sha(Path(__file__)),'tileSha256':{f:sha(out/f) for f in files},'rawInputs':inputs,'roofVertexErrorMetres':roof_error,'wallVertexErrorMetres':wall_error,'wallCoverage':coverage,'surfaceControls':len(rec['controls']),'groundAreaSquareMetres':region.area,'groundVertices':len(vertices),'groundHeightErrorMetres':max(errors),'seamHeightErrorMetres':max(seam_errors),'qualification':'Facade subdivisions remain estimated. This does not establish native collision, source retirement or visual acceptance.'}
+result['structuralBandInfillOverlapSquareMetres']=soffit_overlap
+result['streetGroundRayControls']=len(street_rays['controls'])
 (out/'physics-lmu-validation.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps({k:v for k,v in result.items() if k not in ['rawInputs','wallCoverage','tileSha256']},indent=2))
