@@ -1,0 +1,291 @@
+{
+  "date": "2026-10-25",
+  "status": "Source diagnosis and unverified grade candidate; not installed",
+  "referenceArtifactSha256": "a539a9d15058534a9e7996964da15bf5cf22d260da70f1f969215732b8bfa083",
+  "references": [
+    {
+      "url": "https://slam.green/projekt/galileo-neue-mitte-am-hochschulcampus-garching-muenchen/",
+      "retrieved": "2026-10-25",
+      "observation": "Architect identifies connected, level shared-space circulation on the east side with asphalt including aggregate, garage ramps and delivery access. This establishes intended surface continuity, not surveyed finished elevations."
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/1005_Lageplan_0-2048x799.jpg",
+      "sha256": "47db2a50de1fbf1351c1c119304760e4a1f8b55798479bb2b98ad681f49eba63",
+      "use": "Research only; not redistributed or used as texture.",
+      "observation": "The plan separates the garage runs from connected frontage; the completed exterior photograph shows a smooth paved approach."
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/SCC_Munich_Exterior_04-1024x683.jpg",
+      "sha256": "4fa310efd83a74b86f60d0ba7214bfd599a59f917e871d77ca827b33d89fc430",
+      "use": "Research only; not redistributed or used as texture.",
+      "observation": "The plan separates the garage runs from connected frontage; the completed exterior photograph shows a smooth paved approach."
+    }
+  ],
+  "sourceFiles": {
+    "campus-east.gml": "a0b6db38424bec366b494ed539191941f48173bad8c7be546d070ca57cb6a3e2",
+    "campus-dgm-east.tif": "949f653cfb93f056f134c8285f3a515d5bde29e47beb88075f024bcdc67ff32e",
+    "campus-dop-east.tif": "8a78e3fc301332e607e514b8bca545d64e3b1a956ecf02a723301b0982ab0dae"
+  },
+  "surveyBuilding": "DEBY_LOD2_107614323",
+  "surveyBaseDHHN2016": 474.2,
+  "finding": "The existing DGM rises to about 475.2 m beside the surveyed facade base at 474.2 m. Native view 18 from preview-upgrade-93 shows the resulting humps. Nearby outer-drive samples and the surveyed base support a nearly level connecting grade. Exact finished levels remain inferred.",
+  "controls": [
+    {
+      "role": "outer drive DGM",
+      "mc": [
+        148.00000339035992,
+        64.1463936456641,
+        -140.00000321799
+      ],
+      "utm": [
+        698357.0054084278,
+        5349348.502620888
+      ],
+      "heightDHHN2016": 474.40739836150294
+    },
+    {
+      "role": "outer drive DGM",
+      "mc": [
+        147.00000033478617,
+        64.01454902561316,
+        -130.00000029900247
+      ],
+      "utm": [
+        698356.3539380715,
+        5349338.473863998
+      ],
+      "heightDHHN2016": 474.2753572893804
+    },
+    {
+      "role": "outer drive DGM",
+      "mc": [
+        144.99999876948272,
+        63.945764011224796,
+        -119.99999898073949
+      ],
+      "utm": [
+        698354.7030705633,
+        5349328.410314605
+      ],
+      "heightDHHN2016": 474.2063516454816
+    },
+    {
+      "role": "outer drive DGM",
+      "mc": [
+        144.99999747556149,
+        63.88873994211633,
+        -109.99999808230226
+      ],
+      "utm": [
+        698355.0509958934,
+        5349318.416350407
+      ],
+      "heightDHHN2016": 474.1492028404341
+    },
+    {
+      "role": "outer drive DGM",
+      "mc": [
+        143.99999597909905,
+        63.821557462980415,
+        -99.99999720242067
+      ],
+      "utm": [
+        698354.3995240722,
+        5349308.387593705
+      ],
+      "heightDHHN2016": 474.0818714479204
+    },
+    {
+      "role": "outer drive DGM",
+      "mc": [
+        141.99999629663375,
+        63.83333513023748,
+        -89.99999764927581
+      ],
+      "utm": [
+        698352.7486551035,
+        5349298.324044649
+      ],
+      "heightDHHN2016": 474.0934764896192
+    },
+    {
+      "role": "outer drive DGM",
+      "mc": [
+        139.99999701346152,
+        63.86366791929318,
+        -79.99999829074287
+      ],
+      "utm": [
+        698351.0977856546,
+        5349288.260495751
+      ],
+      "heightDHHN2016": 474.12365296630736
+    },
+    {
+      "role": "surveyed base",
+      "mc": [
+        130.14592201509794,
+        63.9399543952342,
+        -122.52802169363292
+      ],
+      "utm": [
+        698339.77,
+        5349330.42
+      ],
+      "heightDHHN2016": 474.2
+    },
+    {
+      "role": "surveyed base",
+      "mc": [
+        125.91256216580865,
+        63.94038507172326,
+        -99.5114169288791
+      ],
+      "utm": [
+        698336.34,
+        5349307.27
+      ],
+      "heightDHHN2016": 474.2
+    },
+    {
+      "role": "surveyed base",
+      "mc": [
+        123.08780417988186,
+        63.940624377835704,
+        -84.19044841172564
+      ],
+      "utm": [
+        698334.05,
+        5349291.86
+      ],
+      "heightDHHN2016": 474.2
+    },
+    {
+      "role": "surveyed base",
+      "mc": [
+        120.0144597662133,
+        63.940841721310264,
+        -67.47728801378942
+      ],
+      "utm": [
+        698331.56,
+        5349275.05
+      ],
+      "heightDHHN2016": 474.2
+    },
+    {
+      "role": "surveyed base",
+      "mc": [
+        119.79247059064768,
+        63.94085564486468,
+        -66.27428530244276
+      ],
+      "utm": [
+        698331.38,
+        5349273.84
+      ],
+      "heightDHHN2016": 474.2
+    },
+    {
+      "role": "surveyed base",
+      "mc": [
+        132.97103072554827,
+        63.939619659539986,
+        -137.8589831798003
+      ],
+      "utm": [
+        698342.06,
+        5349345.84
+      ],
+      "heightDHHN2016": 474.2
+    }
+  ],
+  "fit": {
+    "coordinateSystem": "EPSG:25832 with DHHN2016 heights",
+    "originUtm": [
+      698345.8861059834,
+      5349311.773483385
+    ],
+    "planeCoefficients": [
+      -0.0028151113051941485,
+      0.002294090980065831,
+      474.19517777235916
+    ],
+    "maximumResidualMetres": 0.1592626801105439,
+    "slope": 0.00363148799880315
+  },
+  "scope": "Only the north/east frontage beside the two existing reconstructed ramps. Real ramp-floor profiles, entry positions, width and portal clearance must remain unchanged; upper retaining edges and surrounding grade may change together.",
+  "limitations": [
+    "Design plan is not an as-built level survey.",
+    "No source establishes precise drainage falls or individual asphalt aggregate size.",
+    "A new packaged-game walking/aerial review is required before installation."
+  ],
+  "diagnosticDgmSamples": [
+    {
+      "localXZ": [
+        135,
+        -132
+      ],
+      "utm": [
+        698344.2915874823,
+        5349340.055138727
+      ],
+      "sourceHeightDHHN2016": 475.06048071661803
+    },
+    {
+      "localXZ": [
+        130,
+        -115
+      ],
+      "utm": [
+        698339.8860787221,
+        5349322.891436223
+      ],
+      "sourceHeightDHHN2016": 475.12486255744193
+    },
+    {
+      "localXZ": [
+        135,
+        -115
+      ],
+      "utm": [
+        698344.8830624492,
+        5349323.065400201
+      ],
+      "sourceHeightDHHN2016": 475.03353717003665
+    },
+    {
+      "localXZ": [
+        145,
+        -115
+      ],
+      "utm": [
+        698354.8770299031,
+        5349323.413328155
+      ],
+      "sourceHeightDHHN2016": 474.1815956154323
+    },
+    {
+      "localXZ": [
+        128,
+        -100
+      ],
+      "utm": [
+        698338.409174908,
+        5349307.830904873
+      ],
+      "sourceHeightDHHN2016": 475.0945387563497
+    },
+    {
+      "localXZ": [
+        144,
+        -100
+      ],
+      "utm": [
+        698354.3995228343,
+        5349308.387589601
+      ],
+      "sourceHeightDHHN2016": 474.08187150408605
+    }
+  ]
+}

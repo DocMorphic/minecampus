@@ -1,8 +1,16 @@
 # Exterior Preview 0.5
 
-## Local reviewed upgrade — candidate 93
+## Local reviewed upgrade — candidate 94
 
-The development machine now has the separately verified upgrade installed, SHA-256 `a539a9d15058534a9e7996964da15bf5cf22d260da70f1f969215732b8bfa083`. It includes the subsequent campus exterior and terrain work through the UYD approach repair. A copy of the installed preview save passed 24 camera checks, 12 native standing checks and preservation checks; all 57 resulting images were reviewed. This is a playable development checkpoint. The campus still has rough ground colors, coarse untreated neighbors and incomplete facade detail. [Upgrade evidence](preview-upgrade-development-validation.json).
+The development machine has the reviewed Galileo east frontage repair installed, SHA-256 `60fb1985223086f1b790d4b78a013f54fd60bf10e6582e80c706910163eae144`. It smooths the terrain beside the facade and aligns ramp retaining-wall tops to the inferred finished grade. Both ramp floors now use fractional collision: all 13 native standing checks passed within 0.048 m of the rendered surface. Fourteen camera views and all 41 resulting images were reviewed. The existing preview saves and private settings were preserved during installation. [Repair evidence](galileo-east-grade-development-validation.json).
+
+The grade combines surveyed building bases, nearby terrain controls and the landscape architect's description of a connected east frontage. It is inferred, not an as-built survey. Ground colours remain pale and blurry, nearby untreated buildings remain coarse, and facade details remain approximate. The broader realism goal remains open. The preceding candidate 93 campus-wide review is retained [separately](preview-upgrade-93-development-validation.json); this latest review concentrates on the changed frontage and ramps.
+
+![Reviewed Galileo east frontage](photos/galileo-east-grade-94-frontage.png)
+
+![Reviewed northern ramp at standing height](photos/galileo-east-grade-94-ramp.png)
+
+![Reviewed frontage from above](photos/galileo-east-grade-94-aerial.png)
 
 This local artifact has not been published as a new GitHub binary release. When it is present locally, update the existing preview with `python3 scripts/install-exterior-preview.py --update --reviewed-upgrade`. The installer checks its separate review and exact hash, backs up the old mod, and preserves saves and local settings. Without `--reviewed-upgrade`, it continues to accept the published dev.22 artifact described below.
 

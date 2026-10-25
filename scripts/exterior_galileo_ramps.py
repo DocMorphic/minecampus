@@ -54,7 +54,7 @@ def build(ctx):
    # Upper surfaces are sampled safely outside each wall, not in the raster's
    # smeared retaining face. Fit the adjacent grade rather than copying spikes.
    controls=centres+normal*side*4
-   measured=ctx['survey_elevation'].sample(controls)
+   measured=ctx.get('galileo_east_elevation',ctx['survey_elevation']).sample(controls)
    upper=np.linspace(float(np.median(measured[:4])),float(np.median(measured[-4:])),len(measured))
    top=np.maximum(upper+spec['parapetHeightMetres'],levels+.16)
    terminal_tops.append(float(top[-1])+.07)
@@ -118,7 +118,7 @@ def build(ctx):
  arr=np.asarray(parts[3]);uv=arr[:,3:5];size=np.array(ctx['photo'].size);low=np.maximum(0,np.floor(uv.min(axis=0)*size).astype(int)-2);high=np.minimum(size,np.ceil(uv.max(axis=0)*size).astype(int)+2)
  arr[:,3:5]=(uv*size-low)/(high-low);parts[3]=arr.tolist();textures[3]=ctx['photo'].crop((*low,*high))
  name='galileo-east-ramps.ect';(out/name).write_bytes(encode(list(zip(parts,textures))));all_xyz=np.concatenate([np.asarray(p)[:,:3]for p in parts])
- meta['tiles'].append({'file':name,'runtimeId':1_000_030_022,'kind':'reconstruction','profile':'galileo-east-ramps','bounds':[all_xyz.min(0).tolist(),all_xyz.max(0).tolist()]})
+ meta['tiles'].append({'file':name,'runtimeId':1_000_030_022,'kind':'reconstruction','profile':'galileo-east-ramps','collisionHeightfieldParts':[1,3],'bounds':[all_xyz.min(0).tolist(),all_xyz.max(0).tolist()]})
  meta.setdefault('terrainOverrides',[]).extend(overrides)
  rings=[list(p.exterior.coords)for p in cut.geoms]if cut.geom_type=='MultiPolygon'else[list(cut.exterior.coords)]
  for ring in rings:meta['replacements'].append({'ring':ring,'y0':float(all_xyz[:,1].min())-2,'y1':float(all_xyz[:,1].max())+1})

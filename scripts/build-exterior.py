@@ -174,6 +174,9 @@ frontage_spec=json.loads(frontage_source.read_text())
 frontage_excluded=unary_union([Polygon(r[0][:,:2],[h[:,:2] for h in r[1:]]).buffer(0) for _,surfaces in buildings for kind,r in surfaces if kind=='GroundSurface']).buffer(.5)
 elevation=BoundedGradeElevation(elevation,frontage_spec['patches'],frontage_excluded)
 metadata['frontageGrading']={'sourceFile':'galileo-frontage-grade.json','sourceSha256':hashlib.sha256(frontage_source.read_bytes()).hexdigest(),'patches':frontage_spec['patches'],'buildingExclusionMetres':.5,'qualification':frontage_spec['qualification']}
+from exterior_galileo_east_grade import configure as configure_galileo_east_grade
+elevation=configure_galileo_east_grade(globals())
+galileo_east_elevation=elevation
 # A compact DEM grid also guides runtime removal of the noisy source ground.
 guideXY=np.array([(e,n)for n in range(BOUNDS[1],BOUNDS[3]+1,2)for e in range(BOUNDS[0],BOUNDS[2]+1,2)])
 metadata['terrainGuide']={'width':301,'height':301,'points':mc(np.column_stack((guideXY,elevation.sample(guideXY)))).tolist()}

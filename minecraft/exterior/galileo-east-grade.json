@@ -1,0 +1,43 @@
+{
+  "reference": "photos/galileo-east-grade-reference.json",
+  "referenceSha256": "7571882257460b9649aa46f435ba38f79d4a34b3fd0a4e34032f3baafacd47c2",
+  "qualification": "Inferred finished east-frontage grade from surveyed Galileo base and seven outer-drive DGM controls, supported by the architect description and photographs. Not an as-built survey. Preserve the two genuine ramp floor profiles and all building meshes. Grade extends 1.5 m under the exterior edge to avoid a retained ground ridge; interiors are not reconstructed.",
+  "ownBuildings": [
+    "DEBY_LOD2_107614322",
+    "DEBY_LOD2_107614323"
+  ],
+  "neighbourExclusionMetres": 0.5,
+  "patches": [
+    {
+      "name": "galileo-east-shared-space",
+      "footprintUtm": [
+        [
+          698340.5762346635,
+          5349346.060091858
+        ],
+        [
+          698329.8962346634,
+          5349274.060091858
+        ],
+        [
+          698347.2068302565,
+          5349271.492353512
+        ],
+        [
+          698357.8868302566,
+          5349343.492353512
+        ]
+      ],
+      "originUtm": [
+        698345.8861059834,
+        5349311.773483385
+      ],
+      "planeCoefficients": [
+        -0.0028151113051941485,
+        0.002294090980065831,
+        474.19517777235916
+      ],
+      "blendMetres": 3.0
+    }
+  ]
+}

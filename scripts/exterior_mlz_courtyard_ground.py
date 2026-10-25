@@ -20,8 +20,14 @@ def regions(root,meta):
     bounds=meta['boundsUtm'];middle=np.array([(bounds[0]+bounds[2])/2,(bounds[1]+bounds[3])/2])
     points=np.asarray(meta['terrainGuide']['points'])
     coords=np.array([(e-middle[0],n-middle[1],1)for n in range(bounds[1],bounds[3]+1,2)for e in range(bounds[0],bounds[2]+1,2)])
-    fit=np.linalg.lstsq(coords,points[:,[0,2]],rcond=None)[0]
-    error=float(np.max(np.abs(coords@fit-points[:,[0,2]])));assert error<.03
+    frame=meta.get('groundMaterialFrame')
+    if frame:
+        assert frame['originUtm']==middle.tolist()
+        fit=np.asarray(frame['fit']);error=frame['maximumResidualMetres']
+    else:
+        fit=np.linalg.lstsq(coords,points[:,[0,2]],rcond=None)[0]
+        error=float(np.max(np.abs(coords@fit-points[:,[0,2]])))
+    assert error<.03
     full=fit.copy();full[2]-=middle@fit[:2]
     inverse=np.linalg.inv(np.column_stack((full,[0,0,1])))
     def project(matrix,x,y,z=None):

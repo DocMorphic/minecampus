@@ -1,0 +1,529 @@
+{
+  "status": "Reviewed local development upgrade; broader realism goal remains active",
+  "candidate": 93,
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 345813697,
+    "sha256": "a539a9d15058534a9e7996964da15bf5cf22d260da70f1f969215732b8bfa083",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "1a364c99305aa288183b14a457ddcb3978113cab135d7e00afe9c52d0a2e71f4",
+    "rendererSourceFingerprint": "f1ba482eab0e6905",
+    "bundleSha256": "8c026a30a6cc9a3d3b0c209c0407df1bdafd06bd440ca7991b8c2ec20e5ff989",
+    "tiles": 478,
+    "bundleUnpackedBytes": 806403968,
+    "bundleUnpackedLimit": 1073741824
+  },
+  "playablePreviewReady": true,
+  "publicBinaryReleased": false,
+  "goalComplete": false,
+  "upgradeFromArtifactSha256": "6b5166dae7f7935c45fae06ee5f4625816c9eab8217144b23045d17f6af8ba86",
+  "sourceSaveFiles": 47,
+  "native": {
+    "exitCode": 0,
+    "durationSeconds": 545,
+    "plan": "checks/preview-upgrade.json",
+    "planSha256": "246ad8c43e20af17844346797a0efc9019d75fa3b04f03e0125bde6442b5cfcd",
+    "resultSha256": "19fa27f69f34443d5bfc66c96fc4d2a3fded75c20a3feb3f3ea2046fe7b19cf5",
+    "logSha256": "76b7debcbe95f1b521f3db4a89af9348cc5127e2e4d6be84211ac25bb2cf05cf",
+    "cameraChecks": 24,
+    "standingChecks": 12,
+    "maximumStandingErrorMetres": 0.09951039454824695,
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "reflectionCaptures": 21,
+    "inactiveReflectionCameras": [
+      "route west",
+      "ias",
+      "grs courtyard path"
+    ],
+    "reflectionQualification": "Reflection evidence was requested at all 24 cameras; 21 had an active selected plane and produced a diagnostic capture. The west route, IAS and GRS courtyard path had no active plane. This is not a 24-frame required-reflection test.",
+    "standingResults": [
+      {
+        "label": "final ground standing",
+        "target": [
+          39.961711,
+          64.76436506884981,
+          -62.90048
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000020,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.78427547040971,
+        "requireBodyClearance": true,
+        "look": [
+          -103.360657,
+          4.800037
+        ],
+        "sourceRouteIndex": 0,
+        "standingY": 64.8125,
+        "supportExpectedY": 64.78427547040971,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-0.png",
+        "clientPosition": "(39.961711, 64.8125, -62.90048)"
+      },
+      {
+        "label": "route west standing",
+        "target": [
+          35.0,
+          64.88208252313882,
+          -40.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000020,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.89084982054788,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          0.0
+        ],
+        "sourceRouteIndex": 3,
+        "standingY": 64.875,
+        "supportExpectedY": 64.89084982054788,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-1.png",
+        "clientPosition": "(35.0, 64.875, -40.0)"
+      },
+      {
+        "label": "route south standing",
+        "target": [
+          35.0,
+          64.84442228614111,
+          100.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000019,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.90400322258921,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          0.0
+        ],
+        "sourceRouteIndex": 4,
+        "standingY": 64.9375,
+        "supportExpectedY": 64.90400322258921,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-2.png",
+        "clientPosition": "(35.0, 64.9375, 100.0)"
+      },
+      {
+        "label": "route north standing",
+        "target": [
+          50.0,
+          64.57325447387768,
+          -190.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000021,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.58129531319389,
+        "requireBodyClearance": true,
+        "look": [
+          0.0,
+          0.0
+        ],
+        "sourceRouteIndex": 5,
+        "standingY": 64.5625,
+        "supportExpectedY": 64.58129531319389,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-3.png",
+        "clientPosition": "(50.0, 64.5625, -190.0)"
+      },
+      {
+        "label": "former mensa standing",
+        "target": [
+          0.0,
+          64.18985189224172,
+          -216.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000022,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.20714680599318,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          -5.0
+        ],
+        "sourceRouteIndex": 9,
+        "standingY": 64.25,
+        "supportExpectedY": 64.20714680599318,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-4.png",
+        "clientPosition": "(0.0, 64.25, -216.0)"
+      },
+      {
+        "label": "cos forecourt standing",
+        "target": [
+          162.0,
+          63.77841067108919,
+          -270.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000028,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.79127051074315,
+        "requireBodyClearance": true,
+        "look": [
+          -171.0,
+          14.0
+        ],
+        "sourceRouteIndex": 18,
+        "standingY": 63.8125,
+        "supportExpectedY": 63.79127051074315,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-5.png",
+        "clientPosition": "(162.0, 63.8125, -270.0)"
+      },
+      {
+        "label": "promenade lawn path standing",
+        "target": [
+          60.0,
+          65.14665459018774,
+          -100.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000021,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 65.27548960545175,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          10.0
+        ],
+        "sourceRouteIndex": 35,
+        "standingY": 65.375,
+        "supportExpectedY": 65.27548960545175,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-6.png",
+        "clientPosition": "(60.0, 65.375, -100.0)"
+      },
+      {
+        "label": "crosspath south standing",
+        "target": [
+          35.0,
+          64.84057314663661,
+          24.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000019,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.84431412614771,
+        "requireBodyClearance": true,
+        "look": [
+          -100.0,
+          12.0
+        ],
+        "sourceRouteIndex": 37,
+        "standingY": 64.875,
+        "supportExpectedY": 64.84431412614771,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-7.png",
+        "clientPosition": "(35.0, 64.875, 24.0)"
+      },
+      {
+        "label": "galileo west standing",
+        "target": [
+          72.0,
+          64.70190303321978,
+          -125.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000021,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.72869725609937,
+        "requireBodyClearance": true,
+        "look": [
+          -90.0,
+          -14.0
+        ],
+        "sourceRouteIndex": 42,
+        "standingY": 64.75,
+        "supportExpectedY": 64.72869725609937,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-8.png",
+        "clientPosition": "(72.0, 64.75, -125.0)"
+      },
+      {
+        "label": "galileo east standing",
+        "target": [
+          145.0,
+          63.92026190233277,
+          -115.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.93017845693697,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          -12.0
+        ],
+        "sourceRouteIndex": 44,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.93017845693697,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-9.png",
+        "clientPosition": "(145.0, 63.9375, -115.0)"
+      },
+      {
+        "label": "galileo ramp north standing",
+        "target": [
+          144.0,
+          64.11422042611309,
+          -142.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000030022,
+        "part": 3,
+        "dropHeight": 3,
+        "supportHeight": 64.13946486311914,
+        "requireBodyClearance": true,
+        "look": [
+          10.0,
+          22.0
+        ],
+        "sourceRouteIndex": 50,
+        "standingY": 64.125,
+        "supportExpectedY": 64.13946486311914,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-10.png",
+        "clientPosition": "(144.0, 64.125, -142.0)"
+      },
+      {
+        "label": "mlz courtyard standing",
+        "target": [
+          153.0,
+          63.89489918593911,
+          -110.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.89908177890647,
+        "requireBodyClearance": true,
+        "look": [
+          -100.0,
+          -8.0
+        ],
+        "sourceRouteIndex": 53,
+        "standingY": 63.875,
+        "supportExpectedY": 63.89908177890647,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-preview-upgrade-93-walk-11.png",
+        "clientPosition": "(153.0, 63.875, -110.0)"
+      }
+    ],
+    "preservation": {
+      "installedPreviewSourceUnchanged": 47,
+      "priorAlignmentJournalsUnchanged": true,
+      "activeV90AlignedChunks": 345,
+      "inventoryAndExperienceUnchanged": true,
+      "originalSavesUnchanged": 121,
+      "previewSavesUnchanged": 121,
+      "previewSettingsUnchanged": 4
+    }
+  },
+  "visualReview": {
+    "reviewedCaptures": 57,
+    "method": "All 24 main views, 12 standing views and 21 reflection diagnostic buffers inspected in 15 contact sheets.",
+    "findings": [
+      "Central campus buildings, paths, ramps and courtyards remain recognizable and usable in the installed-save upgrade.",
+      "The new UYD terrain repair is separately verified by the 32-capture local inspection.",
+      "Galileo glass reflects nearby campus meshes; diagnostic buffers retain their established clipped-plane and sky-only regions."
+    ],
+    "limitations": [
+      "Untreated neighboring buildings and distant meshes remain coarse.",
+      "Aerial-image ground colors, uneven grade transitions and some facade-base joins remain visibly rough.",
+      "UYD facades remain blurry, with a provisional plain east wall; increasing source sampling did not recover additional detail.",
+      "Ordinary dirt blocks and other preserved world content are visible around several routes. Their origin has not been changed or inferred as a reason to delete them.",
+      "Window layout and material reconstructions remain approximate. Interiors remain outside scope."
+    ],
+    "images": [
+      {
+        "file": "photos/preview-upgrade-93-aerial.png",
+        "sha256": "6824a86dc080b8e49c857ba514176c85f2cba14f98e0dbb249f107ccdcb8e849"
+      },
+      {
+        "file": "photos/preview-upgrade-93-walking.png",
+        "sha256": "efc2ecdf9788aabd325062f183a5bf86981f948f786ca4ae71f69e86ac314124"
+      }
+    ],
+    "captureSha256": {
+      "campus-preview-upgrade-93-0.png": "389c805da0eab18dba4b045d0af220736f53dea60179d1b0d17c8671c85d9ed1",
+      "campus-preview-upgrade-93-1.png": "6824a86dc080b8e49c857ba514176c85f2cba14f98e0dbb249f107ccdcb8e849",
+      "campus-preview-upgrade-93-10.png": "2b3cdfc9d6a38feeffe82de00c2173206dd37092b5a1fe098753de1a162f27eb",
+      "campus-preview-upgrade-93-11.png": "69f2f9827295c94b71de13e7526f2c9653a58c4737c1afa0d4531537a92cf965",
+      "campus-preview-upgrade-93-12.png": "ddac75bd7dd867cac89576b0ef2f61d08d589fa56efe44bd71f3e6310012be0c",
+      "campus-preview-upgrade-93-13.png": "102cd4249d0bde1c17389c6745c2fae0ab45667b79ce85432f27a415327743b6",
+      "campus-preview-upgrade-93-14.png": "ea696df18d7a9134fe05f4a7cca88bf35cd91f49e9cfe0de300bbec774ba2842",
+      "campus-preview-upgrade-93-15.png": "98744bb9b7a14e04f7dfa959f5abf735953b51fcbeb07bb6fe26f09d786ef6ed",
+      "campus-preview-upgrade-93-16.png": "52713cba5db0c138234c5b2d10532fbafe4f3158f1d71d5f5a70788d507ce01c",
+      "campus-preview-upgrade-93-17.png": "76d0f588bc6254bf11af74f270bc60c097fbc34c3c47c1af568eb3dccfb13dbb",
+      "campus-preview-upgrade-93-18.png": "bfb19ee19b570daa75594c5119b1a118c5bd73f205ba934e91888d61f7c999b8",
+      "campus-preview-upgrade-93-19.png": "61f22fdcebd0b3740788bbe600e1a1c31285ee4c8d3369549cb8d8a912e2eb4a",
+      "campus-preview-upgrade-93-2.png": "7c8c88a26a51031e1395a1621529d87a5a6f17c4728d47f64ba26db8dd78be0c",
+      "campus-preview-upgrade-93-20.png": "e6ab9a94190b588be7b3559e6bd60c22460a2fdd37cbac21f655725d83393659",
+      "campus-preview-upgrade-93-21.png": "c6199de5e26508289191bef54ac9349f8b4b636ead6092d145dcd0e0b0e2cda8",
+      "campus-preview-upgrade-93-22.png": "a8bcc2603623e0cfa3625b0acd3e4fc23814fe904e742f9a07a5c19ed712e6f4",
+      "campus-preview-upgrade-93-23.png": "1252be472c1ee5c40df21a86f025639349fd620d70bfdcaff08b6e49d5dbb728",
+      "campus-preview-upgrade-93-3.png": "d4d1a860a645c8e3f34d5089357dce067e73cd18b7f23269239f0b8ebfe3e392",
+      "campus-preview-upgrade-93-4.png": "05ff283610381c86ecc13f90381cd24a61470aae074f31a7bb78653ac11a6f05",
+      "campus-preview-upgrade-93-5.png": "9731c01be1689b20484193ca7db77cede71ff896e4f5105d234a7e56a59138ed",
+      "campus-preview-upgrade-93-6.png": "2d46b889a383f039e30f34a3de065b951463db38111466f31171e6485eff158d",
+      "campus-preview-upgrade-93-7.png": "6549a80e37ea1e6f6343b4504252525692a899b851261ac2a4f42c91a154699f",
+      "campus-preview-upgrade-93-8.png": "ef7ddabe48204c6674fa3f8ce772c78c47c8ada2327ca6b7cddf7854fe5bd6c6",
+      "campus-preview-upgrade-93-9.png": "48350ac93cb617b70bcab67d7dc1a353add966b0c2edabe58a800334c98f1ced",
+      "campus-preview-upgrade-93-reflection-0.png": "920060db044d2aea65fc26104c40c0111abf00cc0bc96f2417a81a88c2b32706",
+      "campus-preview-upgrade-93-reflection-1.png": "5713e4e14ab92df0fd102711fde63c68b423f81f8b58dfc20cbdf7abedaed5a4",
+      "campus-preview-upgrade-93-reflection-10.png": "f31dbb580880c4e1859ca010a8119efbc0652ac0957c6524c616ccd7e35be36e",
+      "campus-preview-upgrade-93-reflection-11.png": "eebc2fdcda7e63d7328334212c1f567aa423b554b7edb72c7cade43f9bf2e056",
+      "campus-preview-upgrade-93-reflection-12.png": "4d17c6f78433e706ee691c91577d6a5230bd72c224ecddb8917228fb76068f02",
+      "campus-preview-upgrade-93-reflection-14.png": "0d44e2b7457b5e646112e28f432a8fcdc8e01c3a7ad583e2157c1d7fe2c07146",
+      "campus-preview-upgrade-93-reflection-15.png": "2bc818e5e73f095f503840bdddc115162d24ff4512b3dd5dc1697b73e6c8e2c3",
+      "campus-preview-upgrade-93-reflection-16.png": "bae65a1c0502137f51cf460b446af43cfc751148f7c79218d67a8ae484914104",
+      "campus-preview-upgrade-93-reflection-17.png": "64446dd25cd4f7c947ddcb7fa00ca739d1c04e9ba2c5bbc28a9fb8e5b6a613cb",
+      "campus-preview-upgrade-93-reflection-18.png": "d35d713aeb5e7e6c7ee914f7266b5f712cc834bf4706d09ca9c62fa6b1817f80",
+      "campus-preview-upgrade-93-reflection-19.png": "278c5514b758a44c8d6a1e210b0a6d8070480133259ed3a38632e10fba13ade7",
+      "campus-preview-upgrade-93-reflection-20.png": "7d0a056cb7468f310026b0844e8ea3397c517add50202c1a2e554a5eabcefb95",
+      "campus-preview-upgrade-93-reflection-21.png": "002dff61784c8d26bcf216c691214d80fe72d30f81a71bf2d656577567e9cead",
+      "campus-preview-upgrade-93-reflection-22.png": "eecb6f605ea39ee4dbe3343a919f9ac89bac99ea9ea49d1364e05e65e95ac268",
+      "campus-preview-upgrade-93-reflection-23.png": "62cd8e40604413ec645e2f2ef9f0f891b71074e7d078b2335a65ec3df77f818b",
+      "campus-preview-upgrade-93-reflection-3.png": "0cdcc800878e6fd081e2df94db6572720745b97382ee1e551618d22315fbd348",
+      "campus-preview-upgrade-93-reflection-4.png": "f1af7d7548209bf3837b506c7a6e373f8ea79bb380287bf13dae0cf7c84670dc",
+      "campus-preview-upgrade-93-reflection-6.png": "06f02e62dbcf2f189a020bc6439e03642d9ee1e134f35779c0e2e151e905d997",
+      "campus-preview-upgrade-93-reflection-7.png": "3fcba4d8e5c8dbacc572d98f076cf7a9be148b0d0d6027d9c6d77e9fc341d12d",
+      "campus-preview-upgrade-93-reflection-8.png": "4c91988fef16e25e8cb7c43fed4257b564e19a30edd11d2d278cf62a8ff57b8e",
+      "campus-preview-upgrade-93-reflection-9.png": "5b0450b4edfad854bed532acabb0044f47e7c20c7575510862ff50770eeaa2aa",
+      "campus-preview-upgrade-93-walk-0.png": "21b56acacc872e09eb315d9e7188c16ca71747276ede21e27980150834fb8d86",
+      "campus-preview-upgrade-93-walk-1.png": "efc2ecdf9788aabd325062f183a5bf86981f948f786ca4ae71f69e86ac314124",
+      "campus-preview-upgrade-93-walk-10.png": "237b6b7a60ccc2654bc00534b4ef4956ee73f86b6fce6af3ee67197621d573d8",
+      "campus-preview-upgrade-93-walk-11.png": "f393ada6c87d25767ce3561d45f713fcc06a18e399357e73f36bdb3b9c2899e7",
+      "campus-preview-upgrade-93-walk-2.png": "b75ebe24774b233fcce86cda1ce361b5b40cb17b161e818e80e6ba9d448271a8",
+      "campus-preview-upgrade-93-walk-3.png": "b07df57b859117302ed8a41b2d3edf9dc37093d4bcb45e034224235ba5eb0730",
+      "campus-preview-upgrade-93-walk-4.png": "f9f8444f83432fc2291e057edd408863b633be55c5e4d8813942052e32577bfc",
+      "campus-preview-upgrade-93-walk-5.png": "0acd07bacbe63c5052d9483a1b2a134722d5d2b87b8998e5e692c0a01cbad8f0",
+      "campus-preview-upgrade-93-walk-6.png": "34323c527102e9f73b96821468a09291eec130ce811f4eedcd037d767c6128e3",
+      "campus-preview-upgrade-93-walk-7.png": "684b73cc8ef52aec0749546a54b640df2c980ab310f1b5f9ee8b025f71d3579c",
+      "campus-preview-upgrade-93-walk-8.png": "5be2b9452d7591435ecbee406e39237d0d6f4fa1ff875ac8dcca87fddf87ee97",
+      "campus-preview-upgrade-93-walk-9.png": "fcd1b91e4e019c5b2a2432e9850b8a02d42951b0f1f02cff02f9c2f52cb01f07"
+    },
+    "fullVisualAcceptance": false
+  },
+  "localRepairEvidence": "uyd-site-development-validation.json",
+  "installerValidation": {
+    "command": "python3 scripts/test_exterior_preview_update.py",
+    "testsPassed": 4,
+    "scope": "Save/settings/backup preservation, modified-mod and open-world refusal, separate released/development artifact pins and readiness/hash rejection."
+  },
+  "installation": {
+    "completed": true,
+    "profile": "Minecampus \u2014 Exterior Preview 0.5",
+    "artifactSha256": "a539a9d15058534a9e7996964da15bf5cf22d260da70f1f969215732b8bfa083",
+    "previousArtifactBackedUp": true,
+    "originalSaveFilesUnchanged": 121,
+    "previewSaveFilesUnchanged": 121,
+    "privateSettingsUnchanged": 4,
+    "onlyRecordedPreviewModReplaced": true
+  }
+}
