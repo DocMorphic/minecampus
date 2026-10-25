@@ -1,0 +1,101 @@
+{
+  "building": "DEBY_LOD2_108180801",
+  "runtimeId": 1000030043,
+  "groundRuntimeId": 1000060810,
+  "surveyBoundsUTM": [
+    698395,
+    5349650,
+    698535,
+    5349730
+  ],
+  "reference": {
+    "page": "https://cala-laser.de/",
+    "image": "https://cala-laser.de/fileadmin/_processed_/8/4/csm_CALA_Slideshow_1920px_a2784248f7.jpg",
+    "addressSource": "https://cms-cdn.lmu.de/media/lmu/downloads/kommunikation/lageplan/2025_lageplan_lmu.pdf",
+    "observations": "Official exterior photograph shows a long charcoal south facade, large pale geometric marks, recessed dark openings and shallow projecting entrance canopies. The roof and northern earth slope are independently visible in BVV DOP20/DGM1. Reference pixels are not redistributed."
+  },
+  "southFaces": [
+    1,
+    4,
+    6
+  ],
+  "lightEndFaces": [
+    2,
+    3,
+    7
+  ],
+  "materialColours": [
+    [
+      83,
+      88,
+      88,
+      255
+    ],
+    [
+      183,
+      188,
+      183,
+      255
+    ],
+    [
+      39,
+      57,
+      61,
+      255
+    ],
+    [
+      47,
+      52,
+      53,
+      255
+    ]
+  ],
+  "wallBaseExtensionMetres": 0.4,
+  "cleanupMarginMetres": 0.7,
+  "frameWidthMetres": 0.075,
+  "recessMetres": 0.16,
+  "canopyDepthMetres": 0.85,
+  "motifPitchMetres": 6.2,
+  "openings": {
+    "1": [
+      [
+        5.2,
+        0.05,
+        7.3,
+        3.1
+      ],
+      [
+        20.4,
+        0.05,
+        22.8,
+        3.25
+      ]
+    ],
+    "4": [
+      [
+        8.1,
+        0.05,
+        10.3,
+        3.15
+      ],
+      [
+        26.5,
+        1.25,
+        29.1,
+        2.9
+      ]
+    ],
+    "6": [
+      [
+        3.3,
+        0.05,
+        5.4,
+        3.1
+      ]
+    ]
+  },
+  "qualification": "Experimental source-informed exterior of the main surveyed CALA volume only. Eight BVV walls and six original roof triangles fix the envelope; roof pixels are public DOP20. Charcoal/light finishes, pale geometric motifs, opening positions, glazing, frames and canopies are approximate interpretations of an oblique official photograph, not a measured facade survey. Adjacent survey volumes and source-backed terrain are preserved. No interiors or redistributed reference-photo pixels. Ground joins and native visual acceptance are required before release.",
+  "northSlopeMetres": 10.5,
+  "eastSlopeMetres": 8,
+  "groundBlendMetres": 2
+}
