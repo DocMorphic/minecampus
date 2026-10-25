@@ -1,0 +1,2654 @@
+{
+  "status": "Verified UYD outdoor ground repair; wider realism goal remains active",
+  "candidate": 93,
+  "artifact": {
+    "status": "PASS: surveyed UYD approach terrain packaged; previous inputs preserved",
+    "artifactSha256": "a539a9d15058534a9e7996964da15bf5cf22d260da70f1f969215732b8bfa083",
+    "rendererSourceFingerprint": "f1ba482eab0e6905",
+    "staticRenderTiles": 478,
+    "alignmentVersion": 90,
+    "previousRenderCollisionInputsByteIdentical": 658,
+    "changedServiceModules": [
+      "src/minecampus-survey.mjs"
+    ],
+    "unchangedServiceModules": 23,
+    "uncompressedBundleBytes": 806403968
+  },
+  "sourceChecks": [
+    {
+      "validator": "validate-uyd-site.py",
+      "exitCode": 0,
+      "initialExitCode": 1,
+      "retryEvidence": "uyd-site-validation-93.log",
+      "reason": "Coverage validator now includes retained terrain throughout the entire requested domain, matching generator selection."
+    },
+    {
+      "validator": "validate-uyd-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mlz-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-canopies.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-west-entrance.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-library.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-container.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-p1-complex.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-woodland.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-new-laboratory.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-laboratory-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-ii.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-pinned-water.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-wsi.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn-west.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-cala.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-lmu.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-courtyard.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-riverbank.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-north-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mensa-terrace.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-landscape.py",
+      "exitCode": 0
+    }
+  ],
+  "terrainValidation": {
+    "status": "PASS: missing approach ground filled with measured terrain, exact aerial pixels and protected footprints",
+    "manifestSha256": "128ac3943ae20a765ae2cb22dda342810801713477e01edd46f5934bf86ff79d",
+    "validatorSha256": "09254cd2043a99c27ced5db2f7a4906f5cb15e4546dc620f7e35938f22c885a4",
+    "sourceSha256": "381ee80cfd82c2e3695abe725805c5abb4299ea900a43b6a07b35a697044ff7b",
+    "derivedSha256": "cab704c5195f09da88604df2afe51aa727c785b50df6d0c3e4e048ea607e6713",
+    "groundTiles": 6,
+    "groundAreaSquareMetres": 544.5487452719317,
+    "maximumGroundHeightResidualMetres": 4.290725158284658e-06,
+    "maximumSeamErrorMetres": 3.235849405314184e-06,
+    "missingReplacementGroundSquareMetres": 0.0001767905783568193,
+    "protectedBuildingOverlapSquareMetres": 0.0,
+    "priorRenderCollisionInputsUnchanged": 662,
+    "tileSha256": {
+      "uyd-approach-ground-280--40.ect": "4d908a20033d4532fa5c058c86ff9c1cae09d27f8bae970a1e080fef09979fd1",
+      "uyd-approach-ground-300--40.ect": "0fcfa650874f696dd49349b4850968f34f5bcab755bfc002669ca0454cf5b9a6",
+      "uyd-approach-ground-280--20.ect": "8a16fad463c4365d6a0a47718b7c2591dc4f7c52b55e0261b1bea376331e53af",
+      "uyd-approach-ground-300--20.ect": "a12ac3fc3c2ae06caffffd9c59afb6d073e0fc038f7ee02b59e88c0975dd467b",
+      "uyd-approach-ground-280-0.ect": "44cda38027918bee3a5a13b98590dac03310f33107645a8d9bb055d33801a291",
+      "uyd-approach-ground-300-0.ect": "e0f25246851fcefd6ebda61f5674200dbb21bc2e8063cd5f7829edeeb3f4f938"
+    },
+    "visualAcceptance": false
+  },
+  "packagedCollision": {
+    "status": "PASS: five UYD walls, five roof triangles and all selected approaches retain collision support at both datums",
+    "wallChecks": 10,
+    "roofChecks": 10,
+    "preservedRoofChecks": 0,
+    "results": [
+      {
+        "label": "mlz courtyard standing",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.89908177890647,
+        "residual": -0.024081778906470674,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.995528146961206,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 0,
+        "standingY": 63.8125,
+        "expected": 63.786881936432195,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall northwest corridor",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.07557231088317,
+        "residual": 0.04942768911682549,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall southwest corridor",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.954792558466174,
+        "residual": 0.04520744153382594,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall north approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.86891512333618,
+        "residual": 0.006084876663820182,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall east approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.8496980649334,
+        "residual": 0.025301935066600834,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall south approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.84360075918638,
+        "residual": 0.03139924081362011,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "shift": 0,
+        "standingY": 69.625,
+        "expected": 69.62290400570674,
+        "residual": 0.0020959942932563536,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA west approach ground",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.08798789978027,
+        "residual": 0.03701210021972656,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south approach ground",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.09127044677734,
+        "residual": 0.03372955322265625,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south tree passage",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.92000106746505,
+        "residual": -0.04500106746505139,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south planted-edge passage",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00583164841974,
+        "residual": -0.005831648419743374,
+        "bodyClear": true
+      },
+      {
+        "label": "UYD southwest gap",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.12614658009402,
+        "residual": -0.0011465800940158033,
+        "bodyClear": true
+      },
+      {
+        "label": "UYD west approach",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.13324732128594,
+        "residual": -0.008247321285935527,
+        "bodyClear": true
+      },
+      {
+        "label": "UYD south approach",
+        "shift": 0,
+        "standingY": 64.1875,
+        "expected": 64.17197013628493,
+        "residual": 0.015529863715073589,
+        "bodyClear": true
+      },
+      {
+        "label": "mlz courtyard standing",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.89908177890646,
+        "residual": -0.02408177890646357,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.9955281469612,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 2,
+        "standingY": 65.8125,
+        "expected": 65.7868819364322,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall northwest corridor",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.07557231088317,
+        "residual": 0.04942768911682549,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall southwest corridor",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.95479255846618,
+        "residual": 0.04520744153381884,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall north approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.86891512333618,
+        "residual": 0.006084876663820182,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall east approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84969806493339,
+        "residual": 0.02530193506660794,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall south approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84360075918639,
+        "residual": 0.031399240813613005,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "shift": 2,
+        "standingY": 71.625,
+        "expected": 71.62290400570674,
+        "residual": 0.0020959942932563536,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA west approach ground",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.08798789978027,
+        "residual": 0.03701210021972656,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south approach ground",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.09127044677734,
+        "residual": 0.03372955322265625,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south tree passage",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.92000106746505,
+        "residual": -0.04500106746505139,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south planted-edge passage",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00583164841974,
+        "residual": -0.005831648419743374,
+        "bodyClear": true
+      },
+      {
+        "label": "UYD southwest gap",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.12614658009402,
+        "residual": -0.0011465800940158033,
+        "bodyClear": true
+      },
+      {
+        "label": "UYD west approach",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.13324732128594,
+        "residual": -0.008247321285935527,
+        "bodyClear": true
+      },
+      {
+        "label": "UYD south approach",
+        "shift": 2,
+        "standingY": 66.1875,
+        "expected": 66.17197013628493,
+        "residual": 0.015529863715073589,
+        "bodyClear": true
+      }
+    ],
+    "qualification": "Survey-plane collision is independent of provider photographic acceptance. Native migration and visual acceptance are separate."
+  },
+  "native": {
+    "exitCode": 0,
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "frames": [
+      {
+        "label": "UTA south standing source obstruction",
+        "position": "313.25 64.125 -24.25 0 30",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "blockSamples": true,
+            "expectedTile": 1000061200,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              313.25,
+              65.74499988555908,
+              -24.25
+            ],
+            "direction": [
+              0.0,
+              -0.50000006,
+              0.8660255
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 4.0,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                313,
+                63,
+                -21
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061200,
+                "part": 0,
+                "distance": 3.4780674,
+                "triangle": [
+                  [
+                    314.0,
+                    63.939634524190524,
+                    -21.0
+                  ],
+                  [
+                    314.0,
+                    63.981443606221774,
+                    -22.0
+                  ],
+                  [
+                    313.0,
+                    64.0148107632042,
+                    -21.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.25,
+            "v": 0.5,
+            "blockSamples": true,
+            "expectedTile": 1000061203,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              313.25,
+              65.74499988555908,
+              -24.25
+            ],
+            "direction": [
+              0.5773216,
+              -0.4082585,
+              0.7071245
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 9.25,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                318,
+                61,
+                -18
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061203,
+                "part": 0,
+                "distance": 6.307509,
+                "triangle": [
+                  [
+                    317.0,
+                    63.1717702968956,
+                    -19.0
+                  ],
+                  [
+                    317.0,
+                    63.14181347926865,
+                    -20.0
+                  ],
+                  [
+                    316.0,
+                    63.37255307277451,
+                    -19.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.75,
+            "v": 0.5,
+            "blockSamples": true,
+            "expectedTile": 1000061200,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              313.25,
+              65.74499988555908,
+              -24.25
+            ],
+            "direction": [
+              -0.5773216,
+              -0.4082585,
+              0.7071245
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 9.25,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                307,
+                61,
+                -18
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061200,
+                "part": 0,
+                "distance": 4.0953035,
+                "triangle": [
+                  [
+                    310.0,
+                    64.11943265041123,
+                    -21.291175842285156
+                  ],
+                  [
+                    311.0,
+                    64.0741369350792,
+                    -21.10905647277832
+                  ],
+                  [
+                    311.0,
+                    64.04926510890732,
+                    -22.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-0.png",
+        "playerPosition": "(313.25, 64.125, -24.25)",
+        "fps": 99,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 0,
+          "stateChecks": 0,
+          "groundMaterialDraws": 0
+        }
+      },
+      {
+        "label": "UTA south source obstruction aerial",
+        "position": "320.25 85.0 -3.25 175 55",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              320.25,
+              86.61999988555908,
+              -3.25
+            ],
+            "direction": [
+              -0.0499906,
+              -0.819152,
+              -0.5713937
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 30.25,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                318,
+                61,
+                -21
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000010800,
+                "part": 1,
+                "distance": 10.101344,
+                "triangle": [
+                  [
+                    320.6871643066406,
+                    79.19410153468857,
+                    -9.196167945861816
+                  ],
+                  [
+                    317.8902587890625,
+                    77.20250149806748,
+                    -8.658227920532227
+                  ],
+                  [
+                    320.6709899902344,
+                    77.20250149806748,
+                    -9.269698143005371
+                  ]
+                ]
+              },
+              {
+                "tile": 1000061203,
+                "part": 0,
+                "distance": 28.726484,
+                "triangle": [
+                  [
+                    319.0,
+                    63.048616610372164,
+                    -19.0
+                  ],
+                  [
+                    319.0,
+                    63.0968191250206,
+                    -20.0
+                  ],
+                  [
+                    318.0,
+                    63.091688357198336,
+                    -19.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.25,
+            "v": 0.5,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              320.25,
+              86.61999988555908,
+              -3.25
+            ],
+            "direction": [
+              -0.61594284,
+              -0.66885144,
+              -0.4162356
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 37.0,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                297,
+                61,
+                -19
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000010800,
+                "part": 1,
+                "distance": 13.157468,
+                "triangle": [
+                  [
+                    312.2186279296875,
+                    77.72385617336045,
+                    -7.371562480926514
+                  ],
+                  [
+                    312.2186279296875,
+                    77.87945767482529,
+                    -9.295188903808594
+                  ],
+                  [
+                    310.8913269042969,
+                    77.6286794765831,
+                    -9.315474510192871
+                  ]
+                ]
+              },
+              {
+                "tile": 1000050104,
+                "part": 4,
+                "distance": 20.447668,
+                "triangle": [
+                  [
+                    311.8119812011719,
+                    72.82112884521484,
+                    -20.956209182739258
+                  ],
+                  [
+                    309.1559143066406,
+                    72.82125091552734,
+                    -6.169686317443848
+                  ],
+                  [
+                    303.20001220703125,
+                    73.12164306640625,
+                    -7.252559185028076
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.75,
+            "v": 0.5,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              320.25,
+              86.61999988555908,
+              -3.25
+            ],
+            "direction": [
+              0.5343065,
+              -0.66885144,
+              -0.51686966
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 37.0,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                340,
+                61,
+                -23
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000010800,
+                "part": 1,
+                "distance": 19.966696,
+                "triangle": [
+                  [
+                    332.1059265136719,
+                    73.73626919826279,
+                    -13.335042953491211
+                  ],
+                  [
+                    330.3432312011719,
+                    73.73626919826279,
+                    -14.462961196899414
+                  ],
+                  [
+                    329.8029479980469,
+                    72.66809292873154,
+                    -13.618595123291016
+                  ]
+                ]
+              },
+              {
+                "tile": 1000061201,
+                "part": 0,
+                "distance": 35.448093,
+                "triangle": [
+                  [
+                    339.0,
+                    62.934568606221774,
+                    -21.0
+                  ],
+                  [
+                    340.0,
+                    62.89837857326279,
+                    -21.0
+                  ],
+                  [
+                    339.0,
+                    62.904512606465914,
+                    -22.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.1,
+            "v": 0.75,
+            "expectedTile": 1000061252,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              320.25,
+              86.61999988555908,
+              -3.25
+            ],
+            "direction": [
+              -0.73560464,
+              -0.67072475,
+              -0.09494244
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 36.75,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                293,
+                61,
+                -7
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061252,
+                "part": 0,
+                "distance": 33.54064,
+                "triangle": [
+                  [
+                    296.0,
+                    64.12788601955185,
+                    -6.0
+                  ],
+                  [
+                    296.0,
+                    64.12392636379013,
+                    -7.0
+                  ],
+                  [
+                    295.0,
+                    64.1214773281456,
+                    -6.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.12,
+            "v": 0.75,
+            "expectedTile": 1000061252,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              320.25,
+              86.61999988555908,
+              -3.25
+            ],
+            "direction": [
+              -0.71813524,
+              -0.6885776,
+              -0.10071096
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 36.0,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                294,
+                61,
+                -7
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061252,
+                "part": 0,
+                "distance": 32.710308,
+                "triangle": [
+                  [
+                    297.0,
+                    64.10644742091904,
+                    -6.0
+                  ],
+                  [
+                    297.0,
+                    64.07853909572373,
+                    -7.0
+                  ],
+                  [
+                    296.0,
+                    64.12788601955185,
+                    -6.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.1,
+            "v": 0.8,
+            "expectedTile": 1000061252,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              320.25,
+              86.61999988555908,
+              -3.25
+            ],
+            "direction": [
+              -0.7217381,
+              -0.69016284,
+              -0.052624837
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 35.75,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                294,
+                61,
+                -6
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061252,
+                "part": 0,
+                "distance": 32.615673,
+                "triangle": [
+                  [
+                    297.0,
+                    64.10874386867295,
+                    -5.0
+                  ],
+                  [
+                    296.0,
+                    64.1124441250206,
+                    -5.0
+                  ],
+                  [
+                    296.0,
+                    64.1141531093956,
+                    -4.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.13,
+            "v": 0.8,
+            "expectedTile": 1000061252,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              320.25,
+              86.61999988555908,
+              -3.25
+            ],
+            "direction": [
+              -0.69443595,
+              -0.7170877,
+              -0.05952987
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 34.5,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                296,
+                61,
+                -6
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061252,
+                "part": 0,
+                "distance": 31.388718,
+                "triangle": [
+                  [
+                    299.0,
+                    64.11228390773545,
+                    -5.0
+                  ],
+                  [
+                    299.0,
+                    64.09387417873154,
+                    -6.0
+                  ],
+                  [
+                    298.0,
+                    64.11490079005966,
+                    -5.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.15,
+            "v": 0.73,
+            "expectedTile": 1000010800,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              320.25,
+              86.61999988555908,
+              -3.25
+            ],
+            "direction": [
+              -0.6946815,
+              -0.7077828,
+              -0.12830079
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 35.0,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                295,
+                61,
+                -8
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000010800,
+                "part": 1,
+                "distance": 16.599443,
+                "triangle": [
+                  [
+                    310.0741271972656,
+                    74.31945248683701,
+                    -5.352470874786377
+                  ],
+                  [
+                    308.7168273925781,
+                    75.00049038966904,
+                    -7.405409336090088
+                  ],
+                  [
+                    308.7168273925781,
+                    74.86800595363388,
+                    -5.317661285400391
+                  ]
+                ]
+              },
+              {
+                "tile": 1000061252,
+                "part": 0,
+                "distance": 31.91865,
+                "triangle": [
+                  [
+                    299.0,
+                    64.04296322902451,
+                    -8.0
+                  ],
+                  [
+                    298.0,
+                    64.00206967433701,
+                    -8.0
+                  ],
+                  [
+                    298.0,
+                    64.03768368800888,
+                    -7.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-1.png",
+        "playerPosition": "(320.25, 85.0, -3.25)",
+        "fps": 111,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 0,
+          "stateChecks": 0,
+          "groundMaterialDraws": 0
+        }
+      },
+      {
+        "label": "UTA south planted-edge passage",
+        "position": "324.37885587483066 64.10583164841974 -4.278884709830081 170 5",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.8,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              324.37885587483066,
+              65.72583153397882,
+              -4.278884709830081
+            ],
+            "direction": [
+              -0.14959997,
+              -0.507739,
+              -0.8484226
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 7.5,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                323,
+                61,
+                -11
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061204,
+                "part": 0,
+                "distance": 3.3514512,
+                "triangle": [
+                  [
+                    324.0,
+                    64.01872464259873,
+                    -7.0
+                  ],
+                  [
+                    324.0,
+                    64.03457852443466,
+                    -8.0
+                  ],
+                  [
+                    323.0,
+                    64.04733487209091,
+                    -7.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-2.png",
+        "playerPosition": "(324.37885587483066, 64.10583164841974, -4.278884709830081)",
+        "fps": 60,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 0,
+          "stateChecks": 0,
+          "groundMaterialDraws": 0
+        }
+      },
+      {
+        "label": "UYD provisional east face",
+        "position": "314.4207327793004 64.3 -12.855858712508399 100.18167225136422 -31.965952200000245",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.75,
+            "expectedTile": 1000030053,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              314.4207327793004,
+              65.91999988555908,
+              -12.855858712508399
+            ],
+            "direction": [
+              -0.9684605,
+              0.17841327,
+              -0.17393366
+            ],
+            "hits": [
+              {
+                "tile": 1000030053,
+                "part": 0,
+                "distance": 4.0653267,
+                "triangle": [
+                  [
+                    309.1559143066406,
+                    72.82125302394638,
+                    -6.169686317443848
+                  ],
+                  [
+                    309.1554870605469,
+                    64.01125546535263,
+                    -6.169677734375
+                  ],
+                  [
+                    311.8115234375,
+                    64.0111257656456,
+                    -20.956180572509766
+                  ]
+                ]
+              },
+              {
+                "tile": 1000050104,
+                "part": 0,
+                "distance": 16.36971,
+                "triangle": [
+                  [
+                    297.24407958984375,
+                    72.82203674316406,
+                    -8.335432052612305
+                  ],
+                  [
+                    299.89971923828125,
+                    64.01190948486328,
+                    -23.121923446655273
+                  ],
+                  [
+                    299.9001159667969,
+                    72.82190704345703,
+                    -23.12195587158203
+                  ]
+                ]
+              },
+              {
+                "tile": 1200025655,
+                "part": 0,
+                "distance": 25.868906,
+                "triangle": [
+                  [
+                    289.83019256591797,
+                    71.00269889831543,
+                    -19.030285358428955
+                  ],
+                  [
+                    288.1853504180908,
+                    71.00453662872314,
+                    -10.40446949005127
+                  ],
+                  [
+                    289.0076503753662,
+                    69.97877883911133,
+                    -16.360372185707092
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-3.png",
+        "playerPosition": "(314.4207327793004, 64.3, -12.855858712508399)",
+        "fps": 68,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 0,
+          "stateChecks": 0,
+          "groundMaterialDraws": 0
+        }
+      },
+      {
+        "label": "UYD surveyed face 0",
+        "position": "296.6034041756104 64.3 -16.082330018254485 -79.81520277642342 -51.30611478502912",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "expectedTile": 1000050104,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              296.6034041756104,
+              65.91999988555908,
+              -16.082330018254485
+            ],
+            "direction": [
+              0.6153085,
+              0.7804971,
+              0.11054289
+            ],
+            "hits": [
+              {
+                "tile": 1000050104,
+                "part": 0,
+                "distance": 3.1992178,
+                "triangle": [
+                  [
+                    297.24407958984375,
+                    72.82203674316406,
+                    -8.335432052612305
+                  ],
+                  [
+                    299.89971923828125,
+                    64.01190948486328,
+                    -23.121923446655273
+                  ],
+                  [
+                    299.9001159667969,
+                    72.82190704345703,
+                    -23.12195587158203
+                  ]
+                ]
+              },
+              {
+                "tile": 1000050104,
+                "part": 4,
+                "distance": 9.076015,
+                "triangle": [
+                  [
+                    305.85614013671875,
+                    73.12152099609375,
+                    -22.04108238220215
+                  ],
+                  [
+                    303.20001220703125,
+                    73.12164306640625,
+                    -7.252559185028076
+                  ],
+                  [
+                    297.24407958984375,
+                    72.82202911376953,
+                    -8.335432052612305
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-4.png",
+        "playerPosition": "(296.6034041756104, 64.3, -16.082330018254485)",
+        "fps": 112,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 0,
+          "stateChecks": 0,
+          "groundMaterialDraws": 0
+        }
+      },
+      {
+        "label": "UYD surveyed face 2",
+        "position": "302.84203118621133 64.3 -5.284819024316436 -169.6945304534509 -59.809290949241785",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "expectedTile": 1000050104,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              302.84203118621133,
+              65.91999988555908,
+              -5.284819024316436
+            ],
+            "direction": [
+              0.089963175,
+              0.8643563,
+              -0.49476734
+            ],
+            "hits": [
+              {
+                "tile": 1000050104,
+                "part": 1,
+                "distance": 3.977093,
+                "triangle": [
+                  [
+                    297.24407958984375,
+                    72.82203674316406,
+                    -8.335432052612305
+                  ],
+                  [
+                    309.1554870605469,
+                    64.0112533569336,
+                    -6.169677734375
+                  ],
+                  [
+                    309.1559143066406,
+                    72.82125091552734,
+                    -6.169686317443848
+                  ]
+                ]
+              },
+              {
+                "tile": 1000050104,
+                "part": 4,
+                "distance": 8.331521,
+                "triangle": [
+                  [
+                    311.8119812011719,
+                    72.82112884521484,
+                    -20.956209182739258
+                  ],
+                  [
+                    303.20001220703125,
+                    73.12164306640625,
+                    -7.252559185028076
+                  ],
+                  [
+                    305.85614013671875,
+                    73.12152099609375,
+                    -22.04108238220215
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-5.png",
+        "playerPosition": "(302.84203118621133, 64.3, -5.284819024316436)",
+        "fps": 113,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 0,
+          "stateChecks": 0,
+          "groundMaterialDraws": 0
+        }
+      },
+      {
+        "label": "UYD surveyed face 3",
+        "position": "308.39662029998925 64.3 -23.611106649184315 10.287991774706304 -60.20115942785965",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "expectedTile": 1000050104,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              308.39662029998925,
+              65.91999988555908,
+              -23.611106649184315
+            ],
+            "direction": [
+              -0.088754445,
+              0.86777556,
+              0.48896652
+            ],
+            "hits": [
+              {
+                "tile": 1000050104,
+                "part": 2,
+                "distance": 4.0245695,
+                "triangle": [
+                  [
+                    305.3589782714844,
+                    73.0965576171875,
+                    -22.131433486938477
+                  ],
+                  [
+                    311.8115234375,
+                    64.0111312866211,
+                    -20.956180572509766
+                  ],
+                  [
+                    311.8119812011719,
+                    72.82112884521484,
+                    -20.956209182739258
+                  ]
+                ]
+              },
+              {
+                "tile": 1000050104,
+                "part": 4,
+                "distance": 8.172172,
+                "triangle": [
+                  [
+                    311.8119812011719,
+                    72.82112884521484,
+                    -20.956209182739258
+                  ],
+                  [
+                    303.20001220703125,
+                    73.12164306640625,
+                    -7.252559185028076
+                  ],
+                  [
+                    305.85614013671875,
+                    73.12152099609375,
+                    -22.04108238220215
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-6.png",
+        "playerPosition": "(308.39662029998925, 64.3, -23.611106649184315)",
+        "fps": 112,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 0,
+          "stateChecks": 0,
+          "groundMaterialDraws": 0
+        }
+      },
+      {
+        "label": "northwest connector",
+        "position": "300 64.0955281469612 -127 -25.016893478100023 -7.857752715026182",
+        "worldTime": 6000,
+        "reflections": true,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.5,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              300.5,
+              65.71552803252028,
+              -126.5
+            ],
+            "direction": [
+              0.41891506,
+              0.13671415,
+              0.89767444
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 29.75,
+              "state": "Block{minecraft:stone}",
+              "position": [
+                312,
+                69,
+                -100
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000010700,
+                "part": 1,
+                "distance": 1.0480193,
+                "triangle": [
+                  [
+                    300.816162109375,
+                    66.84729214748154,
+                    -125.71077728271484
+                  ],
+                  [
+                    300.52960205078125,
+                    65.78830166896591,
+                    -124.19476318359375
+                  ],
+                  [
+                    300.98211669921875,
+                    65.78830166896591,
+                    -125.65950775146484
+                  ]
+                ]
+              },
+              {
+                "tile": 1000030051,
+                "part": 1,
+                "distance": 18.170261,
+                "triangle": [
+                  [
+                    324.5982971191406,
+                    66.82558652004013,
+                    -107.3670883178711
+                  ],
+                  [
+                    279.59429931640625,
+                    68.27558346828232,
+                    -115.07025146484375
+                  ],
+                  [
+                    324.5982971191406,
+                    68.27558346828232,
+                    -107.3670883178711
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          },
+          {
+            "u": 0.5,
+            "v": 0.8,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              300.5,
+              65.71552803252028,
+              -126.5
+            ],
+            "direction": [
+              0.4029665,
+              -0.3032946,
+              0.863499
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 12.5,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                305,
+                61,
+                -116
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061001,
+                "part": 0,
+                "distance": 5.8136735,
+                "triangle": [
+                  [
+                    303.0,
+                    63.948118410909274,
+                    -121.0
+                  ],
+                  [
+                    303.0,
+                    63.95559140285263,
+                    -122.0
+                  ],
+                  [
+                    302.0,
+                    63.95170804103623,
+                    -121.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-7.png",
+        "playerPosition": "(300.5, 64.0955281469612, -126.5)",
+        "fps": 86,
+        "reflection": {
+          "strength": 1.0,
+          "updates": 1462,
+          "stateChecks": 1462,
+          "groundMaterialDraws": 258,
+          "drawCalls": 686,
+          "cpuMilliseconds": 3.908333,
+          "baseWeight": 0.28,
+          "planeTile": 1000030051,
+          "plane": [
+            0.16871253,
+            0.0,
+            -0.9856653,
+            -160.50182
+          ],
+          "bounds": [
+            279.5791320800781,
+            64.92558288574219,
+            -114.98153686523438,
+            324.5830993652344,
+            70.1255874633789,
+            -107.27838134765625
+          ],
+          "capture": "campus-uyd-site-candidate-93-reflection-7.png"
+        }
+      },
+      {
+        "label": "UYD southwest gap",
+        "position": "295.43129112628935 64.22614658009401 -6.287240716184625 -135.47758033720126 5",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.8,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              295.43129112628935,
+              65.84614646565309,
+              -6.287240716184625
+            ],
+            "direction": [
+              0.60408133,
+              -0.50773907,
+              -0.61423683
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 7.75,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                300,
+                61,
+                -12
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000050104,
+                "part": 1,
+                "distance": 3.2837994,
+                "triangle": [
+                  [
+                    297.24407958984375,
+                    72.82203674316406,
+                    -8.335432052612305
+                  ],
+                  [
+                    297.24365234375,
+                    64.01203155517578,
+                    -8.335420608520508
+                  ],
+                  [
+                    309.1554870605469,
+                    64.0112533569336,
+                    -6.169677734375
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-8.png",
+        "playerPosition": "(295.43129112628935, 64.22614658009401, -6.287240716184625)",
+        "fps": 93,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 1463,
+          "stateChecks": 1463,
+          "groundMaterialDraws": 258
+        }
+      },
+      {
+        "label": "UYD west approach",
+        "position": "292.78103495806806 64.23324732128593 -16.385535695883156 -82.95965330449586 5",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.8,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              292.78103495806806,
+              65.85324720684501,
+              -16.385535695883156
+            ],
+            "direction": [
+              0.85501516,
+              -0.50773907,
+              0.10559386
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 7.75,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                299,
+                61,
+                -16
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061252,
+                "part": 0,
+                "distance": 3.4274855,
+                "triangle": [
+                  [
+                    296.0,
+                    64.10522671779404,
+                    -16.0
+                  ],
+                  [
+                    296.0,
+                    64.11860867580185,
+                    -17.0
+                  ],
+                  [
+                    295.0,
+                    64.1310217007042,
+                    -16.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-9.png",
+        "playerPosition": "(292.78103495806806, 64.23324732128593, -16.385535695883156)",
+        "fps": 115,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 1463,
+          "stateChecks": 1463,
+          "groundMaterialDraws": 258
+        }
+      },
+      {
+        "label": "UYD south approach",
+        "position": "299.2201067070405 64.27197013628492 -0.15172180720702183 -162.15581985284288 5",
+        "reflections": false,
+        "worldTime": 6000,
+        "screenRays": [
+          {
+            "u": 0.5,
+            "v": 0.8,
+            "blockSamples": true,
+            "liveFov": 76.99999332427979,
+            "cameraPosition": [
+              299.2201067070405,
+              65.891970021844,
+              -0.15172180720702183
+            ],
+            "direction": [
+              0.2639924,
+              -0.50773907,
+              -0.8200665
+            ],
+            "firstVisibleVanillaBlock": {
+              "distance": 7.75,
+              "state": "Block{minecraft:dirt}",
+              "position": [
+                301,
+                61,
+                -7
+              ]
+            },
+            "hits": [
+              {
+                "tile": 1000061253,
+                "part": 0,
+                "distance": 3.427897,
+                "triangle": [
+                  [
+                    301.0,
+                    64.15149136623154,
+                    -3.0
+                  ],
+                  [
+                    300.0,
+                    64.1505529507042,
+                    -3.0
+                  ],
+                  [
+                    301.0,
+                    64.17360898097763,
+                    -2.0
+                  ]
+                ]
+              }
+            ],
+            "qualification": "Geometric ray; transparent texture texels are not rejected."
+          }
+        ],
+        "capture": "campus-uyd-site-candidate-93-10.png",
+        "playerPosition": "(299.2201067070405, 64.27197013628492, -0.15172180720702183)",
+        "fps": 67,
+        "reflection": {
+          "strength": 0.0,
+          "updates": 1463,
+          "stateChecks": 1463,
+          "groundMaterialDraws": 258
+        }
+      }
+    ],
+    "gravity": [
+      {
+        "label": "mlz courtyard standing",
+        "target": [
+          153.0,
+          63.89489918593911,
+          -110.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.89908177890647,
+        "requireBodyClearance": true,
+        "look": [
+          -100.0,
+          -8.0
+        ],
+        "sourceRouteIndex": 53,
+        "standingY": 63.875,
+        "supportExpectedY": 63.89908177890647,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 21,
+        "capture": "campus-uyd-site-candidate-93-walk-0.png",
+        "clientPosition": "(153.0, 63.875, -110.0)"
+      },
+      {
+        "label": "north walk standing",
+        "target": [
+          176.15,
+          64.00350978356846,
+          -115.71
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.00350978356846,
+        "requireBodyClearance": true,
+        "look": [
+          -100,
+          12
+        ],
+        "standingY": 64.0625,
+        "supportExpectedY": 64.00350978356846,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-1.png",
+        "clientPosition": "(176.15, 64.0625, -115.71)"
+      },
+      {
+        "label": "northwest connector",
+        "target": [
+          300,
+          63.995528146961206,
+          -127
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060016,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.995528146961206,
+        "requireBodyClearance": true,
+        "look": [
+          -25.016893478100023,
+          -7.857752715026182
+        ],
+        "reactorExterior": true,
+        "standingY": 64.0,
+        "supportExpectedY": 63.995528146961206,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-2.png",
+        "clientPosition": "(300.0, 64.0, -127.0)"
+      },
+      {
+        "label": "north entrance wing",
+        "target": [
+          348,
+          63.786881936432195,
+          -132
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060017,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.786881936432195,
+        "requireBodyClearance": true,
+        "look": [
+          -12.094757077012101,
+          -9.877700903619909
+        ],
+        "reactorExterior": true,
+        "standingY": 63.8125,
+        "supportExpectedY": 63.786881936432195,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-3.png",
+        "clientPosition": "(348.0, 63.8125, -132.0)"
+      },
+      {
+        "label": "south tower approach",
+        "target": [
+          356,
+          63.84211349487305,
+          -42
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061022,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.84211349487305,
+        "requireBodyClearance": true,
+        "look": [
+          176.18592516570965,
+          -52.28156901422033
+        ],
+        "reactorExterior": true,
+        "standingY": 63.875,
+        "supportExpectedY": 63.84211349487305,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-4.png",
+        "clientPosition": "(356.0, 63.875, -42.0)"
+      },
+      {
+        "label": "south connector",
+        "target": [
+          303,
+          64.03787994384766,
+          -46
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061020,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.03787994384766,
+        "requireBodyClearance": true,
+        "look": [
+          -171.0273733851036,
+          -6.648523883399627
+        ],
+        "reactorExterior": true,
+        "standingY": 64.0625,
+        "supportExpectedY": 64.03787994384766,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-5.png",
+        "clientPosition": "(303.0, 64.0625, -46.0)"
+      },
+      {
+        "label": "concrete west arc",
+        "target": [
+          267,
+          64.00117695124457,
+          -73
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000032,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.00117695124457,
+        "requireBodyClearance": true,
+        "look": [
+          -155.55604521958347,
+          -27.458152099886952
+        ],
+        "reactorExterior": true,
+        "standingY": 64.0,
+        "supportExpectedY": 64.00117695124457,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-6.png",
+        "clientPosition": "(267.0, 64.0, -73.0)"
+      },
+      {
+        "label": "east hall northwest corridor",
+        "target": [
+          384,
+          64.07557231088317,
+          -118
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060212,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.07557231088317,
+        "requireBodyClearance": true,
+        "look": [
+          -45.0,
+          -35.948713853176294
+        ],
+        "reactorEast": true,
+        "standingY": 64.125,
+        "supportExpectedY": 64.07557231088317,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-7.png",
+        "clientPosition": "(384.0, 64.125, -118.0)"
+      },
+      {
+        "label": "east hall southwest corridor",
+        "target": [
+          379,
+          63.954792558466174,
+          -60
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060203,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.954792558466174,
+        "requireBodyClearance": true,
+        "look": [
+          -129.8055710922652,
+          -43.16448456968555
+        ],
+        "reactorEast": true,
+        "standingY": 64.0,
+        "supportExpectedY": 63.954792558466174,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-8.png",
+        "clientPosition": "(379.0, 64.0, -60.0)"
+      },
+      {
+        "label": "east hall north approach",
+        "target": [
+          401,
+          63.86891512333618,
+          -136
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060018,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.86891512333618,
+        "requireBodyClearance": true,
+        "look": [
+          -12.528807709151511,
+          -34.81397080685201
+        ],
+        "reactorEast": true,
+        "standingY": 63.875,
+        "supportExpectedY": 63.86891512333618,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-9.png",
+        "clientPosition": "(401.0, 63.875, -136.0)"
+      },
+      {
+        "label": "east hall east approach",
+        "target": [
+          414,
+          63.8496980649334,
+          -85
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060208,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.8496980649334,
+        "requireBodyClearance": true,
+        "look": [
+          75.96375653207353,
+          -33.36573662165402
+        ],
+        "reactorEast": true,
+        "standingY": 63.875,
+        "supportExpectedY": 63.8496980649334,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-10.png",
+        "clientPosition": "(414.0, 63.875, -85.0)"
+      },
+      {
+        "label": "east hall south approach",
+        "target": [
+          389,
+          63.84360075918638,
+          -27
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060203,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.84360075918638,
+        "requireBodyClearance": true,
+        "look": [
+          174.28940686250036,
+          -32.63735413831023
+        ],
+        "reactorEast": true,
+        "standingY": 63.875,
+        "supportExpectedY": 63.84360075918638,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-11.png",
+        "clientPosition": "(389.0, 63.875, -27.0)"
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "target": [
+          315.0,
+          69.62290400570674,
+          -40.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000050103,
+        "part": 5,
+        "dropHeight": 2,
+        "supportHeight": 69.62290400570674,
+        "requireBodyClearance": true,
+        "look": [
+          0,
+          30
+        ],
+        "standingY": 69.625,
+        "supportExpectedY": 69.62290400570674,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-12.png",
+        "clientPosition": "(315.0, 69.625, -40.0)"
+      },
+      {
+        "label": "UTA west approach ground",
+        "target": [
+          299.25,
+          64.08798789978027,
+          -39.25
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061102,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.08798789978027,
+        "requireBodyClearance": true,
+        "look": [
+          0,
+          30
+        ],
+        "standingY": 64.125,
+        "supportExpectedY": 64.08798789978027,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-13.png",
+        "clientPosition": "(299.25, 64.125, -39.25)"
+      },
+      {
+        "label": "UTA south approach ground",
+        "target": [
+          313.25,
+          64.09127044677734,
+          -24.25
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061103,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.09127044677734,
+        "requireBodyClearance": true,
+        "look": [
+          0,
+          30
+        ],
+        "standingY": 64.125,
+        "supportExpectedY": 64.09127044677734,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-14.png",
+        "clientPosition": "(313.25, 64.125, -24.25)"
+      },
+      {
+        "label": "UTA south tree passage",
+        "centreSurfaceHeight": 63.737977382171024,
+        "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+        "target": [
+          316.0453779869098,
+          63.737977382171024,
+          -23.580456126256536
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061103,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.92000106746505,
+        "requireBodyClearance": true,
+        "look": [
+          0,
+          12
+        ],
+        "sourceUTM": [
+          698529,
+          5349238
+        ],
+        "standingY": 63.875,
+        "supportExpectedY": 63.92000106746505,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-15.png",
+        "clientPosition": "(316.0453779869098, 63.875, -23.580456126256536)"
+      },
+      {
+        "label": "UTA south planted-edge passage",
+        "centreSurfaceHeight": 63.99755501855989,
+        "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+        "target": [
+          324.37885587483066,
+          63.99755501855989,
+          -4.278884709830081
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061204,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.00583164841974,
+        "requireBodyClearance": true,
+        "look": [
+          170,
+          5
+        ],
+        "sourceUTM": [
+          698538,
+          5349219
+        ],
+        "standingY": 64.0,
+        "supportExpectedY": 64.00583164841974,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-16.png",
+        "clientPosition": "(324.37885587483066, 64.0, -4.278884709830081)"
+      },
+      {
+        "label": "UYD southwest gap",
+        "centreSurfaceHeight": 64.1230865983153,
+        "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+        "target": [
+          295.43129112628935,
+          64.1230865983153,
+          -6.287240716184625
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061252,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.12614658009402,
+        "requireBodyClearance": true,
+        "look": [
+          -135.47758033720126,
+          5
+        ],
+        "sourceUTM": [
+          698509,
+          5349220
+        ],
+        "standingY": 64.125,
+        "supportExpectedY": 64.12614658009402,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-17.png",
+        "clientPosition": "(295.43129112628935, 64.125, -6.287240716184625)"
+      },
+      {
+        "label": "UYD west approach",
+        "centreSurfaceHeight": 64.1274390185109,
+        "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+        "target": [
+          292.78103495806806,
+          64.1274390185109,
+          -16.385535695883156
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061252,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.13324732128594,
+        "requireBodyClearance": true,
+        "look": [
+          -82.95965330449586,
+          5
+        ],
+        "sourceUTM": [
+          698506,
+          5349230
+        ],
+        "standingY": 64.125,
+        "supportExpectedY": 64.13324732128594,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-18.png",
+        "clientPosition": "(292.78103495806806, 64.125, -16.385535695883156)"
+      },
+      {
+        "label": "UYD south approach",
+        "centreSurfaceHeight": 64.16775642168531,
+        "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+        "target": [
+          299.2201067070405,
+          64.16775642168531,
+          -0.15172180720702183
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061252,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.17197013628493,
+        "requireBodyClearance": true,
+        "look": [
+          -162.15581985284288,
+          5
+        ],
+        "sourceUTM": [
+          698513,
+          5349214
+        ],
+        "standingY": 64.1875,
+        "supportExpectedY": 64.17197013628493,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-uyd-site-candidate-93-walk-19.png",
+        "clientPosition": "(299.2201067070405, 64.1875, -0.15172180720702183)"
+      }
+    ],
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "preservation": {
+      "sourceCandidate92Unchanged": 146,
+      "priorAlignmentJournalsUnchanged": true,
+      "activeV90AlignedChunks": 192,
+      "inventoryAndExperienceUnchanged": true,
+      "originalSavesUnchanged": 121,
+      "previewSavesUnchanged": 121,
+      "previewSettingsUnchanged": 4
+    }
+  },
+  "sourceResolutionStudy": {
+    "file": "photos/uyd-resolution-study.json",
+    "sha256": "411a76aa42c47d2c83ddc1fa20e345137cade3cf4976642998985e95dd1d0ee8",
+    "runtimeSettingsChanged": false
+  },
+  "visualReview": {
+    "reviewedCaptures": 32,
+    "method": "All 11 main views, one reflection and 20 standing captures inspected in eight contact sheets.",
+    "improvements": [
+      "Four native aerial rays formerly over uncovered outdoor ground now hit measured replacement terrain.",
+      "West, southwest and south UYD approaches have continuous ground and pass native support/body-clearance checks."
+    ],
+    "limitations": [
+      "UYD photographic facades remain blurry; its unsupported east face remains a provisional plain wall.",
+      "Coarse neighbouring building meshes and openings beneath or beyond protected buildings remain visible.",
+      "Aerial vegetation/shadow colour persists in terrain outside mapped close-range materials."
+    ],
+    "images": [
+      {
+        "file": "photos/uyd-site-93-aerial.png",
+        "sha256": "bc7f7dbcabf4dc53dd5dda2a93df2edbcd1c50c50841894a839718affc6598e2"
+      },
+      {
+        "file": "photos/uyd-site-93-west-walk.png",
+        "sha256": "bad046e88d05ee7d8ab63518360f702f30315a7ac0a9545157a6a0c0b580aaf1"
+      }
+    ],
+    "fullVisualAcceptance": false
+  },
+  "installedPreviewChanged": false,
+  "publicBinaryReleased": false,
+  "goalComplete": false,
+  "installationQualification": "No preview changes occurred during this local repair test. The later broader review and installed upgrade are recorded in preview-upgrade-development-validation.json."
+}

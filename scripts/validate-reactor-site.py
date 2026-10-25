@@ -50,7 +50,7 @@ old=[]
 for t in m['tiles']:
  # UTA is generated after this site; it cannot be an input to the earlier
  # ground blend. Including it changes the nearest historical support sample.
- if t['kind']!='ground' or t['file']in record['groundTiles'] or t['file']in m['architecture'].get('utaSite',{}).get('groundTiles',[]) or t['file']in m['architecture'].get('utaLandscape',{}).get('groundTiles',[]):continue
+ if t['kind']!='ground' or t['file']in record['groundTiles'] or t['file']in m['architecture'].get('uydSite',{}).get('groundTiles',[]) or t['file']in m['architecture'].get('utaSite',{}).get('groundTiles',[]) or t['file']in m['architecture'].get('utaLandscape',{}).get('groundTiles',[]):continue
  lo,hi=t['bounds']
  if not new.buffer(spec['groundBlendMetres']+1).intersects(box(lo[0],lo[2],hi[0],hi[2])):continue
  for v,_ in decode(out/t['file']):

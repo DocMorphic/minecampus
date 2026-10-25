@@ -31,17 +31,21 @@ def snapshot(folder):
     return {str(p.relative_to(folder)): digest(p) for p in folder.rglob('*') if p.is_file()}
 
 
-def verify_artifact(jar):
-    evidence = json.loads((ROOT / 'minecraft/exterior/rcm-technikum-development-validation.json').read_text())
+def verify_artifact(jar, reviewed_upgrade=False):
+    report = ('preview-upgrade-development-validation.json' if reviewed_upgrade
+              else 'rcm-technikum-development-validation.json')
+    evidence = json.loads((ROOT / 'minecraft/exterior' / report).read_text())
+    if reviewed_upgrade and evidence.get('playablePreviewReady') is not True:
+        raise RuntimeError('The development upgrade has not passed its playable preview review.')
     expected = evidence['artifact']
     if jar.stat().st_size != expected['size'] or digest(jar) != expected['sha256']:
         raise RuntimeError('Preview JAR does not match the native-verified artifact.')
     return expected
 
 
-def update(destination, jar):
+def update(destination, jar, reviewed_upgrade=False):
     """Replace only the recorded preview mod; preserve saves and private setup."""
-    expected = verify_artifact(jar)
+    expected = verify_artifact(jar, reviewed_upgrade)
     report_path = destination / 'preview-installation.json'
     report_bytes = report_path.read_bytes()
     report = json.loads(report_bytes)
@@ -113,8 +117,8 @@ def update(destination, jar):
     print('Launch Minecampus — Exterior Preview 0.5. The previous mod is retained in artifact-backups.')
 
 
-def install(source, destination, launcher, jar):
-    verify_artifact(jar)
+def install(source, destination, launcher, jar, reviewed_upgrade=False):
+    verify_artifact(jar, reviewed_upgrade)
     if destination.exists():
         raise RuntimeError('Preview directory already exists; keeping its saves and settings untouched.')
     if source == destination or source in destination.parents or destination in source.parents:
@@ -203,11 +207,12 @@ if __name__ == '__main__':
     parser.add_argument('--launcher-dir', type=Path, default=launcher_directory())
     parser.add_argument('--jar', type=Path, default=ROOT / 'dist-minecraft/RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar')
     parser.add_argument('--update', action='store_true', help='Update only the mod in an existing recorded preview; keep its saves/settings.')
+    parser.add_argument('--reviewed-upgrade', action='store_true', help='Use the separately reviewed local development artifact instead of the published preview.')
     args = parser.parse_args()
     try:
         if args.update:
-            update(args.destination.expanduser().resolve(), args.jar.expanduser().resolve())
+            update(args.destination.expanduser().resolve(), args.jar.expanduser().resolve(), args.reviewed_upgrade)
         else:
-            install(*(p.expanduser().resolve() for p in (args.source, args.destination, args.launcher_dir, args.jar)))
+            install(*(p.expanduser().resolve() for p in (args.source, args.destination, args.launcher_dir, args.jar)), reviewed_upgrade=args.reviewed_upgrade)
     except (OSError, ValueError, RuntimeError, zipfile.BadZipFile) as error:
         raise SystemExit(str(error)) from None

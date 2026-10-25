@@ -1,0 +1,887 @@
+{
+  "name": "uyd-site-candidate-93",
+  "purpose": "Close missing outdoor terrain west and south of UYD; retain eight verified building/landscape cameras and all 17 prior standing checks, adding three gap routes and four aerial ground identities and one retained foliage control.",
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610,
+    1000010700,
+    1000010800
+  ],
+  "cameras": [
+    {
+      "label": "UTA south standing source obstruction",
+      "position": "313.25 64.125 -24.25 0 30",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000061200
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000061203
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000061200
+        }
+      ]
+    },
+    {
+      "label": "UTA south source obstruction aerial",
+      "position": "320.25 85.0 -3.25 175 55",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.1,
+          "v": 0.75,
+          "expectedTile": 1000061252,
+          "blockSamples": true
+        },
+        {
+          "u": 0.12,
+          "v": 0.75,
+          "expectedTile": 1000061252,
+          "blockSamples": true
+        },
+        {
+          "u": 0.1,
+          "v": 0.8,
+          "expectedTile": 1000061252,
+          "blockSamples": true
+        },
+        {
+          "u": 0.13,
+          "v": 0.8,
+          "expectedTile": 1000061252,
+          "blockSamples": true
+        },
+        {
+          "u": 0.15,
+          "v": 0.73,
+          "expectedTile": 1000010800,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UTA south planted-edge passage",
+      "position": "324.37885587483066 64.10583164841974 -4.278884709830081 170 5",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UYD provisional east face",
+      "position": "314.4207327793004 64.3 -12.855858712508399 100.18167225136422 -31.965952200000245",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.75,
+          "expectedTile": 1000030053,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UYD surveyed face 0",
+      "position": "296.6034041756104 64.3 -16.082330018254485 -79.81520277642342 -51.30611478502912",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000050104,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UYD surveyed face 2",
+      "position": "302.84203118621133 64.3 -5.284819024316436 -169.6945304534509 -59.809290949241785",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000050104,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UYD surveyed face 3",
+      "position": "308.39662029998925 64.3 -23.611106649184315 10.287991774706304 -60.20115942785965",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000050104,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "northwest connector",
+      "position": "300 64.0955281469612 -127 -25.016893478100023 -7.857752715026182",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UYD southwest gap",
+      "position": "295.43129112628935 64.22614658009401 -6.287240716184625 -135.47758033720126 5",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UYD west approach",
+      "position": "292.78103495806806 64.23324732128593 -16.385535695883156 -82.95965330449586 5",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UYD south approach",
+      "position": "299.2201067070405 64.27197013628492 -0.15172180720702183 -162.15581985284288 5",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "mlz courtyard standing",
+      "target": [
+        153.0,
+        63.89489918593911,
+        -110.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89908177890647,
+      "requireBodyClearance": true,
+      "look": [
+        -100.0,
+        -8.0
+      ],
+      "sourceRouteIndex": 53
+    },
+    {
+      "label": "north walk standing",
+      "target": [
+        176.15,
+        64.00350978356846,
+        -115.71
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.00350978356846,
+      "requireBodyClearance": true,
+      "look": [
+        -100,
+        12
+      ]
+    },
+    {
+      "label": "northwest connector",
+      "target": [
+        300,
+        63.995528146961206,
+        -127
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060016,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.995528146961206,
+      "requireBodyClearance": true,
+      "look": [
+        -25.016893478100023,
+        -7.857752715026182
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "north entrance wing",
+      "target": [
+        348,
+        63.786881936432195,
+        -132
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060017,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.786881936432195,
+      "requireBodyClearance": true,
+      "look": [
+        -12.094757077012101,
+        -9.877700903619909
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "south tower approach",
+      "target": [
+        356,
+        63.84211349487305,
+        -42
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061022,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.84211349487305,
+      "requireBodyClearance": true,
+      "look": [
+        176.18592516570965,
+        -52.28156901422033
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "south connector",
+      "target": [
+        303,
+        64.03787994384766,
+        -46
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061020,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.03787994384766,
+      "requireBodyClearance": true,
+      "look": [
+        -171.0273733851036,
+        -6.648523883399627
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "concrete west arc",
+      "target": [
+        267,
+        64.00117695124457,
+        -73
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.00117695124457,
+      "requireBodyClearance": true,
+      "look": [
+        -155.55604521958347,
+        -27.458152099886952
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "east hall northwest corridor",
+      "target": [
+        384,
+        64.07557231088317,
+        -118
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060212,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.07557231088317,
+      "requireBodyClearance": true,
+      "look": [
+        -45.0,
+        -35.948713853176294
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "east hall southwest corridor",
+      "target": [
+        379,
+        63.954792558466174,
+        -60
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060203,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.954792558466174,
+      "requireBodyClearance": true,
+      "look": [
+        -129.8055710922652,
+        -43.16448456968555
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "east hall north approach",
+      "target": [
+        401,
+        63.86891512333618,
+        -136
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060018,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.86891512333618,
+      "requireBodyClearance": true,
+      "look": [
+        -12.528807709151511,
+        -34.81397080685201
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "east hall east approach",
+      "target": [
+        414,
+        63.8496980649334,
+        -85
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060208,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.8496980649334,
+      "requireBodyClearance": true,
+      "look": [
+        75.96375653207353,
+        -33.36573662165402
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "east hall south approach",
+      "target": [
+        389,
+        63.84360075918638,
+        -27
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060203,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.84360075918638,
+      "requireBodyClearance": true,
+      "look": [
+        174.28940686250036,
+        -32.63735413831023
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "UTA surveyed roof standing",
+      "target": [
+        315.0,
+        69.62290400570674,
+        -40.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000050103,
+      "part": 5,
+      "dropHeight": 2,
+      "supportHeight": 69.62290400570674,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        30
+      ]
+    },
+    {
+      "label": "UTA west approach ground",
+      "target": [
+        299.25,
+        64.08798789978027,
+        -39.25
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061102,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.08798789978027,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        30
+      ]
+    },
+    {
+      "label": "UTA south approach ground",
+      "target": [
+        313.25,
+        64.09127044677734,
+        -24.25
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061103,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.09127044677734,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        30
+      ]
+    },
+    {
+      "label": "UTA south tree passage",
+      "centreSurfaceHeight": 63.737977382171024,
+      "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+      "target": [
+        316.0453779869098,
+        63.737977382171024,
+        -23.580456126256536
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061103,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.92000106746505,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        12
+      ],
+      "sourceUTM": [
+        698529,
+        5349238
+      ]
+    },
+    {
+      "label": "UTA south planted-edge passage",
+      "centreSurfaceHeight": 63.99755501855989,
+      "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+      "target": [
+        324.37885587483066,
+        63.99755501855989,
+        -4.278884709830081
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061204,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.00583164841974,
+      "requireBodyClearance": true,
+      "look": [
+        170,
+        5
+      ],
+      "sourceUTM": [
+        698538,
+        5349219
+      ]
+    },
+    {
+      "label": "UYD southwest gap",
+      "centreSurfaceHeight": 64.1230865983153,
+      "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+      "target": [
+        295.43129112628935,
+        64.1230865983153,
+        -6.287240716184625
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061252,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.12614658009402,
+      "requireBodyClearance": true,
+      "look": [
+        -135.47758033720126,
+        5
+      ],
+      "sourceUTM": [
+        698509,
+        5349220
+      ]
+    },
+    {
+      "label": "UYD west approach",
+      "centreSurfaceHeight": 64.1274390185109,
+      "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+      "target": [
+        292.78103495806806,
+        64.1274390185109,
+        -16.385535695883156
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061252,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.13324732128594,
+      "requireBodyClearance": true,
+      "look": [
+        -82.95965330449586,
+        5
+      ],
+      "sourceUTM": [
+        698506,
+        5349230
+      ]
+    },
+    {
+      "label": "UYD south approach",
+      "centreSurfaceHeight": 64.16775642168531,
+      "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+      "target": [
+        299.2201067070405,
+        64.16775642168531,
+        -0.15172180720702183
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061252,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.17197013628493,
+      "requireBodyClearance": true,
+      "look": [
+        -162.15581985284288,
+        5
+      ],
+      "sourceUTM": [
+        698513,
+        5349214
+      ]
+    }
+  ],
+  "qualification": "BVV DGM1/DOP20 missing ground only, with exact joins to retained terrain and surveyed footprint exclusions. No interior, vegetation replacement or detailed facade acceptance.",
+  "canopyGlassEvidence": true,
+  "diagnosticBounds": [
+    [
+      266,
+      63,
+      -140
+    ],
+    [
+      420,
+      98,
+      -25
+    ]
+  ],
+  "surfaceControls": [
+    {
+      "label": "UYD wall 0",
+      "position": [
+        298.57188929705615,
+        68.4169541438362,
+        -15.728682840057346
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "UYD wall 1",
+      "position": [
+        310.4837239656849,
+        68.41617352765074,
+        -13.562938341343623
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "UYD wall 2",
+      "position": [
+        303.1998234612861,
+        69.35762614516642,
+        -7.252554953727907
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "UYD wall 3",
+      "position": [
+        308.0394282888984,
+        69.41236073097143,
+        -21.643261668701125
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "UYD wall 4",
+      "position": [
+        302.62933576806097,
+        68.4854649521938,
+        -22.626678963932235
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "UYD roof 0",
+      "position": [
+        302.1000659035032,
+        73.02171643450666,
+        -12.54302441033392
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "UYD roof 1",
+      "position": [
+        301.0001065062094,
+        72.92180441366669,
+        -17.83282325119569
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "UYD roof 2",
+      "position": [
+        303.70507487477806,
+        73.01331161892308,
+        -22.431490672356862
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "UYD roof 3",
+      "position": [
+        308.05595935762443,
+        72.92132516016623,
+        -11.459484883844764
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "UYD roof 4",
+      "position": [
+        306.95603269532256,
+        73.02141507094247,
+        -16.749950287465094
+      ],
+      "kind": "roof"
+    }
+  ],
+  "sourceDiagnosticBounds": [
+    [
+      275,
+      57,
+      -60
+    ],
+    [
+      345,
+      90,
+      20
+    ]
+  ],
+  "requireGroundMaterialReflection": true,
+  "walkingReflections": true
+}

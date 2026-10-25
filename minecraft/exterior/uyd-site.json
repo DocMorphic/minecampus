@@ -1,0 +1,15 @@
+{
+  "building": "DEBY_LOD2_108698301",
+  "boundsUTM": [
+    698490,
+    5349195,
+    698550,
+    5349270
+  ],
+  "groundMarginMetres": 12,
+  "groundBuildingGuardMetres": 0.005,
+  "groundBlendMetres": 2,
+  "groundRuntimeId": 1000061250,
+  "sourceEvidence": "photos/uyd-ground-gap-study.json",
+  "qualification": "BVV DGM1/DOP20 terrain around the surveyed UYD footprint, extending to existing ground within 12 metres. Only missing ground is added, with a two-metre blend to prior encoded heights. All surveyed footprints are excluded. No interiors, vegetation retirement or inferred detailed paving is included."
+}

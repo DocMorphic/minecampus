@@ -103,6 +103,14 @@ assert reactor_east_check['status'].startswith('PASS:') and reactor_east_check['
 assert reactor_east_check['validatorSha256']==digest(ROOT/'scripts/validate-reactor-east.py')
 assert reactor_east_check['meshSha256']==reactor_east['meshSha256'] and reactor_east_check['roofSha256']==reactor_east['roofSha256']
 
+uyd_site=json.loads((DATA/'manifest.json').read_text())['architecture']['uydSite']
+for path,key in [(SOURCE/uyd_site['sourceFile'],'sourceSha256'),(ROOT/uyd_site['generatorFile'],'generatorSha256'),(DATA/uyd_site['derivedFile'],'derivedSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(SOURCE/uyd_site['sourceEvidence'],'sourceEvidenceSha256')]:assert digest(path)==uyd_site[key]
+uyd_site_check=json.loads((DATA/'uyd-site-validation.json').read_text())
+assert uyd_site_check['status'].startswith('PASS:') and uyd_site_check['manifestSha256']==digest(DATA/'manifest.json')
+assert uyd_site_check['validatorSha256']==digest(ROOT/'scripts/validate-uyd-site.py')
+assert set(uyd_site_check['tileSha256'])==set(uyd_site['groundTiles'])
+for name,value in uyd_site_check['tileSha256'].items():assert digest(DATA/name)==value
+
 uyd=json.loads((DATA/'manifest.json').read_text())['architecture']['uydExterior']
 for path,key in [(SOURCE/uyd['sourceFile'],'sourceSha256'),(ROOT/uyd['generatorFile'],'generatorSha256'),(SOURCE/uyd['referenceFile'],'referenceSha256'),(DATA/uyd['roofFile'],'roofSha256'),(DATA/uyd['collisionFile'],'collisionSha256'),(DATA/uyd['meshFile'],'meshSha256')]:assert digest(path)==uyd[key]
 uyd_check=json.loads((DATA/'uyd-exterior-validation.json').read_text())
@@ -829,6 +837,10 @@ with zipfile.ZipFile(release) as original:
   for key in ['coverageFile','materialDerivedFile']:write(target,'src/minecampus-exterior/'+woodland[key],(DATA/woodland[key]).read_bytes())
   write(target,'src/minecampus-exterior/p1-complex.json',(SOURCE/'p1-complex.json').read_bytes())
   write(target,'src/minecampus-exterior/p1-complex-reference.json',(SOURCE/'photos/p1-complex-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/uyd-site.json',(SOURCE/'uyd-site.json').read_bytes())
+  write(target,'src/minecampus-exterior/uyd-ground-gap-study.json',(SOURCE/'photos/uyd-ground-gap-study.json').read_bytes())
+  for name in ['uyd-site-surfaces.json','uyd-site-validation.json']:
+   write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/uyd-exterior.json',(SOURCE/'uyd-exterior.json').read_bytes())
   write(target,'src/minecampus-exterior/uyd-exterior-reference.json',(SOURCE/'photos/uyd-exterior-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/uyd-exterior-validation.json',(DATA/'uyd-exterior-validation.json').read_bytes())

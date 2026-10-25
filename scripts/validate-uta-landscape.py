@@ -48,7 +48,7 @@ def decode(p):
 new_parts=[decode(out/name)[0]for name in record['groundTiles']];tri=np.concatenate([v[:,:3].reshape(-1,3,3)for v,p in new_parts]);new=unary_union([Polygon(t[:,[0,2]])for t in tri]);assert abs(new.area-d['ground']['areaSquareMetres'])<.02
 old=[]
 for t in m['tiles']:
- if t['kind']!='ground' or t['file']in record['groundTiles']:continue
+ if t['kind']!='ground' or t['file']in record['groundTiles'] or t['file']in m['architecture'].get('uydSite',{}).get('groundTiles',[]):continue
  lo,hi=t['bounds']
  if not new.buffer(spec['groundBlendMetres']+1).intersects(box(lo[0],lo[2],hi[0],hi[2])):continue
  for v,_ in decode(out/t['file']):

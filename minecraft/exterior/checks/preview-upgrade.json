@@ -1,0 +1,1055 @@
+{
+  "name": "preview-upgrade-93",
+  "purpose": "Review 24 established central campus viewpoints and 12 measured standing controls in a copy of the installed preview save, using the current packaged artifact. This tests the actual upgrade path without modifying the user save.",
+  "cameras": [
+    {
+      "label": "final ground",
+      "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+      "sourceRouteIndex": 0,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "final aerial",
+      "position": "-60 120 120 -153.435 20.44",
+      "sourceRouteIndex": 1,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "route west",
+      "position": "35 65 -40 90 0",
+      "sourceRouteIndex": 3,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "route south",
+      "position": "35 65 100 180 0",
+      "sourceRouteIndex": 4,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "route north",
+      "position": "50 65 -190 0 0",
+      "sourceRouteIndex": 5,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "ias",
+      "position": "65 65 -157 -166 -8",
+      "sourceRouteIndex": 7,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "former mensa",
+      "position": "0 64.25 -216 180 -5",
+      "sourceRouteIndex": 9,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "mensa terrace",
+      "position": "0 68 -238 180 0",
+      "sourceRouteIndex": 10,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "cos southwest",
+      "position": "128 65 -267 -140 -13",
+      "sourceRouteIndex": 15,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "cos forecourt",
+      "position": "162 64 -270 -171 14",
+      "sourceRouteIndex": 18,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "grs north",
+      "position": "214 64 -342 -15 -10",
+      "sourceRouteIndex": 21,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "grs main west",
+      "position": "225 64 -280 -90 -7",
+      "sourceRouteIndex": 26,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "grs iii west",
+      "position": "222 64 -240 -90 -7",
+      "sourceRouteIndex": 28,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "grs courtyard path",
+      "position": "262 64 -255 90 20",
+      "sourceRouteIndex": 33,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "promenade lawn path",
+      "position": "60 66 -100 180 10",
+      "sourceRouteIndex": 35,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "crosspath south",
+      "position": "35 65 24 -100 12",
+      "sourceRouteIndex": 37,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "galileo court floor",
+      "position": "105 60.5 -153 170 -6",
+      "sourceRouteIndex": 40,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "galileo west",
+      "position": "72 65 -125 -90 -14",
+      "sourceRouteIndex": 42,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "galileo east",
+      "position": "145 65 -115 90 -12",
+      "sourceRouteIndex": 44,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "galileo aerial",
+      "position": "25 110 -180 -37 27",
+      "sourceRouteIndex": 45,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "galileo ramp north",
+      "position": "144 64.4 -142 10 22",
+      "sourceRouteIndex": 50,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "mlz north",
+      "position": "185 65 -157 0 -12",
+      "sourceRouteIndex": 52,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "mlz courtyard",
+      "position": "153 65 -110 -100 -8",
+      "sourceRouteIndex": 53,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "mlz east",
+      "position": "219 66 -108 90 -12",
+      "sourceRouteIndex": 55,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "final ground standing",
+      "target": [
+        39.961711,
+        64.76436506884981,
+        -62.90048
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000020,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.78427547040971,
+      "requireBodyClearance": true,
+      "look": [
+        -103.360657,
+        4.800037
+      ],
+      "sourceRouteIndex": 0
+    },
+    {
+      "label": "route west standing",
+      "target": [
+        35.0,
+        64.88208252313882,
+        -40.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000020,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.89084982054788,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        0.0
+      ],
+      "sourceRouteIndex": 3
+    },
+    {
+      "label": "route south standing",
+      "target": [
+        35.0,
+        64.84442228614111,
+        100.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000019,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.90400322258921,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        0.0
+      ],
+      "sourceRouteIndex": 4
+    },
+    {
+      "label": "route north standing",
+      "target": [
+        50.0,
+        64.57325447387768,
+        -190.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000021,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.58129531319389,
+      "requireBodyClearance": true,
+      "look": [
+        0.0,
+        0.0
+      ],
+      "sourceRouteIndex": 5
+    },
+    {
+      "label": "former mensa standing",
+      "target": [
+        0.0,
+        64.18985189224172,
+        -216.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000022,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.20714680599318,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        -5.0
+      ],
+      "sourceRouteIndex": 9
+    },
+    {
+      "label": "cos forecourt standing",
+      "target": [
+        162.0,
+        63.77841067108919,
+        -270.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000028,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.79127051074315,
+      "requireBodyClearance": true,
+      "look": [
+        -171.0,
+        14.0
+      ],
+      "sourceRouteIndex": 18
+    },
+    {
+      "label": "promenade lawn path standing",
+      "target": [
+        60.0,
+        65.14665459018774,
+        -100.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000021,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 65.27548960545175,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        10.0
+      ],
+      "sourceRouteIndex": 35
+    },
+    {
+      "label": "crosspath south standing",
+      "target": [
+        35.0,
+        64.84057314663661,
+        24.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000019,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.84431412614771,
+      "requireBodyClearance": true,
+      "look": [
+        -100.0,
+        12.0
+      ],
+      "sourceRouteIndex": 37
+    },
+    {
+      "label": "galileo west standing",
+      "target": [
+        72.0,
+        64.70190303321978,
+        -125.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000021,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.72869725609937,
+      "requireBodyClearance": true,
+      "look": [
+        -90.0,
+        -14.0
+      ],
+      "sourceRouteIndex": 42
+    },
+    {
+      "label": "galileo east standing",
+      "target": [
+        145.0,
+        63.92026190233277,
+        -115.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.93017845693697,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        -12.0
+      ],
+      "sourceRouteIndex": 44
+    },
+    {
+      "label": "galileo ramp north standing",
+      "target": [
+        144.0,
+        64.11422042611309,
+        -142.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 3,
+      "dropHeight": 3,
+      "supportHeight": 64.13946486311914,
+      "requireBodyClearance": true,
+      "look": [
+        10.0,
+        22.0
+      ],
+      "sourceRouteIndex": 50
+    },
+    {
+      "label": "mlz courtyard standing",
+      "target": [
+        153.0,
+        63.89489918593911,
+        -110.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89908177890647,
+      "requireBodyClearance": true,
+      "look": [
+        -100.0,
+        -8.0
+      ],
+      "sourceRouteIndex": 53
+    }
+  ],
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610,
+    1000010700,
+    1000010800
+  ],
+  "referenceArtifactSha256": "a539a9d15058534a9e7996964da15bf5cf22d260da70f1f969215732b8bfa083",
+  "standingSurfacesManifestSha256": "128ac3943ae20a765ae2cb22dda342810801713477e01edd46f5934bf86ff79d",
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true
+}

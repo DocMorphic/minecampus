@@ -1,0 +1,171 @@
+{
+  "camera": "320.25 85.0 -3.25 175 55",
+  "qualification": "Native camera rays projected iteratively onto DGM1 to localize the blue opening. Geometric ownership study, not a repair.",
+  "controls": [
+    {
+      "screenUV": [
+        0.1,
+        0.75
+      ],
+      "terrainMC": [
+        295.58086320940936,
+        64.12666589816955,
+        -6.433982912795742
+      ],
+      "terrainUTM": [
+        698509.1443582749,
+        5349220.151856637
+      ],
+      "surveyOwners": [],
+      "nearestSurveyBuildings": [
+        {
+          "distance": 2.5259345139865417,
+          "id": "DEBY_LOD2_108698301"
+        },
+        {
+          "distance": 8.758661890489224,
+          "id": "DEBY_LOD2_8486670"
+        },
+        {
+          "distance": 21.58574590847116,
+          "id": "DEBY_LOD2_5284534"
+        }
+      ],
+      "groundOwners": [],
+      "nearestGroundDistance": 9.144318215592426,
+      "nearestGroundTile": 1000000032
+    },
+    {
+      "screenUV": [
+        0.12,
+        0.75
+      ],
+      "terrainMC": [
+        296.7705272124117,
+        64.10691278527705,
+        -6.542756466209699
+      ],
+      "terrainUTM": [
+        698510.3295218633,
+        5349220.301955536
+      ],
+      "surveyOwners": [],
+      "nearestSurveyBuildings": [
+        {
+          "distance": 1.8540481290152666,
+          "id": "DEBY_LOD2_108698301"
+        },
+        {
+          "distance": 9.911130398909082,
+          "id": "DEBY_LOD2_8486670"
+        },
+        {
+          "distance": 21.90439012131231,
+          "id": "DEBY_LOD2_5284534"
+        }
+      ],
+      "groundOwners": [],
+      "nearestGroundDistance": 10.329477797789211,
+      "nearestGroundTile": 1000000032
+    },
+    {
+      "screenUV": [
+        0.1,
+        0.8
+      ],
+      "terrainMC": [
+        296.7087268641046,
+        64.10863227817725,
+        -4.96649532057984
+      ],
+      "terrainUTM": [
+        698510.3226000358,
+        5349218.72449443
+      ],
+      "surveyOwners": [],
+      "nearestSurveyBuildings": [
+        {
+          "distance": 3.410275180498805,
+          "id": "DEBY_LOD2_108698301"
+        },
+        {
+          "distance": 10.018575746807407,
+          "id": "DEBY_LOD2_8486670"
+        },
+        {
+          "distance": 20.342271546282262,
+          "id": "DEBY_LOD2_5284534"
+        }
+      ],
+      "groundOwners": [],
+      "nearestGroundDistance": 10.32257683883029,
+      "nearestGroundTile": 1000000032
+    },
+    {
+      "screenUV": [
+        0.13,
+        0.8
+      ],
+      "terrainMC": [
+        298.45291158228764,
+        64.1119143541001,
+        -5.11854117028324
+      ],
+      "terrainUTM": [
+        698512.0604436097,
+        5349218.93713239
+      ],
+      "surveyOwners": [],
+      "nearestSurveyBuildings": [
+        {
+          "distance": 2.9486786450721487,
+          "id": "DEBY_LOD2_108698301"
+        },
+        {
+          "distance": 11.758418471903221,
+          "id": "DEBY_LOD2_8486670"
+        },
+        {
+          "distance": 20.81997180089299,
+          "id": "DEBY_LOD2_5284534"
+        }
+      ],
+      "groundOwners": [],
+      "nearestGroundDistance": 10.218403954863076,
+      "nearestGroundTile": 1000061203
+    },
+    {
+      "screenUV": [
+        0.15,
+        0.73
+      ],
+      "terrainMC": [
+        298.06334972541936,
+        64.01492221604718,
+        -7.347660136093876
+      ],
+      "terrainUTM": [
+        698511.5935653788,
+        5349221.151354218
+      ],
+      "surveyOwners": [],
+      "nearestSurveyBuildings": [
+        {
+          "distance": 0.8251997111865826,
+          "id": "DEBY_LOD2_108698301"
+        },
+        {
+          "distance": 11.0437855966654,
+          "id": "DEBY_LOD2_8486670"
+        },
+        {
+          "distance": 22.92655903929979,
+          "id": "DEBY_LOD2_5284534"
+        }
+      ],
+      "groundOwners": [],
+      "nearestGroundDistance": 10.599030869979233,
+      "nearestGroundTile": 1000061203
+    }
+  ]
+}

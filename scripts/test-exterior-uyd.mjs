@@ -46,7 +46,7 @@ for(const shift of [0,2]){
  }
  for(const p of controls){
   const [x,,z]=p.target,expected=p.supportHeight+shift;
-  if([...(m.architecture.utaSite?.groundTiles??[]),...(m.architecture.utaLandscape?.groundTiles??[])].some(name=>m.tiles.find(t=>t.file===name)?.runtimeId===p.tile)){
+  if([...(m.architecture.utaSite?.groundTiles??[]),...(m.architecture.utaLandscape?.groundTiles??[]),...(m.architecture.uydSite?.groundTiles??[])].some(name=>m.tiles.find(t=>t.file===name)?.runtimeId===p.tile)){
    for(let bx=Math.floor(x-.3);bx<=Math.floor(x+.3);bx++)for(let bz=Math.floor(z-.3);bz<=Math.floor(z+.3);bz++)
     assert.notEqual(intersect.code(bx+.5,expected,bz+.5),255,`${p.label}: player footprint reaches unaligned provider collision at ${bx},${bz}`);
   }
@@ -56,4 +56,4 @@ for(const shift of [0,2]){
   results.push({label:p.label,shift,standingY,expected,residual:standingY-expected,bodyClear:true});
  }
 }
-console.log(JSON.stringify({status:'PASS: five UYD walls, five roof triangles and 17 established approaches retain collision support at both datums',wallChecks,roofChecks,preservedRoofChecks,results,qualification:'Survey-plane collision is independent of provider photographic acceptance. Native migration and visual acceptance are separate.'},null,2));
+console.log(JSON.stringify({status:'PASS: five UYD walls, five roof triangles and all selected approaches retain collision support at both datums',wallChecks,roofChecks,preservedRoofChecks,results,qualification:'Survey-plane collision is independent of provider photographic acceptance. Native migration and visual acceptance are separate.'},null,2));

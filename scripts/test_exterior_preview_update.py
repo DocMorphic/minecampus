@@ -68,5 +68,34 @@ class PreviewUpdate(unittest.TestCase):
             child.communicate('\n', timeout=10)
 
 
+class PreviewArtifactReview(unittest.TestCase):
+    def test_release_and_reviewed_upgrade_remain_separate(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            reports = root / 'minecraft/exterior'
+            reports.mkdir(parents=True)
+            released, upgrade = root / 'released.jar', root / 'upgrade.jar'
+            released.write_bytes(b'released artifact')
+            upgrade.write_bytes(b'reviewed development artifact')
+            def artifact(path):
+                return {'size': path.stat().st_size, 'sha256': preview.digest(path)}
+            (reports / 'rcm-technikum-development-validation.json').write_text(json.dumps({'artifact': artifact(released)}))
+            review = reports / 'preview-upgrade-development-validation.json'
+            review.write_text(json.dumps({'artifact': artifact(upgrade), 'playablePreviewReady': False}))
+            with patch.object(preview, 'ROOT', root):
+                self.assertEqual(preview.verify_artifact(released), artifact(released))
+                with self.assertRaisesRegex(RuntimeError, 'does not match'):
+                    preview.verify_artifact(upgrade)
+                with self.assertRaisesRegex(RuntimeError, 'has not passed'):
+                    preview.verify_artifact(upgrade, True)
+                review.write_text(json.dumps({'artifact': artifact(upgrade), 'playablePreviewReady': True}))
+                self.assertEqual(preview.verify_artifact(upgrade, True), artifact(upgrade))
+                with self.assertRaisesRegex(RuntimeError, 'does not match'):
+                    preview.verify_artifact(released, True)
+                upgrade.write_bytes(b'tampered development artifact')
+                with self.assertRaisesRegex(RuntimeError, 'does not match'):
+                    preview.verify_artifact(upgrade, True)
+
+
 if __name__ == '__main__':
     unittest.main()

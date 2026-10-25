@@ -1,0 +1,123 @@
+{
+  "sampling": {
+    "metrics": [
+      {
+        "face": 0,
+        "pixelsPerMetre": 10,
+        "width": 151,
+        "height": 89,
+        "coverage": 0.9336260138403155,
+        "maxFillDistance": 0.6964426898696028,
+        "unfilled": 0,
+        "milliseconds": 26.552000000000135
+      },
+      {
+        "face": 2,
+        "pixelsPerMetre": 10,
+        "width": 122,
+        "height": 92,
+        "coverage": 0.9167421634354049,
+        "maxFillDistance": 0.6946940786963542,
+        "unfilled": 0,
+        "milliseconds": 18.828457999999955
+      },
+      {
+        "face": 0,
+        "pixelsPerMetre": 40,
+        "width": 601,
+        "height": 353,
+        "coverage": 0.9328927707833498,
+        "maxFillDistance": 0.7249162203325389,
+        "unfilled": 0,
+        "milliseconds": 41.69395900000018
+      },
+      {
+        "face": 2,
+        "pixelsPerMetre": 40,
+        "width": 485,
+        "height": 365,
+        "coverage": 0.91692081488246,
+        "maxFillDistance": 0.6989911554717955,
+        "unfilled": 0,
+        "milliseconds": 18.180875000000015
+      }
+    ],
+    "qualification": "Same transient source meshes projected at two sample densities. No provider pixels saved. Visual comparison required; higher sample count cannot recover missing source detail."
+  },
+  "sourceSelection": {
+    "metrics": [
+      {
+        "targetError": 1,
+        "selectedTiles": 7,
+        "errors": [
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128
+        ],
+        "triangles": 21934,
+        "texturePixels": 983040,
+        "faces": [
+          {
+            "face": 0,
+            "coverage": 0.9328927707833498,
+            "maxFillDistance": 0.7249162203325389,
+            "unfilled": 0
+          },
+          {
+            "face": 2,
+            "coverage": 0.91692081488246,
+            "maxFillDistance": 0.6989911554717955,
+            "unfilled": 0
+          }
+        ]
+      },
+      {
+        "targetError": 0.25,
+        "selectedTiles": 7,
+        "errors": [
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128,
+          2.006368774808128
+        ],
+        "triangles": 21934,
+        "texturePixels": 983040,
+        "faces": [
+          {
+            "face": 0,
+            "coverage": 0.9328927707833498,
+            "maxFillDistance": 0.7249162203325389,
+            "unfilled": 0
+          },
+          {
+            "face": 2,
+            "coverage": 0.91692081488246,
+            "maxFillDistance": 0.6989911554717955,
+            "unfilled": 0
+          }
+        ]
+      }
+    ],
+    "qualification": "Transient source selection and facade projections only. No provider pixels persisted."
+  },
+  "visualConclusion": "Increasing sampling from 10 to 40 pixels/metre exposes the same source distortions rather than useful new architectural detail. Targets of 1 m and 0.25 m select seven tiles and 21,934 triangles, producing byte-identical facade projections. Keep current settings; use better exterior references or explicit reconstruction for crisp architectural detail. No provider pixels saved.",
+  "sourceProjectionComparison": [
+    {
+      "face": 0,
+      "identicalEncodedProjection": true,
+      "projectionSha256": "f8e90b51341abd0c7cdeacb34c07137a950a4e53c7d7a2394d92460ffb1b88db"
+    },
+    {
+      "face": 2,
+      "identicalEncodedProjection": true,
+      "projectionSha256": "e6b56c5fe18fc156a541b6a6ca090f7744c0d8474a510c23b1f4c5e727f7aec7"
+    }
+  ]
+}
