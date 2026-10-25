@@ -124,6 +124,7 @@ public final class CampusSiteInspection {
                     row.add("firstVisibleVanillaBlock",block);break;
                 }
             }
+            if(control.has("expectedClear")&&control.get("expectedClear").getAsBoolean()&&!hits.isEmpty())throw new AssertionError("Expected clear skyline at screen "+u+","+v+": "+hits.get(0));
             if(control.has("expectedTile")&&(hits.isEmpty()||hits.get(0).get("tile").getAsInt()!=control.get("expectedTile").getAsInt()||control.has("expectedPart")&&hits.get(0).get("part").getAsInt()!=control.get("expectedPart").getAsInt()))throw new AssertionError("Unexpected visible geometry at screen "+u+","+v+": "+(hits.isEmpty()?"none":hits.get(0)));
             if(control.has("expectedDistance")){
                 double expected=control.get("expectedDistance").getAsDouble(),tolerance=control.get("distanceTolerance").getAsDouble();

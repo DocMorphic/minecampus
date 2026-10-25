@@ -64,7 +64,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  
  		for (MapTile t : tiles) {
 +            // Original ground ids and the supplemental survey range use ground materials.
-+            boolean surveyed=t!=null && ((t.data.id>=1_000_000_000 && t.data.id<1_000_000_036)||(t.data.id>=1_000_060_000 && t.data.id<1_000_061_000)) && campusGroundShader!=null;
++            boolean surveyed=t!=null && ((t.data.id>=1_000_000_000 && t.data.id<1_000_000_036)||(t.data.id>=1_000_060_000 && t.data.id<1_000_061_300)) && campusGroundShader!=null;
 +            boolean campus=campusPass;
 +            ShaderInstance tileShader=campus ? campusGroundShader : shader;
 +            if(campus && t!=null) {

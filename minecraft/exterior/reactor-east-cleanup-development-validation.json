@@ -1,5 +1,5 @@
 {
-  "status": "Candidate 83 package and source/service checks pass; native comparison running",
+  "status": "Candidate 83 native run exits 1 on a mis-specified skyline assertion; north/seam cleanup visible, full native validation incomplete",
   "candidate": 83,
   "alignmentVersion": 84,
   "geometry": {
@@ -246,12 +246,18 @@
     "allSupplementalDatumsUnchanged": true
   },
   "nativeInspection": {
-    "status": "RUNNING; no native visual acceptance",
+    "status": "FAIL: expected hall at screen (0.43,0.29), actual geometric hit none",
     "plannedCameras": 20,
     "plannedStandingChecks": 12,
     "addedMeasuredPixelAssertions": 5,
     "sourceWorldFiles": 127,
-    "artifactSha256": "c2b22a1c5c40cd9e5866da40f13901517c9b412ad6d485d42896070654f754a9"
+    "artifactSha256": "c2b22a1c5c40cd9e5866da40f13901517c9b412ad6d485d42896070654f754a9",
+    "exitCode": 1,
+    "camerasCaptured": 17,
+    "standingChecksCompleted": 0,
+    "capturesReviewed": 34,
+    "contactSheetsReviewed": 9,
+    "qualification": "The captured north skyline is clear. Independent encoded-mesh intersection confirms this pixel should hit no hall triangle. Two of the five added pixel controls lie above the measured envelope; retain their coordinates and require empty rays in the next run. Three remaining controls must still hit the hall."
   },
   "visualAcceptance": false,
   "qualification": "A 3.1 m footprint margin replaces the original 1 m margin after live scan measurements. The shared 107.97064 m\u00b2 reactor seam may retire source geometry because both envelopes are fully reconstructed. Unreconstructed neighbouring footprints remain protected; ground datum and all mesh bytes are unchanged. No ordinary saved blocks are removed. The separate southern fragment and estimated facade details remain unresolved.",
@@ -700,5 +706,26 @@
       }
     ],
     "qualification": "East views are above an adjoining building. Native migration and visual acceptance are separate."
-  }
+  },
+  "preservation": {
+    "sourceCandidate82Unchanged": 127,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV84AlignedChunks": 180,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "screenshots": [
+    {
+      "file": "reactor-east-north-cleanup-development.png",
+      "frame": 16,
+      "sha256": "d1bb5d4e50d404af5898816ee7f4e933303c6ecdec68a715e61cdd2ac0c76c3a"
+    }
+  ],
+  "visualFindings": [
+    "North hanging mass and shared reactor/hall seam fragments are absent in captured views.",
+    "East and south views and all native standing checks were not reached after the assertion failure.",
+    "Saved dirt blocks, incomplete facade details and the separate UTA source fragment remain."
+  ]
 }

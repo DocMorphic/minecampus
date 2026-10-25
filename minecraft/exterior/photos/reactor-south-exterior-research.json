@@ -1,0 +1,177 @@
+{
+  "status": "Southern fragment localized; facade material research remains incomplete",
+  "building": {
+    "building": "DEBY_LOD2_5323191",
+    "distanceMetres": 0.0,
+    "boundsMC": [
+      [
+        304.1475577504307,
+        63.94014408417066,
+        -48.37706306594108
+      ],
+      [
+        326.368859171981,
+        69.62363027383431,
+        -29.919475571890786
+      ]
+    ],
+    "footprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            304.1475577504307,
+            -33.27625236715908
+          ],
+          [
+            323.74257368535444,
+            -29.919475571890786
+          ],
+          [
+            323.7813230116487,
+            -30.170278550377986
+          ],
+          [
+            326.33958917377305,
+            -44.79208288425623
+          ],
+          [
+            326.3685689907798,
+            -44.992195213001324
+          ],
+          [
+            306.6864768404709,
+            -48.37701992449192
+          ],
+          [
+            304.1475577504307,
+            -33.27625236715908
+          ]
+        ]
+      ]
+    },
+    "walls": 6,
+    "roofTriangles": 4
+  },
+  "osm": {
+    "way": 27237054,
+    "name": "UTA",
+    "ref": "5227",
+    "buildingLevels": "2",
+    "source": {
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.6748,48.2650,11.6780,48.2668",
+      "retrieved": "2026-10-25T13:13:17.155375+00:00",
+      "sha256": "035bb8e115c141604d209c45f1b64a318f9feed3ff6aeec6f2c5070171a36e18",
+      "license": "ODbL-1.0",
+      "attribution": "\u00a9 OpenStreetMap contributors"
+    }
+  },
+  "identificationReferences": [
+    {
+      "url": "https://indico.frm2.tum.de/event/444/attachments/944/1604/2022_FRM_II-Uebersicht_ueber_die_Gesamtanlage.pdf",
+      "page": 2,
+      "supports": "Public exterior site legend identifies UTA as Hilfsanlagengeb\u00e4ude."
+    },
+    {
+      "url": "https://www.lrz.de/services/netz/ubezliste/2011_01_13_Lageplan.pdf",
+      "supports": "Public campus-map search excerpt associates UTA with building 5227; full document not inspected."
+    },
+    {
+      "url": "https://mlz-garching.de/media/gelaendeplan_site-map-frmii_2015.pdf",
+      "supports": "Public visitor-map search excerpt identifies exterior building 20 as Hilfsanlagengeb\u00e4ude; visual registration pending."
+    }
+  ],
+  "nativeFragmentMeasurements": [
+    {
+      "frame": 8,
+      "u": 0.9,
+      "v": 0.55,
+      "tile": 1200024796,
+      "part": 0,
+      "vertices": [
+        [
+          306.8772346973419,
+          66.889981508255,
+          -47.96837258338928
+        ],
+        [
+          307.6997833251953,
+          65.66025710105896,
+          -48.173784255981445
+        ],
+        [
+          306.8772084712982,
+          65.45605325698853,
+          -47.146860525012016
+        ]
+      ],
+      "point": [
+        307.4598909306582,
+        65.87218743329804,
+        -48.02982655290576
+      ],
+      "distance": 4.700406875878251
+    },
+    {
+      "frame": 8,
+      "u": 0.94,
+      "v": 0.65,
+      "tile": 1200024796,
+      "part": 0,
+      "vertices": [
+        [
+          306.8772084712982,
+          65.45605325698853,
+          -47.146860525012016
+        ],
+        [
+          307.6997833251953,
+          65.66025710105896,
+          -48.173784255981445
+        ],
+        [
+          307.4941101074219,
+          64.8408534526825,
+          -47.76301455497742
+        ]
+      ],
+      "point": [
+        307.4364526658696,
+        65.41411584341684,
+        -47.80880322709798
+      ],
+      "distance": 4.57650582979566
+    },
+    {
+      "frame": 8,
+      "u": 0.95,
+      "v": 0.8,
+      "tile": 1200024796,
+      "part": 0,
+      "vertices": [
+        [
+          307.49403405189514,
+          63.882258236408234,
+          -48.243210434913635
+        ],
+        [
+          307.4941101074219,
+          64.8408534526825,
+          -47.76301455497742
+        ],
+        [
+          307.78161907196045,
+          64.69729852676392,
+          -48.193753123283386
+        ]
+      ],
+      "point": [
+        307.55212307293874,
+        64.73597894595008,
+        -47.88796088707387
+      ],
+      "distance": 4.8131424259049815
+    }
+  ],
+  "qualification": "The native southern foreground remnant lies within the surveyed UTA footprint. Six wall faces and four roof triangles provide the envelope. Fine facade appearance is not yet registered; no interior plans or systems are used. Keep the building present while improving its exterior geometry."
+}

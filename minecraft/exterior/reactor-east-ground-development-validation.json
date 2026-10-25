@@ -1,0 +1,200 @@
+{
+  "candidate": 84,
+  "status": "Packaged renderer range fix and corrected skyline controls; native comparison running",
+  "artifact": {
+    "status": "PASS: packaged retirement revision; all render/collision meshes, ground datums, service modules and shader unchanged",
+    "artifactSha256": "f67c91f0c6b8e1b5b35a41fa9f0ca99fcf43c14c9f26d3555fcf5d3af06f3a45",
+    "rendererSourceFingerprint": "b99b46b3ee0a51d1",
+    "renderTiles": 459,
+    "alignmentVersion": 84,
+    "previousRenderTilesByteIdentical": 459,
+    "previousRenderCollisionInputsByteIdentical": 641,
+    "unchangedServiceModules": 24,
+    "unchangedSupplementalDatums": true
+  },
+  "geometryValidation": {
+    "status": "PASS: complete encoded survey envelope, exact roof imagery and protected neighbours",
+    "manifestSha256": "b95c4e772676cf832be6fad38751b07171c8c537e9c3ce4e33cd1c89bf7bd090",
+    "validatorSha256": "b23c81b91fb8deeb784daeafcd3bbc2880f487e2947fd5537a1d48c6acf90f63",
+    "sourceSha256": "6d13c9f4f5eb6b7fb4341bd14e52081da90bd321cee010450ec7172a20280ba0",
+    "meshSha256": "306bea0ecbcef6184b577c910ec302d544a6999016f66daca6461688db9a530d",
+    "roofSha256": "697550b731a51be810eda9517a5c8062522229f0258609fc8cef7f331cf4639c",
+    "completeSurveyWalls": 44,
+    "retainedRoofTriangles": 67,
+    "maximumUncoveredWallSquareMetres": 0.0039352778568161485,
+    "maximumDatumResidualMetres": 0.0,
+    "protectedNeighbourOverlapSquareMetres": 0.0,
+    "reconstructedNeighbourOverlapSquareMetres": 107.97063959483468,
+    "priorRenderTilesUnchanged": 458,
+    "newVerifiedGroundRoutes": 5,
+    "inspectionPlanSha256": "a6c96f50aa5cd73e14921f82fa89008cba6df11d33c54de1fdb81899df2dd8af",
+    "visualAcceptance": false
+  },
+  "reusedValidation": {
+    "sourceCandidate": 83,
+    "qualification": "All 28 source validations remain applicable to the unchanged manifest and data. The east-hall validator was rerun for the updated camera plan. Service modules and all 641 render/collision files are unchanged, so collision tests are not repeated. Native visual and standing verification remains pending."
+  },
+  "rayEnvelopeControls": [
+    {
+      "frame": 16,
+      "u": 0.43,
+      "v": 0.29,
+      "camera": [
+        401.5,
+        65.58891500889527,
+        -135.5
+      ],
+      "direction": [
+        0.30760707952976124,
+        0.7878764904851552,
+        0.5335058765974057
+      ],
+      "encodedHallHits": [],
+      "expectedClearOfHall": true
+    },
+    {
+      "frame": 16,
+      "u": 0.45,
+      "v": 0.36,
+      "camera": [
+        401.5,
+        65.58891500889527,
+        -135.5
+      ],
+      "direction": [
+        0.2790152155283565,
+        0.7288332698688195,
+        0.6252620044717168
+      ],
+      "encodedHallHits": [
+        {
+          "distance": 13.84905740320748,
+          "part": 1
+        },
+        {
+          "distance": 13.893006781691732,
+          "part": 3
+        },
+        {
+          "distance": 17.760768914842885,
+          "part": 4
+        }
+      ],
+      "expectedClearOfHall": false
+    },
+    {
+      "frame": 16,
+      "u": 0.5,
+      "v": 0.27,
+      "camera": [
+        401.5,
+        65.58891500889527,
+        -135.5
+      ],
+      "direction": [
+        0.12470055060987559,
+        0.8182658283076739,
+        0.5611513226408278
+      ],
+      "encodedHallHits": [
+        {
+          "distance": 14.634290551904224,
+          "part": 0
+        },
+        {
+          "distance": 15.819863501454957,
+          "part": 4
+        }
+      ],
+      "expectedClearOfHall": false
+    },
+    {
+      "frame": 17,
+      "u": 0.5,
+      "v": 0.16,
+      "camera": [
+        414.5,
+        65.56969795049248,
+        -84.5
+      ],
+      "direction": [
+        -0.4588215522659982,
+        0.8810933044909652,
+        0.11470558816993705
+      ],
+      "encodedHallHits": [],
+      "expectedClearOfHall": true
+    },
+    {
+      "frame": 17,
+      "u": 0.7,
+      "v": 0.09,
+      "camera": [
+        414.5,
+        65.56969795049248,
+        -84.5
+      ],
+      "direction": [
+        -0.4537095518224595,
+        0.8286311099581861,
+        -0.3278995672374812
+      ],
+      "encodedHallHits": [
+        {
+          "distance": 14.841010529686082,
+          "part": 0
+        },
+        {
+          "distance": 15.645224218731611,
+          "part": 4
+        }
+      ],
+      "expectedClearOfHall": false
+    }
+  ],
+  "rendererChange": {
+    "newlyShadedGroundTileIds": [
+      1000061000,
+      1000061001,
+      1000061002,
+      1000061003,
+      1000061004,
+      1000061005,
+      1000061006,
+      1000061007,
+      1000061008,
+      1000061009,
+      1000061010,
+      1000061011,
+      1000061012,
+      1000061013,
+      1000061014,
+      1000061015,
+      1000061016,
+      1000061017,
+      1000061018,
+      1000061019,
+      1000061020,
+      1000061021,
+      1000061022,
+      1000061023,
+      1000061024,
+      1000061025,
+      1000061026,
+      1000061027,
+      1000061028
+    ],
+    "qualification": "Restores existing close-range material grain and mapped-material handling on the omitted ground tiles; does not reconstruct missing pavement, cars or shadows."
+  },
+  "nativeInspection": {
+    "status": "RUNNING",
+    "plannedViews": 20,
+    "plannedStandingChecks": 12,
+    "sourceCandidate": 82,
+    "sourceWorldFiles": 127,
+    "skylineEmptyRayAssertions": 2,
+    "remainingMeasuredHallAssertions": 3
+  },
+  "visualAcceptance": false,
+  "installation": "User preview unchanged; no new public binary release."
+}

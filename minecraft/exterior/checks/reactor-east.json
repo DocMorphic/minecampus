@@ -1,6 +1,6 @@
 {
-  "name": "reactor-east-candidate-83",
-  "purpose": "Retain all east-hall and reactor views; assert removal of measured north/east residual fragments and inspect the shared seam.",
+  "name": "reactor-east-candidate-84",
+  "purpose": "Verify measured hall-fragment cleanup with independently checked skyline rays and enable detailed shading on all new reactor approach ground.",
   "captureWalking": true,
   "reflectionEvidence": true,
   "checkFractionalSupports": true,
@@ -411,8 +411,8 @@
         {
           "u": 0.43,
           "v": 0.29,
-          "expectedTile": 1000030052,
-          "blockSamples": true
+          "blockSamples": true,
+          "expectedClear": true
         },
         {
           "u": 0.45,
@@ -448,8 +448,8 @@
         {
           "u": 0.5,
           "v": 0.16,
-          "expectedTile": 1000030052,
-          "blockSamples": true
+          "blockSamples": true,
+          "expectedClear": true
         },
         {
           "u": 0.7,
