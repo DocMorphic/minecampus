@@ -1,0 +1,76 @@
+{
+  "status": "Exterior reference and surveyed-envelope research; no reconstruction yet",
+  "building": "DEBY_LOD2_8486666",
+  "candidate": 82,
+  "priority": "Replace the adjoining coarse source building visible across the lower east facade in candidate 81, using its own complete surveyed envelope.",
+  "survey": {
+    "boundsMC": [
+      [
+        377.1469433716942,
+        63.9199334346116,
+        -128.6286491000787
+      ],
+      [
+        413.979757157112,
+        83.72647677788228,
+        -34.87238512225012
+      ]
+    ],
+    "footprintAreaSquareMetres": 2079.167288189571,
+    "wallCount": 44,
+    "roofTriangles": 201
+  },
+  "identification": {
+    "name": "Neutronenleiterhalle Ost",
+    "confidence": "Probable from its position east of FRM II and public exterior photographs; register the end elevations before assigning openings."
+  },
+  "references": [
+    {
+      "url": "https://mlz-garching.de/aktuelles-und-presse/from-behind-the-sciences/riesen-rohr-fuer-winzigste-teilchen.html",
+      "credit": "MLZ; Reiner M\u00fcller / FRM II, TUM",
+      "use": "Exterior material and entrance reference only. No source pixels bundled as textures.",
+      "images": [
+        {
+          "url": "https://mlz-garching.de/index.php?rex_media_type=bxSlider_landscape&rex_media_file=img_8595.jpeg",
+          "file": "img_8595.jpeg",
+          "sha256": "1c4463a6999655e5b066bd10f5dd9842abdbf669b2b19ad167b82269442958ee"
+        },
+        {
+          "url": "https://mlz-garching.de/index.php?rex_media_type=bxSlider_landscape&rex_media_file=doppelbild.jpg",
+          "file": "doppelbild.jpg",
+          "sha256": "ba62697757f3d8a8cfbadf5f80730bbdf1312fd52b85807792180d5d226338f2"
+        }
+      ]
+    },
+    {
+      "url": "https://www.frm2.tum.de/frm2/news-single-view/article/erster-schritt-zur-neuen-neutronenleiterhalle/",
+      "published": "2012-06-19",
+      "credit": "FRM II / TUM",
+      "use": "Historical exterior corridor reference only; temporary construction objects are not current architecture.",
+      "images": [
+        {
+          "url": "https://www.frm2.tum.de/fileadmin/_processed_/2/c/csm_new_neutronhall_8b937465d3.webp",
+          "file": "hall-construction.webp",
+          "sha256": "dc9cb0d3e2b0e29cbfb37aa05b232b317654e3ba50d8366d63c92b5ddb617f7c"
+        }
+      ]
+    }
+  ],
+  "observations": [
+    "Public MLZ exterior views show fine horizontal corrugation, silver-grey cladding and a glazed projecting end bay above a large loading opening.",
+    "The historical corridor photograph shows the side facing the reactor: grey corrugated metal, a continuous narrow glazed band and additional taller glazed strips.",
+    "The survey resolves two elevated end projections and four low roof volumes; retain their measured geometry instead of copying the neighboring reactor panel grid."
+  ],
+  "limitations": [
+    "Assign each photograph to a surveyed elevation before drawing its openings.",
+    "Unseen long-side details are unresolved.",
+    "Corrugation pitch, frame sizes and loading-opening dimensions require explicit estimates.",
+    "No interiors or plant equipment are in scope."
+  ],
+  "nextActions": [
+    "Register the observed end and corridor elevations to the 44 survey walls.",
+    "Reconstruct the complete measured envelope with qualified corrugated materials and photographed window groups; keep exact roof geometry.",
+    "Extend source retirement only where the new envelope replaces it, preserving the reconstructed FRM II body and other neighbors.",
+    "Compare the retained east camera and add exterior ground approaches with adequate measured terrain."
+  ]
+}

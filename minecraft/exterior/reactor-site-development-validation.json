@@ -1,5 +1,5 @@
 {
-  "status": "Candidate 81 development checkpoint: geometry, package and service checks pass; native visual inspection pending",
+  "status": "Candidate 81 development checkpoint: geometry, package, service, 14 native views and seven standing checks pass; broader visual acceptance remains false",
   "candidate": 81,
   "alignmentVersion": 82,
   "geometry": {
@@ -305,17 +305,332 @@
   },
   "inspectionPlanSha256": "5f0ed7207cee4ef82df4d99c9019f916e83006164c9fc6156eb051d6f94eb141",
   "nativeInspection": {
-    "status": "NOT RUN for candidate 81",
-    "plannedViews": 14,
-    "plannedStandingControls": 7,
-    "previousCandidate": 80,
-    "previousFailureEvidence": "reactor-development-validation.json",
-    "failedEastFirstHitAssertionRetained": true
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "processExitCode": 0,
+    "artifactSha256": "199b63c2eda5de2a6247b1d4bc3699db9a771b7a1591c879e3628b792163b939",
+    "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-199b63c2ed.jar",
+    "cameraViews": 14,
+    "standingControls": 7,
+    "screenRayIdentityAssertions": 4,
+    "maximumStandingErrorMetres": 0.05899021643153901,
+    "gravity": [
+      {
+        "label": "mlz courtyard standing",
+        "target": [
+          153.0,
+          63.89489918593911,
+          -110.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.89908177890647,
+        "requireBodyClearance": true,
+        "look": [
+          -100.0,
+          -8.0
+        ],
+        "sourceRouteIndex": 53,
+        "standingY": 63.875,
+        "supportExpectedY": 63.89908177890647,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-reactor-site-candidate-81-walk-0.png",
+        "clientPosition": "(153.0, 63.875, -110.0)"
+      },
+      {
+        "label": "north walk standing",
+        "target": [
+          176.15,
+          64.00350978356846,
+          -115.71
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.00350978356846,
+        "requireBodyClearance": true,
+        "look": [
+          -100,
+          12
+        ],
+        "standingY": 64.0625,
+        "supportExpectedY": 64.00350978356846,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-reactor-site-candidate-81-walk-1.png",
+        "clientPosition": "(176.15, 64.0625, -115.71)"
+      },
+      {
+        "label": "northwest connector",
+        "target": [
+          300,
+          63.995528146961206,
+          -127
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060016,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.995528146961206,
+        "requireBodyClearance": true,
+        "look": [
+          -25.016893478100023,
+          -7.857752715026182
+        ],
+        "reactorExterior": true,
+        "standingY": 64.0,
+        "supportExpectedY": 63.995528146961206,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-reactor-site-candidate-81-walk-2.png",
+        "clientPosition": "(300.0, 64.0, -127.0)"
+      },
+      {
+        "label": "north entrance wing",
+        "target": [
+          348,
+          63.786881936432195,
+          -132
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000060017,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.786881936432195,
+        "requireBodyClearance": true,
+        "look": [
+          -12.094757077012101,
+          -9.877700903619909
+        ],
+        "reactorExterior": true,
+        "standingY": 63.8125,
+        "supportExpectedY": 63.786881936432195,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-reactor-site-candidate-81-walk-3.png",
+        "clientPosition": "(348.0, 63.8125, -132.0)"
+      },
+      {
+        "label": "south tower approach",
+        "target": [
+          356,
+          63.84211349487305,
+          -42
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061022,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 63.84211349487305,
+        "requireBodyClearance": true,
+        "look": [
+          176.18592516570965,
+          -52.28156901422033
+        ],
+        "reactorExterior": true,
+        "standingY": 63.875,
+        "supportExpectedY": 63.84211349487305,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-reactor-site-candidate-81-walk-4.png",
+        "clientPosition": "(356.0, 63.875, -42.0)"
+      },
+      {
+        "label": "south connector",
+        "target": [
+          303,
+          64.03787994384766,
+          -46
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000061020,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.03787994384766,
+        "requireBodyClearance": true,
+        "look": [
+          -171.0273733851036,
+          -6.648523883399627
+        ],
+        "reactorExterior": true,
+        "standingY": 64.0625,
+        "supportExpectedY": 64.03787994384766,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-reactor-site-candidate-81-walk-5.png",
+        "clientPosition": "(303.0, 64.0625, -46.0)"
+      },
+      {
+        "label": "concrete west arc",
+        "target": [
+          267,
+          64.00117695124457,
+          -73
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000032,
+        "part": 0,
+        "dropHeight": 2,
+        "supportHeight": 64.00117695124457,
+        "requireBodyClearance": true,
+        "look": [
+          -155.55604521958347,
+          -27.458152099886952
+        ],
+        "reactorExterior": true,
+        "standingY": 64.0,
+        "supportExpectedY": 64.00117695124457,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-reactor-site-candidate-81-walk-6.png",
+        "clientPosition": "(267.0, 64.0, -73.0)"
+      }
+    ],
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "eastFirstHit": {
+      "tile": 1000030051,
+      "part": 1,
+      "distance": 17.257599,
+      "triangle": [
+        [
+          379.0914306640625,
+          71.0000173672081,
+          -81.70831298828125
+        ],
+        [
+          379.0914306640625,
+          91.72001858791123,
+          -81.70831298828125
+        ],
+        [
+          378.5171813964844,
+          71.0000173672081,
+          -78.2725830078125
+        ]
+      ]
+    },
+    "captureSha256": {
+      "campus-reactor-site-candidate-81-0.png": "ff76f6820cc1c791a89126ba273c5bf075264f193d2f448d591289f30a70296d",
+      "campus-reactor-site-candidate-81-1.png": "e7bbdeefea7f8ddd0e9d62d4fa87e0e64bdaa0e8ca0df4f06b767cbe89dd229c",
+      "campus-reactor-site-candidate-81-10.png": "76e51e25cf65e300973b2910adc31de1107804cacc3e55b6943285ce0fd3ad91",
+      "campus-reactor-site-candidate-81-11.png": "133c0bc4614790cf3ed3ef01005270db061ff52e9fec5c991c5557860752c775",
+      "campus-reactor-site-candidate-81-12.png": "72633a1cc2cb953e8a91073578a5dbeaea43ae9ee0948bc2550e9796a370cd0a",
+      "campus-reactor-site-candidate-81-13.png": "bba4e4773d0e4c149d2f87591025502e6e961695e2593254b88ec83f6f1e1818",
+      "campus-reactor-site-candidate-81-2.png": "cb05e376aa34f031415d738c0f1585141e66aad4c12e5ad68d3acf6f79a135c4",
+      "campus-reactor-site-candidate-81-3.png": "343b57f4b59ae3a4290bd011c3d23dd455dc0b3b215ae82a70485467489b5141",
+      "campus-reactor-site-candidate-81-4.png": "7cedbd6cd74c2b8f1965fe2ec3cf1512506fd6214ae9b9c1437a85fadbc0ce7e",
+      "campus-reactor-site-candidate-81-5.png": "8ba808879b5c10305eb4d76b9a05d8b7dcb7a54434b351daabdd70177922404d",
+      "campus-reactor-site-candidate-81-6.png": "1242146b8d7fbcec7330422c2e4afdf547d0b93187dc081ab5fc2da30e3d4074",
+      "campus-reactor-site-candidate-81-7.png": "dac640fe8d73d499433f0c95f86d66fd60b51ca8c22d01b3206344da532de3b0",
+      "campus-reactor-site-candidate-81-8.png": "cd8219d7ce1ff5974052eeb762130bcf94ec335321ac8d4196a9522af40e4ccb",
+      "campus-reactor-site-candidate-81-9.png": "dd5f858309962c7721cef2f864dbf31e9ccef7ccf87ffe23d96f2ed3fcbf5ab7",
+      "campus-reactor-site-candidate-81-reflection-1.png": "2783e5ad5fc92c70f803fab6f1d12162acc609714a2312ea812a14f7dc46ee46",
+      "campus-reactor-site-candidate-81-reflection-10.png": "9a527f5b70d6b94251740dd6048fb1f639969c12d668662653e41b947c9dc97f",
+      "campus-reactor-site-candidate-81-reflection-11.png": "6640ed47fac25864ee9d7fcae542d35b10ad8088e02b2df22b523ab1dd538d62",
+      "campus-reactor-site-candidate-81-reflection-12.png": "6cf05e688d925b7844e1be0eeedc3b54b0bd0d3c5a5fbd650015e9d4c26bab25",
+      "campus-reactor-site-candidate-81-reflection-13.png": "5398aeabb1f957f4c643e0173d01fdb2ba569e444e89b6f03b9f7bc01a96a205",
+      "campus-reactor-site-candidate-81-reflection-2.png": "666796da0bd178fac0588093063f35223001b3c7e356f2c6202e270ff7b45f84",
+      "campus-reactor-site-candidate-81-reflection-3.png": "2fbee1f8784db1ac07c006acb3638b9574d5398e2f781656f30ee9beb586b230",
+      "campus-reactor-site-candidate-81-reflection-4.png": "6ee2f227492617c71f2c0730e15a8f632d0f0b04c7032df60bacfd001c392d3d",
+      "campus-reactor-site-candidate-81-reflection-5.png": "ed879a50234954b31b22cdaa2340bad59db257722146f6618e690b7d274e63a3",
+      "campus-reactor-site-candidate-81-reflection-6.png": "af9f22faa95134ceb7e7643791ddf7866e8d46ebee3f63d9735320c586aea3cb",
+      "campus-reactor-site-candidate-81-reflection-7.png": "b95babe6a7eb10b18a26939133ee2b0551925719aebab14fe80e230cbe4778e3",
+      "campus-reactor-site-candidate-81-reflection-8.png": "20f5d8c507750302a85b1476db25e03b7a9a753a176b9c11b2f53c8835986f79",
+      "campus-reactor-site-candidate-81-reflection-9.png": "bdbe1ddc47317c47b0d0f52c9131e5c859789eb974af95d0adc72cd777518b56",
+      "campus-reactor-site-candidate-81-walk-0.png": "c2804f3a371ef57bf2096f2235e47302caa5fe5350aec64ca67efd904aab26be",
+      "campus-reactor-site-candidate-81-walk-1.png": "99ce9f1f7a3be943cbce632a59a419bdb1407843188e4b2ce1e4d6a80d7ac3ef",
+      "campus-reactor-site-candidate-81-walk-2.png": "77a2793d33de206732c817a64b9ed2754b69d92a15a9ee963f6ba18781bb089c",
+      "campus-reactor-site-candidate-81-walk-3.png": "c861fa840342d50950b89746c1402437a97380c0b0e0750ab2edd906a6ed9d86",
+      "campus-reactor-site-candidate-81-walk-4.png": "98d86f29e3b29ccb8eedd519eced21ec8560407e54d99d8c42f5216a921e158f",
+      "campus-reactor-site-candidate-81-walk-5.png": "b4675254197c094deb3065ad4136d6e409381198a8ae489998c39eb1c9d6724e",
+      "campus-reactor-site-candidate-81-walk-6.png": "e60f82d77385af207e4abca6fa84f7c624215327e98af7d44c9fcd7c450efae2"
+    },
+    "capturesReviewed": 34,
+    "reportSha256": "61a4f7d2cb88c71d04953482f47c86a9bfedaa7bb83630307f77f9600db5898f",
+    "priorFailedInspectionRetained": "reactor-development-validation.json"
   },
   "visualAcceptance": false,
   "installation": {
     "installedUserPreviewUnchanged": true,
     "originalSavesOpenedByThisCheckpoint": false
   },
-  "qualification": "This checkpoint adds measured approach ground and height-bounded source cleanup around FRM II. Service checks are not native gravity checks. A fresh packaged Minecraft inspection and image review are required before visual acceptance. The existing candidate 80 failure evidence is retained."
+  "qualification": "Native checks establish the measured route supports and explicit geometry assertions for this exact package. The 79 wall/roof controls belong to the packaged service test, not the native gravity test. All 34 captures were reviewed. The remaining adjacent source meshes and blurred ground imagery prevent overall visual acceptance.",
+  "preservation": {
+    "sourceCandidate80Unchanged": 117,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV82AlignedChunks": 170,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "visualReview": {
+    "improvements": [
+      "Northwest foreground scan mass replaced by the fitted tree; reconstructed frontage is visible.",
+      "North-wing hanging fragments removed.",
+      "East first-hit assertion reaches the rebuilt facade.",
+      "Measured southern ground supports both new standing controls."
+    ],
+    "remaining": [
+      "Protected eastern adjoining building retains a conspicuously coarse photographed facade.",
+      "A separate southern scan fragment remains beside the Atom-Ei.",
+      "North and south approach imagery retains blurred cars and baked shadows.",
+      "Roof equipment, facade openings and broader campus detail remain incomplete."
+    ],
+    "reviewedCaptureCount": 34
+  },
+  "screenshots": [
+    "reactor-site-north-development.png",
+    "reactor-site-east-remaining.png",
+    "reactor-site-south-remaining.png"
+  ]
 }
