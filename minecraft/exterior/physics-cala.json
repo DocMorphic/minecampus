@@ -95,7 +95,34 @@
     ]
   },
   "qualification": "Experimental source-informed exterior of the main surveyed CALA volume only. Eight BVV walls and six original roof triangles fix the envelope; roof pixels are public DOP20. Charcoal/light finishes, pale geometric motifs, opening positions, glazing, frames and canopies are approximate interpretations of an oblique official photograph, not a measured facade survey. Adjacent survey volumes and source-backed terrain are preserved. No interiors or redistributed reference-photo pixels. Ground joins and native visual acceptance are required before release.",
-  "northSlopeMetres": 10.5,
+  "northSlopeMetres": 18,
   "eastSlopeMetres": 8,
-  "groundBlendMetres": 2
+  "groundBlendMetres": 2,
+  "groundRegressionControlsUTM": [
+    [
+      698470.0,
+      5349708.931267135
+    ],
+    [
+      698467.4494834449,
+      5349709.892419871
+    ],
+    [
+      698465.126409296,
+      5349710.298492359
+    ],
+    [
+      698463.0176387476,
+      5349710.688923121
+    ],
+    [
+      698460.9091039771,
+      5349710.884342728
+    ],
+    [
+      698462.412978232,
+      5349712.163352477
+    ]
+  ],
+  "groundRegressionQualification": "Native candidate55 north-path pixels exposed source fragments and sky gaps 11.5\u201313.7m from the north survey wall. Public DOM/DGM samples at these controls differ by at most0.25m and identify ground. The18m replacement connects the surveyed slope to retained land beyond these gaps; existing reconstructed land and adjacent survey volumes remain protected."
 }

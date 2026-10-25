@@ -114,6 +114,18 @@ for q,source in zip(vertices,raw_world):
 assert max(errors)<.002 and core_errors and seam_errors,(max(errors),len(core_errors),len(seam_errors))
 # The replacement region is bounded and cannot cut neighbouring surveyed shells.
 retirement=unary_union([Polygon(p['ring'],p['holes']) for p in rec['retirement']])
+# These native-camera failures sit beyond the original10.5m slope strip.
+# A valid slope must retire their broken scan and supply actual ground there.
+with rasterio.open(root/'.cache/campus-dgm-east.tif') as dem:
+    controls=np.asarray(spec['groundRegressionControlsUTM'])
+    heights=np.array([float(v[0]) for v in dem.sample(controls)])
+control_world=world(np.column_stack([controls,heights]))
+covered=existing.union(region)
+for q in control_world:
+    point=Point(q[0],q[2])
+    assert retirement.covers(point),('unretired north-path gap',q.tolist())
+    assert covered.buffer(.0001).covers(point),('missing north-path ground',q.tolist())
+
 for bid,raw_other in surveys.items():
     if bid==spec['building']:continue
     for kind,p in raw_other:
@@ -130,5 +142,5 @@ for v,pixels in [parts[4],*new_parts]:
         rgb=dop.read([1,2,3],window=rasterio.windows.Window(round(left),round(top),width,height)).transpose(1,2,0);assert np.array_equal(rgb,pixels[:,:,:3])
         assert np.max(abs(np.column_stack([(c-round(left))/width,(r-round(top))/height])-v[:,3:]))<1e-4
 files=[rec['meshFile'],rec['roofFile'],*new_files]
-result={'status':'PASS: source envelope and roof, recessed openings, nonoverlapping DGM ground joins and public DOP pixels','manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'validatorSha256':sha(Path(__file__)),'tileSha256':{f:sha(out/f) for f in files},'rawInputs':inputs,'roofVertexErrorMetres':roof_error,'groundAreaSquareMetres':region.area,'groundVertices':len(vertices),'groundHeightErrorMetres':max(errors),'coreRawDGMErrorMetres':max(core_errors),'seamHeightErrorMetres':max(seam_errors),'qualification':'Facade features are approximate. Native terrain, collision and visual acceptance remain required.'}
+result={'status':'PASS: source envelope and roof, recessed openings, nonoverlapping DGM ground joins and public DOP pixels','manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'validatorSha256':sha(Path(__file__)),'tileSha256':{f:sha(out/f) for f in files},'rawInputs':inputs,'roofVertexErrorMetres':roof_error,'groundAreaSquareMetres':region.area,'groundVertices':len(vertices),'nativeGapControls':len(control_world),'groundHeightErrorMetres':max(errors),'coreRawDGMErrorMetres':max(core_errors),'seamHeightErrorMetres':max(seam_errors),'qualification':'Facade features are approximate. Native terrain, collision and visual acceptance remain required.'}
 (out/'physics-cala-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
