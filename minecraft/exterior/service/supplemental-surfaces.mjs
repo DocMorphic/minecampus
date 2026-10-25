@@ -14,6 +14,24 @@ export function surfaceBoundaryClipper(entries = []) {
   const boundaries=indexed.flatMap(entry=>[...entry.rings,...(entry.excludedRings??[])].flatMap(p=>[p.ring,...(p.holes??[])]).flatMap(r=>r.map((a,i)=>{
     const b=r[(i+1)%r.length];return {a,b,entry,minX:Math.min(a[0],b[0]),maxX:Math.max(a[0],b[0]),minZ:Math.min(a[1],b[1]),maxZ:Math.max(a[1],b[1])};
   }))).filter(e=>Math.hypot(e.b[0]-e.a[0],e.b[1]-e.a[1])>1e-8);
+  // Most source triangles touch only a few local edges. A bounded spatial
+  // lookup avoids rescanning distant campus boundaries for each triangle.
+  const edgeCell=16,edgeGrid=new Map(),wideEdges=[];
+  boundaries.forEach((edge,index)=>{
+    edge.index=index;
+    const x0=Math.floor(edge.minX/edgeCell),x1=Math.floor(edge.maxX/edgeCell),z0=Math.floor(edge.minZ/edgeCell),z1=Math.floor(edge.maxZ/edgeCell);
+    if((x1-x0+1)*(z1-z0+1)>4096){wideEdges.push(edge);return;}
+    for(let x=x0;x<=x1;x++)for(let z=z0;z<=z1;z++){
+      const key=x+','+z;if(!edgeGrid.has(key))edgeGrid.set(key,[]);edgeGrid.get(key).push(edge);
+    }
+  });
+  function nearbyEdges(x0,z0,x1,z1){
+    const a=Math.floor(x0/edgeCell),b=Math.floor(x1/edgeCell),c=Math.floor(z0/edgeCell),d=Math.floor(z1/edgeCell);
+    if((b-a+1)*(d-c+1)>256)return boundaries;
+    const found=new Set(wideEdges);
+    for(let x=a;x<=b;x++)for(let z=c;z<=d;z++)for(const edge of edgeGrid.get(x+','+z)??[])found.add(edge);
+    return [...found].sort((a,b)=>a.index-b.index);
+  }
   function split(poly,{a,b}){
     // Only a boundary segment touching this piece can separate covered and
     // uncovered ground. Its infinite supporting line elsewhere cannot. Keeping
@@ -56,10 +74,30 @@ export function surfaceBoundaryClipper(entries = []) {
       const minY=Math.min(...triangle.map(p=>p[1])),maxY=Math.max(...triangle.map(p=>p[1]));
       const candidates=indexed.filter(e=>e.bounds[0]<=maxX&&e.bounds[2]>=minX&&e.bounds[1]<=maxZ&&e.bounds[3]>=minZ&&(e.y0??-Infinity)<=maxY&&(e.y1??Infinity)>=minY);
       if(!candidates.length)return [triangle];
-      const local=new Set(candidates),edges=boundaries.filter(e=>local.has(e.entry)&&e.maxX>=minX&&e.minX<=maxX&&e.maxZ>=minZ&&e.minZ<=maxZ);
+      const local=new Set(candidates),edges=nearbyEdges(minX,minZ,maxX,maxZ).filter(e=>local.has(e.entry)&&e.maxX>=minX&&e.minX<=maxX&&e.maxZ>=minZ&&e.minZ<=maxZ);
       const heights=[...new Set(candidates.flatMap(e=>[e.y0,e.y1]).filter(Number.isFinite))];
 
-      let pieces=[triangle];for(const edge of edges)pieces=pieces.flatMap(p=>split(p,edge));
+      // Carry only boundaries that can still intersect each child polygon.
+      // Scanning every campus edge for every intermediate piece makes large
+      // provider triangles quadratic and can stall the service request queue.
+      let pieces=[];
+      const pending=[{poly:triangle,edges}];
+      while(pending.length){
+        const current=pending.pop();let divided=false;
+        for(let i=0;i<current.edges.length;i++){
+          const children=split(current.poly,current.edges[i]);
+          if(children.length===1)continue;
+          divided=true;
+          const rest=current.edges.slice(i+1);
+          for(let child=children.length-1;child>=0;child--){
+            const poly=children[child],xs=poly.map(p=>p[0]),zs=poly.map(p=>p[2]);
+            const x0=Math.min(...xs),x1=Math.max(...xs),z0=Math.min(...zs),z1=Math.max(...zs);
+            pending.push({poly,edges:rest.filter(e=>e.maxX>=x0-1e-8&&e.minX<=x1+1e-8&&e.maxZ>=z0-1e-8&&e.minZ<=z1+1e-8)});
+          }
+          break;
+        }
+        if(!divided)pieces.push(current.poly);
+      }
       // Clip the vertical extent too. Boundary planes preserve every vertex
       // attribute, so sloping source ground/roofs retain their original UVs.
       for(const y of heights){

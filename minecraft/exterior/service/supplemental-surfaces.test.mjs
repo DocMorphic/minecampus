@@ -32,3 +32,22 @@ test('bounded prism clipping preserves vertical geometry above and below its hei
  assert.ok(Math.abs(area-22)<1e-8);
  assert.deepEqual(clip.outsideFragments([[4,4,4,0,0],[5,4,4,1,0],[4,4,5,0,1]]),[[[4,4,4,0,0],[5,4,4,1,0],[4,4,5,0,1]]]);
 });
+
+test('campus-wide triangle retains exact area and UVs across many disjoint dense boundaries',async()=>{
+ const {surfaceBoundaryClipper}=await import('./supplemental-surfaces.mjs');
+ const entries=Array.from({length:12},(_,i)=>{
+  const x=(i%4)*30-45,z=Math.floor(i/4)*30-30;
+  return {rings:[{ring:ring(10,256).map(([a,b])=>[a+x,b+z])}],excludedRings:[{ring:ring(2,64).map(([a,b])=>[a+x,b+z])}]};
+ });
+ const triangle=[[-200,18,-100,0,0],[200,22,-100,1,0],[0,20,200,.5,1]],clip=surfaceBoundaryClipper(entries),fragments=clip.outsideFragments(triangle);
+ const expected=60000-12*(signed(ring(10,256))-signed(ring(2,64)));let area=0;
+ for(const f of fragments){
+  const a=signed(f.map(p=>[p[0],p[2]]));assert.ok(a>=-1e-8);area+=a;
+  for(const [x,y,z,u,v]of f){assert.ok(Math.abs(y-20-x*.01)<1e-8);assert.ok(Math.abs(u-(x+200)/400)<1e-8);assert.ok(Math.abs(v-(z+100)/300)<1e-8);}
+ }
+ assert.ok(Math.abs(area-expected)<1e-6);assert.ok(fragments.length<15000);
+ // A triangle straddling a negative grid-cell boundary also retains its complement.
+ const square=surfaceBoundaryClipper([{rings:[{ring:[[-16,-16],[16,-16],[16,16],[-16,16]]}]}]);
+ const pieces=square.outsideFragments([[-20,3,-17,0,0],[-12,3,-17,1,0],[-12,3,-15,1,1]]);
+ let remaining=0;for(const p of pieces)remaining+=signed(p.map(v=>[v[0],v[2]]));assert.ok(Math.abs(remaining-6)<1e-8);
+});
