@@ -1,16 +1,16 @@
 # Exterior Preview 0.5
 
-## Local reviewed upgrade — candidate 94
+## Local reviewed upgrade — candidate 97
 
-The development machine has the reviewed Galileo east frontage repair installed, SHA-256 `60fb1985223086f1b790d4b78a013f54fd60bf10e6582e80c706910163eae144`. It smooths the terrain beside the facade and aligns ramp retaining-wall tops to the inferred finished grade. Both ramp floors now use fractional collision: all 13 native standing checks passed within 0.048 m of the rendered surface. Fourteen camera views and all 41 resulting images were reviewed. The existing preview saves and private settings were preserved during installation. [Repair evidence](galileo-east-grade-development-validation.json).
+The development machine has the reviewed Galileo east frontage material update installed, SHA-256 `ebff9ca4a8ceda72d0a52f664db7335d55c148933ff22fcaf73bee86625c9135`. Approximately 1,361.79 m² of blurred ground now uses detailed asphalt, continuing down both ramp floors and meeting the mapped grass verge. Main and reflected views share the material. All existing map geometry, collision records and textures remain unchanged from candidate 94. Nineteen camera checks, including four night views, and 13 native standing checks passed; all 51 captures were reviewed. Maximum standing error is below 0.048 m. Installation preserved all 121 original-save files, 121 preview-save files and four private settings, with the previous mod backed up. [Material review evidence](galileo-east-material-development-validation.json).
 
-The grade combines surveyed building bases, nearby terrain controls and the landscape architect's description of a connected east frontage. It is inferred, not an as-built survey. Ground colours remain pale and blurry, nearby untreated buildings remain coarse, and facade details remain approximate. The broader realism goal remains open. The preceding candidate 93 campus-wide review is retained [separately](preview-upgrade-93-development-validation.json); this latest review concentrates on the changed frontage and ramps.
+The finish follows the landscape architect's asphalt description and uses an existing CC0 texture. Exact aggregate appearance is approximate, and the mapped grass boundary needs an explicitly inferred 3.3 m southern continuation. The preceding [terrain repair](galileo-east-grade-development-validation.json) retains its inferred finished grade and fractional ramp collision. Untreated ground still has blurry colours and baked shadows, nearby buildings remain coarse, and facade details remain approximate. The broader realism goal remains open. The preceding candidate 93 campus-wide review is retained [separately](preview-upgrade-93-development-validation.json).
 
-![Reviewed Galileo east frontage](photos/galileo-east-grade-94-frontage.png)
+![Reviewed Galileo east asphalt frontage](photos/galileo-east-material-97-frontage.png)
 
-![Reviewed northern ramp at standing height](photos/galileo-east-grade-94-ramp.png)
+![Reviewed asphalt and mapped grass verge](photos/galileo-east-material-97-verge.png)
 
-![Reviewed frontage from above](photos/galileo-east-grade-94-aerial.png)
+![Reviewed frontage from above](photos/galileo-east-material-97-aerial.png)
 
 This local artifact has not been published as a new GitHub binary release. When it is present locally, update the existing preview with `python3 scripts/install-exterior-preview.py --update --reviewed-upgrade`. The installer checks its separate review and exact hash, backs up the old mod, and preserves saves and local settings. Without `--reviewed-upgrade`, it continues to accept the published dev.22 artifact described below.
 

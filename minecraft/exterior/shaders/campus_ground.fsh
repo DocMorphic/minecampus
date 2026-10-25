@@ -19,6 +19,26 @@ in vec2 texCoord0;
 in vec3 worldPosition;
 in float viewDistance;
 out vec4 fragColor;
+// BEGIN GENERATED GALILEO EAST MATERIAL
+// Bounded, inferred asphalt finish. Source: galileo-east-material.json.
+// Restricted by the caller to terrain and the two ramp floor/collar parts.
+const vec2 GalileoEastBoundary[4]=vec2[4](vec2(134.106582354,-143.750793024),vec2(119.479577941,-64.298269030),vec2(136.457533985,-61.172670083),vec2(150.284137384,-140.772545888));
+float galileoEastCoverage(vec3 position) {
+    if(position.y<59.0||position.y>66.0)return 0.0;
+    float signedDistance=1e6;
+    for(int i=0;i<4;i++){
+        vec2 a=GalileoEastBoundary[i],b=GalileoEastBoundary[(i+1)%4];
+        vec2 edge=b-a,p=position.xz-a;
+        signedDistance=min(signedDistance,-1.0*(edge.x*p.y-edge.y*p.x)/length(edge));
+    }
+    // Entirely inward blending keeps the neighbouring planting untouched.
+    return smoothstep(0.0,max(0.1200,fwidth(signedDistance)),signedDistance);
+}
+vec3 galileoEastAlbedo(vec3 position) {
+    vec2 uv=position.xz/4.0000;
+    return textureGrad(Sampler7,uv,dFdx(uv),dFdy(uv)).rgb*0.8500;
+}
+// END GENERATED GALILEO EAST MATERIAL
 // BEGIN GENERATED REACTOR GROUND MAPPING
 vec2 reactorGroundUv(vec2 position) { return vec2(position.x-208.0,-0.0-position.y)/256.0; }
 // END GENERATED REACTOR GROUND MAPPING
@@ -403,6 +423,20 @@ void main() {
             vec3 n=normalize(geometric+detail*.35);
             vec3 sun=CampusSunDirection;
             color.rgb*=mix(1.0,(.55+.45*max(dot(n,sun),0.0))/.91,proximity);
+        }
+    }
+    // Clean source-informed paving replaces baked aerial shadows only inside
+    // the declared Galileo frontage. Retain actual mesh normals and sun light.
+    if(abs(MaterialDetail-1.0)<.1||physicsGround) {
+        float coverage=galileoEastCoverage(worldPosition);
+        if(coverage>0.0) {
+            vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
+            if(n.y<0.0)n=-n;
+            vec3 detail=textureGrad(Sampler8,worldPosition.xz*.25,
+                dFdx(worldPosition.xz*.25),dFdy(worldPosition.xz*.25)).xyz*2.0-1.0;
+            n=normalize(n+vec3(detail.x,0,detail.y)*.25*proximity);
+            vec3 clean=galileoEastAlbedo(worldPosition)*(.72+.28*max(dot(n,CampusSunDirection),0.0));
+            color.rgb=mix(color.rgb,clean,coverage);
         }
     }
     if(physicsHall) {

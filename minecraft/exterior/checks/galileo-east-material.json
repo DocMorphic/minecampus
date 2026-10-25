@@ -1,0 +1,946 @@
+{
+  "name": "galileo-east-material-97",
+  "purpose": "Review bounded asphalt frontage by day, at night, in reflection and from above. Geometry/collision match reviewed candidate 94.",
+  "cameras": [
+    {
+      "label": "Galileo east comparison",
+      "position": "145 65 -115 90 -12",
+      "candidateViewIndex": 0,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "North inner frontage",
+      "position": "135.8 64.3 -131.0 0 3",
+      "candidateViewIndex": 1,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Central inner frontage",
+      "position": "131.5 64.3 -115.0 180 3",
+      "candidateViewIndex": 2,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "South inner frontage",
+      "position": "126.8 64.3 -88.0 180 3",
+      "candidateViewIndex": 3,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "South outer approach",
+      "position": "131.0 64.3 -75.0 180 3",
+      "candidateViewIndex": 4,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "North outer frontage",
+      "position": "148.5 64.3 -133.0 90 8",
+      "candidateViewIndex": 5,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Central outer frontage",
+      "position": "146.0 64.3 -114.0 90 8",
+      "candidateViewIndex": 6,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "South outer frontage",
+      "position": "141.0 64.3 -92.0 90 8",
+      "candidateViewIndex": 7,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "North portal surface behind opening",
+      "position": "138.6 64.3 -114.5 180 18",
+      "candidateViewIndex": 8,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "north ramp 0.25",
+      "position": "142.67860037759831 63.53619151865642 -135.27226538153948 12 15",
+      "candidateViewIndex": 9,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "north ramp 0.65",
+      "position": "140.69189735074792 62.121575184898155 -125.8348738850364 12 15",
+      "candidateViewIndex": 10,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "south ramp 0.25",
+      "position": "136.1154656076001 63.914208244370656 -100.3421803129652 12 15",
+      "candidateViewIndex": 11,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "south ramp 0.65",
+      "position": "134.43357101442234 62.62923259746982 -92.52096726521302 12 15",
+      "candidateViewIndex": 12,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "East frontage aerial",
+      "position": "165.0 95.0 -110.0 90 55",
+      "candidateViewIndex": 13,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "North inner frontage night",
+      "position": "135.8 64.3 -131.0 0 3",
+      "candidateViewIndex": 14,
+      "worldTime": 18000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Central outer frontage night",
+      "position": "146.0 64.3 -114.0 90 8",
+      "candidateViewIndex": 15,
+      "worldTime": 18000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "north ramp 0.65 night",
+      "position": "140.69189735074792 62.121575184898155 -125.8348738850364 12 15",
+      "candidateViewIndex": 16,
+      "worldTime": 18000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "East frontage aerial night",
+      "position": "165.0 95.0 -110.0 90 55",
+      "candidateViewIndex": 17,
+      "worldTime": 18000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Frontage daylight restored before walking",
+      "position": "135.8 64.3 -131.0 0 3",
+      "candidateViewIndex": 18,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "Galileo east comparison standing",
+      "target": [
+        145.0,
+        63.93476356257272,
+        -115.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.937420623764524,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        -12.0
+      ],
+      "candidateViewIndex": 0,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "North inner frontage standing",
+      "target": [
+        135.8,
+        63.99958742427852,
+        -131.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.0011305589552,
+      "requireBodyClearance": true,
+      "look": [
+        0.0,
+        3.0
+      ],
+      "candidateViewIndex": 1,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Central inner frontage standing",
+      "target": [
+        131.5,
+        63.97347540688412,
+        -115.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.97501972509733,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        3.0
+      ],
+      "candidateViewIndex": 2,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South inner frontage standing",
+      "target": [
+        126.8,
+        63.92223118482563,
+        -88.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.92377721917473,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        3.0
+      ],
+      "candidateViewIndex": 3,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South outer approach standing",
+      "target": [
+        131.0,
+        63.879609871242906,
+        -75.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.88115639163096,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        3.0
+      ],
+      "candidateViewIndex": 4,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "North outer frontage standing",
+      "target": [
+        148.5,
+        63.96650296631572,
+        -133.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.970666181178046,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        8.0
+      ],
+      "candidateViewIndex": 5,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Central outer frontage standing",
+      "target": [
+        146.0,
+        63.88659902365437,
+        -114.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.91763216944051,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        8.0
+      ],
+      "candidateViewIndex": 6,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South outer frontage standing",
+      "target": [
+        141.0,
+        63.89179259189057,
+        -92.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89394779339557,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        8.0
+      ],
+      "candidateViewIndex": 7,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "North portal surface behind opening standing",
+      "target": [
+        138.6,
+        63.95260386224331,
+        -114.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.95414936926983,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        18.0
+      ],
+      "candidateViewIndex": 8,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "north ramp 0.25 standing",
+      "target": [
+        142.67860037759831,
+        63.33619150665033,
+        -135.27226538153948
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 63.390409604940565,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 9,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "north ramp 0.65 standing",
+      "target": [
+        140.69189735074792,
+        61.92157379760341,
+        -125.8348738850364
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 61.96887114870459,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 10,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "south ramp 0.25 standing",
+      "target": [
+        136.1154656076001,
+        63.71420838064306,
+        -100.3421803129652
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 63.7603137440982,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 11,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "south ramp 0.65 standing",
+      "target": [
+        134.43357101442234,
+        62.42923133161562,
+        -92.52096726521302
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 62.48518434115281,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 12,
+      "maxSupportError": 0.125
+    }
+  ],
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610,
+    1000010700,
+    1000010800
+  ],
+  "standingSurfacesManifestSha256": "1eebfab4fea16525209ae4551dead1f0c25707a29b4223265456d49668cf87ae",
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "baselineArtifactSha256": "60fb1985223086f1b790d4b78a013f54fd60bf10e6582e80c706910163eae144"
+}

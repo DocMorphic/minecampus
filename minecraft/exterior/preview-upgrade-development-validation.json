@@ -1,220 +1,155 @@
 {
-  "status": "Reviewed local terrain repair; broader realism goal remains active",
-  "candidate": 94,
+  "status": "Reviewed local bounded asphalt upgrade; broader realism goal remains active",
+  "candidate": 97,
   "artifact": {
     "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
-    "size": 345817591,
-    "sha256": "60fb1985223086f1b790d4b78a013f54fd60bf10e6582e80c706910163eae144",
-    "rendererSourceFingerprint": "82babc132cc547dc",
-    "bundleSha256": "cc53f6cc4d4014cb3a89ad5b46adb568c1eb0e88dfd6b7cc16334fc5c84afa39",
+    "size": 345821210,
+    "sha256": "ebff9ca4a8ceda72d0a52f664db7335d55c148933ff22fcaf73bee86625c9135",
+    "rendererSourceFingerprint": "2a4a221b6eaf538d",
+    "bundleSha256": "e0e022fcc649e9b333794ff83aeed2d6d2e155ea2515cbd31e80b9847a13527b",
     "tiles": 478,
-    "bundleUnpackedBytes": 806416581,
+    "bundleUnpackedBytes": 806423254,
     "bundleUnpackedLimit": 1073741824
   },
   "playablePreviewReady": true,
   "publicBinaryReleased": false,
   "goalComplete": false,
-  "upgradeFromArtifactSha256": "a539a9d15058534a9e7996964da15bf5cf22d260da70f1f969215732b8bfa083",
-  "previousBroaderReview": "preview-upgrade-93-development-validation.json",
-  "scope": "Bounded inferred finished grade beside Galileo east; fractional collision on existing ramp floors and collars. No interiors.",
-  "packagedScopeVerification": {
-    "status": "PASS: bounded grade and fractional ramp floors packaged; unrelated render/collision inputs preserved",
-    "artifactSha256": "60fb1985223086f1b790d4b78a013f54fd60bf10e6582e80c706910163eae144",
-    "rendererSourceFingerprint": "82babc132cc547dc",
-    "staticRenderTiles": 478,
-    "alignmentVersion": 91,
-    "unchangedRenderCollisionInputs": 660,
-    "changedRenderInputs": [
-      "galileo-east-ramps.ect",
-      "ground-698300-5349200.ect",
-      "ground-698300-5349300.ect",
-      "vegetation-4-2.ect"
-    ],
-    "unchangedServiceModules": 24,
-    "unchangedShaderFiles": 10,
-    "groundMaterialMaskUnchanged": true,
-    "uncompressedBundleBytes": 806416581
+  "upgradeFromArtifactSha256": "60fb1985223086f1b790d4b78a013f54fd60bf10e6582e80c706910163eae144",
+  "sourceBaseCommit": "2bb81b4dd381f7d14a2e2ae38f38c28a4b7129e7",
+  "implementationSourceHashes": {
+    "scripts/build-galileo-east-material.py": "6ff6f7f6905a711d09cedca8b08a3d0b8322d756b88d8a8ee1b64e567aef102f",
+    "scripts/validate-galileo-east-material.py": "4cf96b624a5e6ca53617d0664c1957563367c123d8465ca739a219d9e3ea95d3",
+    "scripts/build-exterior-release.py": "5399ef968f4acf1f811a78bb6ff92095f883dea50c86899dd810566b65479878",
+    "minecraft/exterior/galileo-east-material.json": "63fbed9390356f32fe2554633b4b292360e9cacd35235a2cd97e4e42494b9bf1",
+    "minecraft/exterior/photos/galileo-east-material-reference.json": "109cdee0e3bc8bffffd0def97ce407f56c1688c0f4e3ad86c1010720b3731e1a",
+    "minecraft/exterior/shaders/campus_ground.fsh": "ceb0564667c88e2ff826d3db3a83fcd09f2024b201eef29460c24481079bc171",
+    "minecraft/exterior/shaders/campus_reflection.fsh": "5303de6f3a71218bd835a55c9d6341279d1af5660b1aca2376733cf233bf6366",
+    "minecraft/exterior/client/CampusReflections.java": "689c74a4fbe671a74187a35f4afef2609a46805e36137356ef6b02ee8385e8e9",
+    "minecraft/exterior/checks/galileo-east-material.json": "1979fd2209903b735aaf374cfe8564af6fc36abf94a08a7982e2cc4ac02211cd"
   },
-  "geometryValidation": {
-    "status": "PASS: bounded inferred grade, unchanged ramp floors/portals and stable material boundaries",
-    "manifestSha256": "1eebfab4fea16525209ae4551dead1f0c25707a29b4223265456d49668cf87ae",
-    "validatorSha256": "38e8a8895a48331156e94d8e53360346c5a5a2611a47af13c6126f362bbc791a",
-    "sourceSha256": "bb2e96090c385df5ee1776904119d512339e1eb39f12fb0d550077a0109bcf69",
-    "generatorSha256": "1d884fec9b8b884cd596fd9d5ad301117daf10918aa343995c6becf69f0d6c12",
-    "referenceSha256": "7571882257460b9649aa46f435ba38f79d4a34b3fd0a4e34032f3baafacd47c2",
-    "changedMeshes": [
-      "ground-698300-5349200.ect",
-      "ground-698300-5349300.ect",
-      "vegetation-4-2.ect",
-      "galileo-east-ramps.ect"
-    ],
-    "unchangedMeshes": 474,
-    "tileSha256": {
-      "ground-698300-5349200.ect": "768004a38832fbbd0b83e5b7343b0da54ecc846ddfaeef2ec50133f4eb56f311",
-      "ground-698300-5349300.ect": "8092b71a04a8b0aa1b73754a60409a1d691813f95cd1cc1761d9516efccce45d",
-      "vegetation-4-2.ect": "406c8e76fc96c11f269effaa4d992f2b0f9cdbc84bfe588fb5550f8d7617cee4",
-      "galileo-east-ramps.ect": "e7078aee277f260298b9d042db5606af1da2a37b90411530ab98ace82b23535b"
+  "scope": "Source-informed asphalt on Galileo east frontage and ramp floors/collars, aligned to the mapped grass verge. Shared main/reflection albedo. All pre-existing bundled map/collision/service records and textures unchanged.",
+  "sourceValidation": {
+    "status": "PASS: source-supported bounded asphalt, both render passes, exclusions and coordinate controls",
+    "sourceFiles": {
+      "galileo-east-material.json": "63fbed9390356f32fe2554633b4b292360e9cacd35235a2cd97e4e42494b9bf1",
+      "photos/galileo-east-material-reference.json": "109cdee0e3bc8bffffd0def97ce407f56c1688c0f4e3ad86c1010720b3731e1a",
+      "shaders/campus_ground.fsh": "ceb0564667c88e2ff826d3db3a83fcd09f2024b201eef29460c24481079bc171",
+      "shaders/campus_reflection.fsh": "5303de6f3a71218bd835a55c9d6341279d1af5660b1aca2376733cf233bf6366",
+      "client/CampusReflections.java": "689c74a4fbe671a74187a35f4afef2609a46805e36137356ef6b02ee8385e8e9",
+      "assets/textures/campus/asphalt_diff.png": "baa2f2ea36aa0e1003c3cc98ce6ea0ad69abba8ba8cc39598d32f1979f7fa357"
     },
-    "sourceControlMaximumResidualMetres": 0.1592626801105439,
-    "rasterCentreSamples": 114313,
-    "maximumEncodedSourceErrorMetres": 7.629065294167958e-06,
-    "changedGroundVertexRecords": 10310,
-    "cutEdgeVerticesBeyondGradeCollar": 9,
-    "maximumInterpolationReachBeyondCollarMetres": 0.42350667414557897,
-    "rampFloorsAndPortalBoundariesUnchanged": true,
-    "groundTexturesAndMaterialMaskUnchanged": true,
+    "generatorSha256": "6ff6f7f6905a711d09cedca8b08a3d0b8322d756b88d8a8ee1b64e567aef102f",
+    "validatorSha256": "4cf96b624a5e6ca53617d0664c1957563367c123d8465ca739a219d9e3ea95d3",
+    "areaSquareMetres": 1361.7850113617415,
+    "controls": [
+      {
+        "label": "north frontage",
+        "positionMC": [
+          135.8,
+          64,
+          -131
+        ],
+        "inside": true
+      },
+      {
+        "label": "central frontage",
+        "positionMC": [
+          131.5,
+          64,
+          -115
+        ],
+        "inside": true
+      },
+      {
+        "label": "south frontage",
+        "positionMC": [
+          126.8,
+          64,
+          -88
+        ],
+        "inside": true
+      },
+      {
+        "label": "north ramp",
+        "positionMC": [
+          140.69,
+          61.92,
+          -125.83
+        ],
+        "inside": true
+      },
+      {
+        "label": "south ramp",
+        "positionMC": [
+          134.43,
+          62.43,
+          -92.52
+        ],
+        "inside": true
+      },
+      {
+        "label": "east planted verge",
+        "positionMC": [
+          155,
+          64,
+          -120
+        ],
+        "inside": false
+      },
+      {
+        "label": "courtyard",
+        "positionMC": [
+          161.63,
+          64,
+          -110.93
+        ],
+        "inside": false
+      },
+      {
+        "label": "west promenade",
+        "positionMC": [
+          72,
+          64,
+          -125
+        ],
+        "inside": false
+      },
+      {
+        "label": "building roof",
+        "positionMC": [
+          131.5,
+          89,
+          -115
+        ],
+        "inside": false
+      }
+    ],
+    "geometryChanged": false,
     "nativeVisualAcceptance": false
   },
-  "dependentValidators": [
-    {
-      "validator": "validate-uyd-site.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-uyd-exterior.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-exterior.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-uta-exterior.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-reactor-exterior.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-reactor-site.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-reactor-east.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-site.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-mlz-courtyard-ground.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-atom-ei.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-atom-ei-canopies.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-atom-ei-west-entrance.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-library.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-container.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-p1-complex.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-woodland.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-new-laboratory.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-laboratory-site.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-ii.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-pinned-water.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-wsi.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-znn.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-znn-west.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-cala.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-physics-lmu.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-lmu-courtyard.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-lmu-east.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-riverbank.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-courtyard-ground.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-north-ground.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-mensa-terrace.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-reactor-ground.py",
-      "exitCode": 0
-    },
-    {
-      "validator": "validate-uta-landscape.py",
-      "exitCode": 0
-    }
-  ],
-  "packagedCollisionPreflight": {
-    "standingAndDatumChecks": 26,
-    "passed": true,
-    "maximumSupportErrorMetres": 0.047684341152809395,
-    "limitMetres": 0.125
+  "packagedScopeVerification": {
+    "status": "PASS: all existing service/bundle entries, textures and collision class unchanged; only bounded material shaders and reflection routing changed",
+    "artifactSha256": "ebff9ca4a8ceda72d0a52f664db7335d55c148933ff22fcaf73bee86625c9135",
+    "rendererSourceFingerprint": "2a4a221b6eaf538d",
+    "unchangedBundleEntries": 1049,
+    "unchangedTextures": 25,
+    "changedShaders": [
+      "assets/realworldmc/shaders/core/campus_ground.fsh",
+      "assets/realworldmc/shaders/core/campus_reflection.fsh"
+    ],
+    "uncompressedBundleBytes": 806423254
   },
   "native": {
     "exitCode": 0,
-    "durationSeconds": 400,
-    "plan": "checks/galileo-east-grade.json",
-    "planSha256": "7720703d782b63a0e63d77867fbcce1b37029572504cddfe23931f7289ea32fc",
-    "resultSha256": "9df70d802d01c392875805c0cfac6b466d4135844064314a2289ed81995c1e42",
-    "logSha256": "c45280464c99beee6e45d2450dd1d76095799190ce626e7dbf55eccf428ff0b9",
-    "cameraChecks": 14,
+    "durationSeconds": 464,
+    "plan": "checks/galileo-east-material.json",
+    "planSha256": "778c2c41144e435a1dd324ed5099fc80fb7bb3157dfd55c62599cb461a4434aa",
+    "resultSha256": "a1c13324e619e837ffa8ca82d3e34cf2d1b9fbafd9d23cfee0c20d4f7f0f3b1e",
+    "logSha256": "facd86b0ee15ecdc768681e0d3f8840e7af6dad2d4dd486898645c23df6a146f",
+    "cameraChecks": 19,
     "standingChecks": 13,
-    "reflectionCaptures": 14,
+    "nightViews": 4,
+    "reflectionCaptures": 19,
     "maximumStandingErrorMetres": 0.047684341152809395,
     "fractionalSupportChecks": {
       "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
@@ -251,7 +186,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-0.png",
+        "capture": "campus-galileo-east-material-97-walk-0.png",
         "clientPosition": "(145.0, 63.9375, -115.0)"
       },
       {
@@ -283,7 +218,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-1.png",
+        "capture": "campus-galileo-east-material-97-walk-1.png",
         "clientPosition": "(135.8, 64.0, -131.0)"
       },
       {
@@ -315,7 +250,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-2.png",
+        "capture": "campus-galileo-east-material-97-walk-2.png",
         "clientPosition": "(131.5, 64.0, -115.0)"
       },
       {
@@ -347,7 +282,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-3.png",
+        "capture": "campus-galileo-east-material-97-walk-3.png",
         "clientPosition": "(126.8, 63.9375, -88.0)"
       },
       {
@@ -379,7 +314,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-4.png",
+        "capture": "campus-galileo-east-material-97-walk-4.png",
         "clientPosition": "(131.0, 63.875, -75.0)"
       },
       {
@@ -411,7 +346,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-5.png",
+        "capture": "campus-galileo-east-material-97-walk-5.png",
         "clientPosition": "(148.5, 63.9375, -133.0)"
       },
       {
@@ -443,7 +378,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-6.png",
+        "capture": "campus-galileo-east-material-97-walk-6.png",
         "clientPosition": "(146.0, 63.9375, -114.0)"
       },
       {
@@ -475,7 +410,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-7.png",
+        "capture": "campus-galileo-east-material-97-walk-7.png",
         "clientPosition": "(141.0, 63.875, -92.0)"
       },
       {
@@ -507,7 +442,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-8.png",
+        "capture": "campus-galileo-east-material-97-walk-8.png",
         "clientPosition": "(138.6, 63.9375, -114.5)"
       },
       {
@@ -539,7 +474,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-9.png",
+        "capture": "campus-galileo-east-material-97-walk-9.png",
         "clientPosition": "(142.67860037759831, 63.375, -135.27226538153948)"
       },
       {
@@ -571,7 +506,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-10.png",
+        "capture": "campus-galileo-east-material-97-walk-10.png",
         "clientPosition": "(140.69189735074792, 62.0, -125.8348738850364)"
       },
       {
@@ -603,7 +538,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-11.png",
+        "capture": "campus-galileo-east-material-97-walk-11.png",
         "clientPosition": "(136.1154656076001, 63.75, -100.3421803129652)"
       },
       {
@@ -635,7 +570,7 @@
         "horizontalError": 0.0,
         "bodyClear": true,
         "alignmentWaitTicks": 20,
-        "capture": "campus-galileo-east-grade-94-walk-12.png",
+        "capture": "campus-galileo-east-material-97-walk-12.png",
         "clientPosition": "(134.43357101442234, 62.4375, -92.52096726521302)"
       }
     ]
@@ -643,86 +578,100 @@
   "preservation": {
     "installedPreviewSourceUnchanged": 47,
     "priorAlignmentJournalsUnchanged": true,
-    "activeV91AlignedChunks": 62,
+    "activeV91AlignedChunks": 66,
     "inventoryAndExperienceUnchanged": true,
     "originalSavesUnchanged": 121,
     "previewSavesUnchanged": 121,
     "previewSettingsUnchanged": 4
   },
   "visualReview": {
-    "reviewedCaptures": 41,
-    "captureSha256": {
-      "campus-galileo-east-grade-94-0.png": "660a8e55bf9dc463f8b19be616d5705d0b7d5619c580d5c37e8d0e4df1a329cc",
-      "campus-galileo-east-grade-94-1.png": "51a2718b4c46d077f383196f9a937c98af267b5d0a55f94c2a558a9e8dee9652",
-      "campus-galileo-east-grade-94-10.png": "de0033c57559cea3c1c245901247fd86274367d7093c24651e7577da5370a4cf",
-      "campus-galileo-east-grade-94-11.png": "4ca1368fe0ba331a9704ad07dca856ebb87970699fd80fbfafbec6aad08050c1",
-      "campus-galileo-east-grade-94-12.png": "eeae59ec17e0dc914310c47d87b529e1c039eeec29610efafd8ee21526efbca1",
-      "campus-galileo-east-grade-94-13.png": "f7b1b4bbd3a5fa8c108e974da43a4d43dc7a2c9d7149f17487464a9bcb790da9",
-      "campus-galileo-east-grade-94-2.png": "15fc99ed746be4885d8479b1e1db18326bc3fc69bc8f9895f1a3dee029f94da6",
-      "campus-galileo-east-grade-94-3.png": "b9a04cce32064120ba383b7214ee867f199bdaf1a824f29363e21e54c4247084",
-      "campus-galileo-east-grade-94-4.png": "30d84a310d53ae0283a19da08072398c9cc53777c121981f7e59cd7fce0500b4",
-      "campus-galileo-east-grade-94-5.png": "7aa02a80f303e31801c454a4c17637c0d2d40cee71407573d898c6d937c878a2",
-      "campus-galileo-east-grade-94-6.png": "1adf9981b077c0e306a85e97b8236f3ed19176fe3d8209663542b4365c55db1d",
-      "campus-galileo-east-grade-94-7.png": "23141c45606b9e93d5636166440376dea68c0441079410e09f815dc56446dcda",
-      "campus-galileo-east-grade-94-8.png": "432e797fe71c61fbe6a10767bf18c098c8c3cea7cef49213da6d1abaa0006671",
-      "campus-galileo-east-grade-94-9.png": "7fe3ba223c3673473a0b804fc4d3f53e5e6e63cf63c8547a81c572ce2f9fed2f",
-      "campus-galileo-east-grade-94-reflection-0.png": "9d4f949c5943e25bf4ad254837a3759c8ec459ef76fa843b8d15107b045a1dbe",
-      "campus-galileo-east-grade-94-reflection-1.png": "b884ab02461bd2127b188c8d610a1c7c73167fb5c62cc5f231b09824a0c2fa5b",
-      "campus-galileo-east-grade-94-reflection-10.png": "ebb91dfd842f9008a3703a5ca8b7aaac9ebc0516f51942187fa18d3c8dbacaa1",
-      "campus-galileo-east-grade-94-reflection-11.png": "457d015235227b19e6032047425d167066285558de44bce852444567a5b3cc41",
-      "campus-galileo-east-grade-94-reflection-12.png": "8fa10e5900c752fdb46d7f60de0f87a10f5caf1ff3f17524fcb37f977562061f",
-      "campus-galileo-east-grade-94-reflection-13.png": "a01415324d923e06c98c3f9b6a70f66d3b83378607ba76396db44adfaf2c91ab",
-      "campus-galileo-east-grade-94-reflection-2.png": "cfd8ecde1bcdffd2683b649fd2adbfa092d7b1df18d3e67320e93d08656adbe8",
-      "campus-galileo-east-grade-94-reflection-3.png": "2bbd615f632cf312354f2c8a4ffac31db163b96b14ffffe142c22cb2bb43d803",
-      "campus-galileo-east-grade-94-reflection-4.png": "89320c3e84e698765f029c1ad66e4c558a2449109786fcd2bf5a938b75dcec99",
-      "campus-galileo-east-grade-94-reflection-5.png": "28a169165e14e715bf223d6054d66f69d65325f170151fcd5b7052790eb5075f",
-      "campus-galileo-east-grade-94-reflection-6.png": "78257c87b51a3f8259c70397447c9e8017318ff775ea33599f2e59601a20c631",
-      "campus-galileo-east-grade-94-reflection-7.png": "53b1b449ead22f0879614f4c9f0073487550a508ac0eed6d95d4a1c674f9562e",
-      "campus-galileo-east-grade-94-reflection-8.png": "c795684e5ecfb255c16a92dc2106d8f4feed4f1dc1957d27c84c62bd4d6dde37",
-      "campus-galileo-east-grade-94-reflection-9.png": "60b014e113e5e0a986e77ac8b2d583684192bfb9be827444f31fdf2ffa073e74",
-      "campus-galileo-east-grade-94-walk-0.png": "9823a5604aa2337befea3c8f84e30b160cd9e176d30a1affc7e7956e04eacf9f",
-      "campus-galileo-east-grade-94-walk-1.png": "5bd9185aacbdc072409bfec056db2108dcf0f728ef98e24ee05abfa6986ddf2b",
-      "campus-galileo-east-grade-94-walk-10.png": "f26c63addd4e1035b95f66985dd5202419bb3dbc68c5db00dc5a4a881324d2b6",
-      "campus-galileo-east-grade-94-walk-11.png": "a1b99e8ca49c39258ff4fd15d28c857512d69851fc3e970b44f77b22e3f72b46",
-      "campus-galileo-east-grade-94-walk-12.png": "378ffb0a5250887f70bc32b68ac5c63388f81063f619231a5bbfcfd58c37b276",
-      "campus-galileo-east-grade-94-walk-2.png": "0f974c8d6dd4f346e5db2cf3bce79ebcac0ecac533c23ea3c75c89ec2d35027e",
-      "campus-galileo-east-grade-94-walk-3.png": "743e6a4e7ce1304fcc690b0a66c45497bc073e630c375d0370627bba84ff51b0",
-      "campus-galileo-east-grade-94-walk-4.png": "fd4646ee11d8ba2c8748b8fa33f265d7f98503c133af6d52dabcdc98f36e170e",
-      "campus-galileo-east-grade-94-walk-5.png": "ab3fcbb1f702a2445c65d92d9b85eb1c883cdda6b2e4c5e015df6ccb9e3e6fc4",
-      "campus-galileo-east-grade-94-walk-6.png": "ceec0272d40a108cb876c1a56db1cfc308c6d1b507b2a44d43659403040bddd3",
-      "campus-galileo-east-grade-94-walk-7.png": "7a2d270d56dd5981368181e07ee2c819a153a4cf5bf7c696f2937e7e6750d3fc",
-      "campus-galileo-east-grade-94-walk-8.png": "28cf38ebc4cfdcce5a6c8ff11ef9b6554a94d562fd4ee507386fc5884cf6ad32",
-      "campus-galileo-east-grade-94-walk-9.png": "4a8d6cc114d2fe992c8327b752077d943c62768521ee5e89dbf5347f500e17e3"
-    },
-    "acceptedScope": "Smoother connected facade frontage and retaining-wall upper joins; ramp floors remain unobstructed in the tested views.",
+    "allCapturesReviewed": true,
+    "reviewedCaptures": 51,
+    "acceptedScope": "Bounded asphalt finish on the Galileo east frontage, ramp floors and collars; consistent main and reflected appearance, mapped verge alignment and preserved player footing. Day, night, aerial, walking and diagnostic reflection captures reviewed.",
     "remainingLimitations": [
-      "Pale blurred aerial ground colours and baked shadows remain.",
-      "Nearby untreated buildings still have coarse photographic surfaces.",
-      "Facade divisions, ramp width and finished grade are inferred rather than an as-built survey.",
-      "Diagnostic reflection captures retain edge sampling artifacts; reflection shaders are unchanged."
+      "Neighboring low buildings still have coarse geometry and blurry facades.",
+      "Asphalt finish and panel details are source-informed approximations, not an as-built survey.",
+      "The mapped verge includes an explicitly inferred 3.3 metre southern continuation.",
+      "Transitions to untouched aerial ground, flattened parked cars and photographic shadows remain visible.",
+      "Night views lack detailed local building lighting.",
+      "Raw reflection buffers retain sampling artifacts on thin frames; full campus visual acceptance remains pending."
     ],
+    "captureSha256": {
+      "campus-galileo-east-material-97-0.png": "a8c8d2d9efa7c45d3f48b9482fb8d6cddc2424866e27f44b61735706cf2ca7e1",
+      "campus-galileo-east-material-97-1.png": "cbcfdb97a6fd844f87021863c5d3de364c7d194f49b08455b34c3a2694032105",
+      "campus-galileo-east-material-97-10.png": "dea9f34d8cbaf03dcc58fac0c83896f2b86cb0c18aa5938214b9f59d5d5bcee0",
+      "campus-galileo-east-material-97-11.png": "c1558eb2849ac5adb28c186d5336a908d0c3b0d856061fa0f4cc262acd2a68eb",
+      "campus-galileo-east-material-97-12.png": "a620f5ffda0ab41038d6a91b55b9566edeb085328be9fc163c7b3d402394ba5c",
+      "campus-galileo-east-material-97-13.png": "8342f7d156d246a8e3b3c67c1f1fe61f77f2ae45f68f76c5d9445b3434b7af9c",
+      "campus-galileo-east-material-97-14.png": "dc0020773fcbd101d9bb5700a175898acb8aea35957f67b3408d168ee6c751b5",
+      "campus-galileo-east-material-97-15.png": "a41e38fdd1a9a4fdb9c0de6efbf0be63c4c39af6c58db7c7fb4b14e6c0aab03c",
+      "campus-galileo-east-material-97-16.png": "d1890558c595009f55e3530814a30e511f52fabbb08038a36cb3746452ed89ac",
+      "campus-galileo-east-material-97-17.png": "204a72b20a7335e831b0af1ce9769d6d688e3dbee68cc9bf19038a6aab19ecdf",
+      "campus-galileo-east-material-97-18.png": "0b697d23765fcc223fdbff95b1dd7ed5a733f2d5b7be8888cc5745f1a37f76f5",
+      "campus-galileo-east-material-97-2.png": "f991a13c9848815bcfb17d4882ebfe820c35cc2c705cbb4bbbf20a401fa1baa7",
+      "campus-galileo-east-material-97-3.png": "009f3211705ee4d1dee5c3bb2428fb811a2bbd9d643b4294dc9d997eddf0b095",
+      "campus-galileo-east-material-97-4.png": "21d5cf53869734d517e21d6f99f2387e2848ed6ed54a20942afc73d9b8ede9ce",
+      "campus-galileo-east-material-97-5.png": "81c538a4909eeaf5f8efd199f0ea4d6caf4440b66f34aae44c5e8017800febcd",
+      "campus-galileo-east-material-97-6.png": "ab2f5d54480a263ec99ad74d7985ddf9debaef0790d25501e997d4820275b621",
+      "campus-galileo-east-material-97-7.png": "314325ce69b2f4e83aafdb7930ba0cb54cc8654c18c9b6d78df644c2a37f05c4",
+      "campus-galileo-east-material-97-8.png": "de7bd7d5d21531874df29b46bef462866aa82618d60fc2f4c929ca756b2b26f6",
+      "campus-galileo-east-material-97-9.png": "e109a5d0cf6745ebeaacaaa2d5f263abb363d2685a6b972670a60e376952c2e6",
+      "campus-galileo-east-material-97-reflection-0.png": "39e654a14e59c8c9fe7da9473ce90343883a511a6a3650ae5b890b6743046286",
+      "campus-galileo-east-material-97-reflection-1.png": "0573c418981dd3489e5a962380ac364844c1ef98f94d861c570a8f2c86a142cc",
+      "campus-galileo-east-material-97-reflection-10.png": "cb32360ca9567be077cfd3256c74d429d26324eb80c03d2fa747e76d7c92d469",
+      "campus-galileo-east-material-97-reflection-11.png": "cff4faacae55c43a022bb38d72610724254e241eee368594cde609fa0821df49",
+      "campus-galileo-east-material-97-reflection-12.png": "bfba7f1e431af7bd89d80e0e151106d239eae87f81ebbacf660d72cd801f5ef4",
+      "campus-galileo-east-material-97-reflection-13.png": "464b4070620deb2d39b8ba78b6d72d2c3e27c23aed9ecd22c323777386cdad97",
+      "campus-galileo-east-material-97-reflection-14.png": "4c5b3f60191f03f92424cc8b26d7b92bb5f3b16af857eee43ddde693e9bdb474",
+      "campus-galileo-east-material-97-reflection-15.png": "99b412e3c115ccd09dd5130458a6f68a18af95cd234152a0a92b4941f17550b3",
+      "campus-galileo-east-material-97-reflection-16.png": "1a3b6a9b823f1f646378d9249363b56ef9a463eaf3546cc96cffda807623f344",
+      "campus-galileo-east-material-97-reflection-17.png": "bd8f52e71a473a59bc63ee3fa6618f29d355972d21f3c716d4baf8d562621d80",
+      "campus-galileo-east-material-97-reflection-18.png": "0573c418981dd3489e5a962380ac364844c1ef98f94d861c570a8f2c86a142cc",
+      "campus-galileo-east-material-97-reflection-2.png": "0a7f6da22cdbcd064915e4cd9926b1979a921996cc984776bf9742617cf0f78c",
+      "campus-galileo-east-material-97-reflection-3.png": "4b0b58fee3123f061093cfc5fc7efefefaea814c7db96b10b09403200ac48ffe",
+      "campus-galileo-east-material-97-reflection-4.png": "43f74110627e1bbb3dc8b41c898ed56851c524f3e37bb5499114a4df3114fa7a",
+      "campus-galileo-east-material-97-reflection-5.png": "3803f6be86052fc7eeab85f7eda717fa9992c345f8748a46267a97d4ff117032",
+      "campus-galileo-east-material-97-reflection-6.png": "93d75724888e4e6a75be41af6fe1b56fb7840b6dde597a00f9a20003a5768447",
+      "campus-galileo-east-material-97-reflection-7.png": "cb8001248c9b52c10592ae36c93ae8679634dbd5b1b941562918ae8a4200ac71",
+      "campus-galileo-east-material-97-reflection-8.png": "a9ba2328fdf65e72847060eb4bcfcfe7cbdea9dc9ffcc6cae823aa84e8deed65",
+      "campus-galileo-east-material-97-reflection-9.png": "83b159c983ad781ee4046da9302dda2a89939db9526489534353b39d28ae99d6",
+      "campus-galileo-east-material-97-walk-0.png": "c6460113da77f3caf1bea2e8a0ed8fcf48f349e0923b666c346a815ac585f4a2",
+      "campus-galileo-east-material-97-walk-1.png": "fd56402cbc847dade55818301207519cb7fb337df5b42b76a528311747f7265d",
+      "campus-galileo-east-material-97-walk-10.png": "5fc703e6452a6756e3d2237aad716f014772aab52c697e24fe6eebc0b3a749fb",
+      "campus-galileo-east-material-97-walk-11.png": "c6363f20990ccc497e82b7e64ab6d2b1cf51f4bc68b22ac4d0ef5f0960f87db9",
+      "campus-galileo-east-material-97-walk-12.png": "1c4be2e25f878ca2f6fb0ff889eb70bbb1d868aeafd9b07f1197baea01d2e0d8",
+      "campus-galileo-east-material-97-walk-2.png": "1a4c8b00ee430121010550ec74b3e1f54c4014d35f0e49c51bcfb8f74409ca98",
+      "campus-galileo-east-material-97-walk-3.png": "08b23b432a3bdd87bc88de61b7e90d403756c7c34e2544bce92b2515f6a9725c",
+      "campus-galileo-east-material-97-walk-4.png": "fa9a51e9f3c69ef23bc9bb897e119bdab756d502a1d9620f3d60719d0d27d597",
+      "campus-galileo-east-material-97-walk-5.png": "e39f8d0ee7d125a38b1e4182c1a9772ae5734a6af1561d75e88fe156361c2182",
+      "campus-galileo-east-material-97-walk-6.png": "cfb16ccc0e3be6443a1c57ad82ca1b308761df7aa814f083c17d92fbc9a9936f",
+      "campus-galileo-east-material-97-walk-7.png": "cdfbce7ec6ac8cb37486f0c545b2f132b57dd908d69856d6e1cacc0fadb2e366",
+      "campus-galileo-east-material-97-walk-8.png": "74f0d9f2f75409c4b14ba89210a18d4c92eb6ffbda064846aa48ebb88d19d6b4",
+      "campus-galileo-east-material-97-walk-9.png": "2fcb49586ce66952da709196c45308e315e97bcef0207ef68d107c2c3a6fdbd3"
+    },
     "fullVisualAcceptance": false
   },
+  "priorCandidates": [
+    {
+      "candidate": 95,
+      "artifactSha256": "20f4e6bab6090aa6ce78ae7c537ff7861191719a3fedf1a795ce3bd5a4b62100",
+      "decision": "Rejected: ramp collars changed, main terrain missed because its MaterialDetail is 19. Native functional checks passed but did not prove appearance."
+    },
+    {
+      "candidate": 96,
+      "artifactSha256": "34a36155fec66a1a16d50a054d52b218258235d4a41f851fc5098b3d33d18ae9",
+      "decision": "Held: routing fixed, but the conservative outer cutoff left a pale band before the grass. Revised to the pinned mapped verge."
+    }
+  ],
+  "previousTerrainReview": "galileo-east-grade-development-validation.json",
+  "previousBroaderReview": "preview-upgrade-93-development-validation.json",
   "installation": {
     "completed": true,
-    "profile": "Minecampus \u2014 Exterior Preview 0.5",
-    "artifactSha256": "60fb1985223086f1b790d4b78a013f54fd60bf10e6582e80c706910163eae144",
+    "artifactSha256": "ebff9ca4a8ceda72d0a52f664db7335d55c148933ff22fcaf73bee86625c9135",
     "previousArtifactBackedUp": true,
-    "originalSaveFilesUnchanged": 121,
-    "previewSaveFilesUnchanged": 121,
-    "privateSettingsUnchanged": 4,
-    "onlyRecordedPreviewModReplaced": true
-  },
-  "sourceBaseCommit": "34d87562cfed6900f3f9f6e63ccf11063f14d470",
-  "implementationSourceHashes": {
-    "minecraft/exterior/native/CampusCollision.java": "a3518c5a4ed45231087ab234145c457d2fbf92e81a9111e54d2785ffdb86647e",
-    "scripts/build-exterior-release.py": "6874b662e8dbff1ebb4e5741e54fba812e954288878fe5da909702a3f4136511",
-    "scripts/build-exterior.py": "ade391cd5cafa7c41ff73d0c7c9af11eaeb1ad6dc65ddf000bebb603c33f5fec",
-    "scripts/exterior_galileo_ramps.py": "bf5f19a29cf131da504483396b939b83702f8888eaac76ebc61c4401c061ae46",
-    "scripts/exterior_mlz_courtyard_ground.py": "066cfe83d7fec1a1f70f2d54e03a2a72510fb42727991e546b97653535d65603",
-    "scripts/exterior_galileo_east_grade.py": "1d884fec9b8b884cd596fd9d5ad301117daf10918aa343995c6becf69f0d6c12",
-    "scripts/validate-galileo-east-grade.py": "38e8a8895a48331156e94d8e53360346c5a5a2611a47af13c6126f362bbc791a",
-    "minecraft/exterior/galileo-east-grade.json": "bb2e96090c385df5ee1776904119d512339e1eb39f12fb0d550077a0109bcf69",
-    "minecraft/exterior/photos/galileo-east-grade-reference.json": "7571882257460b9649aa46f435ba38f79d4a34b3fd0a4e34032f3baafacd47c2"
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4,
+    "initialAttempt": "Disk full during staging; installed candidate94 remained unchanged. Removed incomplete staging output and inactive regenerable remap caches, then retried successfully."
   }
 }

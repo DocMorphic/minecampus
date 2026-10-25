@@ -1,0 +1,81 @@
+{
+  "reference": "photos/galileo-east-material-reference.json",
+  "qualification": "Exterior asphalt inferred from the landscape architect description, completed photographs and BVV DOP20. The outer edge follows the pinned OSM grass-verge boundary rather than a conservative rectangular cutoff. Asphalt appearance and north/south limits remain estimates, not an as-built survey. Geometry, openings, collision and saves are unchanged.",
+  "polygonEPSG25832": [
+    [
+      698342.9898262777,
+      5349351.767724951
+    ],
+    [
+      698331.1360030336,
+      5349271.854309823
+    ],
+    [
+      698348.2124491628,
+      5349269.321303648
+    ],
+    [
+      698359.2612282208,
+      5349349.354133663
+    ]
+  ],
+  "polygonMC": [
+    [
+      134.1065823544519,
+      -143.75079302394292
+    ],
+    [
+      119.47957794099415,
+      -64.2982690296895
+    ],
+    [
+      136.45753398516828,
+      -61.172670082875385
+    ],
+    [
+      150.2841373840738,
+      -140.77254588779866
+    ]
+  ],
+  "heightRangeMC": [
+    59,
+    66
+  ],
+  "edgeBlendMetres": 0.12,
+  "asphaltMetresPerRepeat": 4,
+  "albedoMultiplier": 0.85,
+  "material": "assets/textures/campus/asphalt_diff.png",
+  "materialSha256": "baa2f2ea36aa0e1003c3cc98ce6ea0ad69abba8ba8cc39598d32f1979f7fa357",
+  "groundFrameSha256": "dac308941dd1e176fe3d3d8be90b07fa771b49cc07dc461e03bfd9144922ae3d",
+  "referenceSha256": "109cdee0e3bc8bffffd0def97ce407f56c1688c0f4e3ad86c1010720b3731e1a",
+  "boundarySource": {
+    "file": "ground-surfaces.geojson",
+    "sha256": "ec1e32626a126dd856d6840dc6a535cb43b03a59288800e29126e6261ea0050a",
+    "osmWay": 1377864929,
+    "westEdgeWGS84": [
+      [
+        11.6730355,
+        48.2663096
+      ],
+      [
+        11.6728455,
+        48.2655794
+      ]
+    ],
+    "westEdgeEPSG25832": [
+      [
+        698359.9362303314,
+        5349354.243572477
+      ],
+      [
+        698348.6650709376,
+        5349272.599910394
+      ]
+    ],
+    "widthsFromInnerEdgeMetres": [
+      16.449435981198857,
+      17.263288582720023
+    ],
+    "maximumInferredEndContinuationMetres": 4
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-25",
+  "sources": [
+    {
+      "url": "https://slam.green/projekt/galileo-neue-mitte-am-hochschulcampus-garching-muenchen/",
+      "observation": "Eastern shared-space circulation connects ramps, deliveries and hotel approach. The architect describes asphalt with aggregate and adjacent planted areas."
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/1005_Lageplan_0-2048x799.jpg",
+      "sha256": "47db2a50de1fbf1351c1c119304760e4a1f8b55798479bb2b98ad681f49eba63",
+      "observation": "Plan separates the two ramps and narrow adjacent planted strips from the connected paved frontage.",
+      "use": "Research only, no image pixels bundled."
+    },
+    {
+      "url": "https://slam.green/wp-content/uploads/2024/07/SCC_Munich_Exterior_04-1024x683.jpg",
+      "sha256": "4fa310efd83a74b86f60d0ba7214bfd599a59f917e871d77ca827b33d89fc430",
+      "observation": "Completed exterior shows grey paved approach; asphalt albedo remains an estimate under different illumination.",
+      "use": "Research only, no image pixels bundled."
+    }
+  ],
+  "pinnedDopSha256": "8a78e3fc301332e607e514b8bca545d64e3b1a956ecf02a723301b0982ab0dae",
+  "boundsMethod": "Surveyed facade inner edge and source-informed north/south limits, with the outer edge aligned to the existing OSM grass way 1377864929 western segment. Native candidate 96 exposed a pale untreated margin at the previous estimated 14 m cutoff. The mapped straight edge is continued about 3.3 m beyond its southern vertex to meet the existing facade-end limit; this short continuation is inferred from adjoining paved imagery.",
+  "materials": "Existing CC0 Poly Haven asphalt_04 texture at a four-metre repeat; no new texture download.",
+  "vergeBoundary": {
+    "source": "ground-surfaces.geojson",
+    "sha256": "ec1e32626a126dd856d6840dc6a535cb43b03a59288800e29126e6261ea0050a",
+    "osmWay": 1377864929,
+    "westEdgeWGS84": [
+      [
+        11.6730355,
+        48.2663096
+      ],
+      [
+        11.6728455,
+        48.2655794
+      ]
+    ],
+    "westEdgeEPSG25832": [
+      [
+        698359.9362303314,
+        5349354.243572477
+      ],
+      [
+        698348.6650709376,
+        5349272.599910394
+      ]
+    ],
+    "maximumInferredEndContinuationMetres": 4
+  }
+}

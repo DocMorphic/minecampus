@@ -165,14 +165,15 @@ public final class CampusReflections {
                 caster.safeGetUniform("TileAnchor").set((float)tile.data.anchorX,(float)tile.data.anchorY,(float)tile.data.anchorZ);
                 boolean ground=(tile.data.id>=1_000_000_000&&tile.data.id<1_000_000_036)
                     ||(tile.data.id>=1_000_060_000&&tile.data.id<1_000_061_300);
-                caster.safeGetUniform("SurveyedGround").set(ground?1f:0f);
                 for(int p=0;p<tile.partCount();p++){
                     if(tile.isEmpty(p))continue;
                     if(CampusCanopyGlass.isGlass(tile.data.id,p))continue;
+                    boolean groundPart=ground||(tile.data.id==1_000_030_022&&(p==1||p==3));
+                    caster.safeGetUniform("SurveyedGround").set(groundPart?1f:0f);
                     boolean leaves=CampusFoliage.applies(tile.data.id,p);
                     caster.safeGetUniform("AlphaCutoff").set(leaves?.45f:.1f);
                     RenderSystem.setShaderTexture(0,tile.textureId(p));
-                    var buffer=tile.buffer(p);buffer.bind();buffer.drawWithShader(modelView,projection,caster);draws++;if(ground)groundDraws++;
+                    var buffer=tile.buffer(p);buffer.bind();buffer.drawWithShader(modelView,projection,caster);draws++;if(groundPart)groundDraws++;
                 }
             }
             updates++;
