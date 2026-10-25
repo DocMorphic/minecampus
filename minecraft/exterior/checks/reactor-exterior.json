@@ -1,6 +1,6 @@
 {
-  "name": "reactor-candidate-80",
-  "purpose": "Verify the complete surveyed FRM II exterior, curved roof, connecting wings and neighboring Atom-Ei views; check walking on all reachable sides.",
+  "name": "reactor-site-candidate-81",
+  "purpose": "Verify reconstructed FRM II exterior and ground approaches after bounded height-aware scan retirement; retain the failed east first-hit assertion and native walking checks.",
   "captureWalking": true,
   "reflectionEvidence": true,
   "checkFractionalSupports": true,
@@ -70,7 +70,8 @@
     1000010500,
     1000010501,
     1000010600,
-    1000010610
+    1000010610,
+    1000010700
   ],
   "cameras": [
     {
@@ -215,8 +216,8 @@
       ]
     },
     {
-      "label": "south tower approach elevated diagnostic",
-      "position": "356 82 -42 176.18592516570965 -5.244837811548195",
+      "label": "south tower approach",
+      "position": "356 63.94211349487305 -42 176.18592516570965 -52.28156901422033",
       "worldTime": 6000,
       "reflections": true,
       "screenRays": [
@@ -233,8 +234,8 @@
       ]
     },
     {
-      "label": "south connector elevated diagnostic",
-      "position": "303 82 -46 -171.0273733851036 39.0781568776712",
+      "label": "south connector",
+      "position": "303 64.13787994384765 -46 -171.0273733851036 -6.648523883399627",
       "worldTime": 6000,
       "reflections": true,
       "screenRays": [
@@ -436,6 +437,52 @@
       "reactorExterior": true
     },
     {
+      "label": "south tower approach",
+      "target": [
+        356,
+        63.84211349487305,
+        -42
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061022,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.84211349487305,
+      "requireBodyClearance": true,
+      "look": [
+        176.18592516570965,
+        -52.28156901422033
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "south connector",
+      "target": [
+        303,
+        64.03787994384766,
+        -46
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061020,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.03787994384766,
+      "requireBodyClearance": true,
+      "look": [
+        -171.0273733851036,
+        -6.648523883399627
+      ],
+      "reactorExterior": true
+    },
+    {
       "label": "concrete west arc",
       "target": [
         267,
@@ -459,7 +506,7 @@
       "reactorExterior": true
     }
   ],
-  "qualification": "East-facing cameras sit above the adjoining surveyed building, not on an outdoor walking route. Two southern approaches lack encoded ground and are elevated diagnostics pending ground extension. North/west standing controls are outside surveyed footprints on encoded terrain. Visual acceptance is separate.",
+  "qualification": "East-facing views sit above the adjoining surveyed building. Five new north/west/south standing controls use encoded surveyed ground outside building footprints. Source geometry and service passes do not establish visual acceptance.",
   "canopyGlassEvidence": true,
   "diagnosticBounds": [
     [

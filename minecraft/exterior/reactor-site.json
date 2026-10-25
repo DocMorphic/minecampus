@@ -1,0 +1,14 @@
+{
+  "building": "DEBY_LOD2_5323135",
+  "boundsUTM": [698430, 5349230, 698650, 5349360],
+  "outdoorMarginMetres": 20,
+  "buildingGuardMetres": 0.25,
+  "groundBuildingGuardMetres": 0.005,
+  "groundBlendMetres": 2,
+  "groundRuntimeId": 1000061000,
+  "treeRuntimeId": 1000010700,
+  "trunkInsetMetres": 0.6,
+  "facadeCleanupMarginMetres": 2.5,
+  "neighbourRoofGuardMetres": 0.4,
+  "qualification": "BVV DGM1/DOP20 supplies missing terrain and its appearance; DOM20/DGM1/DOP20 fits additional tree centres, heights and crowns. Branches and species are estimates. Outdoor cleanup is confined to the 20 m building approach and excludes surveyed buildings and roof overhangs. Upper facade cleanup is split into height bands: each neighbouring building is protected through its maximum surveyed roof plus 0.4 m. No interiors or neighbouring architecture are reconstructed in this pass."
+}

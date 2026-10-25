@@ -45,4 +45,4 @@ for(const shift of [0,2]){
   results.push({label:p.label,shift,standingY,expected,residual:standingY-expected,bodyClear:true});
  }
 }
-console.log(JSON.stringify({status:'PASS: surveyed wall and roof controls retain collision; measured north/west walking routes clear at both datums',wallChecks,roofChecks,results,qualification:'East/south walking routes need ground extension. Native migration and visual acceptance are separate.'},null,2));
+console.log(JSON.stringify({status:'PASS: surveyed wall and roof controls retain collision; measured approach walking routes clear at both datums',wallChecks,roofChecks,results,qualification:'East views are above an adjoining building. Native migration and visual acceptance are separate.'},null,2));

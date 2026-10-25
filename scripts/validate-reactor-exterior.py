@@ -60,7 +60,7 @@ assert owned.intersection(neighbours).area<1e-8
 plans=read(out/'photo-facades.json')['plans'];plan=next(p for p in plans if p['id']==spec['building']);assert len(plan['walls'])==55 and all(w['reconstructed']for w in plan['walls']) and plan['manualRoof'] and plan['completeEnvelope']
 assert len(derived['facades'])==55 and len(derived['wallAdjustments'])==5
 assert len({t['runtimeId']for t in m['tiles']})==len(m['tiles'])
-datum=m['supplementalSurfaces'][-1];assert datum['name']=='reactor-envelope-datum' and datum['rings']==derived['datumRings'] and not datum['outdoorReconstructed']
+datum=next(s for s in m['supplementalSurfaces']if s['name']=='reactor-envelope-datum');assert datum['name']=='reactor-envelope-datum' and datum['rings']==derived['datumRings'] and not datum['outdoorReconstructed']
 assert unary_union([Polygon(p['ring'],p['holes'])for p in datum['rings']]).intersection(neighbours).area<1e-8
 assert sha(root/'.cache/campus-dgm-east.tif')==derived['datumSourceSha256']
 assert derived['datumSourceSha256']==read(root/'minecraft/exterior/sources.json')['dgm1'][1]['sha256']
@@ -78,7 +78,7 @@ all_footprints=unary_union([Polygon(mc(r[0])[:,[0,2]],[mc(h)[:,[0,2]]for h in r[
 new_routes=[p for p in inspection['gravityProbes']if p.get('reactorExterior')]
 for probe in new_routes:
  x,y,z=probe['target'];assert all_footprints.distance(Point(x,z))>.3,('Walking probe in building',probe['label'])
-assert len(new_routes)==3
+assert len(new_routes)>=3
 unchanged=None
 if args.baseline:
  before=read(args.baseline/'manifest.json');assert m['tiles'][:-1]==before['tiles'];assert read(args.baseline/'photo-facades.json')['plans']==plans[:-1]

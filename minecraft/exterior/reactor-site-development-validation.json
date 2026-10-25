@@ -1,0 +1,321 @@
+{
+  "status": "Candidate 81 development checkpoint: geometry, package and service checks pass; native visual inspection pending",
+  "candidate": 81,
+  "alignmentVersion": 82,
+  "geometry": {
+    "status": "PASS: measured approach ground, exact aerial pixels, safe neighbour height bands and fitted tree placement",
+    "manifestSha256": "dc681e97a3ff8c72abaf0972e1c6d16e39b29047142e30e65b3737da7c3427de",
+    "validatorSha256": "c3a5e3b40557efbc0ab4fc4fa94299bb15f14911f6c1566f5416b653ffb8472d",
+    "sourceSha256": "bf73c7690b4ad4796efe061ab2426b377e4a73156d42a0469e38c9880d8f7807",
+    "derivedSha256": "14bae319a31c3b310b18aee3e986b5008a421a0c4c09473ad1d7688bda7a7997",
+    "groundTiles": 29,
+    "groundAreaSquareMetres": 2442.31109405159,
+    "maximumGroundHeightResidualMetres": 4.079105920595794e-06,
+    "maximumSeamErrorMetres": 3.8105043529412796e-06,
+    "missingOutdoorReplacementGroundSquareMetres": 0.0007821759676583101,
+    "protectedNeighbourOverlapSquareMetres": 0,
+    "newTrees": 1,
+    "priorRenderTilesUnchanged": 428,
+    "tileSha256": {
+      "reactor-approach-ground-280--140.ect": "974f8dd24c55d655f8281fe34a7dd4fe25545197560a18936a0c41b737d6883d",
+      "reactor-approach-ground-300--140.ect": "0d6924c0014e30b82b53b4917dc8af3075a6b3dff654add93d65147fc64eaf8b",
+      "reactor-approach-ground-320--140.ect": "71bdba529388b2e59dd8f7803415982045a49b9d48f6b2bff6a6fee91fff68f3",
+      "reactor-approach-ground-340--140.ect": "f8c96910be7a7c09cc1a39e6889aee743c95595b6385bcb41eeedc7bf49b16d2",
+      "reactor-approach-ground-360--140.ect": "924787a5f49833e13c01597e2bc44825b47fd560bdefa1569ab6f699afc25d98",
+      "reactor-approach-ground-380--140.ect": "941eb16b670adacb67fd12c4f0e4db41ec8e0d6f993938b3d07ea434de169ab0",
+      "reactor-approach-ground-280--120.ect": "e513b018bbb57d524aa7636fc12249c43d4550e71da3289ef51b0eba8d455d65",
+      "reactor-approach-ground-300--120.ect": "0005c29c36d03f39186df95aef612f19d0b34fed4a95f8c8be7045895a3850da",
+      "reactor-approach-ground-320--120.ect": "9bfd06805b1ea3be3322bfea6e84211e73bc05ee0ad30a024eb96062096ec5a4",
+      "reactor-approach-ground-340--120.ect": "dcea75e4279af38bd39db40490e89de774b525f8b01bdb95924bf3510a00c374",
+      "reactor-approach-ground-360--120.ect": "b129d9d2b88871e4cff62e7b7024facbf07de307c463010d747791a1306861c4",
+      "reactor-approach-ground-380--120.ect": "b4b6bd6d883ace6939a7de03c1134c604289ba66992c17007b24027789323a36",
+      "reactor-approach-ground-360--100.ect": "500f69889a8198d7669d2dbcb091403504e48a8ed7cd99535e5e57072920e464",
+      "reactor-approach-ground-380--100.ect": "a76593a1094c75e948496715a01e4882d9c3cea116f41890a893849f32925a20",
+      "reactor-approach-ground-280--80.ect": "8bb5daa3f3015e6be1c43f1d39e8a4558fec9a61f0430033e30ce17f7c130a42",
+      "reactor-approach-ground-300--80.ect": "682475dd0eab0e5b0b90cec3b0223a7d7e34e8bda0b2578f6ecde762606e664c",
+      "reactor-approach-ground-320--80.ect": "b593e2497af4cff8f42f6f9991d2afcd456604d56a38970d57e8e49514dc10c8",
+      "reactor-approach-ground-360--80.ect": "034663dda69971be71a1dc2da6d729a10b7f0207256f48fcf860b51c3e2aa4b3",
+      "reactor-approach-ground-380--80.ect": "4640e4e4f5aa653ee50bbd8c985bae10cfff0677e147e0debd7169a28842922d",
+      "reactor-approach-ground-280--60.ect": "c959e50b992f8a88b4db93f8f767daea956222fae28673c3c2653040f14017d7",
+      "reactor-approach-ground-300--60.ect": "a991452b0fb14113780121073e30deb1908d723522fe9943026ea91d40c6075f",
+      "reactor-approach-ground-320--60.ect": "168b571c15dba1ace1e996c2e8514a8b7dc1dfd6fedecf37de1ab1aba30e7681",
+      "reactor-approach-ground-340--60.ect": "d86e00141d0ebf237cde01aa6fd79c5598c9a976988bbeb0ce4942cb3e325c4f",
+      "reactor-approach-ground-360--60.ect": "c6f8015d5e6e1193b65ff3919a7e620ae7a80865e70a3a57ada5f0f945747dcd",
+      "reactor-approach-ground-380--60.ect": "17384f115ffc24bba8aac145795de416ccef40a6b8b6c46fbf494fded3b54226",
+      "reactor-approach-ground-320--40.ect": "afc3d15fe53f7ab3aa099824603a655da94faeed5bd5738cb8a6390cfbb03106",
+      "reactor-approach-ground-340--40.ect": "ffff5c7fbdafb2f1252d54a461521de66ebc2bb7ad828d5e1be640facea9c6dc",
+      "reactor-approach-ground-360--40.ect": "d42e0c9c21a8133e12851beebdb52500624b81aac779871697cbf48866dddd36",
+      "reactor-approach-ground-380--40.ect": "587db23e198ceb001c3bc9f34dac07cff3a205b84af39fd1c72d4f1ea4cd5c6d",
+      "reactor-site-vegetation-0-1.ect": "dc121d4639fe9d8d75f842d55a642d38b94b85f23e7d42f4abedaf804f8a03c7"
+    },
+    "visualAcceptance": false
+  },
+  "artifact": {
+    "status": "PASS: exact embedded approach terrain and retirement service; all prior render/collision inputs and facade plans unchanged",
+    "artifactSha256": "199b63c2eda5de2a6247b1d4bc3699db9a771b7a1591c879e3628b792163b939",
+    "rendererSourceFingerprint": "56fcd7823c54c188",
+    "renderTiles": 458,
+    "alignmentVersion": 82,
+    "previousRenderTilesByteIdentical": 428,
+    "previousRenderCollisionInputsByteIdentical": 609,
+    "unchangedServiceModules": 23,
+    "updatedSurveyModuleMatchesSource": true
+  },
+  "sourceValidation": [
+    {
+      "validator": "validate-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mlz-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-canopies.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-west-entrance.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-library.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-container.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-p1-complex.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-woodland.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-new-laboratory.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-laboratory-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-ii.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-pinned-water.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-wsi.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn-west.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-cala.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-lmu.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-courtyard.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-riverbank.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-north-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mensa-terrace.py",
+      "exitCode": 0
+    }
+  ],
+  "serviceUnitTests": {
+    "passed": 44,
+    "failed": 0,
+    "suites": [
+      "survey-surface.test.mjs",
+      "source-retirement.test.mjs"
+    ]
+  },
+  "scanRetirementRegression": {
+    "status": "PASS: three actual failed-view fragments removed at both datums; lower neighbour bytes preserved",
+    "controls": 8
+  },
+  "packagedServiceCollision": {
+    "status": "PASS: surveyed wall and roof controls retain collision; measured approach walking routes clear at both datums",
+    "wallChecks": 110,
+    "roofChecks": 48,
+    "results": [
+      {
+        "label": "mlz courtyard standing",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.89908177890647,
+        "residual": -0.024081778906470674,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.995528146961206,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 0,
+        "standingY": 63.8125,
+        "expected": 63.786881936432195,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "mlz courtyard standing",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.89908177890646,
+        "residual": -0.02408177890646357,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.9955281469612,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 2,
+        "standingY": 65.8125,
+        "expected": 65.7868819364322,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      }
+    ],
+    "qualification": "East views are above an adjoining building. Native migration and visual acceptance are separate."
+  },
+  "inspectionPlanSha256": "5f0ed7207cee4ef82df4d99c9019f916e83006164c9fc6156eb051d6f94eb141",
+  "nativeInspection": {
+    "status": "NOT RUN for candidate 81",
+    "plannedViews": 14,
+    "plannedStandingControls": 7,
+    "previousCandidate": 80,
+    "previousFailureEvidence": "reactor-development-validation.json",
+    "failedEastFirstHitAssertionRetained": true
+  },
+  "visualAcceptance": false,
+  "installation": {
+    "installedUserPreviewUnchanged": true,
+    "originalSavesOpenedByThisCheckpoint": false
+  },
+  "qualification": "This checkpoint adds measured approach ground and height-bounded source cleanup around FRM II. Service checks are not native gravity checks. A fresh packaged Minecraft inspection and image review are required before visual acceptance. The existing candidate 80 failure evidence is retained."
+}
