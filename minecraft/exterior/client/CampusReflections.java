@@ -164,6 +164,7 @@ public final class CampusReflections {
                 caster.safeGetUniform("TileAnchor").set((float)tile.data.anchorX,(float)tile.data.anchorY,(float)tile.data.anchorZ);
                 for(int p=0;p<tile.partCount();p++){
                     if(tile.isEmpty(p))continue;
+                    if(CampusCanopyGlass.isGlass(tile.data.id,p))continue;
                     boolean leaves=CampusFoliage.applies(tile.data.id,p);
                     caster.safeGetUniform("AlphaCutoff").set(leaves?.45f:.1f);
                     RenderSystem.setShaderTexture(0,tile.textureId(p));

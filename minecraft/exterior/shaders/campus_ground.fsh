@@ -148,11 +148,11 @@ void main() {
         float course=worldPosition.y/1.8;
         float jointWidth=max(fwidth(course),.0001);
         float joints=(1.0-smoothstep(.004,.004+jointWidth,abs(fract(course+.5)-.5)))*(1.0-smoothstep(.15,.6,jointWidth));
-        float patina=.96+.04*noise(vec2(panel*.73,worldPosition.y*.18));
-        float diffuse=.66+.34*max(dot(n,CampusSunDirection),0.0);
+        float patina=.94+.06*noise(vec2(panel*.73,worldPosition.y*.18));
+        float diffuse=.56+.13*max(n.y,0.0)+.31*max(dot(n,CampusSunDirection),0.0);
         float highlight=pow(max(dot(reflect(-CampusSunDirection,n),view),0.0),30.0);
         float fresnel=pow(1.0-max(dot(n,view),0.0),4.0);
-        color.rgb=color.rgb*patina*diffuse*(1.0-.24*seams-.07*joints)
+        color.rgb=color.rgb*patina*diffuse*(1.0-.12*seams-.035*joints)
             +vec3(.13,.14,.15)*highlight+vec3(.035,.045,.06)*fresnel;
     }
     // Observed tan brick lower base. Original procedural mortar and subtle
@@ -171,6 +171,19 @@ void main() {
         vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
         if(dot(n,CameraPosition-worldPosition)<0.0)n=-n;
         color.rgb*=.68+.32*max(dot(n,CampusSunDirection),0.0);
+    }
+    // Open canopy roof glazing, composited after opaque geometry. Its frame
+    // casts shadows; glass does not cast the old solid-survey-volume shadow.
+    if(abs(MaterialDetail-29.0)<.1) {
+        vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
+        vec3 view=normalize(CameraPosition-worldPosition);
+        if(dot(n,view)<0.0)n=-n;
+        vec3 reflected=reflect(-view,n);
+        float fresnel=.04+.96*pow(1.0-max(dot(n,view),0.0),5.0);
+        vec3 environment=mix(vec3(.29,.34,.28),vec3(.64,.73,.80),smoothstep(-.05,.3,reflected.y));
+        float highlight=pow(max(dot(reflect(-CampusSunDirection,n),view),0.0),130.0);
+        color.rgb=mix(color.rgb,environment,.75)+vec3(.30)*highlight;
+        color.a=.20+.62*fresnel;
     }
     // The aerial image supplies surveyed colour and markings. Only close-range
     // material grain is reconstructed; it does not invent additional geometry.

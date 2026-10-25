@@ -372,6 +372,13 @@ public final class CampusSiteInspection {
         if(camera.has("materialControls"))row.add("gpuMaterialControls",CampusMaterialMaskCheck.check(mc,camera.getAsJsonObject("materialControls")));
         row.addProperty("capture", name); row.addProperty("playerPosition", mc.player.position().toString());
         row.addProperty("triangles", triangles); row.add("displayedIds", ids);
+        if(plan.has("canopyGlassEvidence")&&plan.get("canopyGlassEvidence").getAsBoolean()){
+            var glass=Class.forName("dev.realworldmc.client.CampusCanopyGlass");
+            int draws=glass.getField("draws").getInt(null);long checks=glass.getField("stateChecks").getLong(null);
+            row.addProperty("canopyGlassDraws",draws);row.addProperty("canopyGlassStateChecks",checks);
+            if(camera.has("expectCanopyGlass")&&camera.get("expectCanopyGlass").getAsBoolean()&&(draws<1||checks<1))
+                throw new AssertionError("Transparent canopy pass not active in required camera");
+        }
         row.addProperty("fps",mc.getFps());
         row.addProperty("actualGuiScale",mc.getWindow().getGuiScale());
         row.addProperty("guiWidth",mc.getWindow().getGuiScaledWidth());

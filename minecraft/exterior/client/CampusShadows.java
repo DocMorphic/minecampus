@@ -87,6 +87,7 @@ public final class CampusShadows {
                 Matrix4f mv=new Matrix4f(view).translate((float)tile.data.anchorX,(float)tile.data.anchorY,(float)tile.data.anchorZ);
                 for(int part=0;part<tile.partCount();part++){
                     if(tile.isEmpty(part))continue;
+                    if(CampusCanopyGlass.isGlass(tile.data.id,part))continue;
                     boolean leaves=CampusFoliage.applies(tile.data.id,part);
                     shader.safeGetUniform("AlphaCutoff").set(leaves?.45f:.1f);
                     RenderSystem.setShaderTexture(0,tile.textureId(part));

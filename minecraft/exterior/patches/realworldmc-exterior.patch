@@ -51,7 +51,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -422,17 +444,76 @@
+@@ -422,17 +444,79 @@
  		RenderSystem.depthMask(true);
  		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
@@ -79,6 +79,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				(float) (t.data.anchorX - cam.x), (float) (t.data.anchorY - cam.y), (float) (t.data.anchorZ - cam.z));
  			for (int i = 0; i < t.partCount(); i++) {
  				if (t.isEmpty(i)) continue;
++                if(campus && CampusCanopyGlass.isGlass(t.data.id,i))continue;
 +                if(campus)CampusMaterials.bindConcrete(t.data.id==1_000_030_033&&(i==0||i==2||i==5)?2:((t.data.id==1_000_030_028||t.data.id==1_000_030_029||t.data.id==1_000_030_031||t.data.id==1_000_030_032)&&i==0?1:0));
 +                boolean physicsGround=campus&&surveyed;
 +                if(campus)CampusMaterials.bindGround(physicsGround?(t.data.id>=1_000_060_810&&t.data.id<=1_000_060_899?6:t.data.id>=1_000_060_400&&t.data.id<=1_000_060_899?5:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?3:t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?2:1):0);
@@ -107,6 +108,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?12f:(i==2?6f:7f));
 +                if(campus && t.data.id>=1_000_030_023 && t.data.id<=1_000_030_045)
 +                    tileShader.safeGetUniform("MaterialDetail").set(t.data.id==1_000_030_045?(i==0?7f:(i==3?0f:16f)):t.data.id==1_000_030_044?(i==2?6f:(i==0?7f:(i==4?0f:16f))):t.data.id==1_000_030_043?(i==2?6f:(i==4?0f:16f)):t.data.id==1_000_030_042?(i==4?0f:16f):t.data.id==1_000_030_041?(i==1?6f:(i==5?0f:16f)):t.data.id>=1_000_030_035?(i==1?6f:(i==4?0f:16f)):t.data.id==1_000_030_034?16f:t.data.id==1_000_030_033?(i==1?6f:(i==0||i==2?21f:(i==5?22f:(i==4?1f:16f)))):t.data.id>=1_000_030_031?(i==0?17f:(i==1||i==3||i==5?16f:(i==4?1f:0f))):(i==1?6f:(i==0?(t.data.id==1_000_030_030?16f:7f):(i==4?1f:0f))));
++                if(campus && CampusCanopyGlass.isCanopy(t.data.id))tileShader.safeGetUniform("MaterialDetail").set(16f);
 +                if(campus && t.data.id==1_000_030_046)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?27f:(i==1?28f:(i==3?6f:(i==5?0f:16f))));
 +                if(campus && (t.data.id==1_000_030_028||t.data.id==1_000_030_029) && i==0)
@@ -128,6 +130,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +				vb.drawWithShader(mv, proj, tileShader);
  			}
  		}
++        if(campusPass)CampusCanopyGlass.render(tiles,cam,frustum,view,proj,campusGroundShader);
  		VertexBuffer.unbind();
 @@ -455,6 +534,7 @@
  	private void markDirty(java.util.function.Predicate<MapTile> test) {

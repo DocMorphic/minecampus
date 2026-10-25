@@ -1,0 +1,43 @@
+{
+  "status": "Exterior canopy registration; native appearance and source retirement require separate validation",
+  "source": {
+    "url": "https://www.stbaro.bayern.de/hochbau/projekte/B15H.E1505200.01.html",
+    "videoUrl": "https://www.stbaro.bayern.de/mam/hochbau/neue_geb\u00e4ude_f\u00fcr_die_forschungs-neutronenquelle_heinz_maier-leibnitz.mp4",
+    "credit": "FRM II / TUM",
+    "videoSha256": "f62a22a734dfe664b67ee016b0ba7353a875a0d69aba93139df7198466fbd1d6",
+    "reviewedFrames": [
+      {
+        "seconds": 26,
+        "sha256": "cd2ea254b234492bd75de925970fac8aaa6a2150f008119dd6362271bb312ed8"
+      },
+      {
+        "seconds": 348,
+        "sha256": "22943a543b86cca529af13924fa3843b907c93597acbd69149d7d37a3ff51068"
+      },
+      {
+        "seconds": 350,
+        "sha256": "ef02588cb89744fc05471a2e69b7f1a54bbcc9884c10c97b9012c9d51b6a8e92"
+      }
+    ],
+    "observations": [
+      "The southwest-facing26-second view shows tan brick between pale vertical divisions below the upper window strip.",
+      "The348- and350-second oblique views show a pale translucent/glazed curved canopy outside the brick base, with narrow radial glazing bars and slender posts along the outer edge.",
+      "The canopy follows the curved footprint beside the MLZ lane. The raw survey volume boundaries create false solid walls where the reference shows an open covered walkway."
+    ],
+    "use": "Research only. Video and frame pixels are not redistributed or used as textures."
+  },
+  "surveyRegistration": {
+    "canopies": [
+      "DEBY_LOD2_108698338",
+      "DEBY_LOD2_108698339",
+      "DEBY_LOD2_108698340"
+    ],
+    "basis": "Narrow curved footprints outside the main base, approximately3m wide, matching the canopy roof visible beside the MLZ buildings. Height steps and footprint outlines remain source geometry.",
+    "notReconstructed": [
+      "DEBY_LOD2_108698323",
+      "DEBY_LOD2_108698333",
+      "DEBY_LOD2_5323135"
+    ],
+    "qualification": "Directly visible west/south canopy evidence informs the treatment. Rear/east appearance, structural spacing and transparency are estimates, not as-built measurements."
+  }
+}

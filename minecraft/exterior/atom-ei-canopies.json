@@ -1,0 +1,21 @@
+{
+  "reference": "photos/atom-ei-canopies-reference.json",
+  "mainBuilding": "DEBY_LOD2_5284450",
+  "siteBoundsUTM": [698420, 5349270, 698495, 5349350],
+  "buildings": {
+    "DEBY_LOD2_108698338": {"runtimeId": 1000030047, "roofSurfaces": 1, "roofTriangles": 34},
+    "DEBY_LOD2_108698339": {"runtimeId": 1000030048, "roofSurfaces": 5, "roofTriangles": 77},
+    "DEBY_LOD2_108698340": {"runtimeId": 1000030049, "roofSurfaces": 1, "roofTriangles": 34}
+  },
+  "frameWidthMetres": 0.055,
+  "frameDepthMetres": 0.065,
+  "paneDivisionsAroundCircle": 216,
+  "postDivisionsAroundCircle": 45,
+  "postWidthMetres": 0.085,
+  "postEdgeInsetMetres": 0.16,
+  "cleanupMarginMetres": 1.0,
+  "neighbourGuardMetres": 0.25,
+  "fineCollisionMaterials": [4, 4],
+  "parts": ["transparent roof glazing", "pale frame and posts"],
+  "qualification": "The official FRM II/TUM exterior video shows a glazed canopy on slender pale posts around the low brick base, not the solid walls inferred from survey volume boundaries. Roof outlines and heights retain BVV LoD2 geometry. Frame spacing, thickness, post layout, glass tint and unobserved rear sections are qualified estimates. The two distinct entrance volumes and FRM II are retained. No interiors or reference-image texture pixels are included."
+}
