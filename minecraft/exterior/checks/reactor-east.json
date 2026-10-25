@@ -1,6 +1,6 @@
 {
-  "name": "reactor-east-candidate-82",
-  "purpose": "Verify the complete adjoining east hall and all four exterior approaches while retaining the repaired reactor views.",
+  "name": "reactor-east-candidate-83",
+  "purpose": "Retain all east-hall and reactor views; assert removal of measured north/east residual fragments and inspect the shared seam.",
   "captureWalking": true,
   "reflectionEvidence": true,
   "checkFractionalSupports": true,
@@ -359,6 +359,11 @@
           "u": 0.5,
           "v": 0.8,
           "blockSamples": true
+        },
+        {
+          "u": 0.9,
+          "v": 0.96,
+          "blockSamples": true
         }
       ]
     },
@@ -377,6 +382,11 @@
         {
           "u": 0.5,
           "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.3,
+          "v": 0.94,
           "blockSamples": true
         }
       ]
@@ -397,6 +407,24 @@
           "u": 0.5,
           "v": 0.8,
           "blockSamples": true
+        },
+        {
+          "u": 0.43,
+          "v": 0.29,
+          "expectedTile": 1000030052,
+          "blockSamples": true
+        },
+        {
+          "u": 0.45,
+          "v": 0.36,
+          "expectedTile": 1000030052,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.27,
+          "expectedTile": 1000030052,
+          "blockSamples": true
         }
       ]
     },
@@ -415,6 +443,18 @@
         {
           "u": 0.5,
           "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.16,
+          "expectedTile": 1000030052,
+          "blockSamples": true
+        },
+        {
+          "u": 0.7,
+          "v": 0.09,
+          "expectedTile": 1000030052,
           "blockSamples": true
         }
       ]
@@ -739,14 +779,14 @@
   "canopyGlassEvidence": true,
   "diagnosticBounds": [
     [
-      375,
+      266,
       63,
-      -131
+      -140
     ],
     [
-      416,
-      86,
-      -32
+      420,
+      98,
+      -25
     ]
   ],
   "surfaceControls": [

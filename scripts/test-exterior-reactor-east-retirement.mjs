@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import {prepareSourceRetirement} from '../minecraft/exterior/service/source-retirement.mjs';
 const m=JSON.parse(fs.readFileSync((process.argv[2]??'dist-minecraft/exterior')+'/manifest.json'));
 const clip=prepareSourceRetirement(m.architecture.reactorEast.sourceRetirement);
+const measured=JSON.parse(fs.readFileSync(new URL('../minecraft/exterior/checks/reactor-east-residuals.json',import.meta.url)));
 const fixtures=[
+ ...measured.fragments.map((f,i)=>({name:'candidate 82 residual '+i,points:f.vertices,removed:true})),
  {name:'actual candidate 81 lower-east fragment',points:[[379.4514465332031,76.96099662780762,-81.01754760742188],[379.6569519042969,76.9567403793335,-83.27669525146484],[379.4516372680664,80.44420719146729,-81.22297477722168]],removed:true},
  {name:'higher reactor facade',points:[[379.45,89,-81.01],[379.65,89,-83.27],[379.45,91,-81.22]],removed:false},
  {name:'adjacent reactor envelope',points:[[365,70,-80],[365,72,-80],[365,70,-82]],removed:false}
@@ -16,4 +18,4 @@ for(const shift of [0,2])for(const f of fixtures){
  if(f.removed)assert.equal(result.readInt32LE(32),0,f.name);else assert.deepEqual(result,b,f.name);
  assert.deepEqual(result.subarray(-4),b.subarray(-4));checked++;
 }
-console.log(JSON.stringify({status:'PASS: actual lower-east scan fragment removed at both datums; neighboring and higher reactor geometry preserved',controls:checked}));
+console.log(JSON.stringify({status:'PASS: measured lower-east, north, east-edge and rebuilt-seam fragments removed at both datums; adjacent and higher reactor controls preserved',controls:checked}));

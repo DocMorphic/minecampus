@@ -76,7 +76,11 @@ def build(ctx):
     meta['tiles'].append({'file':mesh,'kind':'reconstruction','profile':'reactor-east','runtimeId':spec['runtimeId'],'fineCollisionMaterials':spec['fineCollisionMaterials'],'bounds':bounds})
     roof_file=bid+'-photo-roof.ect';assert not(out/roof_file).exists();(out/roof_file).write_bytes(encode([(roof_vertices,roof_pixels)]))
     neighbours=unary_union([Polygon(mc(r[0])[:,[0,2]],[mc(h)[:,[0,2]]for h in r[1:]]).buffer(0)for key,s in surveys if key!=bid for kind,r in s if kind=='GroundSurface'])
-    owned=foot.buffer(spec['cleanupMarginMetres']).difference(neighbours.buffer(spec['neighbourGuardMetres']))
+    rebuilt=set(spec.get('reconstructedNeighbourIds',[]))
+    # Only explicitly completed envelopes may share a scan-cleanup seam.
+    assert rebuilt=={'DEBY_LOD2_5323135'} and 'reactorExterior' in meta['architecture']
+    protected=unary_union([Polygon(mc(r[0])[:,[0,2]],[mc(h)[:,[0,2]]for h in r[1:]]).buffer(0)for key,s in surveys if key!=bid and key not in rebuilt for kind,r in s if kind=='GroundSurface'])
+    owned=foot.buffer(spec['cleanupMarginMetres']).difference(protected.buffer(spec['neighbourGuardMetres']))
     serialize=lambda shape:[{'ring':list(p.exterior.coords),'holes':[list(h.coords)for h in p.interiors]}for p in polygons(shape)]
     retirement=serialize(owned);plans=json.loads((out/'photo-facades.json').read_text());assert bid not in [p['id']for p in plans['plans']]
     plans['plans'].append({'id':bid,'runtimeId':1_000_050_000+len(plans['plans']),'manualRoof':True,'completeEnvelope':True,'roofFile':roof_file,'collisionFile':roof_file,'bounds':bounds,'walls':walls,'roofTriangles':roof[:,3:6].reshape(-1,3,3).tolist(),'retirement':retirement,'retirementBoundary':retirement})
@@ -84,14 +88,14 @@ def build(ctx):
     meta['photoFacades']['buildings'].append(bid);meta['photoFacades']['roofFiles'].append(roof_file)
     volumes=[dict(p,y0=bounds[0][1]-2,y1=bounds[1][1]+3)for p in retirement];meta['photoFacades']['collisionRetirement'].extend(volumes)
     # Measured datum enables wall/roof collision beyond the old terrain extent.
-    datum_region=foot.buffer(spec['cleanupMarginMetres']).difference(neighbours);datum_rings=serialize(datum_region)
+    datum_region=foot.buffer(spec['datumMarginMetres']).difference(neighbours);datum_rings=serialize(datum_region)
     lo=np.floor(np.array(datum_region.bounds[:2])/2)*2;hi=np.ceil(np.array(datum_region.bounds[2:])/2)*2
     flat=np.array([[x,64,z]for z in np.arange(lo[1],hi[1]+1,2)for x in np.arange(lo[0],hi[0]+1,2)])
     lat,lon=np.radians(meta['origin'][:2]);origin=np.array(Transformer.from_crs(4979,4978,always_xy=True).transform(meta['origin'][1],meta['origin'][0],meta['origin'][2]));basis=np.array([[-np.sin(lon),np.cos(lon),0],[np.cos(lat)*np.cos(lon),np.cos(lat)*np.sin(lon),np.sin(lat)],[np.sin(lat)*np.cos(lon),np.sin(lat)*np.sin(lon),-np.cos(lat)]])
     inverse=Transformer.from_crs(4978,25832,always_xy=True);en=np.column_stack(inverse.transform(*((flat-[0,64,0])@basis+origin).T))[:,:2]
     with rasterio.open(cache/'campus-dgm-east.tif')as dem:flat[:,1]=mc(np.column_stack([en,ElevationSampler([dem]).sample(en)]))[:,1]
     meta['supplementalSurfaces'].append({'name':'reactor-east-envelope-datum','rings':datum_rings,'terrainGuide':{'width':int((hi[0]-lo[0])/2+1),'height':int((hi[1]-lo[1])/2+1),'points':flat.tolist()},'protectedFootprints':[],'outdoorReconstructed':False})
-    record={'facades':controls,'partTriangles':[len(p)//3 for p in parts],'roofTriangles':len(roof)//3,'datumRings':datum_rings,'datumSourceSha256':sha(cache/'campus-dgm-east.tif'),'retirement':retirement,'protectedNeighbourOverlapSquareMetres':owned.intersection(neighbours).area,'qualification':spec['qualification']}
+    record={'facades':controls,'partTriangles':[len(p)//3 for p in parts],'roofTriangles':len(roof)//3,'datumRings':datum_rings,'datumSourceSha256':sha(cache/'campus-dgm-east.tif'),'retirement':retirement,'protectedNeighbourOverlapSquareMetres':owned.intersection(protected).area,'reconstructedNeighbourOverlapSquareMetres':owned.intersection(neighbours).area,'qualification':spec['qualification']}
     derived=out/'reactor-east-surfaces.json';derived.write_text(json.dumps(record,indent=2)+'\n')
     meta['architecture']['reactorEast']={'sourceFile':source.name,'sourceSha256':sha(source),'generatorFile':'scripts/exterior_reactor_east.py','generatorSha256':sha(Path(__file__)),'referenceFile':spec['reference'],'referenceSha256':sha(reference),'derivedFile':derived.name,'derivedSha256':sha(derived),'meshFile':mesh,'meshSha256':sha(out/mesh),'roofFile':roof_file,'roofSha256':sha(out/roof_file),'sourceRetirement':[{'rings':retirement,'y0':bounds[0][1]-2,'y1':bounds[1][1]+3}],'qualification':spec['qualification']}
     print('East hall:',len(walls),'walls;',len(roof)//3,'retained roof triangles',flush=True)
