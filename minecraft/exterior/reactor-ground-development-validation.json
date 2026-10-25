@@ -1,0 +1,594 @@
+{
+  "candidate": 88,
+  "status": "PASS: native materials, camera controls and walking support; overall visual acceptance remains false",
+  "visualAcceptance": false,
+  "artifact": {
+    "status": "PASS: material-only artifact; all prior render/collision inputs and service modules unchanged",
+    "artifactSha256": "7da4cbc2a76ee11df629836b8cbfcf67629450a77dc61d1662bf44d27d6366ec",
+    "rendererSourceFingerprint": "7862efdd2db80ec4",
+    "staticRenderTiles": 464,
+    "alignmentVersion": 87,
+    "previousRenderCollisionInputsByteIdentical": 648,
+    "unchangedServiceModules": 24,
+    "previousManifestFieldsUnchanged": true
+  },
+  "materials": {
+    "sourceFile": "reactor-ground-surfaces.json",
+    "sourceSha256": "880b0f307e3954929f6631165fa8bb4d503b6cd68402e6618b29f7eba9725c39",
+    "researchFile": "photos/reactor-approach-ground-research.json",
+    "researchSha256": "080a24a116fbe8c42796f99b11695382869b198cd76e25e9586e40eaf7e95209",
+    "generatorFile": "scripts/exterior_reactor_ground.py",
+    "generatorSha256": "9acbd75d0b0b26e36508bd0f164581559c8968a450d26c3901f81b507aa866f9",
+    "maskFile": "assets/textures/campus/reactor_ground_surfaces.png",
+    "maskSha256": "c574a76237dbd28a146d5a518e2c5b26aa700891d9d2bde6d3d286a9763a6741",
+    "derivedFile": "reactor-ground-surfaces.geojson",
+    "derivedSha256": "7ae003a61e60723c3ab03306ce64b2c875afc15e49e30e7d0072373a7fb9281b",
+    "maskBoundsMC": [
+      [
+        208.0,
+        -256.0
+      ],
+      [
+        464.0,
+        -0.0
+      ]
+    ],
+    "maskSize": [
+      2048,
+      2048
+    ],
+    "maskChannels": [
+      "grass",
+      "paving",
+      "asphalt",
+      "geographic boundary fade"
+    ],
+    "materialBoundsUTM": [
+      698430,
+      5349230,
+      698650,
+      5349360
+    ],
+    "boundaryBlendMetres": 8,
+    "shaderMappingSha256": "74ff3a95ea157a7c3b13aad5e866f7d451fe5cd6101485670001e610db1d5e0f",
+    "areaSquareMetres": {
+      "grass": 2704.2487535091414,
+      "paving": 3259.832977378801,
+      "asphalt": 154.6312452907137
+    },
+    "paths": [
+      {
+        "osmWay": 27706346,
+        "widthMetres": 1.8,
+        "widthBasis": "estimated",
+        "material": "asphalt",
+        "materialBasis": "OSM tag"
+      },
+      {
+        "osmWay": 28037795,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 28037796,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 28037816,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 28039313,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 32462301,
+        "widthMetres": 1.8,
+        "widthBasis": "estimated",
+        "material": "asphalt",
+        "materialBasis": "OSM tag"
+      },
+      {
+        "osmWay": 172826859,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 253518592,
+        "widthMetres": 1.8,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 253518593,
+        "widthMetres": 1.8,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 253518594,
+        "widthMetres": 1.8,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 997366922,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 1377864914,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 1377864915,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 1377864916,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      },
+      {
+        "osmWay": 1377864917,
+        "widthMetres": 5.5,
+        "widthBasis": "estimated",
+        "material": "paving",
+        "materialBasis": "aerial appearance estimate"
+      }
+    ],
+    "buildingOverlapSquareMetres": 2.1520149713887687e-10,
+    "qualification": "Mapped OSM lawns and paths, with estimated widths where untagged. Light paving and the parking apron are appearance/boundary estimates from local BVV DOP20 inspection, not surveyed curbs or paving units. Tagged asphalt retained. Building footprints excluded. Original imagery retained outside classified areas; no geometry or collision changes."
+  },
+  "sourceValidation": {
+    "status": "PASS: source classification, building exclusion, atlas projection and bounded fade",
+    "manifestSha256": "bfc892cbb646ddcb57e1ff608b7fb56cb4190be1f16821e1121ad40ec6b6acc8",
+    "validatorSha256": "6cb207910cfd2dbf49328e415bf1c19fa892c9fce2d40c3b6de778d3b579873f",
+    "maskSha256": "c574a76237dbd28a146d5a518e2c5b26aa700891d9d2bde6d3d286a9763a6741",
+    "classifiedSamplesChecked": 196515,
+    "alphaSamplesChecked": 65536,
+    "maximumAlphaError": 0.5058327786792916,
+    "qualification": "Material/source validation; native appearance acceptance is separate."
+  },
+  "sourceValidators": [
+    {
+      "validator": "validate-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mlz-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-canopies.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-west-entrance.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-library.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-container.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-p1-complex.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-woodland.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-new-laboratory.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-laboratory-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-ii.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-pinned-water.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-wsi.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn-west.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-cala.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-lmu.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-courtyard.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-riverbank.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-north-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mensa-terrace.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-ground.py",
+      "exitCode": 0
+    }
+  ],
+  "inspectionPlan": "checks/reactor-ground-materials.json",
+  "knownRemainingDefects": [
+    "Blurry photographic UTA walls",
+    "Coarse retained source mesh obstructing the south standing view",
+    "Unclassified ground retains aerial objects and shadows",
+    "Wider campus reconstruction remains incomplete",
+    "Unclassified strips around mapped north-courtyard paths retain blurry bright aerial pixels",
+    "The separate planar reflection pass still shows the original photographic ground (including baked cars) in glazing"
+  ],
+  "installedPreviewChanged": false,
+  "publicBinaryReleased": false,
+  "nextWork": [
+    "Extend source-informed pavement boundaries around the north courtyard without filling building/planting footprints",
+    "Make planar reflection ground rendering consistent with the new bounded material overlay",
+    "Identify retained south obstruction with a wider native source-triangle capture before altering it",
+    "Replace unsupported blurry UTA facade projection with source-informed exterior detail"
+  ],
+  "native": {
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "exitCode": 0,
+    "cameraChecksPassed": 8,
+    "standingChecksPassed": 15,
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "maximumStandingErrorMetres": 0.05899021643153901,
+    "frames": [
+      {
+        "label": "northwest connector",
+        "position": "300 64.0955281469612 -127 -25.016893478100023 -7.857752715026182",
+        "capture": "campus-reactor-ground-candidate-88-0.png",
+        "reflectionStateChecks": 6318
+      },
+      {
+        "label": "northeast exterior elevated diagnostic",
+        "position": "392 92 -121 33.17851165939275 20.50886466274307",
+        "capture": "campus-reactor-ground-candidate-88-1.png",
+        "reflectionStateChecks": 8311
+      },
+      {
+        "label": "south connector",
+        "position": "303 64.13787994384765 -46 -171.0273733851036 -6.648523883399627",
+        "capture": "campus-reactor-ground-candidate-88-2.png",
+        "reflectionStateChecks": 9722
+      },
+      {
+        "label": "east hall full envelope aerial",
+        "position": "440 100 -88 79.69515353123397 32.617725095899445",
+        "capture": "campus-reactor-ground-candidate-88-3.png",
+        "reflectionStateChecks": 10636
+      },
+      {
+        "label": "UTA west exterior",
+        "position": "299.25 64.1 -39.25 -104.14579549410303 -8.783741890463462",
+        "capture": "campus-reactor-ground-candidate-88-4.png",
+        "reflectionStateChecks": 11723
+      },
+      {
+        "label": "UTA south exterior",
+        "position": "313.25 64.1 -24.25 -174.94617394993583 -7.565460929870012",
+        "capture": "campus-reactor-ground-candidate-88-5.png",
+        "reflectionStateChecks": 12356
+      },
+      {
+        "label": "UTA aerial",
+        "position": "330.25 88.0 -18.25 144.96380418990717 40.41575988780757",
+        "capture": "campus-reactor-ground-candidate-88-6.png",
+        "reflectionStateChecks": 13084
+      },
+      {
+        "label": "Reactor south parking apron material detail",
+        "position": "298 76.7 -51.2 178 45",
+        "capture": "campus-reactor-ground-candidate-88-7.png",
+        "reflectionStateChecks": 14115
+      }
+    ],
+    "standing": [
+      {
+        "label": "mlz courtyard standing",
+        "target": [
+          153.0,
+          63.89489918593911,
+          -110.0
+        ],
+        "standingY": 63.875,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "target": [
+          176.15,
+          64.00350978356846,
+          -115.71
+        ],
+        "standingY": 64.0625,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "target": [
+          300,
+          63.995528146961206,
+          -127
+        ],
+        "standingY": 64.0,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "target": [
+          348,
+          63.786881936432195,
+          -132
+        ],
+        "standingY": 63.8125,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "target": [
+          356,
+          63.84211349487305,
+          -42
+        ],
+        "standingY": 63.875,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "target": [
+          303,
+          64.03787994384766,
+          -46
+        ],
+        "standingY": 64.0625,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "target": [
+          267,
+          64.00117695124457,
+          -73
+        ],
+        "standingY": 64.0,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall northwest corridor",
+        "target": [
+          384,
+          64.07557231088317,
+          -118
+        ],
+        "standingY": 64.125,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall southwest corridor",
+        "target": [
+          379,
+          63.954792558466174,
+          -60
+        ],
+        "standingY": 64.0,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall north approach",
+        "target": [
+          401,
+          63.86891512333618,
+          -136
+        ],
+        "standingY": 63.875,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall east approach",
+        "target": [
+          414,
+          63.8496980649334,
+          -85
+        ],
+        "standingY": 63.875,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall south approach",
+        "target": [
+          389,
+          63.84360075918638,
+          -27
+        ],
+        "standingY": 63.875,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "target": [
+          315.0,
+          69.62290400570674,
+          -40.0
+        ],
+        "standingY": 69.625,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA west approach ground",
+        "target": [
+          299.25,
+          64.08798789978027,
+          -39.25
+        ],
+        "standingY": 64.125,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south approach ground",
+        "target": [
+          313.25,
+          64.09127044677734,
+          -24.25
+        ],
+        "standingY": 64.125,
+        "bodyClear": true
+      }
+    ]
+  },
+  "preservation": {
+    "sourceCandidate84Unchanged": 132,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV87AlignedChunks": 194,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "visualReview": {
+    "capturesReviewed": 31,
+    "mainViews": 8,
+    "standingViews": 15,
+    "reflectionBuffers": 8,
+    "contactSheetsReviewed": 8,
+    "findings": [
+      "Paving units and scanned lawn detail render at walking and aerial distances on classified reactor/UTA ground",
+      "The mapped parking apron no longer displays photographic cars in the main pass",
+      "Unclassified pale ground strips still break material continuity",
+      "Window reflections retain photographic cars and ground shading because the separate reflection pass has not adopted the new material overlay",
+      "UTA wall photos remain blurry; the south standing view still meets an unidentified coarse source mesh"
+    ],
+    "captureSha256": {
+      "campus-reactor-ground-candidate-88-0.png": "7453f0c13fecf3f02d65492bed46c8d99d3c3c4544eddb2a676fd42279ca5d36",
+      "campus-reactor-ground-candidate-88-1.png": "981b1bd1cfccdd5e548896b9e8361afa23114381cbef46aa4135def22d5e298e",
+      "campus-reactor-ground-candidate-88-2.png": "46e3b4a1fe47e6c5f6159f2435577aa4c2b7f4a36e118a85ecf9eb988d4ee4a7",
+      "campus-reactor-ground-candidate-88-3.png": "2ebab151dbfcd7c7e66a5d1696626d0612d8057d2a95c2dfe68c02e9e786e2bc",
+      "campus-reactor-ground-candidate-88-4.png": "a4eaae45b2595ac24c8bd73d2a4f8e8d9669dfa530ba8569ee7908a87b495087",
+      "campus-reactor-ground-candidate-88-5.png": "7de5a091aa8a4db80c584413d74bb13d6c6f695277f3ee68597eb661282e9b5a",
+      "campus-reactor-ground-candidate-88-6.png": "3ee410eef8d5f4b2e3f2bb76093ef3e0ef20d48841fb143bd606d61b502adfbc",
+      "campus-reactor-ground-candidate-88-7.png": "f57e5293d4aad6b8aefea49ddf7c89590132c237cca4a8243cfe0f60c82a52c6",
+      "campus-reactor-ground-candidate-88-reflection-0.png": "b69897bc1145d107153aa0e07cc60631188726e8b7ae08b73959c58a09360526",
+      "campus-reactor-ground-candidate-88-reflection-1.png": "59034e1bb85294001630d86cb74b5aa1caf082589ed560b2bbaf1fdd84983fc4",
+      "campus-reactor-ground-candidate-88-reflection-2.png": "165837766af3b3900bf65d9bd3de95896bc9d3c63e6a743accdc37c40f9813cc",
+      "campus-reactor-ground-candidate-88-reflection-3.png": "48e9e1ee51155d45cdd6376b2b517f2d74b16173f233b4d36578e14928d7dca2",
+      "campus-reactor-ground-candidate-88-reflection-4.png": "ac959ddd91eda756b497bab108725d7de0eb4c56b9c8e58cfa9abbb2fad530fd",
+      "campus-reactor-ground-candidate-88-reflection-5.png": "f95ce3b638c34daba04a1636d0f65c9c8a0636b2a6e23039870c6fcff5be0280",
+      "campus-reactor-ground-candidate-88-reflection-6.png": "564da187643be4daca0ddedfea8efe396b5b666509edc61fadab1bb3e4d1d57e",
+      "campus-reactor-ground-candidate-88-reflection-7.png": "a98348971213bc4ab8bd3869db8cbb2d85f47efb7b98fb1f4bcc2da78ddfefc8",
+      "campus-reactor-ground-candidate-88-walk-0.png": "3247be7068d0253f6c5aab77889b134a62ea6f839b8a18be6774647af18b25fb",
+      "campus-reactor-ground-candidate-88-walk-1.png": "815d96c7ec889e6542161d3f5d312da8dd707f52754ee3c3890fd82ebebe087f",
+      "campus-reactor-ground-candidate-88-walk-10.png": "78329feec887425ceb1f68491c03ff256f516ae5a8aaa250336936cd171d72a7",
+      "campus-reactor-ground-candidate-88-walk-11.png": "645a095091da8a1bb55ccf9ddc5d1b8bb388f94c2c2e6cd2c6ea614c63e4e143",
+      "campus-reactor-ground-candidate-88-walk-12.png": "7408bc675238776e6a1ab75195473c74b517622866212dfb4f670fa60082a9db",
+      "campus-reactor-ground-candidate-88-walk-13.png": "38d239140acb9fb771e978988155f377ed39b29b1e50275d4bea8bfd5c88d057",
+      "campus-reactor-ground-candidate-88-walk-14.png": "56beedc9d4404af4a2a4fd7e95a1807a692bc00ded3bd0abc22d905d1fb9db9c",
+      "campus-reactor-ground-candidate-88-walk-2.png": "c0c0d7cc6b419cef10a1f94dde0449c4918f2920bd20e836116185ae652822c0",
+      "campus-reactor-ground-candidate-88-walk-3.png": "3e5d6d836b2b74420a71d27498ac5bcbf458d06bdae3abd626841a74d856294a",
+      "campus-reactor-ground-candidate-88-walk-4.png": "df4bfd799bbd1f30ffd5a0c21ab19c1cd5bd4fce6db05aaf57547f3389c7ee93",
+      "campus-reactor-ground-candidate-88-walk-5.png": "848c1aa0f93c0ed1da49b82251e7b9744f894fd8199c706c080377646a34f362",
+      "campus-reactor-ground-candidate-88-walk-6.png": "d90cff42f33d67bda74aa93cf0c5231ec4640a164be7b8f28788a8e0fc062f08",
+      "campus-reactor-ground-candidate-88-walk-7.png": "7853c2007a70bc1c872bc954ac23dca312df6aac12d73ef4cfcc2cdb771b25cf",
+      "campus-reactor-ground-candidate-88-walk-8.png": "ff5978ab1a31d197c711c931fe4bc262c014c41277324f890d3921a88e09c9df",
+      "campus-reactor-ground-candidate-88-walk-9.png": "1710dd2ba2a4ced68a3158ec2556663a00dd2a874784912443313292e04234cf"
+    }
+  },
+  "evidence": {
+    "photos/reactor-ground-88-north-courtyard.png": "7453f0c13fecf3f02d65492bed46c8d99d3c3c4544eddb2a676fd42279ca5d36",
+    "photos/reactor-ground-88-parking-apron.png": "f57e5293d4aad6b8aefea49ddf7c89590132c237cca4a8243cfe0f60c82a52c6",
+    "photos/reactor-ground-88-uta-aerial.png": "3ee410eef8d5f4b2e3f2bb76093ef3e0ef20d48841fb143bd606d61b502adfbc",
+    "photos/reactor-ground-88-reflection-mismatch.png": "a98348971213bc4ab8bd3869db8cbb2d85f47efb7b98fb1f4bcc2da78ddfefc8"
+  }
+}

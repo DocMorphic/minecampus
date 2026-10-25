@@ -13,7 +13,7 @@ import org.lwjgl.opengl.EXTTextureFilterAnisotropic;
 
 /** Mipmapped CC0 micro-materials and ODbL land-cover maps, loaded locally. */
 public final class CampusMaterials {
-    private static final String[] NAMES={"concrete_diff","concrete_normal","grass_diff","grass_normal","ground_surfaces","brick_normal","asphalt_diff","asphalt_normal","soil_diff","soil_normal","physics_concrete_diff","physics_concrete_normal","physics_ground_surfaces","woodland_ground_surfaces","galvanized_diff","laboratory_site_ground_surfaces","physics_ii_ground_surfaces","gravel_diff","gravel_normal","north_ground_surfaces","cala_ground_surfaces"};
+    private static final String[] NAMES={"concrete_diff","concrete_normal","grass_diff","grass_normal","ground_surfaces","brick_normal","asphalt_diff","asphalt_normal","soil_diff","soil_normal","physics_concrete_diff","physics_concrete_normal","physics_ground_surfaces","woodland_ground_surfaces","galvanized_diff","laboratory_site_ground_surfaces","physics_ii_ground_surfaces","gravel_diff","gravel_normal","north_ground_surfaces","cala_ground_surfaces","reactor_ground_surfaces"};
     private static final int[] prepared=new int[NAMES.length];
     static { java.util.Arrays.fill(prepared,-1); }
     private static final int[] textureIds=new int[NAMES.length];
@@ -31,8 +31,8 @@ public final class CampusMaterials {
             var location=ResourceLocation.fromNamespaceAndPath("realworldmc","textures/campus/"+NAMES[i]+".png");
             int id=manager.getTexture(location).getId();
             if(prepared[i]!=id){
-                boolean atlas=i==4||i==12||i==13||i==15||i==16||i==19||i==20;
-                int maxLevel=i==4?12:(i==12||i==13||i==19||i==20?11:10);
+                boolean atlas=i==4||i==12||i==13||i==15||i==16||i==19||i==20||i==21;
+                int maxLevel=i==4?12:(i==12||i==13||i==19||i==20||i==21?11:10);
                 GlStateManager._bindTexture(id);
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D,GL12.GL_TEXTURE_MAX_LEVEL,maxLevel);
                 // Minecraft initially allocates these as level-zero textures.
@@ -58,6 +58,14 @@ public final class CampusMaterials {
         }finally{
             GlStateManager._activeTexture(active);GlStateManager._bindTexture(binding);
         }
+    }
+    /** Minecraft caches only units 0..11; like reflections, bind this extra unit directly. */
+    public static void bindReactorGround(net.minecraft.client.renderer.ShaderInstance material){
+        int active=GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
+        GL13.glActiveTexture(GL13.GL_TEXTURE0+13);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D,textureIds[21]);
+        GL13.glActiveTexture(active);
+        material.safeGetUniform("ReactorGroundTexture").set(13);
     }
     /** Share existing texture units; each subsequent part restores its own material. */
     public static void bindConcrete(boolean aggregate){bindConcrete(aggregate?1:0);}

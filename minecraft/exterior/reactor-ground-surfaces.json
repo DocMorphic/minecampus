@@ -1,0 +1,38 @@
+{
+  "researchFile": "photos/reactor-approach-ground-research.json",
+  "researchSha256": "080a24a116fbe8c42796f99b11695382869b198cd76e25e9586e40eaf7e95209",
+  "boundsUTM": [
+    698430,
+    5349230,
+    698650,
+    5349360
+  ],
+  "estimatedWidthsMetres": {
+    "service": 5.5,
+    "footway": 1.8,
+    "path": 1.8
+  },
+  "untaggedMaterial": "paving",
+  "parkingApronUTM": [
+    [
+      698487,
+      5349283
+    ],
+    [
+      698532,
+      5349278
+    ],
+    [
+      698532,
+      5349269
+    ],
+    [
+      698486,
+      5349275
+    ]
+  ],
+  "atlasSize": 2048,
+  "atlasSpanMetres": 256,
+  "boundaryBlendMetres": 8,
+  "qualification": "Mapped OSM lawns and paths, with estimated widths where untagged. Light paving and the parking apron are appearance/boundary estimates from local BVV DOP20 inspection, not surveyed curbs or paving units. Tagged asphalt retained. Building footprints excluded. Original imagery retained outside classified areas; no geometry or collision changes."
+}

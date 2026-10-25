@@ -10,6 +10,7 @@ uniform sampler2D Sampler7;
 uniform sampler2D Sampler8;
 uniform sampler2D Sampler9;
 uniform sampler2D Sampler10;
+uniform sampler2D ReactorGroundTexture;
 uniform vec4 ColorModulator;
 uniform vec3 CampusFogColor;
 uniform vec3 CameraPosition;
@@ -18,6 +19,9 @@ in vec2 texCoord0;
 in vec3 worldPosition;
 in float viewDistance;
 out vec4 fragColor;
+// BEGIN GENERATED REACTOR GROUND MAPPING
+vec2 reactorGroundUv(vec2 position) { return vec2(position.x-208.0,-0.0-position.y)/256.0; }
+// END GENERATED REACTOR GROUND MAPPING
 float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }
 float noise(vec2 p) {
     vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f);
@@ -270,7 +274,7 @@ void main() {
     bool laboratoryGround=abs(MaterialDetail-23.0)<.1;
     bool woodlandGround=abs(MaterialDetail-20.0)<.1;
     bool physicsGround=abs(MaterialDetail-19.0)<.1||woodlandGround||laboratoryGround||physicsIIGround;
-    if(((MaterialDetail>0.5&&MaterialDetail<1.5)||abs(MaterialDetail-15.0)<.1||(physicsRoof&&!physicsHall)||physicsGround)&&viewDistance<110.0) {
+    if(((MaterialDetail>0.5&&MaterialDetail<1.5)||abs(MaterialDetail-15.0)<.1||(physicsRoof&&!physicsHall)||physicsGround)&&viewDistance<(physicsGround?160.0:110.0)) {
         vec3 geometric=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
         if(geometric.y<0.0)geometric=-geometric;
         vec3 weights=pow(abs(geometric),vec3(4.0));
@@ -342,6 +346,26 @@ void main() {
         vec3 material=(mapped.r*lawnColor+mapped.g*pavingColor+mapped.b*asphaltColor+soil*soilColor+gravel*gravelColor)/max(mappedTotal,.0001);
         color.rgb=mix(color.rgb,material,mappedAmount*materialRange);
         grass=mix(grass,mapped.r/max(mappedTotal,.0001),mappedAmount);
+        // Locally mapped reactor pavement/lawns use clean scanned materials:
+        // photographic cars and cast shadows are not part of their albedo.
+        if(physicsGround){
+            vec2 reactorUv=reactorGroundUv(worldPosition.xz);
+            if(all(greaterThanEqual(reactorUv,vec2(0)))&&all(lessThanEqual(reactorUv,vec2(1)))){
+                vec4 overlay=texture(ReactorGroundTexture,reactorUv);
+                float total=dot(overlay.rgb,vec3(1));
+                float coverage=clamp(total,0.0,1.0)*overlay.a;
+                float range=1.0-smoothstep(90.0,160.0,viewDistance);
+                vec3 cleanGrass=vec3(.24,.31,.145)*clamp(gLum/.3782,.45,1.65)*.95;
+                vec3 cleanPaving=vec3(.55,.54,.51)*clamp(cLum/.5112,.7,1.3)*unitVariation*(1.0-.3*joint);
+                vec3 cleanAsphalt=vec3(0);
+                if(overlay.b>.001)cleanAsphalt=groundTexture(Sampler7,worldPosition*.25,weights)*.85;
+                vec3 clean=(overlay.r*cleanGrass+overlay.g*cleanPaving+overlay.b*cleanAsphalt)/max(total,.0001);
+                color.rgb=mix(color.rgb,clean,coverage*range);
+                grass=mix(grass,overlay.r/max(total,.0001),coverage);
+                mapped.b=mix(mapped.b,overlay.b/max(total,.0001),coverage);
+                soil*=1.0-coverage;gravel*=1.0-coverage;
+            }
+        }
         if(proximity>0.0){
             vec3 cn=groundNormalDetail(Sampler2,materialPosition,weights),gn=groundNormalDetail(Sampler4,materialPosition,weights);
             vec3 detail=mix(cn,gn,grass);

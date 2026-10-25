@@ -373,6 +373,16 @@ assert north_check['status'].startswith('PASS:')
 assert north_check['manifestSha256']==digest(DATA/'manifest.json')
 assert north_check['validatorSha256']==digest(ROOT/'scripts/validate-north-ground.py')
 assert north_check['maskSha256']==north['maskSha256']
+reactor_ground=json.loads((DATA/'manifest.json').read_text())['architecture']['reactorGroundMaterials']
+for key,folder in [('source',SOURCE),('research',SOURCE),('generator',ROOT),('mask',SOURCE),('derived',DATA)]:
+ assert digest(folder/reactor_ground[key+'File'])==reactor_ground[key+'Sha256']
+reactor_ground_mapping=(SOURCE/'shaders/campus_ground.fsh').read_text().split('// BEGIN GENERATED REACTOR GROUND MAPPING\n')[1].split('// END GENERATED REACTOR GROUND MAPPING')[0]
+assert hashlib.sha256(reactor_ground_mapping.encode()).hexdigest()==reactor_ground['shaderMappingSha256']
+reactor_ground_check=json.loads((DATA/'reactor-ground-validation.json').read_text())
+assert reactor_ground_check['status'].startswith('PASS:')
+assert reactor_ground_check['manifestSha256']==digest(DATA/'manifest.json')
+assert reactor_ground_check['validatorSha256']==digest(ROOT/'scripts/validate-reactor-ground.py')
+assert reactor_ground_check['maskSha256']==reactor_ground['maskSha256']
 terrace=json.loads((DATA/'manifest.json').read_text())['architecture']['mensaTerrace']
 terrace_check=json.loads((DATA/'mensa-terrace-validation.json').read_text())
 assert terrace_check['status'].startswith('PASS:')
@@ -613,6 +623,11 @@ https://polyhaven.com/a/grass_ground
 Ground surface boundaries: © OpenStreetMap contributors (ODbL 1.0).
 https://www.openstreetmap.org/copyright
 Selected mapped polygons and their tags are included as ground-surfaces.geojson.
+The reactor/UTA material overlay uses pinned OSM paths and lawns with explicit
+width and paving estimates from BVV DOP20 inspection. Its source, derived
+polygons and validation are included as reactor-ground-*.json/geojson. It
+replaces photographic cars/shadows only on classified surveyed ground.
+
 Physics I's supplemental ground map is included as physics-ground-source.geojson
 and physics-ground-surfaces.geojson. OSM lawn polygons and ground-level paths
 are clipped away from surveyed building footprints. Untagged path widths are
@@ -832,6 +847,10 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/reactor-south-exterior-research.json',(SOURCE/'photos/reactor-south-exterior-research.json').read_bytes())
   write(target,'src/minecampus-exterior/uta-exterior-validation.json',(DATA/'uta-exterior-validation.json').read_bytes())
   write(target,'src/minecampus-exterior/uta-site-surfaces.json',(DATA/'uta-site-surfaces.json').read_bytes())
+  for name in ['reactor-ground-surfaces.geojson','reactor-ground-validation.json']:
+   write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
+  write(target,'src/minecampus-exterior/reactor-ground-surfaces.json',(SOURCE/'reactor-ground-surfaces.json').read_bytes())
+  write(target,'src/minecampus-exterior/reactor-approach-ground-research.json',(SOURCE/'photos/reactor-approach-ground-research.json').read_bytes())
   write(target,'src/minecampus-exterior/reactor-east-exterior-research.json',(SOURCE/'photos/reactor-east-exterior-research.json').read_bytes())
   for name in ['reactor-east-surfaces.json','reactor-east-validation.json']:
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())

@@ -59,7 +59,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +        if(campusPass){
 +            CampusShadows.update(tiles,cam,level,partial,campusShadowShader,campusGroundShader);
 +            CampusReflections.render(ctx,tiles,campusReflectionShader,campusGroundShader);
-+            CampusMaterials.bind();
++            CampusMaterials.bind();CampusMaterials.bindReactorGround(campusGroundShader);
 +        }else {CampusShadows.bind(campusGroundShader,0f);CampusReflections.disable(campusGroundShader);}
  
  		for (MapTile t : tiles) {
