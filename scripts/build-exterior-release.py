@@ -244,6 +244,15 @@ assert lmu_check['sourceSha256']==lmu['sourceSha256']
 assert lmu_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-lmu.py')
 assert set(lmu_check['tileSha256'])==set(lmu['groundTiles']+[lmu['meshFile'],lmu['roofFile']])
 assert all(digest(DATA/name)==value for name,value in lmu_check['tileSha256'].items())
+lmu_courtyard=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsLMUCourtyard']
+assert digest(SOURCE/lmu_courtyard['sourceFile'])==lmu_courtyard['sourceSha256']
+for path,key in [(ROOT/lmu_courtyard['generatorFile'],'generatorSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(SOURCE/'vegetation-sources.json','vegetationSourceSha256')]:assert digest(path)==lmu_courtyard[key]
+assert digest(DATA/lmu_courtyard['coverageFile'])==lmu_courtyard['coverageSha256']
+lc_check=json.loads((DATA/'lmu-courtyard-validation.json').read_text())
+assert lc_check['status'].startswith('PASS:') and lc_check['manifestSha256']==digest(DATA/'manifest.json')
+assert lc_check['sourceSha256']==lmu_courtyard['sourceSha256'] and lc_check['validatorSha256']==digest(ROOT/'scripts/validate-lmu-courtyard.py')
+assert set(lc_check['tileSha256'])==set(lmu_courtyard['groundTiles']+lmu_courtyard['treeTiles']+[lmu_courtyard['coverageFile']])
+assert all(digest(DATA/name)==value for name,value in lc_check['tileSha256'].items())
 riverbank=json.loads((DATA/'manifest.json').read_text())['architecture']['riverbank']
 riverbank_spec=json.loads((SOURCE/riverbank['sourceFile']).read_text())
 assert digest(SOURCE/riverbank['sourceFile'])==riverbank['sourceSha256']
@@ -335,6 +344,11 @@ LMU physics/workshop complex: BVV LoD2 envelope and DOP20 roof. Concrete
 frames and recessed facade subdivisions are estimated from the NavigaTUM
 Alexander Pach photograph and the MGK CALA project street view. No reference
 photograph pixels are redistributed. Sources and qualifications: physics-lmu.json.
+
+LMU outdoor courtyard: BVV LoD2 courtyard ring, DGM1/DOP20 ground and
+DOM20/DOP20 fitted tree crowns. Branches and species appearance are estimates;
+leaf/bark atlases are the pinned Poly Haven CC0 assets. Physics-lmu-courtyard.json
+records scope; the building interiors are not reconstructed.
 
 CALA main volume: BVV LoD2 walls, DOP20 green roof and DGM1 north/east
 slope. Openings, canopies, finishes and geometric markings are approximate
@@ -649,6 +663,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/'+riverbank['coverageFile'],(DATA/riverbank['coverageFile']).read_bytes())
   for source in riverbank_spec['osm']:write(target,'src/minecampus-exterior/'+source['sourceFile'],(SOURCE/source['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+lmu['sourceFile'],(SOURCE/lmu['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+lmu_courtyard['sourceFile'],(SOURCE/lmu_courtyard['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+lmu_courtyard['coverageFile'],(DATA/lmu_courtyard['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+cala['sourceFile'],(SOURCE/cala['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+cala['site']['osmFile'],(SOURCE/cala['site']['osmFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+cala['site']['materialFeaturesFile'],(DATA/cala['site']['materialFeaturesFile']).read_bytes())

@@ -1,0 +1,14 @@
+{
+  "building": "DEBY_LOD2_5284442",
+  "name": "LMU physics exterior courtyard",
+  "boundsUTM": [698360, 5349580, 698480, 5349680],
+  "groundRuntimeId": 1000060940,
+  "treeRuntimeId": 1000010600,
+  "groundBlendMetres": 2,
+  "trunkInsetMetres": 0.3,
+  "references": [
+    "sources.json: BVV LoD2 courtyard outline, DGM1 terrain and DOP20 imagery",
+    "vegetation-sources.json: pinned BVV DOM20 canopy heights and Poly Haven CC0 leaf/bark atlases"
+  ],
+  "qualification": "Open-air courtyard only. The LoD2 interior ground-ring defines its boundary; DGM1 supplies terrain and DOP20 supplies broad colour. Tree candidates and crown extents come from DOP20/DOM20 outside surveyed buildings. Trunk locations, branches, species appearance and leaf arrangement are estimates. No building interiors, invented furniture or reference-photo textures. Native visual and collision review remains required."
+}
