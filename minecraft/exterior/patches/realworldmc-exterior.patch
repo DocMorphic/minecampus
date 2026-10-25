@@ -105,8 +105,8 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?13f:((i==1||i==3)?7f:11f));
 +                if(campus && t.data.id==1_000_030_008)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?12f:(i==2?6f:7f));
-+                if(campus && t.data.id>=1_000_030_023 && t.data.id<=1_000_030_043)
-+                    tileShader.safeGetUniform("MaterialDetail").set(t.data.id==1_000_030_043?(i==2?6f:(i==4?0f:16f)):t.data.id==1_000_030_042?(i==4?0f:16f):t.data.id==1_000_030_041?(i==1?6f:(i==5?0f:16f)):t.data.id>=1_000_030_035?(i==1?6f:(i==4?0f:16f)):t.data.id==1_000_030_034?16f:t.data.id==1_000_030_033?(i==1?6f:(i==0||i==2?21f:(i==5?22f:(i==4?1f:16f)))):t.data.id>=1_000_030_031?(i==0?17f:(i==1||i==3||i==5?16f:(i==4?1f:0f))):(i==1?6f:(i==0?(t.data.id==1_000_030_030?16f:7f):(i==4?1f:0f))));
++                if(campus && t.data.id>=1_000_030_023 && t.data.id<=1_000_030_044)
++                    tileShader.safeGetUniform("MaterialDetail").set(t.data.id==1_000_030_044?(i==2?6f:(i==0?7f:(i==4?0f:16f))):t.data.id==1_000_030_043?(i==2?6f:(i==4?0f:16f)):t.data.id==1_000_030_042?(i==4?0f:16f):t.data.id==1_000_030_041?(i==1?6f:(i==5?0f:16f)):t.data.id>=1_000_030_035?(i==1?6f:(i==4?0f:16f)):t.data.id==1_000_030_034?16f:t.data.id==1_000_030_033?(i==1?6f:(i==0||i==2?21f:(i==5?22f:(i==4?1f:16f)))):t.data.id>=1_000_030_031?(i==0?17f:(i==1||i==3||i==5?16f:(i==4?1f:0f))):(i==1?6f:(i==0?(t.data.id==1_000_030_030?16f:7f):(i==4?1f:0f))));
 +                if(campus && (t.data.id==1_000_030_028||t.data.id==1_000_030_029) && i==0)
 +                    tileShader.safeGetUniform("MaterialDetail").set(17f);
 +                if(campus && t.data.id==1_000_030_028 && i==4)

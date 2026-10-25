@@ -9,6 +9,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image
+from pyproj import Transformer
 from shapely import set_precision
 from shapely.geometry import Polygon, box
 from shapely.ops import unary_union
@@ -171,11 +172,24 @@ def build(ctx):
     # replacement only; landscaping and equipment remain separate work.
     neighbours=unary_union([Polygon(ctx['mc'](r[0])[:,[0,2]],[ctx['mc'](h)[:,[0,2]] for h in r[1:]]).buffer(0) for key,s in surveys if key!=bid for kind,r in s if kind=='GroundSurface'])
     owned=footprint.buffer(spec['cleanupMarginMetres'],join_style=2).difference(neighbours.buffer(.25))
+    # Survey-height ground beneath the envelope also supplies the runtime's
+    # bounded foundation datum. Without it, source collision cannot be migrated
+    # outside the original campus grid. The open courtyard remains excluded.
+    lat,lon=np.radians(meta['origin'][:2])
+    origin=np.array(Transformer.from_crs(4979,4978,always_xy=True).transform(meta['origin'][1],meta['origin'][0],meta['origin'][2]))
+    basis=np.array([[-np.sin(lon),np.cos(lon),0],[np.cos(lat)*np.cos(lon),np.cos(lat)*np.sin(lon),np.sin(lat)],[np.sin(lat)*np.cos(lon),np.sin(lat)*np.sin(lon),-np.cos(lat)]])
+    inverse=Transformer.from_crs(4978,25832,always_xy=True)
+    def utm_ring(ring):
+        q=np.array([[x,64,z] for x,z in ring.coords])
+        return np.column_stack(inverse.transform(*((q-[0,64,0])@basis+origin).T))[:,:2]
+    owned_utm=unary_union([Polygon(utm_ring(p.exterior),[utm_ring(h) for h in p.interiors]) for p in polygons(owned)])
+    from exterior_ground_extension import build as extend_ground
+    ground=extend_ground(ctx,owned_utm,'physics-lmu-ground',spec['groundRuntimeId'],spec['groundBlendMetres'])
     retirement=[{'ring':list(p.exterior.coords),'holes':[list(h.coords) for h in p.interiors]} for p in polygons(owned)]
     plans=json.loads((out/'photo-facades.json').read_text());assert bid not in [p['id'] for p in plans['plans']]
     plans['plans'].append({'id':bid,'runtimeId':1_000_050_000+len(plans['plans']),'manualRoof':True,'completeEnvelope':True,'roofFile':roof_file,'collisionFile':roof_file,'bounds':bounds,'walls':walls,'roofTriangles':roof[:,3:6].reshape(-1,3,3).tolist(),'retirement':retirement,'retirementBoundary':retirement})
     (out/'photo-facades.json').write_text(json.dumps(plans,separators=(',',':')))
     meta['photoFacades']['buildings'].append(bid);meta['photoFacades']['roofFiles'].append(roof_file)
     meta['photoFacades']['collisionRetirement'].extend(dict(p,y0=bounds[0][1]-2,y1=bounds[1][1]+3) for p in retirement)
-    meta['architecture']['physicsLMU']={'building':bid,'sourceFile':source.name,'sourceSha256':sha(source),'generatorFile':'scripts/exterior_physics_lmu.py','generatorSha256':sha(Path(__file__)),'meshFile':mesh,'roofFile':roof_file,'surveyWalls':walls,'roofTriangles':len(roof)//3,'facades':facade_records,'retirement':retirement,'controls':controls,'qualification':spec['qualification'],'status':'Development geometry; native visual acceptance required'}
+    meta['architecture']['physicsLMU']={'building':bid,'sourceFile':source.name,'sourceSha256':sha(source),'generatorFile':'scripts/exterior_physics_lmu.py','generatorSha256':sha(Path(__file__)),'meshFile':mesh,'roofFile':roof_file,'surveyWalls':walls,'roofTriangles':len(roof)//3,'groundTiles':ground['groundTiles'],'ground':ground,'groundGeneratorSha256':sha(root/'scripts/exterior_ground_extension.py'),'facades':facade_records,'retirement':retirement,'controls':controls,'qualification':spec['qualification'],'status':'Development geometry; native visual acceptance required'}
     print('LMU:',len(walls),'survey walls,',len(roof)//3,'roof triangles,',sum(x.get('windowCount',0) for x in facade_records),'estimated window panels',flush=True)

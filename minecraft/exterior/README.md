@@ -65,15 +65,16 @@ The release builder checks the upstream JAR and embedded service hashes, checks 
 [Quality goal](QUALITY-GOAL.md) · [Research](RESEARCH.md) · [Native validation](VALIDATION.md) · [Third-party notices](../../THIRD_PARTY.md)
 
 
-### LMU exterior development draft
+### LMU exterior development
 
-`physics-lmu.json` and `scripts/exterior_physics_lmu.py` describe the surveyed Am Coulombwall1 complex. The generator is not yet invoked by the main build. Its source-informed facade details are qualified estimates; the current installed preview is unchanged.
+`physics-lmu.json` and `scripts/exterior_physics_lmu.py` describe the surveyed Am Coulombwall1 complex. The main build invokes this generator and its bounded DGM ground extension. Its source-informed facade details are qualified estimates; the installed preview is unchanged until native visual acceptance.
 
 For an incremental draft directory containing its manifest, photo-facade plan and mesh files, run:
 
 ```sh
-.cache/geodata-venv/bin/python scripts/validate-physics-lmu.py --directory /path/to/draft
+.cache/geodata-venv/bin/python scripts/validate-physics-lmu.py
+# For an incremental build, add --directory /path/to/draft --ground-directory dist-minecraft/exterior
 .cache/geodata-venv/bin/python scripts/test_lmu_facade_triangulation.py
 ```
 
-The source validator checks encoded coverage and outward first-hit surfaces against the pinned BVV survey and DOP20 roof imagery. Native terrain support, collision, rendering and visual review remain separate required checks.
+The source validator checks encoded coverage and outward first-hit surfaces against the pinned BVV survey and DOP20 roof imagery. The validator also checks ground heights, joins, roof pixels and courtyard/neighbor exclusions. Native collision, rendering and visual review remain separate required checks.

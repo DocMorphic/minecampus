@@ -29,7 +29,9 @@
   "beamHeightMetres": 0.5,
   "groundColumnWidthMetres": 0.32,
   "upperPostWidthMetres": 0.10,
-  "cleanupMarginMetres": 0.5,
+  "cleanupMarginMetres": 2.1,
+  "groundRuntimeId": 1000060900,
+  "groundBlendMetres": 2,
   "fineCollisionMaterials": [4,6,6,6,4],
   "qualification": "BVV fixes all53 wall rings, courtyard, stepped volumes and102 roof triangles. DOP20 supplies roof pixels. The two cited ground photographs guide the facade grammar. Bay counts, floor bands, recess depth, frame/post sizes, blinds, hidden elevations and colours are estimates, not an as-built survey. No interiors or reference-photo textures."
 }

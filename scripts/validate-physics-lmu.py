@@ -22,13 +22,15 @@ from exterior_physics_i import polygons
 root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--directory', type=Path, default=root/'dist-minecraft/exterior')
-args = parser.parse_args(); out = args.directory
+parser.add_argument('--ground-directory',type=Path,help='Prior tiles for an isolated incremental build')
+args = parser.parse_args(); out = args.directory; ground_dir=args.ground_directory or out
 read = lambda p: json.loads(p.read_text())
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 m = read(out/'manifest.json'); rec = m['architecture']['physicsLMU']; src = root/'minecraft/exterior'
 spec = read(src/rec['sourceFile']); sources = read(src/'sources.json')
 assert sha(src/rec['sourceFile']) == rec['sourceSha256']
 assert sha(root/rec['generatorFile']) == rec['generatorSha256']
+assert sha(root/'scripts/exterior_ground_extension.py') == rec['groundGeneratorSha256']
 inputs = {}
 for item, name in zip(sources['lod2'], ['campus-east.gml','campus-west.gml']): inputs[name] = item['sha256']
 for kind, name in [('dgm1','campus-dgm-east.tif'),('dop20','campus-dop-east.tif')]: inputs[name] = sorted(sources[kind],key=lambda x:x['name'])[1]['sha256']
@@ -129,12 +131,40 @@ for control in rec['controls']:
     hit=hits[np.argmin(distance[hits])]
     assert part_ids[hit]==control['part'] and abs(distance[hit]-.6)<.0001,(control,part_ids[hit],distance[hit])
     assert normals[hit]@n>.999,control
+new_files=rec['groundTiles'];new_parts=[decode(out/name)[0] for name in new_files];new_tri=np.concatenate([v[:,:3].reshape(-1,3,3) for v,pixels in new_parts]);region=unary_union([Polygon(t[:,[0,2]]) for t in new_tri])
+assert all(np.cross(t[1]-t[0],t[2]-t[0])[1]>-1e-8 for t in new_tri)
+assert abs(region.area-rec['ground']['areaSquareMetres'])<.005
+old=[];search=region.buffer(spec['groundBlendMetres']+1)
+for tile in m['tiles']:
+    if tile['kind']!='ground' or tile['file'] in new_files:continue
+    lo,hi=tile['bounds']
+    if not search.intersects(box(lo[0],lo[2],hi[0],hi[2])):continue
+    for v,_ in decode(ground_dir/tile['file']):
+        for t in v[:,:3].reshape(-1,3,3):
+            p=Polygon(t[:,[0,2]])
+            if p.area>1e-8:old.append((p,t))
+existing=unary_union([p for p,t in old]);assert region.intersection(existing).area<.005
+foot_mc=unary_union([Polygon(world(p[0])[:,[0,2]],[world(h)[:,[0,2]] for h in p[1:]]) for k,p in raw if k=='GroundSurface'])
+# Foundation ground beneath the building is intentional; courtyard core is excluded.
+for p in polygons(foot_mc):
+    for h in p.interiors:assert region.intersection(Polygon(h).buffer(-spec['cleanupMarginMetres']-.01)).area<.001
+# Ground is source-height terrain, with only the specified old-edge blend.
+vertices=np.unique(new_tri.reshape(-1,3),axis=0);en=np.column_stack(inverse.transform(*((vertices-[0,64,0])@basis+origin).T))[:,:2]
+with rasterio.open(root/'.cache/campus-dgm-east.tif') as dem:
+    c,r=(~dem.transform)*(en[:,0],en[:,1]);raw_h=map_coordinates(dem.read(1).astype(float),[r-.5,c-.5],order=1,prefilter=False)
+raw_world=world(np.column_stack([en,raw_h]));tree=STRtree([p for p,t in old]);errors=[];core_errors=[];seam_errors=[]
+for q,source in zip(vertices,raw_world):
+    p=Point(q[0],q[2]);poly,t=old[int(tree.nearest(p))];near=nearest_points(poly,p)[0];d=p.distance(poly);weights=np.linalg.solve(np.vstack([t[:,0],t[:,2],np.ones(3)]),[near.x,near.y,1]);prior=float(weights@t[:,1]);w=min(1,d/spec['groundBlendMetres']);w=w*w*(3-2*w);errors.append(abs(q[1]-(prior*(1-w)+source[1]*w)))
+    if d>=spec['groundBlendMetres']:core_errors.append(abs(q[1]-source[1]))
+    if d<.001:seam_errors.append(abs(q[1]-prior))
+assert max(errors)<.002 and core_errors and seam_errors,(max(errors),len(core_errors),len(seam_errors))
+
 # Retirement must exclude neighbours and the open inner courtyard.
 retirement=unary_union([Polygon(p['ring'],p['holes']) for p in rec['retirement']])
 world_foot=unary_union([Polygon(world(rings[0])[:,[0,2]],[world(h)[:,[0,2]] for h in rings[1:]]).buffer(0) for kind,rings in raw if kind=='GroundSurface'])
 for p in polygons(world_foot):
     for h in p.interiors:
-        core=Polygon(h).buffer(-.51)
+        core=Polygon(h).buffer(-spec['cleanupMarginMetres']-.01)
         assert retirement.intersection(core).area<.001
 for key,other in surveys.items():
     if key==spec['building']:continue
@@ -143,7 +173,18 @@ for key,other in surveys.items():
         other_foot=Polygon(world(rings[0])[:,[0,2]],[world(h)[:,[0,2]] for h in rings[1:]]).buffer(0)
         if not other_foot.intersects(retirement):continue
         assert retirement.intersection(other_foot).area<.001,key
-files=[rec['meshFile'],rec['roofFile']]
-result={'status':'PASS: raw survey envelope, encoded wall coverage, first-hit glass controls, courtyard/neighbour preservation and public roof pixels','manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'validatorSha256':sha(Path(__file__)),'tileSha256':{f:sha(out/f) for f in files},'rawInputs':inputs,'roofVertexErrorMetres':roof_error,'wallVertexErrorMetres':wall_error,'wallCoverage':coverage,'surfaceControls':len(rec['controls']),'qualification':'Facade subdivisions remain estimated. This does not establish native collision, source retirement or visual acceptance.'}
+        assert region.intersection(other_foot).area<.001,(key,'ground')
+# Every new ground tile also retains its public DOP crop and UV mapping.
+for v,pixels in new_parts:
+    e,n,_=inverse.transform(*((v[:,:3]-[0,64,0])@basis+origin).T)
+    with rasterio.open(root/'.cache/campus-dop-east.tif') as dop:
+        c,r=(~dop.transform)*(e,n);height,width=pixels.shape[:2]
+        left=float(np.median(c-v[:,3]*width));top=float(np.median(r-v[:,4]*height))
+        assert abs(left-round(left))<.002 and abs(top-round(top))<.002
+        rgb=dop.read([1,2,3],window=rasterio.windows.Window(round(left),round(top),width,height)).transpose(1,2,0)
+        assert np.array_equal(rgb,pixels[:,:,:3])
+        assert np.max(abs(np.column_stack([(c-round(left))/width,(r-round(top))/height])-v[:,3:]))<1e-4
+files=[rec['meshFile'],rec['roofFile'],*new_files]
+result={'status':'PASS: raw survey envelope, encoded wall coverage, first-hit glass controls, courtyard/neighbour preservation and public roof pixels','manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'validatorSha256':sha(Path(__file__)),'tileSha256':{f:sha(out/f) for f in files},'rawInputs':inputs,'roofVertexErrorMetres':roof_error,'wallVertexErrorMetres':wall_error,'wallCoverage':coverage,'surfaceControls':len(rec['controls']),'groundAreaSquareMetres':region.area,'groundVertices':len(vertices),'groundHeightErrorMetres':max(errors),'seamHeightErrorMetres':max(seam_errors),'qualification':'Facade subdivisions remain estimated. This does not establish native collision, source retirement or visual acceptance.'}
 (out/'physics-lmu-validation.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps({k:v for k,v in result.items() if k not in ['rawInputs','wallCoverage','tileSha256']},indent=2))

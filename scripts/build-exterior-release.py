@@ -233,6 +233,17 @@ assert digest(ROOT/'scripts/exterior_cala_trees.py')==cala['site']['smallTreeGen
 assert digest(SOURCE/cala['site']['osmFile'])==cala['site']['osmSha256']
 assert digest(SOURCE/cala['site']['materialFile'])==cala['site']['materialSha256']
 assert digest(DATA/cala['site']['materialFeaturesFile'])==cala['site']['materialFeaturesSha256']
+lmu=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsLMU']
+assert digest(SOURCE/lmu['sourceFile'])==lmu['sourceSha256']
+assert digest(ROOT/lmu['generatorFile'])==lmu['generatorSha256']
+assert digest(ROOT/'scripts/exterior_ground_extension.py')==lmu['groundGeneratorSha256']
+lmu_check=json.loads((DATA/'physics-lmu-validation.json').read_text())
+assert lmu_check['status'].startswith('PASS:')
+assert lmu_check['manifestSha256']==digest(DATA/'manifest.json')
+assert lmu_check['sourceSha256']==lmu['sourceSha256']
+assert lmu_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-lmu.py')
+assert set(lmu_check['tileSha256'])==set(lmu['groundTiles']+[lmu['meshFile'],lmu['roofFile']])
+assert all(digest(DATA/name)==value for name,value in lmu_check['tileSha256'].items())
 riverbank=json.loads((DATA/'manifest.json').read_text())['architecture']['riverbank']
 riverbank_spec=json.loads((SOURCE/riverbank['sourceFile']).read_text())
 assert digest(SOURCE/riverbank['sourceFile'])==riverbank['sourceSha256']
@@ -319,6 +330,11 @@ compiled=work/'mod/build/libs/realworldmc-1.0.3.jar'
 if not compiled.is_file():raise SystemExit('Expected remapped release JAR missing.')
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
+
+LMU physics/workshop complex: BVV LoD2 envelope and DOP20 roof. Concrete
+frames and recessed facade subdivisions are estimated from the NavigaTUM
+Alexander Pach photograph and the MGK CALA project street view. No reference
+photograph pixels are redistributed. Sources and qualifications: physics-lmu.json.
 
 CALA main volume: BVV LoD2 walls, DOP20 green roof and DGM1 north/east
 slope. Openings, canopies, finishes and geometric markings are approximate
@@ -632,6 +648,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/'+riverbank['sourceFile'],(SOURCE/riverbank['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+riverbank['coverageFile'],(DATA/riverbank['coverageFile']).read_bytes())
   for source in riverbank_spec['osm']:write(target,'src/minecampus-exterior/'+source['sourceFile'],(SOURCE/source['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+lmu['sourceFile'],(SOURCE/lmu['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+cala['sourceFile'],(SOURCE/cala['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+cala['site']['osmFile'],(SOURCE/cala['site']['osmFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+cala['site']['materialFeaturesFile'],(DATA/cala['site']['materialFeaturesFile']).read_bytes())
