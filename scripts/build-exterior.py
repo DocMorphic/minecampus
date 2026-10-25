@@ -306,6 +306,8 @@ from exterior_reactor_site import build as build_reactor_site
 build_reactor_site(globals())
 from exterior_reactor_east import build as build_reactor_east
 build_reactor_east(globals())
+from exterior_uta import build as build_uta
+build_uta(globals())
 metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}
 for stale in ['galileo-facade-rectified.jpg']:
  if (OUT/stale).exists():(OUT/stale).unlink()

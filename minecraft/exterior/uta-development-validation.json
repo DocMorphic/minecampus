@@ -1,0 +1,350 @@
+{
+  "candidate": 85,
+  "status": "Survey envelope and collision preflight pass; required source checks running, packaging and native comparison pending",
+  "sourceValidation": {
+    "status": "PASS: survey envelope, exact roof, terrain profiles, bounded ownership and retained inputs",
+    "manifestSha256": "abec8faa31ec4b78ce6756dbe69a9ee774519fb61bdc73bbbc443af292bbdd44",
+    "validatorSha256": "72ee11d8574db868ef4997e45c55327db5c5c716b352c17f86fc809c99e99bb9",
+    "sourceSha256": "7bcb037242b7f40d623809c58c898e56913cf21894ff85a29291baa51ec86a69",
+    "roofSha256": "ec47c676764f4c55ad6a38b0769c8366f48b9ef8aa8a2371df83b2f4e2b244be",
+    "collisionSha256": "e824426c41abae532cf361b325a7db7056221297a270f3a50b864e059b0a265a",
+    "walls": 6,
+    "roofTriangles": 4,
+    "terrainSamples": 317,
+    "maximumTerrainResidualMetres": 0.0,
+    "neighbourOverlapSquareMetres": 0.0,
+    "priorRenderCollisionInputsUnchanged": 641,
+    "inspectionPlanSha256": "d8d6613a7338741fcac820b5d2030a46124c010869ad8fa30072ff9da29798c7",
+    "visualAcceptance": false
+  },
+  "collisionPreflight": {
+    "status": "PASS: six UTA walls and four roof triangles retain collision; previous reactor approaches and UTA roof support are clear at both datums",
+    "wallChecks": 12,
+    "roofChecks": 8,
+    "results": [
+      {
+        "label": "mlz courtyard standing",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.89908177890647,
+        "residual": -0.024081778906470674,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.995528146961206,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 0,
+        "standingY": 63.8125,
+        "expected": 63.786881936432195,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall northwest corridor",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.07557231088317,
+        "residual": 0.04942768911682549,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall southwest corridor",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.954792558466174,
+        "residual": 0.04520744153382594,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall north approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.86891512333618,
+        "residual": 0.006084876663820182,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall east approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.8496980649334,
+        "residual": 0.025301935066600834,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall south approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.84360075918638,
+        "residual": 0.03139924081362011,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "shift": 0,
+        "standingY": 69.625,
+        "expected": 69.62290400570674,
+        "residual": 0.0020959942932563536,
+        "bodyClear": true
+      },
+      {
+        "label": "mlz courtyard standing",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.89908177890646,
+        "residual": -0.02408177890646357,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.9955281469612,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 2,
+        "standingY": 65.8125,
+        "expected": 65.7868819364322,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall northwest corridor",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.07557231088317,
+        "residual": 0.04942768911682549,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall southwest corridor",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.95479255846618,
+        "residual": 0.04520744153381884,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall north approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.86891512333618,
+        "residual": 0.006084876663820182,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall east approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84969806493339,
+        "residual": 0.02530193506660794,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall south approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84360075918639,
+        "residual": 0.031399240813613005,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "shift": 2,
+        "standingY": 71.625,
+        "expected": 71.62290400570674,
+        "residual": 0.0020959942932563536,
+        "bodyClear": true
+      }
+    ],
+    "qualification": "Survey-plane collision is independent of provider photographic acceptance. Native migration and visual acceptance are separate."
+  },
+  "retirementRegression": {
+    "status": "PASS: measured fragment samples owned by supported walls; unsupported return, exterior controls and unavailable-source fallback preserved",
+    "removedSamples": 204,
+    "preservedSamples": 10,
+    "qualification": "Uses recorded coverage to test geometry ownership. Live imagery coverage and native appearance must be checked separately."
+  },
+  "photographicCoverageStudy": {
+    "status": "Coverage study only; no native replacement or visual acceptance",
+    "buildingId": "DEBY_LOD2_5323191",
+    "minimumCoveragePerWall": 0.8,
+    "maximumFillDistanceMetres": 2,
+    "metrics": [
+      {
+        "id": "DEBY_LOD2_5323191",
+        "accepted": true,
+        "acceptedWalls": 5,
+        "reconstructedWalls": 0,
+        "totalWalls": 6,
+        "coverage": 0.9561531788325691,
+        "walls": [
+          {
+            "coverage": 0.011695906432748537,
+            "maxFillDistance": 2.4921063152465264,
+            "unfilled": 0
+          },
+          {
+            "coverage": 1,
+            "maxFillDistance": 0,
+            "unfilled": 0
+          },
+          {
+            "coverage": 0.9250598836546139,
+            "maxFillDistance": 0.9968731937723175,
+            "unfilled": 0
+          },
+          {
+            "coverage": 0.9684446014364771,
+            "maxFillDistance": 0.6978113583920726,
+            "unfilled": 0
+          },
+          {
+            "coverage": 0.9660526315789474,
+            "maxFillDistance": 0.8987086321089055,
+            "unfilled": 0
+          },
+          {
+            "coverage": 0.9746098915630785,
+            "maxFillDistance": 0.7992256059420082,
+            "unfilled": 0
+          }
+        ]
+      }
+    ],
+    "qualification": "Aggregate acceptance means at least one supported wall, not full building acceptance. Rejected wall 0 is a 0.254 m surveyed return. Provider pixels remain transient and are not included."
+  },
+  "nativePlan": {
+    "file": "checks/uta-exterior.json",
+    "cameras": 25,
+    "standingChecks": 13,
+    "retainedCameras": 20,
+    "retainedStandingChecks": 12,
+    "trackedFragmentRays": [
+      {
+        "u": 0.9,
+        "v": 0.55,
+        "surveyHits": [
+          [
+            3.594373785160053,
+            2
+          ],
+          [
+            5.014003185519958,
+            4
+          ]
+        ]
+      },
+      {
+        "u": 0.94,
+        "v": 0.65,
+        "surveyHits": [
+          [
+            3.486071671010281,
+            2
+          ],
+          [
+            5.249793977470318,
+            4
+          ]
+        ]
+      },
+      {
+        "u": 0.95,
+        "v": 0.8,
+        "surveyHits": [
+          [
+            3.563493355925643,
+            2
+          ],
+          [
+            5.343945234352155,
+            4
+          ]
+        ]
+      }
+    ]
+  },
+  "qualification": [
+    "Geometry and roof imagery derive from public BVV data. The runtime gates each photographic wall independently.",
+    "The unsupported narrow return keeps its source mesh. East shared-boundary cleanup is excluded to protect the neighboring building.",
+    "The roof uses the existing fractional heightfield support; wall collision remains a Minecraft block-grid approximation.",
+    "No provider image pixels are bundled. Coverage alone does not establish convincing facade detail."
+  ],
+  "visualAcceptance": false,
+  "installation": "User preview unchanged; no public binary release."
+}

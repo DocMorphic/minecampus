@@ -1,0 +1,9 @@
+{
+  "building": "DEBY_LOD2_5323191",
+  "siteBoundsUTM": [698430, 5349200, 698650, 5349360],
+  "cleanupMarginMetres": 2.75,
+  "neighbourGuardMetres": 0.25,
+  "datumMarginMetres": 1.0,
+  "reference": "photos/reactor-south-exterior-research.json",
+  "qualification": "BVV supplies the six exterior wall planes, four roof triangles and DGM1 datum. DOP20 supplies the roof image. Facade pixels are projected transiently from the configured provider only when each face independently passes the existing coverage and fill-distance thresholds. Unsupported faces retain their original source mesh; no complete detailed or visually accepted building is claimed."
+}

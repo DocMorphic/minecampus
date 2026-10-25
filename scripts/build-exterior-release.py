@@ -94,6 +94,13 @@ assert reactor_east_check['status'].startswith('PASS:') and reactor_east_check['
 assert reactor_east_check['validatorSha256']==digest(ROOT/'scripts/validate-reactor-east.py')
 assert reactor_east_check['meshSha256']==reactor_east['meshSha256'] and reactor_east_check['roofSha256']==reactor_east['roofSha256']
 
+uta=json.loads((DATA/'manifest.json').read_text())['architecture']['utaExterior']
+for path,key in [(SOURCE/uta['sourceFile'],'sourceSha256'),(ROOT/uta['generatorFile'],'generatorSha256'),(SOURCE/uta['referenceFile'],'referenceSha256'),(DATA/uta['roofFile'],'roofSha256'),(DATA/uta['collisionFile'],'collisionSha256')]:assert digest(path)==uta[key]
+uta_check=json.loads((DATA/'uta-exterior-validation.json').read_text())
+assert uta_check['status'].startswith('PASS:') and uta_check['manifestSha256']==digest(DATA/'manifest.json')
+assert uta_check['validatorSha256']==digest(ROOT/'scripts/validate-uta-exterior.py')
+assert uta_check['roofSha256']==uta['roofSha256'] and uta_check['collisionSha256']==uta['collisionSha256']
+
 court=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoCourt']
 assert hashlib.sha256((SOURCE/court['sourceFile']).read_bytes()).hexdigest()==court['sourceSha256']
 facade=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoFacade']
@@ -815,6 +822,9 @@ with zipfile.ZipFile(release) as original:
   for name in ['atom-ei-west-entrance-surfaces.json','atom-ei-west-entrance-validation.json']:
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/reactor-east.json',(SOURCE/'reactor-east.json').read_bytes())
+  write(target,'src/minecampus-exterior/uta-exterior.json',(SOURCE/'uta-exterior.json').read_bytes())
+  write(target,'src/minecampus-exterior/reactor-south-exterior-research.json',(SOURCE/'photos/reactor-south-exterior-research.json').read_bytes())
+  write(target,'src/minecampus-exterior/uta-exterior-validation.json',(DATA/'uta-exterior-validation.json').read_bytes())
   write(target,'src/minecampus-exterior/reactor-east-exterior-research.json',(SOURCE/'photos/reactor-east-exterior-research.json').read_bytes())
   for name in ['reactor-east-surfaces.json','reactor-east-validation.json']:
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
