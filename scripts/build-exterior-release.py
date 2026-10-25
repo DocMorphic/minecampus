@@ -253,6 +253,17 @@ assert lc_check['status'].startswith('PASS:') and lc_check['manifestSha256']==di
 assert lc_check['sourceSha256']==lmu_courtyard['sourceSha256'] and lc_check['validatorSha256']==digest(ROOT/'scripts/validate-lmu-courtyard.py')
 assert set(lc_check['tileSha256'])==set(lmu_courtyard['groundTiles']+lmu_courtyard['treeTiles']+[lmu_courtyard['coverageFile']])
 assert all(digest(DATA/name)==value for name,value in lc_check['tileSha256'].items())
+lmu_east=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsLMUEast']
+lmu_east_spec=json.loads((SOURCE/lmu_east['sourceFile']).read_text())
+assert digest(SOURCE/lmu_east['sourceFile'])==lmu_east['sourceSha256']
+assert digest(SOURCE/lmu_east_spec['osm']['sourceFile'])==lmu_east_spec['osm']['sha256']
+for path,key in [(ROOT/lmu_east['generatorFile'],'generatorSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(SOURCE/'vegetation-sources.json','vegetationSourceSha256')]:assert digest(path)==lmu_east[key]
+assert digest(DATA/lmu_east['coverageFile'])==lmu_east['coverageSha256']
+le_check=json.loads((DATA/'lmu-east-validation.json').read_text())
+assert le_check['status'].startswith('PASS:') and le_check['manifestSha256']==digest(DATA/'manifest.json')
+assert le_check['sourceSha256']==lmu_east['sourceSha256'] and le_check['validatorSha256']==digest(ROOT/'scripts/validate-lmu-east.py')
+assert set(le_check['tileSha256'])==set(lmu_east['groundTiles']+lmu_east['treeTiles']+[lmu_east['meshFile'],lmu_east['roofFile'],lmu_east['coverageFile']])
+assert all(digest(DATA/name)==value for name,value in le_check['tileSha256'].items())
 riverbank=json.loads((DATA/'manifest.json').read_text())['architecture']['riverbank']
 riverbank_spec=json.loads((SOURCE/riverbank['sourceFile']).read_text())
 assert digest(SOURCE/riverbank['sourceFile'])==riverbank['sourceSha256']
@@ -349,6 +360,12 @@ LMU outdoor courtyard: BVV LoD2 courtyard ring, DGM1/DOP20 ground and
 DOM20/DOP20 fitted tree crowns. Branches and species appearance are estimates;
 leaf/bark atlases are the pinned Poly Haven CC0 assets. Physics-lmu-courtyard.json
 records scope; the building interiors are not reconstructed.
+
+LMU east service building and mapped access ground: BVV LoD2/DGM1/DOP20
+and OpenStreetMap contributors (ODbL 1.0). Roof and ground pixels are BVV;
+facade finishes and path widths are estimates. DOM20 fits the nearby crown;
+branches/species are estimated with pinned Poly Haven CC0 atlases. Scope and
+source references: physics-lmu-east.json. No interior is reconstructed.
 
 CALA main volume: BVV LoD2 walls, DOP20 green roof and DGM1 north/east
 slope. Openings, canopies, finishes and geometric markings are approximate
@@ -663,6 +680,9 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/'+riverbank['coverageFile'],(DATA/riverbank['coverageFile']).read_bytes())
   for source in riverbank_spec['osm']:write(target,'src/minecampus-exterior/'+source['sourceFile'],(SOURCE/source['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+lmu['sourceFile'],(SOURCE/lmu['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+lmu_east['sourceFile'],(SOURCE/lmu_east['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+lmu_east['coverageFile'],(DATA/lmu_east['coverageFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+lmu_east_spec['osm']['sourceFile'],(SOURCE/lmu_east_spec['osm']['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+lmu_courtyard['sourceFile'],(SOURCE/lmu_courtyard['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+lmu_courtyard['coverageFile'],(DATA/lmu_courtyard['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+cala['sourceFile'],(SOURCE/cala['sourceFile']).read_bytes())

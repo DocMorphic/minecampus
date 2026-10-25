@@ -58,6 +58,12 @@ def build(ctx):
             for tri in triangles(area):
                 q = np.array([anchor+direction*x for x,y in tri]); q[:,1] = np.array(tri)[:,1]
                 if np.cross(q[1]-q[0],q[2]-q[0])@normal < 0: q = q[::-1]
+                # Survey-plane projection can create sub-pixel slivers at the
+                # union with the base extension. Omit faces that collapse in
+                # the actual float32 mesh instead of emitting zero-area faces.
+                stored = q.astype(np.float32).astype(float)
+                if np.linalg.norm(np.cross(stored[1]-stored[0],stored[2]-stored[0])) < 1e-9:
+                    continue
                 parts[part].extend(np.column_stack([q,np.full((3,2),.5)]).tolist())
         wall['reconstructed'] = True
         target = anchor+direction*(left+(right-left)*.37); target[1] = base+1.4
@@ -121,8 +127,11 @@ def build(ctx):
     meta['architecture']['physicsLMUEast']={'building':bid,'sourceFile':source.name,'sourceSha256':sha(source),
         'generatorFile':'scripts/exterior_physics_lmu_east.py','generatorSha256':sha(Path(__file__)),
         'groundGeneratorSha256':sha(root/'scripts/exterior_ground_extension.py'),'vegetationGeneratorSha256':sha(root/'scripts/exterior_vegetation.py'),
+        'vegetationSourceSha256':sha(root/'minecraft/exterior/vegetation-sources.json'),
         'meshFile':mesh,'roofFile':roof_file,'surveyWalls':walls,'roofTriangles':len(roof)//3,'controls':controls,
         'groundTiles':ground['groundTiles'],'ground':ground,'treeTiles':[t['file'] for t in tree_tiles],
         'trees':sub['vegetation']['trees'],'coverageFile':coverage.name,'coverageSha256':sha(coverage),
         'qualification':spec['qualification']}
+    runtime_ids = [tile['runtimeId'] for tile in meta['tiles']]
+    assert len(runtime_ids) == len(set(runtime_ids)), 'Duplicate exterior runtime IDs'
     print('LMU east:',len(walls),'survey walls;',len(ground['groundTiles']),'ground tiles;',len(sub['vegetation']['trees']),'trees',flush=True)

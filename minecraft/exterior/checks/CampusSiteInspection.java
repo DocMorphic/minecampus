@@ -17,8 +17,9 @@ public final class CampusSiteInspection {
     private static final JsonArray gravity = new JsonArray();
     private static volatile int gravityIndex;
     private static int gravityTicks;
+    private static int gravityAlignmentWaitTicks;
     private static int gravityReportedIndex;
-    private static volatile boolean gravityQueued, gravityReady, gravityChecking;
+    private static volatile boolean gravityQueued, gravityReady, gravityChecking, gravityReleased;
     private static volatile Throwable gravityFailure;
     private static volatile JsonObject gravityFailureDetails;
 
@@ -226,18 +227,36 @@ public final class CampusSiteInspection {
         final String look=control.has("look")?" "+control.getAsJsonArray("look").get(0).getAsDouble()+" "+control.getAsJsonArray("look").get(1).getAsDouble():"";
         if(!gravityQueued){
             var one=new JsonArray();one.add(control);probe(mc,loaded,displayed,one);
-            gravityQueued=true;gravityReady=false;gravityChecking=false;gravityTicks=0;
+            gravityQueued=true;gravityReady=false;gravityChecking=false;gravityReleased=false;gravityTicks=0;gravityAlignmentWaitTicks=0;
             server.execute(()->{try{
                 var player=server.getPlayerList().getPlayer(uuid);player.setGameMode(net.minecraft.world.level.GameType.CREATIVE);
-                player.getAbilities().flying=false;player.onUpdateAbilities();
+                // Hold the probe above the target while its chunks load and
+                // collision alignment completes, then perform the actual drop.
+                player.getAbilities().flying=true;player.onUpdateAbilities();
                 server.getCommands().performPrefixedCommand(player.createCommandSourceStack().withPermission(4),"tp @s "+x+" "+startY+" "+z+look);
                 gravityReady=true;
             }catch(Throwable error){gravityFailure=error;}});return;
         }
-        if(!gravityReady||++gravityTicks<100||gravityChecking)return;
+        if(!gravityReady||++gravityTicks<(gravityReleased?100:20)||gravityChecking)return;
         gravityChecking=true;
         server.execute(()->{try{
             var player=server.getPlayerList().getPlayer(uuid);
+            if(!gravityReleased){
+                var chunk=player.chunkPosition();
+                if(!dev.realworldmc.CampusCollision.aligned(server.overworld(),chunk.x,chunk.z)){
+                    if(gravityTicks>=1200){
+                        var detail=new JsonObject();detail.addProperty("probe",index);detail.add("control",control.deepCopy());
+                        detail.addProperty("serverPosition",player.position().toString());detail.addProperty("collisionAligned",false);
+                        detail.addProperty("alignmentWaitTicks",gravityTicks);gravityFailureDetails=detail;
+                        throw new AssertionError("Walking probe collision alignment timed out before release");
+                    }
+                    gravityChecking=false;return;
+                }
+                gravityAlignmentWaitTicks=gravityTicks;
+                server.getCommands().performPrefixedCommand(player.createCommandSourceStack().withPermission(4),"tp @s "+x+" "+startY+" "+z+look);
+                player.getAbilities().flying=false;player.onUpdateAbilities();
+                gravityReleased=true;gravityTicks=0;gravityChecking=false;return;
+            }
             double horizontalError=Math.hypot(player.getX()-x,player.getZ()-z);
             boolean freeBody=!control.has("requireBodyClearance")||!control.get("requireBodyClearance").getAsBoolean()||server.overworld().noCollision(player);
             if(!player.onGround()||Math.abs(player.getY()-supportExpected)>.51||horizontalError>.1||!freeBody){
@@ -261,6 +280,7 @@ public final class CampusSiteInspection {
             var chunk=player.chunkPosition();
             if(!dev.realworldmc.CampusCollision.aligned(server.overworld(),chunk.x,chunk.z))throw new AssertionError("Walking probe chunk has not completed collision alignment");
             var row=control.deepCopy();row.addProperty("standingY",player.getY());row.addProperty("supportExpectedY",supportExpected);row.addProperty("onGround",player.onGround());row.addProperty("horizontalError",horizontalError);row.addProperty("bodyClear",freeBody);
+            row.addProperty("alignmentWaitTicks",gravityAlignmentWaitTicks);
             if(control.has("requireFineWood")&&control.get("requireFineWood").getAsBoolean()){
                 var profiles=new JsonArray();var level=server.overworld();
                 for(int bx=(int)Math.floor(x)-2;bx<=(int)Math.floor(x)+2;bx++)
