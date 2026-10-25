@@ -20,7 +20,7 @@ out = p.parse_args().directory; src = root/'minecraft/exterior'
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 read = lambda p: json.loads(p.read_text())
 m = read(out/'manifest.json'); rec = m['architecture']['reactorGroundMaterials']
-for key,folder in [('source',src),('research',src),('generator',root),('mask',src),('derived',out),('sharedMaterial',src)]:
+for key,folder in [('source',src),('research',src),('generator',root),('mask',src),('derived',out),('sharedMaterial',src),('courtyardSource',src)]:
     assert sha(folder/rec[key+'File']) == rec[key+'Sha256'], key
 spec = read(src/rec['sourceFile']); research = read(src/rec['researchFile'])
 assert spec['researchSha256'] == rec['researchSha256']
@@ -33,7 +33,19 @@ footprints = unary_union([Polygon(rings[0][:,:2],[h[:,:2] for h in rings[1:]]).b
     for _,surfaces in nearby_surveys(root/'.cache',limit.bounds) for kind,rings in surfaces if kind=='GroundSurface'])
 records = research['mappedFeatures']
 grass = unary_union([shape(f['geometryUTM']) for f in records if f['tags'].get('landuse')=='grass']).intersection(limit).difference(footprints)
-expected = {'grass':grass,'paving':[],'asphalt':[]}
+courtyard = read(src/rec['courtyardSourceFile'])
+assert spec['courtyardSourceSha256'] == rec['courtyardSourceSha256']
+assert courtyard['source']['sha256'] == rec['courtyardAerialSha256'] == sha(root/'.cache'/rec['courtyardAerialCacheFile'])
+assert courtyard['source']['sha256'] == sorted(sources['dop20'],key=lambda x:x['name'])[1]['sha256']
+interpreted = {kind:unary_union([shape(f['geometry']) for f in courtyard['features']
+    if f['properties']['material']==kind]).intersection(limit).difference(footprints) for kind in ('grass','paving','preserve')}
+for kind,area in interpreted.items():
+    assert abs(area.area-rec['courtyardInterpretedAreasSquareMetres'][kind]) < 1e-6
+    assert area.intersection(footprints).area < 1e-6
+assert interpreted['grass'].intersection(interpreted['preserve']).area < 1e-6
+grass=grass.union(interpreted['grass'])
+protected=footprints.union(interpreted['preserve'])
+expected = {'grass':grass,'paving':[interpreted['paving'].difference(protected).difference(grass)],'asphalt':[]}
 for f in records:
     tags = f['tags']; g = shape(f['geometryUTM']); highway = tags.get('highway')
     if highway not in ('service','footway','path') or tags.get('surface') in ('grass','dirt','unpaved','fine_gravel'):continue
@@ -41,12 +53,13 @@ for f in records:
     if g.geom_type!='LineString':continue
     width = float(tags.get('width',spec['estimatedWidthsMetres'][highway]))
     kind = 'asphalt' if tags.get('surface') in ('asphalt','chipseal') else spec['untaggedMaterial']
-    expected[kind].append(g.buffer(width*.5,cap_style=2,join_style=2).intersection(limit).difference(footprints).difference(grass))
-expected['paving'].append(Polygon(spec['parkingApronUTM']).intersection(limit).difference(footprints).difference(grass))
+    expected[kind].append(g.buffer(width*.5,cap_style=2,join_style=2).intersection(limit).difference(protected).difference(grass))
+expected['paving'].append(Polygon(spec['parkingApronUTM']).intersection(limit).difference(protected).difference(grass))
 expected['asphalt']=unary_union(expected['asphalt'])
 expected['paving']=unary_union(expected['paving']).difference(expected['asphalt'])
 features=read(out/rec['derivedFile'])['features']; layers={f['properties']['material']:shape(f['geometry']) for f in features}
 assert set(layers)==set(expected)
+assert layers['paving'].union(layers['asphalt']).intersection(interpreted['preserve']).area < 1e-6
 for name,region in layers.items():
     assert region.symmetric_difference(expected[name]).area < 1e-6, name
     assert region.intersection(footprints).area < 1e-6

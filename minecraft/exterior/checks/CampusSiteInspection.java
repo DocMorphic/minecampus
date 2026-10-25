@@ -57,8 +57,8 @@ public final class CampusSiteInspection {
 
     /** Optional private geometry diagnostic; no textures or provider credentials. */
     private static void recordSourceTriangles(Map<?, ?> loaded, List<?> displayed, String prefix) throws Exception {
-        if (!plan.has("diagnosticBounds")) return;
-        var bounds=plan.getAsJsonArray("diagnosticBounds");
+        if (!plan.has("sourceDiagnosticBounds") && !plan.has("diagnosticBounds")) return;
+        var bounds=plan.getAsJsonArray(plan.has("sourceDiagnosticBounds")?"sourceDiagnosticBounds":"diagnosticBounds");
         var low=bounds.get(0).getAsJsonArray(); var high=bounds.get(1).getAsJsonArray();
         var rows=new JsonArray();
         for (var value : loaded.values()) {
@@ -406,10 +406,10 @@ public final class CampusSiteInspection {
             var shader=(net.minecraft.client.renderer.ShaderInstance)shaderField.get(null);
             float strength=org.lwjgl.opengl.GL20.glGetUniformf(shader.getId(),org.lwjgl.opengl.GL20.glGetUniformLocation(shader.getId(),"PlanarStrength"));
             var reflection=new JsonObject();reflection.addProperty("strength",strength);reflection.addProperty("updates",CampusReflections.updates);reflection.addProperty("stateChecks",CampusReflections.stateChecks);reflection.addProperty("groundMaterialDraws",CampusReflections.groundDraws);
-            if(plan.has("requireGroundMaterialReflection")&&plan.get("requireGroundMaterialReflection").getAsBoolean()&&strength<=0)throw new AssertionError("Required reflection is inactive");
+            if(plan.has("requireGroundMaterialReflection")&&plan.get("requireGroundMaterialReflection").getAsBoolean()&&(!camera.has("reflections")||camera.get("reflections").getAsBoolean())&&strength<=0)throw new AssertionError("Required reflection is inactive");
             if(strength>0){
                 if(CampusReflections.selected==null||CampusReflections.stateChecks!=CampusReflections.updates)throw new AssertionError("Unverified inspection reflection pass");
-                if(plan.has("requireGroundMaterialReflection")&&plan.get("requireGroundMaterialReflection").getAsBoolean()&&CampusReflections.groundDraws<=0)throw new AssertionError("No surveyed ground drawn with reflection materials");
+                if(plan.has("requireGroundMaterialReflection")&&plan.get("requireGroundMaterialReflection").getAsBoolean()&&(!camera.has("reflections")||camera.get("reflections").getAsBoolean())&&CampusReflections.groundDraws<=0)throw new AssertionError("No surveyed ground drawn with reflection materials");
                 reflection.addProperty("drawCalls",CampusReflections.draws);reflection.addProperty("cpuMilliseconds",CampusReflections.lastMilliseconds);
                 int location=org.lwjgl.opengl.GL20.glGetUniformLocation(shader.getId(),"PlanarBaseWeight");
                 if(location>=0){
@@ -470,7 +470,10 @@ public final class CampusSiteInspection {
         if(blockedWater){writeReport("FAIL: river clearance contains solid source or reconstructed blocks");throw new AssertionError("River clearance blocked; inspect captured native states");}
         boolean needsGravity=plan.has("gravityProbes")&&!plan.getAsJsonArray("gravityProbes").isEmpty();
         writeReport(phase==cameras.size()-1&&!needsGravity?"PASS: inspection cameras captured; visual assessment required":"RUNNING");
-        if (++phase == cameras.size()) { if(!needsGravity)mc.stop();return; }
+        if (++phase == cameras.size()) {
+            if(needsGravity&&plan.has("walkingReflections"))CampusReflections.enabled=plan.get("walkingReflections").getAsBoolean();
+            if(!needsGravity)mc.stop();return;
+        }
         ticks = 0; String next = cameras.get(phase).getAsJsonObject().get("position").getAsString();
         var uuid = mc.player.getUUID();
         mc.getSingleplayerServer().execute(() -> {

@@ -1,6 +1,6 @@
 {
-  "name": "reactor-ground-candidate-89",
-  "purpose": "Eight matched candidate88 camera positions plus a nighttime parking-apron view and all 15 standing controls, verifying shared reactor ground albedo in main and planar reflection passes.",
+  "name": "reactor-ground-candidate-90",
+  "purpose": "Source-traced north courtyard pavement/lawns: nine retained daytime/nighttime material views, two additional south-obstruction diagnostics and all 15 standing controls.",
   "captureWalking": true,
   "reflectionEvidence": true,
   "checkFractionalSupports": true,
@@ -246,6 +246,52 @@
         {
           "u": 0.5,
           "v": 0.7,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UTA south standing source obstruction",
+      "position": "313.25 64.125 -24.25 0 30",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UTA south source obstruction aerial",
+      "position": "320.25 85.0 -3.25 175 55",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
           "blockSamples": true
         }
       ]
@@ -1611,15 +1657,16 @@
   ],
   "sourceDiagnosticBounds": [
     [
-      298,
-      61,
-      -56
+      288,
+      60,
+      -62
     ],
     [
-      334,
-      74,
-      -20
+      340,
+      80,
+      12
     ]
   ],
-  "requireGroundMaterialReflection": true
+  "requireGroundMaterialReflection": true,
+  "walkingReflections": true
 }

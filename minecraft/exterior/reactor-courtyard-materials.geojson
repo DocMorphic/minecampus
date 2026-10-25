@@ -1,0 +1,191 @@
+{
+  "type": "FeatureCollection",
+  "coordinateReferenceSystem": "EPSG:25832",
+  "source": {
+    "cacheFile": "campus-dop-east.tif",
+    "name": "32698_5349.tif",
+    "size": 65916935,
+    "sha256": "8a78e3fc301332e607e514b8bca545d64e3b1a956ecf02a723301b0982ab0dae",
+    "url": "https://download1.bayernwolke.de/a/dop20/data/32698_5349.tif",
+    "attribution": "\u00a9 Bayerische Vermessungsverwaltung \u2014 geodaten.bayern.de"
+  },
+  "qualification": "Original vector interpretation of the visible paved plaza and planted islands. Curbs and fine paving are estimates. Existing mapped lawns and surveyed buildings are excluded from paving. The mixed planted island retains its existing material treatment; no new plant geometry or parking markings are claimed. No aerial pixels bundled in this file.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "north-courtyard-paved-plaza",
+        "material": "paving",
+        "basis": "Manual boundary interpretation from pinned BVV DOP20; estimated curbs, not a field survey"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              698500.8,
+              5349359.7
+            ],
+            [
+              698571.7,
+              5349351.5
+            ],
+            [
+              698573.8,
+              5349344
+            ],
+            [
+              698580,
+              5349343.2
+            ],
+            [
+              698580,
+              5349337
+            ],
+            [
+              698548,
+              5349341.5
+            ],
+            [
+              698533.5,
+              5349328
+            ],
+            [
+              698500,
+              5349332
+            ],
+            [
+              698498,
+              5349335
+            ],
+            [
+              698500.8,
+              5349359.7
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "north-courtyard-west-lawn",
+        "material": "grass",
+        "basis": "Manual boundary interpretation from pinned BVV DOP20; estimated curbs, not a field survey"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              698518.6,
+              5349334.2
+            ],
+            [
+              698527.4,
+              5349333.3
+            ],
+            [
+              698528.9,
+              5349346.8
+            ],
+            [
+              698525.1,
+              5349351.5
+            ],
+            [
+              698520.4,
+              5349348.3
+            ],
+            [
+              698518.6,
+              5349334.2
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "north-courtyard-middle-lawn",
+        "material": "grass",
+        "basis": "Manual boundary interpretation from pinned BVV DOP20; estimated curbs, not a field survey"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              698527.3,
+              5349353.2
+            ],
+            [
+              698530.4,
+              5349355.8
+            ],
+            [
+              698546.5,
+              5349353.7
+            ],
+            [
+              698545.5,
+              5349346.7
+            ],
+            [
+              698531.2,
+              5349348.3
+            ],
+            [
+              698527.3,
+              5349353.2
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "north-courtyard-mixed-planted-island",
+        "material": "preserve",
+        "basis": "Manual boundary interpretation from pinned BVV DOP20; estimated curbs, not a field survey"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              698549.2,
+              5349353.1
+            ],
+            [
+              698565.8,
+              5349351.1
+            ],
+            [
+              698567.0,
+              5349349.4
+            ],
+            [
+              698566.2,
+              5349347.0
+            ],
+            [
+              698560.1,
+              5349342.4
+            ],
+            [
+              698547.9,
+              5349344.1
+            ],
+            [
+              698549.2,
+              5349353.1
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

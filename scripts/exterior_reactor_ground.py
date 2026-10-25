@@ -24,8 +24,19 @@ def build(ctx):
         for _, surfaces in nearby_surveys(cache, bounds) for kind, rings in surfaces if kind == 'GroundSurface'])
     grass = unary_union([shape(f['geometryUTM']).buffer(0) for f in records
         if f['tags'].get('landuse') == 'grass']).intersection(limit).difference(buildings)
+    courtyard_file = src/spec['courtyardSourceFile']
+    assert sha(courtyard_file) == spec['courtyardSourceSha256']
+    courtyard = json.loads(courtyard_file.read_text())
+    aerial = courtyard['source']
+    assert sha(cache/aerial['cacheFile']) == aerial['sha256']
+    interpreted = {kind: unary_union([shape(f['geometry']) for f in courtyard['features']
+        if f['properties']['material'] == kind]).intersection(limit).difference(buildings)
+        for kind in ('grass','paving','preserve')}
+    assert interpreted['grass'].intersection(interpreted['preserve']).area < 1e-8
+    grass = grass.union(interpreted['grass'])
     paths = []; layers = {'grass': grass, 'paving': [], 'asphalt': []}
-    exclusion = buildings.union(grass)
+    exclusion = buildings.union(grass).union(interpreted['preserve'])
+    layers['paving'].append(interpreted['paving'].difference(exclusion))
     for feature in records:
         tags = feature['tags']; g = shape(feature['geometryUTM'])
         if 'highway' in tags and tags.get('area') != 'yes' and g.geom_type == 'Polygon':
@@ -94,6 +105,9 @@ def build(ctx):
     meta['architecture']['reactorGroundMaterials'] = {
         'sourceFile':source.name,'sourceSha256':sha(source),
         'researchFile':spec['researchFile'],'researchSha256':sha(research),
+        'courtyardSourceFile':spec['courtyardSourceFile'],'courtyardSourceSha256':sha(courtyard_file),
+        'courtyardInterpretedAreasSquareMetres':{kind:area.area for kind,area in interpreted.items()},
+        'courtyardAerialCacheFile':aerial['cacheFile'],'courtyardAerialSha256':aerial['sha256'],
         'generatorFile':'scripts/exterior_reactor_ground.py','generatorSha256':sha(root/'scripts/exterior_reactor_ground.py'),
         'maskFile':'assets/textures/campus/'+target.name,'maskSha256':sha(target),
         'derivedFile':derived.name,'derivedSha256':sha(derived),

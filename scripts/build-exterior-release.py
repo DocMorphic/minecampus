@@ -374,8 +374,9 @@ assert north_check['manifestSha256']==digest(DATA/'manifest.json')
 assert north_check['validatorSha256']==digest(ROOT/'scripts/validate-north-ground.py')
 assert north_check['maskSha256']==north['maskSha256']
 reactor_ground=json.loads((DATA/'manifest.json').read_text())['architecture']['reactorGroundMaterials']
-for key,folder in [('source',SOURCE),('research',SOURCE),('generator',ROOT),('mask',SOURCE),('derived',DATA),('sharedMaterial',SOURCE)]:
+for key,folder in [('source',SOURCE),('research',SOURCE),('generator',ROOT),('mask',SOURCE),('derived',DATA),('sharedMaterial',SOURCE),('courtyardSource',SOURCE)]:
  assert digest(folder/reactor_ground[key+'File'])==reactor_ground[key+'Sha256']
+assert digest(ROOT/'.cache'/reactor_ground['courtyardAerialCacheFile'])==reactor_ground['courtyardAerialSha256']
 reactor_ground_mapping=(SOURCE/'shaders/campus_ground.fsh').read_text().split('// BEGIN GENERATED REACTOR GROUND MAPPING\n')[1].split('// END GENERATED REACTOR GROUND MAPPING')[0]
 assert hashlib.sha256(reactor_ground_mapping.encode()).hexdigest()==reactor_ground['shaderMappingSha256']
 for name in ('campus_ground.fsh','campus_reflection.fsh'):
@@ -855,6 +856,7 @@ with zipfile.ZipFile(release) as original:
   for name in ['reactor-ground-surfaces.geojson','reactor-ground-validation.json']:
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/reactor-ground-surfaces.json',(SOURCE/'reactor-ground-surfaces.json').read_bytes())
+  write(target,'src/minecampus-exterior/reactor-courtyard-materials.geojson',(SOURCE/'reactor-courtyard-materials.geojson').read_bytes())
   write(target,'src/minecampus-exterior/reactor-approach-ground-research.json',(SOURCE/'photos/reactor-approach-ground-research.json').read_bytes())
   write(target,'src/minecampus-exterior/reactor-east-exterior-research.json',(SOURCE/'photos/reactor-east-exterior-research.json').read_bytes())
   for name in ['reactor-east-surfaces.json','reactor-east-validation.json']:

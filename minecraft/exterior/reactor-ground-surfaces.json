@@ -34,5 +34,7 @@
   "atlasSize": 2048,
   "atlasSpanMetres": 256,
   "boundaryBlendMetres": 8,
-  "qualification": "Mapped OSM lawns and paths, with estimated widths where untagged. Light paving and the parking apron are appearance/boundary estimates from local BVV DOP20 inspection, not surveyed curbs or paving units. Tagged asphalt retained. Building footprints excluded. Original imagery retained outside classified areas; no geometry or collision changes."
+  "qualification": "Mapped OSM lawns and paths, with estimated widths where untagged. Light paving and the parking apron are appearance/boundary estimates from local BVV DOP20 inspection, not surveyed curbs or paving units. Tagged asphalt retained. Building footprints excluded. Original imagery retained outside classified areas; no geometry or collision changes. The north courtyard uses explicit DOP20-interpreted plaza and lawn boundaries; its mixed planted island retains its existing material treatment.",
+  "courtyardSourceFile": "reactor-courtyard-materials.geojson",
+  "courtyardSourceSha256": "4db5cc900259e1c380d53f997b5b4c47739381c26480d6e3e50eab68757ee0ac"
 }
