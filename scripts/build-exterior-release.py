@@ -66,6 +66,13 @@ canopy_check=json.loads((DATA/'atom-ei-canopies-validation.json').read_text())
 assert canopy_check['status'].startswith('PASS:') and canopy_check['manifestSha256']==digest(DATA/'manifest.json')
 assert canopy_check['validatorSha256']==digest(ROOT/'scripts/validate-atom-ei-canopies.py')
 for building in json.loads((DATA/canopies['derivedFile']).read_text())['buildings']:assert digest(DATA/building['meshFile'])==building['meshSha256']
+west=json.loads((DATA/'manifest.json').read_text())['architecture']['atomEiWestEntrance']
+for path,key in [(SOURCE/west['sourceFile'],'sourceSha256'),(ROOT/west['generatorFile'],'generatorSha256'),(SOURCE/west['referenceFile'],'referenceSha256'),(DATA/west['derivedFile'],'derivedSha256'),(DATA/west['meshFile'],'meshSha256')]:assert digest(path)==west[key]
+west_check=json.loads((DATA/'atom-ei-west-entrance-validation.json').read_text())
+assert west_check['status'].startswith('PASS:') and west_check['manifestSha256']==digest(DATA/'manifest.json')
+assert west_check['validatorSha256']==digest(ROOT/'scripts/validate-atom-ei-west-entrance.py')
+assert west_check['meshSha256']==west['meshSha256']
+
 court=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoCourt']
 assert hashlib.sha256((SOURCE/court['sourceFile']).read_bytes()).hexdigest()==court['sourceSha256']
 facade=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoFacade']
@@ -781,6 +788,10 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/atom-ei-canopies.json',(SOURCE/'atom-ei-canopies.json').read_bytes())
   write(target,'src/minecampus-exterior/atom-ei-canopies-reference.json',(SOURCE/'photos/atom-ei-canopies-reference.json').read_bytes())
   for name in ['atom-ei-canopy-surfaces.json','atom-ei-canopies-validation.json']:
+   write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
+  write(target,'src/minecampus-exterior/atom-ei-west-entrance.json',(SOURCE/'atom-ei-west-entrance.json').read_bytes())
+  write(target,'src/minecampus-exterior/atom-ei-entrances-reference.json',(SOURCE/'photos/atom-ei-entrances-reference.json').read_bytes())
+  for name in ['atom-ei-west-entrance-surfaces.json','atom-ei-west-entrance-validation.json']:
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/atom-ei.json',(SOURCE/'atom-ei.json').read_bytes())
   write(target,'src/minecampus-exterior/atom-ei-exterior-research.json',(SOURCE/'photos/atom-ei-exterior-research.json').read_bytes())

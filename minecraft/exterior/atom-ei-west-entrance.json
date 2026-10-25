@@ -1,0 +1,22 @@
+{
+  "building": "DEBY_LOD2_108698333",
+  "mainBuilding": "DEBY_LOD2_5284450",
+  "runtimeId": 1000030050,
+  "reference": "photos/atom-ei-entrances-reference.json",
+  "siteBoundsUTM": [698420, 5349270, 698495, 5349350],
+  "innerRoofVertexCount": 7,
+  "roofThicknessMetres": 0.18,
+  "ribWidthMetres": 0.07,
+  "ribDepthMetres": 0.10,
+  "ribCount": 7,
+  "glazingHeightMetres": 3.05,
+  "glazingOffsetMetres": 0.045,
+  "frameWidthMetres": 0.055,
+  "mullionPitchMetres": 0.76,
+  "transomAboveBaseMetres": 2.25,
+  "cleanupMarginMetres": 0.6,
+  "neighbourGuardMetres": 0.25,
+  "fineCollisionMaterials": [4, 4, 4, 4],
+  "parts": ["exact surveyed roof top", "soffit fascia and radial ribs", "blue glazing frames", "exterior glazing"],
+  "qualification": "The roof outline and elevation are exact BVV LoD2 observations. Interpreting this west volume as the projecting opaque roof and blue-framed glazing seen in the official 2017 exterior photo is a qualified registration inference, not a calibrated camera match. The roof is open below, with glazing at the main body's existing wall. Roof thickness, ribs, frame spacing, colour and glazing height are estimates. The north projection and separate south fragment are retained for independent classification. No interior or reference-image pixels are included."
+}

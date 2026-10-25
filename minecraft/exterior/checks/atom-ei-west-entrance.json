@@ -1,0 +1,656 @@
+{
+  "name": "atom-west-candidate-77-clearance",
+  "purpose": "Replace the false solid west survey volume with the measured opaque roof and qualified blue exterior glazing; verify open approach, retained neighbours and scene reflections.",
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610
+  ],
+  "cameras": [
+    {
+      "label": "mlz courtyard",
+      "position": "153 65 -110 -100 -8",
+      "sourceRouteIndex": 53,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "north entrance walk",
+      "position": "176.15 65 -115.71 -100 18",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "west base approach",
+      "position": "214 64.0835807648418 -112 -64.12293354771533 -28.86190261841417",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "north base approach",
+      "position": "242 63.98182001871943 -128.4 -6.304458813419962 -25.785848270924514",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "south base approach",
+      "position": "246 64.05477197728449 -65 179.09692568101607 -24.301979747788387",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "dome aerial southwest",
+      "position": "205 108 -51 -138.46461780102638 24.332760846354955",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true
+        }
+      ],
+      "expectCanopyGlass": true
+    },
+    {
+      "label": "dome aerial north",
+      "position": "252 108 -152 6.706228609715201 26.391511320961715",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true
+        }
+      ],
+      "expectCanopyGlass": true
+    },
+    {
+      "label": "west glazing and opaque projection",
+      "position": "215.36986392680356 64.01802351639101 -103.85151086969181 -77.56866628845549 4.8298777354960345",
+      "worldTime": 6000,
+      "reflections": true,
+      "reflectionTile": 1000030050,
+      "reflectionBaseWeight": 0.28,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000030050,
+          "expectedPart": 3
+        }
+      ]
+    },
+    {
+      "label": "west projection oblique approach",
+      "position": "214.56986392680355 64.02644004115021 -99.85151086969181 -112.131832019983 4.100684339053015",
+      "worldTime": 6000,
+      "reflections": true
+    },
+    {
+      "label": "beneath opaque west projection",
+      "position": "220.0573264800914 64.07244143610255 -102.81821768209973 -77.56866628845587 -58.24231190737727",
+      "worldTime": 6000,
+      "reflections": true
+    },
+    {
+      "label": "west glazing reflections disabled",
+      "position": "215.36986392680356 64.01802351639101 -103.85151086969181 -77.56866628845549 4.8298777354960345",
+      "worldTime": 6000,
+      "reflections": false,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000030050,
+          "expectedPart": 3
+        }
+      ]
+    },
+    {
+      "label": "west glazing evening",
+      "position": "215.36986392680356 64.01802351639101 -103.85151086969181 -77.56866628845549 4.8298777354960345",
+      "worldTime": 10500,
+      "reflections": true,
+      "reflectionTile": 1000030050,
+      "reflectionBaseWeight": 0.28,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000030050,
+          "expectedPart": 3
+        }
+      ]
+    },
+    {
+      "label": "west entrance daylight restoration",
+      "position": "215.36986392680356 64.01802351639101 -103.85151086969181 -77.56866628845549 4.8298777354960345",
+      "worldTime": 6000,
+      "reflections": true,
+      "reflectionTile": 1000030050,
+      "reflectionBaseWeight": 0.28,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000030050,
+          "expectedPart": 3
+        }
+      ]
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "mlz courtyard standing",
+      "target": [
+        153.0,
+        63.89489918593911,
+        -110.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89908177890647,
+      "requireBodyClearance": true,
+      "look": [
+        -100.0,
+        -8.0
+      ],
+      "sourceRouteIndex": 53
+    },
+    {
+      "label": "north walk standing",
+      "target": [
+        176.15,
+        64.00350978356846,
+        -115.71
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.00350978356846,
+      "requireBodyClearance": true,
+      "look": [
+        -100,
+        12
+      ]
+    },
+    {
+      "label": "west base approach standing",
+      "target": [
+        214,
+        64.0535807648418,
+        -112
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000033,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.0535807648418,
+      "requireBodyClearance": true,
+      "look": [
+        -64.12293354771533,
+        -28.86190261841417
+      ]
+    },
+    {
+      "label": "DEBY_LOD2_108698338 entry",
+      "target": [
+        224.64372559346114,
+        63.9576482519115,
+        -79.2095879397651
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 0.15,
+      "supportHeight": 63.9576482519115,
+      "requireBodyClearance": true,
+      "look": [
+        -129.99999999999994,
+        -16.978423926457957
+      ],
+      "canopyRuntimeId": 1000030047
+    },
+    {
+      "label": "DEBY_LOD2_108698338 under roof",
+      "target": [
+        225.77374203057664,
+        64.01352715464466,
+        -80.157784315373
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 0.15,
+      "supportHeight": 64.01352715464466,
+      "requireBodyClearance": true,
+      "look": [
+        -129.99999999999963,
+        -29.05282459603401
+      ],
+      "canopyRuntimeId": 1000030047
+    },
+    {
+      "label": "DEBY_LOD2_108698340 entry",
+      "target": [
+        226.6521343394958,
+        63.959258012435264,
+        -117.67177188272241
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000033,
+      "part": 0,
+      "dropHeight": 0.15,
+      "supportHeight": 63.959258012435264,
+      "requireBodyClearance": true,
+      "look": [
+        -42.00000000000007,
+        -16.990786721149593
+      ],
+      "canopyRuntimeId": 1000030049
+    },
+    {
+      "label": "DEBY_LOD2_108698340 under roof",
+      "target": [
+        227.63834410898372,
+        63.99221572090835,
+        -116.57647497048234
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000033,
+      "part": 0,
+      "dropHeight": 0.15,
+      "supportHeight": 63.99221572090835,
+      "requireBodyClearance": true,
+      "look": [
+        -41.99999999999975,
+        -29.069916816286728
+      ],
+      "canopyRuntimeId": 1000030049
+    },
+    {
+      "label": "west entrance 1.4m under roof",
+      "target": [
+        219.63851869095268,
+        64.00927706422931,
+        -99.11518547643308
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 1.0,
+      "supportHeight": 64.00927706422931,
+      "requireBodyClearance": true,
+      "look": [
+        -90,
+        -10
+      ],
+      "westEntrance": true
+    },
+    {
+      "label": "west entrance 1.4m outer entry",
+      "target": [
+        218.69027299279625,
+        63.973825104429764,
+        -99.17289245978723
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 1.0,
+      "supportHeight": 63.973825104429764,
+      "requireBodyClearance": true,
+      "look": [
+        -90,
+        -10
+      ],
+      "westEntrance": true
+    },
+    {
+      "label": "west entrance 4.4m under roof",
+      "target": [
+        220.03642516833423,
+        63.99655509456813,
+        -102.2587848503908
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 1.0,
+      "supportHeight": 63.99655509456813,
+      "requireBodyClearance": true,
+      "look": [
+        -90,
+        -10
+      ],
+      "westEntrance": true
+    },
+    {
+      "label": "west entrance 4.4m outer entry",
+      "target": [
+        219.10871555267434,
+        63.96559362148362,
+        -102.46336947594253
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 1.0,
+      "supportHeight": 63.96559362148362,
+      "requireBodyClearance": true,
+      "look": [
+        -90,
+        -10
+      ],
+      "westEntrance": true
+    },
+    {
+      "label": "west entrance 7.4m under roof",
+      "target": [
+        220.8115544861249,
+        63.985286178089936,
+        -105.25134826692876
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 1.0,
+      "supportHeight": 63.985286178089936,
+      "requireBodyClearance": true,
+      "look": [
+        -90,
+        -10
+      ],
+      "westEntrance": true
+    },
+    {
+      "label": "west entrance 7.4m outer entry",
+      "target": [
+        219.90469827918997,
+        63.959777708268696,
+        -105.53438858197885
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 1.0,
+      "supportHeight": 63.959777708268696,
+      "requireBodyClearance": true,
+      "look": [
+        -90,
+        -10
+      ],
+      "westEntrance": true
+    }
+  ],
+  "qualification": "Measured roof surfaces, estimated glazing and framing; three false survey enclosures replaced with open canopy sides. Native collision migration and visual quality require review.",
+  "canopyGlassEvidence": true
+}
