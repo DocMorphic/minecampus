@@ -53,6 +53,13 @@ assert mlz_ground_check['maskSha256']==surface['maskSha256']==mlz_ground['maskSh
 assert mlz_ground_check['sourceSha256']==mlz_ground['sourceSha256'] and mlz_ground_check['generatorSha256']==mlz_ground['generatorSha256']
 for name,info in mlz_ground['tiles'].items():assert digest(DATA/name)==info['sha256']==mlz_ground_check['tileSha256'][name]
 for name,value in mlz_ground['materialHashes'].items():assert digest(SOURCE/'assets/textures/campus'/name)==value
+atom=json.loads((DATA/'manifest.json').read_text())['architecture']['atomEi']
+for path,key in [(SOURCE/atom['sourceFile'],'sourceSha256'),(ROOT/atom['generatorFile'],'generatorSha256'),(SOURCE/atom['referenceFile'],'referenceSha256'),(DATA/atom['derivedFile'],'derivedSha256'),(DATA/atom['meshFile'],'meshSha256'),(DATA/atom['roofFile'],'roofSha256')]:assert digest(path)==atom[key]
+atom_check=json.loads((DATA/'atom-ei-validation.json').read_text())
+assert atom_check['status'].startswith('PASS:')
+assert atom_check['manifestSha256']==digest(DATA/'manifest.json')
+assert atom_check['validatorSha256']==digest(ROOT/'scripts/validate-atom-ei.py')
+assert atom_check['meshSha256']==atom['meshSha256'] and atom_check['roofSha256']==atom['roofSha256']
 court=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoCourt']
 assert hashlib.sha256((SOURCE/court['sourceFile']).read_bytes()).hexdigest()==court['sourceSha256']
 facade=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoFacade']
@@ -764,6 +771,10 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/mlz-exteriors.json',(SOURCE/'mlz-exteriors.json').read_bytes())
   write(target,'src/minecampus-exterior/mlz-courtyard-ground.json',(SOURCE/'mlz-courtyard-ground.json').read_bytes())
   for name in ['mlz-courtyard-ground-surfaces.json','mlz-courtyard-ground-validation.json']:
+   write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
+  write(target,'src/minecampus-exterior/atom-ei.json',(SOURCE/'atom-ei.json').read_bytes())
+  write(target,'src/minecampus-exterior/atom-ei-exterior-research.json',(SOURCE/'photos/atom-ei-exterior-research.json').read_bytes())
+  for name in ['atom-ei-surfaces.json','atom-ei-validation.json']:
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/siemensbau-5103.json',(SOURCE/'siemensbau-5103.json').read_bytes())
   write(target,'src/minecampus-exterior/rcm-technikum-5104.json',(SOURCE/'rcm-technikum-5104.json').read_bytes())

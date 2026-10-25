@@ -1,0 +1,3636 @@
+{
+  "status": "Candidate71 native geometry and standing checks complete; visual acceptance remains false",
+  "artifact": {
+    "status": "PASS: exact packaged mesh, shader and metadata; all prior render/collision inputs and ground mask unchanged",
+    "artifactSha256": "9bbcd21593cb3c8924223817ec96a60d8769eb37b5ade3b2df56ebad2dec0d6d",
+    "rendererSourceFingerprint": "0f169cc76df94bc3",
+    "renderTiles": 423,
+    "previousRenderCollisionInputsUnchanged": 605,
+    "alignmentVersion": 76
+  },
+  "nativeExitCode": 0,
+  "nativeStatus": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+  "sourceValidation": {
+    "status": "PASS: source-constrained dome, closed shell above skirt, outward smooth normals, lower survey roof and neighbour exclusions",
+    "manifestSha256": "300ffec84ff9b55f029e1e44c954e74a4df7ef4bf197d8a2cdd8be0f8d6a55a1",
+    "validatorSha256": "f43c0df28c8ed70011abfc7626beedd2eb4ebf3a268a299ec54b71e2dc6f716c",
+    "sourceSha256": "f2366e0db651800f4cd4f82598c757f3c0c0172f9f81ca66aa45f4c486673687",
+    "generatorSha256": "05840dee4861b335f2e05df244fcfe925c84baf66d790e71df84882c6baa5fff",
+    "meshSha256": "c7a153cff3ae20927a6e41deccfcc6974151d281fc1b049871c837afd6f5533d",
+    "roofSha256": "bf4607359ff84c6e90caee9a2a6f48d010ae0570f1c6ec4bf1e9a8b04d7bc63a",
+    "observedRoofVertices": 151,
+    "maximumMeshDistanceToSurveyMetres": 0.002223348837932043,
+    "partAreasSquareMetres": [
+      2140.8060347666565,
+      454.20118256174635,
+      203.58283600560998,
+      117.83233559538672,
+      157.8946564091004,
+      1150.5871976085346
+    ],
+    "openEdgesAtSurveySkirt": 217,
+    "protectedNeighbourOverlapSquareMetres": 0.0,
+    "unchangedPreviousTileRecords": 422,
+    "visualAcceptance": false
+  },
+  "packagedServiceChecks": {
+    "retainedMLZ": {
+      "status": "PASS: all nine native standing/body controls at both datums, with retained collision on all three MLZ buildings",
+      "results": [
+        {
+          "label": "mlz courtyard standing",
+          "shift": 0,
+          "standingY": 63.875,
+          "expected": 63.89908177890647,
+          "residual": -0.024081778906470674,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard middle standing",
+          "shift": 0,
+          "standingY": 64,
+          "expected": 63.986456351701136,
+          "residual": 0.013543648298863786,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard east standing",
+          "shift": 0,
+          "standingY": 63.9375,
+          "expected": 63.92713895043762,
+          "residual": 0.010361049562376934,
+          "bodyClear": true
+        },
+        {
+          "label": "north walk standing",
+          "shift": 0,
+          "standingY": 64.0625,
+          "expected": 64.00350978356846,
+          "residual": 0.05899021643153901,
+          "bodyClear": true
+        },
+        {
+          "label": "lawn verge standing",
+          "shift": 0,
+          "standingY": 64.125,
+          "expected": 64.11992968605503,
+          "residual": 0.0050703139449694845,
+          "bodyClear": true
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41077040156559,
+          "residual": 0.02672959843441447,
+          "bodyClear": true
+        },
+        {
+          "label": "final ground standing",
+          "shift": 0,
+          "standingY": 64.8125,
+          "expected": 64.78427547040971,
+          "residual": 0.02822452959028965,
+          "bodyClear": true
+        },
+        {
+          "label": "cos forecourt standing",
+          "shift": 0,
+          "standingY": 63.8125,
+          "expected": 63.79127051074315,
+          "residual": 0.021229489256846534,
+          "bodyClear": true
+        },
+        {
+          "label": "promenade lawn path standing",
+          "shift": 0,
+          "standingY": 65.375,
+          "expected": 65.27548960545175,
+          "residual": 0.09951039454824695,
+          "bodyClear": true
+        },
+        {
+          "label": "mlz courtyard standing",
+          "shift": 2,
+          "standingY": 65.875,
+          "expected": 65.89908177890646,
+          "residual": -0.02408177890646357,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard middle standing",
+          "shift": 2,
+          "standingY": 66,
+          "expected": 65.98645635170114,
+          "residual": 0.013543648298863786,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard east standing",
+          "shift": 2,
+          "standingY": 65.9375,
+          "expected": 65.92713895043762,
+          "residual": 0.010361049562376934,
+          "bodyClear": true
+        },
+        {
+          "label": "north walk standing",
+          "shift": 2,
+          "standingY": 66.0625,
+          "expected": 66.00350978356846,
+          "residual": 0.05899021643153901,
+          "bodyClear": true
+        },
+        {
+          "label": "lawn verge standing",
+          "shift": 2,
+          "standingY": 66.125,
+          "expected": 66.11992968605503,
+          "residual": 0.0050703139449694845,
+          "bodyClear": true
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41077040156559,
+          "residual": 0.02672959843441447,
+          "bodyClear": true
+        },
+        {
+          "label": "final ground standing",
+          "shift": 2,
+          "standingY": 66.8125,
+          "expected": 66.78427547040971,
+          "residual": 0.02822452959028965,
+          "bodyClear": true
+        },
+        {
+          "label": "cos forecourt standing",
+          "shift": 2,
+          "standingY": 65.8125,
+          "expected": 65.79127051074315,
+          "residual": 0.02122948925685364,
+          "bodyClear": true
+        },
+        {
+          "label": "promenade lawn path standing",
+          "shift": 2,
+          "standingY": 67.375,
+          "expected": 67.27548960545175,
+          "residual": 0.09951039454824695,
+          "bodyClear": true
+        }
+      ],
+      "wallControls": [
+        {
+          "file": "DEBY_LOD2_108180785-mlz-exterior.ect",
+          "point": [
+            165.79952494303384,
+            65.06857045491536,
+            -118.56834411621094
+          ]
+        },
+        {
+          "file": "DEBY_LOD2_108180786-mlz-exterior.ect",
+          "point": [
+            203.0932413736979,
+            67.14764149983723,
+            -78.28866322835286
+          ]
+        },
+        {
+          "file": "DEBY_LOD2_108180787-mlz-exterior.ect",
+          "point": [
+            211.80317179361978,
+            65.16928354899089,
+            -91.07178497314453
+          ]
+        }
+      ],
+      "qualification": "Actual packaged service and sparse shapes. Native migration, walking and visual checks remain required."
+    },
+    "atomEiApproaches": {
+      "status": "PASS: all six Atom-Ei/retained native standing/body controls at both datums, with retained collision on all three MLZ buildings",
+      "results": [
+        {
+          "label": "mlz courtyard standing",
+          "shift": 0,
+          "standingY": 63.875,
+          "expected": 63.89908177890647,
+          "residual": -0.024081778906470674,
+          "bodyClear": true
+        },
+        {
+          "label": "north walk standing",
+          "shift": 0,
+          "standingY": 64.0625,
+          "expected": 64.00350978356846,
+          "residual": 0.05899021643153901,
+          "bodyClear": true
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41077040156559,
+          "residual": 0.02672959843441447,
+          "bodyClear": true
+        },
+        {
+          "label": "west base approach standing",
+          "shift": 0,
+          "standingY": 64.0625,
+          "expected": 64.0535807648418,
+          "residual": 0.00891923515820281,
+          "bodyClear": true
+        },
+        {
+          "label": "north base approach standing",
+          "shift": 0,
+          "standingY": 63.9375,
+          "expected": 63.95182001871943,
+          "residual": -0.014320018719431005,
+          "bodyClear": true
+        },
+        {
+          "label": "south base approach standing",
+          "shift": 0,
+          "standingY": 64.0625,
+          "expected": 64.02477197728449,
+          "residual": 0.037728022715512566,
+          "bodyClear": true
+        },
+        {
+          "label": "mlz courtyard standing",
+          "shift": 2,
+          "standingY": 65.875,
+          "expected": 65.89908177890646,
+          "residual": -0.02408177890646357,
+          "bodyClear": true
+        },
+        {
+          "label": "north walk standing",
+          "shift": 2,
+          "standingY": 66.0625,
+          "expected": 66.00350978356846,
+          "residual": 0.05899021643153901,
+          "bodyClear": true
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41077040156559,
+          "residual": 0.02672959843441447,
+          "bodyClear": true
+        },
+        {
+          "label": "west base approach standing",
+          "shift": 2,
+          "standingY": 66.0625,
+          "expected": 66.0535807648418,
+          "residual": 0.00891923515820281,
+          "bodyClear": true
+        },
+        {
+          "label": "north base approach standing",
+          "shift": 2,
+          "standingY": 65.9375,
+          "expected": 65.95182001871943,
+          "residual": -0.014320018719431005,
+          "bodyClear": true
+        },
+        {
+          "label": "south base approach standing",
+          "shift": 2,
+          "standingY": 66.0625,
+          "expected": 66.02477197728449,
+          "residual": 0.037728022715512566,
+          "bodyClear": true
+        }
+      ],
+      "wallControls": [
+        {
+          "file": "DEBY_LOD2_108180785-mlz-exterior.ect",
+          "point": [
+            165.79952494303384,
+            65.06857045491536,
+            -118.56834411621094
+          ]
+        },
+        {
+          "file": "DEBY_LOD2_108180786-mlz-exterior.ect",
+          "point": [
+            203.0932413736979,
+            67.14764149983723,
+            -78.28866322835286
+          ]
+        },
+        {
+          "file": "DEBY_LOD2_108180787-mlz-exterior.ect",
+          "point": [
+            211.80317179361978,
+            65.16928354899089,
+            -91.07178497314453
+          ]
+        }
+      ],
+      "qualification": "Actual packaged service and sparse shapes. Native migration, walking and visual checks remain required."
+    }
+  },
+  "nativeFrames": [
+    {
+      "label": "mlz courtyard",
+      "capture": "campus-atom-ei-candidate-71-0.png",
+      "position": "153 65 -110 -100 -8",
+      "fps": 85,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            153.5,
+            66.61999988555908,
+            -109.5
+          ],
+          "direction": [
+            0.7034554,
+            0.049216866,
+            -0.70903313
+          ],
+          "hits": [
+            {
+              "tile": 1000030023,
+              "part": 0,
+              "distance": 13.505318,
+              "triangle": [
+                [
+                  163.43276977539062,
+                  63.87392254909287,
+                  -118.99734497070312
+                ],
+                [
+                  160.4204864501953,
+                  67.45791836818466,
+                  -119.54334259033203
+                ],
+                [
+                  163.43276977539062,
+                  67.45791836818466,
+                  -118.99734497070312
+                ]
+              ]
+            },
+            {
+              "tile": 1000030023,
+              "part": 2,
+              "distance": 13.529615,
+              "triangle": [
+                [
+                  166.9869384765625,
+                  84.46853848537216,
+                  -118.37344360351562
+                ],
+                [
+                  166.98648071289062,
+                  63.868536196553805,
+                  -118.37352752685547
+                ],
+                [
+                  160.42398071289062,
+                  63.86879941066513,
+                  -119.56304168701172
+                ]
+              ]
+            },
+            {
+              "tile": 1000030006,
+              "part": 1,
+              "distance": 88.93829,
+              "triangle": [
+                [
+                  215.5432586669922,
+                  69.00493832668076,
+                  -172.65274047851562
+                ],
+                [
+                  216.70506286621094,
+                  71.18493863185654,
+                  -172.44630432128906
+                ],
+                [
+                  215.5432586669922,
+                  71.18493863185654,
+                  -172.65274047851562
+                ]
+              ]
+            },
+            {
+              "tile": 1000050000,
+              "part": 2,
+              "distance": 100.78972,
+              "triangle": [
+                [
+                  224.5713348388672,
+                  71.44672393798828,
+                  -177.86131286621094
+                ],
+                [
+                  222.80624389648438,
+                  72.62519073486328,
+                  -203.6693572998047
+                ],
+                [
+                  227.78684997558594,
+                  71.4361343383789,
+                  -195.7552490234375
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            153.5,
+            66.61999988555908,
+            -109.5
+          ],
+          "direction": [
+            0.97522366,
+            0.13917308,
+            -0.17195816
+          ],
+          "hits": [
+            {
+              "tile": 1000030023,
+              "part": 0,
+              "distance": 32.499336,
+              "triangle": [
+                [
+                  185.96116638183594,
+                  71.66591855129013,
+                  -114.95097351074219
+                ],
+                [
+                  185.96116638183594,
+                  71.07392331203232,
+                  -114.95097351074219
+                ],
+                [
+                  184.6246795654297,
+                  71.07392331203232,
+                  -115.19064331054688
+                ]
+              ]
+            },
+            {
+              "tile": 1000030023,
+              "part": 2,
+              "distance": 32.55791,
+              "triangle": [
+                [
+                  185.96470642089844,
+                  71.66591855129013,
+                  -114.97065734863281
+                ],
+                [
+                  184.62820434570312,
+                  69.76592465480576,
+                  -115.2103271484375
+                ],
+                [
+                  184.62820434570312,
+                  71.66591855129013,
+                  -115.2103271484375
+                ]
+              ]
+            },
+            {
+              "tile": 1000030023,
+              "part": 1,
+              "distance": 64.99093,
+              "triangle": [
+                [
+                  216.4506378173828,
+                  73.96592160304795,
+                  -118.29511260986328
+                ],
+                [
+                  217.4690704345703,
+                  75.86592312892685,
+                  -123.93262481689453
+                ],
+                [
+                  216.4506378173828,
+                  75.86592312892685,
+                  -118.29511260986328
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            153.5,
+            66.61999988555908,
+            -109.5
+          ],
+          "direction": [
+            0.9035354,
+            0.049216866,
+            0.42567742
+          ],
+          "hits": [
+            {
+              "tile": 1000030024,
+              "part": 0,
+              "distance": 25.783606,
+              "triangle": [
+                [
+                  177.0461883544922,
+                  67.42498990138779,
+                  -98.47964477539062
+                ],
+                [
+                  177.0461883544922,
+                  69.41699429591904,
+                  -98.47964477539062
+                ],
+                [
+                  173.5186309814453,
+                  69.41699429591904,
+                  -99.11312866210938
+                ]
+              ]
+            },
+            {
+              "tile": 1000030024,
+              "part": 2,
+              "distance": 25.860727,
+              "triangle": [
+                [
+                  177.52410888671875,
+                  69.41699429591904,
+                  -98.37350463867188
+                ],
+                [
+                  160.49501037597656,
+                  69.41699429591904,
+                  -101.43158721923828
+                ],
+                [
+                  177.52410888671875,
+                  67.01699277004013,
+                  -98.37350463867188
+                ]
+              ]
+            },
+            {
+              "tile": 1200024797,
+              "part": 0,
+              "distance": 203.04935,
+              "triangle": [
+                [
+                  337.1106300354004,
+                  76.58554458618164,
+                  -23.34577751159668
+                ],
+                [
+                  336.28796768188477,
+                  75.76385879516602,
+                  -23.140353202819824
+                ],
+                [
+                  336.699405670166,
+                  76.99601364135742,
+                  -22.113508224487305
+                ]
+              ]
+            },
+            {
+              "tile": 1200024797,
+              "part": 1,
+              "distance": 203.29646,
+              "triangle": [
+                [
+                  337.1106300354004,
+                  76.58554458618164,
+                  -23.34577751159668
+                ],
+                [
+                  336.699405670166,
+                  76.99601364135742,
+                  -22.113508224487305
+                ],
+                [
+                  337.9332962036133,
+                  76.38421249389648,
+                  -22.52432346343994
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            153.5,
+            66.61999988555908,
+            -109.5
+          ],
+          "direction": [
+            0.93915886,
+            -0.30092794,
+            -0.16559896
+          ],
+          "firstVisibleVanillaBlock": {
+            "distance": 146.5,
+            "state": "Block{minecraft:stone}",
+            "position": [
+              291,
+              22,
+              -134
+            ]
+          },
+          "hits": [
+            {
+              "tile": 1000000027,
+              "part": 0,
+              "distance": 8.660775,
+              "triangle": [
+                [
+                  161.47671508789062,
+                  64.00287839015732,
+                  -110.51068878173828
+                ],
+                [
+                  162.47610473632812,
+                  64.01885434230576,
+                  -110.47589874267578
+                ],
+                [
+                  161.51150512695312,
+                  64.02288266261826,
+                  -111.51008605957031
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    },
+    {
+      "label": "north entrance walk",
+      "capture": "campus-atom-ei-candidate-71-1.png",
+      "position": "176.15 65 -115.71 -100 18",
+      "fps": 95,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            176.15,
+            66.61999988555908,
+            -115.71
+          ],
+          "direction": [
+            0.64338434,
+            -0.3134271,
+            -0.69844115
+          ],
+          "hits": [
+            {
+              "tile": 1000030023,
+              "part": 0,
+              "distance": 1.2292727,
+              "triangle": [
+                [
+                  179.530517578125,
+                  63.87392254909287,
+                  -116.10417938232422
+                ],
+                [
+                  176.60572814941406,
+                  63.87392254909287,
+                  -116.62867736816406
+                ],
+                [
+                  176.60572814941406,
+                  67.45791836818466,
+                  -116.62867736816406
+                ]
+              ]
+            },
+            {
+              "tile": 1000030023,
+              "part": 2,
+              "distance": 1.2542388,
+              "triangle": [
+                [
+                  178.4803466796875,
+                  65.16591855129013,
+                  -116.31282043457031
+                ],
+                [
+                  176.60926818847656,
+                  63.86812039455185,
+                  -116.64836120605469
+                ],
+                [
+                  176.60926818847656,
+                  68.16591855129013,
+                  -116.64836120605469
+                ]
+              ]
+            },
+            {
+              "tile": 1000000027,
+              "part": 0,
+              "distance": 8.21846,
+              "triangle": [
+                [
+                  181.84727478027344,
+                  64.04185696681748,
+                  -120.80815887451172
+                ],
+                [
+                  181.88206481933594,
+                  64.04886075099716,
+                  -121.80755615234375
+                ],
+                [
+                  180.88267517089844,
+                  64.04390164455185,
+                  -121.84234619140625
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            176.15,
+            66.61999988555908,
+            -115.71
+          ],
+          "direction": [
+            0.71419644,
+            -0.6885236,
+            -0.1259321
+          ],
+          "hits": [
+            {
+              "tile": 1000000027,
+              "part": 0,
+              "distance": 3.78348,
+              "triangle": [
+                [
+                  178.67514038085938,
+                  64.01105710109482,
+                  -115.91557312011719
+                ],
+                [
+                  179.67453002929688,
+                  64.01302548488388,
+                  -115.88078308105469
+                ],
+                [
+                  178.70993041992188,
+                  64.02404233058701,
+                  -116.91497039794922
+                ]
+              ]
+            },
+            {
+              "tile": 1000030023,
+              "part": 0,
+              "distance": 3.9384787,
+              "triangle": [
+                [
+                  179.530517578125,
+                  63.87392254909287,
+                  -116.10417938232422
+                ],
+                [
+                  176.60572814941406,
+                  63.87392254909287,
+                  -116.62867736816406
+                ],
+                [
+                  176.60572814941406,
+                  67.45791836818466,
+                  -116.62867736816406
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            176.15,
+            66.61999988555908,
+            -115.71
+          ],
+          "direction": [
+            0.8434645,
+            -0.3134271,
+            0.43626955
+          ],
+          "firstVisibleVanillaBlock": {
+            "distance": 132.75,
+            "state": "Block{minecraft:stone}",
+            "position": [
+              288,
+              25,
+              -58
+            ]
+          },
+          "hits": [
+            {
+              "tile": 1000000027,
+              "part": 0,
+              "distance": 8.616607,
+              "triangle": [
+                [
+                  183.53292846679688,
+                  63.91189023097763,
+                  -111.7440414428711
+                ],
+                [
+                  183.56771850585938,
+                  63.941873751485446,
+                  -112.74343872070312
+                ],
+                [
+                  182.56832885742188,
+                  63.95293637355576,
+                  -112.77822875976562
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    },
+    {
+      "label": "west base approach",
+      "capture": "campus-atom-ei-candidate-71-2.png",
+      "position": "214 64.0835807648418 -112 -64.12293354771533 -28.86190261841417",
+      "fps": 113,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            214.5,
+            65.70358065040088,
+            -111.5
+          ],
+          "direction": [
+            0.78797275,
+            0.4827001,
+            0.3822295
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 0,
+              "distance": 21.618885,
+              "triangle": [
+                [
+                  231.63311767578125,
+                  75.69578763087998,
+                  -103.60433959960938
+                ],
+                [
+                  231.49949645996094,
+                  76.28673764308701,
+                  -103.108154296875
+                ],
+                [
+                  231.72265625,
+                  76.28672238429795,
+                  -103.55997467041016
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            214.5,
+            65.70358065040088,
+            -111.5
+          ],
+          "direction": [
+            0.8981963,
+            0.05841008,
+            0.43569666
+          ],
+          "hits": [
+            {
+              "tile": 1000050022,
+              "part": 20,
+              "distance": 6.3009744,
+              "triangle": [
+                [
+                  220.06431579589844,
+                  66.86613464355469,
+                  -108.5611572265625
+                ],
+                [
+                  220.064208984375,
+                  63.86613082885742,
+                  -108.56110382080078
+                ],
+                [
+                  221.02255249023438,
+                  63.866058349609375,
+                  -110.5089340209961
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 1,
+              "distance": 9.309743,
+              "triangle": [
+                [
+                  222.8135528564453,
+                  63.926004610860446,
+                  -107.34471893310547
+                ],
+                [
+                  222.8135986328125,
+                  67.02346249660263,
+                  -107.34480285644531
+                ],
+                [
+                  223.50672912597656,
+                  67.02346249660263,
+                  -108.76282501220703
+                ]
+              ]
+            },
+            {
+              "tile": 1000050022,
+              "part": 33,
+              "distance": 9.309793,
+              "triangle": [
+                [
+                  222.81365966796875,
+                  66.86600494384766,
+                  -107.34476470947266
+                ],
+                [
+                  222.8135528564453,
+                  63.86600112915039,
+                  -107.34471893310547
+                ],
+                [
+                  223.66465759277344,
+                  63.86594009399414,
+                  -109.08615112304688
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 4,
+              "distance": 49.185673,
+              "triangle": [
+                [
+                  258.6390075683594,
+                  69.6442052944542,
+                  -90.00289154052734
+                ],
+                [
+                  258.6390075683594,
+                  68.53420468410263,
+                  -90.00286102294922
+                ],
+                [
+                  259.7026672363281,
+                  69.64412900050888,
+                  -91.81498718261719
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            214.5,
+            65.70358065040088,
+            -111.5
+          ],
+          "direction": [
+            0.9438453,
+            0.2780347,
+            -0.17847314
+          ],
+          "hits": [],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            214.5,
+            65.70358065040088,
+            -111.5
+          ],
+          "direction": [
+            0.4441092,
+            0.2780347,
+            0.85174155
+          ],
+          "hits": [],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    },
+    {
+      "label": "north base approach",
+      "capture": "campus-atom-ei-candidate-71-3.png",
+      "position": "242 63.98182001871943 -128.4 -6.304458813419962 -25.785848270924514",
+      "fps": 112,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            242.5,
+            65.60181990427851,
+            -128.4
+          ],
+          "direction": [
+            0.09887843,
+            0.4350087,
+            0.89498067
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 0,
+              "distance": 17.219774,
+              "triangle": [
+                [
+                  244.4792938232422,
+                  72.69279690822373,
+                  -113.0430908203125
+                ],
+                [
+                  243.950439453125,
+                  73.29838772853623,
+                  -112.95326232910156
+                ],
+                [
+                  244.48277282714844,
+                  73.2983572109581,
+                  -112.98878479003906
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            242.5,
+            65.60181990427851,
+            -128.4
+          ],
+          "direction": [
+            0.10981167,
+            0.004756093,
+            0.993941
+          ],
+          "hits": [
+            {
+              "tile": 1000050022,
+              "part": 32,
+              "distance": 3.5843008,
+              "triangle": [
+                [
+                  241.72019958496094,
+                  66.8647689819336,
+                  -124.73745727539062
+                ],
+                [
+                  243.8878173828125,
+                  63.864646911621094,
+                  -124.92208862304688
+                ],
+                [
+                  243.88792419433594,
+                  66.8646469116211,
+                  -124.92214965820312
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 1,
+              "distance": 6.58324,
+              "triangle": [
+                [
+                  244.03375244140625,
+                  67.02346249660263,
+                  -121.92528533935547
+                ],
+                [
+                  244.03363037109375,
+                  63.924680910909274,
+                  -121.92527770996094
+                ],
+                [
+                  242.2244873046875,
+                  63.924783907735446,
+                  -121.7721176147461
+                ]
+              ]
+            },
+            {
+              "tile": 1000050022,
+              "part": 27,
+              "distance": 6.583253,
+              "triangle": [
+                [
+                  242.10691833496094,
+                  66.86479187011719,
+                  -121.76220703125
+                ],
+                [
+                  244.03363037109375,
+                  63.864681243896484,
+                  -121.92520904541016
+                ],
+                [
+                  244.03375244140625,
+                  66.86467742919922,
+                  -121.92526245117188
+                ]
+              ]
+            },
+            {
+              "tile": 1000050021,
+              "part": 25,
+              "distance": 55.631687,
+              "triangle": [
+                [
+                  246.64976501464844,
+                  66.50501251220703,
+                  -72.90465545654297
+                ],
+                [
+                  248.61785888671875,
+                  63.81489944458008,
+                  -73.10626983642578
+                ],
+                [
+                  248.6179656982422,
+                  66.50489807128906,
+                  -73.1063003540039
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            242.5,
+            65.60181990427851,
+            -128.4
+          ],
+          "direction": [
+            0.655266,
+            0.23624419,
+            0.7175061
+          ],
+          "hits": [
+            {
+              "tile": 1000050018,
+              "part": 5,
+              "distance": 5.8019524,
+              "triangle": [
+                [
+                  245.51686096191406,
+                  69.93456268310547,
+                  -124.28514862060547
+                ],
+                [
+                  245.51663208007812,
+                  63.834564208984375,
+                  -124.2850341796875
+                ],
+                [
+                  248.552001953125,
+                  63.83440017700195,
+                  -124.09931182861328
+                ]
+              ]
+            },
+            {
+              "tile": 1000050018,
+              "part": 7,
+              "distance": 9.326826,
+              "triangle": [
+                [
+                  247.90220642089844,
+                  69.93446350097656,
+                  -121.81066131591797
+                ],
+                [
+                  249.81350708007812,
+                  63.8343620300293,
+                  -121.53387451171875
+                ],
+                [
+                  249.81373596191406,
+                  69.93436431884766,
+                  -121.53398895263672
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 3,
+              "distance": 9.472922,
+              "triangle": [
+                [
+                  248.3736114501953,
+                  67.99346371730576,
+                  -121.65138244628906
+                ],
+                [
+                  249.08123779296875,
+                  67.99346371730576,
+                  -121.54901885986328
+                ],
+                [
+                  248.3736114501953,
+                  67.14346524318466,
+                  -121.65138244628906
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 4,
+              "distance": 15.030285,
+              "triangle": [
+                [
+                  250.00413513183594,
+                  68.54947110255966,
+                  -111.94354248046875
+                ],
+                [
+                  253.55078125,
+                  68.54916592677841,
+                  -120.52333068847656
+                ],
+                [
+                  253.55079650878906,
+                  69.77416440089951,
+                  -120.52336883544922
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            242.5,
+            65.60181990427851,
+            -128.4
+          ],
+          "direction": [
+            -0.4828326,
+            0.23624419,
+            0.8432445
+          ],
+          "hits": [
+            {
+              "tile": 1000050022,
+              "part": 19,
+              "distance": 4.6475406,
+              "triangle": [
+                [
+                  239.57583618164062,
+                  66.8648910522461,
+                  -124.3618392944336
+                ],
+                [
+                  241.72007751464844,
+                  63.864768981933594,
+                  -124.73739624023438
+                ],
+                [
+                  241.72019958496094,
+                  66.8647689819336,
+                  -124.73745727539062
+                ]
+              ]
+            },
+            {
+              "tile": 1000050022,
+              "part": 34,
+              "distance": 5.346396,
+              "triangle": [
+                [
+                  235.41067504882812,
+                  66.8651351928711,
+                  -123.13601684570312
+                ],
+                [
+                  245.50938415527344,
+                  66.86455535888672,
+                  -124.93573760986328
+                ],
+                [
+                  245.51675415039062,
+                  66.86456298828125,
+                  -124.28509521484375
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 2,
+              "distance": 8.856521,
+              "triangle": [
+                [
+                  238.16200256347656,
+                  67.14346524318466,
+                  -120.91065979003906
+                ],
+                [
+                  238.16200256347656,
+                  67.99346371730576,
+                  -120.91065979003906
+                ],
+                [
+                  238.31689453125,
+                  68.33500882228623,
+                  -120.96361541748047
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 3,
+              "distance": 8.996769,
+              "triangle": [
+                [
+                  238.1911163330078,
+                  67.99346371730576,
+                  -120.82550048828125
+                ],
+                [
+                  238.1911163330078,
+                  67.14346524318466,
+                  -120.82550048828125
+                ],
+                [
+                  237.57843017578125,
+                  67.14346524318466,
+                  -120.61603546142578
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    },
+    {
+      "label": "south base approach",
+      "capture": "campus-atom-ei-candidate-71-4.png",
+      "position": "246 64.05477197728449 -65 179.09692568101607 -24.301979747788387",
+      "fps": 44,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            246.5,
+            65.67477186284357,
+            -64.5
+          ],
+          "direction": [
+            -0.014364583,
+            0.4115458,
+            -0.91127586
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 0,
+              "distance": 19.364,
+              "triangle": [
+                [
+                  245.9629364013672,
+                  73.29857846339951,
+                  -82.11343383789062
+                ],
+                [
+                  246.4385528564453,
+                  73.90191098293076,
+                  -82.1701889038086
+                ],
+                [
+                  245.96119689941406,
+                  73.90194150050888,
+                  -82.1710205078125
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            246.5,
+            65.67477186284357,
+            -64.5
+          ],
+          "direction": [
+            -0.015757676,
+            -0.021140784,
+            -0.9996523
+          ],
+          "hits": [
+            {
+              "tile": 1000050021,
+              "part": 9,
+              "distance": 5.4039392,
+              "triangle": [
+                [
+                  245.12380981445312,
+                  66.50511169433594,
+                  -69.88592529296875
+                ],
+                [
+                  246.8154754638672,
+                  63.81501770019531,
+                  -69.90705108642578
+                ],
+                [
+                  246.81556701660156,
+                  66.50502014160156,
+                  -69.9070816040039
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 1,
+              "distance": 8.404489,
+              "triangle": [
+                [
+                  246.6497802734375,
+                  67.02346249660263,
+                  -72.90463256835938
+                ],
+                [
+                  246.08517456054688,
+                  67.02346249660263,
+                  -72.89849853515625
+                ],
+                [
+                  246.08517456054688,
+                  63.92504330714951,
+                  -72.89849853515625
+                ]
+              ]
+            },
+            {
+              "tile": 1000050021,
+              "part": 16,
+              "distance": 8.404894,
+              "triangle": [
+                [
+                  245.0682830810547,
+                  66.50509643554688,
+                  -72.8896713256836
+                ],
+                [
+                  246.649658203125,
+                  63.81501007080078,
+                  -72.90462493896484
+                ],
+                [
+                  246.64976501464844,
+                  66.50501251220703,
+                  -72.90465545654297
+                ]
+              ]
+            },
+            {
+              "tile": 1000050018,
+              "part": 5,
+              "distance": 59.803318,
+              "triangle": [
+                [
+                  245.51686096191406,
+                  69.93456268310547,
+                  -124.28514862060547
+                ],
+                [
+                  245.51663208007812,
+                  63.834564208984375,
+                  -124.2850341796875
+                ],
+                [
+                  248.552001953125,
+                  63.83440017700195,
+                  -124.09931182861328
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            246.5,
+            65.67477186284357,
+            -64.5
+          ],
+          "direction": [
+            -0.58490735,
+            0.21583375,
+            -0.78185624
+          ],
+          "hits": [
+            {
+              "tile": 1200024799,
+              "part": 0,
+              "distance": 8.940367,
+              "triangle": [
+                [
+                  240.0796184539795,
+                  67.69626474380493,
+                  -71.78863906860352
+                ],
+                [
+                  240.69659996032715,
+                  67.49157476425171,
+                  -71.37791442871094
+                ],
+                [
+                  243.37013053894043,
+                  67.69659900665283,
+                  -71.37801742553711
+                ]
+              ]
+            },
+            {
+              "tile": 1000030023,
+              "part": 0,
+              "distance": 69.11922,
+              "triangle": [
+                [
+                  205.76202392578125,
+                  81.28672238429795,
+                  -118.59674835205078
+                ],
+                [
+                  206.74205017089844,
+                  79.86592312892685,
+                  -118.42121124267578
+                ],
+                [
+                  206.74205017089844,
+                  78.27392026027451,
+                  -118.42121124267578
+                ]
+              ]
+            },
+            {
+              "tile": 1000030023,
+              "part": 2,
+              "distance": 69.149216,
+              "triangle": [
+                [
+                  194.95962524414062,
+                  81.28723355373154,
+                  -120.55194091796875
+                ],
+                [
+                  216.38900756835938,
+                  81.28621884425888,
+                  -116.71361541748047
+                ],
+                [
+                  196.2449493408203,
+                  79.86592312892685,
+                  -120.32171630859375
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            246.5,
+            65.67477186284357,
+            -64.5
+          ],
+          "direction": [
+            0.5599738,
+            0.21583375,
+            -0.7999032
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 2,
+              "distance": 12.205199,
+              "triangle": [
+                [
+                  254.3440704345703,
+                  67.99346371730576,
+                  -74.6180191040039
+                ],
+                [
+                  254.34410095214844,
+                  68.5345632656456,
+                  -74.61802673339844
+                ],
+                [
+                  252.48016357421875,
+                  68.53467770656357,
+                  -73.96247100830078
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 5,
+              "distance": 13.250094,
+              "triangle": [
+                [
+                  258.63897705078125,
+                  68.53420468410263,
+                  -90.00287628173828
+                ],
+                [
+                  254.34410095214844,
+                  68.5345632656456,
+                  -74.61801147460938
+                ],
+                [
+                  252.48016357421875,
+                  68.53467770656357,
+                  -73.96247100830078
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    },
+    {
+      "label": "west elevated cladding",
+      "capture": "campus-atom-ei-candidate-71-5.png",
+      "position": "219 74 -96.72 -90.0 -17.372664986807585",
+      "fps": 115,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            219.5,
+            75.61999988555908,
+            -96.72
+          ],
+          "direction": [
+            0.9543829,
+            0.2985855,
+            0.0
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 0,
+              "distance": 11.751262,
+              "triangle": [
+                [
+                  230.57901000976562,
+                  78.60708829005966,
+                  -96.75369262695312
+                ],
+                [
+                  230.73988342285156,
+                  79.17451687892685,
+                  -96.50863647460938
+                ],
+                [
+                  230.7249298095703,
+                  79.17451687892685,
+                  -96.7533950805664
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            219.5,
+            75.61999988555908,
+            -96.72
+          ],
+          "direction": [
+            0.9899234,
+            -0.14160413,
+            0.0
+          ],
+          "firstVisibleVanillaBlock": {
+            "distance": 71.25,
+            "state": "Block{minecraft:stone}",
+            "position": [
+              290,
+              65,
+              -97
+            ]
+          },
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 0,
+              "distance": 10.378211,
+              "triangle": [
+                [
+                  229.7418212890625,
+                  73.90269681056748,
+                  -96.75535583496094
+                ],
+                [
+                  229.8296356201172,
+                  74.50349637111435,
+                  -96.49537658691406
+                ],
+                [
+                  229.81375122070312,
+                  74.50349637111435,
+                  -96.75521087646484
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 5,
+              "distance": 50.233223,
+              "triangle": [
+                [
+                  268.33831787109375,
+                  68.5936452968956,
+                  -89.15489959716797
+                ],
+                [
+                  260.6283874511719,
+                  68.09401913722763,
+                  -97.54019927978516
+                ],
+                [
+                  269.77325439453125,
+                  68.52048703273545,
+                  -97.40595245361328
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 2,
+              "distance": 50.77113,
+              "triangle": [
+                [
+                  269.7749328613281,
+                  67.99346371730576,
+                  -97.50336456298828
+                ],
+                [
+                  269.77301025390625,
+                  68.52048703273545,
+                  -97.40596008300781
+                ],
+                [
+                  269.7431335449219,
+                  68.54550381740341,
+                  -95.88507843017578
+                ]
+              ]
+            },
+            {
+              "tile": 1200025005,
+              "part": 0,
+              "distance": 53.679657,
+              "triangle": [
+                [
+                  273.16803455352783,
+                  68.29638576507568,
+                  -98.46826362609863
+                ],
+                [
+                  272.34549713134766,
+                  67.88747453689575,
+                  -96.41447257995605
+                ],
+                [
+                  273.7850751876831,
+                  68.50179672241211,
+                  -97.03067398071289
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            219.5,
+            75.61999988555908,
+            -96.72
+          ],
+          "direction": [
+            0.81123966,
+            0.11882996,
+            -0.5725117
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 0,
+              "distance": 18.623207,
+              "triangle": [
+                [
+                  234.68360900878906,
+                  77.45604916652451,
+                  -107.59929656982422
+                ],
+                [
+                  234.45022583007812,
+                  78.03394528468857,
+                  -107.12934875488281
+                ],
+                [
+                  234.7747039794922,
+                  78.03392239650498,
+                  -107.50784301757812
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            219.5,
+            75.61999988555908,
+            -96.72
+          ],
+          "direction": [
+            0.81123966,
+            0.11882996,
+            0.5725117
+          ],
+          "hits": [],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    },
+    {
+      "label": "dome aerial southwest",
+      "capture": "campus-atom-ei-candidate-71-6.png",
+      "position": "205 108 -51 -138.46461780102638 24.332760846354955",
+      "fps": 52,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            205.5,
+            109.61999988555908,
+            -50.5
+          ],
+          "direction": [
+            0.6041793,
+            -0.4120354,
+            -0.6820514
+          ],
+          "firstVisibleVanillaBlock": {
+            "distance": 156.25,
+            "state": "Block{minecraft:stone}",
+            "position": [
+              299,
+              45,
+              -158
+            ]
+          },
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 0,
+              "distance": 55.319473,
+              "triangle": [
+                [
+                  238.67025756835938,
+                  86.81489773830185,
+                  -88.4170150756836
+                ],
+                [
+                  238.94915771484375,
+                  86.81489010890732,
+                  -88.2020034790039
+                ],
+                [
+                  239.1045684814453,
+                  87.25227566798935,
+                  -88.4036636352539
+                ]
+              ]
+            },
+            {
+              "tile": 1000000033,
+              "part": 0,
+              "distance": 110.39751,
+              "triangle": [
+                [
+                  272.0708923339844,
+                  64.13303586086045,
+                  -125.67198181152344
+                ],
+                [
+                  273.0702819824219,
+                  64.11896725734482,
+                  -125.63719177246094
+                ],
+                [
+                  272.105712890625,
+                  64.14101620754013,
+                  -126.67137145996094
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            205.5,
+            109.61999988555908,
+            -50.5
+          ],
+          "direction": [
+            0.42758396,
+            -0.7643152,
+            -0.4826948
+          ],
+          "hits": [
+            {
+              "tile": 1000050020,
+              "part": 33,
+              "distance": 55.689163,
+              "triangle": [
+                [
+                  235.29518127441406,
+                  67.05561828613281,
+                  -74.98097229003906
+                ],
+                [
+                  225.3084716796875,
+                  67.0561294555664,
+                  -78.4104995727539
+                ],
+                [
+                  223.88433837890625,
+                  67.05619049072266,
+                  -80.0410385131836
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 1,
+              "distance": 57.351276,
+              "triangle": [
+                [
+                  230.3441619873047,
+                  63.92586728175888,
+                  -77.91495513916016
+                ],
+                [
+                  230.34420776367188,
+                  67.02346249660263,
+                  -77.9149169921875
+                ],
+                [
+                  228.97528076171875,
+                  67.02346249660263,
+                  -79.05631256103516
+                ]
+              ]
+            },
+            {
+              "tile": 1000050020,
+              "part": 10,
+              "distance": 57.351322,
+              "triangle": [
+                [
+                  228.86624145507812,
+                  67.05593872070312,
+                  -79.14716339111328
+                ],
+                [
+                  230.3441619873047,
+                  63.955867767333984,
+                  -77.91495513916016
+                ],
+                [
+                  230.34426879882812,
+                  67.05587005615234,
+                  -77.91499328613281
+                ]
+              ]
+            },
+            {
+              "tile": 1000000032,
+              "part": 0,
+              "distance": 59.60883,
+              "triangle": [
+                [
+                  230.42518615722656,
+                  64.07588406642685,
+                  -79.09284973144531
+                ],
+                [
+                  231.42459106445312,
+                  64.05282040675888,
+                  -79.05805969238281
+                ],
+                [
+                  230.45999145507812,
+                  64.06086178859482,
+                  -80.09223937988281
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            205.5,
+            109.61999988555908,
+            -50.5
+          ],
+          "direction": [
+            0.025466979,
+            -0.4510031,
+            -0.892159
+          ],
+          "hits": [
+            {
+              "tile": 1000030023,
+              "part": 2,
+              "distance": 76.17337,
+              "triangle": [
+                [
+                  206.770263671875,
+                  75.27092190822373,
+                  -118.57870483398438
+                ],
+                [
+                  215.12789916992188,
+                  75.21592160304795,
+                  -117.08172607421875
+                ],
+                [
+                  206.770263671875,
+                  75.21592160304795,
+                  -118.57870483398438
+                ]
+              ]
+            },
+            {
+              "tile": 1000030023,
+              "part": 1,
+              "distance": 76.24134,
+              "triangle": [
+                [
+                  215.1384735107422,
+                  75.76592465480576,
+                  -117.14078521728516
+                ],
+                [
+                  206.7808380126953,
+                  73.86592312892685,
+                  -118.63776397705078
+                ],
+                [
+                  206.7808380126953,
+                  75.76592465480576,
+                  -118.63776397705078
+                ]
+              ]
+            },
+            {
+              "tile": 1000030023,
+              "part": 0,
+              "distance": 91.045074,
+              "triangle": [
+                [
+                  209.6417694091797,
+                  67.47392483791123,
+                  -131.3984832763672
+                ],
+                [
+                  209.6417694091797,
+                  69.37224026759873,
+                  -131.3984832763672
+                ],
+                [
+                  206.11447143554688,
+                  69.37224026759873,
+                  -132.03347778320312
+                ]
+              ]
+            },
+            {
+              "tile": 1000000033,
+              "part": 0,
+              "distance": 101.11525,
+              "triangle": [
+                [
+                  208.52732849121094,
+                  64.02229519923935,
+                  -139.8914031982422
+                ],
+                [
+                  208.56211853027344,
+                  64.02428647121201,
+                  -140.8907928466797
+                ],
+                [
+                  207.56272888183594,
+                  64.00932522853623,
+                  -140.92559814453125
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            205.5,
+            109.61999988555908,
+            -50.5
+          ],
+          "direction": [
+            0.8825701,
+            -0.4510031,
+            -0.1329141
+          ],
+          "firstVisibleVanillaBlock": {
+            "distance": 105.75,
+            "state": "Block{minecraft:dirt}",
+            "position": [
+              298,
+              61,
+              -65
+            ]
+          },
+          "hits": [
+            {
+              "tile": 1200024800,
+              "part": 0,
+              "distance": 102.49035,
+              "triangle": [
+                [
+                  294.7632865905762,
+                  63.395824164152145,
+                  -65.219162940979
+                ],
+                [
+                  295.7916717529297,
+                  63.3974569439888,
+                  -62.96009349822998
+                ],
+                [
+                  297.23120498657227,
+                  63.39630690217018,
+                  -64.19241142272949
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    },
+    {
+      "label": "dome aerial north",
+      "capture": "campus-atom-ei-candidate-71-7.png",
+      "position": "252 108 -152 6.706228609715201 26.391511320961715",
+      "fps": 85,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            252.5,
+            109.61999988555908,
+            -151.5
+          ],
+          "direction": [
+            -0.10460758,
+            -0.4445025,
+            0.88964874
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 0,
+              "distance": 49.309235,
+              "triangle": [
+                [
+                  247.68948364257812,
+                  87.67840787013779,
+                  -107.5345230102539
+                ],
+                [
+                  247.34274291992188,
+                  87.67842312892685,
+                  -107.6488037109375
+                ],
+                [
+                  247.2951202392578,
+                  88.09436245998154,
+                  -107.36388397216797
+                ]
+              ]
+            },
+            {
+              "tile": 1000050076,
+              "part": 0,
+              "distance": 102.03105,
+              "triangle": [
+                [
+                  237.19895935058594,
+                  68.32658386230469,
+                  -61.54663848876953
+                ],
+                [
+                  237.19879150390625,
+                  63.81558609008789,
+                  -61.54659652709961
+                ],
+                [
+                  258.89837646484375,
+                  63.81438446044922,
+                  -57.70930099487305
+                ]
+              ]
+            },
+            {
+              "tile": 1000000032,
+              "part": 0,
+              "distance": 102.46813,
+              "triangle": [
+                [
+                  241.75685119628906,
+                  64.03936215480576,
+                  -59.6868896484375
+                ],
+                [
+                  242.75624084472656,
+                  64.04132290920029,
+                  -59.652099609375
+                ],
+                [
+                  241.79164123535156,
+                  64.0903493984581,
+                  -60.686283111572266
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            252.5,
+            109.61999988555908,
+            -151.5
+          ],
+          "direction": [
+            -0.072048746,
+            -0.78698736,
+            0.6127479
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 5,
+              "distance": 50.774395,
+              "triangle": [
+                [
+                  253.5508270263672,
+                  69.77416440089951,
+                  -120.52335357666016
+                ],
+                [
+                  245.44143676757812,
+                  69.07471676906357,
+                  -113.15203857421875
+                ],
+                [
+                  245.97581481933594,
+                  69.70857449611435,
+                  -121.94776916503906
+                ]
+              ]
+            },
+            {
+              "tile": 1000000033,
+              "part": 0,
+              "distance": 57.861782,
+              "triangle": [
+                [
+                  248.70217895507812,
+                  64.08753415187607,
+                  -115.47889709472656
+                ],
+                [
+                  248.73696899414062,
+                  64.07952328761826,
+                  -116.47828674316406
+                ],
+                [
+                  247.73757934570312,
+                  64.08055325587998,
+                  -116.51307678222656
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            252.5,
+            109.61999988555908,
+            -151.5
+          ],
+          "direction": [
+            0.49057892,
+            -0.47530967,
+            0.7303513
+          ],
+          "firstVisibleVanillaBlock": {
+            "distance": 77.25,
+            "state": "Block{minecraft:dirt}",
+            "position": [
+              290,
+              72,
+              -96
+            ]
+          },
+          "hits": [
+            {
+              "tile": 1200025005,
+              "part": 0,
+              "distance": 74.904976,
+              "triangle": [
+                [
+                  288.18081283569336,
+                  73.82529735565186,
+                  -103.39806175231934
+                ],
+                [
+                  282.62853622436523,
+                  74.03416061401367,
+                  -95.38818359375
+                ],
+                [
+                  292.2942352294922,
+                  74.03231620788574,
+                  -96.62089729309082
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            252.5,
+            109.61999988555908,
+            -151.5
+          ],
+          "direction": [
+            -0.64661026,
+            -0.47530967,
+            0.59663725
+          ],
+          "hits": [
+            {
+              "tile": 1000030025,
+              "part": 0,
+              "distance": 87.162224,
+              "triangle": [
+                [
+                  197.19358825683594,
+                  67.57463284572373,
+                  -99.30509948730469
+                ],
+                [
+                  197.19358825683594,
+                  69.56662961086045,
+                  -99.30509948730469
+                ],
+                [
+                  193.66688537597656,
+                  69.56662961086045,
+                  -99.94335174560547
+                ]
+              ]
+            },
+            {
+              "tile": 1000030025,
+              "part": 2,
+              "distance": 87.19071,
+              "triangle": [
+                [
+                  201.1053466796875,
+                  69.56662961086045,
+                  -98.57684326171875
+                ],
+                [
+                  180.8656005859375,
+                  69.56662961086045,
+                  -102.23973846435547
+                ],
+                [
+                  201.1053466796875,
+                  67.16663571437607,
+                  -98.57684326171875
+                ]
+              ]
+            },
+            {
+              "tile": 1000000033,
+              "part": 0,
+              "distance": 95.86172,
+              "triangle": [
+                [
+                  190.9018096923828,
+                  64.05474301418076,
+                  -93.47663879394531
+                ],
+                [
+                  190.9365997314453,
+                  64.05574246486435,
+                  -94.47603607177734
+                ],
+                [
+                  189.9372100830078,
+                  64.05679532130966,
+                  -94.51082611083984
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    },
+    {
+      "label": "base facade south detail",
+      "capture": "campus-atom-ei-candidate-71-8.png",
+      "position": "246 65 -65 176.4677054161091 -1.2706123494826924",
+      "fps": 45,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            246.5,
+            66.61999988555908,
+            -64.5
+          ],
+          "direction": [
+            -0.06159608,
+            0.02217455,
+            -0.9978548
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 2,
+              "distance": 8.415427,
+              "triangle": [
+                [
+                  245.90518188476562,
+                  67.02346249660263,
+                  -72.89654541015625
+                ],
+                [
+                  246.08517456054688,
+                  63.92504330714951,
+                  -72.89849853515625
+                ],
+                [
+                  246.08517456054688,
+                  67.02346249660263,
+                  -72.89849853515625
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 3,
+              "distance": 57.36766,
+              "triangle": [
+                [
+                  242.922119140625,
+                  67.99346371730576,
+                  -121.74085235595703
+                ],
+                [
+                  243.6345672607422,
+                  67.99346371730576,
+                  -121.8011703491211
+                ],
+                [
+                  242.922119140625,
+                  67.14346524318466,
+                  -121.74085235595703
+                ]
+              ]
+            },
+            {
+              "tile": 1000050005,
+              "part": 0,
+              "distance": 68.570366,
+              "triangle": [
+                [
+                  233.40431213378906,
+                  68.94507598876953,
+                  -134.4827117919922
+                ],
+                [
+                  243.6973876953125,
+                  63.84454345703125,
+                  -132.6733856201172
+                ],
+                [
+                  243.6975860595703,
+                  68.94454193115234,
+                  -132.67349243164062
+                ]
+              ]
+            },
+            {
+              "tile": 1000050005,
+              "part": 2,
+              "distance": 89.90991,
+              "triangle": [
+                [
+                  226.86349487304688,
+                  68.9450454711914,
+                  -156.70370483398438
+                ],
+                [
+                  247.290283203125,
+                  63.84400177001953,
+                  -153.1007080078125
+                ],
+                [
+                  247.29046630859375,
+                  68.94400024414062,
+                  -153.100830078125
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            246.5,
+            66.61999988555908,
+            -64.5
+          ],
+          "direction": [
+            -0.05617799,
+            -0.41060323,
+            -0.910082
+          ],
+          "hits": [
+            {
+              "tile": 1000050021,
+              "part": 9,
+              "distance": 5.932369,
+              "triangle": [
+                [
+                  245.12380981445312,
+                  66.50511169433594,
+                  -69.88592529296875
+                ],
+                [
+                  245.12371826171875,
+                  63.81511306762695,
+                  -69.88589477539062
+                ],
+                [
+                  246.8154754638672,
+                  63.81501770019531,
+                  -69.90705108642578
+                ]
+              ]
+            },
+            {
+              "tile": 1000000032,
+              "part": 0,
+              "distance": 6.4654837,
+              "triangle": [
+                [
+                  246.10232543945312,
+                  63.880079470479586,
+                  -69.54164123535156
+                ],
+                [
+                  247.10171508789062,
+                  63.88102933009873,
+                  -69.50685119628906
+                ],
+                [
+                  246.1371307373047,
+                  63.981085024678805,
+                  -70.5410385131836
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            246.5,
+            66.61999988555908,
+            -64.5
+          ],
+          "direction": [
+            -0.6214752,
+            -0.110828415,
+            -0.775555
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 1,
+              "distance": 11.793467,
+              "triangle": [
+                [
+                  238.92283630371094,
+                  63.9254324062706,
+                  -73.70402526855469
+                ],
+                [
+                  240.79879760742188,
+                  63.925333224141696,
+                  -73.2684097290039
+                ],
+                [
+                  238.92294311523438,
+                  67.02346249660263,
+                  -73.7040023803711
+                ]
+              ]
+            },
+            {
+              "tile": 1000000032,
+              "part": 0,
+              "distance": 23.397097,
+              "triangle": [
+                [
+                  232.52835083007812,
+                  64.02573605617295,
+                  -82.02143859863281
+                ],
+                [
+                  232.56314086914062,
+                  64.02474423488388,
+                  -83.02083587646484
+                ],
+                [
+                  231.56375122070312,
+                  64.02778836330185,
+                  -83.05562591552734
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            246.5,
+            66.61999988555908,
+            -64.5
+          ],
+          "direction": [
+            0.5213728,
+            -0.110828415,
+            -0.8461013
+          ],
+          "firstVisibleVanillaBlock": {
+            "distance": 85.5,
+            "state": "Block{minecraft:stone}",
+            "position": [
+              291,
+              57,
+              -137
+            ]
+          },
+          "hits": [
+            {
+              "tile": 1000050021,
+              "part": 34,
+              "distance": 6.8782625,
+              "triangle": [
+                [
+                  249.03466796875,
+                  66.50489044189453,
+                  -70.1300048828125
+                ],
+                [
+                  251.21958923339844,
+                  63.81476593017578,
+                  -70.5241928100586
+                ],
+                [
+                  251.21969604492188,
+                  66.50476837158203,
+                  -70.52422332763672
+                ]
+              ]
+            },
+            {
+              "tile": 1000050021,
+              "part": 20,
+              "distance": 11.127958,
+              "triangle": [
+                [
+                  250.57139587402344,
+                  66.5047836303711,
+                  -73.45854949951172
+                ],
+                [
+                  252.47998046875,
+                  63.814674377441406,
+                  -73.96240997314453
+                ],
+                [
+                  252.48008728027344,
+                  66.50467681884766,
+                  -73.96244812011719
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 1,
+              "distance": 11.12796,
+              "triangle": [
+                [
+                  252.47998046875,
+                  63.92467709621201,
+                  -73.96241760253906
+                ],
+                [
+                  252.4801025390625,
+                  67.02346249660263,
+                  -73.96244812011719
+                ],
+                [
+                  250.57142639160156,
+                  67.02346249660263,
+                  -73.45855712890625
+                ]
+              ]
+            },
+            {
+              "tile": 1000000032,
+              "part": 0,
+              "distance": 23.000402,
+              "triangle": [
+                [
+                  258.5821228027344,
+                  64.07029172023545,
+                  -83.11563110351562
+                ],
+                [
+                  258.6169128417969,
+                  64.07129117091904,
+                  -84.11502075195312
+                ],
+                [
+                  257.6175231933594,
+                  64.06933804591904,
+                  -84.14981079101562
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    },
+    {
+      "label": "dome sunset from north",
+      "capture": "campus-atom-ei-candidate-71-9.png",
+      "position": "242 65 -128.4 -6.304458813419962 -25.759345591609225",
+      "fps": 109,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030046,
+          "expectedPart": 0,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            242.5,
+            66.61999988555908,
+            -128.4
+          ],
+          "direction": [
+            0.098900504,
+            0.4345921,
+            0.8951806
+          ],
+          "hits": [
+            {
+              "tile": 1000030046,
+              "part": 0,
+              "distance": 17.342829,
+              "triangle": [
+                [
+                  244.4868621826172,
+                  73.90172024806748,
+                  -112.9246826171875
+                ],
+                [
+                  243.9566192626953,
+                  73.9017507656456,
+                  -112.88929748535156
+                ],
+                [
+                  243.96376037597656,
+                  74.50255032619248,
+                  -112.81559753417969
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            242.5,
+            66.61999988555908,
+            -128.4
+          ],
+          "direction": [
+            0.10981189,
+            0.0042935014,
+            0.9939431
+          ],
+          "hits": [
+            {
+              "tile": 1000050022,
+              "part": 32,
+              "distance": 3.5842757,
+              "triangle": [
+                [
+                  241.72019958496094,
+                  66.8647689819336,
+                  -124.73745727539062
+                ],
+                [
+                  243.8878173828125,
+                  63.864646911621094,
+                  -124.92208862304688
+                ],
+                [
+                  243.88792419433594,
+                  66.8646469116211,
+                  -124.92214965820312
+                ]
+              ]
+            },
+            {
+              "tile": 1000050022,
+              "part": 27,
+              "distance": 6.583224,
+              "triangle": [
+                [
+                  242.10691833496094,
+                  66.86479187011719,
+                  -121.76220703125
+                ],
+                [
+                  244.03363037109375,
+                  63.864681243896484,
+                  -121.92520904541016
+                ],
+                [
+                  244.03375244140625,
+                  66.86467742919922,
+                  -121.92526245117188
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 1,
+              "distance": 6.5832253,
+              "triangle": [
+                [
+                  242.2244873046875,
+                  67.02346249660263,
+                  -121.7721176147461
+                ],
+                [
+                  244.03375244140625,
+                  67.02346249660263,
+                  -121.92528533935547
+                ],
+                [
+                  242.2244873046875,
+                  63.924783907735446,
+                  -121.7721176147461
+                ]
+              ]
+            },
+            {
+              "tile": 1000050076,
+              "part": 0,
+              "distance": 69.562965,
+              "triangle": [
+                [
+                  237.19895935058594,
+                  68.32658386230469,
+                  -61.54663848876953
+                ],
+                [
+                  258.89837646484375,
+                  63.81438446044922,
+                  -57.70930099487305
+                ],
+                [
+                  258.8985595703125,
+                  68.32538604736328,
+                  -57.70934295654297
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.25,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            242.5,
+            66.61999988555908,
+            -128.4
+          ],
+          "direction": [
+            0.6552779,
+            0.23588094,
+            0.7176147
+          ],
+          "hits": [
+            {
+              "tile": 1000050018,
+              "part": 5,
+              "distance": 5.8009973,
+              "triangle": [
+                [
+                  245.51686096191406,
+                  69.93456268310547,
+                  -124.28514862060547
+                ],
+                [
+                  245.51663208007812,
+                  63.834564208984375,
+                  -124.2850341796875
+                ],
+                [
+                  248.552001953125,
+                  63.83440017700195,
+                  -124.09931182861328
+                ]
+              ]
+            },
+            {
+              "tile": 1000050018,
+              "part": 7,
+              "distance": 9.325185,
+              "triangle": [
+                [
+                  247.90220642089844,
+                  69.93446350097656,
+                  -121.81066131591797
+                ],
+                [
+                  249.81350708007812,
+                  63.8343620300293,
+                  -121.53387451171875
+                ],
+                [
+                  249.81373596191406,
+                  69.93436431884766,
+                  -121.53398895263672
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 2,
+              "distance": 9.325282,
+              "triangle": [
+                [
+                  247.90213012695312,
+                  67.99346371730576,
+                  -121.81053161621094
+                ],
+                [
+                  247.90219116210938,
+                  69.74146481593857,
+                  -121.8105239868164
+                ],
+                [
+                  249.81373596191406,
+                  69.76336117824326,
+                  -121.53398895263672
+                ]
+              ]
+            },
+            {
+              "tile": 1000030046,
+              "part": 5,
+              "distance": 12.740625,
+              "triangle": [
+                [
+                  253.5508270263672,
+                  69.77416440089951,
+                  -120.52335357666016
+                ],
+                [
+                  245.44143676757812,
+                  69.07471676906357,
+                  -113.15203857421875
+                ],
+                [
+                  245.97581481933594,
+                  69.70857449611435,
+                  -121.94776916503906
+                ]
+              ]
+            }
+          ],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        },
+        {
+          "u": 0.75,
+          "v": 0.6,
+          "blockSamples": true,
+          "liveFov": 76.99999332427979,
+          "cameraPosition": [
+            242.5,
+            66.61999988555908,
+            -128.4
+          ],
+          "direction": [
+            -0.48282057,
+            0.23588094,
+            0.8433531
+          ],
+          "hits": [],
+          "qualification": "Geometric ray; transparent texture texels are not rejected."
+        }
+      ]
+    }
+  ],
+  "nativeGravity": [
+    {
+      "label": "mlz courtyard standing",
+      "target": [
+        153.0,
+        63.89489918593911,
+        -110.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89908177890647,
+      "requireBodyClearance": true,
+      "look": [
+        -100.0,
+        -8.0
+      ],
+      "sourceRouteIndex": 53,
+      "standingY": 63.875,
+      "supportExpectedY": 63.89908177890647,
+      "onGround": true,
+      "horizontalError": 0.0,
+      "bodyClear": true,
+      "alignmentWaitTicks": 20,
+      "capture": "campus-atom-ei-candidate-71-walk-0.png",
+      "clientPosition": "(153.0, 63.875, -110.0)"
+    },
+    {
+      "label": "north walk standing",
+      "target": [
+        176.15,
+        64.00350978356846,
+        -115.71
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.00350978356846,
+      "requireBodyClearance": true,
+      "look": [
+        -100,
+        12
+      ],
+      "standingY": 64.0625,
+      "supportExpectedY": 64.00350978356846,
+      "onGround": true,
+      "horizontalError": 0.0,
+      "bodyClear": true,
+      "alignmentWaitTicks": 20,
+      "capture": "campus-atom-ei-candidate-71-walk-1.png",
+      "clientPosition": "(176.15, 64.0625, -115.71)"
+    },
+    {
+      "label": "terrace middle standing",
+      "target": [
+        0,
+        67.41075533207204,
+        -241
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000050038,
+      "dropHeight": 3,
+      "supportHeight": 67.41077040156559,
+      "requireBodyClearance": true,
+      "look": [
+        180,
+        10
+      ],
+      "part": 27,
+      "maxSupportError": 0.063,
+      "standingY": 67.4375,
+      "supportExpectedY": 67.41077040156559,
+      "onGround": true,
+      "horizontalError": 0.0,
+      "bodyClear": true,
+      "alignmentWaitTicks": 20,
+      "capture": "campus-atom-ei-candidate-71-walk-2.png",
+      "clientPosition": "(0.0, 67.4375, -241.0)"
+    },
+    {
+      "label": "west base approach standing",
+      "target": [
+        214,
+        64.0535807648418,
+        -112
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000033,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.0535807648418,
+      "requireBodyClearance": true,
+      "look": [
+        -64.12293354771533,
+        -28.86190261841417
+      ],
+      "standingY": 64.0625,
+      "supportExpectedY": 64.0535807648418,
+      "onGround": true,
+      "horizontalError": 0.0,
+      "bodyClear": true,
+      "alignmentWaitTicks": 20,
+      "capture": "campus-atom-ei-candidate-71-walk-3.png",
+      "clientPosition": "(214.0, 64.0625, -112.0)"
+    },
+    {
+      "label": "north base approach standing",
+      "target": [
+        242,
+        63.95182001871943,
+        -128.4
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000033,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.95182001871943,
+      "requireBodyClearance": true,
+      "look": [
+        -6.304458813419962,
+        -25.785848270924514
+      ],
+      "standingY": 63.9375,
+      "supportExpectedY": 63.95182001871943,
+      "onGround": true,
+      "horizontalError": 0.0,
+      "bodyClear": true,
+      "alignmentWaitTicks": 20,
+      "capture": "campus-atom-ei-candidate-71-walk-4.png",
+      "clientPosition": "(242.0, 63.9375, -128.4)"
+    },
+    {
+      "label": "south base approach standing",
+      "target": [
+        246,
+        64.02477197728449,
+        -65
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.02477197728449,
+      "requireBodyClearance": true,
+      "look": [
+        179.09692568101607,
+        -24.301979747788387
+      ],
+      "standingY": 64.0625,
+      "supportExpectedY": 64.02477197728449,
+      "onGround": true,
+      "horizontalError": 0.0,
+      "bodyClear": true,
+      "alignmentWaitTicks": 20,
+      "capture": "campus-atom-ei-candidate-71-walk-5.png",
+      "clientPosition": "(246.0, 64.0625, -65.0)"
+    }
+  ],
+  "maximumNativeSupportErrorMetres": 0.05899021643153901,
+  "preservation": {
+    "sourceCandidate70Unchanged": 82,
+    "priorAlignmentJournalsUnchanged": true,
+    "newV76AlignedChunks": 123,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "visualReview": {
+    "reviewedCaptures": [
+      {
+        "file": "campus-atom-ei-candidate-71-0.png",
+        "sha256": "aa062b1d8d035e9cae204bbf09fc7d8f08dae4c62ff9657f9b2640338aed4aef"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-1.png",
+        "sha256": "03490acfedae48e5a085edf13b51678f2d1580fb1672edb2f976d6ba4ed76159"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-2.png",
+        "sha256": "d531d19fcc66c8381dfe3c3e3057e64d13a3185fb7fa96230b945fd1ad5e42c7"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-3.png",
+        "sha256": "3af13737a71225cc986d711eb2662789b9cbe07026f691b33b0490524aee45e1"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-4.png",
+        "sha256": "e74c53c9062db5b1c2a2aeec83e1550e52bc1064a042db682889ce03368918ed"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-5.png",
+        "sha256": "a5abac0953a8d437eaad8d4f3ff3fdb3a9e4109c6d9c6c811e982a854f8a80d2"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-6.png",
+        "sha256": "7290681d62cd1583e99d9b2f1a4e44bb70c2dd9f38e6b97e9ddd715d7c312aef"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-7.png",
+        "sha256": "1df92f67ec5beb6369f6b5e15ea1e7d19ac369654caef41a5d608da02900a1f7"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-8.png",
+        "sha256": "a9b180dae7658616ee0781399accebd11d06ce840b1226c768087245fb3e7e48"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-9.png",
+        "sha256": "efde0373aa940e01e963b6524c5dcc8d387156cfaba01897fe67c891af435dcd"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-walk-0.png",
+        "sha256": "2d803ef10447921035e140b434baaea7143d8e7acd409af62a026d0897fba967"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-walk-1.png",
+        "sha256": "c979b2bc7286610dd8ad7a50cc3e5c1df3bf3385b6c6997529e406f84568bcbb"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-walk-2.png",
+        "sha256": "96272e7554bd8b8d2617307089d3d0f3d410ca25174b3ec7bffc295def2ef6b0"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-walk-3.png",
+        "sha256": "e5880675294063e02797cb8c03d2bd388bc99311e3a4558d370f71af646068a0"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-walk-4.png",
+        "sha256": "efd8f8110d82a45bb160a1ea16ed350c39aae46edf2191ffcfb50e7e1fe5d19c"
+      },
+      {
+        "file": "campus-atom-ei-candidate-71-walk-5.png",
+        "sha256": "93baf1c331d5ef6f9275186301d2f7e516fe742110df8f97b7960fd2648763da"
+      }
+    ],
+    "contactSheets": [
+      {
+        "file": "review-0.jpg",
+        "sha256": "6d902e1eb2a55d3553dcd596738f3466e44a3d2d8bed590be5fbcc8dc0691352"
+      },
+      {
+        "file": "review-1.jpg",
+        "sha256": "1d6a4653ea3528a508e134bd269a536c70d9ac17374b3375127bc6a3b640318c"
+      },
+      {
+        "file": "review-2.jpg",
+        "sha256": "fa961715cc10ad15f38e3aee585ab890cc39c76a0c3f4013b26439a333e54a06"
+      },
+      {
+        "file": "review-3.jpg",
+        "sha256": "a3ee24c822e026d9589dbc95c7632a81a243a1a5bbad865cf0f3afd092f43a7a"
+      }
+    ],
+    "observations": [
+      {
+        "frames": [
+          0,
+          1
+        ],
+        "finding": "The former lumpy shell is replaced by a continuous, recognizable dome from the MLZ courtyard; dark perimeter facades remain visible below it."
+      },
+      {
+        "frames": [
+          2,
+          3,
+          4,
+          8
+        ],
+        "finding": "Close views reveal the new pale frames, glazing and tan brick, but photographed low perimeter structures and source triangles obscure much of the base."
+      },
+      {
+        "frames": [
+          5
+        ],
+        "finding": "Smooth silhouette and panel grid are clear. Metal remains too uniform and seams too dark/regular for visual acceptance."
+      },
+      {
+        "frames": [
+          6,
+          7
+        ],
+        "finding": "Aerial views retain the surrounding campus layout and the wider annular roof. Adjacent FRMII and smaller structures still expose coarse geometry."
+      },
+      {
+        "frames": [
+          9
+        ],
+        "finding": "Sunset lighting works; the unresolved low perimeter geometry remains conspicuous."
+      },
+      {
+        "walkingCaptures": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "finding": "All six standing/body checks pass. Captures are at the sunset time retained from the last camera; they are not an independent daytime walking-material assessment."
+      }
+    ],
+    "visualAcceptance": false
+  },
+  "followUp": "atom-ei-followup.json",
+  "installed": false,
+  "publicBinaryRelease": false,
+  "installedPreview": "dev22",
+  "visualAcceptance": false,
+  "screenshots": [
+    {
+      "file": "docs/screenshots/atom-ei-before.jpg",
+      "sha256": "740ad366298290722fe89c33dbecfaa596b5804e06af4b4b11d17252a8a9d795"
+    },
+    {
+      "file": "docs/screenshots/atom-ei-after.jpg",
+      "sha256": "e991521a407f36039f2aa188ee98d1560d73240320162b863a1dc9ec4661698d"
+    },
+    {
+      "file": "docs/screenshots/atom-ei-aerial-development.jpg",
+      "sha256": "05e52ff9755266f7498f4a34a51431cb5341ddbc173c3de6d99072bf6b18b976"
+    },
+    {
+      "file": "docs/screenshots/atom-ei-base-unfinished.jpg",
+      "sha256": "768ef4d04a774ace9b1fe2a7df4564c7afdc2063022058e11ed9b3fe7fdd7f56"
+    }
+  ]
+}

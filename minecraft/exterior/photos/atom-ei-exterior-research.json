@@ -1,5 +1,5 @@
 {
-  "status": "Exterior research lead; no reconstruction implemented",
+  "status": "Source-constrained exterior draft implemented; native visual verification pending",
   "observedProblem": "Candidate68 MLZ courtyard views show a coarse Atom-Ei shell and large source fragments near the east approach.",
   "sources": [
     {
@@ -31,12 +31,11 @@
         -72.88322310055095
       ]
     ],
-    "qualification": "Spatial and height match is a lead, not yet a verified building registration. The total surveyed envelope is wider than the stated dome base; separate lower structure and dome before fitting."
+    "qualification": "The surveyed body matches the isolated dome east of the MLZ courtyard, with a31m upper shell above the wider low base. This registration uses campus position, unique silhouette and the official exterior view; it is not a photogrammetric camera calibration."
   },
   "nextChecks": [
-    "Read individual BVV roof/wall surfaces and register the official courtyard photo to the dome footprint.",
-    "Separate the dome from lower base/neighbor structures; use source-informed smooth curvature and panel seams only after registration.",
-    "Retire only source fragments proven to belong to that exterior; preserve neighboring buildings and terrain."
+    "Review matched MLZ courtyard, near-base and aerial native views of the packaged replacement.",
+    "Verify bounded source retirement and walking clearance around the base; inspect original/journal/inventory preservation."
   ],
   "interiorsExcluded": true,
   "surveyRoofAnalysis": {
@@ -114,6 +113,12 @@
         "maximumRadiusMetres": 0.0
       }
     ],
-    "qualification": "Direct statistics from BVV roof vertices above479.9m. Repeated height bands identify a separate curved dome above the wider base; varying radii require an elliptical fit, and isolated lower roof points must be separated. No fitted/reconstructed geometry has been built or visually registered yet."
+    "qualification": "The25-point base section is irregular and offset from the apex. Periodic radial interpolation preserves those observations; the upper bands follow cosine-scaled sections with ellipsoidal heights. Draft71 matches all151 upper-roof vertices within0.0023m after mesh transport; finish subdivisions remain estimates."
+  },
+  "implementation": {
+    "source": "atom-ei.json",
+    "generator": "scripts/exterior_atom_ei.py",
+    "nativeVisualAcceptance": false,
+    "referencePixelsRedistributed": false
   }
 }

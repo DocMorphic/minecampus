@@ -128,6 +128,50 @@ void main() {
         color=textureLod(Sampler0,texCoord0,max(0.0,log2(max(footprint,1.0))+1.5));
     }
     if(color.a<(MaterialDetail>3.5&&MaterialDetail<4.5?0.45:0.1))discard;
+    // Atom-Ei dome: smooth source-derived normals are octahedrally encoded
+    // in this solid-colour part's UVs. Panel pitch and patina are estimates.
+    if(abs(MaterialDetail-27.0)<.1) {
+        vec2 oct=texCoord0*2.0-1.0;
+        vec3 n=vec3(oct.x,1.0-abs(oct.x)-abs(oct.y),oct.y);
+        if(n.y<0.0)n.xz=(1.0-abs(n.zx))*sign(n.xz);
+        n=normalize(n);
+        vec3 view=normalize(CameraPosition-worldPosition);
+        vec2 radial=worldPosition.xz-vec2(245.514882351,-96.722567877);
+        float angle=atan(radial.y,radial.x);
+        float bands=(angle/6.28318530718+.5)*192.0;
+        float width=max(fwidth(bands),.0001);
+        float seamDistance=abs(fract(bands+.5)-.5);
+        float seams=(1.0-smoothstep(.018,.018+width,seamDistance))*(1.0-smoothstep(.25,.8,width));
+        // The documented top cap avoids converging hundreds of dark lines.
+        seams*=smoothstep(2.4,4.0,length(radial));
+        float panel=floor(bands);
+        float course=worldPosition.y/1.8;
+        float jointWidth=max(fwidth(course),.0001);
+        float joints=(1.0-smoothstep(.004,.004+jointWidth,abs(fract(course+.5)-.5)))*(1.0-smoothstep(.15,.6,jointWidth));
+        float patina=.96+.04*noise(vec2(panel*.73,worldPosition.y*.18));
+        float diffuse=.66+.34*max(dot(n,CampusSunDirection),0.0);
+        float highlight=pow(max(dot(reflect(-CampusSunDirection,n),view),0.0),30.0);
+        float fresnel=pow(1.0-max(dot(n,view),0.0),4.0);
+        color.rgb=color.rgb*patina*diffuse*(1.0-.24*seams-.07*joints)
+            +vec3(.13,.14,.15)*highlight+vec3(.035,.045,.06)*fresnel;
+    }
+    // Observed tan brick lower base. Original procedural mortar and subtle
+    // brick variation; no copyrighted reference-photo pixels are embedded.
+    if(abs(MaterialDetail-28.0)<.1) {
+        vec2 radial=worldPosition.xz-vec2(245.514882351,-96.722567877);
+        vec2 masonry=vec2(atan(radial.y,radial.x)*24.5,worldPosition.y-63.923447343);
+        float row=floor(masonry.y/.075);
+        vec2 brick=vec2(masonry.x/.25+.5*mod(row,2.0),masonry.y/.075);
+        vec2 dist=min(fract(brick),1.0-fract(brick));
+        vec2 aa=max(fwidth(brick),vec2(.0001));
+        vec2 fill=smoothstep(vec2(.018,.04)-aa*.5,vec2(.018,.04)+aa*.5,dist);
+        float mortar=(1.0-fill.x*fill.y)*(1.0-smoothstep(.35,1.2,max(aa.x,aa.y)));
+        float variation=.94+.08*hash(vec2(floor(brick.x),row));
+        color.rgb=mix(color.rgb*variation,vec3(.61,.58,.50),mortar*.72);
+        vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
+        if(dot(n,CameraPosition-worldPosition)<0.0)n=-n;
+        color.rgb*=.68+.32*max(dot(n,CampusSunDirection),0.0);
+    }
     // The aerial image supplies surveyed colour and markings. Only close-range
     // material grain is reconstructed; it does not invent additional geometry.
     float proximity=1.0-smoothstep(10.0,28.0,viewDistance);

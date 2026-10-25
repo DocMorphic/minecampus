@@ -1,0 +1,27 @@
+{
+  "building": "DEBY_LOD2_5284450",
+  "runtimeId": 1000030046,
+  "reference": "photos/atom-ei-exterior-research.json",
+  "siteBoundsUTM": [698420, 5349270, 698495, 5349350],
+  "domeBaseHeight": 479.91,
+  "domeRadiusRangeMetres": [13, 18],
+  "angularSegments": 192,
+  "latitudeSegments": 64,
+  "baseTransitionMetres": 0.6,
+  "sourceVertexToleranceMetres": 0.003,
+  "cleanupMarginMetres": 0.8,
+  "neighbourGuardMetres": 0.25,
+  "baseFacade": {
+    "windowSillAboveGroundMetres": 3.18,
+    "windowHeightMetres": 0.93,
+    "pierPitchMetres": 3.8,
+    "pierWidthMetres": 0.18,
+    "mullionPitchMetres": 0.76,
+    "mullionWidthMetres": 0.045,
+    "recessMetres": 0.09,
+    "fasciaMetres": 0.16
+  },
+  "qualification": "BVV LoD2 identifies the dome and wider lower body. The smoothed upper shell interpolates the surveyed 25-point outline and the ellipsoidal height bands, with a short transition to the exact polygonal skirt. Aluminium, tan brick, pale piers and upper glazing are supported by official TUM and original-builder exterior photos; bay spacing, seams, colour, weathering and obscured elevations are estimates. Photos are references only, not texture assets. No interiors are created.",
+  "parts": ["aluminium dome", "tan brick base", "pale piers and frames", "glazing", "metal skirt and returns", "surveyed lower roofs"],
+  "fineCollisionMaterials": [4, 4, 6, 4, 4, 4]
+}
