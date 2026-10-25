@@ -1,0 +1,104 @@
+{
+  "status": "Unapplied localization of newly exposed gap",
+  "nativeCandidate": 91,
+  "camera": "313.25 64.125 -24.25 0 30",
+  "controls": [
+    {
+      "screenUV": [
+        0.8,
+        0.4
+      ],
+      "approximateBuildingGroundIntersections": [
+        {
+          "building": "DEBY_LOD2_108698301",
+          "groundPlanePointMC": [
+            309.1886102915497,
+            64.0111118254228,
+            -19.723796681431885
+          ],
+          "groundPlanePointUTM": [
+            698522.2815310678,
+            5349233.907101931
+          ],
+          "surveyFloorMC": 64.0111118254228,
+          "surveyRoofMC": 73.12162843590094,
+          "wallFaces": 5,
+          "roofTriangles": 5
+        }
+      ]
+    },
+    {
+      "screenUV": [
+        0.75,
+        0.35
+      ],
+      "approximateBuildingGroundIntersections": [
+        {
+          "building": "DEBY_LOD2_108698301",
+          "groundPlanePointMC": [
+            309.07070786807014,
+            64.0111118254228,
+            -18.425795641712096
+          ],
+          "groundPlanePointUTM": [
+            698522.2088598928,
+            5349232.605781187
+          ],
+          "surveyFloorMC": 64.0111118254228,
+          "surveyRoofMC": 73.12162843590094,
+          "wallFaces": 5,
+          "roofTriangles": 5
+        }
+      ]
+    },
+    {
+      "screenUV": [
+        0.9,
+        0.4
+      ],
+      "approximateBuildingGroundIntersections": [
+        {
+          "building": "DEBY_LOD2_108698301",
+          "groundPlanePointMC": [
+            307.8348137220663,
+            64.0111118254228,
+            -19.723796681431885
+          ],
+          "groundPlanePointUTM": [
+            698520.9285501783,
+            5349233.86000046
+          ],
+          "surveyFloorMC": 64.0111118254228,
+          "surveyRoofMC": 73.12162843590094,
+          "wallFaces": 5,
+          "roofTriangles": 5
+        }
+      ]
+    }
+  ],
+  "qualification": "Approximate screen-ray projection onto each building survey base plane, used to identify the gap owner. Does not prove photographic wall coverage or an installed repair.",
+  "osmIdentification": {
+    "source": {
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.6748,48.2650,11.6780,48.2668",
+      "retrieved": "2026-10-25T13:13:17.155375+00:00",
+      "sha256": "035bb8e115c141604d209c45f1b64a318f9feed3ff6aeec6f2c5070171a36e18",
+      "license": "ODbL-1.0",
+      "attribution": "\u00a9 OpenStreetMap contributors"
+    },
+    "matches": [
+      {
+        "osmWay": "171814000",
+        "tags": {
+          "building": "yes",
+          "building:levels": "2",
+          "name": "B\u00fcrocontainer",
+          "ref": "5245"
+        },
+        "distanceMetres": 0.0,
+        "areaSquareMetres": 212.28035918570976
+      }
+    ],
+    "qualification": "OSM places office containers (5245) on the gap location. Its two-level tag does not establish facade opening dimensions; the BVV envelope reaches about 9.11 m above its minimum base. Reconcile facade appearance before claiming a detailed reconstruction."
+  },
+  "nextStep": "Inspect the surveyed neighbour envelope and public exterior references; close the visible gap while retaining its measured position and roof. Do not classify the office-container footprint as missing outdoor ground or erase it as vegetation."
+}

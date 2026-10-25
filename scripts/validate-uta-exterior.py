@@ -84,7 +84,8 @@ assert new.intersection(neighbours.union(foot)).area<.01
 assert new.difference(foot.buffer(spec['groundMarginMetres']+.01)).area<.01
 old=[]
 for tile in m['tiles']:
- if tile['kind']!='ground' or tile['file']in site['groundTiles']:continue
+ # Later landscape tiles must not change the historical UTA blend input.
+ if tile['kind']!='ground' or tile['file']in site['groundTiles'] or tile['file']in m['architecture'].get('utaLandscape',{}).get('groundTiles',[]):continue
  lo,hi=tile['bounds']
  if not new.buffer(spec['groundBlendMetres']+1).intersects(box(lo[0],lo[2],hi[0],hi[2])):continue
  for part in decode(out/tile['file'])[0]:

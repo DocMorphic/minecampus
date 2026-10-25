@@ -1,0 +1,12 @@
+{
+  "boundsUTM": [698510, 5349208, 698570, 5349252],
+  "landscapeBoundaryUTM": [[698521,5349243],[698549,5349245],[698569,5349242],[698569,5349219],[698550,5349216],[698527,5349215],[698519,5349224]],
+  "treeSelectionBoundaryUTM": [[698525,5349243],[698549,5349245],[698568,5349240],[698568,5349224],[698550,5349218],[698529,5349217],[698521,5349227]],
+  "buildingGuardMetres": 0.25,
+  "groundBuildingGuardMetres": 0.005,
+  "groundBlendMetres": 2,
+  "groundRuntimeId": 1000061200,
+  "treeRuntimeId": 1000010800,
+  "sourceEvidence": "reactor-courtyard-development-validation.json",
+  "qualification": "Bounded UTA south tree-cluster interpretation from BVV DOP20, with tree centres, heights and crowns fitted from DOM20/DGM1/DOP20. Branches and species are estimates. The selected outdoor area excludes all surveyed buildings and roof projections. Ground uses DGM1 with an exact blend to existing terrain. This replaces the diagnosed coarse canopy, not interiors or adjacent architecture."
+}

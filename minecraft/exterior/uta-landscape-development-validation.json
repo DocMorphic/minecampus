@@ -1,0 +1,752 @@
+{
+  "candidate": 91,
+  "baselineCandidate": 90,
+  "status": "PASS: source-fitted canopy replacement and combined native checks; overall visual acceptance remains false",
+  "visualAcceptance": false,
+  "artifact": {
+    "status": "PASS: source-fitted trees, terrain and bounded cleanup packaged; all prior render/collision inputs preserved",
+    "artifactSha256": "fd61d1a61f51bb3817d25cbccddfa300e78380e3d7cbd0ec7254cff042fc6832",
+    "rendererSourceFingerprint": "f97bfa234e1a9450",
+    "staticRenderTiles": 471,
+    "alignmentVersion": 88,
+    "newGroundTiles": 6,
+    "newTrees": 9,
+    "previousRenderCollisionInputsByteIdentical": 648,
+    "changedServiceModules": [
+      "src/minecampus-survey.mjs"
+    ],
+    "unchangedServiceModules": 23,
+    "previousSupplementalSurfacesUnchanged": true,
+    "previousArchitectureFieldsUnchanged": true,
+    "uncompressedBundleBytes": 806015415
+  },
+  "sourceValidation": {
+    "status": "PASS: source-fitted landscape, measured terrain joins, exact aerial pixels and protected buildings/roofs",
+    "manifestSha256": "ba594524ae1a7df1752840e2b5fe6d290cdf90828fb95c204325dbfe10e1afdf",
+    "validatorSha256": "e7d88314aada964661afd99634874c213bf61ced9881f4d4446ed461cb977824",
+    "sourceSha256": "fade38555dd75eb49ea245034e033c707aeeeaa8ba03af90f6a0b2e171efa066",
+    "derivedSha256": "6a8637200a3917ecceb424fb94d41e4027d088732a0a75bde93808939a5796de",
+    "groundTiles": 6,
+    "groundAreaSquareMetres": 1070.1519673064258,
+    "maximumGroundHeightResidualMetres": 3.152677061279974e-05,
+    "maximumSeamErrorMetres": 3.052116028356977e-06,
+    "missingOutdoorReplacementGroundSquareMetres": 4.592419364486024e-05,
+    "protectedBuildingOverlapSquareMetres": 0.0,
+    "newTrees": 9,
+    "priorRenderCollisionInputsUnchanged": null,
+    "tileSha256": {
+      "uta-south-landscape-ground-300--40.ect": "04391190e3ad21aa52343b8ab2851c7efce367c96d943b89370884874b01e6c0",
+      "uta-south-landscape-ground-320--40.ect": "13a55185785d22f10d2fcb31edf49617f6c9eb289095c39b0e187cd4f651a4bb",
+      "uta-south-landscape-ground-340--40.ect": "b09edea27f27e9753065d953833bece0b817f38fa8d91d03c6c9372e1c41f433",
+      "uta-south-landscape-ground-300--20.ect": "0e7e5c1069071e90ddd7a2ec4b5777908f46628d1f36f85d3c4c60e66129be9d",
+      "uta-south-landscape-ground-320--20.ect": "b2bef37d84b3bb4c9ddeef755af687d0491e115a29c73905abd30258d6c4fb4a",
+      "uta-south-landscape-ground-340--20.ect": "94687ac916d8c23c8777d46172c5b484dafac66a9908ecbb31ba5c9dc6ba8dbf",
+      "uta-south-vegetation-0-0.ect": "3b8c94613209703fecbdd9e2cdbeb7047950ca51f0ebe92e1199e56d08a69196"
+    },
+    "visualAcceptance": false
+  },
+  "sourceValidators": [
+    {
+      "validator": "validate-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mlz-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-canopies.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-west-entrance.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-library.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-container.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-p1-complex.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-woodland.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-new-laboratory.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-laboratory-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-ii.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-pinned-water.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-wsi.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn-west.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-cala.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-lmu.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-courtyard.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-riverbank.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-north-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mensa-terrace.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-landscape.py",
+      "exitCode": 0
+    }
+  ],
+  "sourceFile": "uta-south-landscape.json",
+  "scope": "Nine fitted trees, six terrain tiles and bounded source-canopy retirement south of UTA. All prior building meshes, ground, materials and photographic plans are retained.",
+  "serviceUnitTests": {
+    "command": "node --test minecraft/exterior/service/survey-surface.test.mjs",
+    "passed": 44,
+    "failed": 0
+  },
+  "packagedServicePreflight": {
+    "status": "PASS: UTA walls, clear roof and approaches retain support; observed rooftop equipment preserves provider collision at both datums",
+    "wallChecks": 12,
+    "roofChecks": 6,
+    "preservedRoofChecks": 2,
+    "results": [
+      {
+        "label": "mlz courtyard standing",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.89908177890647,
+        "residual": -0.024081778906470674,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.995528146961206,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 0,
+        "standingY": 63.8125,
+        "expected": 63.786881936432195,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall northwest corridor",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.07557231088317,
+        "residual": 0.04942768911682549,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall southwest corridor",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.954792558466174,
+        "residual": 0.04520744153382594,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall north approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.86891512333618,
+        "residual": 0.006084876663820182,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall east approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.8496980649334,
+        "residual": 0.025301935066600834,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall south approach",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.84360075918638,
+        "residual": 0.03139924081362011,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "shift": 0,
+        "standingY": 69.625,
+        "expected": 69.62290400570674,
+        "residual": 0.0020959942932563536,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA west approach ground",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.08798789978027,
+        "residual": 0.03701210021972656,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south approach ground",
+        "shift": 0,
+        "standingY": 64.125,
+        "expected": 64.09127044677734,
+        "residual": 0.03372955322265625,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south tree passage",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.92000106746505,
+        "residual": -0.04500106746505139,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south planted-edge passage",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00583164841974,
+        "residual": -0.005831648419743374,
+        "bodyClear": true
+      },
+      {
+        "label": "mlz courtyard standing",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.89908177890646,
+        "residual": -0.02408177890646357,
+        "bodyClear": true
+      },
+      {
+        "label": "north walk standing",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.00350978356846,
+        "residual": 0.05899021643153901,
+        "bodyClear": true
+      },
+      {
+        "label": "northwest connector",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.9955281469612,
+        "residual": 0.004471853038793938,
+        "bodyClear": true
+      },
+      {
+        "label": "north entrance wing",
+        "shift": 2,
+        "standingY": 65.8125,
+        "expected": 65.7868819364322,
+        "residual": 0.02561806356780494,
+        "bodyClear": true
+      },
+      {
+        "label": "south tower approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84211349487305,
+        "residual": 0.032886505126953125,
+        "bodyClear": true
+      },
+      {
+        "label": "south connector",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.03787994384766,
+        "residual": 0.02462005615234375,
+        "bodyClear": true
+      },
+      {
+        "label": "concrete west arc",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00117695124457,
+        "residual": -0.0011769512445738428,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall northwest corridor",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.07557231088317,
+        "residual": 0.04942768911682549,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall southwest corridor",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.95479255846618,
+        "residual": 0.04520744153381884,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall north approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.86891512333618,
+        "residual": 0.006084876663820182,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall east approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84969806493339,
+        "residual": 0.02530193506660794,
+        "bodyClear": true
+      },
+      {
+        "label": "east hall south approach",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.84360075918639,
+        "residual": 0.031399240813613005,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "shift": 2,
+        "standingY": 71.625,
+        "expected": 71.62290400570674,
+        "residual": 0.0020959942932563536,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA west approach ground",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.08798789978027,
+        "residual": 0.03701210021972656,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south approach ground",
+        "shift": 2,
+        "standingY": 66.125,
+        "expected": 66.09127044677734,
+        "residual": 0.03372955322265625,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south tree passage",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.92000106746505,
+        "residual": -0.04500106746505139,
+        "bodyClear": true
+      },
+      {
+        "label": "UTA south planted-edge passage",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00583164841974,
+        "residual": -0.005831648419743374,
+        "bodyClear": true
+      }
+    ],
+    "qualification": "Survey-plane collision is independent of provider photographic acceptance. Native migration and visual acceptance are separate."
+  },
+  "sourceRayRegression": {
+    "status": "PASS: all three previously blocked pixels reach reconstructed geometry after bounded canopy retirement",
+    "capturedSourceTriangles": 8001,
+    "remainingTriangles": 4040,
+    "controls": [
+      {
+        "u": 0.5,
+        "v": 0.5,
+        "beforeSourceDistance": 2.3845735102625607,
+        "afterSourceDistance": null,
+        "replacementDistance": 3.4781106379799533,
+        "expectedTile": 1000061200
+      },
+      {
+        "u": 0.25,
+        "v": 0.5,
+        "beforeSourceDistance": 1.3227910868749984,
+        "afterSourceDistance": null,
+        "replacementDistance": 6.307573233005071,
+        "expectedTile": 1000061203
+      },
+      {
+        "u": 0.75,
+        "v": 0.5,
+        "beforeSourceDistance": 3.103332420208249,
+        "afterSourceDistance": null,
+        "replacementDistance": 4.095347426298324,
+        "expectedTile": 1000061200
+      }
+    ],
+    "qualification": "Geometry regression from native90 capture; new native appearance and uncaptured source geometry remain to be checked."
+  },
+  "native": {
+    "artifactUnchangedBetweenRuns": true,
+    "firstRun": {
+      "exitCode": 1,
+      "completedCameraChecks": 11,
+      "capturedMainViews": 12,
+      "requiredReflectionsPassed": 9,
+      "standingChecksCompleted": 0,
+      "failure": "The first added forest camera incorrectly required an active reflection despite no reflective facade in view. The first nine retained reflection assertions all passed.",
+      "preservation": {
+        "sourceCandidate90Unchanged": 137,
+        "priorAlignmentJournalsUnchanged": true,
+        "activeV88AlignedChunks": 113,
+        "inventoryAndExperienceUnchanged": true,
+        "originalSavesUnchanged": 121,
+        "previewSavesUnchanged": 121,
+        "previewSettingsUnchanged": 4
+      },
+      "planSha256": "3425c4e5b17e972460f93275a9a10efec87eb71610943780484015ca5df8a4c8"
+    },
+    "completionRun": {
+      "exitCode": 0,
+      "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+      "completedCameraChecks": 2,
+      "standingChecksPassed": 17,
+      "fractionalSupportChecks": {
+        "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+        "states": 144,
+        "legacyDefaults": 9
+      },
+      "maximumStandingErrorMetres": 0.05899021643153901,
+      "preservation": {
+        "sourceCandidate90Unchanged": 137,
+        "priorAlignmentJournalsUnchanged": true,
+        "activeV88AlignedChunks": 189,
+        "inventoryAndExperienceUnchanged": true,
+        "originalSavesUnchanged": 121,
+        "previewSavesUnchanged": 121,
+        "previewSettingsUnchanged": 4
+      },
+      "planSha256": "5778d0ee3adc82f57f1b6c449a8cec8918c0a1c65f9fe51025b789d649697994"
+    },
+    "testCorrection": "Only the two added forest views disable reflections. Original nine reflection checks, all coordinates, three source-obstruction pixel assertions and all standing controls remain. Completion uses the same packaged product and a fresh copy of source90.",
+    "distinctCameraChecksCompleted": 13,
+    "obstructionPixelResults": [
+      {
+        "u": 0.5,
+        "v": 0.5,
+        "tile": 1000061200,
+        "distance": 3.4780674
+      },
+      {
+        "u": 0.25,
+        "v": 0.5,
+        "tile": 1000061203,
+        "distance": 6.307509
+      },
+      {
+        "u": 0.75,
+        "v": 0.5,
+        "tile": 1000061200,
+        "distance": 4.0953035
+      }
+    ],
+    "walkingControls": [
+      {
+        "label": "mlz courtyard standing",
+        "standingY": 63.875,
+        "supportExpectedY": 63.89908177890647,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-0.png"
+      },
+      {
+        "label": "north walk standing",
+        "standingY": 64.0625,
+        "supportExpectedY": 64.00350978356846,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-1.png"
+      },
+      {
+        "label": "northwest connector",
+        "standingY": 64.0,
+        "supportExpectedY": 63.995528146961206,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-2.png"
+      },
+      {
+        "label": "north entrance wing",
+        "standingY": 63.8125,
+        "supportExpectedY": 63.786881936432195,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-3.png"
+      },
+      {
+        "label": "south tower approach",
+        "standingY": 63.875,
+        "supportExpectedY": 63.84211349487305,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-4.png"
+      },
+      {
+        "label": "south connector",
+        "standingY": 64.0625,
+        "supportExpectedY": 64.03787994384766,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-5.png"
+      },
+      {
+        "label": "concrete west arc",
+        "standingY": 64.0,
+        "supportExpectedY": 64.00117695124457,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-6.png"
+      },
+      {
+        "label": "east hall northwest corridor",
+        "standingY": 64.125,
+        "supportExpectedY": 64.07557231088317,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-7.png"
+      },
+      {
+        "label": "east hall southwest corridor",
+        "standingY": 64.0,
+        "supportExpectedY": 63.954792558466174,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-8.png"
+      },
+      {
+        "label": "east hall north approach",
+        "standingY": 63.875,
+        "supportExpectedY": 63.86891512333618,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-9.png"
+      },
+      {
+        "label": "east hall east approach",
+        "standingY": 63.875,
+        "supportExpectedY": 63.8496980649334,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-10.png"
+      },
+      {
+        "label": "east hall south approach",
+        "standingY": 63.875,
+        "supportExpectedY": 63.84360075918638,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-11.png"
+      },
+      {
+        "label": "UTA surveyed roof standing",
+        "standingY": 69.625,
+        "supportExpectedY": 69.62290400570674,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-12.png"
+      },
+      {
+        "label": "UTA west approach ground",
+        "standingY": 64.125,
+        "supportExpectedY": 64.08798789978027,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-13.png"
+      },
+      {
+        "label": "UTA south approach ground",
+        "standingY": 64.125,
+        "supportExpectedY": 64.09127044677734,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-14.png"
+      },
+      {
+        "label": "UTA south tree passage",
+        "standingY": 63.875,
+        "supportExpectedY": 63.92000106746505,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-15.png"
+      },
+      {
+        "label": "UTA south planted-edge passage",
+        "standingY": 64.0,
+        "supportExpectedY": 64.00583164841974,
+        "bodyClear": true,
+        "capture": "campus-uta-landscape-completion-91-walk-16.png"
+      }
+    ]
+  },
+  "walkingSupportQualification": "For the two new sloped-ground controls, expected support is the maximum continuous terrain height under the player footprint, independently computed from the encoded mesh; centre-surface height is recorded separately. Existing 15 controls are unchanged.",
+  "inspectionPlan": "checks/uta-south-landscape.json",
+  "inspectionPlanSha256": "348a56c4a3766115100092e66b87f4c07c1a661b416425be9d7b16ef0ad276dd",
+  "visualReview": {
+    "capturesReviewed": 40,
+    "mainCaptures": 14,
+    "distinctCameraPositions": 13,
+    "standingCaptures": 17,
+    "reflectionBuffers": 9,
+    "contactSheetsReviewed": 11,
+    "findings": [
+      "The original south-view solid canopy mass is replaced with separate tree trunks and foliage; all three tracked native rays now reach measured replacement ground.",
+      "The source-fitted trees are present in aerial and walking views, while the original courtyard and reflected material treatment remain.",
+      "A blue gap is exposed beneath the adjacent office-container source building; its footprint was intentionally excluded from outdoor cleanup and has no complete reconstructed envelope.",
+      "Coarse vegetation beyond the bounded cluster, blurry ground imagery and UTA wall photography remain visible. Ordinary saved dirt blocks remain protected."
+    ],
+    "captureSha256": {
+      "campus-uta-landscape-candidate-91-0.png": "f63b779c1c384397b49c441b73a5193fc4a9018d960c8a00668265f69baf1f05",
+      "campus-uta-landscape-candidate-91-1.png": "6c45212a7bc825d0ecf214142243f2ac99bc781318041d88bd2cccdceb4e65f9",
+      "campus-uta-landscape-candidate-91-10.png": "a40975e8aa06db6ab18ca8294302e011500f5984630d155b50ccf64d505f604e",
+      "campus-uta-landscape-candidate-91-11.png": "ea1fc771333bd818f54dc2411cb46eaef394defcc4a30dceb8a0844b1527c40f",
+      "campus-uta-landscape-candidate-91-2.png": "bdab5a92ee6964f8f9b51356a821a275c5745864f9f7a3507bdb738d60b6dd08",
+      "campus-uta-landscape-candidate-91-3.png": "2617eadd6e70c0806375bc010f20d44594aa6b03baa5fd68fac2f5fd04fa5f9b",
+      "campus-uta-landscape-candidate-91-4.png": "c9bfaaa0b6ed257842311def2f6533ded854d3a522f23d0ae851c1152c0243ea",
+      "campus-uta-landscape-candidate-91-5.png": "2ff2ba10f2d3a77baa63e04e3b7055f377897e56bf65e5fa5416917a9e213ff9",
+      "campus-uta-landscape-candidate-91-6.png": "389f5b634d8a769f513afd74ec51cf9166a51b59be20b27d3b579d957bd5cd48",
+      "campus-uta-landscape-candidate-91-7.png": "70f4a9280110e5cab7fa24abdfc4bb5aa17760ebce445f1a437bd34560e2cab8",
+      "campus-uta-landscape-candidate-91-8.png": "ea1cc4dce53b0551f1872360479acfb61ce506b091a070affd772aafcecb4f28",
+      "campus-uta-landscape-candidate-91-9.png": "9c949b03710b3ee092590dcbc3a153078c7a1ec72d4e42c61681c743b17f4f90",
+      "campus-uta-landscape-candidate-91-reflection-0.png": "2b2782300e7bc6c786168c362bffca562ffaa27082d97fd69247df16568ba415",
+      "campus-uta-landscape-candidate-91-reflection-1.png": "746017f11b562a9713122d7093963482190e270a06e0e04e4765258dc57228c3",
+      "campus-uta-landscape-candidate-91-reflection-2.png": "7d74287436ab9d116a96868f2d31a88a7e9c1999eaa1d3dee814b13a6f346ec3",
+      "campus-uta-landscape-candidate-91-reflection-3.png": "e7797cdeb4a4116effad4f56424c4ce6c6fba8ef9aa9f87de8afc2b424fd8245",
+      "campus-uta-landscape-candidate-91-reflection-4.png": "e25adf7a28cc3e432c3f5b7cc4acc8bf2770b11afa0435ce3619c5dcdd9b10d7",
+      "campus-uta-landscape-candidate-91-reflection-5.png": "95a0763d5cc996ea8c2278950fc8438ac9d3daf83605a0d97b1f80092f4e6f38",
+      "campus-uta-landscape-candidate-91-reflection-6.png": "5e2dc4dfccbf189da5e4bc8962e1aadc3b4175d6928e07c940e02769f38280b7",
+      "campus-uta-landscape-candidate-91-reflection-7.png": "c6e33c9a39dc1af042d22ff36627e297cbed12c6f057f1c85017926c25253922",
+      "campus-uta-landscape-candidate-91-reflection-8.png": "e6ec41d776fd41a6c6aeaf13680ca572625a0ccd65d71d57d4cc518af0268853",
+      "campus-uta-landscape-completion-91-0.png": "e88e4903578b9a1ce6dfb4a4657925efe89f3d5234705ece9fef831c970f1c10",
+      "campus-uta-landscape-completion-91-1.png": "a02d554e67b759fd9312aa8a416d3fef7e1811d066336a36f9f9fe2b80310565",
+      "campus-uta-landscape-completion-91-walk-0.png": "3247be7068d0253f6c5aab77889b134a62ea6f839b8a18be6774647af18b25fb",
+      "campus-uta-landscape-completion-91-walk-1.png": "3f4da3c879979e15e20dbe3aadfb5412b0af0964a9466749ee9b52dcd28adf08",
+      "campus-uta-landscape-completion-91-walk-10.png": "78329feec887425ceb1f68491c03ff256f516ae5a8aaa250336936cd171d72a7",
+      "campus-uta-landscape-completion-91-walk-11.png": "645a095091da8a1bb55ccf9ddc5d1b8bb388f94c2c2e6cd2c6ea614c63e4e143",
+      "campus-uta-landscape-completion-91-walk-12.png": "768f3a2473a335738b1d2df939cfa0d1da554cc791eb7b598c8802eeb7161af2",
+      "campus-uta-landscape-completion-91-walk-13.png": "e55c8d8e18d7040e0b32c319115e1d0a71b40107025b401666c7912c8728a5d0",
+      "campus-uta-landscape-completion-91-walk-14.png": "877e1569e2b3bd21ad7e4108b08bb217e94a4fc7d551b3a812975938251030f7",
+      "campus-uta-landscape-completion-91-walk-15.png": "7fed02c929f834e3038ccf3fb2c11daca488d8f858a1568681516bc301c7f8e1",
+      "campus-uta-landscape-completion-91-walk-16.png": "972b264cb42773b00c4e7da7d465a0330e050e58a3eb5e1ffe768a59a8c73e95",
+      "campus-uta-landscape-completion-91-walk-2.png": "7ac5feb0bb77fb02066f2b934a59b619db33e9cd5337ad2e2b1e7484dca95d0c",
+      "campus-uta-landscape-completion-91-walk-3.png": "2f1411fc8acaa47e928626fe423e1dae62c1eb33ac9cf4bd960b0f22a0c0ca71",
+      "campus-uta-landscape-completion-91-walk-4.png": "df4bfd799bbd1f30ffd5a0c21ab19c1cd5bd4fce6db05aaf57547f3389c7ee93",
+      "campus-uta-landscape-completion-91-walk-5.png": "6cf0ca0108defd588463503b3fd8831da66b57c07ed77303699cab850ae508dd",
+      "campus-uta-landscape-completion-91-walk-6.png": "1143c9ab09f4bf22edecec27d0a0a322aca2c213917b7ce172eeb282b19e6f0e",
+      "campus-uta-landscape-completion-91-walk-7.png": "ba6014deb0c561012bb9882ba6cc788bdd6590d827c079c6c5ab590295ccc6ca",
+      "campus-uta-landscape-completion-91-walk-8.png": "83c42b18ab1d05f1249b307bdcac286f44acfabc245b014a242111036cf4c9c2",
+      "campus-uta-landscape-completion-91-walk-9.png": "458d53319118622d891595e4e2060388f815997185ae239764679c4de6dc50fa"
+    }
+  },
+  "nextSourceStudy": "photos/uta-south-neighbour-study.json",
+  "knownRemainingDefects": [
+    "Exposed gap at surveyed office-container building DEBY_LOD2_108698301 (mapped ref 5245)",
+    "Blurry UTA wall photography and projected tree/shadow imagery on ground",
+    "Remaining coarse vegetation beyond the fitted cluster and wider campus defects"
+  ],
+  "installedPreviewChanged": false,
+  "publicBinaryReleased": false,
+  "representativeCaptures": [
+    "photos/uta-landscape-91-ground.png",
+    "photos/uta-landscape-91-aerial.png",
+    "photos/uta-landscape-91-walking.png"
+  ]
+}

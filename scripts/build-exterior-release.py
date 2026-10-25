@@ -88,6 +88,14 @@ assert reactor_site_check['status'].startswith('PASS:') and reactor_site_check['
 assert reactor_site_check['validatorSha256']==digest(ROOT/'scripts/validate-reactor-site.py')
 for name,value in reactor_site_check['tileSha256'].items():assert digest(DATA/name)==value
 
+landscape=json.loads((DATA/'manifest.json').read_text())['architecture']['utaLandscape']
+for path,key in [(SOURCE/landscape['sourceFile'],'sourceSha256'),(ROOT/landscape['generatorFile'],'generatorSha256'),(DATA/landscape['derivedFile'],'derivedSha256'),(ROOT/'scripts/exterior_ground_extension.py','groundGeneratorSha256'),(ROOT/'scripts/exterior_vegetation.py','vegetationGeneratorSha256'),(SOURCE/'vegetation-sources.json','vegetationSourceSha256')]:assert digest(path)==landscape[key]
+landscape_check=json.loads((DATA/'uta-south-landscape-validation.json').read_text())
+assert landscape_check['status'].startswith('PASS:') and landscape_check['manifestSha256']==digest(DATA/'manifest.json')
+assert landscape_check['validatorSha256']==digest(ROOT/'scripts/validate-uta-landscape.py')
+assert set(landscape_check['tileSha256'])==set(landscape['groundTiles']+landscape['treeTiles'])
+for name,value in landscape_check['tileSha256'].items():assert digest(DATA/name)==value
+
 reactor_east=json.loads((DATA/'manifest.json').read_text())['architecture']['reactorEast']
 for path,key in [(SOURCE/reactor_east['sourceFile'],'sourceSha256'),(ROOT/reactor_east['generatorFile'],'generatorSha256'),(SOURCE/reactor_east['referenceFile'],'referenceSha256'),(DATA/reactor_east['derivedFile'],'derivedSha256'),(DATA/reactor_east['meshFile'],'meshSha256'),(DATA/reactor_east['roofFile'],'roofSha256')]:assert digest(path)==reactor_east[key]
 reactor_east_check=json.loads((DATA/'reactor-east-validation.json').read_text())
@@ -860,6 +868,9 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/reactor-approach-ground-research.json',(SOURCE/'photos/reactor-approach-ground-research.json').read_bytes())
   write(target,'src/minecampus-exterior/reactor-east-exterior-research.json',(SOURCE/'photos/reactor-east-exterior-research.json').read_bytes())
   for name in ['reactor-east-surfaces.json','reactor-east-validation.json']:
+   write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
+  write(target,'src/minecampus-exterior/uta-south-landscape.json',(SOURCE/'uta-south-landscape.json').read_bytes())
+  for name in ['uta-south-landscape-surfaces.json','uta-south-landscape-validation.json']:
    write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/reactor-site.json',(SOURCE/'reactor-site.json').read_bytes())
   for name in ['reactor-site-surfaces.json','reactor-site-validation.json']:

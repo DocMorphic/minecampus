@@ -565,7 +565,7 @@ test('fine reconstructed solids preserve terrain and nearby structures without f
 });
 
 
-for(const architecture of ['reactorSite','reactorEast'])test(architecture+' retirement is bounded by height and remains active with water disabled',async t=>{
+for(const architecture of ['reactorSite','reactorEast','utaLandscape'])test(architecture+' retirement is bounded by height and remains active with water disabled',async t=>{
  const rings=[{ring:[[30,30],[40,30],[40,40],[30,40]],holes:[]}];
  const bytes=tile([[32,8,32],[34,8,32],[32,10,34],[32,3,32],[34,3,32],[32,4,34]]);
  const extra={architecture:{[architecture]:{sourceRetirement:[{rings,y0:7,y1:12}]}}};

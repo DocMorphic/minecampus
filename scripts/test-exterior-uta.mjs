@@ -4,12 +4,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
-const [serviceRoot,dataRoot='dist-minecraft/exterior']=process.argv.slice(2);
-if(!serviceRoot)throw Error('Usage: test-exterior-uta.mjs <service-root> [exterior-data]');
+const [serviceRoot,dataRoot='dist-minecraft/exterior',inspectionPath]=process.argv.slice(2);
+if(!serviceRoot)throw Error('Usage: test-exterior-uta.mjs <service-root> [exterior-data] [inspection-plan]');
 const moduleAt=n=>import(pathToFileURL(path.resolve(serviceRoot,'src',n)).href);
 const {Frame}=await moduleAt('geo.mjs'),{voxelizeArea}=await moduleAt('voxel.mjs'),{attachSurveySurface}=await moduleAt('minecampus-survey.mjs'),{woodProfileBounds}=await moduleAt('wood-shapes.mjs'),{preservesPhotoSource}=await moduleAt('photo-facades.mjs');
 const read=p=>JSON.parse(fs.readFileSync(p));
-const m=read(path.join(dataRoot,'manifest.json')),plan=read(new URL('../minecraft/exterior/checks/uta-exterior.json',import.meta.url));
+const m=read(path.join(dataRoot,'manifest.json')),plan=read(inspectionPath??new URL('../minecraft/exterior/checks/uta-exterior.json',import.meta.url));
 const facade=read(path.join(dataRoot,'photo-facades.json')).plans.find(p=>p.id==='DEBY_LOD2_5323191');
 plan.surfaceControls=[...facade.walls.map((w,i)=>({label:'UTA wall '+i,position:[0,1,2].map(k=>w.vertices.reduce((s,p)=>s+p[k],0)/w.vertices.length),kind:'wall'})),...facade.roofTriangles.map((tri,i)=>({label:'UTA roof '+i,position:[0,1,2].map(k=>tri.reduce((s,p)=>s+p[k],0)/3),kind:'roof'}))];
 const controls=plan.gravityProbes,results=[];
@@ -46,7 +46,7 @@ for(const shift of [0,2]){
  }
  for(const p of controls){
   const [x,,z]=p.target,expected=p.supportHeight+shift;
-  if((m.architecture.utaSite?.groundTiles??[]).some(name=>m.tiles.find(t=>t.file===name)?.runtimeId===p.tile)){
+  if([...(m.architecture.utaSite?.groundTiles??[]),...(m.architecture.utaLandscape?.groundTiles??[])].some(name=>m.tiles.find(t=>t.file===name)?.runtimeId===p.tile)){
    for(let bx=Math.floor(x-.3);bx<=Math.floor(x+.3);bx++)for(let bz=Math.floor(z-.3);bz<=Math.floor(z+.3);bz++)
     assert.notEqual(intersect.code(bx+.5,expected,bz+.5),255,`${p.label}: player footprint reaches unaligned provider collision at ${bx},${bz}`);
   }

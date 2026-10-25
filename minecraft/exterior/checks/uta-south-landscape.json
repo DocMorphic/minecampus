@@ -1,0 +1,1758 @@
+{
+  "name": "uta-landscape-candidate-91",
+  "purpose": "Replace the native90 south canopy obstruction; retain material/reflection, roof equipment and standing controls, and add two source-ground walking checks.",
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610,
+    1000010700,
+    1000010800
+  ],
+  "cameras": [
+    {
+      "label": "northwest connector",
+      "position": "300 64.0955281469612 -127 -25.016893478100023 -7.857752715026182",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "northeast exterior elevated diagnostic",
+      "position": "392 92 -121 33.17851165939275 20.50886466274307",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "south connector",
+      "position": "303 64.13787994384765 -46 -171.0273733851036 -6.648523883399627",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "east hall full envelope aerial",
+      "position": "440 100 -88 79.69515353123397 32.617725095899445",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030052
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UTA west exterior",
+      "position": "299.25 64.1 -39.25 -104.14579549410303 -8.783741890463462",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000050103,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UTA south exterior",
+      "position": "313.25 64.1 -24.25 -174.94617394993583 -7.565460929870012",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "expectedTile": 1000050103,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UTA aerial",
+      "position": "330.25 88.0 -18.25 144.96380418990717 40.41575988780757",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTriangle": [
+            [
+              319.011926651001,
+              71.6194076538086,
+              -34.02421283721924
+            ],
+            [
+              318.8061180114746,
+              71.61682891845703,
+              -36.69407081604004
+            ],
+            [
+              316.33833503723145,
+              71.61602306365967,
+              -34.84555912017822
+            ]
+          ],
+          "triangleTolerance": 0.0001,
+          "expectedDistance": 27.76806,
+          "distanceTolerance": 0.001
+        },
+        {
+          "u": 0.4590797304591575,
+          "v": 0.4314445052024329,
+          "expectedTile": 1000050103,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Reactor south parking apron night reflection",
+      "position": "298 76.7 -51.2 178 45",
+      "reflections": true,
+      "worldTime": 18000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.7,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Reactor south parking apron material detail",
+      "position": "298 76.7 -51.2 178 45",
+      "reflections": true,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.7,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UTA south standing source obstruction",
+      "position": "313.25 64.125 -24.25 0 30",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000061200
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000061203
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000061200
+        }
+      ]
+    },
+    {
+      "label": "UTA south source obstruction aerial",
+      "position": "320.25 85.0 -3.25 175 55",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UTA south tree passage",
+      "position": "316.0453779869098 64.02000106746505 -23.580456126256536 0 12",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "UTA south planted-edge passage",
+      "position": "324.37885587483066 64.10583164841974 -4.278884709830081 170 5",
+      "reflections": false,
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "mlz courtyard standing",
+      "target": [
+        153.0,
+        63.89489918593911,
+        -110.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89908177890647,
+      "requireBodyClearance": true,
+      "look": [
+        -100.0,
+        -8.0
+      ],
+      "sourceRouteIndex": 53
+    },
+    {
+      "label": "north walk standing",
+      "target": [
+        176.15,
+        64.00350978356846,
+        -115.71
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.00350978356846,
+      "requireBodyClearance": true,
+      "look": [
+        -100,
+        12
+      ]
+    },
+    {
+      "label": "northwest connector",
+      "target": [
+        300,
+        63.995528146961206,
+        -127
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060016,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.995528146961206,
+      "requireBodyClearance": true,
+      "look": [
+        -25.016893478100023,
+        -7.857752715026182
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "north entrance wing",
+      "target": [
+        348,
+        63.786881936432195,
+        -132
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060017,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.786881936432195,
+      "requireBodyClearance": true,
+      "look": [
+        -12.094757077012101,
+        -9.877700903619909
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "south tower approach",
+      "target": [
+        356,
+        63.84211349487305,
+        -42
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061022,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.84211349487305,
+      "requireBodyClearance": true,
+      "look": [
+        176.18592516570965,
+        -52.28156901422033
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "south connector",
+      "target": [
+        303,
+        64.03787994384766,
+        -46
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061020,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.03787994384766,
+      "requireBodyClearance": true,
+      "look": [
+        -171.0273733851036,
+        -6.648523883399627
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "concrete west arc",
+      "target": [
+        267,
+        64.00117695124457,
+        -73
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.00117695124457,
+      "requireBodyClearance": true,
+      "look": [
+        -155.55604521958347,
+        -27.458152099886952
+      ],
+      "reactorExterior": true
+    },
+    {
+      "label": "east hall northwest corridor",
+      "target": [
+        384,
+        64.07557231088317,
+        -118
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060212,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.07557231088317,
+      "requireBodyClearance": true,
+      "look": [
+        -45.0,
+        -35.948713853176294
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "east hall southwest corridor",
+      "target": [
+        379,
+        63.954792558466174,
+        -60
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060203,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.954792558466174,
+      "requireBodyClearance": true,
+      "look": [
+        -129.8055710922652,
+        -43.16448456968555
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "east hall north approach",
+      "target": [
+        401,
+        63.86891512333618,
+        -136
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060018,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.86891512333618,
+      "requireBodyClearance": true,
+      "look": [
+        -12.528807709151511,
+        -34.81397080685201
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "east hall east approach",
+      "target": [
+        414,
+        63.8496980649334,
+        -85
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060208,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.8496980649334,
+      "requireBodyClearance": true,
+      "look": [
+        75.96375653207353,
+        -33.36573662165402
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "east hall south approach",
+      "target": [
+        389,
+        63.84360075918638,
+        -27
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000060203,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.84360075918638,
+      "requireBodyClearance": true,
+      "look": [
+        174.28940686250036,
+        -32.63735413831023
+      ],
+      "reactorEast": true
+    },
+    {
+      "label": "UTA surveyed roof standing",
+      "target": [
+        315.0,
+        69.62290400570674,
+        -40.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000050103,
+      "part": 5,
+      "dropHeight": 2,
+      "supportHeight": 69.62290400570674,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        30
+      ]
+    },
+    {
+      "label": "UTA west approach ground",
+      "target": [
+        299.25,
+        64.08798789978027,
+        -39.25
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061102,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.08798789978027,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        30
+      ]
+    },
+    {
+      "label": "UTA south approach ground",
+      "target": [
+        313.25,
+        64.09127044677734,
+        -24.25
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061103,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.09127044677734,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        30
+      ]
+    },
+    {
+      "label": "UTA south tree passage",
+      "centreSurfaceHeight": 63.737977382171024,
+      "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+      "target": [
+        316.0453779869098,
+        63.737977382171024,
+        -23.580456126256536
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061103,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 63.92000106746505,
+      "requireBodyClearance": true,
+      "look": [
+        0,
+        12
+      ],
+      "sourceUTM": [
+        698529,
+        5349238
+      ]
+    },
+    {
+      "label": "UTA south planted-edge passage",
+      "centreSurfaceHeight": 63.99755501855989,
+      "supportBasis": "Maximum continuous mesh height under the 0.6 m player footprint",
+      "target": [
+        324.37885587483066,
+        63.99755501855989,
+        -4.278884709830081
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000061204,
+      "part": 0,
+      "dropHeight": 2,
+      "supportHeight": 64.00583164841974,
+      "requireBodyClearance": true,
+      "look": [
+        170,
+        5
+      ],
+      "sourceUTM": [
+        698538,
+        5349219
+      ]
+    }
+  ],
+  "qualification": "All five added ground routes use pre-existing encoded terrain. End glazing assignments and opening dimensions remain estimates. All 14 earlier reactor views and seven standing controls are retained. SurfaceControls are packaged-service inputs; native views use explicit screen-ray identities.",
+  "canopyGlassEvidence": true,
+  "diagnosticBounds": [
+    [
+      266,
+      63,
+      -140
+    ],
+    [
+      420,
+      98,
+      -25
+    ]
+  ],
+  "surfaceControls": [
+    {
+      "label": "east wall 0",
+      "position": [
+        377.4926347944223,
+        71.69820510624695,
+        -42.68413389207524
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 1",
+      "position": [
+        388.7676232839474,
+        75.85243490146252,
+        -89.4801929389372
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 2",
+      "position": [
+        406.1826794873221,
+        71.40143341818992,
+        -80.1637273537655
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 3",
+      "position": [
+        382.8711728116024,
+        81.1310166854607,
+        -52.88327317910289
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 4",
+      "position": [
+        403.95667922419545,
+        79.43386307661669,
+        -116.80129686359679
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 5",
+      "position": [
+        394.0866618013722,
+        79.43511679749028,
+        -60.26450757072618
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 6",
+      "position": [
+        379.3492308394192,
+        67.1479027805857,
+        -95.88158480372232
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 7",
+      "position": [
+        391.39261703779187,
+        71.40235519562296,
+        -114.01365263299668
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 8",
+      "position": [
+        393.357784273992,
+        81.1247464391009,
+        -113.68020561902664
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 9",
+      "position": [
+        393.5829454106764,
+        71.4021842916012,
+        -126.77515302058363
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 10",
+      "position": [
+        405.9458883838107,
+        79.43373228012047,
+        -114.4446620535677
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 11",
+      "position": [
+        398.7542487141843,
+        79.43446249784643,
+        -100.81263331094031
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 12",
+      "position": [
+        404.75402428114916,
+        71.3199334346116,
+        -127.04207002879693
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 13",
+      "position": [
+        380.10422799063025,
+        71.403085391698,
+        -39.09612026032063
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 14",
+      "position": [
+        388.8190079306011,
+        79.43557145933896,
+        -44.356660246105655
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 15",
+      "position": [
+        394.9552189077059,
+        79.43502721148653,
+        -65.2377961796966
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 16",
+      "position": [
+        395.3414454738915,
+        71.40215417351739,
+        -127.56437560447932
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 17",
+      "position": [
+        390.81631605389947,
+        79.43541825527733,
+        -41.5284590704471
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 18",
+      "position": [
+        391.70955199823766,
+        71.69235296502043,
+        -125.26934237809157
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 19",
+      "position": [
+        391.65440332099536,
+        79.43534640714839,
+        -46.33070447620176
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 20",
+      "position": [
+        380.8963713443578,
+        71.4029908875732,
+        -53.22713165312082
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 21",
+      "position": [
+        385.64997487740845,
+        72.04493343461161,
+        -71.40853602243747
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 22",
+      "position": [
+        382.1804795691922,
+        81.13108066464514,
+        -46.40838600346407
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 23",
+      "position": [
+        403.23296309014285,
+        79.43397257290985,
+        -112.65446902140101
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 24",
+      "position": [
+        390.6167127921886,
+        71.69247493497694,
+        -118.88351046323504
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 25",
+      "position": [
+        380.85780130932693,
+        67.1479027805857,
+        -92.22189694146053
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 26",
+      "position": [
+        396.93727666348855,
+        79.43488233695669,
+        -62.46015601872482
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 27",
+      "position": [
+        401.560264326294,
+        79.43421583909694,
+        -102.99182294926108
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 28",
+      "position": [
+        392.10460404539333,
+        79.43526167225139,
+        -63.04214773200393
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 29",
+      "position": [
+        400.6614200514248,
+        79.43433910873453,
+        -97.9249494287236
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 30",
+      "position": [
+        381.6069561224677,
+        67.1478284934418,
+        -72.20876083240546
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 31",
+      "position": [
+        377.69428550326995,
+        67.14812059419306,
+        -73.78084483777701
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 32",
+      "position": [
+        401.2437539304106,
+        79.43410336913269,
+        -115.01110383149495
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 33",
+      "position": [
+        384.57515168985265,
+        67.14743490943812,
+        -101.85336960984738
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 34",
+      "position": [
+        389.1579472306583,
+        71.3199334346116,
+        -36.45944199476717
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 35",
+      "position": [
+        403.4674504263327,
+        79.43409244958306,
+        -100.10422094398993
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 36",
+      "position": [
+        393.65171144412375,
+        79.43519320352982,
+        -43.502503300674356
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 37",
+      "position": [
+        378.7141281139081,
+        71.403085391698,
+        -40.41031553792541
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 38",
+      "position": [
+        395.5634534312184,
+        81.12440350668103,
+        -126.45119189987149
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 39",
+      "position": [
+        392.94438563317806,
+        72.04493343461161,
+        -113.66027706344501
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 40",
+      "position": [
+        380.6792813305735,
+        81.13120681928015,
+        -40.07678477927485
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 41",
+      "position": [
+        378.5863415081728,
+        71.69817660755086,
+        -49.094951351787046
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 42",
+      "position": [
+        394.863807726555,
+        81.12454389865385,
+        -120.00663504959446
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east wall 43",
+      "position": [
+        379.06852316659297,
+        67.14797499263548,
+        -81.78285640429961
+      ],
+      "kind": "wall"
+    },
+    {
+      "label": "east roof 0",
+      "position": [
+        395.1806854302727,
+        80.335023773172,
+        -61.82539861976428
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 1",
+      "position": [
+        393.85931340703854,
+        80.33512035634607,
+        -63.67715898869701
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 2",
+      "position": [
+        391.3982518868294,
+        83.7148552925351,
+        -117.17221539896791
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 3",
+      "position": [
+        392.12681263093594,
+        83.7147415049317,
+        -121.42944457941555
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 4",
+      "position": [
+        393.37582728281717,
+        83.7146290523196,
+        -122.43326259927834
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 5",
+      "position": [
+        394.69577568167887,
+        83.71452798306599,
+        -122.21720737870533
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 6",
+      "position": [
+        394.22934502203606,
+        83.71462157772417,
+        -117.92083439903418
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 7",
+      "position": [
+        391.9007027482923,
+        80.3353312969452,
+        -42.98978930539415
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 8",
+      "position": [
+        390.56916381207867,
+        80.33543343298628,
+        -44.875257022269345
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 9",
+      "position": [
+        378.4226810224218,
+        83.72637796599315,
+        -41.83805159153854
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 10",
+      "position": [
+        379.1518201390749,
+        83.72631468790658,
+        -46.111937828976785
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 11",
+      "position": [
+        380.6919294293354,
+        83.72619087145915,
+        -48.8666887426665
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 12",
+      "position": [
+        382.00808276269663,
+        83.72609023371382,
+        -48.63742470050323
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 13",
+      "position": [
+        381.5476204132954,
+        83.72613288658984,
+        -44.32083149209279
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 14",
+      "position": [
+        383.52290113617784,
+        70.02566360427981,
+        -99.74208837273123
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 15",
+      "position": [
+        386.31758816527577,
+        70.02551068769881,
+        -91.49321064200637
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 16",
+      "position": [
+        380.35124929801515,
+        70.02612381768738,
+        -73.01964806240674
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 17",
+      "position": [
+        381.2674081420248,
+        70.0260159522353,
+        -78.3543248295498
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 18",
+      "position": [
+        382.46026078163624,
+        70.02587074316371,
+        -85.3136883423231
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 19",
+      "position": [
+        399.4454109907033,
+        78.53429383943536,
+        -110.92401669224324
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 20",
+      "position": [
+        398.119271737774,
+        78.53438103709952,
+        -112.49510634379584
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 21",
+      "position": [
+        392.86189002457945,
+        78.53480975249472,
+        -111.60782089217712
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 22",
+      "position": [
+        395.55187327579915,
+        78.53439397863849,
+        -127.17697669894558
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 23",
+      "position": [
+        398.3101320131384,
+        78.53417038894618,
+        -127.43349811775147
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 24",
+      "position": [
+        404.46037320041177,
+        78.53368988539454,
+        -126.37554219622245
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 25",
+      "position": [
+        407.4055744429033,
+        78.53350376976768,
+        -122.4500310645991
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 26",
+      "position": [
+        408.53066286659345,
+        78.53370647375958,
+        -93.79656270331515
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 27",
+      "position": [
+        395.343857669538,
+        78.53505977732175,
+        -38.932858796621495
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 28",
+      "position": [
+        382.56325035582313,
+        78.53606159982189,
+        -38.31348281751094
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 29",
+      "position": [
+        382.94622677998706,
+        78.53603185787989,
+        -38.967220210112444
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 30",
+      "position": [
+        385.6519541788025,
+        78.53582190532576,
+        -39.573448611931916
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 31",
+      "position": [
+        389.70431628967134,
+        78.53550614671117,
+        -39.935010042010425
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 32",
+      "position": [
+        386.23829231996586,
+        78.53577307344091,
+        -42.90706430309177
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 33",
+      "position": [
+        384.53336333966496,
+        78.53589892263419,
+        -46.521901665114115
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 34",
+      "position": [
+        385.8031051747892,
+        78.53578001021208,
+        -55.44078411730509
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 35",
+      "position": [
+        390.48563024775814,
+        78.53540621240536,
+        -57.779282457865634
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 36",
+      "position": [
+        388.889151396887,
+        78.53552389603625,
+        -59.680643893324145
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 37",
+      "position": [
+        386.88850144406814,
+        78.53566285767296,
+        -63.32778973580645
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 38",
+      "position": [
+        392.1734466932534,
+        78.5351543228905,
+        -78.45806262308652
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 39",
+      "position": [
+        396.39370797151406,
+        78.53475372109274,
+        -87.40764095693264
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 40",
+      "position": [
+        397.9591653712902,
+        78.53463130393679,
+        -87.1253374807534
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 41",
+      "position": [
+        394.3912386993825,
+        78.53488284541481,
+        -91.04084157944652
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 42",
+      "position": [
+        392.24364805920527,
+        78.53502072279015,
+        -94.07906530353034
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 43",
+      "position": [
+        398.8840253942265,
+        78.53437516886413,
+        -107.70360158925935
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 44",
+      "position": [
+        395.74464475725904,
+        78.53456692279131,
+        -112.71952800958293
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 45",
+      "position": [
+        397.11178020596134,
+        78.53437875832067,
+        -119.03244564805902
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 46",
+      "position": [
+        393.62562286237403,
+        78.53519519502274,
+        -41.00622684224383
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 47",
+      "position": [
+        395.821898936676,
+        78.53502034895882,
+        -44.060993961152654
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 48",
+      "position": [
+        394.4903603755362,
+        78.53512248470456,
+        -45.946461145324264
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 49",
+      "position": [
+        390.8951680680116,
+        78.53539836835186,
+        -48.245269206253944
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 50",
+      "position": [
+        393.317331566777,
+        78.5351955406244,
+        -52.653328625087504
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 51",
+      "position": [
+        398.0122754411241,
+        78.53481310460285,
+        -56.699427321108224
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 52",
+      "position": [
+        397.6399636862107,
+        78.53473663717703,
+        -75.9923787294565
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 53",
+      "position": [
+        401.4344323246076,
+        78.53434087777626,
+        -88.38518631756419
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 54",
+      "position": [
+        402.90229284553106,
+        78.53407285208367,
+        -106.11817075242783
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 55",
+      "position": [
+        405.27229504970046,
+        78.53383132760229,
+        -110.53204770831572
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 56",
+      "position": [
+        401.2950237941689,
+        78.53403267757625,
+        -120.00148583517596
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 57",
+      "position": [
+        404.8473885364697,
+        78.53375186594596,
+        -119.47123605994271
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 58",
+      "position": [
+        407.3363423302537,
+        78.53374653790007,
+        -98.7421061008565
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 59",
+      "position": [
+        403.3020907776986,
+        78.53423607237454,
+        -75.30363026354769
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 60",
+      "position": [
+        400.4853724284676,
+        78.53451392822198,
+        -70.94399475508006
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 61",
+      "position": [
+        403.4642689865168,
+        78.53412724811064,
+        -88.1344117473263
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 62",
+      "position": [
+        404.2571178785629,
+        80.333874276052,
+        -113.94246636894225
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 63",
+      "position": [
+        402.930978252122,
+        80.33396147353389,
+        -115.51355646419519
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 64",
+      "position": [
+        399.8830698311242,
+        80.33439998061309,
+        -98.06537988533393
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 65",
+      "position": [
+        400.17276258155056,
+        80.33436015782627,
+        -99.70896163532217
+      ],
+      "kind": "roof"
+    },
+    {
+      "label": "east roof 66",
+      "position": [
+        402.04343991962287,
+        80.33419571841124,
+        -101.161754932971
+      ],
+      "kind": "roof"
+    }
+  ],
+  "sourceDiagnosticBounds": [
+    [
+      288,
+      60,
+      -62
+    ],
+    [
+      340,
+      80,
+      12
+    ]
+  ],
+  "requireGroundMaterialReflection": true,
+  "walkingReflections": true
+}

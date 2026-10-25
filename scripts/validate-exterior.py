@@ -50,6 +50,7 @@ supplemental_ground+=manifest.get('architecture',{}).get('physicsLMUCourtyard',{
 supplemental_ground+=manifest.get('architecture',{}).get('physicsLMUEast',{}).get('groundTiles',[])
 supplemental_ground+=manifest.get('architecture',{}).get('reactorSite',{}).get('groundTiles',[])
 supplemental_ground+=manifest.get('architecture',{}).get('utaSite',{}).get('groundTiles',[])
+supplemental_ground+=manifest.get('architecture',{}).get('utaLandscape',{}).get('groundTiles',[])
 assert len(original_ground)==36
 assert {t['file'] for t in manifest['tiles'] if t['kind']=='ground'}=={t['file'] for t in original_ground}|set(supplemental_ground)
 assert sum(t['kind']=='reconstruction' for t in manifest['tiles'])>=5
