@@ -2,6 +2,7 @@
   "building": "DEBY_LOD2_5284422",
   "surfaceId": "DEBY_LOD2_5284422_74fb75f5-9fbd-4751-ac8c-981a0566777a",
   "roofFile": "DEBY_LOD2_5284422-photo-roof.ect",
+  "collisionFile": "DEBY_LOD2_5284422-photo-collision.ect",
   "runtimeId": 1000050038,
   "expectedAreaSquareMetres": 834.6829596660214,
   "reference": {

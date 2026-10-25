@@ -319,7 +319,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
         positions.set(frame.mcToEcef(x,y,z),i*3);uvs.set([bytes.readFloatLE(at+12),bytes.readFloatLE(at+16)],i*2);indices[i]=i;
       }
       offset+=n*20;const texture={width:w,height:h,data:bytes.subarray(offset,offset+w*h*4)};offset+=w*h*4;
-      primitives.push({positions,uvs,indices,texture,color:[180,180,180],campusHeightfield:spec.kind==='ground'&&columnGround.has(spec.file)});
+      primitives.push({positions,uvs,indices,texture,color:[180,180,180],campusHeightfield:(spec.kind==='ground'&&columnGround.has(spec.file))||(spec.kind==='reconstruction'&&(spec.collisionHeightfieldParts??[]).includes(part))});
     }
     const mesh={primitives,copyright:manifest.attribution};decodedAssets.set(cacheKey,mesh);return mesh;
   }

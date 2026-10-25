@@ -312,6 +312,8 @@ assert terrace['sourceSha256']==terrace_check['sourceSha256']==digest(SOURCE/ter
 assert terrace['generatorSha256']==terrace_check['generatorSha256']==digest(ROOT/terrace['generatorFile'])
 assert terrace['roofSha256']==terrace_check['roofSha256']==digest(DATA/terrace['roofFile'])
 assert terrace['atlasSha256']==terrace_check['atlasSha256']==digest(DATA/terrace['atlasFile'])
+assert terrace['collisionSha256']==terrace_check['collisionSha256']==digest(DATA/terrace['collisionFile'])
+assert terrace['collisionHeightfieldParts']==terrace_check['collisionHeightfieldParts']==[2]
 for name,value in terrace_check['rawInputs'].items():assert digest(ROOT/'.cache'/name)==value
 subprocess.run(['python3',str(ROOT/'scripts/validate-foliage-rendering.py'),'--directory',str(DATA)],env={**os.environ,'JAVA_HOME':args.java_home},check=True)
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)

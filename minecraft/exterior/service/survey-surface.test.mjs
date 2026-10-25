@@ -21,6 +21,16 @@ function tile(positions){
  const b=Buffer.alloc(32+16+positions.length*20+4);b.write('ECT1');b.writeInt32LE(1,4);b.writeInt32LE(positions.length,32);b.writeInt32LE(1,36);b.writeInt32LE(1,40);b.fill(255,44,48);
  positions.forEach((p,i)=>[...p,.25,.75].forEach((n,j)=>b.writeFloatLE(n,48+i*20+j*4)));b.set([12,34,56,255],b.length-4);return b;
 }
+test('fractional terrace support opts in one roof part without changing the walls or other roof',t=>{
+ let meshes;
+ const spec={file:'terrace.ect',kind:'reconstruction',bounds:[[0,0,0],[16,4,16]],collisionHeightfieldParts:[2]};
+ const {service,dir}=fixture(t,null,{photoFacades:{collisionTiles:[spec]}},
+  {voxelizeArea:(_frame,assets)=>{meshes=assets;return {vox:new Uint8Array(16*16*8)};}});
+ const encoded=tile([[0,1,0],[16,1,0],[0,1,16]]),header=Buffer.from(encoded.subarray(0,32));header.writeInt32LE(3,4);
+ fs.writeFileSync(path.join(dir,spec.file),Buffer.concat([header,...Array(3).fill(encoded.subarray(32))]));
+ service.campusCollision({...origin,mcToEcef:(x,y,z)=>[x,y,z]},0,0,0,8);
+ assert.deepEqual(meshes[0].primitives.map(p=>p.campusHeightfield),[false,false,true]);
+});
 function fixture(t,bytes,extra={},deps,sourceTiles=[],loader){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'campus-survey-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
  const points=[];for(let z=0;z<=20;z+=10)for(let x=0;x<=20;x+=10)points.push([x,0,z]);

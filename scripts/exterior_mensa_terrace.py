@@ -67,5 +67,26 @@ def build(ctx):
     roof.write_bytes(encode([(rest,pixels),(terrace,atlas)]))
     assert np.array_equal(tri[pick,:,:3].reshape(-1,3),terrace[:,:3])
     atlas.save(out/'mensa-terrace-paving.png')
+    # Split the same surveyed surface in the collision asset so only this
+    # outdoor terrace receives fractional supports. Other roofs and walls
+    # retain their existing voxelization and original material pixels.
+    collision=out/spec['collisionFile'];data=collision.read_bytes()
+    assert data[:4]==b'ECT1' and struct.unpack_from('<i3d',data,4)==(2,0,0,0)
+    parts=[];offset=32
+    for _ in range(2):
+        count,width,height=struct.unpack_from('<3i',data,offset);offset+=16
+        vertices=np.frombuffer(data,dtype='<f4',count=count*5,offset=offset).reshape(-1,5).copy();offset+=count*20
+        texture=Image.frombytes('RGBA',(width,height),data[offset:offset+width*height*4]);offset+=width*height*4
+        parts.append((vertices,texture))
+    assert offset==len(data)
+    collision_roofs=parts[1][0].reshape(-1,3,5)
+    keys={t[:,:3].tobytes()for t in tri[pick]}
+    collision_pick=np.array([t[:,:3].tobytes()in keys for t in collision_roofs])
+    assert collision_pick.sum()==pick.sum() and len(collision_roofs)==len(tri)
+    collision.write_bytes(encode([parts[0],(collision_roofs[~collision_pick].reshape(-1,5),parts[1][1]),(collision_roofs[collision_pick].reshape(-1,5),parts[1][1])]))
+    collision_record=next(t for t in meta['photoFacades']['collisionTiles']if t['file']==spec['collisionFile'])
+    assert collision_record['kind']=='reconstruction'
+    collision_record['collisionHeightfieldParts']=[2]
     meta['architecture']['mensaTerrace']={'sourceFile':'mensa-terrace.json','sourceSha256':sha(source),'generatorFile':'scripts/exterior_mensa_terrace.py','generatorSha256':sha(Path(__file__)),'rawInputs':inputs,'roofFile':spec['roofFile'],'roofSha256':sha(roof),'atlasFile':'mensa-terrace-paving.png','atlasSha256':sha(out/'mensa-terrace-paving.png'),'materialSha256':sha(material),'runtimeId':spec['runtimeId'],'materialPart':'last','areaSquareMetres':shape.area,'triangles':int(pick.sum()),'uvMetres':span.tolist(),'textureSize':size.tolist(),'qualification':spec['qualification']}
+    meta['architecture']['mensaTerrace'].update(collisionFile=spec['collisionFile'],collisionSha256=sha(collision),collisionHeightfieldParts=[2])
     print('Former Mensa terrace:',round(shape.area,2),'m²;',pick.sum(),'unchanged survey triangles;',list(size),'paving atlas',flush=True)

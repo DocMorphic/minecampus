@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Check the terrace material split against raw BVV roof polygons and DOP pixels."""
 from pathlib import Path
+from collections import Counter
 import argparse,hashlib,json,struct,xml.etree.ElementTree as ET
 import numpy as np
 import rasterio
@@ -51,6 +52,12 @@ def decode(p):
     assert offset==len(data);return parts
 
 parts=decode(out/rec['roofFile']);assert len(parts)==2
+collision=decode(out/rec['collisionFile']);assert len(collision)==3
+assert rec['collisionFile']==spec['collisionFile'] and rec['collisionSha256']==sha(out/rec['collisionFile'])
+collision_record=next(t for t in m['photoFacades']['collisionTiles']if t['file']==rec['collisionFile'])
+assert collision_record['kind']=='reconstruction' and collision_record['collisionHeightfieldParts']==rec['collisionHeightfieldParts']==[2]
+for rendered,solid in zip(parts,collision[1:]):
+    assert Counter(t[:,:3].tobytes()for t in rendered[0].reshape(-1,3,5))==Counter(t[:,:3].tobytes()for t in solid[0].reshape(-1,3,5)), 'Collision and rendered roof triangles must agree exactly'
 raw=np.concatenate([ring for rings in roof_surfaces for ring in rings]);points=world(raw);tree=cKDTree(points)
 for vertices,pixels in parts:
     residual,nearest=tree.query(vertices[:,:3]);assert residual.max()<.0001
@@ -73,4 +80,5 @@ assert np.array_equal(parts[0][1][:,:,:3],image)
 _,nearest=tree.query(parts[0][0][:,:3]);expected_uv=(raw_uv[nearest]-lo)/(hi-lo);assert np.max(abs(parts[0][0][:,3:]-expected_uv))<1e-6
 atlas=np.asarray(Image.open(out/rec['atlasFile']).convert('RGBA'));assert np.array_equal(parts[1][1],atlas) and np.all(atlas[:,:,3]==255)
 report={'status':'PASS: named raw survey surface, all roof positions/coverage, retained DOP pixels and UVs, paving atlas integrity','manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'generatorSha256':rec['generatorSha256'],'validatorSha256':sha(Path(__file__)),'rawInputs':inputs,'roofSha256':sha(out/rec['roofFile']),'atlasSha256':sha(out/rec['atlasFile']),'areaSquareMetres':expected.area,'pavingTriangles':len(parts[1][0])//3,'remainingRoofTriangles':len(parts[0][0])//3,'visualAcceptance':False}
+report.update(collisionSha256=rec['collisionSha256'],collisionHeightfieldParts=[2],collisionRoofGeometryMatches=True)
 (out/'mensa-terrace-validation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

@@ -221,6 +221,8 @@ public final class CampusSiteInspection {
         // Centre render probing, landing tolerance and lateral checks remain.
         final double supportExpected=control.has("supportHeight")?control.get("supportHeight").getAsDouble():expected;
         if(!Double.isFinite(supportExpected)||supportExpected<expected-.0001||supportExpected>expected+.3)throw new IllegalArgumentException("Invalid footprint support height");
+        final double supportTolerance=control.has("maxSupportError")?control.get("maxSupportError").getAsDouble():.51;
+        if(!Double.isFinite(supportTolerance)||supportTolerance<=0||supportTolerance>.51)throw new IllegalArgumentException("Support tolerance may only tighten the default limit");
         final double drop=control.has("dropHeight")?control.get("dropHeight").getAsDouble():7;
         if(!Double.isFinite(drop)||drop<=0||drop>10)throw new IllegalArgumentException("Invalid gravity probe drop height");
         // Covered exterior spaces can have less than one block of headroom
@@ -263,7 +265,7 @@ public final class CampusSiteInspection {
             }
             double horizontalError=Math.hypot(player.getX()-x,player.getZ()-z);
             boolean freeBody=!control.has("requireBodyClearance")||!control.get("requireBodyClearance").getAsBoolean()||server.overworld().noCollision(player);
-            if(!player.onGround()||Math.abs(player.getY()-supportExpected)>.51||horizontalError>.1||!freeBody){
+            if(!player.onGround()||Math.abs(player.getY()-supportExpected)>supportTolerance||horizontalError>.1||!freeBody){
                 var detail=new JsonObject();detail.addProperty("probe",index);detail.add("control",control.deepCopy());
                 detail.addProperty("serverPosition",player.position().toString());
                 detail.addProperty("horizontalError",horizontalError);

@@ -1,0 +1,373 @@
+{
+  "status": "Candidate65 native complete; candidate66 packaged and native verification running",
+  "materialCandidate65": {
+    "status": "PASS: native checks; visual acceptance false",
+    "artifactSha256": "4d1dfaaf39e39b16fa6fd5c0ec01ed6b6c5667157d7f0c52d85c7ffa5ce7db97",
+    "rendererSourceFingerprint": "e4f5ce126b65f078",
+    "renderTiles": 422,
+    "cameraViews": 10,
+    "standingChecks": 7,
+    "reviewedImages": 21,
+    "imageBreakdown": {
+      "main": 10,
+      "reflection": 4,
+      "walking": 7
+    },
+    "nativeExitCode": 0,
+    "observations": [
+      "The former Mensa terrace now has legible rectangular paving instead of the blurred aerial object/shadow patch, in matching frontal, end-to-end and aerial views.",
+      "The sampled standing height remains too low on the terrace: middle and west are approximately0.411m below the visible surface, despite satisfying the older broad native tolerance.",
+      "The terrace glazing remains dark and generic; its reconstruction is not currently included in the planar-reflection selection.",
+      "Original roof equipment and surrounding scan geometry remain coarse. The reference sculpture and edge detail are not reconstructed.",
+      "Retained central paths are unchanged; the MLZ court still has conspicuous aerial object/shadow smears."
+    ],
+    "preservation": {
+      "sourceCentral64Unchanged": 65,
+      "activeV73JournalAddedChunks": 18,
+      "priorAlignmentJournalsUnchanged": true,
+      "inventoryAndExperienceUnchanged": true,
+      "originalSavesUnchanged": 121,
+      "previewSavesUnchanged": 121,
+      "previewSettingsUnchanged": 4
+    },
+    "visualAcceptance": false,
+    "nativeStanding": [
+      {
+        "label": "terrace middle standing",
+        "standingY": 67.0,
+        "supportExpectedY": 67.41077040156559,
+        "bodyClear": true
+      },
+      {
+        "label": "terrace west standing",
+        "standingY": 67.0,
+        "supportExpectedY": 67.41098913376224,
+        "bodyClear": true
+      },
+      {
+        "label": "terrace east standing",
+        "standingY": 67.25,
+        "supportExpectedY": 67.41040097443347,
+        "bodyClear": true
+      },
+      {
+        "label": "final ground standing",
+        "standingY": 64.8125,
+        "supportExpectedY": 64.78427547040971,
+        "bodyClear": true
+      },
+      {
+        "label": "cos forecourt standing",
+        "standingY": 63.8125,
+        "supportExpectedY": 63.79127051074315,
+        "bodyClear": true
+      },
+      {
+        "label": "promenade lawn path standing",
+        "standingY": 65.375,
+        "supportExpectedY": 65.27548960545175,
+        "bodyClear": true
+      },
+      {
+        "label": "mlz courtyard standing",
+        "standingY": 63.875,
+        "supportExpectedY": 63.89908177890647,
+        "bodyClear": true
+      }
+    ]
+  },
+  "collisionCandidate66": {
+    "alignmentVersion": 74,
+    "sourceValidation": {
+      "status": "PASS: named raw survey surface, all roof positions/coverage, retained DOP pixels and UVs, paving atlas integrity",
+      "manifestSha256": "18bf03963fd48e4f729a94132382424af52385f48d91a37ba6519acad91dceb7",
+      "sourceSha256": "49457b9ad19f2726d41422f9bc27efb96c3fc2e6584e0e896434b6fd72d19ce6",
+      "generatorSha256": "c585dfbe955e4406180659a83cb77024eb645939870ef0d00443861c5b83c5b1",
+      "validatorSha256": "1de65092884ee96ea7767664b982a98394a39d238c60422f5f2bea5e42cf9a6b",
+      "rawInputs": {
+        "campus-east.gml": "a0b6db38424bec366b494ed539191941f48173bad8c7be546d070ca57cb6a3e2",
+        "campus-west.gml": "958be6835080f8d6455f6d3f295df0dc9a50421559c0058cc4d6e3b2c6690f18",
+        "de_bkg_gcg2016.tif": "598f18324dea7f8e72421d18add7ac6228259adf91eeb335cc9c27d98484f7ac",
+        "campus-dop-west.tif": "035b3ada6b919fb6eaa48318e011f837d593188b4d42c882f9ea20b409a3c3cc",
+        "campus-dop-east.tif": "8a78e3fc301332e607e514b8bca545d64e3b1a956ecf02a723301b0982ab0dae"
+      },
+      "roofSha256": "17790a63647d5fad434a794a4d332afa5b4d5ab2369460924476556676ad7b30",
+      "atlasSha256": "6a3fbbd35d58e2b8999a298f7fee392ff363e3ffe0dae8969f59511621f35eb1",
+      "areaSquareMetres": 834.6829596660226,
+      "pavingTriangles": 17,
+      "remainingRoofTriangles": 115,
+      "visualAcceptance": false,
+      "collisionSha256": "7dc353dc81d3027daace10ded3443114dcbda3f6c13f31bc6052b50bc18cbd31",
+      "collisionHeightfieldParts": [
+        2
+      ],
+      "collisionRoofGeometryMatches": true
+    },
+    "serviceUnitTests": 65,
+    "standingControls": {
+      "status": "PASS: three surveyed terrace standing controls at both save datums",
+      "qualification": "Actual packaged voxelization; native migration, body clearance and visual review are separate checks.",
+      "results": [
+        {
+          "label": "terrace middle standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41077040156559,
+          "residual": 0.02672959843441447
+        },
+        {
+          "label": "terrace west standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41098913376224,
+          "residual": 0.026510866237757114
+        },
+        {
+          "label": "terrace east standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41040097443347,
+          "residual": 0.027099025566528212
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41077040156559,
+          "residual": 0.02672959843441447
+        },
+        {
+          "label": "terrace west standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41098913376224,
+          "residual": 0.026510866237757114
+        },
+        {
+          "label": "terrace east standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41040097443347,
+          "residual": 0.027099025566528212
+        }
+      ]
+    },
+    "scopeChecks": {
+      "status": "PASS: collision changes limited to terrace, with material-only differences in intersecting boundary cells",
+      "results": [
+        {
+          "shift": 0,
+          "chunks": 20,
+          "changedCells": 1496,
+          "changesOnlyInTerraceSupportLayers": true,
+          "sample": [
+            {
+              "x": -27,
+              "y": 66,
+              "z": -258,
+              "before": 6,
+              "after": 4
+            },
+            {
+              "x": -25,
+              "y": 66,
+              "z": -258,
+              "before": 4,
+              "after": 0
+            },
+            {
+              "x": -24,
+              "y": 66,
+              "z": -258,
+              "before": 4,
+              "after": 0
+            },
+            {
+              "x": -23,
+              "y": 66,
+              "z": -258,
+              "before": 6,
+              "after": 0
+            },
+            {
+              "x": -22,
+              "y": 66,
+              "z": -258,
+              "before": 6,
+              "after": 0
+            },
+            {
+              "x": -27,
+              "y": 66,
+              "z": -257,
+              "before": 6,
+              "after": 4
+            },
+            {
+              "x": -26,
+              "y": 66,
+              "z": -257,
+              "before": 4,
+              "after": 0
+            },
+            {
+              "x": -25,
+              "y": 66,
+              "z": -257,
+              "before": 4,
+              "after": 0
+            }
+          ],
+          "changesOnlyInTerraceIntersectingCells": true
+        },
+        {
+          "shift": 2,
+          "chunks": 20,
+          "changedCells": 1496,
+          "changesOnlyInTerraceSupportLayers": true,
+          "sample": [
+            {
+              "x": -27,
+              "y": 68,
+              "z": -258,
+              "before": 6,
+              "after": 4
+            },
+            {
+              "x": -25,
+              "y": 68,
+              "z": -258,
+              "before": 4,
+              "after": 0
+            },
+            {
+              "x": -24,
+              "y": 68,
+              "z": -258,
+              "before": 4,
+              "after": 0
+            },
+            {
+              "x": -23,
+              "y": 68,
+              "z": -258,
+              "before": 6,
+              "after": 0
+            },
+            {
+              "x": -22,
+              "y": 68,
+              "z": -258,
+              "before": 6,
+              "after": 0
+            },
+            {
+              "x": -27,
+              "y": 68,
+              "z": -257,
+              "before": 6,
+              "after": 4
+            },
+            {
+              "x": -26,
+              "y": 68,
+              "z": -257,
+              "before": 4,
+              "after": 0
+            },
+            {
+              "x": -25,
+              "y": 68,
+              "z": -257,
+              "before": 4,
+              "after": 0
+            }
+          ],
+          "changesOnlyInTerraceIntersectingCells": true
+        }
+      ],
+      "boundaryChecks": [
+        {
+          "shift": 0,
+          "boundaryMaterialChanges": 25,
+          "allIntersectSurveyTerrace": true,
+          "fullBlockGeometryUnchanged": true
+        },
+        {
+          "shift": 2,
+          "boundaryMaterialChanges": 25,
+          "allIntersectSurveyTerrace": true,
+          "fullBlockGeometryUnchanged": true
+        }
+      ]
+    },
+    "retainedCentralControls": 22,
+    "packageStatus": "PASS: twenty source validators, generic mesh checks, native compilation and exact embedded-artifact checks",
+    "nativeStatus": "RUNNING: ten cameras and seven standing checks in a68-file copy of completed65",
+    "geometryPreservation": {
+      "status": "PASS: frozen65 render tiles, roof files and facade plan retained; only terrace collision partition changes",
+      "unchangedRenderInputs": 522,
+      "unchangedCollisionWallTriangles": 152,
+      "unchangedCollisionRoofTriangles": 132,
+      "otherCollisionFilesUnchanged": true
+    },
+    "nativeTerraceToleranceMetres": 0.063,
+    "artifact": {
+      "status": "PASS: exact native solid/wood classes, material drops/tags, service modules, facade plan, manifest and all render tiles",
+      "artifactSha256": "2dc9d79ce4f171e03a74852106e572370f6cf4eff2293a0a2accf6de72770676",
+      "rendererSourceFingerprint": "591a039dada55c04",
+      "renderTiles": 422
+    },
+    "packagedStandingControls": {
+      "status": "PASS: three surveyed terrace standing controls at both save datums",
+      "qualification": "Actual packaged voxelization; native migration, body clearance and visual review are separate checks.",
+      "results": [
+        {
+          "label": "terrace middle standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41077040156559,
+          "residual": 0.02672959843441447
+        },
+        {
+          "label": "terrace west standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41098913376224,
+          "residual": 0.026510866237757114
+        },
+        {
+          "label": "terrace east standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41040097443347,
+          "residual": 0.027099025566528212
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41077040156559,
+          "residual": 0.02672959843441447
+        },
+        {
+          "label": "terrace west standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41098913376224,
+          "residual": 0.026510866237757114
+        },
+        {
+          "label": "terrace east standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41040097443347,
+          "residual": 0.027099025566528212
+        }
+      ]
+    },
+    "packagedCentralControls": 22
+  },
+  "installedPreview": "dev22 unchanged",
+  "visualAcceptance": false
+}

@@ -1,0 +1,525 @@
+{
+  "name": "mensa-terrace",
+  "purpose": "Matched former Mensa terrace material inspection on unchanged surveyed roof geometry, walking checks on the terrace and retained central terrain controls.",
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610
+  ],
+  "cameras": [
+    {
+      "label": "matched terrace south",
+      "position": "0 68 -238 180 0",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "terrace west toward east",
+      "position": "-22 68 -246 -80 8",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "terrace east toward west",
+      "position": "25 68 -239 100 8",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "terrace paving close",
+      "position": "0 68 -241 180 48",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "terrace south edge",
+      "position": "10 68 -238 0 18",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "terrace overview",
+      "position": "0 95 -213 180 48",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "final ground",
+      "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+      "sourceRouteIndex": 0,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "cos forecourt",
+      "position": "162 64 -270 -171 14",
+      "sourceRouteIndex": 18,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "promenade lawn path",
+      "position": "60 66 -100 180 10",
+      "sourceRouteIndex": 35,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "mlz courtyard",
+      "position": "153 65 -110 -100 -8",
+      "sourceRouteIndex": 53,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "terrace middle standing",
+      "target": [
+        0,
+        67.41075533207204,
+        -241
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000050038,
+      "dropHeight": 3,
+      "supportHeight": 67.41077040156559,
+      "requireBodyClearance": true,
+      "look": [
+        180,
+        10
+      ],
+      "part": 27,
+      "maxSupportError": 0.063
+    },
+    {
+      "label": "terrace west standing",
+      "target": [
+        -22,
+        67.4109740642687,
+        -246
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000050038,
+      "dropHeight": 3,
+      "supportHeight": 67.41098913376224,
+      "requireBodyClearance": true,
+      "look": [
+        -80,
+        10
+      ],
+      "part": 27,
+      "maxSupportError": 0.063
+    },
+    {
+      "label": "terrace east standing",
+      "target": [
+        25,
+        67.41038590493991,
+        -239
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000050038,
+      "dropHeight": 3,
+      "supportHeight": 67.41040097443347,
+      "requireBodyClearance": true,
+      "look": [
+        100,
+        10
+      ],
+      "part": 27,
+      "maxSupportError": 0.063
+    },
+    {
+      "label": "final ground standing",
+      "target": [
+        39.961711,
+        64.76436506884981,
+        -62.90048
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000020,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.78427547040971,
+      "requireBodyClearance": true,
+      "look": [
+        -103.360657,
+        4.800037
+      ],
+      "sourceRouteIndex": 0
+    },
+    {
+      "label": "cos forecourt standing",
+      "target": [
+        162.0,
+        63.77841067108919,
+        -270.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000028,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.79127051074315,
+      "requireBodyClearance": true,
+      "look": [
+        -171.0,
+        14.0
+      ],
+      "sourceRouteIndex": 18
+    },
+    {
+      "label": "promenade lawn path standing",
+      "target": [
+        60.0,
+        65.14665459018774,
+        -100.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000021,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 65.27548960545175,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        10.0
+      ],
+      "sourceRouteIndex": 35
+    },
+    {
+      "label": "mlz courtyard standing",
+      "target": [
+        153.0,
+        63.89489918593911,
+        -110.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89908177890647,
+      "requireBodyClearance": true,
+      "look": [
+        -100.0,
+        -8.0
+      ],
+      "sourceRouteIndex": 53
+    }
+  ],
+  "qualification": "Terrace part27 follows the 26 accepted photographic wall parts observed in the completed64 runtime plus the retained roof part. The exact part is asserted in the new native run; a provider-dependent wall count change must be investigated rather than silently accepted."
+}
