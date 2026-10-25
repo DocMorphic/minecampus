@@ -1,0 +1,145 @@
+{
+  "status": "Unapplied material-boundary study",
+  "parkingApron": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          698532.0,
+          5349270.624174683
+        ],
+        [
+          698531.9817291661,
+          5349270.499047435
+        ],
+        [
+          698532.0,
+          5349270.496565335
+        ],
+        [
+          698532.0,
+          5349269.0
+        ],
+        [
+          698486.0,
+          5349275.0
+        ],
+        [
+          698486.8374743776,
+          5349281.699795021
+        ],
+        [
+          698532.0,
+          5349275.519382211
+        ],
+        [
+          698532.0,
+          5349270.624174683
+        ]
+      ]
+    ]
+  },
+  "areasSquareMetres": {
+    "grass": 2704.2487535091414,
+    "paving": 3259.832977378801,
+    "asphalt": 154.6312452907137
+  },
+  "qualification": "OSM lawn polygons and tagged surfaces, estimated drive widths, one parking apron interpreted from DOP20. Building footprints and lawns excluded from pavement. No source photo pixels included in this record.",
+  "pathWidths": [
+    {
+      "osmWay": 27706346,
+      "widthMetres": 1.8,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "asphalt"
+    },
+    {
+      "osmWay": 28037795,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 28037796,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 28037816,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 28039313,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 32462301,
+      "widthMetres": 1.8,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "asphalt"
+    },
+    {
+      "osmWay": 172826859,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 253518592,
+      "widthMetres": 1.8,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 253518593,
+      "widthMetres": 1.8,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 253518594,
+      "widthMetres": 1.8,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 997366922,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 1377864914,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 1377864915,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 1377864916,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    },
+    {
+      "osmWay": 1377864917,
+      "widthMetres": 5.5,
+      "widthBasis": "aerial-guided estimate, not measured curbs",
+      "material": "paving"
+    }
+  ],
+  "sourceResearch": "reactor-approach-ground-research.json",
+  "attribution": [
+    "\u00a9 OpenStreetMap contributors (ODbL-1.0): path/lawn data",
+    "\u00a9 BVV / geodaten.bayern.de (CC BY 4.0): aerial reference for estimated parking apron"
+  ]
+}

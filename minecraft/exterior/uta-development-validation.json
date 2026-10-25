@@ -1,6 +1,6 @@
 {
   "candidate": 85,
-  "status": "Packaged artifact and collision checks pass; isolated native comparison running",
+  "status": "Native comparison FAILED at the final aerial assertion; ground gaps and partial rooftop-equipment clipping require repair",
   "sourceValidation": {
     "status": "PASS: survey envelope, exact roof, terrain profiles, bounded ownership and retained inputs",
     "manifestSha256": "abec8faa31ec4b78ce6756dbe69a9ee774519fb61bdc73bbbc443af292bbdd44",
@@ -694,10 +694,93 @@
     "qualification": "Survey-plane collision is independent of provider photographic acceptance. Native migration and visual acceptance are separate."
   },
   "nativeInspection": {
-    "status": "RUNNING",
+    "status": "FAIL: inspection geometry control",
     "sourceCandidate": 84,
     "sourceWorldFiles": 132,
     "plannedViews": 25,
-    "plannedStandingChecks": 13
+    "plannedStandingChecks": 13,
+    "exitCode": 1,
+    "capturedViews": 25,
+    "completedStandingChecks": 0,
+    "reviewedCaptures": 49,
+    "mainCaptures": 25,
+    "auxiliaryReflectionCaptures": 24,
+    "resultSha256": "771190f5d46cc31f83d80b897197edf2ca7bc31a6e146080a6b3baa177361790",
+    "failure": {
+      "frame": 24,
+      "label": "UTA aerial",
+      "u": 0.5,
+      "v": 0.5,
+      "expectedTile": 1000050103,
+      "actualFirstHit": {
+        "tile": 1200025132,
+        "part": 1,
+        "distance": 27.76806,
+        "triangle": [
+          [
+            319.011926651001,
+            71.6194076538086,
+            -34.02421283721924
+          ],
+          [
+            318.8061180114746,
+            71.61682891845703,
+            -36.69407081604004
+          ],
+          [
+            316.33833503723145,
+            71.61602306365967,
+            -34.84555912017822
+          ]
+        ]
+      },
+      "interpretation": "The ray intersects photographed rooftop fan equipment, not bare survey roof. Keep this failure as evidence; independently verify equipment preservation and a clear roof control before the next run."
+    }
+  },
+  "preservation": {
+    "sourceCandidate84Unchanged": 132,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV85AlignedChunks": 207,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "visualReview": {
+    "improvement": "The three measured folded-wall fragments are replaced by straight survey faces; all three native first-hit controls in frame 20 reach UTA runtime tile 1000050103.",
+    "remaining": [
+      "Ground gaps are visible at the west and south approaches because wall-adjacent source surfaces were retired beyond the previously rebuilt terrain.",
+      "Facade photography remains visibly blurry at walking height.",
+      "Rooftop fan tops remain, while generic roof retirement removes lower source geometry.",
+      "Neighboring structures, vegetation, baked ground cars and shadows remain coarse."
+    ],
+    "acceptance": false
+  },
+  "screenshots": {
+    "fragment-replaced": {
+      "file": "photos/uta-candidate-85-fragment-replaced.png",
+      "frame": 8,
+      "sha256": "00de8383ea0e2c5ec61ec06f37555074834de3fd268b6af9f6c6465184e53293"
+    },
+    "west-ground-gap": {
+      "file": "photos/uta-candidate-85-west-ground-gap.png",
+      "frame": 21,
+      "sha256": "9f7995cf8080b632119ca686dfefc46bb2b07d41dd16af391dcfce1d3b853644"
+    },
+    "north-roof-clipping": {
+      "file": "photos/uta-candidate-85-north-roof-clipping.png",
+      "frame": 22,
+      "sha256": "5b069e484c46aaef9b8cd332313ca0f4e418d1a4c93ff912819fc062430fa360"
+    },
+    "south-ground-gap": {
+      "file": "photos/uta-candidate-85-south-ground-gap.png",
+      "frame": 23,
+      "sha256": "e1f5f9e95e9abe5d9393f4f549cb3d5abeddf721c2ad8bf1288937b03f4ec31b"
+    },
+    "aerial-equipment": {
+      "file": "photos/uta-candidate-85-aerial-equipment.png",
+      "frame": 24,
+      "sha256": "46e9edc02bda13c8cdb43f8305cbab5697eee1ae4b9098d6eea0d590015ea146"
+    }
   }
 }
