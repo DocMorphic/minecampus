@@ -1,0 +1,19 @@
+{
+  "building": "DEBY_LOD2_5284441",
+  "runtimeId": 1000030054,
+  "expectedWallCount": 8,
+  "surveyWallsSha256": "fcb34b91e0c544e998bdca9cac5e6d0939fb35f41f3e77facb078a97c85ef896",
+  "wallColour": [
+    202,
+    204,
+    198,
+    255
+  ],
+  "cleanupMarginMetres": 2.75,
+  "neighbourGuardMetres": 0.25,
+  "roofPaddingMetres": 0.5,
+  "reference": "photos/cyclotron-annex-reference.json",
+  "referenceSha256": "4db461de1bf1a8fc9513346ba3f6cfd1101072e31ba9a88d02f8a3f05453fbea",
+  "qualification": "Survey geometry is authoritative for this reconstruction. Wall albedo is estimated from visible pale surfaces; openings and small surface details remain unresolved. No provider pixels persisted or redistributed. No claim of current as-built facade accuracy.",
+  "status": "Component draft; not integrated into the release builder or installed. Requires independent geometry, collision equivalence and native visual review."
+}

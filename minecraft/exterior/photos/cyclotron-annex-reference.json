@@ -1,0 +1,87 @@
+{
+  "building": "DEBY_LOD2_5284441",
+  "identity": "Northern annex attached to the mapped 5202 Zyklotron; separate BVV survey body.",
+  "sources": [
+    {
+      "url": "https://mlz-garching.de/media/gelaendeplan_site-map-frmii_2015.pdf",
+      "use": "Historical site-plan identification only; not current facade evidence."
+    },
+    {
+      "file": "public/data/garching-osm.json",
+      "sha256": "4d0fc46fd780184c22567b47a00b0df701ae55c8d9b4bb460cc51bb08f422307",
+      "way": 27237056,
+      "use": "Mapped cyclotron footprint and name; main body and taller annex must be treated separately."
+    },
+    {
+      "file": "minecraft/exterior/sources.json",
+      "use": "Pinned BVV LoD2 geometry, DOP20 roof imagery and common vertical datum."
+    }
+  ],
+  "transientSourceCoverage": {
+    "metrics": [
+      {
+        "id": "DEBY_LOD2_5284441",
+        "selectedTiles": 7,
+        "triangles": 16866,
+        "faces": [
+          {
+            "face": 0,
+            "coverage": 0.8185756147279908,
+            "maxFillDistance": 1.2437558621902745,
+            "unfilled": 0
+          },
+          {
+            "face": 1,
+            "coverage": 0.5803021824286514,
+            "maxFillDistance": 5.149576803278218,
+            "unfilled": 0
+          },
+          {
+            "face": 2,
+            "coverage": 0.6513812154696133,
+            "maxFillDistance": 1.5947002192476338,
+            "unfilled": 0
+          },
+          {
+            "face": 3,
+            "coverage": 0.95253943952606,
+            "maxFillDistance": 0.9966976307774926,
+            "unfilled": 0
+          },
+          {
+            "face": 4,
+            "coverage": 0.9003898506673714,
+            "maxFillDistance": 0.6496779996283538,
+            "unfilled": 0
+          },
+          {
+            "face": 5,
+            "coverage": 0.9878071863465725,
+            "maxFillDistance": 0.2997404246994843,
+            "unfilled": 0
+          },
+          {
+            "face": 6,
+            "coverage": 0.1466311043373341,
+            "maxFillDistance": 3.8473223713493736,
+            "unfilled": 0
+          },
+          {
+            "face": 7,
+            "coverage": 0.8420265780730897,
+            "maxFillDistance": 2.2917378620232594,
+            "unfilled": 0
+          }
+        ]
+      }
+    ],
+    "qualification": "Transient authenticated source selection and survey-plane projections only. No provider pixels persisted."
+  },
+  "observations": [
+    "The surveyed annex has eight wall faces, including upper faces beginning around Minecraft Y68.24, lower faces beginning around Y63.89, and a top near Y72.91.",
+    "Transient facade projections show predominantly pale opaque wall surfaces; the western and northern views contain strong baked shadows and occlusion.",
+    "No reliable window or door layout was established for this annex.",
+    "Native baseline camera 1 encounters raw source fragments west of the annex; camera 3 shows the taller pale end beside the low cyclotron body."
+  ],
+  "qualification": "Survey geometry is authoritative for this reconstruction. Wall albedo is estimated from visible pale surfaces; openings and small surface details remain unresolved. No provider pixels persisted or redistributed. No claim of current as-built facade accuracy."
+}

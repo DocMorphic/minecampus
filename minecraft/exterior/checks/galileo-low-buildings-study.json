@@ -1,0 +1,196 @@
+{
+  "name": "galileo-low-buildings-98",
+  "purpose": "Identify visibly coarse source surfaces against surveyed low-building envelopes. Diagnostic only; no geometry change.",
+  "referenceArtifactSha256": "ebff9ca4a8ceda72d0a52f664db7335d55c148933ff22fcaf73bee86625c9135",
+  "cameras": [
+    {
+      "label": "West approach to northern low building",
+      "position": "143 64.5 -62 -90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "North face of northern low building",
+      "position": "177 64.5 -83 0 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "South face of northern low building",
+      "position": "177 64.5 -43 180 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "East face of northern low building",
+      "position": "212 64.5 -61 90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "West approach to southern low building",
+      "position": "135 64.5 -20 -90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "South face of southern low building",
+      "position": "169 64.5 14 180 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "East face of southern low building",
+      "position": "208 64.5 -20 90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Low building overview",
+      "position": "128 105 -30 -90 55",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "sourceDiagnosticBounds": [
+    [
+      140,
+      62,
+      -85
+    ],
+    [
+      215,
+      75,
+      12
+    ]
+  ],
+  "gravityProbes": []
+}
