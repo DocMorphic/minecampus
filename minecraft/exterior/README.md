@@ -63,3 +63,17 @@ The downloader fetches only the public inputs pinned in [sources.json](sources.j
 The release builder checks the upstream JAR and embedded service hashes, checks out the pinned Apache-2.0 source into a generated cache directory, applies [the patch](patches/realworldmc-exterior.patch), compiles it and adds the open-data meshes to the existing portable service. It preserves the upstream runtime/licenses and adds asset notices. No Minecraft assets or Google tile files are bundled.
 
 [Quality goal](QUALITY-GOAL.md) · [Research](RESEARCH.md) · [Native validation](VALIDATION.md) · [Third-party notices](../../THIRD_PARTY.md)
+
+
+### LMU exterior development draft
+
+`physics-lmu.json` and `scripts/exterior_physics_lmu.py` describe the surveyed Am Coulombwall1 complex. The generator is not yet invoked by the main build. Its source-informed facade details are qualified estimates; the current installed preview is unchanged.
+
+For an incremental draft directory containing its manifest, photo-facade plan and mesh files, run:
+
+```sh
+.cache/geodata-venv/bin/python scripts/validate-physics-lmu.py --directory /path/to/draft
+.cache/geodata-venv/bin/python scripts/test_lmu_facade_triangulation.py
+```
+
+The source validator checks encoded coverage and outward first-hit surfaces against the pinned BVV survey and DOP20 roof imagery. Native terrain support, collision, rendering and visual review remain separate required checks.

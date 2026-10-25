@@ -1,0 +1,35 @@
+{
+  "building": "DEBY_LOD2_5284442",
+  "name": "LMU physics and workshop complex, Am Coulombwall 1",
+  "runtimeId": 1000030044,
+  "siteBoundsUTM": [698350, 5349570, 698510, 5349690],
+  "wallCount": 53,
+  "roofTriangles": 102,
+  "references": [
+    {
+      "url": "https://nav.tum.de/building/5123",
+      "image": "https://nav.tum.de/cdn/lg/5123_0.webp",
+      "attribution": "Alexander Pach, CC BY 4.0, via NavigaTUM",
+      "evidence": "Concrete horizontal bands, four-storey office wing, recessed dark infill and glazing, slender pale vertical posts and external horizontal rails. Reference pixels are not bundled."
+    },
+    {
+      "url": "https://mahlgebhardkonzepte.de/projekt/cala-center-for-advanced-laser-application-lmu-garching/",
+      "image": "https://mahlgebhardkonzepte.de/wp-content/uploads/2024/06/IMG_1035-scaled.jpg",
+      "attribution": "mahl·gebhard·konzepte, CALA exterior project photograph; reference only",
+      "evidence": "Opposite CALA, the low workshop has tall glazed ground-floor bays, pale concrete posts and fascia; its setback upper floor has glazing and dark vertical railings."
+    }
+  ],
+  "materialColours": [[159,155,145,255],[62,70,71,255],[58,78,86,255],[156,165,162,255]],
+  "officeFaces": [2,7,11,14,16,18,19,22,26,32,40,42,43,46,47,49,51,52],
+  "plantFaces": [1,8,12,15,23,25,27,28,37,39,41,45],
+  "officeLevelsAboveBase": [0,3.95,7.9,11.85,15.71],
+  "bayPitchMetres": 3.15,
+  "frameWidthMetres": 0.065,
+  "recessMetres": 0.5,
+  "beamHeightMetres": 0.5,
+  "groundColumnWidthMetres": 0.32,
+  "upperPostWidthMetres": 0.10,
+  "cleanupMarginMetres": 0.5,
+  "fineCollisionMaterials": [4,6,6,6,4],
+  "qualification": "BVV fixes all53 wall rings, courtyard, stepped volumes and102 roof triangles. DOP20 supplies roof pixels. The two cited ground photographs guide the facade grammar. Bay counts, floor bands, recess depth, frame/post sizes, blinds, hidden elevations and colours are estimates, not an as-built survey. No interiors or reference-photo textures."
+}
