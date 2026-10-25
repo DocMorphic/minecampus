@@ -1,0 +1,69 @@
+{
+  "status": "Development checkpoint: candidate 73 functional checks pass; candidate 74 packaged, native visual verification pending",
+  "visualAcceptance": false,
+  "candidate73": {
+    "artifactVerification": {
+      "status": "PASS: exact packaged shader and data; only canopy frame UV normals changed; all collision positions, pixels and service modules retained",
+      "artifactSha256": "f108d2b958c799ea150e2c141b1dd259d08e4d28571a6cbe25526e94a2f22c92",
+      "rendererSourceFingerprint": "83d6664a3636f33d",
+      "renderTiles": 426,
+      "priorRenderCollisionInputsByteIdentical": 604,
+      "updatedFrameInputs": [
+        {
+          "file": "DEBY_LOD2_108698339-atom-canopy.ect",
+          "positionsAndPixelsByteIdentical": true,
+          "glassPartByteIdentical": true,
+          "onlyFrameUVNormalsChanged": true,
+          "frameTriangles": 2972
+        },
+        {
+          "file": "DEBY_LOD2_108698338-atom-canopy.ect",
+          "positionsAndPixelsByteIdentical": true,
+          "glassPartByteIdentical": true,
+          "onlyFrameUVNormalsChanged": true,
+          "frameTriangles": 1312
+        },
+        {
+          "file": "DEBY_LOD2_108698340-atom-canopy.ect",
+          "positionsAndPixelsByteIdentical": true,
+          "glassPartByteIdentical": true,
+          "onlyFrameUVNormalsChanged": true,
+          "frameTriangles": 1244
+        }
+      ],
+      "unchangedServiceModules": 24,
+      "alignmentVersion": 77
+    },
+    "nativeStatus": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "cameraCount": 13,
+    "standingControlCount": 12,
+    "maximumSupportErrorMetres": 0.08988488618090429,
+    "allStandingControlsGroundedAndBodyClear": true,
+    "preservation": {
+      "sourceCandidate72Unchanged": 91,
+      "priorAlignmentJournalsUnchanged": true,
+      "activeV77PriorEntriesRetained": 120,
+      "activeV77AlignedChunks": 120,
+      "inventoryAndExperienceUnchanged": true,
+      "originalSavesUnchanged": 121,
+      "previewSavesUnchanged": 121,
+      "previewSettingsUnchanged": 4
+    },
+    "visualFinding": "Analytic frame normals do not eliminate triangular mottling in the close-up. This attempt is not accepted as a visual fix."
+  },
+  "candidate74": {
+    "artifactSha256": "e1fff56e3f32bceb7cfa585fea5c29c5ff92bc1f2e477565316ebaa3c5204dfa",
+    "rendererSourceFingerprint": "77dfed517769cf9c",
+    "buildStatus": "PASS",
+    "change": "Shadow reception for canopy frames now attenuates direct sunlight only, preserving ambient illumination on undersides.",
+    "nativeVerification": "Pending",
+    "visualVerification": "Pending"
+  },
+  "remainingWork": [
+    "Verify candidate 74 in native Minecraft at matched and oblique sunlight views.",
+    "Resolve coarse entrance projections and the separately located southern source fragment.",
+    "Improve dome material variation and surrounding campus structures."
+  ],
+  "installedPreviewChanged": false,
+  "publicBinaryRelease": false
+}

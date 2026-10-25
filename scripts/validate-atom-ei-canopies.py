@@ -32,6 +32,17 @@ for record in data['buildings']:
   tri=v[:,:3].reshape(-1,3,3);assert np.min(np.linalg.norm(np.cross(tri[:,1]-tri[:,0],tri[:,2]-tri[:,0]),axis=1))>1e-9
   parts.append(v)
  assert offset==len(raw)
+ # Frame UVs carry a constant analytic plane normal, independent of skinny
+ # triangle cross products and screen derivatives. Check decoded normals on
+ # every triangle against exported positions within float32 roundoff.
+ v=parts[1].reshape(-1,3,5);uv=v[:,:,3:];assert np.array_equal(uv[:,0],uv[:,1]) and np.array_equal(uv[:,0],uv[:,2])
+ assert ((uv>=0)&(uv<=1)).all()
+ octa=uv[:,0]*2-1;n=np.column_stack((octa[:,0],1-np.abs(octa).sum(1),octa[:,1]));lower=n[:,1]<0
+ n[np.ix_(lower,[0,2])]=(1-np.abs(n[np.ix_(lower,[2,0])]))*np.where(n[np.ix_(lower,[0,2])]>=0,1,-1)
+ n/=np.linalg.norm(n,axis=1)[:,None]
+ edge=v[:,1:,:3]-v[:,:1,:3];residual=np.max(np.abs(np.sum(edge*n[:,None,:],axis=2)))
+ assert residual<.00005,('Frame plane normal disagreement',residual)
+ assert np.all((np.abs(n[:,1])<1e-6)|(np.abs(n[:,1])>.99999)), 'Frames must follow vertical walls or surveyed nearly level planes'
  foot,walls,roof,points=survey_plan(ctx,surveys[bid]);assert np.array_equal(parts[0][:,:3].astype(np.float32),roof[:,3:6].astype(np.float32))
  # No former volume side may survive below the roof. Each low triangle must
  # belong to a single slender post, including its projected edge and interior.
@@ -47,7 +58,7 @@ for record in data['buildings']:
  assert record['retiredCollisionFile']not in [t['file']for t in m['photoFacades']['collisionTiles']]
  assert len(plan['roofTriangles'])==len(roof)//3
  tile=next(t for t in m['tiles']if t['runtimeId']==record['runtimeId']);assert tile['fineCollisionMaterials']==[4,4] and tile['profile']=='atom-ei-canopy'
- results.append({'building':bid,'meshSha256':record['meshSha256'],'exactRoofTriangles':len(roof)//3,'postCount':len(posts),'falseVolumeFacesRetired':len(walls),'lowTrianglesConfinedToPosts':len(low),'protectedNeighbourOverlapSquareMetres':owned.intersection(protect).area})
+ results.append({'building':bid,'meshSha256':record['meshSha256'],'exactRoofTriangles':len(roof)//3,'framePlaneNormalMaximumResidualMetres':float(residual),'postCount':len(posts),'falseVolumeFacesRetired':len(walls),'lowTrianglesConfinedToPosts':len(low),'protectedNeighbourOverlapSquareMetres':owned.intersection(protect).area})
 ids=[t['runtimeId']for t in m['tiles']];assert len(ids)==len(set(ids))
 if args.baseline:
  before=read(args.baseline/'manifest.json');assert before['tiles']==m['tiles'][:-3]

@@ -45,9 +45,17 @@ uniform vec3 CampusSunDirection;
 uniform sampler2D Sampler11;
 uniform mat4 CampusShadowMatrix;
 uniform float CampusShadowStrength;
+// Canopy frames encode a constant face normal in each triangle's UVs.
+// Screen derivatives of world positions are unstable on centimetre-wide faces.
+vec3 canopyFrameNormal() {
+    vec2 oct=texCoord0*2.0-1.0;
+    vec3 n=vec3(oct.x,1.0-abs(oct.x)-abs(oct.y),oct.y);
+    if(n.y<0.0)n.xz=(1.0-abs(n.zx))*mix(vec2(-1),vec2(1),greaterThanEqual(n.xz,vec2(0)));
+    return normalize(n);
+}
 float campusShadow(vec3 p) {
     if(CampusShadowStrength<=0.0)return 0.0;
-    vec3 n=normalize(cross(dFdx(p),dFdy(p)));
+    vec3 n=abs(MaterialDetail-30.0)<.1?canopyFrameNormal():normalize(cross(dFdx(p),dFdy(p)));
     if(dot(n,CameraPosition-p)<0.0)n=-n;
     // A nearly parallel receiver has an ill-conditioned light-space plane.
     // Fade shadow reception over the last three degrees, where direct solar
@@ -60,6 +68,12 @@ float campusShadow(vec3 p) {
     vec3 dx=dFdx(at),dy=dFdy(at);
     float determinant=dx.x*dy.y-dx.y*dy.x;
     vec2 plane=abs(determinant)>1e-12?vec2(dx.z*dy.y-dy.z*dx.y,dx.x*dy.z-dy.x*dx.z)/determinant:vec2(0);
+    if(abs(MaterialDetail-30.0)<.1) {
+        // The orthographic light-space plane follows the stable face normal.
+        // This also avoids unstable derivative ratios on thin triangles.
+        vec3 lightNormal=transpose(inverse(mat3(CampusShadowMatrix)))*n;
+        if(abs(lightNormal.z)>1e-8)plane=-lightNormal.xy/lightNormal.z;
+    }
     float shade=0.0;
     for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){
         vec2 sampleUv=(floor(at.xy*4096.0)+vec2(x,y)+.5)/4096.0;
@@ -119,6 +133,7 @@ vec2 northGroundUv(vec2 position) { return vec2(position.x-256.0,-304.0-position
 // END GENERATED NORTH GROUND MAPPING
 void main() {
     vec3 planarRadiance=vec3(0); float planarWeight=0.;
+    float frameDirect=0.0;
     vec4 color=texture(Sampler0,texCoord0);
     if(abs(MaterialDetail-13.0)<.1){
         // Average fine timber boards over a slightly wider pixel footprint.
@@ -171,6 +186,12 @@ void main() {
         vec3 n=normalize(cross(dFdx(worldPosition),dFdy(worldPosition)));
         if(dot(n,CameraPosition-worldPosition)<0.0)n=-n;
         color.rgb*=.68+.32*max(dot(n,CampusSunDirection),0.0);
+    }
+    if(abs(MaterialDetail-30.0)<.1) {
+        vec3 n=canopyFrameNormal();
+        if(dot(n,CameraPosition-worldPosition)<0.0)n=-n;
+        frameDirect=.32*max(dot(n,CampusSunDirection),0.0);
+        color.rgb*=.68+frameDirect;
     }
     // Open canopy roof glazing, composited after opaque geometry. Its frame
     // casts shadows; glass does not cast the old solid-survey-volume shadow.
@@ -448,7 +469,11 @@ if(glass>.5&&PlanarStrength>0.0&&abs(dot(PlanarPlane,vec4(worldPosition,1.0)))<.
         }
         color.rgb*=lighting;
     }
-    color.rgb*=1.0-CampusShadowStrength*campusShadow(worldPosition);
+    // Thin frames already receive ambient plus explicit direct irradiance.
+    // Shadow only that direct term: shadow-map edge samples must not dapple
+    // an underside whose normal already excludes direct sunlight.
+    float shadowReception=abs(MaterialDetail-30.0)<.1?frameDirect/(.68+frameDirect):1.0;
+    if(shadowReception>0.0001)color.rgb*=1.0-CampusShadowStrength*shadowReception*campusShadow(worldPosition);
     color*=ColorModulator;
     color.rgb=mix(color.rgb,planarRadiance,planarWeight);
     color.rgb=mix(color.rgb,CampusFogColor,smoothstep(650.0,1000.0,viewDistance));

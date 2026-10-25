@@ -38,22 +38,31 @@ def build(ctx):
         assert len(roof)//3 == config['roofTriangles']
         panes = np.column_stack([roof[:,3:6],np.full((len(roof),2),.5)]).tolist()
         frame = []; roof_regions = []; supports = []; control_candidates = []
-        def triangle(p):
+        def triangle(p, normal):
             q=np.asarray(p,dtype=np.float32).astype(float)
             if np.linalg.norm(np.cross(q[1]-q[0],q[2]-q[0]))<1e-9:return
-            frame.extend([*v,.5,.5]for v in p)
+            # Flat face normals avoid derivative noise on narrow frame faces.
+            # Solid-colour textures leave UVs available for octahedral encoding.
+            normal=np.asarray(normal,dtype=float)
+            normal/=np.linalg.norm(normal)
+            octa=normal[[0,2]]/np.abs(normal).sum()
+            if normal[1]<0:octa=(1-np.abs(octa[::-1]))*np.where(octa>=0,1,-1)
+            uv=octa*.5+.5
+            frame.extend([*v,*uv]for v in p)
         def extrude(region, plane, lower, upper):
             def lift(xz,dy):return np.array([xz[0],float(np.dot([*xz,1],plane))+dy,xz[1]])
             for tri in triangles(region):
                 top=np.array([lift(p,upper)for p in tri])
                 if np.cross(top[1]-top[0],top[2]-top[0])[1]<0:top=top[::-1]
-                triangle(top);triangle(np.array([lift(p,lower)for p in tri])[::-1])
+                n=np.array([-plane[0],1,-plane[1]])
+                triangle(top,n);triangle(np.array([lift(p,lower)for p in tri])[::-1],-n)
             for poly in polygons(region):
                 for ring in [poly.exterior,*poly.interiors]:
                     coords=np.asarray(ring.coords)
                     for a,b in zip(coords[:-1],coords[1:]):
                         q=[lift(a,lower),lift(b,lower),lift(b,upper),lift(a,upper)]
-                        triangle([q[k]for k in [0,1,2]]);triangle([q[k]for k in [0,2,3]])
+                        n=np.array([a[1]-b[1],0,b[0]-a[0]])
+                        triangle([q[k]for k in [0,1,2]],n);triangle([q[k]for k in [0,2,3]],n)
         for roof_index,(kind,rings) in enumerate((k,r)for k,r in surfaces if k=='RoofSurface'):
             q=mc(rings[0]); region=Polygon(q[:,[0,2]],[mc(h)[:,[0,2]]for h in rings[1:]]).buffer(0)
             plane=np.linalg.lstsq(np.column_stack([q[:,[0,2]],np.ones(len(q))]),q[:,1],rcond=None)[0]

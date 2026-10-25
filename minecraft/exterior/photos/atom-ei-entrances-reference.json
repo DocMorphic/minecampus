@@ -1,0 +1,36 @@
+{
+  "status": "Additional exterior evidence for the next entrance reconstruction; not yet modeled",
+  "source": {
+    "page": "https://www.tum.de/en/news-and-events/all-news/press-releases/details/34253",
+    "image": "https://www.tum.de/fileadmin/_processed_/6/4/csm_171027_60-Jahre_Atom-Ei_aktuell_900_ef5ad7e673.jpg",
+    "credit": "Bernhard Ludewig / TUM",
+    "publicationDate": "2017-10-27",
+    "imageSha256": "720a71fa275952f3939b611ae60c81267cd29f57a25ee9d0215dcf4389ca0f8b",
+    "imageSize": [
+      1920,
+      1440
+    ],
+    "use": "Research only. Pixels are not included in the game or repository."
+  },
+  "observed": [
+    "The entrance has blue/dark metal framed full-height glazing with narrow panes and an opaque dark projecting roof.",
+    "The projecting roof has an open air space around it; the apparent survey volume must not automatically become full-height masonry walls.",
+    "The adjacent lower facade has warm orange-brown brick, pale uprights, continuous upper glazing and a blue utility door.",
+    "The dome has conspicuous uneven metallic patches and varied vertical seams, unlike the current uniform procedural finish."
+  ],
+  "registration": {
+    "confirmedInOrthophoto": [
+      "The two low survey projections occupy gaps in the curved canopy ring.",
+      "The separate south gap nearMC(241,65,-72) is outside both projection footprints. The remaining fragment needs its own classification."
+    ],
+    "inference": "The visible projecting roof/glazed entrance is most consistent with the west projection108698333. The rear/north projection108698323 is not established by this view; do not treat a camera-position inference as measured calibration.",
+    "orthophotoOverlay": "Ignored local diagnostic survey-over-orthophoto-73.png; BVV DOP20 and raw LoD2 footprint coordinates."
+  },
+  "nextActions": [
+    "Use the known west roof envelope to distinguish projecting roof and glazing at the base from a solid survey volume.",
+    "Reconstruct only exterior door/glazing and measured roof, retaining the surveyed outline.",
+    "Keep the north projection separately qualified until additional imagery supports its treatment.",
+    "Compare stronger material variation against this reference with matched dome views."
+  ],
+  "interiorsExcluded": true
+}
