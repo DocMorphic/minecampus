@@ -1,6 +1,6 @@
 {
-  "name": "atom-canopies-candidate-72",
-  "purpose": "Matched Atom-Ei views plus open-canopy entry/under-roof checks and transparent-pass state verification.",
+  "name": "atom-canopies-candidate-74",
+  "purpose": "Matched canopy framing with shadows restricted to direct irradiance, plus oblique-sun underside controls.",
   "captureWalking": true,
   "reflectionEvidence": false,
   "checkFractionalSupports": true,
@@ -417,6 +417,102 @@
     {
       "label": "DEBY_LOD2_108698340 under roof glazing",
       "position": "227.63834410898372 64.02221572090835 -116.57647497048234 -143.3099324740202 -32",
+      "worldTime": 6000,
+      "reflections": true,
+      "expectCanopyGlass": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.85,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "DEBY_LOD2_108698338 under roof glazing oblique sun",
+      "position": "225.77374203057664 64.04352715464466 -80.157784315373 128.69006752597977 -32",
+      "worldTime": 9500,
+      "reflections": true,
+      "expectCanopyGlass": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.85,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "DEBY_LOD2_108698339 under roof glazing oblique sun",
+      "position": "251.63252070772296 64.0462677749701 -72.18606059739243 64.69006752597979 -32",
+      "worldTime": 1000,
+      "reflections": true,
+      "expectCanopyGlass": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.85,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "DEBY_LOD2_108698340 under roof glazing oblique sun",
+      "position": "227.63834410898372 64.02221572090835 -116.57647497048234 -143.3099324740202 -32",
+      "worldTime": 12500,
+      "reflections": true,
+      "expectCanopyGlass": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.85,
+          "blockSamples": true
+        },
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "west canopy daylight restoration",
+      "position": "225.77374203057664 64.04352715464466 -80.157784315373 128.69006752597977 -32",
       "worldTime": 6000,
       "reflections": true,
       "expectCanopyGlass": true,

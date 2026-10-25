@@ -16,7 +16,8 @@
     "The entrance has blue/dark metal framed full-height glazing with narrow panes and an opaque dark projecting roof.",
     "The projecting roof has an open air space around it; the apparent survey volume must not automatically become full-height masonry walls.",
     "The adjacent lower facade has warm orange-brown brick, pale uprights, continuous upper glazing and a blue utility door.",
-    "The dome has conspicuous uneven metallic patches and varied vertical seams, unlike the current uniform procedural finish."
+    "The dome has conspicuous uneven metallic patches and varied vertical seams, unlike the current uniform procedural finish.",
+    "The March 2026 MLZ image 4 shows a blue utility door, shallow exterior steps, brick and pale canopy framing. Its exact position around the ring is not yet calibrated."
   ],
   "registration": {
     "confirmedInOrthophoto": [
@@ -30,7 +31,9 @@
     "Use the known west roof envelope to distinguish projecting roof and glazing at the base from a solid survey volume.",
     "Reconstruct only exterior door/glazing and measured roof, retaining the surveyed outline.",
     "Keep the north projection separately qualified until additional imagery supports its treatment.",
-    "Compare stronger material variation against this reference with matched dome views."
+    "Compare stronger material variation against this reference with matched dome views.",
+    "Use the March 2026 close exterior photo to distinguish utility-door/step geometry from a covered entrance before replacing the southern source fragment."
   ],
-  "interiorsExcluded": true
+  "interiorsExcluded": true,
+  "additionalReference": "atom-ei-material-reference.json"
 }

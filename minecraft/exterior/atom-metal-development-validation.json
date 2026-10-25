@@ -1,0 +1,94 @@
+{
+  "status": "Candidate 76 native checks complete; reduced-contrast silver material retained; wider exterior goal remains open",
+  "artifactVerification": {
+    "status": "PASS: only dome shader and validator baseline annotation changed from candidate 74; all service code, geometry, textures and collision data byte-identical",
+    "artifactSha256": "6f6f53bd04c46c8a6bf7945dda29351088575c314e4d975d6fafebab6be8f770",
+    "rendererSourceFingerprint": "e1b77a14d7956507",
+    "renderTiles": 426,
+    "alignmentVersion": 77,
+    "serviceInputsByteIdenticalTo74ExceptValidationAnnotation": true,
+    "validationAnnotationDifference": {
+      "unchangedPreviousTiles": [
+        423,
+        null
+      ]
+    },
+    "changedPackageEntries": [
+      "assets/realworldmc/shaders/core/campus_ground.fsh",
+      "realworldmc-service.zip",
+      "realworldmc-service.sha256"
+    ]
+  },
+  "reference": "photos/atom-ei-material-reference.json",
+  "changes": [
+    "Stagger horizontal sheet joints instead of continuous uniform courses.",
+    "Vary sheet reflectance, subtle shading normals and roughness without changing geometry.",
+    "Use a brighter neutral silver finish with restrained sky reflection."
+  ],
+  "nativeVerification": {
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "exitCode": 0,
+    "cameraCount": 8,
+    "standingControlCount": 3,
+    "reviewedCaptures": 11,
+    "maximumSupportErrorMetres": 0.05899021643153901,
+    "preservation": {
+      "sourceCandidate73Unchanged": 95,
+      "priorAlignmentJournalsUnchanged": true,
+      "activeV77PriorEntriesRetained": 120,
+      "activeV77AlignedChunks": 120,
+      "inventoryAndExperienceUnchanged": true,
+      "originalSavesUnchanged": 121,
+      "previewSavesUnchanged": 121,
+      "previewSettingsUnchanged": 4
+    }
+  },
+  "visualAcceptance": false,
+  "installedPreviewChanged": false,
+  "publicBinaryRelease": false,
+  "visualFinding": "The silver tone and staggered sheets are clearer, but close and aerial views show excessive rectangular contrast. Candidate 75 is not accepted as the final material.",
+  "candidate76": {
+    "status": "Native verification complete",
+    "change": "Reduce reflectance variation from 0.86\u20131.14 to 0.95\u20131.05 and halve the shading-normal perturbation.",
+    "nativeVerification": {
+      "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+      "exitCode": 0,
+      "cameraCount": 6,
+      "standingControlCount": 2,
+      "reviewedCaptures": 8,
+      "maximumSupportErrorMetres": 0.05899021643153901,
+      "preservation": {
+        "sourceCandidate73Unchanged": 95,
+        "priorAlignmentJournalsUnchanged": true,
+        "activeV77PriorEntriesRetained": 120,
+        "activeV77AlignedChunks": 120,
+        "inventoryAndExperienceUnchanged": true,
+        "originalSavesUnchanged": 121,
+        "previewSavesUnchanged": 121,
+        "previewSettingsUnchanged": 4
+      }
+    },
+    "artifactVerification": {
+      "status": "PASS: only shader changed from candidate 75; complete service bundle byte-identical",
+      "artifactSha256": "a6533515ae09ea72efb7c96700cb3a48d2eeff9500fd7483fc5bef944029108e",
+      "rendererSourceFingerprint": "dba8bc8ef1ab0810",
+      "renderTiles": 426,
+      "alignmentVersion": 77,
+      "serviceBundleByteIdenticalTo75": true,
+      "changedPackageEntries": [
+        "assets/realworldmc/shaders/core/campus_ground.fsh"
+      ]
+    },
+    "visualFinding": "The silver finish, staggered joints and panel variation are visible in ground and aerial views, with less distracting rectangular contrast than candidate 75. Sunset remains subdued. This improves the material but does not repair coarse entrances, surrounding source geometry or the separate base-window-frame artifact.",
+    "screenshots": [
+      "../../docs/screenshots/atom-metal-before.jpg",
+      "../../docs/screenshots/atom-metal-high-contrast-study.jpg",
+      "../../docs/screenshots/atom-metal-after.jpg"
+    ]
+  },
+  "remainingWork": [
+    "Replace coarse entrance projections using qualified exterior references and survey geometry.",
+    "Classify and reconstruct the separate southern source fragment.",
+    "Resolve pale base-window frame shading, neighboring structures and broader campus defects."
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "status": "Native72 identifies the next visible defects; these are not repaired by canopy retirement",
+  "status": "Native74 resolves canopy beam mottling; entrance geometry, separate fragments and pale base-window frames remain unfinished",
   "entranceBodies": [
     {
       "building": "DEBY_LOD2_108698323",
@@ -1242,13 +1242,13 @@
   "findings": [
     "Frame3 ray(0.25,0.6) hits the retained108698323 photographic entrance wall at5.802m.",
     "Frame8 ray(0.25,0.6) hits a surviving source triangle at10.586m nearMC(241,65,-72), distinct from the two retained entrance footprints; classify this boundary separately. Provider tile IDs can change between runs, so retain triangle coordinates as evidence.",
-    "Close under-roof views10-12 and walking views6-11 show patchy triangular shading on thin frame members. Diagnose normal/lighting and shadow precision before changing geometry.",
+    "Candidate74 resolves the thin canopy-member mottling in matched and oblique-sun native views. Separate mottling remains on pale upper base-window frames (main dome mesh part2).",
     "The unaltered neighbouring FRMII scan and other campus structures still limit walking-height realism."
   ],
   "nextActions": [
     "Register both entrance envelopes to public exterior references; retain measured shape and distinguish observed details from estimates.",
     "Inspect surviving fragment coordinates against the surveyed footprint and replacement retirement boundary; repair only a bounded area supported by replacement geometry.",
-    "Compare stable face-normal and shadow diagnostics on the thin canopy framing in matched native views.",
+    "Diagnose the separate pale upper base-window frame material, retaining the corrected canopy normal and direct-light shadow handling.",
     "Retain the13 cameras and12 walking controls, then return to broader central-campus ground routes before any overall acceptance."
   ],
   "referenceContext": [
@@ -1259,6 +1259,10 @@
     {
       "url": "https://www.wf-ib.de/de/ueber-uns/historie/1957-das-atom-ei-in-garching.html",
       "qualification": "Original-builder historical exterior photograph supports brick, pale framing and upper glazing; does not establish current entrance details."
+    },
+    {
+      "url": "https://mlz-garching.de/aktuelles-und-presse/from-behind-the-sciences/lebensretter-auf-vier-beinen-am-frm-ii.html?back=yes",
+      "qualification": "Official March2026 exterior photographs provide current canopy framing and dome-finish evidence; see photos/atom-ei-material-reference.json."
     }
   ],
   "visualAcceptance": false,

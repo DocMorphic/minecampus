@@ -1,5 +1,5 @@
 {
-  "status": "Development checkpoint: candidate 73 functional checks pass; candidate 74 packaged, native visual verification pending",
+  "status": "Candidate 74 native verification complete; canopy frame mottling resolved in the reviewed views; wider exterior acceptance remains false",
   "visualAcceptance": false,
   "candidate73": {
     "artifactVerification": {
@@ -56,13 +56,45 @@
     "rendererSourceFingerprint": "77dfed517769cf9c",
     "buildStatus": "PASS",
     "change": "Shadow reception for canopy frames now attenuates direct sunlight only, preserving ambient illumination on undersides.",
-    "nativeVerification": "Pending",
-    "visualVerification": "Pending"
+    "nativeVerification": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "visualVerification": "All 29 captures reviewed. The three canopy frames no longer show the prior triangular underside mottling in matched daylight or oblique-sun views. Cast shadows remain visible on adjacent brick and ground. Pale base window frames still show a separate mottling issue; they use another material.",
+    "artifactVerification": {
+      "status": "PASS: exact working shader; complete service bundle byte-identical to candidate 73",
+      "artifactSha256": "e1fff56e3f32bceb7cfa585fea5c29c5ff92bc1f2e477565316ebaa3c5204dfa",
+      "rendererSourceFingerprint": "77dfed517769cf9c",
+      "renderTiles": 426,
+      "alignmentVersion": 77,
+      "serviceBundleByteIdenticalTo73": true,
+      "changedPackageEntries": [
+        "assets/realworldmc/shaders/core/campus_ground.fsh"
+      ]
+    },
+    "nativeExitCode": 0,
+    "cameraCount": 17,
+    "standingControlCount": 12,
+    "reviewedCaptures": 29,
+    "maximumSupportErrorMetres": 0.08988488618090429,
+    "allStandingControlsGroundedAndBodyClear": true,
+    "preservation": {
+      "sourceCandidate73Unchanged": 95,
+      "priorAlignmentJournalsUnchanged": true,
+      "activeV77PriorEntriesRetained": 120,
+      "activeV77AlignedChunks": 120,
+      "inventoryAndExperienceUnchanged": true,
+      "originalSavesUnchanged": 121,
+      "previewSavesUnchanged": 121,
+      "previewSettingsUnchanged": 4
+    },
+    "screenshots": [
+      "../../docs/screenshots/atom-canopy-shading-before.jpg",
+      "../../docs/screenshots/atom-canopy-shading-after.jpg"
+    ],
+    "glassPassAndStateChecksPassedInAllFrames": true
   },
   "remainingWork": [
-    "Verify candidate 74 in native Minecraft at matched and oblique sunlight views.",
     "Resolve coarse entrance projections and the separately located southern source fragment.",
-    "Improve dome material variation and surrounding campus structures."
+    "Improve dome material variation and surrounding campus structures.",
+    "Correct the separate pale base-window-frame shading artifact."
   ],
   "installedPreviewChanged": false,
   "publicBinaryRelease": false

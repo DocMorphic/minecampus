@@ -159,16 +159,32 @@ void main() {
         float seams=(1.0-smoothstep(.018,.018+width,seamDistance))*(1.0-smoothstep(.25,.8,width));
         // The documented top cap avoids converging hundreds of dark lines.
         seams*=smoothstep(2.4,4.0,length(radial));
-        float panel=floor(bands);
-        float course=worldPosition.y/1.8;
+        // The 2017 TUM exterior photo shows staggered sheet ends, local
+        // reflectance changes and shallow panel waviness. Dimensions and
+        // weathering below are estimates, not projected reference pixels.
+        float panel=floor(bands+.5);
+        float course=(worldPosition.y-69.0)/2.1+hash(vec2(panel,19.0));
+        vec2 sheet=vec2(panel,floor(course+.5));
+        float sheetVisibility=1.0-smoothstep(.25,.9,width);
         float jointWidth=max(fwidth(course),.0001);
-        float joints=(1.0-smoothstep(.004,.004+jointWidth,abs(fract(course+.5)-.5)))*(1.0-smoothstep(.15,.6,jointWidth));
-        float patina=.94+.06*noise(vec2(panel*.73,worldPosition.y*.18));
-        float diffuse=.56+.13*max(n.y,0.0)+.31*max(dot(n,CampusSunDirection),0.0);
-        float highlight=pow(max(dot(reflect(-CampusSunDirection,n),view),0.0),30.0);
-        float fresnel=pow(1.0-max(dot(n,view),0.0),4.0);
-        color.rgb=color.rgb*patina*diffuse*(1.0-.12*seams-.035*joints)
-            +vec3(.13,.14,.15)*highlight+vec3(.035,.045,.06)*fresnel;
+        float joints=(1.0-smoothstep(.004,.004+jointWidth,abs(fract(course+.5)-.5)))
+            *(1.0-smoothstep(.15,.6,jointWidth))*smoothstep(2.4,4.0,length(radial));
+        float reflectance=mix(1.0,.95+.10*hash(sheet),sheetVisibility);
+        float patina=(.94+.12*noise(vec2(bands*.21,worldPosition.y*.31)))
+            *(.96+.08*noise(vec2(bands*1.7,worldPosition.y*1.9)))*reflectance;
+        vec3 across=normalize(vec3(-radial.y,0,radial.x));
+        vec3 uphill=normalize(cross(n,across));
+        vec2 waviness=vec2(hash(sheet+vec2(17,5)),hash(sheet+vec2(3,29)))-.5;
+        vec3 metalNormal=normalize(n+(across*waviness.x*.06+uphill*waviness.y*.035)*sheetVisibility);
+        float diffuse=.60+.12*max(n.y,0.0)+.28*max(dot(metalNormal,CampusSunDirection),0.0);
+        vec3 reflected=reflect(-view,metalNormal);
+        vec3 environment=mix(vec3(.31,.34,.34),vec3(.66,.74,.81),smoothstep(-.12,.55,reflected.y));
+        float roughnessPower=mix(20.0,65.0,hash(sheet+vec2(13,41)));
+        float highlight=pow(max(dot(reflect(-CampusSunDirection,metalNormal),view),0.0),roughnessPower);
+        float fresnel=pow(1.0-max(dot(metalNormal,view),0.0),4.0);
+        color.rgb=vec3(.78,.79,.79)*patina*diffuse*(1.0-.18*seams-.075*joints)
+            +environment*(.12+.08*fresnel)+vec3(.19)*highlight;
+
     }
     // Observed tan brick lower base. Original procedural mortar and subtle
     // brick variation; no copyrighted reference-photo pixels are embedded.

@@ -1,0 +1,57 @@
+{
+  "status": "Candidate 76 verified in matched native views; reduced-contrast finish retained as a material improvement",
+  "source": {
+    "page": "https://www.tum.de/en/news-and-events/all-news/press-releases/details/34253",
+    "image": "https://www.tum.de/fileadmin/_processed_/6/4/csm_171027_60-Jahre_Atom-Ei_aktuell_900_ef5ad7e673.jpg",
+    "credit": "Bernhard Ludewig / TUM",
+    "publicationDate": "2017-10-27",
+    "imageSha256": "720a71fa275952f3939b611ae60c81267cd29f57a25ee9d0215dcf4389ca0f8b",
+    "imageSize": [
+      1920,
+      1440
+    ],
+    "use": "Research only. Pixels are not included in the game or repository."
+  },
+  "observed": [
+    "The aluminium surface has bright and dull sheets rather than a uniform grey finish.",
+    "Vertical seams continue up the shell with staggered horizontal sheet joints.",
+    "Small changes in sheet orientation produce local reflection variation."
+  ],
+  "implementation": {
+    "shader": "shaders/campus_ground.fsh",
+    "materialDetail": 27,
+    "geometryChanged": false,
+    "referencePixelsRedistributed": false,
+    "estimatedParameters": {
+      "circumferentialStrips": 192,
+      "sheetHeightMetres": 2.1,
+      "sheetReflectanceRange": [
+        0.95,
+        1.05
+      ],
+      "normalPerturbation": "Up to 0.03 across the strip and 0.0175 upslope; shading only."
+    },
+    "qualification": "Panel count, individual sheet positions, weathering and reflection response are estimates informed by the 2017 and 2026 exterior photographs. This is not a calibrated material scan. The measured silhouette and all collision geometry remain unchanged."
+  },
+  "acceptance": "All six native camera views and two standing controls pass; eight captures reviewed. Overall campus visual acceptance remains false.",
+  "additionalSource": {
+    "page": "https://mlz-garching.de/aktuelles-und-presse/from-behind-the-sciences/lebensretter-auf-vier-beinen-am-frm-ii.html?back=yes",
+    "publicationDate": "2026-03-11",
+    "credit": "Andrea Voit, FRM II / TUM",
+    "images": [
+      {
+        "url": "https://mlz-garching.de/index.php?rex_media_type=content_noresize&rex_media_file=bhs_rettungshunde_pic4.jpg",
+        "sha256": "619dfb85dc1249a67b322be568321aecef49992649a8007b7295af38efe09869"
+      },
+      {
+        "url": "https://mlz-garching.de/index.php?rex_media_type=content_noresize&rex_media_file=bhs_rettungshunde_pic6.jpg",
+        "sha256": "000a5de15bb51d0511fdf9e71cf8523a97c82f7ff9c87346c338c45d2dfc5558"
+      }
+    ],
+    "observations": [
+      "Image 4 shows pale canopy posts, narrow projecting roof bars, weathered brick and a blue utility door.",
+      "Image 6 shows the dome in overcast light with distinct staggered seams and moderately varied silver panels."
+    ],
+    "use": "Architectural research only. No source pixels or photographed people are included in the game or repository."
+  }
+}

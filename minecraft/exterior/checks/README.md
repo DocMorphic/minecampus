@@ -236,3 +236,6 @@ This exercises its actual voxelizer at eleven terrain controls and both save
 datums. The Galileo ramp remains in the native route and is not represented as
 a terrain-only control. Repeat the native route in a copied saved world to
 verify migration and clearance.
+
+
+`atom-ei-canopies.json` contains the 17-camera, 12-standing-control inspection used for candidate 74, including three oblique-sun canopy views and restoration of daylight before walking. `atom-ei-material.json` contains the six matched material views and two retained standing controls for candidate 76. Copy the selected plan to the isolated run directory as `site-inspection.json`; bind `referenceArtifactSha256` to the actual candidate JAR before running `CampusSiteInspection`. Require a fresh `PASS:` report and review every capture. These local checks do not replace the broader central-campus route or establish overall visual acceptance.
