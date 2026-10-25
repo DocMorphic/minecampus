@@ -34,7 +34,8 @@ for(const shift of [0,2]){
  const intersect=scene(dataRoot,shift),old=baselineRoot?scene(baselineRoot,shift):null;
  for(const p of controls){
   const [x,,z]=p.target,expected=p.supportHeight+shift;
-  assert.equal(intersect(x,z,expected+p.dropHeight+.001,expected+p.dropHeight+1.8).length,0,`${p.label}: drop starts inside roof collision`);
+  const dropY=p.target[1]+shift+p.dropHeight;
+  assert.equal(intersect(x,z,dropY+.001,dropY+1.8).length,0,`${p.label}: drop starts inside roof collision`);
   const support=intersect(x,z,expected-.5,expected+p.dropHeight+.05),standingY=Math.max(...support.map(c=>c.top));
   assert.ok(Number.isFinite(standingY)&&Math.abs(standingY-expected)<.125,`${p.label}: support ${standingY} vs ${expected}`);
   assert.equal(intersect(x,z,standingY+.001,standingY+1.8).length,0,`${p.label}: approach obstructed`);

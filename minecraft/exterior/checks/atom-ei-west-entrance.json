@@ -1,5 +1,5 @@
 {
-  "name": "atom-west-candidate-77-clearance",
+  "name": "atom-west-candidate-78",
   "purpose": "Replace the false solid west survey volume with the measured opaque roof and qualified blue exterior glazing; verify open approach, retained neighbours and scene reflections.",
   "captureWalking": true,
   "reflectionEvidence": true,
@@ -516,7 +516,7 @@
       "label": "west entrance 1.4m under roof",
       "target": [
         219.63851869095268,
-        64.00927706422931,
+        64.00660902798245,
         -99.11518547643308
       ],
       "normal": [
@@ -524,7 +524,7 @@
         1,
         0
       ],
-      "tile": 1000000032,
+      "tile": 1000000033,
       "part": 0,
       "dropHeight": 1.0,
       "supportHeight": 64.00927706422931,
@@ -539,7 +539,7 @@
       "label": "west entrance 1.4m outer entry",
       "target": [
         218.69027299279625,
-        63.973825104429764,
+        63.979909457543044,
         -99.17289245978723
       ],
       "normal": [
@@ -547,10 +547,10 @@
         1,
         0
       ],
-      "tile": 1000000032,
+      "tile": 1000000033,
       "part": 0,
       "dropHeight": 1.0,
-      "supportHeight": 63.973825104429764,
+      "supportHeight": 63.979909457543044,
       "requireBodyClearance": true,
       "look": [
         -90,
@@ -562,7 +562,7 @@
       "label": "west entrance 4.4m under roof",
       "target": [
         220.03642516833423,
-        63.99655509456813,
+        64.00323179527797,
         -102.2587848503908
       ],
       "normal": [
@@ -570,10 +570,10 @@
         1,
         0
       ],
-      "tile": 1000000032,
+      "tile": 1000000033,
       "part": 0,
       "dropHeight": 1.0,
-      "supportHeight": 63.99655509456813,
+      "supportHeight": 64.00323179527797,
       "requireBodyClearance": true,
       "look": [
         -90,
@@ -585,7 +585,7 @@
       "label": "west entrance 4.4m outer entry",
       "target": [
         219.10871555267434,
-        63.96559362148362,
+        63.95550588185603,
         -102.46336947594253
       ],
       "normal": [
@@ -593,7 +593,7 @@
         1,
         0
       ],
-      "tile": 1000000032,
+      "tile": 1000000033,
       "part": 0,
       "dropHeight": 1.0,
       "supportHeight": 63.96559362148362,
@@ -608,7 +608,7 @@
       "label": "west entrance 7.4m under roof",
       "target": [
         220.8115544861249,
-        63.985286178089936,
+        63.99744180605016,
         -105.25134826692876
       ],
       "normal": [
@@ -616,10 +616,10 @@
         1,
         0
       ],
-      "tile": 1000000032,
+      "tile": 1000000033,
       "part": 0,
       "dropHeight": 1.0,
-      "supportHeight": 63.985286178089936,
+      "supportHeight": 63.99744180605016,
       "requireBodyClearance": true,
       "look": [
         -90,
@@ -631,7 +631,7 @@
       "label": "west entrance 7.4m outer entry",
       "target": [
         219.90469827918997,
-        63.959777708268696,
+        63.96868971350942,
         -105.53438858197885
       ],
       "normal": [
@@ -639,10 +639,10 @@
         1,
         0
       ],
-      "tile": 1000000032,
+      "tile": 1000000033,
       "part": 0,
       "dropHeight": 1.0,
-      "supportHeight": 63.959777708268696,
+      "supportHeight": 63.96868971350942,
       "requireBodyClearance": true,
       "look": [
         -90,
@@ -652,5 +652,17 @@
     }
   ],
   "qualification": "Measured roof surfaces, estimated glazing and framing; three false survey enclosures replaced with open canopy sides. Native collision migration and visual quality require review.",
-  "canopyGlassEvidence": true
+  "canopyGlassEvidence": true,
+  "diagnosticBounds": [
+    [
+      214,
+      62,
+      -110
+    ],
+    [
+      226,
+      71,
+      -94
+    ]
+  ]
 }

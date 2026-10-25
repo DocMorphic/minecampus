@@ -1,0 +1,680 @@
+{
+  "status": "Candidate 78 native verification passes; west source seams removed; remaining glazing joints and campus defects prevent visual acceptance",
+  "changes": [
+    "Continuous pane backing behind the raised blue frames closes oblique gaps exposing brick.",
+    "The west retirement boundary now includes seams against two independently reconstructed open canopies, within the unchanged 0.6 m cleanup radius.",
+    "Six walking targets are derived from encoded terrain tile 1000000033; native surface assertions remain unchanged."
+  ],
+  "sourceValidation": {
+    "status": "PASS: exact surveyed roof; low geometry confined to main-base glazing; open projected volume; protected neighbours and retained inputs",
+    "manifestSha256": "b98c177d4776be0ec2a72bc45d46710a0c758e4b465615fe54f1c1cf1febd558",
+    "validatorSha256": "cfa2cf0b2d16f93214b669d6c43126a442d35ba3af684e8c5b79ea3adc614188",
+    "sourceSha256": "fd8280ac42083e4678bbe2190526716c809e1c597598079d4907cdff743acfc9",
+    "generatorSha256": "ad3fcf032af59b9c8f143721f2cdadeeaa41e2744d7a1051cfa1d67c8632704b",
+    "meshSha256": "6b76d7b749dcd806fba2810c037d8dfcb588da56456fc4810b8616542aef0af2",
+    "exactRoofTriangles": 10,
+    "frameNormalMaximumResidualMetres": 1.3382848517151658e-05,
+    "maximumGlazingDistanceFromMainBaseMetres": 0.06488256548764132,
+    "verifiedProbeSurfaces": 6,
+    "probePlanSha256": "c06ba3d0b5cdf1a21fa3de0764cc5b3d60df4edee1efdb7230cd297ba78da896",
+    "continuousGlassBackingSquareMetres": 24.38430897656325,
+    "falseVolumeWallsRetired": 12,
+    "protectedNeighbourOverlapSquareMetres": 0.0,
+    "previousRenderTilesUnchanged": null,
+    "visualAcceptance": false,
+    "qualification": "Source registration of the photographed entrance is inferred. Native appearance, open approach collision and reflections require separate verification."
+  },
+  "sourceDiagnostic": {
+    "sourceTriangleCount": 166,
+    "oldRetirementAreaSquareMetres": 29.6006211974915,
+    "newRetirementAreaSquareMetres": 34.896020067500025,
+    "additionalAreaSquareMetres": 5.295398870008537
+  },
+  "affectedSourceTriangles": 166,
+  "sourceDiagnosticQualification": "Private geometry dump from the displayed candidate 77 scene. All 166 fragments overlap the bounded seam addition; visual removal must be checked in the next packaged run.",
+  "servicePreflight": {
+    "status": "PASS: open west approach at both datums; roof and glazing remain solid",
+    "results": [
+      {
+        "label": "west entrance 1.4m under roof",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00927706422931,
+        "residual": -0.009277064229308962,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 1.4m outer entry",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.979909457543044,
+        "residual": 0.020090542456955518,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 4.4m under roof",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00323179527797,
+        "residual": -0.0032317952779692405,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 4.4m outer entry",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.96559362148362,
+        "residual": 0.03440637851637973,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 7.4m under roof",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.99744180605016,
+        "residual": 0.002558193949838028,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 7.4m outer entry",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.96868971350942,
+        "residual": 0.0313102864905801,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 1.4m under roof",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00927706422931,
+        "residual": -0.009277064229308962,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 1.4m outer entry",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.97990945754304,
+        "residual": 0.020090542456955518,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 4.4m under roof",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00323179527797,
+        "residual": -0.0032317952779692405,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 4.4m outer entry",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.96559362148362,
+        "residual": 0.03440637851637973,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 7.4m under roof",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.99744180605016,
+        "residual": 0.002558193949838028,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 7.4m outer entry",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.96868971350942,
+        "residual": 0.0313102864905801,
+        "bodyClear": true
+      }
+    ],
+    "priorFalseWalls": [
+      {
+        "label": "west entrance 1.4m outer entry",
+        "shift": 0,
+        "obstructingCells": 4
+      },
+      {
+        "label": "west entrance 4.4m outer entry",
+        "shift": 0,
+        "obstructingCells": 2
+      },
+      {
+        "label": "west entrance 7.4m outer entry",
+        "shift": 0,
+        "obstructingCells": 2
+      },
+      {
+        "label": "west entrance 1.4m outer entry",
+        "shift": 2,
+        "obstructingCells": 4
+      },
+      {
+        "label": "west entrance 4.4m outer entry",
+        "shift": 2,
+        "obstructingCells": 2
+      },
+      {
+        "label": "west entrance 7.4m outer entry",
+        "shift": 2,
+        "obstructingCells": 2
+      }
+    ],
+    "glassChecks": 60,
+    "roofChecks": 12,
+    "qualification": "Packaged-service code preflight; native migration and visual review are separate."
+  },
+  "probeCorrections": [
+    {
+      "label": "west entrance 1.4m under roof",
+      "before": {
+        "y": 64.00927706422931,
+        "tile": 1000000032
+      },
+      "after": {
+        "y": 64.00660902798245,
+        "tile": 1000000033,
+        "part": 0
+      }
+    },
+    {
+      "label": "west entrance 1.4m outer entry",
+      "before": {
+        "y": 63.973825104429764,
+        "tile": 1000000032
+      },
+      "after": {
+        "y": 63.979909457543044,
+        "tile": 1000000033,
+        "part": 0
+      }
+    },
+    {
+      "label": "west entrance 4.4m under roof",
+      "before": {
+        "y": 63.99655509456813,
+        "tile": 1000000032
+      },
+      "after": {
+        "y": 64.00323179527797,
+        "tile": 1000000033,
+        "part": 0
+      }
+    },
+    {
+      "label": "west entrance 4.4m outer entry",
+      "before": {
+        "y": 63.96559362148362,
+        "tile": 1000000032
+      },
+      "after": {
+        "y": 63.95550588185603,
+        "tile": 1000000033,
+        "part": 0
+      }
+    },
+    {
+      "label": "west entrance 7.4m under roof",
+      "before": {
+        "y": 63.985286178089936,
+        "tile": 1000000032
+      },
+      "after": {
+        "y": 63.99744180605016,
+        "tile": 1000000033,
+        "part": 0
+      }
+    },
+    {
+      "label": "west entrance 7.4m outer entry",
+      "before": {
+        "y": 63.959777708268696,
+        "tile": 1000000032
+      },
+      "after": {
+        "y": 63.96868971350942,
+        "tile": 1000000033,
+        "part": 0
+      }
+    }
+  ],
+  "alignmentVersion": 79,
+  "visualAcceptance": false,
+  "installedPreviewChanged": false,
+  "publicBinaryRelease": false,
+  "requiredSourceValidators": [
+    {
+      "validator": "validate-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mlz-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-canopies.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-west-entrance.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-library.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-container.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-p1-complex.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-woodland.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-new-laboratory.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-laboratory-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-ii.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-pinned-water.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-wsi.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn-west.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-cala.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-lmu.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-courtyard.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-riverbank.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-north-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mensa-terrace.py",
+      "exitCode": 0
+    }
+  ],
+  "artifactVerification": {
+    "status": "PASS: exact embedded entrance mesh and shader; prior render inputs preserved; only west photographic collision retired",
+    "artifactSha256": "1a41b5eb2ce06f6455c6f75b7fd3563bfb9f38d39633f96785bcd473230abe21",
+    "rendererSourceFingerprint": "ad17af647ecfa695",
+    "renderTiles": 427,
+    "alignmentVersion": 79,
+    "previousRenderTilesByteIdentical": 426,
+    "previousRenderCollisionInputsByteIdentical": 606,
+    "unchangedServiceModules": 24,
+    "retiredCollisionFile": "DEBY_LOD2_108698333-photo-collision.ect"
+  },
+  "packagedServiceChecks": {
+    "status": "PASS: open west approach at both datums; roof and glazing remain solid",
+    "results": [
+      {
+        "label": "west entrance 1.4m under roof",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00927706422931,
+        "residual": -0.009277064229308962,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 1.4m outer entry",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.979909457543044,
+        "residual": 0.020090542456955518,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 4.4m under roof",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.00323179527797,
+        "residual": -0.0032317952779692405,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 4.4m outer entry",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.96559362148362,
+        "residual": 0.03440637851637973,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 7.4m under roof",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.99744180605016,
+        "residual": 0.002558193949838028,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 7.4m outer entry",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.96868971350942,
+        "residual": 0.0313102864905801,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 1.4m under roof",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00927706422931,
+        "residual": -0.009277064229308962,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 1.4m outer entry",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.97990945754304,
+        "residual": 0.020090542456955518,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 4.4m under roof",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.00323179527797,
+        "residual": -0.0032317952779692405,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 4.4m outer entry",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.96559362148362,
+        "residual": 0.03440637851637973,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 7.4m under roof",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.99744180605016,
+        "residual": 0.002558193949838028,
+        "bodyClear": true
+      },
+      {
+        "label": "west entrance 7.4m outer entry",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.96868971350942,
+        "residual": 0.0313102864905801,
+        "bodyClear": true
+      }
+    ],
+    "priorFalseWalls": [
+      {
+        "label": "west entrance 1.4m outer entry",
+        "shift": 0,
+        "obstructingCells": 4
+      },
+      {
+        "label": "west entrance 4.4m outer entry",
+        "shift": 0,
+        "obstructingCells": 2
+      },
+      {
+        "label": "west entrance 7.4m outer entry",
+        "shift": 0,
+        "obstructingCells": 2
+      },
+      {
+        "label": "west entrance 1.4m outer entry",
+        "shift": 2,
+        "obstructingCells": 4
+      },
+      {
+        "label": "west entrance 4.4m outer entry",
+        "shift": 2,
+        "obstructingCells": 2
+      },
+      {
+        "label": "west entrance 7.4m outer entry",
+        "shift": 2,
+        "obstructingCells": 2
+      }
+    ],
+    "glassChecks": 60,
+    "roofChecks": 12,
+    "qualification": "Packaged-service code preflight; native migration and visual review are separate."
+  },
+  "retainedCanopyServiceChecks": {
+    "status": "PASS: all canopy entries and under-roof positions clear at both datums; every support post retains collision",
+    "results": [
+      {
+        "label": "DEBY_LOD2_108698338 entry",
+        "shift": 0,
+        "standingY": 63.9375,
+        "expected": 63.9576482519115,
+        "residual": -0.02014825191150038,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698338 under roof",
+        "shift": 0,
+        "standingY": 64.0625,
+        "expected": 64.01352715464466,
+        "residual": 0.04897284535533686,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698339 entry",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.910115113819096,
+        "residual": 0.08988488618090429,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698339 under roof",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 64.0162677749701,
+        "residual": -0.016267774970103233,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698340 entry",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.959258012435264,
+        "residual": 0.04074198756473635,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698340 under roof",
+        "shift": 0,
+        "standingY": 64,
+        "expected": 63.99221572090835,
+        "residual": 0.007784279091652024,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698338 entry",
+        "shift": 2,
+        "standingY": 65.9375,
+        "expected": 65.95764825191151,
+        "residual": -0.020148251911507487,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698338 under roof",
+        "shift": 2,
+        "standingY": 66.0625,
+        "expected": 66.01352715464466,
+        "residual": 0.04897284535533686,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698339 entry",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.9101151138191,
+        "residual": 0.08988488618089718,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698339 under roof",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 66.0162677749701,
+        "residual": -0.016267774970103233,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698340 entry",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.95925801243527,
+        "residual": 0.04074198756472924,
+        "bodyClear": true
+      },
+      {
+        "label": "DEBY_LOD2_108698340 under roof",
+        "shift": 2,
+        "standingY": 66,
+        "expected": 65.99221572090835,
+        "residual": 0.007784279091652024,
+        "bodyClear": true
+      }
+    ],
+    "priorFalseWalls": [],
+    "postChecks": 74,
+    "qualification": "Packaged-service geometry check; native migration, walking and transparency remain separate."
+  },
+  "nativeVerification": {
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "exitCode": 0,
+    "run": "atom-west-candidate-78",
+    "cameraViews": 13,
+    "standingControls": 13,
+    "reviewedCaptures": 35,
+    "maximumSupportResidualMetres": 0.05899021643153901,
+    "allStandingBodiesClear": true
+  },
+  "preservation": {
+    "sourceCandidate77Unchanged": 102,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV79AlignedChunks": 95,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "nativeSourceDiagnostics": {
+    "bounds": [
+      [
+        214,
+        62,
+        -110
+      ],
+      [
+        226,
+        71,
+        -94
+      ]
+    ],
+    "matchedBaselineTriangleCount": 166,
+    "currentTriangleCountsByCamera": {
+      "2": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0
+    },
+    "qualification": "Private displayed-provider geometry diagnostics are retained locally; counts describe this bounded west entrance only."
+  },
+  "visualReview": {
+    "status": "Local seam removal retained; full visual acceptance false",
+    "resolved": [
+      "Hanging source strips on both sides of the west glazing are absent in approach, front, oblique, underside and evening captures.",
+      "Continuous pane backing closes the larger gaps around raised frames."
+    ],
+    "remaining": [
+      "Thin brick-coloured lines remain between independently offset glazing sections.",
+      "Pale upper base-window frames retain patchy shading.",
+      "North entrance projection, separate southern source fragment, adjacent FRM II and wider campus remain coarse."
+    ],
+    "adjacentPaneEndpointGapsMetres": [
+      0.0038882719846335028,
+      0.0037612122643446437,
+      0.003269003577245275,
+      0.0038439896410652832,
+      0.004478238272145857
+    ],
+    "nextAction": "Join adjacent offset pane planes at a common miter and verify watertight exported boundaries; keep the roof and bounded source retirement unchanged."
+  },
+  "screenshots": [
+    {
+      "path": "docs/screenshots/atom-west-seam-approach.png",
+      "sha256": "36c91557ab7c6787121a433fda2f84e2846ffe45bce657bbee01bc0f33675dfb"
+    },
+    {
+      "path": "docs/screenshots/atom-west-seam-front.png",
+      "sha256": "6921b39527ac02aa503a0a1e66ca2f1d0605b57b46c97440c3fde90dfaae4b41"
+    },
+    {
+      "path": "docs/screenshots/atom-west-seam-underside.png",
+      "sha256": "00f24b94dd50a583dc00e5cbc5b46f2824918fa8137f5184a6ea0371204e70cc"
+    }
+  ]
+}

@@ -91,7 +91,10 @@ def build(ctx):
             for tri in triangles(poly):
                 q = [anchor+u*x+normal*offset+[0,y,0] for x,y in tri]
                 emit(q,part,normal)
-        surface(frame,2,.02);surface(glass,3,0)
+        # Keep the pane continuous behind the raised frame. Cutting the pane
+        # at the frame footprint leaves a 2 cm-deep open edge that exposes
+        # the brick backing at oblique viewing angles.
+        surface(frame,2,.02);surface(shape,3,0)
         for poly in polygons(glass):
             p=poly.representative_point();glass_controls.append({'position':(anchor+u*p.x+[0,p.y,0]).tolist(),'normal':normal.tolist(),'part':3})
         facade_regions.append({'anchor':anchor.tolist(),'direction':u.tolist(),'normal':normal.tolist(),'length':float(length),'bottom':glass_bottom,'top':glass_top})
@@ -101,8 +104,19 @@ def build(ctx):
     (out/mesh).write_bytes(encode([(p,Image.new('RGBA',(1,1),c)) for p,c in zip(parts,colours)]))
     vertices = np.concatenate([np.asarray(p)[:,:3] for p in parts]);bounds=[vertices.min(0).tolist(),vertices.max(0).tolist()]
     meta['tiles'].append({'file':mesh,'kind':'reconstruction','profile':'atom-ei-west-entrance','runtimeId':spec['runtimeId'],'fineCollisionMaterials':spec['fineCollisionMaterials'],'bounds':bounds})
+    # These adjoining envelopes already have surveyed open-canopy replacements.
+    # Their old protected-volume buffers otherwise leave scan strips in the
+    # shared seam. Keep the existing west cleanup radius and require the
+    # replacement meshes before treating either adjoining body as reconstructed.
+    seam_ids = set(spec['reconstructedSeamNeighbours'])
+    canopies = json.loads((out/meta['architecture']['atomEiCanopies']['derivedFile']).read_text())['buildings']
+    for neighbour in seam_ids:
+        canopy = next(c for c in canopies if c['building'] == neighbour)
+        assert sha(out/canopy['meshFile']) == canopy['meshSha256']
+        assert any(t['runtimeId'] == canopy['runtimeId'] and t['file'] == canopy['meshFile'] for t in meta['tiles'])
+        assert canopy['retiredCollisionFile'] not in [t['file'] for t in meta['photoFacades']['collisionTiles']]
     protect = unary_union([Polygon(mc(r[0])[:,[0,2]],[mc(h)[:,[0,2]] for h in r[1:]]).buffer(0)
-        for key,s in surveys.items() if key not in {bid,spec['mainBuilding']} for k,r in s if k == 'GroundSurface'])
+        for key,s in surveys.items() if key not in {bid,spec['mainBuilding']} | seam_ids for k,r in s if k == 'GroundSurface'])
     owned = foot.buffer(spec['cleanupMarginMetres']).difference(protect.buffer(spec['neighbourGuardMetres']))
     retirement=[{'ring':list(p.exterior.coords),'holes':[list(h.coords)for h in p.interiors]}for p in polygons(owned)]
     plans=json.loads((out/'photo-facades.json').read_text());plan=next(p for p in plans['plans']if p['id']==bid)
@@ -112,7 +126,7 @@ def build(ctx):
     retired=plan['collisionFile'];meta['photoFacades']['collisionTiles']=[t for t in meta['photoFacades']['collisionTiles']if t['file']!=retired]
     meta['photoFacades']['collisionRetirement'].extend(dict(p,y0=plan['bounds'][0][1]-2,y1=plan['bounds'][1][1]+3)for p in retirement)
     (out/'photo-facades.json').write_text(json.dumps(plans,separators=(',',':')))
-    record={'building':bid,'runtimeId':spec['runtimeId'],'roofTriangles':10,'partTriangles':[len(p)//3 for p in parts],'roofPlane':plane.tolist(),'roofRegion':list(region.exterior.coords),'ribRegions':rib_regions,'glazingFaces':facade_regions,'glassControls':glass_controls,'retirement':retirement,'protectedNeighbourOverlapSquareMetres':owned.intersection(protect).area,'retiredVolumeWalls':len(walls),'retiredCollisionFile':retired,'qualification':spec['qualification']}
+    record={'building':bid,'runtimeId':spec['runtimeId'],'roofTriangles':10,'partTriangles':[len(p)//3 for p in parts],'roofPlane':plane.tolist(),'roofRegion':list(region.exterior.coords),'ribRegions':rib_regions,'glazingFaces':facade_regions,'glassControls':glass_controls,'retirement':retirement,'protectedNeighbourOverlapSquareMetres':owned.intersection(protect).area,'reconstructedSeamNeighbours':sorted(seam_ids),'retiredVolumeWalls':len(walls),'retiredCollisionFile':retired,'qualification':spec['qualification']}
     derived=out/'atom-ei-west-entrance-surfaces.json';derived.write_text(json.dumps(record,indent=2)+'\n')
     meta['architecture']['atomEiWestEntrance']={'sourceFile':source.name,'sourceSha256':sha(source),'generatorFile':'scripts/exterior_atom_ei_west_entrance.py','generatorSha256':sha(Path(__file__)),'referenceFile':spec['reference'],'referenceSha256':sha(root/'minecraft/exterior'/spec['reference']),'derivedFile':derived.name,'derivedSha256':sha(derived),'meshFile':mesh,'meshSha256':sha(out/mesh),'retiredCollisionFile':retired,'qualification':spec['qualification']}
     print('Atom-Ei west entrance:',len(walls),'false volume walls retired; exact 10-triangle roof; estimated open projection and blue glazing',flush=True)
