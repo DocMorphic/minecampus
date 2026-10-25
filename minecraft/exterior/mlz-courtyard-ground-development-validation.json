@@ -1,0 +1,817 @@
+{
+  "status": "PASS70: source-informed MLZ courtyard materials and fine wall collision verified in packaged Minecraft; broader visual acceptance false",
+  "candidate68": {
+    "sourceValidation": {
+      "status": "PASS: raw source imagery retained outside bounded courtyard; building exclusions, mask controls and provenance verified",
+      "manifestSha256": "c7e7b81127b3e1a4267aaefc90b206a14226826d3088d1c1b8fb3f093c156860",
+      "validatorSha256": "0e9f160cac831f5d0fc415d97bbb56644790a0577888263116ec03f2556ccd67",
+      "sourceSha256": "f8192f5ad9a475cc86f66b47c636311949633e9bcc0f1abd5fdebd07a57da7ac",
+      "generatorSha256": "86676253dc64dc0f5ca9dfded1427c058d0383cc024ea0c0955c7d76f9d9ab1b",
+      "maskSha256": "867bedbf465d8c6c12ea6457adf62101715d348efaa2be53f04c3da7e664347a",
+      "tileSha256": {
+        "ground-698300-5349300.ect": "73407eb267883b40789612ebe9619f93bc97a99539e7719ccc255a328a16ec3a",
+        "ground-698400-5349300.ect": "2f9da37b618147c84bfd5061dabdd2993535ef2d7c45977f0f6953f129ffcc98"
+      },
+      "changedPixelsAgainstRawDOP": {
+        "ground-698300-5349300.ect": 14808,
+        "ground-698400-5349300.ect": 9917
+      },
+      "buildingOverlapSquareMetres": 0.0,
+      "samples": [
+        {
+          "label": "courtyard west asphalt",
+          "positionMC": [
+            161.6338435757165,
+            -110.934215332794
+          ],
+          "channelsRGB": [
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "label": "courtyard east asphalt",
+          "positionMC": [
+            204.1489809757828,
+            -107.5
+          ],
+          "channelsRGB": [
+            0,
+            0,
+            255
+          ]
+        }
+      ],
+      "baselineGeometryAndUVComparison": true,
+      "visualAcceptance": false
+    },
+    "geometryPreservation": {
+      "status": "PASS: all render/collision inputs compared with frozen67; only two ground textures change, with identical vertex/UV bytes",
+      "comparedInputs": 605,
+      "changedInputs": [
+        "ground-698300-5349300.ect",
+        "ground-698400-5349300.ect"
+      ],
+      "unchangedManifestTileRecords": 422,
+      "terrainGuideAndPhotoFacadePlanUnchanged": true
+    },
+    "maskScope": {
+      "status": "PASS: material atlas changes confined to courtyard patches plus boundary texel footprint",
+      "changedPixels": 36627,
+      "atlasPixels": 16777216
+    },
+    "nativePlan": {
+      "cameraViews": 12,
+      "standingChecks": 9,
+      "sourceSaveFiles": 75
+    },
+    "nativeStatus": "FAIL: native walking check: Probe 3 standing Y=67.0, mesh Y=64.00350978356846, onGround=true, horizontal error=0.0",
+    "artifact": {
+      "status": "PASS: exact packaged manifest, all render tiles, courtyard sources/validation and material mask; compiled classes identical to67",
+      "artifactSha256": "777a5239d9bc773b52c27fa65ed19a49e9de65c61681a085825e704c164489cc",
+      "rendererSourceFingerprint": "90e19b6f73e953f9",
+      "renderTiles": 422,
+      "unchangedClasses": 138
+    },
+    "nativeReview": {
+      "status": "FAIL: north entrance walking control; visual improvement remains incomplete",
+      "nativeExitCode": 1,
+      "cameraViews": 12,
+      "plannedStandingChecks": 9,
+      "completedStandingChecks": 3,
+      "reviewedImages": 22,
+      "imageBreakdown": {
+        "main": 12,
+        "reflection": 6,
+        "walking": 3,
+        "failure": 1
+      },
+      "failure": {
+        "probe": 3,
+        "control": {
+          "label": "north walk standing",
+          "target": [
+            176.15,
+            64.00350978356846,
+            -115.71
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "tile": 1000000027,
+          "part": 0,
+          "dropHeight": 3,
+          "supportHeight": 64.00350978356846,
+          "requireBodyClearance": true,
+          "look": [
+            -100,
+            12
+          ]
+        },
+        "serverPosition": "(176.15, 67.0, -115.71)",
+        "horizontalError": 0.0,
+        "bodyClear": false,
+        "supportExpectedY": 64.00350978356846,
+        "velocity": "(0.0, -0.0784000015258789, 0.0)",
+        "onGround": true,
+        "flying": false,
+        "collisionAligned": true,
+        "supportBlocks": [
+          {
+            "position": "175, 65, -117",
+            "state": "Block{minecraft:air}"
+          },
+          {
+            "position": "175, 66, -117",
+            "state": "Block{minecraft:air}"
+          },
+          {
+            "position": "175, 67, -117",
+            "state": "Block{earthcraft:map_plaster}[campus_height=16]"
+          },
+          {
+            "position": "175, 65, -116",
+            "state": "Block{minecraft:air}"
+          },
+          {
+            "position": "175, 66, -116",
+            "state": "Block{minecraft:air}"
+          },
+          {
+            "position": "175, 67, -116",
+            "state": "Block{minecraft:air}"
+          },
+          {
+            "position": "176, 65, -117",
+            "state": "Block{earthcraft:map_plaster}[campus_height=16]"
+          },
+          {
+            "position": "176, 66, -117",
+            "state": "Block{earthcraft:map_plaster}[campus_height=16]"
+          },
+          {
+            "position": "176, 67, -117",
+            "state": "Block{earthcraft:map_stone}[campus_height=16]"
+          },
+          {
+            "position": "176, 65, -116",
+            "state": "Block{minecraft:air}"
+          },
+          {
+            "position": "176, 66, -116",
+            "state": "Block{minecraft:air}"
+          },
+          {
+            "position": "176, 67, -116",
+            "state": "Block{minecraft:air}"
+          }
+        ],
+        "capture": "campus-mlz-ground-candidate-68-walking-failure.png",
+        "clientPosition": "(176.15, 67.0, -115.71)"
+      },
+      "observations": [
+        "The courtyard lane now shows asphalt with an entrance paving strip and grass instead of flattened aerial vehicles and shadows.",
+        "The north walk probe stops at Y67.0 above visible Y64.00351; coarse map-plaster wall cells intersect the player body.",
+        "A source-image strip remains beside the southern building; the fixed native ray falls outside the conservative surface domain.",
+        "The east seam camera exposes coarse source geometry toward the reactor building. The reactor, surrounding objects, facade detail and wider vegetation still need work."
+      ],
+      "preservation": {
+        "sourceMensa67Unchanged": 75,
+        "activeV74JournalAddedChunks": 25,
+        "priorAlignmentJournalsUnchanged": true,
+        "inventoryAndExperienceUnchanged": true,
+        "originalSavesUnchanged": 121,
+        "previewSavesUnchanged": 121,
+        "previewSettingsUnchanged": 4
+      },
+      "visualAcceptance": false
+    }
+  },
+  "boundaryCandidate69": {
+    "sourceValidation": {
+      "status": "PASS: raw source imagery retained outside bounded courtyard; building exclusions, mask controls and provenance verified",
+      "manifestSha256": "abd562b77d6455a4eded19cc2fed641c7fdae8ea9f2551e90ac62ffc031a0300",
+      "validatorSha256": "0e9f160cac831f5d0fc415d97bbb56644790a0577888263116ec03f2556ccd67",
+      "sourceSha256": "20f02f1102b0fee6ed6bd9a48617c2a820d53781022e30a500139594bb48552c",
+      "generatorSha256": "86676253dc64dc0f5ca9dfded1427c058d0383cc024ea0c0955c7d76f9d9ab1b",
+      "maskSha256": "2c2f7b4d7ff6de9e3fb88192f89a0d2184e4bd98672b9ffe3142e5d38a82d6f6",
+      "tileSha256": {
+        "ground-698300-5349300.ect": "24bb40a11ea67f3f9d54fedb8b4ad0fc91ce907f449f79fc13b570e5b144e920",
+        "ground-698400-5349300.ect": "7f5ee2c4508e4e5cc39248de9d13465b1b520bef7ebbc585e2f8f8f0eaa620da"
+      },
+      "changedPixelsAgainstRawDOP": {
+        "ground-698300-5349300.ect": 16225,
+        "ground-698400-5349300.ect": 10311
+      },
+      "buildingOverlapSquareMetres": 0.0,
+      "samples": [
+        {
+          "label": "courtyard west asphalt",
+          "positionMC": [
+            161.6338435757165,
+            -110.934215332794
+          ],
+          "channelsRGB": [
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "label": "courtyard east asphalt",
+          "positionMC": [
+            204.1489809757828,
+            -107.5
+          ],
+          "channelsRGB": [
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "label": "south grass verge at surveyed wall",
+          "positionMC": [
+            174.4130611098975,
+            -99.77949185230975
+          ],
+          "channelsRGB": [
+            255,
+            0,
+            0
+          ]
+        }
+      ],
+      "baselineGeometryAndUVComparison": true,
+      "visualAcceptance": false
+    },
+    "diagnosis": {
+      "sourceCamera": "south lawn verge",
+      "screen": [
+        0.75,
+        0.55
+      ],
+      "pointMC": [
+        174.4130611098975,
+        64.16262015493858,
+        -99.77949185230975
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "assignedMaterials": [],
+      "diagnosis": "The visible ground residue lies outside the conservative courtyard domain, beside the surveyed south building. Expand the domain inward to the survey footprint exclusion and carry the existing grass verge to the wall."
+    },
+    "nativeStatus": "NOT RUN: retains known north-walk collision obstruction",
+    "artifact": {
+      "sha256": "685ad0d98b893179c92ed4384a9fc5406c922e342b2f3cb432acb02fde6465e1",
+      "rendererSourceFingerprint": "04ec2459599dc665",
+      "status": "PACKAGED: source checks and compilation passed; known collision obstruction retained"
+    }
+  },
+  "collisionDraft70": {
+    "reproduction": {
+      "status": "PASS: reproduced native68 obstruction and cleared it with existing fine solid profiles at both datums; visible wall still collides",
+      "results": [
+        {
+          "variant": "candidate69-coarse",
+          "shift": 0,
+          "bodyBlockers": 7,
+          "visibleWallCollisionCells": 2
+        },
+        {
+          "variant": "candidate69-coarse",
+          "shift": 2,
+          "bodyBlockers": 7,
+          "visibleWallCollisionCells": 2
+        },
+        {
+          "variant": "fine-draft",
+          "shift": 0,
+          "bodyBlockers": 0,
+          "visibleWallCollisionCells": 2
+        },
+        {
+          "variant": "fine-draft",
+          "shift": 2,
+          "bodyBlockers": 0,
+          "visibleWallCollisionCells": 2
+        }
+      ],
+      "nativeStatus": "NOT RUN",
+      "qualification": "Draft metadata only; requires source integration, migration version, broader boundary checks and packaged native verification."
+    },
+    "route": {
+      "status": "PASS: all nine native standing/body controls at both datums, with retained collision on all three MLZ buildings",
+      "results": [
+        {
+          "label": "mlz courtyard standing",
+          "shift": 0,
+          "standingY": 63.875,
+          "expected": 63.89908177890647,
+          "residual": -0.024081778906470674,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard middle standing",
+          "shift": 0,
+          "standingY": 64,
+          "expected": 63.986456351701136,
+          "residual": 0.013543648298863786,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard east standing",
+          "shift": 0,
+          "standingY": 63.9375,
+          "expected": 63.92713895043762,
+          "residual": 0.010361049562376934,
+          "bodyClear": true
+        },
+        {
+          "label": "north walk standing",
+          "shift": 0,
+          "standingY": 64.0625,
+          "expected": 64.00350978356846,
+          "residual": 0.05899021643153901,
+          "bodyClear": true
+        },
+        {
+          "label": "lawn verge standing",
+          "shift": 0,
+          "standingY": 64.125,
+          "expected": 64.11992968605503,
+          "residual": 0.0050703139449694845,
+          "bodyClear": true
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41077040156559,
+          "residual": 0.02672959843441447,
+          "bodyClear": true
+        },
+        {
+          "label": "final ground standing",
+          "shift": 0,
+          "standingY": 64.8125,
+          "expected": 64.78427547040971,
+          "residual": 0.02822452959028965,
+          "bodyClear": true
+        },
+        {
+          "label": "cos forecourt standing",
+          "shift": 0,
+          "standingY": 63.8125,
+          "expected": 63.79127051074315,
+          "residual": 0.021229489256846534,
+          "bodyClear": true
+        },
+        {
+          "label": "promenade lawn path standing",
+          "shift": 0,
+          "standingY": 65.375,
+          "expected": 65.27548960545175,
+          "residual": 0.09951039454824695,
+          "bodyClear": true
+        },
+        {
+          "label": "mlz courtyard standing",
+          "shift": 2,
+          "standingY": 65.875,
+          "expected": 65.89908177890646,
+          "residual": -0.02408177890646357,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard middle standing",
+          "shift": 2,
+          "standingY": 66,
+          "expected": 65.98645635170114,
+          "residual": 0.013543648298863786,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard east standing",
+          "shift": 2,
+          "standingY": 65.9375,
+          "expected": 65.92713895043762,
+          "residual": 0.010361049562376934,
+          "bodyClear": true
+        },
+        {
+          "label": "north walk standing",
+          "shift": 2,
+          "standingY": 66.0625,
+          "expected": 66.00350978356846,
+          "residual": 0.05899021643153901,
+          "bodyClear": true
+        },
+        {
+          "label": "lawn verge standing",
+          "shift": 2,
+          "standingY": 66.125,
+          "expected": 66.11992968605503,
+          "residual": 0.0050703139449694845,
+          "bodyClear": true
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41077040156559,
+          "residual": 0.02672959843441447,
+          "bodyClear": true
+        },
+        {
+          "label": "final ground standing",
+          "shift": 2,
+          "standingY": 66.8125,
+          "expected": 66.78427547040971,
+          "residual": 0.02822452959028965,
+          "bodyClear": true
+        },
+        {
+          "label": "cos forecourt standing",
+          "shift": 2,
+          "standingY": 65.8125,
+          "expected": 65.79127051074315,
+          "residual": 0.02122948925685364,
+          "bodyClear": true
+        },
+        {
+          "label": "promenade lawn path standing",
+          "shift": 2,
+          "standingY": 67.375,
+          "expected": 67.27548960545175,
+          "residual": 0.09951039454824695,
+          "bodyClear": true
+        }
+      ],
+      "wallControls": [
+        {
+          "file": "DEBY_LOD2_108180785-mlz-exterior.ect",
+          "point": [
+            165.79952494303384,
+            65.06857045491536,
+            -118.56834411621094
+          ]
+        },
+        {
+          "file": "DEBY_LOD2_108180786-mlz-exterior.ect",
+          "point": [
+            203.0932413736979,
+            67.14764149983723,
+            -78.28866322835286
+          ]
+        },
+        {
+          "file": "DEBY_LOD2_108180787-mlz-exterior.ect",
+          "point": [
+            211.80317179361978,
+            65.16928354899089,
+            -91.07178497314453
+          ]
+        }
+      ],
+      "qualification": "Actual packaged service and sparse shapes. Native migration, walking and visual checks remain required."
+    },
+    "status": "Draft metadata only; integration and packaged native test pending"
+  },
+  "candidate70": {
+    "sourceValidation": {
+      "status": "PASS: raw source imagery retained outside bounded courtyard; building exclusions, mask controls and provenance verified",
+      "manifestSha256": "97941ace0e597cc89b6d177ba6ea0a26c3949bf054d9f8129d5a501b8a4f747b",
+      "validatorSha256": "0e9f160cac831f5d0fc415d97bbb56644790a0577888263116ec03f2556ccd67",
+      "sourceSha256": "20f02f1102b0fee6ed6bd9a48617c2a820d53781022e30a500139594bb48552c",
+      "generatorSha256": "86676253dc64dc0f5ca9dfded1427c058d0383cc024ea0c0955c7d76f9d9ab1b",
+      "maskSha256": "2c2f7b4d7ff6de9e3fb88192f89a0d2184e4bd98672b9ffe3142e5d38a82d6f6",
+      "tileSha256": {
+        "ground-698300-5349300.ect": "24bb40a11ea67f3f9d54fedb8b4ad0fc91ce907f449f79fc13b570e5b144e920",
+        "ground-698400-5349300.ect": "7f5ee2c4508e4e5cc39248de9d13465b1b520bef7ebbc585e2f8f8f0eaa620da"
+      },
+      "changedPixelsAgainstRawDOP": {
+        "ground-698300-5349300.ect": 16225,
+        "ground-698400-5349300.ect": 10311
+      },
+      "buildingOverlapSquareMetres": 0.0,
+      "samples": [
+        {
+          "label": "courtyard west asphalt",
+          "positionMC": [
+            161.6338435757165,
+            -110.934215332794
+          ],
+          "channelsRGB": [
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "label": "courtyard east asphalt",
+          "positionMC": [
+            204.1489809757828,
+            -107.5
+          ],
+          "channelsRGB": [
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "label": "south grass verge at surveyed wall",
+          "positionMC": [
+            174.4130611098975,
+            -99.77949185230975
+          ],
+          "channelsRGB": [
+            255,
+            0,
+            0
+          ]
+        }
+      ],
+      "baselineGeometryAndUVComparison": true,
+      "visualAcceptance": false
+    },
+    "geometryPreservation": {
+      "status": "PASS: all422 render meshes/pixels and every photographic roof/collision file identical to69; only three MLZ tile records gain fine material profiles",
+      "changedTileRecords": [
+        "DEBY_LOD2_108180785-mlz-exterior.ect",
+        "DEBY_LOD2_108180786-mlz-exterior.ect",
+        "DEBY_LOD2_108180787-mlz-exterior.ect"
+      ],
+      "terrainGuideReplacementsAndPhotographicPlanUnchanged": true
+    },
+    "packagedServiceRoute": {
+      "status": "PASS: all nine native standing/body controls at both datums, with retained collision on all three MLZ buildings",
+      "results": [
+        {
+          "label": "mlz courtyard standing",
+          "shift": 0,
+          "standingY": 63.875,
+          "expected": 63.89908177890647,
+          "residual": -0.024081778906470674,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard middle standing",
+          "shift": 0,
+          "standingY": 64,
+          "expected": 63.986456351701136,
+          "residual": 0.013543648298863786,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard east standing",
+          "shift": 0,
+          "standingY": 63.9375,
+          "expected": 63.92713895043762,
+          "residual": 0.010361049562376934,
+          "bodyClear": true
+        },
+        {
+          "label": "north walk standing",
+          "shift": 0,
+          "standingY": 64.0625,
+          "expected": 64.00350978356846,
+          "residual": 0.05899021643153901,
+          "bodyClear": true
+        },
+        {
+          "label": "lawn verge standing",
+          "shift": 0,
+          "standingY": 64.125,
+          "expected": 64.11992968605503,
+          "residual": 0.0050703139449694845,
+          "bodyClear": true
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 0,
+          "standingY": 67.4375,
+          "expected": 67.41077040156559,
+          "residual": 0.02672959843441447,
+          "bodyClear": true
+        },
+        {
+          "label": "final ground standing",
+          "shift": 0,
+          "standingY": 64.8125,
+          "expected": 64.78427547040971,
+          "residual": 0.02822452959028965,
+          "bodyClear": true
+        },
+        {
+          "label": "cos forecourt standing",
+          "shift": 0,
+          "standingY": 63.8125,
+          "expected": 63.79127051074315,
+          "residual": 0.021229489256846534,
+          "bodyClear": true
+        },
+        {
+          "label": "promenade lawn path standing",
+          "shift": 0,
+          "standingY": 65.375,
+          "expected": 65.27548960545175,
+          "residual": 0.09951039454824695,
+          "bodyClear": true
+        },
+        {
+          "label": "mlz courtyard standing",
+          "shift": 2,
+          "standingY": 65.875,
+          "expected": 65.89908177890646,
+          "residual": -0.02408177890646357,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard middle standing",
+          "shift": 2,
+          "standingY": 66,
+          "expected": 65.98645635170114,
+          "residual": 0.013543648298863786,
+          "bodyClear": true
+        },
+        {
+          "label": "courtyard east standing",
+          "shift": 2,
+          "standingY": 65.9375,
+          "expected": 65.92713895043762,
+          "residual": 0.010361049562376934,
+          "bodyClear": true
+        },
+        {
+          "label": "north walk standing",
+          "shift": 2,
+          "standingY": 66.0625,
+          "expected": 66.00350978356846,
+          "residual": 0.05899021643153901,
+          "bodyClear": true
+        },
+        {
+          "label": "lawn verge standing",
+          "shift": 2,
+          "standingY": 66.125,
+          "expected": 66.11992968605503,
+          "residual": 0.0050703139449694845,
+          "bodyClear": true
+        },
+        {
+          "label": "terrace middle standing",
+          "shift": 2,
+          "standingY": 69.4375,
+          "expected": 69.41077040156559,
+          "residual": 0.02672959843441447,
+          "bodyClear": true
+        },
+        {
+          "label": "final ground standing",
+          "shift": 2,
+          "standingY": 66.8125,
+          "expected": 66.78427547040971,
+          "residual": 0.02822452959028965,
+          "bodyClear": true
+        },
+        {
+          "label": "cos forecourt standing",
+          "shift": 2,
+          "standingY": 65.8125,
+          "expected": 65.79127051074315,
+          "residual": 0.02122948925685364,
+          "bodyClear": true
+        },
+        {
+          "label": "promenade lawn path standing",
+          "shift": 2,
+          "standingY": 67.375,
+          "expected": 67.27548960545175,
+          "residual": 0.09951039454824695,
+          "bodyClear": true
+        }
+      ],
+      "wallControls": [
+        {
+          "file": "DEBY_LOD2_108180785-mlz-exterior.ect",
+          "point": [
+            165.79952494303384,
+            65.06857045491536,
+            -118.56834411621094
+          ]
+        },
+        {
+          "file": "DEBY_LOD2_108180786-mlz-exterior.ect",
+          "point": [
+            203.0932413736979,
+            67.14764149983723,
+            -78.28866322835286
+          ]
+        },
+        {
+          "file": "DEBY_LOD2_108180787-mlz-exterior.ect",
+          "point": [
+            211.80317179361978,
+            65.16928354899089,
+            -91.07178497314453
+          ]
+        }
+      ],
+      "qualification": "Actual packaged service and sparse shapes. Native migration, walking and visual checks remain required."
+    },
+    "serviceTestsPassed": 45,
+    "alignmentVersion": 75,
+    "nativeStatus": "PASS: all12 cameras and nine standing/body checks after v75 migration",
+    "sourceSaveFiles": 78,
+    "visualAcceptance": false,
+    "artifact": {
+      "status": "PASS: exact packaged manifest, all render tiles, courtyard sources/validation and material mask; only collision alignment class changes from69",
+      "artifactSha256": "ce32c60d6a042cfb7cc25fe868619ab79b4f92e0331d652bb61cdd32ed7485f4",
+      "rendererSourceFingerprint": "c2128a6fa8f23663",
+      "renderTiles": 422,
+      "changedClasses": [
+        "dev/realworldmc/CampusCollision.class"
+      ],
+      "alignmentVersion": 75
+    },
+    "nativeReview": {
+      "status": "PASS: native standing, body clearance and migration; broader visual acceptance remains false",
+      "nativeExitCode": 0,
+      "cameraViews": 12,
+      "standingChecks": 9,
+      "reviewedImages": 27,
+      "imageBreakdown": {
+        "main": 12,
+        "reflection": 6,
+        "walking": 9
+      },
+      "maximumStandingResidualMetres": 0.09951039454824695,
+      "northWalk": {
+        "label": "north walk standing",
+        "target": [
+          176.15,
+          64.00350978356846,
+          -115.71
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.00350978356846,
+        "requireBodyClearance": true,
+        "look": [
+          -100,
+          12
+        ],
+        "standingY": 64.0625,
+        "supportExpectedY": 64.00350978356846,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-mlz-ground-candidate-70-walk-3.png",
+        "clientPosition": "(176.15, 64.0625, -115.71)"
+      },
+      "observations": [
+        "The lane has distinct asphalt, entrance paving and lawn surfaces; former flattened aerial vehicles and shadows are removed inside the declared patch.",
+        "The corrected south grass verge reaches the surveyed wall and removes the previously observed source-image residue.",
+        "The unchanged failing north-walk probe now stands at64.0625m with clear body space; the previous67m obstruction is resolved.",
+        "Aerial and both-direction ground views retain the surveyed buildings and courtyard layout.",
+        "The east approach still exposes coarse source geometry and the Atom-Ei shell. Some neighboring paving, objects, facade details and wider vegetation remain visibly unfinished."
+      ],
+      "preservation": {
+        "sourceCandidate68Unchanged": 78,
+        "priorAlignmentJournalsUnchanged": true,
+        "newV75AlignedChunks": 147,
+        "inventoryAndExperienceUnchanged": true,
+        "originalSavesUnchanged": 121,
+        "previewSavesUnchanged": 121,
+        "previewSettingsUnchanged": 4
+      },
+      "visualAcceptance": false
+    }
+  },
+  "installedPreview": "dev22 unchanged",
+  "visualAcceptance": false,
+  "matchedNativeScreenshots": [
+    {
+      "file": "docs/screenshots/mlz-courtyard-ground-before.jpg",
+      "sourceSha256": "9c4b5099cc0d049a08a0bd50a877281ddd7bd5037cb4c8f23b58bde30d31472c",
+      "sha256": "56504086b63719e14d54af8eab37d5732d1e2da236e3d0e8210023c7d44a690b"
+    },
+    {
+      "file": "docs/screenshots/mlz-courtyard-ground-after.jpg",
+      "sourceSha256": "588f779077bda41114a4480c9cb663f5570166a19c29dc3d2e2c2b24eb536908",
+      "sha256": "740ad366298290722fe89c33dbecfaa596b5804e06af4b4b11d17252a8a9d795"
+    }
+  ]
+}

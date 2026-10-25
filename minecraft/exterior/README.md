@@ -51,7 +51,7 @@ python3 -m venv .venv-exterior
 .venv-exterior/bin/python scripts/test_exterior_ground_extension.py
 .venv-exterior/bin/python scripts/validate-terrain.py
 .venv-exterior/bin/python scripts/validate-ground-surfaces.py
-for site in physics-site physics-library physics-container p1-complex physics-woodland physics-new-laboratory physics-laboratory-site physics-ii pinned-water physics-wsi physics-znn riverbank courtyard-ground north-ground physics-znn-west physics-cala; do
+for site in physics-site physics-library physics-container p1-complex physics-woodland physics-new-laboratory physics-laboratory-site physics-ii pinned-water physics-wsi physics-znn riverbank courtyard-ground north-ground physics-znn-west physics-cala physics-lmu lmu-courtyard lmu-east mensa-terrace mlz-courtyard-ground; do
   .venv-exterior/bin/python "scripts/validate-$site.py" || exit 1
 done
 python3 scripts/validate-exterior.py
@@ -97,3 +97,14 @@ The LMU east service building and adjoining mapped lawn/access paths use `physic
 ```
 
 Packaging and matched native views are required before accepting this addition.
+
+
+### MLZ courtyard surface development
+
+`mlz-courtyard-ground.json` defines the bounded asphalt lane, entrance walk and grass patches between UYW and UYL. The generator filters existing CC0 material scans to the 20 cm terrain-texture resolution and updates the mapped surface mask for walking-height detail. Existing terrain vertices, UVs and collision are retained. The official exterior references establish the surface types; their precise edges and material appearance remain qualified estimates.
+
+Run `scripts/validate-mlz-courtyard-ground.py` with the geodata Python environment after building. It compares changed pixels against the original BVV orthophoto, checks building exclusions and native ray controls, and verifies provenance. Optional `--baseline /path/to/prior/exterior` additionally compares the complete vertex/UV bytes. Native visual checks use `checks/mlz-courtyard-ground.json`.
+
+The MLZ native wall profiles use the existing stone/plaster collision packet and block states. `scripts/test-exterior-mlz-collision.mjs <extracted-service-directory> [exterior-data-directory]` checks all courtyard route supports, full player-body clearance and retained wall collision at both save datums. Native validation must also confirm migration from earlier coarse wall cells; source checks alone do not establish a playable route.
+
+Candidate70 completes the12-view/nine-standing native check, including migration from the failed coarse-wall fixture. The [validation record](mlz-courtyard-ground-development-validation.json) preserves the earlier failure and remaining visual limitations. Matched screenshots: [before](../../docs/screenshots/mlz-courtyard-ground-before.jpg) · [after](../../docs/screenshots/mlz-courtyard-ground-after.jpg). This is development evidence; the installed preview remains unchanged.

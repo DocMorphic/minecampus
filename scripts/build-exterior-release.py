@@ -43,6 +43,16 @@ for path,key in [(SOURCE/'promenade-paths.json','sourceSha256'),(DATA/'promenade
  if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['promenade'][key]:raise SystemExit('Promenade provenance mismatch: '+path.name)
 for path,key in [(SOURCE/'crosspaths.json','sourceSha256'),(DATA/'crosspath-surfaces.geojson','derivedSha256')]:
  if hashlib.sha256(path.read_bytes()).hexdigest()!=surface['crosspaths'][key]:raise SystemExit('Cross-path provenance mismatch: '+path.name)
+mlz_ground=json.loads((DATA/'manifest.json').read_text())['architecture']['mlzCourtyardGround']
+for path,key in [(SOURCE/mlz_ground['sourceFile'],'sourceSha256'),(ROOT/mlz_ground['generatorFile'],'generatorSha256'),(SOURCE/mlz_ground['referenceFile'],'referenceSha256'),(DATA/mlz_ground['derivedFile'],'derivedSha256')]:assert digest(path)==mlz_ground[key]
+mlz_ground_check=json.loads((DATA/'mlz-courtyard-ground-validation.json').read_text())
+assert mlz_ground_check['status'].startswith('PASS:')
+assert mlz_ground_check['manifestSha256']==digest(DATA/'manifest.json')
+assert mlz_ground_check['validatorSha256']==digest(ROOT/'scripts/validate-mlz-courtyard-ground.py')
+assert mlz_ground_check['maskSha256']==surface['maskSha256']==mlz_ground['maskSha256']
+assert mlz_ground_check['sourceSha256']==mlz_ground['sourceSha256'] and mlz_ground_check['generatorSha256']==mlz_ground['generatorSha256']
+for name,info in mlz_ground['tiles'].items():assert digest(DATA/name)==info['sha256']==mlz_ground_check['tileSha256'][name]
+for name,value in mlz_ground['materialHashes'].items():assert digest(SOURCE/'assets/textures/campus'/name)==value
 court=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoCourt']
 assert hashlib.sha256((SOURCE/court['sourceFile']).read_bytes()).hexdigest()==court['sourceSha256']
 facade=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoFacade']
@@ -53,6 +63,12 @@ ramps=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoRam
 assert hashlib.sha256((SOURCE/ramps['sourceFile']).read_bytes()).hexdigest()==ramps['sourceSha256']
 mlz=json.loads((DATA/'manifest.json').read_text())['architecture']['mlzExteriors']
 assert hashlib.sha256((SOURCE/mlz['sourceFile']).read_bytes()).hexdigest()==mlz['sourceSha256']
+mlz_spec=json.loads((SOURCE/mlz['sourceFile']).read_text())
+assert mlz_spec['fineCollisionMaterials']==[6,4,4,4,4]
+mlz_tiles=[t for t in json.loads((DATA/'manifest.json').read_text())['tiles']if t.get('profile')=='mlz-exterior']
+assert len(mlz_tiles)==3
+for tile in mlz_tiles:assert tile['fineCollisionMaterials']==mlz_spec['fineCollisionMaterials']
+
 siemensbau=json.loads((DATA/'manifest.json').read_text())['architecture']['siemensbauExterior']
 assert hashlib.sha256((SOURCE/siemensbau['sourceFile']).read_bytes()).hexdigest()==siemensbau['sourceSha256']
 rcm=json.loads((DATA/'manifest.json').read_text())['architecture']['rcmExterior']
@@ -746,6 +762,9 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/galileo-facade-reference.json',(SOURCE/'photos/galileo-facade-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/galileo-frontage-grade.json',(SOURCE/'galileo-frontage-grade.json').read_bytes())
   write(target,'src/minecampus-exterior/mlz-exteriors.json',(SOURCE/'mlz-exteriors.json').read_bytes())
+  write(target,'src/minecampus-exterior/mlz-courtyard-ground.json',(SOURCE/'mlz-courtyard-ground.json').read_bytes())
+  for name in ['mlz-courtyard-ground-surfaces.json','mlz-courtyard-ground-validation.json']:
+   write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/siemensbau-5103.json',(SOURCE/'siemensbau-5103.json').read_bytes())
   write(target,'src/minecampus-exterior/rcm-technikum-5104.json',(SOURCE/'rcm-technikum-5104.json').read_bytes())
   write(target,'src/minecampus-exterior/rcm-technikum-reference.json',(SOURCE/'photos/rcm-technikum-reference.json').read_bytes())

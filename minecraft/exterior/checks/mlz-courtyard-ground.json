@@ -1,0 +1,616 @@
+{
+  "name": "mlz-courtyard-ground",
+  "purpose": "Compare source-informed courtyard asphalt, entrance walk and lawn against retained MLZ buildings and native support; inspect both entries and aerial layout. Recheck the south lawn/wall boundary found in68.",
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610
+  ],
+  "cameras": [
+    {
+      "label": "mlz courtyard",
+      "position": "153 65 -110 -100 -8",
+      "sourceRouteIndex": 53,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "courtyard east reverse",
+      "position": "204 65 -107.5 90 -4",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "courtyard middle east",
+      "position": "185.6 65 -107.7 -100 9",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "north entrance walk",
+      "position": "176.15 65 -115.71 -100 18",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "south lawn verge",
+      "position": "167.8 65 -103.2 -100 18",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true,
+          "expectedTile": 1000000027,
+          "expectedPart": 0
+        }
+      ]
+    },
+    {
+      "label": "courtyard aerial west",
+      "position": "145 100 -110 -95 52",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "courtyard east seam",
+      "position": "223 67 -104 90 20",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "courtyard west seam",
+      "position": "149 66 -109 -90 20",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "matched terrace south",
+      "position": "0 68 -238 180 0",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true,
+          "expectedTile": 1000030005,
+          "expectedPart": 1
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ],
+      "reflectionTile": 1000030005,
+      "reflectionBaseWeight": 0.28,
+      "reflectionPoint": [
+        0.4999979667807214,
+        69.61999988555908,
+        -249.128659
+      ],
+      "probes": [
+        {
+          "label": "observed front glass",
+          "target": [
+            0.4999979667807214,
+            69.61999988555908,
+            -249.128659
+          ],
+          "normal": [
+            -0.17526314652630112,
+            0.0,
+            0.9845216246836329
+          ],
+          "tile": 1000030005,
+          "part": 1
+        }
+      ]
+    },
+    {
+      "label": "final ground",
+      "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+      "sourceRouteIndex": 0,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "cos forecourt",
+      "position": "162 64 -270 -171 14",
+      "sourceRouteIndex": 18,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "promenade lawn path",
+      "position": "60 66 -100 180 10",
+      "sourceRouteIndex": 35,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "mlz courtyard standing",
+      "target": [
+        153.0,
+        63.89489918593911,
+        -110.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89908177890647,
+      "requireBodyClearance": true,
+      "look": [
+        -100.0,
+        -8.0
+      ],
+      "sourceRouteIndex": 53
+    },
+    {
+      "label": "courtyard middle standing",
+      "target": [
+        185.6,
+        63.986456351701136,
+        -107.7
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.986456351701136,
+      "requireBodyClearance": true,
+      "look": [
+        -100,
+        12
+      ]
+    },
+    {
+      "label": "courtyard east standing",
+      "target": [
+        204,
+        63.92713895043762,
+        -107.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000033,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.92713895043762,
+      "requireBodyClearance": true,
+      "look": [
+        -100,
+        12
+      ]
+    },
+    {
+      "label": "north walk standing",
+      "target": [
+        176.15,
+        64.00350978356846,
+        -115.71
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.00350978356846,
+      "requireBodyClearance": true,
+      "look": [
+        -100,
+        12
+      ]
+    },
+    {
+      "label": "lawn verge standing",
+      "target": [
+        167.8,
+        64.11992968605503,
+        -103.2
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.11992968605503,
+      "requireBodyClearance": true,
+      "look": [
+        -100,
+        12
+      ]
+    },
+    {
+      "label": "terrace middle standing",
+      "target": [
+        0,
+        67.41075533207204,
+        -241
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000050038,
+      "dropHeight": 3,
+      "supportHeight": 67.41077040156559,
+      "requireBodyClearance": true,
+      "look": [
+        180,
+        10
+      ],
+      "part": 27,
+      "maxSupportError": 0.063
+    },
+    {
+      "label": "final ground standing",
+      "target": [
+        39.961711,
+        64.76436506884981,
+        -62.90048
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000020,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.78427547040971,
+      "requireBodyClearance": true,
+      "look": [
+        -103.360657,
+        4.800037
+      ],
+      "sourceRouteIndex": 0
+    },
+    {
+      "label": "cos forecourt standing",
+      "target": [
+        162.0,
+        63.77841067108919,
+        -270.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000028,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.79127051074315,
+      "requireBodyClearance": true,
+      "look": [
+        -171.0,
+        14.0
+      ],
+      "sourceRouteIndex": 18
+    },
+    {
+      "label": "promenade lawn path standing",
+      "target": [
+        60.0,
+        65.14665459018774,
+        -100.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000021,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 65.27548960545175,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        10.0
+      ],
+      "sourceRouteIndex": 35
+    }
+  ],
+  "qualification": "Material boundaries and pale edging are source-informed estimates. Terrain and rendered buildings are unchanged. MLZ walls use existing fine collision profiles with v75 migration; the failed68 north-walk control is retained. Native migration, body clearance and visual review are required."
+}

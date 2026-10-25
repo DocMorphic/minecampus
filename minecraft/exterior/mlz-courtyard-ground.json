@@ -1,0 +1,123 @@
+{
+  "reference": "photos/galileo-east-neighbours-reference.json",
+  "qualification": "Bounded exterior surface reconstruction from the official state-building-office courtyard photograph, official FRM II/TUM video at 348 seconds, BVV DOP20 and surveyed building footprints. Asphalt and grass are visually identified; boundaries, pale edge strips and material appearance are estimates, not an as-built landscape survey. No interiors, vehicles or equipment are inferred from flattened image objects.",
+  "boundsEPSG25832": [
+    [
+      698361,
+      5349329.8
+    ],
+    [
+      698429,
+      5349320.1
+    ],
+    [
+      698426.6,
+      5349301.3
+    ],
+    [
+      698363,
+      5349310.4
+    ]
+  ],
+  "grassPatchesEPSG25832": [
+    [
+      [
+        698368.0,
+        5349315.0
+      ],
+      [
+        698388.5,
+        5349312.1
+      ],
+      [
+        698389.0,
+        5349305.2
+      ],
+      [
+        698367.5,
+        5349308.3
+      ]
+    ],
+    [
+      [
+        698402.4,
+        5349323.4
+      ],
+      [
+        698403.6,
+        5349330.8
+      ],
+      [
+        698424.9,
+        5349327.7
+      ],
+      [
+        698423.9,
+        5349320.3
+      ]
+    ]
+  ],
+  "northWalkEPSG25832": [
+    [
+      698369.7,
+      5349328.1
+    ],
+    [
+      698402.5,
+      5349323.4
+    ]
+  ],
+  "northWalkWidthMetres": 1.5,
+  "edgeWidthMetres": 0.14,
+  "buildingExclusionMetres": 0.03,
+  "materials": {
+    "asphalt": "asphalt_diff.png",
+    "paving": "concrete_diff.png",
+    "grass": "grass_diff.png"
+  },
+  "nativeControls": [
+    {
+      "label": "courtyard west asphalt",
+      "positionMC": [
+        161.6338435757165,
+        -110.934215332794
+      ],
+      "material": "asphalt"
+    },
+    {
+      "label": "courtyard east asphalt",
+      "positionMC": [
+        204.1489809757828,
+        -107.5
+      ],
+      "material": "asphalt"
+    },
+    {
+      "label": "south grass verge at surveyed wall",
+      "positionMC": [
+        174.4130611098975,
+        -99.77949185230975
+      ],
+      "material": "grass"
+    }
+  ],
+  "boundaryCorrection": {
+    "basis": "Completed68 native ground ray exposed an untreated strip between the courtyard envelope and the south building. Extend the declared envelope and grass polygon inward by 3m, then subtract the unchanged surveyed building footprint; no terrain or building movement.",
+    "nativeRay": {
+      "sourceCamera": "south lawn verge",
+      "screen": [
+        0.75,
+        0.55
+      ],
+      "pointMC": [
+        174.4130611098975,
+        64.16262015493858,
+        -99.77949185230975
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "assignedMaterials": [],
+      "diagnosis": "The visible ground residue lies outside the conservative courtyard domain, beside the surveyed south building. Expand the domain inward to the survey footprint exclusion and carry the existing grass verge to the wall."
+    }
+  }
+}

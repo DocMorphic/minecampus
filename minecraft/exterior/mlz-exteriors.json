@@ -1549,5 +1549,13 @@
       }
     ],
     "roofBasis": "Native diagnostic rays identified old roof fragments at Y=83.383 above the 81.119 lower body and Y=85.705 above the 84.998 higher body. Retire source fragments up to 3 m above each target body within the same neighbour-protected collar; surveyed roofs and other building footprints remain unchanged."
-  }
+  },
+  "fineCollisionMaterials": [
+    6,
+    4,
+    4,
+    4,
+    4
+  ],
+  "collisionQualification": "Use existing native horizontal sixteenth-block profiles for all five authored parts. The68 north entrance probe intersected a coarse full-cell wall beyond the visible facade. Preserve the exact render mesh and legacy roof collision; alignment migration must reapply only managed proxy cells and retain player edits."
 }

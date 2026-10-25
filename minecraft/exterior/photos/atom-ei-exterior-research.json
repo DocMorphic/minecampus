@@ -1,0 +1,119 @@
+{
+  "status": "Exterior research lead; no reconstruction implemented",
+  "observedProblem": "Candidate68 MLZ courtyard views show a coarse Atom-Ei shell and large source fragments near the east approach.",
+  "sources": [
+    {
+      "url": "https://www.frm2.tum.de/frm2/news-single-view/article/wer-ist-dem-atom-ei-aufs-dach-gestiegen/",
+      "date": "2015-06-08",
+      "facts": "Official TUM/FRM II maintenance account describes sheet-metal seams, vertical metal strips near the dome tip and a top cap about8m across."
+    },
+    {
+      "url": "https://portal.mytum.de/pressestelle/meldungen/news_article.2009-07-10.0969562837",
+      "date": "2009-07-10",
+      "facts": "Official TUM account identifies aluminium exterior panels and repairs intended to preserve the existing panel form."
+    },
+    {
+      "url": "https://www.wf-ib.de/de/ueber-uns/historie/1957-das-atom-ei-in-garching.html",
+      "facts": "The original construction company describes a30m-high ellipsoid with30m base diameter and aluminium cladding. These broad dimensions need reconciliation with the specific surveyed roof/body before modeling."
+    }
+  ],
+  "surveyCandidate": {
+    "id": "DEBY_LOD2_5284450",
+    "boundsMC": [
+      [
+        220.71653485722535,
+        63.923447343022175,
+        -121.94776767799058
+      ],
+      [
+        269.7822312662601,
+        94.54487253235955,
+        -72.88322310055095
+      ]
+    ],
+    "qualification": "Spatial and height match is a lead, not yet a verified building registration. The total surveyed envelope is wider than the stated dome base; separate lower structure and dome before fitting."
+  },
+  "nextChecks": [
+    "Read individual BVV roof/wall surfaces and register the official courtyard photo to the dome footprint.",
+    "Separate the dome from lower base/neighbor structures; use source-informed smooth curvature and panel seams only after registration.",
+    "Retire only source fragments proven to belong to that exterior; preserve neighboring buildings and terrain."
+  ],
+  "interiorsExcluded": true,
+  "surveyRoofAnalysis": {
+    "roofSurfaces": 158,
+    "wallSurfaces": 113,
+    "topCentreEPSG25832": [
+      698455.967,
+      5349308.644
+    ],
+    "upperRoofHeightBands": [
+      {
+        "heightDHHN2016": 479.91,
+        "uniqueVertices": 25,
+        "minimumRadiusMetres": 14.488216591740816,
+        "maximumRadiusMetres": 16.458791814510004
+      },
+      {
+        "heightDHHN2016": 479.974,
+        "uniqueVertices": 1,
+        "minimumRadiusMetres": 25.229446386898605,
+        "maximumRadiusMetres": 25.229446386898605
+      },
+      {
+        "heightDHHN2016": 480.007,
+        "uniqueVertices": 1,
+        "minimumRadiusMetres": 25.201458389835636,
+        "maximumRadiusMetres": 25.201458389835636
+      },
+      {
+        "heightDHHN2016": 480.029,
+        "uniqueVertices": 1,
+        "minimumRadiusMetres": 25.181112067919322,
+        "maximumRadiusMetres": 25.181112067919322
+      },
+      {
+        "heightDHHN2016": 480.04,
+        "uniqueVertices": 2,
+        "minimumRadiusMetres": 25.120819353360446,
+        "maximumRadiusMetres": 25.1479753652756
+      },
+      {
+        "heightDHHN2016": 486.355,
+        "uniqueVertices": 25,
+        "minimumRadiusMetres": 13.994850839238868,
+        "maximumRadiusMetres": 15.898283239947014
+      },
+      {
+        "heightDHHN2016": 492.36,
+        "uniqueVertices": 25,
+        "minimumRadiusMetres": 12.54725085452202,
+        "maximumRadiusMetres": 14.253616102458258
+      },
+      {
+        "heightDHHN2016": 497.517,
+        "uniqueVertices": 25,
+        "minimumRadiusMetres": 10.244421945766724,
+        "maximumRadiusMetres": 11.638546515817204
+      },
+      {
+        "heightDHHN2016": 501.474,
+        "uniqueVertices": 25,
+        "minimumRadiusMetres": 7.244108296163595,
+        "maximumRadiusMetres": 8.229395907255002
+      },
+      {
+        "heightDHHN2016": 503.962,
+        "uniqueVertices": 25,
+        "minimumRadiusMetres": 3.7496519842112015,
+        "maximumRadiusMetres": 4.259736728183858
+      },
+      {
+        "heightDHHN2016": 504.81,
+        "uniqueVertices": 1,
+        "minimumRadiusMetres": 0.0,
+        "maximumRadiusMetres": 0.0
+      }
+    ],
+    "qualification": "Direct statistics from BVV roof vertices above479.9m. Repeated height bands identify a separate curved dome above the wider base; varying radii require an elliptical fit, and isolated lower roof points must be separated. No fitted/reconstructed geometry has been built or visually registered yet."
+  }
+}

@@ -292,6 +292,8 @@ from exterior_physics_lmu_east import build as build_physics_lmu_east
 build_physics_lmu_east(globals())
 from exterior_mensa_terrace import build as build_mensa_terrace
 build_mensa_terrace(globals())
+from exterior_mlz_courtyard_ground import build as build_mlz_courtyard_ground
+build_mlz_courtyard_ground(globals())
 metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}
 for stale in ['galileo-facade-rectified.jpg']:
  if (OUT/stale).exists():(OUT/stale).unlink()

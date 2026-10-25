@@ -81,7 +81,7 @@ def build(ctx,bid,walls):
  parts.append(roof.tolist());textures.append(Image.frombytes('RGBA',(width,height),raw[48+count*20:]))
  assert all(parts),'Each MLZ body must contain wall, glazing, frame, service/entry and roof parts'
  vertices=np.concatenate([np.asarray(p)[:,:3]for p in parts]);name=bid+'-mlz-exterior.ect';(out/name).write_bytes(encode(list(zip(parts,textures))))
- meta['tiles'].append({'file':name,'kind':'reconstruction','profile':'mlz-exterior','alwaysVisible':True,'runtimeId':config['runtimeId'],'bounds':[vertices.min(0).tolist(),vertices.max(0).tolist()]})
+ meta['tiles'].append({'file':name,'kind':'reconstruction','profile':'mlz-exterior','fineCollisionMaterials':spec['fineCollisionMaterials'],'alwaysVisible':True,'runtimeId':config['runtimeId'],'bounds':[vertices.min(0).tolist(),vertices.max(0).tolist()]})
  grounds=[ctx['mc'](rings[0])for name,surfaces in ctx['buildings']if name==bid for typ,rings in surfaces if typ=='GroundSurface']
  foot=unary_union([Polygon(q[:,[0,2]])for q in grounds]).buffer(spec['sourceRetirement']['collarMetres'],join_style=2)
  neighbours=unary_union([Polygon(ctx['mc'](r[0])[:,[0,2]],[ctx['mc'](h)[:,[0,2]]for h in r[1:]]).buffer(0)for name,surfaces in ctx['buildings']if name not in spec['buildings']for typ,r in surfaces if typ=='GroundSurface']).buffer(spec['sourceRetirement']['neighbourGuardMetres'])
