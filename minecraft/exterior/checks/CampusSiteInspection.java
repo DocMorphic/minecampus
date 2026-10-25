@@ -311,6 +311,7 @@ public final class CampusSiteInspection {
         recordSourceTriangles(loaded,displayed,name.substring(0,name.length()-4));
         try (var image = Screenshot.takeScreenshot(mc.getMainRenderTarget())) { image.writeToFile(Path.of(name)); }
         var row = camera.deepCopy();
+        if(camera.has("materialControls"))row.add("gpuMaterialControls",CampusMaterialMaskCheck.check(mc,camera.getAsJsonObject("materialControls")));
         row.addProperty("capture", name); row.addProperty("playerPosition", mc.player.position().toString());
         row.addProperty("triangles", triangles); row.add("displayedIds", ids);
         row.addProperty("fps",mc.getFps());

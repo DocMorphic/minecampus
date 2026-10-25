@@ -114,6 +114,9 @@ vec2 laboratorySiteUv(vec2 position) { return vec2(position.x-336.0,-272.0-posit
 // BEGIN GENERATED PHYSICS II SITE MAPPING
 vec2 physicsIISiteUv(vec2 position) { return vec2(position.x-224.0,-272.0-position.y)/224.0; }
 // END GENERATED PHYSICS II SITE MAPPING
+// BEGIN GENERATED NORTH GROUND MAPPING
+vec2 northGroundUv(vec2 position) { return vec2(position.x-256.0,-304.0-position.y)/192.0; }
+// END GENERATED NORTH GROUND MAPPING
 void main() {
     vec3 planarRadiance=vec3(0); float planarWeight=0.;
     vec4 color=texture(Sampler0,texCoord0);
@@ -136,7 +139,8 @@ void main() {
     bool physicsHall=physicsRoof&&physicsRoofNormal.y>.2&&physicsRoofNormal.y<.97
         &&all(greaterThanEqual(worldPosition,vec3(352.68,65.93,-267.59)))
         &&all(lessThanEqual(worldPosition,vec3(374.17,73.14,-241.28)));
-    bool physicsIIGround=abs(MaterialDetail-24.0)<.1;
+    bool northGround=abs(MaterialDetail-25.0)<.1;
+    bool physicsIIGround=abs(MaterialDetail-24.0)<.1||northGround;
     bool laboratoryGround=abs(MaterialDetail-23.0)<.1;
     bool woodlandGround=abs(MaterialDetail-20.0)<.1;
     bool physicsGround=abs(MaterialDetail-19.0)<.1||woodlandGround||laboratoryGround||physicsIIGround;
@@ -161,7 +165,7 @@ void main() {
         vec3 mapped=surfaceMask.rgb;float soil=1.0-surfaceMask.a;float gravel=0.0;
         if(any(lessThan(surfaceUv,vec2(0)))||any(greaterThan(surfaceUv,vec2(1)))){mapped=vec3(0);soil=0.0;}
         if(physicsGround){
-            vec2 physicsUv=physicsIIGround?physicsIISiteUv(worldPosition.xz):laboratoryGround?laboratorySiteUv(worldPosition.xz):woodlandGround?woodlandGroundUv(worldPosition.xz):physicsGroundUv(worldPosition.xz);
+            vec2 physicsUv=northGround?northGroundUv(worldPosition.xz):physicsIIGround?physicsIISiteUv(worldPosition.xz):laboratoryGround?laboratorySiteUv(worldPosition.xz):woodlandGround?woodlandGroundUv(worldPosition.xz):physicsGroundUv(worldPosition.xz);
             if(all(greaterThanEqual(physicsUv,vec2(0)))&&all(lessThanEqual(physicsUv,vec2(1)))){
                 vec4 overlay=texture(Sampler6,physicsUv);
                 float blend=(woodlandGround||laboratoryGround||physicsIIGround)?1.0:physicsGroundBlend(worldPosition.xz),woodland=1.0-overlay.a;

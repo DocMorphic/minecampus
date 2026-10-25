@@ -230,6 +230,17 @@ assert restoration_check['manifestSha256']==digest(DATA/'manifest.json')
 assert restoration_check['policySha256']==restoration['sourceSha256']
 assert restoration_check['validatorSha256']==digest(ROOT/'scripts/validate-courtyard-ground.py')
 assert restoration_check['independentPolicyValidatorSha256']==digest(ROOT/'scripts/validate_ground_restoration.py')
+north=json.loads((DATA/'manifest.json').read_text())['northGroundMaterials']
+for key,folder in [('generator',ROOT),('classificationGenerator',ROOT),('source',SOURCE),('previousDerived',DATA),('derived',DATA),('mask',SOURCE)]:
+ assert digest(folder/north[key+'File'])==north[key+'Sha256']
+for name,value in north['coverageFiles'].items():assert digest(DATA/name)==value
+north_mapping=(SOURCE/'shaders/campus_ground.fsh').read_text().split('// BEGIN GENERATED NORTH GROUND MAPPING\n')[1].split('// END GENERATED NORTH GROUND MAPPING')[0]
+assert hashlib.sha256(north_mapping.encode()).hexdigest()==north['shaderMappingSha256']
+north_check=json.loads((DATA/'north-ground-validation.json').read_text())
+assert north_check['status'].startswith('PASS:')
+assert north_check['manifestSha256']==digest(DATA/'manifest.json')
+assert north_check['validatorSha256']==digest(ROOT/'scripts/validate-north-ground.py')
+assert north_check['maskSha256']==north['maskSha256']
 subprocess.run(['python3',str(ROOT/'scripts/validate-foliage-rendering.py'),'--directory',str(DATA)],env={**os.environ,'JAVA_HOME':args.java_home},check=True)
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
@@ -569,6 +580,7 @@ with zipfile.ZipFile(release) as original:
    if 'osmReference'in body:write(target,'src/minecampus-exterior/'+body['osmReference']['sourceFile'],(SOURCE/body['osmReference']['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['coverageFile'],(DATA/physics_ii['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+physics_ii['materialDerivedFile'],(DATA/physics_ii['materialDerivedFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+north['derivedFile'],(DATA/north['derivedFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+riverbank['sourceFile'],(SOURCE/riverbank['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+riverbank['coverageFile'],(DATA/riverbank['coverageFile']).read_bytes())
   for source in riverbank_spec['osm']:write(target,'src/minecampus-exterior/'+source['sourceFile'],(SOURCE/source['sourceFile']).read_bytes())

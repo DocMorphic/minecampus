@@ -194,3 +194,11 @@ The two eastern approaches have tree occlusion, and the narrow southern gap
 is a close surface check; use the additional elevated/close views when judging
 the full envelope. A captured camera or passing ray does not replace visual
 comparison with the baseline.
+
+A site-inspection camera may include `materialControls` with a resource `texture`,
+`bounds` (`left, bottom, right, top` in Minecraft X/Z), square texture `size`, and
+`points` containing `x`, `z`, and expected four-channel `rgba` bytes.
+`CampusMaterialMaskCheck` reads those pixels from the uploaded level-zero atlas
+and records `gpuMaterialControls` in that camera's result. This verifies uploaded
+classification pixels; the camera images and geometry probes remain necessary
+to establish their visible use on the intended ground meshes.

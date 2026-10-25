@@ -13,7 +13,7 @@ import org.lwjgl.opengl.EXTTextureFilterAnisotropic;
 
 /** Mipmapped CC0 micro-materials and ODbL land-cover maps, loaded locally. */
 public final class CampusMaterials {
-    private static final String[] NAMES={"concrete_diff","concrete_normal","grass_diff","grass_normal","ground_surfaces","brick_normal","asphalt_diff","asphalt_normal","soil_diff","soil_normal","physics_concrete_diff","physics_concrete_normal","physics_ground_surfaces","woodland_ground_surfaces","galvanized_diff","laboratory_site_ground_surfaces","physics_ii_ground_surfaces","gravel_diff","gravel_normal"};
+    private static final String[] NAMES={"concrete_diff","concrete_normal","grass_diff","grass_normal","ground_surfaces","brick_normal","asphalt_diff","asphalt_normal","soil_diff","soil_normal","physics_concrete_diff","physics_concrete_normal","physics_ground_surfaces","woodland_ground_surfaces","galvanized_diff","laboratory_site_ground_surfaces","physics_ii_ground_surfaces","gravel_diff","gravel_normal","north_ground_surfaces"};
     private static final int[] prepared=new int[NAMES.length];
     static { java.util.Arrays.fill(prepared,-1); }
     private static final int[] textureIds=new int[NAMES.length];
@@ -31,8 +31,8 @@ public final class CampusMaterials {
             var location=ResourceLocation.fromNamespaceAndPath("realworldmc","textures/campus/"+NAMES[i]+".png");
             int id=manager.getTexture(location).getId();
             if(prepared[i]!=id){
-                boolean atlas=i==4||i==12||i==13||i==15||i==16;
-                int maxLevel=i==4?12:(i==12||i==13?11:10);
+                boolean atlas=i==4||i==12||i==13||i==15||i==16||i==19;
+                int maxLevel=i==4?12:(i==12||i==13||i==19?11:10);
                 GlStateManager._bindTexture(id);
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D,GL12.GL_TEXTURE_MAX_LEVEL,maxLevel);
                 // Minecraft initially allocates these as level-zero textures.
@@ -75,10 +75,10 @@ public final class CampusMaterials {
     /** The woodland overlay shares the ground-only sampler, keeping old tiles exact. */
     public static void bindGround(int mode){
         if(groundMode==mode)return;
-        RenderSystem.setShaderTexture(6,textureIds[mode==4?16:mode==3?15:(mode==2?13:(mode==1?12:5))]);
-        // Physics II uses the soil units for its inferred gravel surface.
-        RenderSystem.setShaderTexture(9,textureIds[mode==4?17:8]);
-        RenderSystem.setShaderTexture(10,textureIds[mode==4?18:9]);
+        RenderSystem.setShaderTexture(6,textureIds[mode==5?19:mode==4?16:mode==3?15:(mode==2?13:(mode==1?12:5))]);
+        // Northern survey ground uses the soil units for inferred gravel.
+        RenderSystem.setShaderTexture(9,textureIds[mode==4||mode==5?17:8]);
+        RenderSystem.setShaderTexture(10,textureIds[mode==4||mode==5?18:9]);
         groundMode=mode;
     }
 }

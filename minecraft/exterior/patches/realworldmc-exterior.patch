@@ -81,8 +81,8 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				if (t.isEmpty(i)) continue;
 +                if(campus)CampusMaterials.bindConcrete(t.data.id==1_000_030_033&&(i==0||i==2||i==5)?2:((t.data.id==1_000_030_028||t.data.id==1_000_030_029||t.data.id==1_000_030_031||t.data.id==1_000_030_032)&&i==0?1:0));
 +                boolean physicsGround=campus&&surveyed;
-+                if(campus)CampusMaterials.bindGround(physicsGround?(t.data.id>=1_000_060_400&&t.data.id<1_000_060_500?4:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?3:t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?2:1):0);
-+                if(physicsGround)tileShader.safeGetUniform("MaterialDetail").set(t.data.id>=1_000_060_500&&t.data.id<1_000_060_800?1f:t.data.id>=1_000_060_400&&t.data.id<1_000_060_500?24f:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?23f:(t.data.id>=1_000_060_100&&t.data.id<=1_000_060_104)?15f:(t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?20f:19f));
++                if(campus)CampusMaterials.bindGround(physicsGround?(t.data.id>=1_000_060_400&&t.data.id<1_000_060_800?5:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?3:t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?2:1):0);
++                if(physicsGround)tileShader.safeGetUniform("MaterialDetail").set(t.data.id>=1_000_060_400&&t.data.id<1_000_060_800?25f:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?23f:(t.data.id>=1_000_060_100&&t.data.id<=1_000_060_104)?15f:(t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?20f:19f));
 +                if(campus && t.data.id>=1_000_000_100 && t.data.id<1_000_000_102)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==2?16f:9f));
 +                if(campus && t.data.id>=1_000_000_200 && t.data.id<1_000_000_203)
