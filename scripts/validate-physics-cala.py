@@ -91,7 +91,10 @@ new_files=rec['groundTiles'];new_parts=[decode(out/name)[0] for name in new_file
 assert all(np.cross(t[1]-t[0],t[2]-t[0])[1]>-1e-8 for t in new_tri)
 assert abs(region.area-rec['ground']['areaSquareMetres'])<.005
 old=[];search=region.buffer(spec['groundBlendMetres']+1)
-for tile in m['tiles']:
+# Generators append their tiles. Later LMU pavement is blended to CALA, and
+# must not retroactively become a reference input for CALA's own edge blend.
+ground_start=min(i for i,tile in enumerate(m['tiles']) if tile['file'] in new_files)
+for tile in m['tiles'][:ground_start]:
     if tile['kind']!='ground' or tile['file'] in new_files:continue
     lo,hi=tile['bounds']
     if not search.intersects(box(lo[0],lo[2],hi[0],hi[2])):continue

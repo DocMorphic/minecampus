@@ -156,7 +156,10 @@ for control in street_rays['controls']:
 assert all(np.cross(t[1]-t[0],t[2]-t[0])[1]>-1e-8 for t in new_tri)
 assert abs(region.area-rec['ground']['areaSquareMetres'])<.005
 old=[];search=region.buffer(spec['groundBlendMetres']+1)
-for tile in m['tiles']:
+# Reconstruct the inputs available when this generator appended its tiles;
+# subsequent extensions may join this ground, but cannot define its blend.
+ground_start=min(i for i,tile in enumerate(m['tiles']) if tile['file'] in new_files)
+for tile in m['tiles'][:ground_start]:
     if tile['kind']!='ground' or tile['file'] in new_files:continue
     lo,hi=tile['bounds']
     if not search.intersects(box(lo[0],lo[2],hi[0],hi[2])):continue
