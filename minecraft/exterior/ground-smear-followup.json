@@ -1,0 +1,90 @@
+{
+  "status": "DIAGNOSIS: three visible ground-smear samples have no mapped surface material",
+  "referenceArtifactSha256": "be68fe491e4cf3a397e1a6eaff9c93794025096fcc2c46c2b76a51f6ddbf06ac",
+  "maskSha256": "0a492d7c47ad8600a0ffa5acccf2f83aac04da7b9060d2cd14e75e2d5650ab93",
+  "samples": [
+    {
+      "cameraIndex": 10,
+      "label": "grs north",
+      "screen": [
+        0.5,
+        0.8
+      ],
+      "worldPoint": [
+        216.2395616718221,
+        63.75437108228538,
+        -335.007857420089
+      ],
+      "tile": 1000000035,
+      "part": 0,
+      "materialMaskPixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "cameraIndex": 22,
+      "label": "mlz courtyard",
+      "screen": [
+        0.5,
+        0.8
+      ],
+      "worldPoint": [
+        161.6338435757165,
+        64.01373070600559,
+        -110.934215332794
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "materialMaskPixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "cameraIndex": 23,
+      "label": "mlz east",
+      "screen": [
+        0.5,
+        0.8
+      ],
+      "worldPoint": [
+        204.1489809757828,
+        63.930764573767725,
+        -107.5
+      ],
+      "tile": 1000000033,
+      "part": 0,
+      "materialMaskPixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    }
+  ],
+  "grsReference": {
+    "source": {
+      "name": "32698_5349.tif",
+      "size": 65916935,
+      "sha256": "8a78e3fc301332e607e514b8bca545d64e3b1a956ecf02a723301b0982ab0dae",
+      "url": "https://download1.bayernwolke.de/a/dop20/data/32698_5349.tif"
+    },
+    "cropBoundsEPSG25832": [
+      698375,
+      5349475,
+      698490,
+      5349590
+    ],
+    "sampleEPSG25832": [
+      698418.4188463413,
+      5349545.767028206
+    ],
+    "observation": "The source orthophoto shows parked vehicles, yard objects and tree shadows north of the long GRS wing. Several objects are represented only by flattened aerial pixels in the current scene. The exact paving/aggregate type is not established by the aerial image.",
+    "qualification": "Diagnostic only. No new ground boundary, material assignment, vehicle reconstruction or geometry change has been made."
+  }
+}

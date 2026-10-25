@@ -1,5 +1,5 @@
 {
-  "status": "Candidate65 native complete; candidate66 packaged and native verification running",
+  "status": "PASS66: terrace paving and fractional supports verified in packaged Minecraft; wider visual acceptance false",
   "materialCandidate65": {
     "status": "PASS: native checks; visual acceptance false",
     "artifactSha256": "4d1dfaaf39e39b16fa6fd5c0ec01ed6b6c5667157d7f0c52d85c7ffa5ce7db97",
@@ -303,7 +303,7 @@
     },
     "retainedCentralControls": 22,
     "packageStatus": "PASS: twenty source validators, generic mesh checks, native compilation and exact embedded-artifact checks",
-    "nativeStatus": "RUNNING: ten cameras and seven standing checks in a68-file copy of completed65",
+    "nativeStatus": "PASS: ten cameras and seven standing checks, including three terrace checks with0.063m tolerance",
     "geometryPreservation": {
       "status": "PASS: frozen65 render tiles, roof files and facade plan retained; only terrace collision partition changes",
       "unchangedRenderInputs": 522,
@@ -366,7 +366,35 @@
         }
       ]
     },
-    "packagedCentralControls": 22
+    "packagedCentralControls": 22,
+    "nativeReview": {
+      "status": "PASS: stricter terrace native support, retained central controls and preservation; visual acceptance false",
+      "nativeExitCode": 0,
+      "cameraViews": 10,
+      "standingChecks": 7,
+      "reviewedImages": 21,
+      "imageBreakdown": {
+        "main": 10,
+        "reflection": 4,
+        "walking": 7
+      },
+      "maximumTerraceStandingResidualMetres": 0.027099025566528212,
+      "observations": [
+        "The terrace paving remains legible and the native standing eye height now follows its visible surface.",
+        "The same three terrace controls land at67.4375m with errors below0.028m, passing the tighter0.063m limit.",
+        "Dark generic glazing, coarse roof equipment, absent reference sculpture and edge details remain.",
+        "Retained central routes remain stable; MLZ courtyard still contains blurred aerial objects and shadows."
+      ],
+      "preservation": {
+        "sourceMensa65Unchanged": 68,
+        "priorAlignmentJournalsUnchanged": true,
+        "inventoryAndExperienceUnchanged": true,
+        "originalSavesUnchanged": 121,
+        "previewSavesUnchanged": 121,
+        "previewSettingsUnchanged": 4
+      },
+      "visualAcceptance": false
+    }
   },
   "installedPreview": "dev22 unchanged",
   "visualAcceptance": false

@@ -1,0 +1,62 @@
+{
+  "status": "PASS67: Mensa scene reflections and native standing checks verified; wider visual acceptance false",
+  "artifact": {
+    "status": "PASS: exact native solid/wood classes, material drops/tags, service modules, facade plan, manifest and all render tiles",
+    "artifactSha256": "ff577656ded9686acd28218b3895a43236cf9cb3ba8689882a47716aab3b250f",
+    "rendererSourceFingerprint": "adb0b903ffafad9a",
+    "renderTiles": 422
+  },
+  "preservation": {
+    "status": "PASS: only CampusReflections.class changed from66; service bundle, all mesh/texture/collision data and other classes byte-identical",
+    "artifactSha256": "ff577656ded9686acd28218b3895a43236cf9cb3ba8689882a47716aab3b250f",
+    "changedEntries": [
+      "dev/realworldmc/client/CampusReflections.class"
+    ]
+  },
+  "changes": [
+    "Include former Mensa glazing tile1000030005 part1 in scene reflections.",
+    "Use actual pane triangles for projected coverage and outward-facing selection.",
+    "Retain dominant-axis normal correction for the existing mixed-winding, south-facing panes.",
+    "Use the existing0.28 normal-incidence reflection weight, increasing toward grazing angles."
+  ],
+  "nativePlan": {
+    "cameraViews": 13,
+    "standingChecks": 7,
+    "explicitFrontPaneControl": true,
+    "reflectionsDisabledComparison": true,
+    "eveningView": true,
+    "sourceSaveFiles": 72
+  },
+  "nativeStatus": "PASS: 13 cameras and seven standing controls; native process exited 0",
+  "visualAcceptance": false,
+  "installedPreview": "dev22 unchanged",
+  "nativeReview": {
+    "status": "PASS: native reflection and standing checks; broader visual acceptance remains false",
+    "nativeExitCode": 0,
+    "cameraViews": 13,
+    "standingChecks": 7,
+    "reviewedImages": 30,
+    "imageBreakdown": {
+      "main": 13,
+      "reflection": 10,
+      "walking": 7
+    },
+    "maximumTerraceStandingResidualMetres": 0.027099025566528212,
+    "observations": [
+      "The Mensa panes now reflect surrounding trees and buildings in frontal and oblique views; the matched reflection-disabled view retains the former dark glazing.",
+      "The evening comparison retains coherent darker lighting and pane reflections.",
+      "All seven native standing controls pass; the three terrace supports remain within 0.028m of their visible surface.",
+      "Coarse roof equipment and vegetation, missing terrace sculpture and edge detail, and aerial smears in the wider campus remain."
+    ],
+    "preservation": {
+      "sourceMensa66Unchanged": 72,
+      "activeV74JournalAddedChunks": 0,
+      "priorAlignmentJournalsUnchanged": true,
+      "inventoryAndExperienceUnchanged": true,
+      "originalSavesUnchanged": 121,
+      "previewSavesUnchanged": 121,
+      "previewSettingsUnchanged": 4
+    },
+    "visualAcceptance": false
+  }
+}
