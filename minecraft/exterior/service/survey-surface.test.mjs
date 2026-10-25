@@ -547,10 +547,10 @@ test('fine reconstructed solids preserve terrain and nearby structures without f
 });
 
 
-test('building site retirement is bounded by height and remains active with water disabled',async t=>{
+for(const architecture of ['reactorSite','reactorEast'])test(architecture+' retirement is bounded by height and remains active with water disabled',async t=>{
  const rings=[{ring:[[30,30],[40,30],[40,40],[30,40]],holes:[]}];
  const bytes=tile([[32,8,32],[34,8,32],[32,10,34],[32,3,32],[34,3,32],[32,4,34]]);
- const extra={architecture:{reactorSite:{sourceRetirement:[{rings,y0:7,y1:12}]}}};
+ const extra={architecture:{[architecture]:{sourceRetirement:[{rings,y0:7,y1:12}]}}};
  const {service,dir}=fixture(t,bytes,extra);
  // The configuration is read when the service is attached.
  const disabled={cfg:{water:false},renderSelect:async()=>({tiles:[],attribution:[]}),renderTile:async()=>bytes,chunk:async()=>new Uint8Array()};

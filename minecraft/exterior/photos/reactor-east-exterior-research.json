@@ -1,5 +1,5 @@
 {
-  "status": "Exterior reference and surveyed-envelope research; no reconstruction yet",
+  "status": "Complete surveyed exterior draft implemented; independent geometry, package and native checks pending",
   "building": "DEBY_LOD2_8486666",
   "candidate": 82,
   "priority": "Replace the adjoining coarse source building visible across the lower east facade in candidate 81, using its own complete surveyed envelope.",
@@ -18,7 +18,7 @@
     ],
     "footprintAreaSquareMetres": 2079.167288189571,
     "wallCount": 44,
-    "roofTriangles": 201
+    "roofTriangles": 67
   },
   "identification": {
     "name": "Neutronenleiterhalle Ost",
@@ -65,7 +65,8 @@
     "Assign each photograph to a surveyed elevation before drawing its openings.",
     "Unseen long-side details are unresolved.",
     "Corrugation pitch, frame sizes and loading-opening dimensions require explicit estimates.",
-    "No interiors or plant equipment are in scope."
+    "No interiors or plant equipment are in scope.",
+    "The implementation uses inferred matching glazing on both stepped end projections; detailed end registration remains unresolved."
   ],
   "nextActions": [
     "Register the observed end and corridor elevations to the 44 survey walls.",

@@ -55,7 +55,7 @@ vec3 canopyFrameNormal() {
 }
 float campusShadow(vec3 p) {
     if(CampusShadowStrength<=0.0)return 0.0;
-    vec3 n=(MaterialDetail>=29.9&&MaterialDetail<=32.1)?canopyFrameNormal():normalize(cross(dFdx(p),dFdy(p)));
+    vec3 n=(MaterialDetail>=29.9&&MaterialDetail<=33.1)?canopyFrameNormal():normalize(cross(dFdx(p),dFdy(p)));
     if(dot(n,CameraPosition-p)<0.0)n=-n;
     // A nearly parallel receiver has an ill-conditioned light-space plane.
     // Fade shadow reception over the last three degrees, where direct solar
@@ -68,7 +68,7 @@ float campusShadow(vec3 p) {
     vec3 dx=dFdx(at),dy=dFdy(at);
     float determinant=dx.x*dy.y-dx.y*dy.x;
     vec2 plane=abs(determinant)>1e-12?vec2(dx.z*dy.y-dy.z*dx.y,dx.x*dy.z-dy.x*dx.z)/determinant:vec2(0);
-    if(MaterialDetail>=29.9&&MaterialDetail<=32.1) {
+    if(MaterialDetail>=29.9&&MaterialDetail<=33.1) {
         // The orthographic light-space plane follows the stable face normal.
         // This also avoids unstable derivative ratios on thin triangles.
         vec3 lightNormal=transpose(inverse(mat3(CampusShadowMatrix)))*n;
@@ -203,8 +203,15 @@ void main() {
         if(dot(n,CameraPosition-worldPosition)<0.0)n=-n;
         color.rgb*=.68+.32*max(dot(n,CampusSunDirection),0.0);
     }
-    if(MaterialDetail>=29.9&&MaterialDetail<=32.1) {
+    if(MaterialDetail>=29.9&&MaterialDetail<=33.1) {
         vec3 n=canopyFrameNormal();
+        if(abs(MaterialDetail-33.0)<.1) {
+            // East hall: estimated 110 mm horizontal rib pitch. Fade the
+            // perturbation below pixel resolution to avoid distant shimmer.
+            float ribs=(worldPosition.y-63.92)/.11;
+            float fade=1.0-smoothstep(.2,.8,fwidth(ribs));
+            n=normalize(n+vec3(0.0,sin(ribs*6.2831853)*.38*fade,0.0));
+        }
         if(dot(n,CameraPosition-worldPosition)<0.0)n=-n;
         frameDirect=.32*max(dot(n,CampusSunDirection),0.0);
         color.rgb*=.68+frameDirect;
@@ -512,7 +519,7 @@ if(glass>.5&&PlanarStrength>0.0&&abs(dot(PlanarPlane,vec4(worldPosition,1.0)))<.
     // Thin frames already receive ambient plus explicit direct irradiance.
     // Shadow only that direct term: shadow-map edge samples must not dapple
     // an underside whose normal already excludes direct sunlight.
-    float shadowReception=(MaterialDetail>=29.9&&MaterialDetail<=32.1)?frameDirect/(.68+frameDirect):1.0;
+    float shadowReception=(MaterialDetail>=29.9&&MaterialDetail<=33.1)?frameDirect/(.68+frameDirect):1.0;
     if(shadowReception>0.0001)color.rgb*=1.0-CampusShadowStrength*shadowReception*campusShadow(worldPosition);
     color*=ColorModulator;
     color.rgb=mix(color.rgb,planarRadiance,planarWeight);

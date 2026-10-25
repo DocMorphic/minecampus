@@ -1,0 +1,18 @@
+{
+  "building": "DEBY_LOD2_8486666",
+  "runtimeId": 1000030052,
+  "reference": "photos/reactor-east-exterior-research.json",
+  "siteBoundsUTM": [698550, 5349230, 698650, 5349360],
+  "cleanupMarginMetres": 1.0,
+  "neighbourGuardMetres": 0.25,
+  "windowRecessMetres": 0.12,
+  "windowFrameMetres": 0.07,
+  "windowPitchMetres": 1.25,
+  "corrugationPitchMetres": 0.11,
+  "westMainWalls": [1, 21, 39],
+  "endProjectionWalls": [0, 7, 9, 18, 20, 24, 37, 41],
+  "endMainWalls": [12, 34],
+  "parts": ["corrugated metal envelope", "raised metal frames and reveals", "concrete plinth", "recessed exterior glass", "exact surveyed roof", "closed service panels"],
+  "fineCollisionMaterials": [6, 6, 6, 4, 4, 6],
+  "qualification": "All 44 survey walls and 67 roof triangles are retained. Public FRM II/MLZ photographs establish horizontal silver-grey corrugation, narrow glazing on the reactor-facing side and taller glazed end projections. Approximate opening heights, bay spacing, cladding pitch and unseen elevation details are estimates. Assignment of matching treatment to both stepped end projections is inferred from their surveyed symmetry, not proof of identical glazing. No interiors or source photographic facade pixels are distributed."
+}

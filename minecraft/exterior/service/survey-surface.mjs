@@ -14,7 +14,7 @@ import {encodeCollisionPacket} from './collision-packet.mjs';
 export function attachSurveySurface(service, directory, {voxelizeArea,collectRegionTiles,mcPositions,sampleColor,correctedTileCacheBytes=128*1024*1024}={}) {
   const manifest=JSON.parse(fs.readFileSync(path.join(directory,'manifest.json'),'utf8'));
   const supplemental=supplementalSurfaces(manifest.supplementalSurfaces);
-  const retireSource=prepareSourceRetirement([...(service.cfg?.water===false?[]:manifest.architecture?.riverbank?.sourceRetirement??[]),...(manifest.architecture?.reactorSite?.sourceRetirement??[])]);
+  const retireSource=prepareSourceRetirement([...(service.cfg?.water===false?[]:manifest.architecture?.riverbank?.sourceRetirement??[]),...(manifest.architecture?.reactorSite?.sourceRetirement??[]),...(manifest.architecture?.reactorEast?.sourceRetirement??[])]);
   const riverSurvey=manifest.architecture?.riverbank?.waterGround;
   const channel=riverSurvey?supplementalSurfaces([{rings:riverSurvey.rings,terrainGuide:riverSurvey.terrainGuide}]):null;
   const channelCeiling=Math.max(-Infinity,...(manifest.architecture?.riverbank?.sourceRetirement??[]).map(r=>r.y1));
