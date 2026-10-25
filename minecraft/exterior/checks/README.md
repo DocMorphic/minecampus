@@ -223,3 +223,16 @@ reflection and walking captures separately from the functional PASS. If terrain
 or ramp geometry changes, regenerate the standing targets/support heights from
 the new encoded surfaces before treating the plan as current. This review is
 additional to the detailed site controls and does not certify full visual quality.
+
+The plan enables `captureWalking` and `reflectionEvidence` explicitly. The first
+63 run omitted these flags and therefore has 24 camera images and its failure
+image only; do not infer walking/reflection captures from camera options alone.
+
+The central promenade slope at `(60,-100)` exposed full-block terrain collision
+in63: native standing Y=66, while the rendered support height is65.27549.
+Run `node scripts/test-exterior-central-ground.mjs <extracted-service-directory>`
+after extracting the packaged service and installing its pinned dependencies.
+This exercises its actual voxelizer at eleven terrain controls and both save
+datums. The Galileo ramp remains in the native route and is not represented as
+a terrain-only control. Repeat the native route in a copied saved world to
+verify migration and clearance.

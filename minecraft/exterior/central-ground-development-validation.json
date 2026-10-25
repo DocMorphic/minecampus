@@ -1,0 +1,196 @@
+{
+  "status": "DRAFT64: packaged service verified; saved-world native verification pending",
+  "artifactSha256": "be68fe491e4cf3a397e1a6eaff9c93794025096fcc2c46c2b76a51f6ddbf06ac",
+  "rendererSourceFingerprint": "ee79aadc0079959f",
+  "alignmentVersion": 73,
+  "renderTiles": 422,
+  "unchangedRenderInputs": 524,
+  "serviceUnitTests": 64,
+  "serviceControls": {
+    "status": "PASS: eleven encoded central-terrain standing controls at both save datums",
+    "qualification": "Actual packaged voxelization; native migration, body clearance and visual review are separate checks.",
+    "results": [
+      {
+        "label": "final ground standing",
+        "shift": 0,
+        "standingY": 64.8125,
+        "expected": 64.78427547040971,
+        "residual": 0.02822452959028965
+      },
+      {
+        "label": "route west standing",
+        "shift": 0,
+        "standingY": 64.875,
+        "expected": 64.89084982054788,
+        "residual": -0.015849820547884974
+      },
+      {
+        "label": "route south standing",
+        "shift": 0,
+        "standingY": 64.9375,
+        "expected": 64.90400322258921,
+        "residual": 0.03349677741078949
+      },
+      {
+        "label": "route north standing",
+        "shift": 0,
+        "standingY": 64.5625,
+        "expected": 64.58129531319389,
+        "residual": -0.01879531319389116
+      },
+      {
+        "label": "former mensa standing",
+        "shift": 0,
+        "standingY": 64.25,
+        "expected": 64.20714680599318,
+        "residual": 0.04285319400682397
+      },
+      {
+        "label": "cos forecourt standing",
+        "shift": 0,
+        "standingY": 63.8125,
+        "expected": 63.79127051074315,
+        "residual": 0.021229489256846534
+      },
+      {
+        "label": "promenade lawn path standing",
+        "shift": 0,
+        "standingY": 65.375,
+        "expected": 65.27548960545175,
+        "residual": 0.09951039454824695
+      },
+      {
+        "label": "crosspath south standing",
+        "shift": 0,
+        "standingY": 64.875,
+        "expected": 64.84431412614771,
+        "residual": 0.030685873852291934
+      },
+      {
+        "label": "galileo west standing",
+        "shift": 0,
+        "standingY": 64.75,
+        "expected": 64.72869725609937,
+        "residual": 0.021302743900633914
+      },
+      {
+        "label": "galileo east standing",
+        "shift": 0,
+        "standingY": 63.9375,
+        "expected": 63.93017845693697,
+        "residual": 0.007321543063028457
+      },
+      {
+        "label": "mlz courtyard standing",
+        "shift": 0,
+        "standingY": 63.875,
+        "expected": 63.89908177890647,
+        "residual": -0.024081778906470674
+      },
+      {
+        "label": "final ground standing",
+        "shift": 2,
+        "standingY": 66.8125,
+        "expected": 66.78427547040971,
+        "residual": 0.02822452959028965
+      },
+      {
+        "label": "route west standing",
+        "shift": 2,
+        "standingY": 66.875,
+        "expected": 66.89084982054788,
+        "residual": -0.015849820547884974
+      },
+      {
+        "label": "route south standing",
+        "shift": 2,
+        "standingY": 66.9375,
+        "expected": 66.90400322258921,
+        "residual": 0.03349677741078949
+      },
+      {
+        "label": "route north standing",
+        "shift": 2,
+        "standingY": 66.5625,
+        "expected": 66.58129531319389,
+        "residual": -0.01879531319389116
+      },
+      {
+        "label": "former mensa standing",
+        "shift": 2,
+        "standingY": 66.25,
+        "expected": 66.20714680599318,
+        "residual": 0.04285319400682397
+      },
+      {
+        "label": "cos forecourt standing",
+        "shift": 2,
+        "standingY": 65.8125,
+        "expected": 65.79127051074315,
+        "residual": 0.02122948925685364
+      },
+      {
+        "label": "promenade lawn path standing",
+        "shift": 2,
+        "standingY": 67.375,
+        "expected": 67.27548960545175,
+        "residual": 0.09951039454824695
+      },
+      {
+        "label": "crosspath south standing",
+        "shift": 2,
+        "standingY": 66.875,
+        "expected": 66.84431412614771,
+        "residual": 0.030685873852291934
+      },
+      {
+        "label": "galileo west standing",
+        "shift": 2,
+        "standingY": 66.75,
+        "expected": 66.72869725609937,
+        "residual": 0.021302743900633914
+      },
+      {
+        "label": "galileo east standing",
+        "shift": 2,
+        "standingY": 65.9375,
+        "expected": 65.93017845693697,
+        "residual": 0.007321543063028457
+      },
+      {
+        "label": "mlz courtyard standing",
+        "shift": 2,
+        "standingY": 65.875,
+        "expected": 65.89908177890646,
+        "residual": -0.02408177890646357
+      }
+    ]
+  },
+  "beforeNative": {
+    "artifactSha256": "f20863866d10111f4f760caa1e4ff86f5b900d93e7b10d47d48e245ece55698e",
+    "status": "FAIL: native walking check: Probe 6 standing Y=66.0, mesh Y=65.14665459018774, onGround=true, horizontal error=0.0",
+    "cameraViewsCompleted": 24,
+    "standingChecksCompleted": 6,
+    "failedStandingIndex": 6,
+    "reviewedImages": 25,
+    "sourceFilesPreserved": 55,
+    "activeV72JournalAddedChunks": 330,
+    "inventoryAndExperiencePreserved": true,
+    "userSaveFilesPreserved": {
+      "original": 121,
+      "preview": 121
+    },
+    "previewSettingsPreserved": 4
+  },
+  "nativeCandidate": {
+    "status": "RUNNING",
+    "cameraViews": 24,
+    "standingChecks": 12,
+    "reflectionEvidence": true,
+    "captureWalking": true,
+    "sourceSaveFiles": 60
+  },
+  "visualAcceptance": false,
+  "installedPreview": "dev22 unchanged",
+  "qualification": "Original 36 central terrain tiles now use the existing fractional heightfield voxelization. Meshes, imagery, buildings, geometry and ordinary-block preservation policy are unchanged. Native migration and full visual acceptance remain pending."
+}

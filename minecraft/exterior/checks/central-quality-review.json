@@ -1050,5 +1050,7 @@
   "cameraSource": {
     "file": "minecraft/exterior/checks/CampusExteriorCheck.java",
     "sha256": "f25630524cbaf02e7d5c621aac96ab9c9c22c145fce573062c71d42892526521"
-  }
+  },
+  "captureWalking": true,
+  "reflectionEvidence": true
 }
