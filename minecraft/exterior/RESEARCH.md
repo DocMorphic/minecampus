@@ -74,3 +74,10 @@ The same [ESO aerial](https://www.eso.org/public/ireland/images/170818035-cc/) s
 ![Small warehouse in the 2017 ESO aerial](../../docs/screenshots/campus-warehouse-reference.jpg)
 
 Credit: Ernst A. Graf/ESO, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Cropped from the original aerial; reference only, not a runtime texture.
+
+
+### CALA apron follow-up source study
+
+The61b walking captures still show a wavy street apron. Four ground-door profiles were compared with the actual encoded mesh and raw DGM1: the near-facade rise of roughly0.3-0.5m exists in the source elevation, so a rendering/seam defect alone does not explain it. No grade change has been made.
+
+The [landscape architect project page](https://mahlgebhardkonzepte.de/projekt/cala-center-for-advanced-laser-application-lmu-garching/) describes the northern earth slope and planted roof. Its [street photograph](https://mahlgebhardkonzepte.de/wp-content/uploads/2024/06/IMG_1035-scaled.jpg) shows a sidewalk, rectangular paved entrance pads, planted wall strips and tree verges missing from the current asphalt-only approximation. The [landscape plan](https://mahlgebhardkonzepte.de/wp-content/uploads/2024/06/Plan-4.jpg) confirms differentiated paving/planting and graded levels; its raster labels were not used as exact threshold measurements. Any later south-apron grading must remain bounded, qualified and connected to the door thresholds, while preserving the measured northern berm. Reference pixels are not bundled.
