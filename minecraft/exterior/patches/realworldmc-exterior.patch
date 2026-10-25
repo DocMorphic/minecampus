@@ -87,7 +87,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==2?16f:9f));
 +                if(campus && t.data.id>=1_000_000_200 && t.data.id<1_000_000_203)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?8f:1f);
-+                if(campus && t.data.id>=1_000_010_000 && t.data.id<1_000_020_000)
++                if(campus && CampusFoliage.isTree(t.data.id))
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?5f:4f);
 +                if(campus && t.data.id>=1_000_030_000 && t.data.id<1_000_040_000)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==2?7f:9f));
@@ -183,17 +183,35 @@ diff --git a/mod/src/main/java/dev/realworldmc/RealWorldMC.java b/mod/src/main/j
 diff --git a/mod/src/client/java/dev/realworldmc/client/MapTile.java b/mod/src/client/java/dev/realworldmc/client/MapTile.java
 --- a/mod/src/client/java/dev/realworldmc/client/MapTile.java
 +++ b/mod/src/client/java/dev/realworldmc/client/MapTile.java
-@@ -30,6 +30,9 @@
+@@ -30,6 +30,10 @@
      private dev.realworldmc.MeshCut.Index cutIndex;
  	private final boolean[] empty;
  	public boolean dirty;
 +    private float[] reflectionGlass;
++    private final float[] foliageVertices;
 +    /** Exact post-cut glass triangles; read-only, retained only for Galileo. */
 +    public float[] reflectionGlass(){return reflectionGlass;}
  
  	public MapTile(TileData data, ClientLevel level) {
          this(data,MapDamage.cuts(new AABB(data.minX,data.minY,data.minZ,data.maxX,data.maxY,data.maxZ),level,data.anchorX,data.anchorY,data.anchorZ));
-@@ -72,6 +75,10 @@
+@@ -37,6 +41,7 @@
+     static MapTile withCuts(TileData data,java.util.List<dev.realworldmc.MeshCut.Box> damage) {return new MapTile(data,damage);}
+     private MapTile(TileData data, java.util.List<dev.realworldmc.MeshCut.Box> damage) {
+ 		this.data = data;
++        foliageVertices=data.parts.length>1&&CampusFoliage.applies(data.id,1)?CampusFoliage.cards(data.parts[1].vertices):null;
+ 		this.bounds = new AABB(data.minX, data.minY, data.minZ, data.maxX, data.maxY, data.maxZ);
+ 		int n = data.parts.length;
+ 		buffers = new VertexBuffer[n];
+@@ -58,6 +63,8 @@
+ 			}
+ 			textures[i] = new DynamicTexture(image);
+ 			enableMipmaps(textures[i].getId(), image.getWidth(), image.getHeight());
++            if(CampusFoliage.applies(data.id,i)&&part.pixels!=null)
++                CampusFoliageTextures.configure(part.texWidth,part.texHeight,part.pixels);
+ 			part.pixels = null;
+ 			buffers[i] = new VertexBuffer(VertexBuffer.Usage.STATIC);
+ 
+@@ -72,6 +79,10 @@
  		GlStateManager._bindTexture(id);
  		int levels = 31 - Integer.numberOfLeadingZeros(Math.max(w, h));
  		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL12.GL_TEXTURE_MAX_LEVEL, levels);
@@ -204,7 +222,16 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapTile.java b/mod/src/c
  		GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
  		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR_MIPMAP_LINEAR);
  		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
-@@ -121,6 +128,8 @@
+@@ -96,7 +107,7 @@
+     }
+ 
+     private void upload(int i) {
+-        float[] source=data.parts[i].vertices;
++        float[] source=i==1&&foliageVertices!=null?foliageVertices:data.parts[i].vertices;
+         var vertices=cuts.isEmpty()?null:new it.unimi.dsi.fastutil.floats.FloatArrayList(source.length);
+         for(int offset=0;vertices!=null && offset<source.length;offset+=15) {
+             double minX=Math.min(source[offset],Math.min(source[offset+5],source[offset+10]));
+@@ -121,6 +132,8 @@
          }
          int length=vertices==null?source.length:vertices.size();
          float[] draw=vertices==null?source:vertices.elements();

@@ -230,6 +230,7 @@ assert restoration_check['manifestSha256']==digest(DATA/'manifest.json')
 assert restoration_check['policySha256']==restoration['sourceSha256']
 assert restoration_check['validatorSha256']==digest(ROOT/'scripts/validate-courtyard-ground.py')
 assert restoration_check['independentPolicyValidatorSha256']==digest(ROOT/'scripts/validate_ground_restoration.py')
+subprocess.run(['python3',str(ROOT/'scripts/validate-foliage-rendering.py'),'--directory',str(DATA)],env={**os.environ,'JAVA_HOME':args.java_home},check=True)
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:
@@ -599,6 +600,7 @@ with zipfile.ZipFile(release) as original:
     write(target,'src/minecampus-exterior/'+name,(DATA/name).read_bytes())
   write(target,'src/minecampus-exterior/manifest.json',(DATA/'manifest.json').read_bytes())
   write(target,'src/minecampus-exterior/'+restoration['sourceFile'],(DATA/restoration['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/foliage-rendering.json',(SOURCE/'foliage-rendering.json').read_bytes())
   write(target,'src/minecampus-exterior/NOTICE.txt',notices.encode())
   write(target,'src/minecampus-exterior/cos-reference.json',(SOURCE/'photos/cos-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/grs-reference.json',(SOURCE/'photos/grs-reference.json').read_bytes())

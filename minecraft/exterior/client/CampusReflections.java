@@ -161,7 +161,7 @@ public final class CampusReflections {
                 caster.safeGetUniform("TileAnchor").set((float)tile.data.anchorX,(float)tile.data.anchorY,(float)tile.data.anchorZ);
                 for(int p=0;p<tile.partCount();p++){
                     if(tile.isEmpty(p))continue;
-                    boolean leaves=tile.data.id>=1_000_010_000&&tile.data.id<1_000_020_000&&p!=0;
+                    boolean leaves=CampusFoliage.applies(tile.data.id,p);
                     caster.safeGetUniform("AlphaCutoff").set(leaves?.45f:.1f);
                     RenderSystem.setShaderTexture(0,tile.textureId(p));
                     var buffer=tile.buffer(p);buffer.bind();buffer.drawWithShader(modelView,projection,caster);draws++;

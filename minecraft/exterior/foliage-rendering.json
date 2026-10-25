@@ -1,0 +1,22 @@
+{
+  "source": "https://polyhaven.com/a/jacaranda_tree",
+  "license": "CC0 1.0",
+  "qualification": "Leaf appearance reference, not a measured campus species. Source crown envelopes and wood remain unchanged. Render-only leaf cards are trimmed to irregular rounded patches wholly inside each original plane, then mapped at source scale. Native visual acceptance is separate.",
+  "atlasMetres": 0.4517374038696289,
+  "measurement": "Median world-space edge length divided by UV edge length across 273683 valid sampled source leaf edges; source node has no scale transform.",
+  "sourceFiles": [
+    {
+      "file": "jacaranda_tree.gltf",
+      "sha256": "ba4aa8ab4c3e3741ce3699604d6ec1607cd6b126ae2d32abbcc0d98e8edb3be4",
+      "size": 9526
+    },
+    {
+      "file": "jacaranda_tree.bin",
+      "sha256": "4310d1e25db8ac63d6d345afc8154a1df7e85b301dfad228be66d85d6c52bbfc",
+      "size": 208307808
+    }
+  ],
+  "alphaCutoff": 0.45,
+  "mipCoverageReference": "https://docs.unity3d.com/ScriptReference/TextureImporter-mipMapsPreserveCoverage.html",
+  "mipQualification": "Coverage is matched to the closest representable texel count. The terminal 1x1 mip retains a nonempty crown; it cannot express fractional cutout coverage."
+}
