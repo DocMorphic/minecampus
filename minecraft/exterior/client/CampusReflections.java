@@ -23,7 +23,7 @@ public final class CampusReflections {
     public static net.minecraft.world.phys.Vec3 frameCamera=net.minecraft.world.phys.Vec3.ZERO;
     private static final boolean VERIFY_STATE=Boolean.getBoolean("minecampus.verifyReflectionState");
     public static long updates,stateChecks;
-    public static int draws,textureUnits;
+    public static int draws,groundDraws,textureUnits;
     public static double lastMilliseconds;
     public static Plane selected;
     private static TextureTarget target;
@@ -154,7 +154,8 @@ public final class CampusReflections {
             var reflectedEye=reflection.transformPosition(new Vector3f((float)eye.x,(float)eye.y,(float)eye.z));
             caster.safeGetUniform("ReflectedEye").set(reflectedEye.x,reflectedEye.y,reflectedEye.z);
             var frustum=new net.minecraft.client.renderer.culling.Frustum(absoluteView,projection);frustum.prepare(0,0,0);
-            draws=0;
+            draws=0;groundDraws=0;
+            CampusMaterials.bindReactorGround(caster);
             for(var tile:tiles){
                 if(!frustum.isVisible(tile.bounds))continue;
                 var b=tile.bounds;
@@ -162,13 +163,16 @@ public final class CampusReflections {
                 if(plane.x*cx+plane.y*cy+plane.z*cz+plane.w<.02)continue;
                 var modelView=new Matrix4f(absoluteView).translate((float)tile.data.anchorX,(float)tile.data.anchorY,(float)tile.data.anchorZ);
                 caster.safeGetUniform("TileAnchor").set((float)tile.data.anchorX,(float)tile.data.anchorY,(float)tile.data.anchorZ);
+                boolean ground=(tile.data.id>=1_000_000_000&&tile.data.id<1_000_000_036)
+                    ||(tile.data.id>=1_000_060_000&&tile.data.id<1_000_061_300);
+                caster.safeGetUniform("SurveyedGround").set(ground?1f:0f);
                 for(int p=0;p<tile.partCount();p++){
                     if(tile.isEmpty(p))continue;
                     if(CampusCanopyGlass.isGlass(tile.data.id,p))continue;
                     boolean leaves=CampusFoliage.applies(tile.data.id,p);
                     caster.safeGetUniform("AlphaCutoff").set(leaves?.45f:.1f);
                     RenderSystem.setShaderTexture(0,tile.textureId(p));
-                    var buffer=tile.buffer(p);buffer.bind();buffer.drawWithShader(modelView,projection,caster);draws++;
+                    var buffer=tile.buffer(p);buffer.bind();buffer.drawWithShader(modelView,projection,caster);draws++;if(ground)groundDraws++;
                 }
             }
             updates++;

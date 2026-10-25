@@ -374,10 +374,15 @@ assert north_check['manifestSha256']==digest(DATA/'manifest.json')
 assert north_check['validatorSha256']==digest(ROOT/'scripts/validate-north-ground.py')
 assert north_check['maskSha256']==north['maskSha256']
 reactor_ground=json.loads((DATA/'manifest.json').read_text())['architecture']['reactorGroundMaterials']
-for key,folder in [('source',SOURCE),('research',SOURCE),('generator',ROOT),('mask',SOURCE),('derived',DATA)]:
+for key,folder in [('source',SOURCE),('research',SOURCE),('generator',ROOT),('mask',SOURCE),('derived',DATA),('sharedMaterial',SOURCE)]:
  assert digest(folder/reactor_ground[key+'File'])==reactor_ground[key+'Sha256']
 reactor_ground_mapping=(SOURCE/'shaders/campus_ground.fsh').read_text().split('// BEGIN GENERATED REACTOR GROUND MAPPING\n')[1].split('// END GENERATED REACTOR GROUND MAPPING')[0]
 assert hashlib.sha256(reactor_ground_mapping.encode()).hexdigest()==reactor_ground['shaderMappingSha256']
+for name in ('campus_ground.fsh','campus_reflection.fsh'):
+ text=(SOURCE/'shaders'/name).read_text()
+ assert text.split('// BEGIN GENERATED REACTOR GROUND MAPPING\n')[1].split('// END GENERATED REACTOR GROUND MAPPING')[0]==reactor_ground_mapping
+ assert text.split('// BEGIN SHARED REACTOR MATERIAL\n')[1].split('// END SHARED REACTOR MATERIAL')[0]==(SOURCE/reactor_ground['sharedMaterialFile']).read_text()
+
 reactor_ground_check=json.loads((DATA/'reactor-ground-validation.json').read_text())
 assert reactor_ground_check['status'].startswith('PASS:')
 assert reactor_ground_check['manifestSha256']==digest(DATA/'manifest.json')

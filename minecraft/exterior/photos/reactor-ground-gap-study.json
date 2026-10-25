@@ -1,0 +1,89 @@
+{
+  "sourceCandidate": 88,
+  "camera": 0,
+  "qualification": "Approximate pixel ray intersection with Y=64 horizontal ground; localization only, not a surveyed boundary. No changes applied.",
+  "points": [
+    {
+      "label": "A",
+      "pixelUv": [
+        0.08,
+        0.68
+      ],
+      "approximateGroundMC": [
+        318.14956288290057,
+        64.0,
+        -121.47058178840844
+      ],
+      "approximateUTM": [
+        698527.6970729132,
+        5349335.904332593
+      ],
+      "classification": [
+        "grass"
+      ]
+    },
+    {
+      "label": "B",
+      "pixelUv": [
+        0.23,
+        0.69
+      ],
+      "approximateGroundMC": [
+        312.39667353651504,
+        64.0,
+        -120.04543932898012
+      ],
+      "approximateUTM": [
+        698521.9972341964,
+        5349334.279891013
+      ],
+      "classification": [
+        "grass"
+      ]
+    },
+    {
+      "label": "C",
+      "pixelUv": [
+        0.58,
+        0.8
+      ],
+      "approximateGroundMC": [
+        301.7326765756109,
+        64.0,
+        -121.12735751292713
+      ],
+      "approximateUTM": [
+        698511.3020200923,
+        5349334.9901285935
+      ],
+      "classification": []
+    },
+    {
+      "label": "D",
+      "pixelUv": [
+        0.68,
+        0.88
+      ],
+      "approximateGroundMC": [
+        300.4723335973133,
+        64.0,
+        -122.09054039427718
+      ],
+      "approximateUTM": [
+        698510.0089249193,
+        5349335.9088802
+      ],
+      "classification": []
+    }
+  ],
+  "status": "Unapplied boundary diagnosis",
+  "referenceCapture": "photos/reactor-ground-88-north-courtyard.png",
+  "referenceCaptureSha256": "7453f0c13fecf3f02d65492bed46c8d99d3c3c4544eddb2a676fd42279ca5d36",
+  "materialSource": "reactor-ground-surfaces.json",
+  "materialSourceSha256": "880b0f307e3954929f6631165fa8bb4d503b6cd68402e6618b29f7eba9725c39",
+  "findings": [
+    "Approximate ray locations C and D fall in unclassified strips near the southern tip of the lawn beside the west north-courtyard approach. The local DOP20 image shows a paved border there.",
+    "A and B fall near a mapped grass edge; approximate horizontal-plane ray locations are not precise enough to justify changing their classification.",
+    "Next boundary work should trace the courtyard paved extent from the existing DOP20 survey, preserve lawn/planting footprints and document any interpreted curbs. No automatic blanket infill is justified."
+  ]
+}

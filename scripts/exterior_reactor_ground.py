@@ -80,11 +80,17 @@ def build(ctx):
         'license':'ODbL-1.0','attribution':'© OpenStreetMap contributors; aerial interpretation: BVV DOP20',
         'features':[{'type':'Feature','properties':{'material':name},'geometry':mapping(area)} for name,area in layers.items()]},separators=(',',':'))+'\n')
     mapping_source = f'vec2 reactorGroundUv(vec2 position) {{ return vec2(position.x-{left:.1f},{top:.1f}-position.y)/{span:.1f}; }}\n'
-    shader = src/'shaders/campus_ground.fsh'; text = shader.read_text()
-    start,end = '// BEGIN GENERATED REACTOR GROUND MAPPING\n','// END GENERATED REACTOR GROUND MAPPING'
-    assert text.count(start) == text.count(end) == 1
-    prefix,rest = text.split(start); _,suffix = rest.split(end)
-    shader.write_text(prefix+start+mapping_source+end+suffix)
+    shared_file = src/'shaders/reactor_ground_material.glsl'
+    shared = shared_file.read_text()
+    for name in ('campus_ground.fsh','campus_reflection.fsh'):
+        shader = src/'shaders'/name; text = shader.read_text()
+        for start,end,body in [
+            ('// BEGIN GENERATED REACTOR GROUND MAPPING\n','// END GENERATED REACTOR GROUND MAPPING',mapping_source),
+            ('// BEGIN SHARED REACTOR MATERIAL\n','// END SHARED REACTOR MATERIAL',shared)]:
+            assert text.count(start) == text.count(end) == 1
+            prefix,rest = text.split(start); _,suffix = rest.split(end)
+            text = prefix+start+body+end+suffix
+        shader.write_text(text)
     meta['architecture']['reactorGroundMaterials'] = {
         'sourceFile':source.name,'sourceSha256':sha(source),
         'researchFile':spec['researchFile'],'researchSha256':sha(research),
@@ -95,6 +101,7 @@ def build(ctx):
         'maskChannels':['grass','paving','asphalt','geographic boundary fade'],
         'materialBoundsUTM':bounds,'boundaryBlendMetres':spec['boundaryBlendMetres'],
         'shaderMappingSha256':hashlib.sha256(mapping_source.encode()).hexdigest(),
+        'sharedMaterialFile':'shaders/reactor_ground_material.glsl','sharedMaterialSha256':sha(shared_file),
         'areaSquareMetres':{name:area.area for name,area in layers.items()},'paths':paths,
         'buildingOverlapSquareMetres':unary_union(list(layers.values())).intersection(buildings).area,
         'qualification':spec['qualification']}

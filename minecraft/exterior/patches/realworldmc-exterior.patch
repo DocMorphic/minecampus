@@ -58,8 +58,8 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +        boolean campusPass=current!=null&&Math.abs(current.latitude()-48.265)<1e-7&&Math.abs(current.longitude()-11.671)<1e-7&&!space&&retained==null&&campusGroundShader!=null;
 +        if(campusPass){
 +            CampusShadows.update(tiles,cam,level,partial,campusShadowShader,campusGroundShader);
-+            CampusReflections.render(ctx,tiles,campusReflectionShader,campusGroundShader);
-+            CampusMaterials.bind();CampusMaterials.bindReactorGround(campusGroundShader);
++            CampusMaterials.bind();CampusReflections.render(ctx,tiles,campusReflectionShader,campusGroundShader);
++            CampusMaterials.bindReactorGround(campusGroundShader);
 +        }else {CampusShadows.bind(campusGroundShader,0f);CampusReflections.disable(campusGroundShader);}
  
  		for (MapTile t : tiles) {

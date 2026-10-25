@@ -1,6 +1,6 @@
 {
-  "name": "reactor-ground-candidate-88",
-  "purpose": "Bounded clean reactor/UTA ground materials: seven unchanged reference cameras, an explicit south parking view and all 15 standing controls. No mesh or collision changes.",
+  "name": "reactor-ground-candidate-89",
+  "purpose": "Eight matched candidate88 camera positions plus a nighttime parking-apron view and all 15 standing controls, verifying shared reactor ground albedo in main and planar reflection passes.",
   "captureWalking": true,
   "reflectionEvidence": true,
   "checkFractionalSupports": true,
@@ -210,6 +210,24 @@
           "u": 0.4590797304591575,
           "v": 0.4314445052024329,
           "expectedTile": 1000050103,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Reactor south parking apron night reflection",
+      "position": "298 76.7 -51.2 178 45",
+      "reflections": true,
+      "worldTime": 18000,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.7,
           "blockSamples": true
         }
       ]
@@ -1602,5 +1620,6 @@
       74,
       -20
     ]
-  ]
+  ],
+  "requireGroundMaterialReflection": true
 }

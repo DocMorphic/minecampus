@@ -20,7 +20,7 @@ out = p.parse_args().directory; src = root/'minecraft/exterior'
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 read = lambda p: json.loads(p.read_text())
 m = read(out/'manifest.json'); rec = m['architecture']['reactorGroundMaterials']
-for key,folder in [('source',src),('research',src),('generator',root),('mask',src),('derived',out)]:
+for key,folder in [('source',src),('research',src),('generator',root),('mask',src),('derived',out),('sharedMaterial',src)]:
     assert sha(folder/rec[key+'File']) == rec[key+'Sha256'], key
 spec = read(src/rec['sourceFile']); research = read(src/rec['researchFile'])
 assert spec['researchSha256'] == rec['researchSha256']
@@ -75,6 +75,15 @@ expected_alpha=t*t*(3-2*t)*255;actual_alpha=im[rows.ravel(),cols.ravel(),3]
 assert np.max(np.abs(actual_alpha-expected_alpha))<1.0
 mapping=(src/'shaders/campus_ground.fsh').read_text().split('// BEGIN GENERATED REACTOR GROUND MAPPING\n')[1].split('// END GENERATED REACTOR GROUND MAPPING')[0]
 assert hashlib.sha256(mapping.encode()).hexdigest()==rec['shaderMappingSha256']
+shared=(src/rec['sharedMaterialFile']).read_text()
+for name in ('campus_ground.fsh','campus_reflection.fsh'):
+    shader_text=(src/'shaders'/name).read_text()
+    assert shader_text.split('// BEGIN GENERATED REACTOR GROUND MAPPING\n')[1].split('// END GENERATED REACTOR GROUND MAPPING')[0]==mapping
+    assert shader_text.split('// BEGIN SHARED REACTOR MATERIAL\n')[1].split('// END SHARED REACTOR MATERIAL')[0]==shared
+reflection=read(src/'shaders/campus_reflection.json')
+assert [v['name'] for v in reflection['samplers']]==['Sampler0','Sampler1','Sampler3','Sampler7']
+assert next(v for v in reflection['uniforms'] if v['name']=='ReactorGroundTexture')['values']==[13]
+
 shader=read(src/'shaders/campus_ground.json');assert len(shader['samplers'])==12
 assert next(v for v in shader['uniforms'] if v['name']=='ReactorGroundTexture')['values']==[13]
 result={'status':'PASS: source classification, building exclusion, atlas projection and bounded fade',

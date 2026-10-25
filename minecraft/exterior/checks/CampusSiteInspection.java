@@ -405,9 +405,11 @@ public final class CampusSiteInspection {
             var shaderField=MapRenderer.class.getDeclaredField("campusGroundShader");shaderField.setAccessible(true);
             var shader=(net.minecraft.client.renderer.ShaderInstance)shaderField.get(null);
             float strength=org.lwjgl.opengl.GL20.glGetUniformf(shader.getId(),org.lwjgl.opengl.GL20.glGetUniformLocation(shader.getId(),"PlanarStrength"));
-            var reflection=new JsonObject();reflection.addProperty("strength",strength);reflection.addProperty("updates",CampusReflections.updates);reflection.addProperty("stateChecks",CampusReflections.stateChecks);
+            var reflection=new JsonObject();reflection.addProperty("strength",strength);reflection.addProperty("updates",CampusReflections.updates);reflection.addProperty("stateChecks",CampusReflections.stateChecks);reflection.addProperty("groundMaterialDraws",CampusReflections.groundDraws);
+            if(plan.has("requireGroundMaterialReflection")&&plan.get("requireGroundMaterialReflection").getAsBoolean()&&strength<=0)throw new AssertionError("Required reflection is inactive");
             if(strength>0){
                 if(CampusReflections.selected==null||CampusReflections.stateChecks!=CampusReflections.updates)throw new AssertionError("Unverified inspection reflection pass");
+                if(plan.has("requireGroundMaterialReflection")&&plan.get("requireGroundMaterialReflection").getAsBoolean()&&CampusReflections.groundDraws<=0)throw new AssertionError("No surveyed ground drawn with reflection materials");
                 reflection.addProperty("drawCalls",CampusReflections.draws);reflection.addProperty("cpuMilliseconds",CampusReflections.lastMilliseconds);
                 int location=org.lwjgl.opengl.GL20.glGetUniformLocation(shader.getId(),"PlanarBaseWeight");
                 if(location>=0){

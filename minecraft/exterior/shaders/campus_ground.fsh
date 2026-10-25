@@ -22,6 +22,40 @@ out vec4 fragColor;
 // BEGIN GENERATED REACTOR GROUND MAPPING
 vec2 reactorGroundUv(vec2 position) { return vec2(position.x-208.0,-0.0-position.y)/256.0; }
 // END GENERATED REACTOR GROUND MAPPING
+// BEGIN SHARED REACTOR MATERIAL
+// Shared albedo calculation for the main and planar-reflection passes.
+// Inputs are world-space metres; estimated paving sizes are not surveyed units.
+float reactorGroundHash(vec2 p) { return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
+vec3 reactorGroundTexture(sampler2D source,vec3 p,vec3 weights) {
+    vec3 dx=dFdx(p),dy=dFdy(p),value=vec3(0);
+    if(weights.x>0.0)value+=textureGrad(source,p.zy,dx.zy,dy.zy).rgb*weights.x;
+    if(weights.y>0.0)value+=textureGrad(source,p.xz,dx.xz,dy.xz).rgb*weights.y;
+    if(weights.z>0.0)value+=textureGrad(source,p.xy,dx.xy,dy.xy).rgb*weights.z;
+    return value;
+}
+vec4 reactorGroundMaterial(vec3 position,vec3 weights,float distance,float concreteLum,float lawnLum,out vec4 classification) {
+    classification=vec4(0);
+    vec2 uv=reactorGroundUv(position.xz);
+    if(any(lessThan(uv,vec2(0)))||any(greaterThan(uv,vec2(1))))return vec4(0);
+    vec4 overlay=texture(ReactorGroundTexture,uv);
+    float total=dot(overlay.rgb,vec3(1));
+    float coverage=clamp(total,0.0,1.0)*overlay.a;
+    if(coverage<=0.0)return vec4(0);
+    classification=vec4(overlay.rgb/max(total,.0001),coverage);
+    vec2 paving=position.xz/vec2(.4,.2);
+    paving.x+=mod(floor(paving.y),2.0)*.5;
+    vec2 edge=min(fract(paving),1.0-fract(paving))*vec2(.4,.2);
+    float jointDistance=min(edge.x,edge.y),aa=max(fwidth(jointDistance),.001);
+    float joint=1.0-smoothstep(.003-aa,.006+aa,jointDistance);
+    float unitVariation=.95+.1*reactorGroundHash(floor(paving));
+    vec3 grass=vec3(.24,.31,.145)*clamp(lawnLum/.3782,.45,1.65)*.95;
+    vec3 paved=vec3(.55,.54,.51)*clamp(concreteLum/.5112,.7,1.3)*unitVariation*(1.0-.3*joint);
+    vec3 asphalt=vec3(0);
+    if(overlay.b>.001)asphalt=reactorGroundTexture(Sampler7,position*.25,weights)*.85;
+    vec3 clean=classification.r*grass+classification.g*paved+classification.b*asphalt;
+    return vec4(clean,coverage*(1.0-smoothstep(90.0,160.0,distance)));
+}
+// END SHARED REACTOR MATERIAL
 float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }
 float noise(vec2 p) {
     vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f);
@@ -346,25 +380,14 @@ void main() {
         vec3 material=(mapped.r*lawnColor+mapped.g*pavingColor+mapped.b*asphaltColor+soil*soilColor+gravel*gravelColor)/max(mappedTotal,.0001);
         color.rgb=mix(color.rgb,material,mappedAmount*materialRange);
         grass=mix(grass,mapped.r/max(mappedTotal,.0001),mappedAmount);
-        // Locally mapped reactor pavement/lawns use clean scanned materials:
-        // photographic cars and cast shadows are not part of their albedo.
+        // The exact same bounded albedo is used in the reflection pass.
         if(physicsGround){
-            vec2 reactorUv=reactorGroundUv(worldPosition.xz);
-            if(all(greaterThanEqual(reactorUv,vec2(0)))&&all(lessThanEqual(reactorUv,vec2(1)))){
-                vec4 overlay=texture(ReactorGroundTexture,reactorUv);
-                float total=dot(overlay.rgb,vec3(1));
-                float coverage=clamp(total,0.0,1.0)*overlay.a;
-                float range=1.0-smoothstep(90.0,160.0,viewDistance);
-                vec3 cleanGrass=vec3(.24,.31,.145)*clamp(gLum/.3782,.45,1.65)*.95;
-                vec3 cleanPaving=vec3(.55,.54,.51)*clamp(cLum/.5112,.7,1.3)*unitVariation*(1.0-.3*joint);
-                vec3 cleanAsphalt=vec3(0);
-                if(overlay.b>.001)cleanAsphalt=groundTexture(Sampler7,worldPosition*.25,weights)*.85;
-                vec3 clean=(overlay.r*cleanGrass+overlay.g*cleanPaving+overlay.b*cleanAsphalt)/max(total,.0001);
-                color.rgb=mix(color.rgb,clean,coverage*range);
-                grass=mix(grass,overlay.r/max(total,.0001),coverage);
-                mapped.b=mix(mapped.b,overlay.b/max(total,.0001),coverage);
-                soil*=1.0-coverage;gravel*=1.0-coverage;
-            }
+            vec4 classification;
+            vec4 clean=reactorGroundMaterial(worldPosition,weights,viewDistance,cLum,gLum,classification);
+            color.rgb=mix(color.rgb,clean.rgb,clean.a);
+            grass=mix(grass,classification.r,classification.a);
+            mapped.b=mix(mapped.b,classification.b,classification.a);
+            soil*=1.0-classification.a;gravel*=1.0-classification.a;
         }
         if(proximity>0.0){
             vec3 cn=groundNormalDetail(Sampler2,materialPosition,weights),gn=groundNormalDetail(Sampler4,materialPosition,weights);
