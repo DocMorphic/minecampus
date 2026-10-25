@@ -1,0 +1,41 @@
+{
+  "status": "Qualified exterior reference for the next north projection study; no reconstruction accepted",
+  "building": "DEBY_LOD2_108698323",
+  "source": {
+    "reference": "atom-ei-canopies-reference.json",
+    "url": "https://www.stbaro.bayern.de/hochbau/projekte/B15H.E1505200.01.html",
+    "credit": "FRM II / TUM",
+    "videoSha256": "f62a22a734dfe664b67ee016b0ba7353a875a0d69aba93139df7198466fbd1d6",
+    "reviewedFrames": [
+      {
+        "seconds": 26,
+        "fileSha256": "9b8b25f90b48e4af7ee3e8a35bf1459a0b05a8c3a42660f2ee4b62c9846557a7"
+      },
+      {
+        "seconds": 30,
+        "fileSha256": "d2107eb33ce6a68abcd944670aa2c2f24737cb69e904da74a9238022ac54ee33"
+      },
+      {
+        "seconds": 346,
+        "fileSha256": "2eb488b0e18804141c8d36caecbcd31dc4b9450680e03d45a33b4126587128a6"
+      }
+    ],
+    "use": "Research only; source pixels remain local and are not used as textures."
+  },
+  "observations": [
+    "At 26 seconds a small dark glazed-looking projection is visible at the left side of the lower Atom-Ei, with a roof distinct from the adjoining pale canopy.",
+    "The main lower ring has warm brick, pale vertical divisions and an upper glazed band.",
+    "The 30-second and closing aerial views mainly expose the MLZ buildings and do not establish finer entrance details."
+  ],
+  "registrationInference": "The 26-second view appears to be from the north side, with the MLZ block in front/right of the Atom-Ei and the reactor complex to the left. The small projection is therefore a candidate reference for north body 108698323. This is not a calibrated match; verify its roof outline against the survey before reconstruction.",
+  "limitations": [
+    "The dark facade occupies too few source pixels to resolve individual mullions, door leaves or material finish confidently.",
+    "The public interactive panorama opens on interiors and did not provide a useful exterior registration.",
+    "No interior reconstruction is proposed."
+  ],
+  "nextActions": [
+    "Register the measured nine-triangle roof and footprint against the 26-second exterior frame and orthophoto.",
+    "Separate measured envelope geometry from estimated blue framing, glazing and material details.",
+    "Retain unrelated neighbouring footprints and the separate southern fragment while testing a bounded reconstruction."
+  ]
+}

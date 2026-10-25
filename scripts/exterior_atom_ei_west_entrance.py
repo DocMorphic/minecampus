@@ -74,18 +74,30 @@ def build(ctx):
     # The photographed glazing is a closed exterior surface at the existing
     # base, not an opening into a fabricated interior. Offset it just outside
     # the measured main wall to avoid coincident brick and pane surfaces.
+    # Adjacent offset planes must share a common corner. Offsetting each
+    # surveyed segment independently opens millimetre-wide vertical gaps.
+    directions = np.diff(inner, axis=0)
+    directions /= np.linalg.norm(directions, axis=1)[:,None]
+    normals = np.column_stack([directions[:,1],-directions[:,0]])
+    glazing_line = inner.copy()
+    glazing_line[0] += normals[0]*spec['glazingOffsetMetres']
+    glazing_line[-1] += normals[-1]*spec['glazingOffsetMetres']
+    for index in range(1,len(inner)-1):
+        denominator = 1+np.dot(normals[index-1],normals[index])
+        assert denominator > 1.5, 'Unexpected sharp turn in measured glazing base'
+        glazing_line[index] += (normals[index-1]+normals[index])*spec['glazingOffsetMetres']/denominator
     glass_controls = []; distance = 0.0; facade_regions = []
-    for a,b in zip(inner[:-1],inner[1:]):
+    for index,(a,b) in enumerate(zip(glazing_line[:-1],glazing_line[1:])):
         delta = b-a; length = np.linalg.norm(delta); direction = delta/length
         normal = np.array([direction[1],0,-direction[0]])
-        anchor = np.array([a[0],0,a[1]])+normal*spec['glazingOffsetMetres']
+        anchor = np.array([a[0],0,a[1]])
         u = np.array([direction[0],0,direction[1]])
         shape = box(0,glass_bottom,length,glass_top)
         strips = [box(0,glass_bottom,length,glass_bottom+spec['frameWidthMetres']),box(0,glass_top-spec['frameWidthMetres'],length,glass_top),box(0,base+spec['transomAboveBaseMetres']-.025,length,base+spec['transomAboveBaseMetres']+.025)]
         for x in np.arange(math.floor(distance/spec['mullionPitchMetres'])*spec['mullionPitchMetres'],distance+length+spec['mullionPitchMetres'],spec['mullionPitchMetres']):
             local=x-distance;half=spec['frameWidthMetres']/2;strips.append(box(local-half,glass_bottom,local+half,glass_top))
-        if distance == 0: strips.append(box(0,glass_bottom,.055,glass_top))
-        if distance+length >= line.length-1e-6: strips.append(box(length-.055,glass_bottom,length,glass_top))
+        if index == 0: strips.append(box(0,glass_bottom,.055,glass_top))
+        if index == len(glazing_line)-2: strips.append(box(length-.055,glass_bottom,length,glass_top))
         frame = shape.intersection(unary_union(strips)); glass = shape.difference(frame)
         def surface(poly,part,offset):
             for tri in triangles(poly):

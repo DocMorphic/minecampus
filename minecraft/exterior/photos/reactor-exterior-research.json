@@ -1,0 +1,61 @@
+{
+  "status": "Exterior survey and public reference identified; reconstruction pending",
+  "building": "DEBY_LOD2_5323135",
+  "priority": "Large unreconstructed reactor/connecting-wing envelope visible beside the Atom-Ei; assess together with the smaller north projection rather than limiting the goal to the west entrance.",
+  "survey": {
+    "boundsMC": [
+      [
+        266.7790230982077,
+        63.92556943336591,
+        -120.90425479691305
+      ],
+      [
+        382.7111143477004,
+        96.29931538352827,
+        -53.72323162543441
+      ]
+    ],
+    "footprintArea": 5637.494142682275,
+    "wallCount": 55,
+    "roofTriangles": 82,
+    "uniqueRoofPoints": 104
+  },
+  "currentRendering": "This body has no photo-facade plan in the current development scene and remains provider source geometry.",
+  "reference": {
+    "url": "https://www.stbaro.bayern.de/hochbau/projekte/B15H.E1505200.01.html",
+    "credit": "FRM II / TUM",
+    "videoSha256": "f62a22a734dfe664b67ee016b0ba7353a875a0d69aba93139df7198466fbd1d6",
+    "frames": [
+      {
+        "seconds": 14,
+        "sha256": "9f337574a785f609b704b9dd963dd0aa1a986e75f34162a881ac6d9a5866b2a4"
+      },
+      {
+        "seconds": 18,
+        "sha256": "91e26b1b0f5059496c93911b9bae1224751f4a674c29c25fd8db2e0a3aa7f01d"
+      },
+      {
+        "seconds": 22,
+        "sha256": "40bcec6315187d6baaad121b87664f9e4870a6918e1f4d416c61905cf4b67820"
+      }
+    ],
+    "use": "Exterior research only; no video pixels redistributed or used as textures."
+  },
+  "observations": [
+    "The taller volume has silver/light-grey rectangular cladding panels and an arched roof with a raised curved edge.",
+    "Several narrow vertical window groups and smaller dark service openings interrupt the taller facades.",
+    "The lower wings show repeated glazed bands, pale wall divisions, flat roofs and glazed rooflights."
+  ],
+  "limitations": [
+    "Fine panel, frame and opening dimensions require qualified estimates from the exterior views.",
+    "Unseen faces must be distinguished from observed faces.",
+    "No interior geometry or internal reactor layout is in scope."
+  ],
+  "nextActions": [
+    "Use the complete 55-wall surveyed envelope and retain the lower roof outlines.",
+    "Fit the long curved upper roof to its sampled section and preserve the 104 surveyed roof points within a stated tolerance.",
+    "Add exterior cladding, observed window groups and roof-edge details from the official footage.",
+    "Create a bounded retirement plan with protection for adjacent buildings; test the east extent beyond the original central terrain footprint.",
+    "Verify close north/west approaches, retained Atom-Ei views, roof views and collision in the actual packaged game."
+  ]
+}

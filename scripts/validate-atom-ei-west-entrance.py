@@ -47,6 +47,18 @@ for face in derived['glazingFaces']:
  expected=box(0,face['bottom'],face['length'],face['top']);coverage=unary_union(projected)
  assert expected.symmetric_difference(coverage).area<.0002, 'Glazing backing has holes behind raised frames'
  glass_backing_area+=expected.area
+# The exported glass triangles must share the five vertical section edges
+# exactly in float32. A continuous backing within each plane is insufficient.
+from collections import Counter
+edges=Counter()
+for tri in parts[3][:,:3].reshape(-1,3,3):
+ for a,b in zip(tri,np.roll(tri,-1,axis=0)):
+  if np.array_equal(a[[0,2]],b[[0,2]]) and abs(a[1]-b[1])>1:
+   edges[tuple(sorted([tuple(a),tuple(b)]))]+=1
+shared_glass_edges=sum(count==2 for count in edges.values())
+assert shared_glass_edges==len(derived['glazingFaces'])-1, ('Open vertical joints in encoded panes',shared_glass_edges)
+assert sum(count==1 for count in edges.values())==2, 'Unexpected exposed glass section edge'
+assert all(count in [1,2] for count in edges.values())
 # Verify each new walking target against the declared encoded terrain tile,
 # instead of assuming that a nearby terrain-guide sample has the same ID.
 probe_plan=root/'minecraft/exterior/checks/atom-ei-west-entrance.json'
@@ -89,5 +101,5 @@ if args.baseline:
  for old,new in zip(oldplans,plans):
   if old['id']!=spec['building']:assert old==new,old['id']
   else:assert old['roofTriangles']==new['roofTriangles']and old['bounds']==new['bounds']
-result={'status':'PASS: exact surveyed roof; low geometry confined to main-base glazing; open projected volume; protected neighbours and retained inputs','manifestSha256':sha(out/'manifest.json'),'validatorSha256':sha(Path(__file__)),'sourceSha256':rec['sourceSha256'],'generatorSha256':rec['generatorSha256'],'meshSha256':rec['meshSha256'],'exactRoofTriangles':10,'frameNormalMaximumResidualMetres':max(normalErrors),'maximumGlazingDistanceFromMainBaseMetres':max_gap,'verifiedProbeSurfaces':verified_probe_surfaces,'probePlanSha256':sha(probe_plan),'continuousGlassBackingSquareMetres':glass_backing_area,'falseVolumeWallsRetired':len(walls),'protectedNeighbourOverlapSquareMetres':owned.intersection(protect).area,'previousRenderTilesUnchanged':previous_count,'visualAcceptance':False,'qualification':'Source registration of the photographed entrance is inferred. Native appearance, open approach collision and reflections require separate verification.'}
+result={'status':'PASS: exact surveyed roof; low geometry confined to main-base glazing; open projected volume; protected neighbours and retained inputs','manifestSha256':sha(out/'manifest.json'),'validatorSha256':sha(Path(__file__)),'sourceSha256':rec['sourceSha256'],'generatorSha256':rec['generatorSha256'],'meshSha256':rec['meshSha256'],'exactRoofTriangles':10,'frameNormalMaximumResidualMetres':max(normalErrors),'maximumGlazingDistanceFromMainBaseMetres':max_gap,'verifiedProbeSurfaces':verified_probe_surfaces,'probePlanSha256':sha(probe_plan),'sharedEncodedGlassJoints':shared_glass_edges,'continuousGlassBackingSquareMetres':glass_backing_area,'falseVolumeWallsRetired':len(walls),'protectedNeighbourOverlapSquareMetres':owned.intersection(protect).area,'previousRenderTilesUnchanged':previous_count,'visualAcceptance':False,'qualification':'Source registration of the photographed entrance is inferred. Native appearance, open approach collision and reflections require separate verification.'}
 (out/'atom-ei-west-entrance-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
