@@ -1,0 +1,103 @@
+{
+  "building": "DEBY_LOD2_5323143",
+  "runtimeId": 1000030042,
+  "siteBoundsUTM": [
+    698594,
+    5349605,
+    698613,
+    5349643
+  ],
+  "osm": {
+    "sourceFile": "physics-znn-west-osm.xml",
+    "sha256": "d69527f6009d02158e3fe1e954b661d19418a6afc7d26e660c279b947850a9ea",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.67567165102996,48.267739705167905,11.677765939519338,48.26913058250489",
+    "retrievedSnapshotSha256": "c0b9a24c9229e51c589e679a91ed87cfd32e57b3434154bbb942db2346eb6d66",
+    "way": "953220087",
+    "license": "ODbL1.0",
+    "attribution": "\u00a9 OpenStreetMap contributors"
+  },
+  "wallBaseExtensionMetres": 0.8,
+  "panelPitchMetres": 2.4,
+  "panelJointWidthMetres": 0.012,
+  "roofFasciaHeightMetres": 0.14,
+  "cleanupMarginMetres": 1.6,
+  "tankSegments": 32,
+  "tankCapRiseMetres": 0.25,
+  "tankPlinthHeightMetres": 0.16,
+  "materialColours": [
+    [
+      143,
+      147,
+      146,
+      255
+    ],
+    [
+      74,
+      80,
+      80,
+      255
+    ],
+    [
+      221,
+      224,
+      219,
+      255
+    ],
+    [
+      128,
+      130,
+      124,
+      255
+    ]
+  ],
+  "equipment": [
+    {
+      "component": 1,
+      "centreUTM": [
+        698604.8720930233,
+        5349630.93255814
+      ],
+      "radiusMetres": 0.7399277020331919,
+      "capPixels": 43,
+      "topAboveLocalGroundMetres": 6.381060600280762,
+      "centreGroundElevation": 474.4740295410156,
+      "centreSurfaceElevation": 480.8699951171875,
+      "capBoundsUTM": [
+        [
+          698604.3,
+          5349630.1
+        ],
+        [
+          698605.5,
+          5349631.7
+        ]
+      ],
+      "qualification": "Approximate cylinder inferred from isolated high circular DOM plateau and matching bright aerial cap. Not a measured tank specification."
+    },
+    {
+      "component": 2,
+      "centreUTM": [
+        698604.4982300884,
+        5349626.446902655
+      ],
+      "radiusMetres": 1.1994835078277375,
+      "capPixels": 113,
+      "topAboveLocalGroundMetres": 7.7509765625,
+      "centreGroundElevation": 474.5660095214844,
+      "centreSurfaceElevation": 482.2699890136719,
+      "capBoundsUTM": [
+        [
+          698603.3,
+          5349625.5
+        ],
+        [
+          698605.7,
+          5349627.5
+        ]
+      ],
+      "qualification": "Approximate cylinder inferred from isolated high circular DOM plateau and matching bright aerial cap. Not a measured tank specification."
+    }
+  ],
+  "qualification": "BVV LoD2 fixes the low building envelope and roof; two cylindrical tanks are estimates from public DOP20/DOM20/DGM1. Tank radii/heights, cap curvature, plinths, panel divisions and finishes are approximate. The OSM service outline includes northern equipment beyond the surveyed building, so it is not treated as an equivalent building footprint. Unmodelled equipment areas remain protected. No interiors; no private projected imagery is packaged.",
+  "groundRuntimeId": 1000060800
+}

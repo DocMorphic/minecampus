@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<osm version="0.6" generator="Minecampus public source subset">
+  <node id="8822878122" lat="48.2687754" lon="11.6765183" />
+  <node id="8822878123" lat="48.2685272" lon="11.6764512" />
+  <node id="8822878124" lat="48.2685356" lon="11.6763807" />
+  <node id="8822878125" lat="48.2687838" lon="11.6764478" />
+  <node id="12574860918" lat="48.2685410" lon="11.6763821" />
+  <way id="953220087">
+    <nd ref="8822878125" />
+    <nd ref="8822878122" />
+    <nd ref="8822878123" />
+    <nd ref="8822878124" />
+    <nd ref="12574860918" />
+    <nd ref="8822878125" />
+    <tag k="building" v="service" />
+  </way>
+</osm>
