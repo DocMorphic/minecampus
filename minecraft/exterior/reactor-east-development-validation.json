@@ -1,5 +1,5 @@
 {
-  "status": "Candidate 82 development checkpoint: complete east-hall draft passes geometry, package and service checks; native visual inspection running",
+  "status": "Candidate 82 native functional checks pass; visual acceptance fails on residual scan fragments",
   "candidate": 82,
   "alignmentVersion": 83,
   "geometry": {
@@ -473,14 +473,64 @@
     "qualification": "East views are above an adjoining building. Native migration and visual acceptance are separate."
   },
   "nativeInspection": {
-    "status": "RUNNING; no native acceptance yet",
+    "status": "PASS: 20 camera checks and 12 native standing/body-clearance checks; process exit 0",
     "artifactSha256": "8bc88b0638655a4ba533f9ff19db7dcbe5bba45818d9e587254d970a892a4a86",
     "plannedCameras": 20,
     "plannedStandingChecks": 12,
     "inspectionPlanSha256": "acc86d1dfbf8f2d00ad5d38431ace44f122bd23a780c3dd10e352541610effc2",
-    "sourceWorldFiles": 122
+    "sourceWorldFiles": 122,
+    "exitCode": 0,
+    "cameras": 20,
+    "standingChecks": 12,
+    "maximumSupportErrorMetres": 0.05899021643153901,
+    "capturesReviewed": 52,
+    "contactSheetsReviewed": 13,
+    "resultSha256": "a1c619b067d71bdd817d160475281a845959c95d451f7bca11a5a867e0eeea19",
+    "qualification": "SurfaceControls are separate packaged-service inputs, not additional native ray assertions. Functional success does not establish visual quality."
   },
   "visualAcceptance": false,
   "qualification": "Surveyed envelope and roof are measured; cladding pitch, opening sizes and inferred matching end-projection glazing remain estimates. New source retirement is confined to the reconstructed envelope and excludes adjacent buildings. Source/service checks do not establish visual acceptance. No interiors or reference-photo facade textures are included.",
-  "installation": "User preview remains unchanged; no binary release."
+  "installation": "User preview remains unchanged; no binary release.",
+  "preservation": {
+    "sourceCandidate81Unchanged": 122,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV83AlignedChunks": 202,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "visualFindings": [
+    "The corrugated hall envelope and recessed west glazing render in the packaged game.",
+    "Old source fragments still overlap north and south projections and form an irregular strip along the eastern roof edge.",
+    "The separate southern foreground fragment remains visible in retained frame 8; its source ownership still needs diagnosis.",
+    "Ordinary dirt blocks are visible near the west corridor; their provenance must be established before any cleanup because saved edits are preserved.",
+    "Source-photo registration and unobserved facade details remain estimated; baked aerial shadows/cars, roof equipment and wider campus quality remain unfinished."
+  ],
+  "screenshots": [
+    {
+      "file": "reactor-east-west-development.png",
+      "frame": 14,
+      "sha256": "9a211930479f5f8d323bdfc05c28c07c22a871196cd7482940fd8afa7f1e8e59",
+      "qualification": "Exact native game capture; development evidence, not visual acceptance."
+    },
+    {
+      "file": "reactor-east-north-remaining.png",
+      "frame": 16,
+      "sha256": "725f9dfbf191c2bf7ba81eec5f45e6d46309273514cf5cc5383c4e7173c57078",
+      "qualification": "Exact native game capture; development evidence, not visual acceptance."
+    },
+    {
+      "file": "reactor-east-edge-remaining.png",
+      "frame": 17,
+      "sha256": "55e105cc6c75edd10d0703351a20208ec5d49253f8be5524d45317cf665b5cc9",
+      "qualification": "Exact native game capture; development evidence, not visual acceptance."
+    },
+    {
+      "file": "reactor-east-aerial-development.png",
+      "frame": 19,
+      "sha256": "d74d789a41b28de675f88a56b731ba6b0cc1b1c7160bb1bc3a1f61cb0161b9ee",
+      "qualification": "Exact native game capture; development evidence, not visual acceptance."
+    }
+  ]
 }
