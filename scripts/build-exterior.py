@@ -310,6 +310,8 @@ from exterior_uta import build as build_uta
 build_uta(globals())
 from exterior_uta_landscape import build as build_uta_landscape
 build_uta_landscape(globals())
+from exterior_uyd import build as build_uyd
+build_uyd(globals())
 from exterior_reactor_ground import build as build_reactor_ground
 build_reactor_ground(globals())
 metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}

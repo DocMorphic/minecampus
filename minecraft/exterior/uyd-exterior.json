@@ -1,0 +1,22 @@
+{
+  "building": "DEBY_LOD2_108698301",
+  "siteBoundsUTM": [
+    698430,
+    5349200,
+    698650,
+    5349360
+  ],
+  "cleanupMarginMetres": 2.75,
+  "neighbourGuardMetres": 0.25,
+  "datumMarginMetres": 1,
+  "runtimeId": 1000030053,
+  "fallbackWall": 1,
+  "fallbackColour": [
+    186,
+    187,
+    183,
+    255
+  ],
+  "reference": "photos/uyd-exterior-reference.json",
+  "qualification": "Appearance observations from transient authenticated source review; no provider pixels saved or distributed. The missing east wall receives only its BVV survey plane and an estimated pale material. No door/window arrangement, storey count or detailed reconstruction is claimed for that face. OSM two-level tag is unresolved against the roughly 9.11 m BVV height."
+}

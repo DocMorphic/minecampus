@@ -103,6 +103,12 @@ assert reactor_east_check['status'].startswith('PASS:') and reactor_east_check['
 assert reactor_east_check['validatorSha256']==digest(ROOT/'scripts/validate-reactor-east.py')
 assert reactor_east_check['meshSha256']==reactor_east['meshSha256'] and reactor_east_check['roofSha256']==reactor_east['roofSha256']
 
+uyd=json.loads((DATA/'manifest.json').read_text())['architecture']['uydExterior']
+for path,key in [(SOURCE/uyd['sourceFile'],'sourceSha256'),(ROOT/uyd['generatorFile'],'generatorSha256'),(SOURCE/uyd['referenceFile'],'referenceSha256'),(DATA/uyd['roofFile'],'roofSha256'),(DATA/uyd['collisionFile'],'collisionSha256'),(DATA/uyd['meshFile'],'meshSha256')]:assert digest(path)==uyd[key]
+uyd_check=json.loads((DATA/'uyd-exterior-validation.json').read_text())
+assert uyd_check['status'].startswith('PASS:') and uyd_check['manifestSha256']==digest(DATA/'manifest.json')
+assert uyd_check['validatorSha256']==digest(ROOT/'scripts/validate-uyd-exterior.py')
+
 uta=json.loads((DATA/'manifest.json').read_text())['architecture']['utaExterior']
 for path,key in [(SOURCE/uta['sourceFile'],'sourceSha256'),(ROOT/uta['generatorFile'],'generatorSha256'),(SOURCE/uta['referenceFile'],'referenceSha256'),(DATA/uta['roofFile'],'roofSha256'),(DATA/uta['collisionFile'],'collisionSha256')]:assert digest(path)==uta[key]
 uta_check=json.loads((DATA/'uta-exterior-validation.json').read_text())
@@ -823,6 +829,9 @@ with zipfile.ZipFile(release) as original:
   for key in ['coverageFile','materialDerivedFile']:write(target,'src/minecampus-exterior/'+woodland[key],(DATA/woodland[key]).read_bytes())
   write(target,'src/minecampus-exterior/p1-complex.json',(SOURCE/'p1-complex.json').read_bytes())
   write(target,'src/minecampus-exterior/p1-complex-reference.json',(SOURCE/'photos/p1-complex-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/uyd-exterior.json',(SOURCE/'uyd-exterior.json').read_bytes())
+  write(target,'src/minecampus-exterior/uyd-exterior-reference.json',(SOURCE/'photos/uyd-exterior-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/uyd-exterior-validation.json',(DATA/'uyd-exterior-validation.json').read_bytes())
   write(target,'src/minecampus-exterior/physics-container.json',(SOURCE/'physics-container.json').read_bytes())
   write(target,'src/minecampus-exterior/physics-container-reference.json',(SOURCE/'photos/physics-container-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/physics-library.json',(SOURCE/'physics-library.json').read_bytes())
