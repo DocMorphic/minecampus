@@ -31,7 +31,8 @@ public final class CampusReflections {
     private record PlaneCache(float[] vertices,List<Plane> values){}
     private static final Map<MapTile,PlaneCache> planes=new WeakHashMap<>();
     private static Object lastWorld;
-    public static boolean supports(int tile){return tile==1_000_000_100||tile==1_000_000_101||tile==1_000_030_028||tile==1_000_030_029||tile==1_000_030_030||tile==1_000_030_033||(tile>=1_000_030_035&&tile<=1_000_030_041);}
+    public static int glassPart(int tile){return tile==1_000_030_043?2:1;}
+    public static boolean supports(int tile){return tile==1_000_030_043||tile==1_000_000_100||tile==1_000_000_101||tile==1_000_030_028||tile==1_000_030_029||tile==1_000_030_030||tile==1_000_030_033||(tile>=1_000_030_035&&tile<=1_000_030_041);}
     public static final class Plane {
         public final Vector4f equation;
         public AABB bounds;
@@ -56,13 +57,13 @@ public final class CampusReflections {
                 if(Math.abs(n.y)>.05)continue;
                 // Physics I's generated panes carry validated outward winding.
                 // Preserve it instead of merging front and back orientations.
-                if(tile.data.id!=1_000_030_028&&tile.data.id!=1_000_030_029&&tile.data.id!=1_000_030_030&&tile.data.id!=1_000_030_033&&!(tile.data.id>=1_000_030_035&&tile.data.id<=1_000_030_041)&&(Math.abs(n.x)>Math.abs(n.z)?n.x<0:n.z<0))n.negate();
+                if(tile.data.id!=1_000_030_043&&tile.data.id!=1_000_030_028&&tile.data.id!=1_000_030_029&&tile.data.id!=1_000_030_030&&tile.data.id!=1_000_030_033&&!(tile.data.id>=1_000_030_035&&tile.data.id<=1_000_030_041)&&(Math.abs(n.x)>Math.abs(n.z)?n.x<0:n.z<0))n.negate();
                 float d=-n.dot(a);
                 var bounds=new AABB(Math.min(a.x,Math.min(b.x,c.x)),Math.min(a.y,Math.min(b.y,c.y)),Math.min(a.z,Math.min(b.z,c.z)),Math.max(a.x,Math.max(b.x,c.x)),Math.max(a.y,Math.max(b.y,c.y)),Math.max(a.z,Math.max(b.z,c.z)));
                 Plane found=null;
                 for(var p:result)if(p.equation.x*n.x+p.equation.y*n.y+p.equation.z*n.z>.99999f&&Math.abs(p.equation.w-d)<.025f){found=p;break;}
                 if(found==null){found=new Plane(new Vector4f(n,d),bounds,t.data.id);result.add(found);}else found.bounds=found.bounds.minmax(bounds);
-                if(t.data.id==1_000_030_028||t.data.id==1_000_030_029||t.data.id==1_000_030_030||t.data.id==1_000_030_033||(t.data.id>=1_000_030_035&&t.data.id<=1_000_030_041))found.triangles.add(new Vector3f[]{a,b,c});
+                if(t.data.id==1_000_030_043||t.data.id==1_000_030_028||t.data.id==1_000_030_029||t.data.id==1_000_030_030||t.data.id==1_000_030_033||(t.data.id>=1_000_030_035&&t.data.id<=1_000_030_041))found.triangles.add(new Vector3f[]{a,b,c});
             }
             planes.put(tile,new PlaneCache(v,result));return result;
     }
@@ -106,10 +107,10 @@ public final class CampusReflections {
         var screenProjection=new Matrix4f(context.projectionMatrix()).mul(context.positionMatrix()).translate(-(float)eye.x,-(float)eye.y,-(float)eye.z);
         Plane best=null;double bestScore=0,priorScore=0;
         for(var tile:tiles){
-            if(!supports(tile.data.id)||tile.isEmpty(1))continue;
+            if(!supports(tile.data.id)||tile.isEmpty(glassPart(tile.data.id)))continue;
             for(var p:panes(tile)){
                 double side=p.equation.dot(eye4);
-                if((tile.data.id==1_000_030_028||tile.data.id==1_000_030_029||tile.data.id==1_000_030_030||tile.data.id==1_000_030_033||(tile.data.id>=1_000_030_035&&tile.data.id<=1_000_030_041))&&side<=.6)continue;
+                if((tile.data.id==1_000_030_043||tile.data.id==1_000_030_028||tile.data.id==1_000_030_029||tile.data.id==1_000_030_030||tile.data.id==1_000_030_033||(tile.data.id>=1_000_030_035&&tile.data.id<=1_000_030_041))&&side<=.6)continue;
                 double distance=Math.abs(side);if(distance<.6||distance>60)continue;
                 if(context.frustum()!=null&&!context.frustum().isVisible(p.bounds.inflate(.1)))continue;
                 double dx=Math.max(p.bounds.minX-eye.x,Math.max(0,eye.x-p.bounds.maxX));
@@ -117,7 +118,7 @@ public final class CampusReflections {
                 double dz=Math.max(p.bounds.minZ-eye.z,Math.max(0,eye.z-p.bounds.maxZ));
                 double area=Math.hypot(p.bounds.getXsize(),p.bounds.getZsize())*p.bounds.getYsize();
                 double score=area/(36+dx*dx+dy*dy+dz*dz);
-                if(tile.data.id==1_000_030_028||tile.data.id==1_000_030_029||tile.data.id==1_000_030_030||tile.data.id==1_000_030_033||(tile.data.id>=1_000_030_035&&tile.data.id<=1_000_030_041))score=visibleArea(p,screenProjection);
+                if(tile.data.id==1_000_030_043||tile.data.id==1_000_030_028||tile.data.id==1_000_030_029||tile.data.id==1_000_030_030||tile.data.id==1_000_030_033||(tile.data.id>=1_000_030_035&&tile.data.id<=1_000_030_041))score=visibleArea(p,screenProjection);
                 if(p==selected)priorScore=score;
                 if(score>bestScore){best=p;bestScore=score;}
             }
@@ -191,7 +192,7 @@ public final class CampusReflections {
         material.safeGetUniform("PlanarTexture").set(12);
         // Physics I's older dark glazing needs a subdued scene contribution.
         // This is a visual estimate, not a measured optical property.
-        material.safeGetUniform("PlanarBaseWeight").set((best.tile==1_000_030_028||best.tile==1_000_030_029||best.tile==1_000_030_030||best.tile==1_000_030_033||(best.tile>=1_000_030_035&&best.tile<=1_000_030_041))?.28f:.65f);
+        material.safeGetUniform("PlanarBaseWeight").set((best.tile==1_000_030_043||best.tile==1_000_030_028||best.tile==1_000_030_029||best.tile==1_000_030_030||best.tile==1_000_030_033||(best.tile>=1_000_030_035&&best.tile<=1_000_030_041))?.28f:.65f);
         material.safeGetUniform("PlanarPlane").set(plane.x,plane.y,plane.z,plane.w);
         material.safeGetUniform("PlanarMatrix").set(projectionToTexture);material.safeGetUniform("PlanarStrength").set(1f);
     }

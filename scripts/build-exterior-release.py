@@ -217,6 +217,17 @@ assert znn_west_check['sourceSha256']==znn_west['sourceSha256']
 assert znn_west_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-znn-west.py')
 assert set(znn_west_check['tileSha256'])==set(znn_west['groundTiles']+[znn_west['meshFile'],znn_west['roofFile']])
 assert all(digest(DATA/name)==value for name,value in znn_west_check['tileSha256'].items())
+cala=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsCALA']
+assert digest(SOURCE/cala['sourceFile'])==cala['sourceSha256']
+assert digest(ROOT/cala['generatorFile'])==cala['generatorSha256']
+assert digest(ROOT/'scripts/exterior_ground_extension.py')==cala['groundGeneratorSha256']
+cala_check=json.loads((DATA/'physics-cala-validation.json').read_text())
+assert cala_check['status'].startswith('PASS:')
+assert cala_check['manifestSha256']==digest(DATA/'manifest.json')
+assert cala_check['sourceSha256']==cala['sourceSha256']
+assert cala_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-cala.py')
+assert set(cala_check['tileSha256'])==set(cala['groundTiles']+[cala['meshFile'],cala['roofFile']])
+assert all(digest(DATA/name)==value for name,value in cala_check['tileSha256'].items())
 riverbank=json.loads((DATA/'manifest.json').read_text())['architecture']['riverbank']
 riverbank_spec=json.loads((SOURCE/riverbank['sourceFile']).read_text())
 assert digest(SOURCE/riverbank['sourceFile'])==riverbank['sourceSha256']
@@ -304,6 +315,10 @@ if not compiled.is_file():raise SystemExit('Expected remapped release JAR missin
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
 
+CALA main volume: BVV LoD2 walls, DOP20 green roof and DGM1 north/east
+slope. Openings, canopies, finishes and geometric markings are approximate
+interpretations of the official exterior photograph linked in physics-cala.json.
+Reference-photo pixels are not bundled. Adjacent survey volumes are preserved.
 West ZNN service building: BVV LoD2 envelope and DOP20 roof; two tank
 silhouettes estimated from DOM20/DGM1, with approximate finishes and caps.
 OSM service compound by OpenStreetMap contributors, ODbL1.0; see
@@ -612,6 +627,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/'+riverbank['sourceFile'],(SOURCE/riverbank['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+riverbank['coverageFile'],(DATA/riverbank['coverageFile']).read_bytes())
   for source in riverbank_spec['osm']:write(target,'src/minecampus-exterior/'+source['sourceFile'],(SOURCE/source['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+cala['sourceFile'],(SOURCE/cala['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+znn_west['sourceFile'],(SOURCE/znn_west['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+znn_west['coverageFile'],(DATA/znn_west['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+znn_west_spec['osm']['sourceFile'],(SOURCE/znn_west_spec['osm']['sourceFile']).read_bytes())

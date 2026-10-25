@@ -11,6 +11,7 @@ public final class CampusSiteInspection {
     private static JsonObject plan;
     private static JsonObject fractionalSupportChecks;
     private static JsonObject migrationChecks;
+    private static boolean migrationCameraReturned;
     private static int phase, ticks;
     private static final JsonArray frames = new JsonArray();
     private static final JsonArray gravity = new JsonArray();
@@ -31,6 +32,10 @@ public final class CampusSiteInspection {
     }
 
     public static String initialCamera() throws Exception {
+        cameras();
+        // A new alignment journal only visits chunks near the player. When the
+        // matched route starts elsewhere, visit its saved-edit fixture first.
+        if(plan.has("migration")&&plan.has("migrationCamera"))return plan.get("migrationCamera").getAsString();
         return cameras().get(0).getAsJsonObject().get("position").getAsString();
     }
 
@@ -39,7 +44,13 @@ public final class CampusSiteInspection {
         cameras();
         if(plan.has("migration")&&migrationChecks==null){
             migrationChecks=CampusMigrationCheck.check(mc,plan.getAsJsonObject("migration"));
-            if(migrationChecks!=null)writeReport("RUNNING: saved-world migration verified; native views pending");
+            if(migrationChecks!=null){
+                if(plan.has("migrationCamera")&&!migrationCameraReturned){
+                    mc.player.connection.sendCommand("tp @s "+cameras().get(0).getAsJsonObject().get("position").getAsString());
+                    migrationCameraReturned=true;ticks=0;
+                }
+                writeReport("RUNNING: saved-world migration verified; native views pending");
+            }
         }
     }
 

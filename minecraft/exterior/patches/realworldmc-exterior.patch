@@ -81,8 +81,8 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				if (t.isEmpty(i)) continue;
 +                if(campus)CampusMaterials.bindConcrete(t.data.id==1_000_030_033&&(i==0||i==2||i==5)?2:((t.data.id==1_000_030_028||t.data.id==1_000_030_029||t.data.id==1_000_030_031||t.data.id==1_000_030_032)&&i==0?1:0));
 +                boolean physicsGround=campus&&surveyed;
-+                if(campus)CampusMaterials.bindGround(physicsGround?(t.data.id>=1_000_060_400&&t.data.id<=1_000_060_800?5:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?3:t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?2:1):0);
-+                if(physicsGround)tileShader.safeGetUniform("MaterialDetail").set(t.data.id>=1_000_060_400&&t.data.id<=1_000_060_800?25f:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?23f:(t.data.id>=1_000_060_100&&t.data.id<=1_000_060_104)?15f:(t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?20f:19f));
++                if(campus)CampusMaterials.bindGround(physicsGround?(t.data.id>=1_000_060_400&&t.data.id<=1_000_060_899?5:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?3:t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?2:1):0);
++                if(physicsGround)tileShader.safeGetUniform("MaterialDetail").set(t.data.id>=1_000_060_400&&t.data.id<=1_000_060_899?25f:t.data.id>=1_000_060_300&&t.data.id<1_000_060_400?23f:(t.data.id>=1_000_060_100&&t.data.id<=1_000_060_104)?15f:(t.data.id>=1_000_060_200&&t.data.id<1_000_060_300?20f:19f));
 +                if(campus && t.data.id>=1_000_000_100 && t.data.id<1_000_000_102)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==2?16f:9f));
 +                if(campus && t.data.id>=1_000_000_200 && t.data.id<1_000_000_203)
@@ -105,8 +105,8 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?13f:((i==1||i==3)?7f:11f));
 +                if(campus && t.data.id==1_000_030_008)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?12f:(i==2?6f:7f));
-+                if(campus && t.data.id>=1_000_030_023 && t.data.id<=1_000_030_042)
-+                    tileShader.safeGetUniform("MaterialDetail").set(t.data.id==1_000_030_042?(i==4?0f:16f):t.data.id==1_000_030_041?(i==1?6f:(i==5?0f:16f)):t.data.id>=1_000_030_035?(i==1?6f:(i==4?0f:16f)):t.data.id==1_000_030_034?16f:t.data.id==1_000_030_033?(i==1?6f:(i==0||i==2?21f:(i==5?22f:(i==4?1f:16f)))):t.data.id>=1_000_030_031?(i==0?17f:(i==1||i==3||i==5?16f:(i==4?1f:0f))):(i==1?6f:(i==0?(t.data.id==1_000_030_030?16f:7f):(i==4?1f:0f))));
++                if(campus && t.data.id>=1_000_030_023 && t.data.id<=1_000_030_043)
++                    tileShader.safeGetUniform("MaterialDetail").set(t.data.id==1_000_030_043?(i==2?6f:(i==4?0f:16f)):t.data.id==1_000_030_042?(i==4?0f:16f):t.data.id==1_000_030_041?(i==1?6f:(i==5?0f:16f)):t.data.id>=1_000_030_035?(i==1?6f:(i==4?0f:16f)):t.data.id==1_000_030_034?16f:t.data.id==1_000_030_033?(i==1?6f:(i==0||i==2?21f:(i==5?22f:(i==4?1f:16f)))):t.data.id>=1_000_030_031?(i==0?17f:(i==1||i==3||i==5?16f:(i==4?1f:0f))):(i==1?6f:(i==0?(t.data.id==1_000_030_030?16f:7f):(i==4?1f:0f))));
 +                if(campus && (t.data.id==1_000_030_028||t.data.id==1_000_030_029) && i==0)
 +                    tileShader.safeGetUniform("MaterialDetail").set(17f);
 +                if(campus && t.data.id==1_000_030_028 && i==4)
@@ -235,7 +235,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapTile.java b/mod/src/c
          }
          int length=vertices==null?source.length:vertices.size();
          float[] draw=vertices==null?source:vertices.elements();
-+        if(i==1&&CampusReflections.supports(data.id))
++        if(i==CampusReflections.glassPart(data.id)&&CampusReflections.supports(data.id))
 +            reflectionGlass=vertices==null?source:java.util.Arrays.copyOf(draw,length);
          empty[i]=length==0;if(empty[i])return;
          try(ByteBufferBuilder bytes=new ByteBufferBuilder(length/5*DefaultVertexFormat.POSITION_TEX.getVertexSize())) {
