@@ -286,6 +286,15 @@ for folder in ['assets/earthcraft/blockstates','data/earthcraft/loot_table/block
 axe=resources/'data/minecraft/tags/block/mineable/axe.json';axe_data=json.loads(axe.read_text())
 if 'earthcraft:campus_wood' not in axe_data['values']:axe_data['values'].append('earthcraft:campus_wood')
 axe.write_text(json.dumps(axe_data)+'\n')
+# Fine surveyed solids retain their original drops, pickaxe tag and cut material.
+for material in ['stone','plaster']:
+ for folder in ['assets/earthcraft/blockstates','data/earthcraft/loot_table/blocks']:
+  shutil.copy2(resources/folder/('map_'+material+'.json'),resources/folder/('campus_'+material+'.json'))
+pickaxe=resources/'data/minecraft/tags/block/mineable/pickaxe.json';pickaxe_data=json.loads(pickaxe.read_text())
+for material in ['stone','plaster']:
+ if 'earthcraft:campus_'+material not in pickaxe_data['values']:pickaxe_data['values'].append('earthcraft:campus_'+material)
+pickaxe.write_text(json.dumps(pickaxe_data)+'\n')
+
 shader=work/'mod/src/main/resources/assets/realworldmc/shaders/core';shader.mkdir(parents=True,exist_ok=True)
 for p in (SOURCE/'shaders').glob('*'):shutil.copy2(p,shader/p.name)
 env=dict(os.environ,JAVA_HOME=str(Path(args.java_home).resolve()))
@@ -583,6 +592,7 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/terrain-column.mjs',(SOURCE/'service/terrain-column.mjs').read_bytes())
   write(target,'src/water-survey.mjs',(SOURCE/'service/water-survey.mjs').read_bytes())
   write(target,'src/source-retirement.mjs',(SOURCE/'service/source-retirement.mjs').read_bytes())
+  write(target,'src/solid-shapes.mjs',(SOURCE/'service/solid-shapes.mjs').read_bytes())
   write(target,'src/wood-shapes.mjs',(SOURCE/'service/wood-shapes.mjs').read_bytes())
   write(target,'src/collision-packet.mjs',(SOURCE/'service/collision-packet.mjs').read_bytes())
   write(target,'src/minecampus-survey.mjs',(SOURCE/'service/survey-surface.mjs').read_bytes())

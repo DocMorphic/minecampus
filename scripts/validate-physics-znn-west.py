@@ -69,6 +69,8 @@ def decode(path):
         pixels=np.frombuffer(data,dtype='uint8',count=w*h*4,offset=offset).reshape(h,w,4);offset+=w*h*4
         assert np.isfinite(v).all();parts.append((v,pixels))
     assert offset==len(data);return parts
+assert 0<=spec['compoundBoundaryToleranceMetres']<=.35
+assert next(t for t in m['tiles'] if t['file']==rec['meshFile'])['fineCollisionMaterials']==spec['fineCollisionMaterials']==[4,4,6,4,4]
 parts=decode(out/rec['meshFile']);roof=decode(out/rec['roofFile']);assert len(parts)==5 and len(roof)==2
 for part,colour in zip(parts[:4],spec['materialColours']):assert np.array_equal(part[1][0,0],colour)
 assert np.array_equal(parts[4][0],roof[0][0]) and np.array_equal(parts[4][1],roof[0][1])
@@ -112,7 +114,7 @@ with rasterio.open(root/'.cache/campus-dgm-east.tif') as dem,rasterio.open(root/
         assert abs(subset[:,1].max()-actual_top)<.001
         assert horizontal[horizontal<radius+.01].max()<=radius+.001
 # Bounded source retirement must retain unknown equipment and neighbours.
-coverage=read(out/rec['coverageFile']);modeled=foot.union(unary_union(pads));unknown=compound.difference(modeled)
+coverage=read(out/rec['coverageFile']);modeled=foot.union(unary_union(pads));unknown=compound.difference(foot.buffer(spec['compoundBoundaryToleranceMetres']).union(unary_union(pads)))
 others=unary_union([Polygon(p[0][:,:2],[h[:,:2] for h in p[1:]]).buffer(0) for bid,s in surveys.items() if bid!=spec['building'] for k,p in s if k=='GroundSurface'])
 retirement=shape(coverage['retirement']);expected=modeled.buffer(spec['cleanupMarginMetres']).difference(unknown).difference(others.buffer(.5))
 assert retirement.symmetric_difference(expected).area<1e-8

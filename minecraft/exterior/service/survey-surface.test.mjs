@@ -514,3 +514,24 @@ test('fine tree packets exclude terrain inference and preserve fractional suppor
  assert.ok(hints.has((2*16+3)*16+2));assert.ok(!hints.has(3*16+2));assert.ok(!hints.has((4*16+3)*16+2));
  const foreign=service.campusCollisionPacket({...frame,lat:49},0,0,0,8);assert.ok(foreign.subarray(0,cells).every(v=>v===255));assert.equal(foreign.readUInt32LE(cells+4),0);
 });
+
+test('fine reconstructed solids preserve terrain and nearby structures without filling corner cells',t=>{
+ for(const shift of [0,2]){
+  const specs=[{file:'base.ect',kind:'ground',runtimeId:600,bounds:[[0,0,0],[16,1,16]]},{file:'solid.ect',kind:'reconstruction',runtimeId:601,bounds:[[2,0,3],[2.25,5,3.25]],fineCollisionMaterials:[4]}];
+  const {service,dir}=fixture(t,null,{tiles:specs},{voxelizeArea:(_frame,assets,_x,_z,w,_y,h)=>{
+   assert.equal(assets.length,1,'Reconstructed solid is excluded from terrain filling');
+   const vox=new Uint8Array(w*w*h);vox[3*16+2]=45;vox[(4*16+3)*16+2]=6;vox[(2*16+3)*16+3]=23;return {vox};
+  }});
+  fs.writeFileSync(path.join(dir,'base.ect'),tile([[0,.875,0],[16,.875,0],[0,.875,16]]));
+  fs.writeFileSync(path.join(dir,'solid.ect'),tile([[2.1,.5,3.1],[2.2,5,3.1],[2.25,.5,3.25]]));
+  const frame={...origin,h0:origin.h0-shift,mcToEcef:(...p)=>p},cells=2048,packet=service.campusCollisionPacket(frame,0,0,shift,8);
+  assert.equal(packet[3*16+2],45,'Fractional ground is retained');assert.equal(packet[(4*16+3)*16+2],6,'Other structure is retained');assert.equal(packet[(2*16+3)*16+3],23,'Native fluid is retained');
+  const index=(2*16+3)*16+2;assert.equal(packet[index],4);
+  const hints=new Map();for(let p=cells+8;p<packet.length;p+=4)hints.set(packet.readUInt16LE(p),packet.readUInt16LE(p+2));
+  assert.ok(hints.has(index));assert.ok(!hints.has(3*16+2));assert.ok(!hints.has((4*16+3)*16+2));assert.ok(!hints.has((2*16+3)*16+3));
+  // Profile interval indices decode to a quarter-cell at this wall, not a full cube.
+  const intervals=[];for(let lo=0;lo<16;lo++)for(let hi=lo+1;hi<=16;hi++)intervals.push([lo,hi]);
+  const profile=hints.get(index),x=intervals[Math.floor(profile/136)],z=intervals[profile%136];assert.ok(x[1]<=4&&z[1]<=4);
+  assert.equal(packet[(2*16+4)*16+2],0,'No invented solid or dirt in the neighbouring column');
+ }
+});

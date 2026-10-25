@@ -92,7 +92,7 @@ def build(ctx):
     assert all(parts)
     mesh=bid+'-znn-west.ect';(out/mesh).write_bytes(encode(list(zip(parts,textures))))
     all_points=np.concatenate([np.asarray(p)[:,:3] for p in parts]);bounds=[all_points.min(0).tolist(),all_points.max(0).tolist()]
-    meta['tiles'].append({'file':mesh,'kind':'reconstruction','runtimeId':spec['runtimeId'],'bounds':bounds})
+    meta['tiles'].append({'file':mesh,'kind':'reconstruction','runtimeId':spec['runtimeId'],'fineCollisionMaterials':spec['fineCollisionMaterials'],'bounds':bounds})
     roof_file=bid+'-photo-roof.ect'
     cap_vertices=np.column_stack([np.asarray(tank_roof_triangles).reshape(-1,3),np.full((len(tank_roof_triangles)*3,2),.5)]).tolist()
     (out/roof_file).write_bytes(encode([(rv,rp),(cap_vertices,textures[2])]))
@@ -100,7 +100,7 @@ def build(ctx):
     # Keep the remainder of the mapped equipment compound, whose low fittings
     # cannot be resolved confidently from the available public sources.
     modeled=raw_foot.union(unary_union(tank_footprints))
-    unmodeled=compound.difference(modeled)
+    unmodeled=compound.difference(raw_foot.buffer(spec['compoundBoundaryToleranceMetres']).union(unary_union(tank_footprints)))
     others=unary_union([Polygon(p[0][:,:2],[h[:,:2] for h in p[1:]]).buffer(0) for key,s in surveys if key!=bid for kind,p in s if kind=='GroundSurface'])
     cleanup=modeled.buffer(spec['cleanupMarginMetres']).difference(unmodeled).difference(others.buffer(.5))
     def rings(region):

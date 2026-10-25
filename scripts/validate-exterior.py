@@ -13,6 +13,8 @@ for spec in [*manifest['tiles'],*extra]:
  data=(folder/spec['file']).read_bytes();assert data[:4]==b'ECT1',spec['file']
  count,*anchor=struct.unpack_from('<i3d',data,4);offset=32
  assert 0<count<100 and all(math.isfinite(x) for x in anchor)
+ if 'fineCollisionMaterials' in spec:
+  assert spec.get('kind')=='reconstruction' and len(spec['fineCollisionMaterials'])==count and all(v in [4,6] for v in spec['fineCollisionMaterials'])
  if "collisionParts" in spec:
   selected=spec["collisionParts"];assert isinstance(selected,list) and len(set(selected))==len(selected) and all(type(i) is int and 0<=i<count for i in selected),(spec["file"],selected)
  for part in range(count):

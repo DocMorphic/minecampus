@@ -98,6 +98,14 @@
       "qualification": "Approximate cylinder inferred from isolated high circular DOM plateau and matching bright aerial cap. Not a measured tank specification."
     }
   ],
-  "qualification": "BVV LoD2 fixes the low building envelope and roof; two cylindrical tanks are estimates from public DOP20/DOM20/DGM1. Tank radii/heights, cap curvature, plinths, panel divisions and finishes are approximate. The OSM service outline includes northern equipment beyond the surveyed building, so it is not treated as an equivalent building footprint. Unmodelled equipment areas remain protected. No interiors; no private projected imagery is packaged.",
-  "groundRuntimeId": 1000060800
+  "qualification": "BVV LoD2 fixes the low building envelope and roof; two cylindrical tanks are estimates from public DOP20/DOM20/DGM1. Tank radii/heights, cap curvature, plinths, panel divisions and finishes are approximate. The OSM service outline includes northern equipment beyond the surveyed building, so it is not treated as an equivalent building footprint. Unmodelled equipment areas remain protected. No interiors; no private projected imagery is packaged. A 0.35m ownership tolerance around the surveyed building resolves the narrow OSM/BVV outline mismatch; northern equipment beyond that band remains protected. Fine stone/plaster collision uses horizontal sixteenth-metre profiles and full vertical Minecraft cells.",
+  "groundRuntimeId": 1000060800,
+  "compoundBoundaryToleranceMetres": 0.35,
+  "fineCollisionMaterials": [
+    4,
+    4,
+    6,
+    4,
+    4
+  ]
 }

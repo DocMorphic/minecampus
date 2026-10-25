@@ -273,7 +273,7 @@ diff --git a/mod/src/main/java/dev/realworldmc/EarthBlocks.java b/mod/src/main/j
  	}
  
  	public static void init() {
-+        CampusWoodBlock.init();
++        CampusWoodBlock.init(); CampusSolidBlock.init();
  		// Codes must match service/src/voxel.mjs (M).
  		BY_CODE[0] = Blocks.AIR.defaultBlockState();
  		BY_CODE[1] = MAP_GRASS.defaultBlockState();
@@ -293,7 +293,7 @@ diff --git a/mod/src/main/java/dev/realworldmc/EarthBlocks.java b/mod/src/main/j
          if(block==MAP_PLASTER)return Blocks.WHITE_TERRACOTTA.defaultBlockState();
          if(block==MAP_BRICK)return Blocks.BRICKS.defaultBlockState();
 -        if(block==MAP_WOOD)return Blocks.OAK_PLANKS.defaultBlockState();
-+        if(block==MAP_WOOD || block instanceof CampusWoodBlock)return Blocks.OAK_PLANKS.defaultBlockState();
++        if(block instanceof CampusSolidBlock solid)return cutMaterial(byCode(solid.material)); if(block==MAP_WOOD || block instanceof CampusWoodBlock)return Blocks.OAK_PLANKS.defaultBlockState();
          if(block==MAP_SAND)return Blocks.SANDSTONE.defaultBlockState();
          return isMapBlock(state)?Blocks.STONE.defaultBlockState():state;
      }

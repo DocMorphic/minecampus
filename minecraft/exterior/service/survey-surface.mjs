@@ -1,4 +1,5 @@
 // Minecampus original runtime correction. Survey data: BVV, CC BY 4.0.
+import {solidShapes} from './solid-shapes.mjs';
 // Provider photo meshes remain transient and retain their original attribution.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -281,6 +282,26 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
     }
     return shift===0?triangles:triangles.map(t=>t.map(([x,y,z])=>[x,y+shift,z]));
   }
+  const decodedSolids=new Map();
+  function solidParts(spec,shift){
+    let parts=decodedSolids.get(spec.file);
+    if(!parts){
+      const bytes=fs.readFileSync(path.join(directory,spec.file)),anchor=[8,16,24].map(i=>bytes.readDoubleLE(i));let offset=32;
+      if(spec.kind!=='reconstruction'||spec.fineCollisionMaterials.length!==bytes.readInt32LE(4))throw Error('Invalid fine solid specification');
+      parts=[];
+      for(let part=0;part<spec.fineCollisionMaterials.length;part++){
+        const n=bytes.readInt32LE(offset),w=bytes.readInt32LE(offset+4),h=bytes.readInt32LE(offset+8);offset+=16;
+        if(!spec.collisionParts||spec.collisionParts.includes(part)){
+          const triangles=[];
+          for(let i=0;i<n;i+=3)triangles.push([0,1,2].map(j=>[0,1,2].map(k=>bytes.readFloatLE(offset+(i+j)*20+k*4)+anchor[k])));
+          parts.push({material:spec.fineCollisionMaterials[part],triangles});
+        }
+        offset+=n*20+w*h*4;
+      }
+      decodedSolids.set(spec.file,parts);
+    }
+    return shift===0?parts:parts.map(p=>({...p,triangles:p.triangles.map(t=>t.map(([x,y,z])=>[x,y+shift,z]))}));
+  }
   function assetMeshes(frame,spec) {
     const cacheKey=spec.file+':'+frame.lat+':'+frame.lon+':'+frame.h0;
     if(decodedAssets.has(cacheKey))return decodedAssets.get(cacheKey);
@@ -310,7 +331,9 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
       // Trees cannot participate in terrain inference: a low branch otherwise
       // becomes a column of dirt filling the air below the visible wood.
       const branchAssets=assets.filter(t=>t.kind==='vegetation');
-      const solidAssets=assets.filter(t=>t.kind!=='vegetation');
+      const fineAssets=assets.filter(t=>t.kind==='reconstruction'&&t.fineCollisionMaterials);
+      const solidAssets=assets.filter(t=>t.kind!=='vegetation'&&!t.fineCollisionMaterials);
+      const fine=solidShapes(fineAssets.flatMap(t=>solidParts(t,shift)),{x0,z0,minY,height:span});
       const shapes=woodShapes(branchAssets.flatMap(t=>woodTriangles(t,shift)),{x0,z0,minY,height:span});
       const vox=solidAssets.length?voxelizeArea(frame,solidAssets.map(t=>assetMeshes(frame,t)),x0,z0,16,minY,span,{fallbackGround:63,water:[]}).vox:new Uint8Array(output.length);
       for(let z=0;z<16;z++)for(let x=0;x<16;x++){
@@ -332,6 +355,11 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           if(code===2)code=1;if(code===20)code=3;if(code===21||code===22)code=4;
           output[i]=code;
         }
+      }
+      for(const [i,{code,profile}]of fine){
+        // Do not replace fractional ground, other structures, native fluids or
+        // protected source cells. Fine buildings cannot invent filled terrain.
+        if(output[i]===0){output[i]=code;profiles.set(i,profile);}
       }
       for(const [i,profile]of shapes){
         // Preserve measured fractional supports, buildings, water and protected

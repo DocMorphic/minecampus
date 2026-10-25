@@ -33,7 +33,7 @@ public final class CampusCollision {
         ServerTickEvents.END_SERVER_TICK.register(CampusCollision::tick);
         ServerLifecycleEvents.SERVER_STOPPED.register(server->{epoch++;inFlight.clear();unavailable=false;changedBlocks=0;});
     }
-    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v62");}
+    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v63");}
     private static void tick(MinecraftServer server){
         if(unavailable||server.getTickCount()%10!=0)return;
         var level=server.overworld();
@@ -74,7 +74,7 @@ public final class CampusCollision {
         });
     }
     private static void apply(ServerLevel level,LevelChunk chunk,CampusCollisionPacket packet){
-        byte[] codes=packet.codes();int[] woodProfiles=packet.woodProfiles();
+        byte[] codes=packet.codes();int[] profiles=packet.profiles();
         var history=MapEdits.storage(level);var base=chunk.getPos();var position=new BlockPos.MutableBlockPos();int changes=0;
         updating.set(true);
         try{
@@ -84,7 +84,7 @@ public final class CampusCollision {
                 if(history.original.containsKey(position.asLong()))continue;
                 var before=level.getBlockState(position);
                 if(!before.isAir()&&!EarthBlocks.isMapBlock(before))continue;
-                var after=woodProfiles[index]>=0?CampusWoodBlock.byProfile(woodProfiles[index]):EarthBlocks.byCode(code);
+                var after=profiles[index]>=0?(code==8?CampusWoodBlock.byProfile(profiles[index]):CampusSolidBlock.byProfile(code,profiles[index])):EarthBlocks.byCode(code);
                 if(before!=after&&level.setBlock(position,after,Block.UPDATE_CLIENTS|Block.UPDATE_KNOWN_SHAPE))changes++;
             }
         }finally{updating.set(false);}
