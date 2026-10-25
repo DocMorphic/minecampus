@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Verify Physik II envelopes, open bridge, source ground and courtyard planting."""
 from pathlib import Path
+from validate_ground_restoration import restoration_weights
 import argparse,hashlib,json,math,struct,xml.etree.ElementTree as ET
 import numpy as np
 import rasterio
@@ -260,7 +261,7 @@ def independent_correction(xy):
   residual[replace]=(ds[0]*(1-along)+ds[1]*along)[replace];best[replace]=d[replace]
  def smooth(v):
   v=np.clip(v,0,1);return v*v*(3-2*v)
- return residual*smooth(1-best/transition['widthMetres'])*smooth(distance(pts,prior_ground)/transition['priorFadeMetres'])*smooth(distance(pts,missing_geometry)/transition['priorFadeMetres'])
+ return residual*smooth(1-best/transition['widthMetres'])*smooth(distance(pts,prior_ground)/transition['priorFadeMetres'])*smooth(distance(pts,missing_geometry)/transition['priorFadeMetres'])*restoration_weights(r,out,m,xy)
 
 # Decode terrain independently from tile UVs and the pinned DGM1 raster.
 area=[];mcarea=[];max_ground=0

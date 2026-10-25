@@ -20,6 +20,7 @@ from exterior_physics_ii import ground_transition
 from exterior_physics_ii_landscape import canopy_extension, osm_ways
 from exterior_terrain import ElevationSampler
 from exterior_vegetation import build as build_vegetation
+from exterior_ground_restoration import restored_transition
 
 
 def north_land_extent(root, spec, original, extent):
@@ -74,7 +75,7 @@ def blended_outer_transition(root, spec, prior):
             missing_fade = smooth(distance(pts,missing)/record['priorFadeMetres']) if not missing.is_empty else 1
             result[start:start+len(q)] = residual*smooth(1-nearest/record['widthMetres'])*smooth(distance(pts,prior)/record['priorFadeMetres'])*missing_fade
         return result
-    return correction, record
+    return restored_transition(root, correction), record
 
 
 def build(ctx):

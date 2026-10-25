@@ -1,7 +1,6 @@
 // Horizontal proxy bounds for reconstructed wood only. Geometry is already in
 // Minecraft metres; foliage and inferred ground must never enter this path.
-// Native block/transport integration is pending. The profile encoding reserves
-// 136 ordered endpoint pairs per axis.
+// Native sparse collision packets use 136 ordered endpoint pairs per axis.
 const intervals=[];
 for(let lo=0;lo<16;lo++)for(let hi=lo+1;hi<=16;hi++)intervals.push([lo,hi]);
 const intervalIndex=new Map(intervals.map((v,i)=>[v.join(','),i]));

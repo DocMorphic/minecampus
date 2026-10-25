@@ -221,6 +221,15 @@ assert riverbank_check['sourceSha256']==riverbank['sourceSha256']
 assert riverbank_check['validatorSha256']==digest(ROOT/'scripts/validate-riverbank.py')
 assert set(riverbank_check['tileSha256'])==set(riverbank['groundTiles']+riverbank['treeTiles'])
 assert all(digest(DATA/name)==value for name,value in riverbank_check['tileSha256'].items())
+restoration=json.loads((DATA/'manifest.json').read_text())['groundRestoration']
+assert digest(SOURCE/restoration['sourceFile'])==restoration['sourceSha256']==digest(DATA/restoration['sourceFile'])
+assert digest(ROOT/restoration['generatorFile'])==restoration['generatorSha256']
+restoration_check=json.loads((DATA/'courtyard-ground-validation.json').read_text())
+assert restoration_check['status'].startswith('PASS:')
+assert restoration_check['manifestSha256']==digest(DATA/'manifest.json')
+assert restoration_check['policySha256']==restoration['sourceSha256']
+assert restoration_check['validatorSha256']==digest(ROOT/'scripts/validate-courtyard-ground.py')
+assert restoration_check['independentPolicyValidatorSha256']==digest(ROOT/'scripts/validate_ground_restoration.py')
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
 release=CACHE/'upstream.jar'
 if not release.exists() or hashlib.sha256(release.read_bytes()).hexdigest()!=spec['sha256']:

@@ -12,6 +12,7 @@ from exterior_physics_i import nearby_surveys,survey_plan,roof_texture,polygons
 from exterior_physics_library import triangles
 from exterior_terrain import ElevationSampler
 from exterior_vegetation import build as build_vegetation
+from exterior_ground_restoration import restored_transition, record_policy
 
 
 def ground_transition(root, spec, prior):
@@ -47,10 +48,11 @@ def ground_transition(root, spec, prior):
             residual = residuals[nearest,0]*(1-along)+residuals[nearest,1]*along
             result[start:start+len(q)] = residual*fade**2*(3-2*fade)*prior_fade**2*(3-2*prior_fade)*missing_fade**2*(3-2*missing_fade)
         return result
-    return correction, record
+    return restored_transition(root, correction), record
 
 def build(ctx):
     root,cache,out,meta,mc,encode=[ctx[k]for k in ['ROOT','CACHE','OUT','metadata','mc','encode']];sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+    record_policy(root, out, meta)
     source=root/'minecraft/exterior/physics-ii.json';spec=json.loads(source.read_text());assert sha(root/'minecraft/exterior'/spec['reference'])==spec['referenceSha256']
     surveys=nearby_surveys(cache, spec['surveyBoundsUtm']);owned={b['building']for b in spec['bodies']};bodydata=[]
     for b in spec['bodies']:

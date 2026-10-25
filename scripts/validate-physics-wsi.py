@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Verify WSI against raw public roof, terrain, window and frame geometry."""
 from pathlib import Path
+from validate_ground_restoration import restoration_weights
 import argparse,hashlib,json,math,struct,xml.etree.ElementTree as ET
 import numpy as np
 import rasterio
@@ -164,7 +165,7 @@ for line in outer_transition['lines']:
    assert abs(delta-(source-survey))<1e-8 and abs(join-(delta-old[i]))<1e-7 and abs(delta)<=outer_transition['maximumResidualMetres'];accepted+=1
 assert accepted==outer_transition['acceptedSamples']==784 and missing==outer_transition['missingSamples']==802
 def correction(xy):
- return inherited_correction(xy)+outer_correction(xy)
+ return (inherited_correction(xy)+outer_correction(xy))*restoration_weights(r,out,m,xy)
 areas=[];mcareas=[];ground_error=0;hashes={name:sha(out/name)for name in [rec['meshFile'],rec['roofFile'],*rec['treeTiles']]}
 with rasterio.open(r/'.cache/campus-dgm-east.tif')as dem,rasterio.open(r/'.cache/campus-dop-east.tif')as dop:
  data=dem.read(1).astype(float)

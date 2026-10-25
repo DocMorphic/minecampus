@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Verify riverbank terrain, source canopy coverage and protected channel/bridge."""
 from pathlib import Path
+from validate_ground_restoration import restoration_weights
 import argparse,hashlib,json,math,struct,xml.etree.ElementTree as ET
 import numpy as np
 import rasterio
@@ -108,7 +109,7 @@ transition_path=r/'minecraft/exterior'/wsi_spec['groundTransition']['sourceFile'
 outer_transition=read(transition_path);assert outer_transition['inheritedTransitionSha256']==sha(r/'minecraft/exterior/physics-ii-ground-transition.json')
 outer_correction=independent_correction(outer_transition,wsi_prior)
 def correction(xy):
- return inherited_correction(xy)+outer_correction(xy)
+ return (inherited_correction(xy)+outer_correction(xy))*restoration_weights(r,out,m,xy)
 areas=[];mcareas=[];ground_error=0;hashes={name:sha(out/name)for name in rec['treeTiles']}
 with rasterio.open(r/'.cache/campus-dgm-east.tif')as dem,rasterio.open(r/'.cache/campus-dop-east.tif')as dop:
  data=dem.read(1).astype(float)
