@@ -161,7 +161,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           if(trimOutdoorBoundary||photoRetire){
             const triangle=[0,1,2].map(v=>[input.readFloatLE(at+v*20)+ax,input.readFloatLE(at+v*20+4)+ay,input.readFloatLE(at+v*20+8)+az,input.readFloatLE(at+v*20+12),input.readFloatLE(at+v*20+16)]);
             let preserved=false;
-            const exterior=trimOutdoorBoundary?supplemental.outsideFragments(triangle):[triangle];
+            const exterior=trimOutdoorBoundary?supplemental.outsideOutdoorFragments(triangle):[triangle];
             const fragments=photo?.completeEnvelopeFragments?exterior.flatMap(t=>photo.completeEnvelopeFragments(t.map(p=>[p[0],p[1]-shift,p[2],p[3],p[4]])).map(f=>f.map(p=>[p[0],p[1]+shift,p[2],p[3],p[4]]))):exterior;
             for(const fragment of fragments){
               const cx=fragment.reduce((s,p)=>s+p[0],0)/3,cy=fragment.reduce((s,p)=>s+p[1],0)/3,cz=fragment.reduce((s,p)=>s+p[2],0)/3;
@@ -176,7 +176,22 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
           }
           continue;
         }
-        reserve(60);input.copy(output,write,at,at+60);write+=60;kept+=3;
+        // Centroid tests miss triangles reaching into reconstructed ground
+        // from outside its boundary (or from a protected neighbouring facade).
+        // Clip only the covered outdoor portion, preserving outside UVs and
+        // surveyed building guards instead of removing the entire triangle.
+        const triangle=[0,1,2].map(v=>[input.readFloatLE(at+v*20)+ax,input.readFloatLE(at+v*20+4)+ay,input.readFloatLE(at+v*20+8)+az,input.readFloatLE(at+v*20+12),input.readFloatLE(at+v*20+16)]);
+        const fragments=supplemental.outsideOutdoorFragments(triangle);
+        if(fragments.length===1&&fragments[0].every((p,i)=>p===triangle[i])){
+          reserve(60);input.copy(output,write,at,at+60);write+=60;kept+=3;
+        }else{
+          removed++;if(fragments.length)clipped++;
+          for(const fragment of fragments){
+            reserve(60);
+            for(const p of fragment){[p[0]-ax,p[1]-ay,p[2]-az,p[3],p[4]].forEach((v,k)=>output.writeFloatLE(v,write+k*4));write+=20;}
+            kept+=3;
+          }
+        }
       }
       output.writeInt32LE(kept,header);read+=vertices*20;
       const textureBytes=w*h*4;reserve(textureBytes);input.copy(output,write,read,read+textureBytes);read+=textureBytes;write+=textureBytes;

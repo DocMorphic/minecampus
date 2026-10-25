@@ -11,7 +11,7 @@
 /** Exact triangle complement of bounded polygon prisms; keeps source attributes. */
 export function surfaceBoundaryClipper(entries = []) {
   const indexed=entries.map(e=>{const p=e.rings.flatMap(p=>p.ring);return {...e,bounds:[Math.min(...p.map(v=>v[0])),Math.min(...p.map(v=>v[1])),Math.max(...p.map(v=>v[0])),Math.max(...p.map(v=>v[1]))]};});
-  const boundaries=indexed.flatMap(entry=>entry.rings.flatMap(p=>[p.ring,...(p.holes??[])]).flatMap(r=>r.map((a,i)=>{
+  const boundaries=indexed.flatMap(entry=>[...entry.rings,...(entry.excludedRings??[])].flatMap(p=>[p.ring,...(p.holes??[])]).flatMap(r=>r.map((a,i)=>{
     const b=r[(i+1)%r.length];return {a,b,entry,minX:Math.min(a[0],b[0]),maxX:Math.max(a[0],b[0]),minZ:Math.min(a[1],b[1]),maxZ:Math.max(a[1],b[1])};
   }))).filter(e=>Math.hypot(e.b[0]-e.a[0],e.b[1]-e.a[1])>1e-8);
   function split(poly,{a,b}){
@@ -81,7 +81,7 @@ export function surfaceBoundaryClipper(entries = []) {
       for(const p of pieces){
         const x=p.reduce((s,v)=>s+v[0],0)/p.length,z=p.reduce((s,v)=>s+v[2],0)/p.length;
         const y=p.reduce((s,v)=>s+v[1],0)/p.length;
-        if(candidates.some(e=>y>=(e.y0??-Infinity)-1e-8&&y<=(e.y1??Infinity)+1e-8&&contains(e.rings,x,z)))continue;
+        if(candidates.some(e=>y>=(e.y0??-Infinity)-1e-8&&y<=(e.y1??Infinity)+1e-8&&contains(e.rings,x,z)&&!contains(e.excludedRings??[],x,z)))continue;
         for(let i=1;i<p.length-1;i++)result.push([p[0],p[i],p[i+1]]);
       }
       return result;
@@ -105,8 +105,13 @@ export function supplementalSurfaces(entries = []) {
     return {...entry, width, height, points, a, ux, uz, vx, vz, det, bounds, canopyMask};
   });
   const clipper=surfaceBoundaryClipper(entries);
+  // Reconstructed outdoor surfaces own their covered area even when an old
+  // triangle has its centroid outside. Keep neighbouring surveyed footprints.
+  const outdoorClipper=surfaceBoundaryClipper(entries.filter(e=>e.outdoorReconstructed)
+    .map(e=>({...e,excludedRings:e.protectedFootprints??[]})));
   return {
     outsideFragments: clipper.outsideFragments,
+    outsideOutdoorFragments: outdoorClipper.outsideFragments,
     at(x, z) {
       for (const g of grids) {
         if (x < g.bounds[0] || z < g.bounds[1] || x > g.bounds[2] || z > g.bounds[3]) continue;

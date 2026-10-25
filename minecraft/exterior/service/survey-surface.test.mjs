@@ -309,6 +309,7 @@ test('outdoor boundary clipping preserves outside ground, winding, UVs and neigh
  const patch=supplementalFixture();patch.outdoorReconstructed=true;
  const extra={supplementalSurfaces:[patch],protectionGrid:{width:20,height:20,metresPerPixel:1,data:Buffer.alloc(400).toString('base64')}};
  for(const [positions,area,insideOutside]of [
+  [[[47,6,10],[51,6,10],[51,6,14]],7.5,p=>p[0]>=48-1e-6],
   [[[46,6,10],[49,6,10],[46,6,13]],.5,p=>p[0]>=48-1e-6],
   [[[44,6,10],[49,6,10],[49,6,14]],3.6,p=>p[0]>=48-1e-6],
   [[[39,6,5],[41,6,5],[39,6,7]],.5,p=>p[0]>=40-1e-6&&p[0]<=44+1e-6]
@@ -328,6 +329,29 @@ test('outdoor boundary clipping preserves outside ground, winding, UVs and neigh
  const bytes=tile([[49,6,10],[50,6,10],[49,6,13]]),outside=fixture(t,bytes,extra);
  assert.deepEqual(await outside.service.renderTile(origin,1_100_000_007),bytes);
 });
+test('outdoor clipping handles centroids in protected neighbours and holes in shifted saves',async t=>{
+ const patch=supplementalFixture();patch.outdoorReconstructed=true;
+ const extra={supplementalSurfaces:[patch],protectionGrid:{width:20,height:20,metresPerPixel:1,data:Buffer.alloc(400).toString('base64')}};
+ for(const shift of [0,2])for(const [positions,expectedArea,allowed] of [
+  [[[35,6,8],[39,6,8],[35,6,12]],4,p=>p[0]>=36-1e-6&&p[0]<=38+1e-6],
+  [[[39,6,5],[43,6,5],[43,6,7]],3.75,p=>p[0]>=40-1e-6&&p[0]<=44+1e-6]
+ ]){
+  const bytes=tile(positions);bytes.writeDoubleLE(shift,16);
+  positions.forEach((p,i)=>{bytes.writeFloatLE(p[0]/64,48+i*20+12);bytes.writeFloatLE(p[2]/32,48+i*20+16);});
+  const {service}=fixture(t,bytes,extra),result=await service.renderTile({...origin,h0:origin.h0-shift},1_100_000_007),vertices=[];
+  for(let i=0;i<result.readInt32LE(32);i++){
+   const at=48+i*20,p=[0,1,2].map(k=>result.readFloatLE(at+k*4));vertices.push(p);
+   assert.ok(allowed(p));assert.equal(p[1],6);assert.equal(result.readDoubleLE(16),shift);
+   assert.ok(Math.abs(result.readFloatLE(at+12)-p[0]/64)<1e-6);assert.ok(Math.abs(result.readFloatLE(at+16)-p[2]/32)<1e-6);
+  }
+  let area=0;for(let i=0;i<vertices.length;i+=3){const [a,b,c]=vertices.slice(i,i+3);area+=((b[0]-a[0])*(c[2]-a[2])-(b[2]-a[2])*(c[0]-a[0]))/2;}
+  assert.ok(Math.abs(area-expectedArea)<1e-5);assert.deepEqual([...result.subarray(-4)],[12,34,56,255]);
+ }
+ // A protected facade wholly within the patch must survive byte-for-byte.
+ const bytes=tile([[36.25,6,8],[37.75,6,8],[36.25,9,8]]),f=fixture(t,bytes,extra);
+ assert.deepEqual(await f.service.renderTile(origin,1_100_000_007),bytes);
+});
+
 test('supplemental collision follows measured slope and datum while protecting excluded holes and untreated walls',t=>{
  const spec={file:'east.ect',kind:'ground',runtimeId:1_000_060_000,bounds:[[32,0,0],[48,14,16]]};
  const extra={tiles:[spec],supplementalSurfaces:[supplementalFixture()]};

@@ -10,6 +10,7 @@ import net.minecraft.client.Screenshot;
 public final class CampusSiteInspection {
     private static JsonObject plan;
     private static JsonObject fractionalSupportChecks;
+    private static JsonObject migrationChecks;
     private static int phase, ticks;
     private static final JsonArray frames = new JsonArray();
     private static final JsonArray gravity = new JsonArray();
@@ -156,6 +157,7 @@ public final class CampusSiteInspection {
         report.addProperty("status",status);
         report.addProperty("rendererJar",Path.of(MapRenderer.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getFileName().toString());
         if(fractionalSupportChecks!=null)report.add("fractionalSupportChecks",fractionalSupportChecks);
+        if(migrationChecks!=null)report.add("migrationChecks",migrationChecks);
         report.add("plan",plan);report.add("frames",frames);report.add("gravity",gravity);
         if(gravityFailureDetails!=null)report.add("gravityFailure",gravityFailureDetails);
         Files.writeString(Path.of("campus-"+plan.get("name").getAsString()+"-result.json"),new GsonBuilder().setPrettyPrinting().create().toJson(report));
@@ -181,6 +183,7 @@ public final class CampusSiteInspection {
         }
         var controls=plan.getAsJsonArray("gravityProbes");
         if(gravityIndex==controls.size()){
+            if(plan.has("migration")){migrationChecks=CampusMigrationCheck.check(mc,plan.getAsJsonObject("migration"));if(migrationChecks==null)return;}
             writeReport("PASS: inspection cameras, surface controls and native gravity completed; visual assessment required");mc.stop();return;
         }
         var server=mc.getSingleplayerServer();var uuid=mc.player.getUUID();
@@ -288,6 +291,7 @@ public final class CampusSiteInspection {
         var loaded = (Map<?, ?>) loadedField.get(MapRenderer.INSTANCE);
         var displayed = (List<?>) displayedField.get(MapRenderer.INSTANCE);
         if(phase==cameras.size()){tickGravity(mc,loaded,displayed);return;}
+        if(plan.has("migration")&&migrationChecks==null){migrationChecks=CampusMigrationCheck.check(mc,plan.getAsJsonObject("migration"));if(migrationChecks==null)return;}
         var camera = cameras.get(phase).getAsJsonObject();
         var ids = new JsonArray(); long triangles = 0;
         for (var id : displayed) {
