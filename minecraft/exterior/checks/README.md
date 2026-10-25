@@ -206,3 +206,20 @@ A site-inspection camera may include `materialControls` with a resource `texture
 and records `gpuMaterialControls` in that camera's result. This verifies uploaded
 classification pixels; the camera images and geometry probes remain necessary
 to establish their visible use on the intended ground meshes.
+
+## Central campus quality review
+
+`central-quality-review.json` retains 24 established cameras from the main route,
+including two aerial views, and 12 standing controls on encoded terrain or ramp
+surfaces. It covers the promenade, Galileo, former Mensa, IAS, COS, Graduate
+School and MLZ so a successful local reconstruction does not substitute for
+reviewing the main campus. Camera indices, source hash, standing-surface manifest
+hash and reference artifact hash are recorded in the plan.
+
+Use `runSiteInspection` with an isolated copied QA world and the explicitly
+selected packaged JAR. Archive the exact plan, checker, artifact and outputs.
+Require 24 camera records and 12 completed standing controls; inspect camera,
+reflection and walking captures separately from the functional PASS. If terrain
+or ramp geometry changes, regenerate the standing targets/support heights from
+the new encoded surfaces before treating the plan as current. This review is
+additional to the detailed site controls and does not certify full visual quality.
