@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<osm version="0.6" generator="Minecampus source subset" copyright="OpenStreetMap contributors" license="https://opendatacommons.org/licenses/odbl/1-0/">
+  <node id="6400532930" lat="48.2688297" lon="11.6746978" version="2" />
+  <node id="6400532931" lat="48.2687588" lon="11.6749954" version="3" />
+  <node id="6400532932" lat="48.2689629" lon="11.6750545" version="4" />
+  <node id="8543602100" lat="48.2689700" lon="11.6751070" version="3" />
+  <node id="8544478892" lat="48.2689797" lon="11.6748622" version="2" />
+  <node id="8544478893" lat="48.2689152" lon="11.6748438" version="2" />
+  <node id="8544478894" lat="48.2689271" lon="11.6747493" version="2" />
+  <node id="8544478895" lat="48.2689916" lon="11.6747677" version="2" />
+  <node id="8544524640" lat="48.2689919" lon="11.6746958" version="1" />
+  <node id="8544524641" lat="48.2690857" lon="11.6747462" version="2" />
+  <node id="8544524642" lat="48.2689013" lon="11.6746745" version="1" />
+  <node id="8544524643" lat="48.2688759" lon="11.6748779" version="1" />
+  <node id="8544524644" lat="48.2690629" lon="11.6749355" version="2" />
+  <node id="8544524645" lat="48.2689944" lon="11.6749162" version="1" />
+  <node id="12748948103" lat="48.2687661" lon="11.6748565" version="1" />
+  <node id="12748948104" lat="48.2688119" lon="11.6748616" version="1" />
+  <node id="12755848200" lat="48.2689763" lon="11.6749538" version="1" />
+  <node id="12755920501" lat="48.2688852" lon="11.6749206" version="1" />
+  <node id="12755920502" lat="48.2688801" lon="11.6749577" version="1" />
+  <node id="12755920503" lat="48.2688477" lon="11.6749462" version="1" />
+  <node id="12755920504" lat="48.2688843" lon="11.6746443" version="1" />
+  <node id="12755920505" lat="48.2687643" lon="11.6746085" version="1" />
+  <node id="12755920506" lat="48.2687564" lon="11.6746785" version="1" />
+  <way id="920169713" version="3">
+    <nd ref="8544478892" />
+    <nd ref="8544478893" />
+    <nd ref="8544478894" />
+    <nd ref="8544478895" />
+    <nd ref="8544478892" />
+    <tag k="building" v="service" />
+    <tag k="building:levels" v="1" />
+    <tag k="roof:shape" v="flat" />
+  </way>
+  <way id="920174459" version="2">
+    <nd ref="8544524641" />
+    <nd ref="8544524640" />
+    <nd ref="8544524642" />
+    <nd ref="8544524643" />
+    <nd ref="8544524645" />
+    <nd ref="8544524644" />
+    <tag k="covered" v="no" />
+    <tag k="highway" v="service" />
+    <tag k="oneway" v="no" />
+    <tag k="service" v="driveway" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="920174460" version="4">
+    <nd ref="8544524645" />
+    <nd ref="8543602100" />
+    <tag k="highway" v="footway" />
+    <tag k="lit" v="yes" />
+    <tag k="smoothness" v="excellent" />
+    <tag k="surface" v="paving_stones" />
+  </way>
+  <way id="1377635018" version="1">
+    <nd ref="6400532932" />
+    <nd ref="12755848200" />
+    <nd ref="12755920501" />
+    <nd ref="12755920502" />
+    <nd ref="12755920503" />
+    <nd ref="12755920504" />
+    <nd ref="12755920505" />
+    <nd ref="12755920506" />
+    <nd ref="6400532930" />
+    <nd ref="12748948104" />
+    <nd ref="12748948103" />
+    <nd ref="6400532931" />
+    <nd ref="6400532932" />
+    <tag k="landuse" v="grass" />
+  </way>
+</osm>

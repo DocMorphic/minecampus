@@ -1,0 +1,62 @@
+{
+  "building": "DEBY_LOD2_5284533",
+  "name": "LMU east service building and adjoining mapped lawn",
+  "runtimeId": 1000030045,
+  "groundRuntimeId": 1000060950,
+  "treeRuntimeId": 1000010610,
+  "boundsUTM": [
+    698454,
+    5349620,
+    698510,
+    5349680
+  ],
+  "osm": {
+    "sourceFile": "physics-lmu-east-osm.xml",
+    "sha256": "e6980b0366ddf172bf8eab65d86f8a7a88eb4e86c5f7704bb911a1e6c88e28e0",
+    "retrievedSnapshotSha256": "276e6d780453af85b120f984983bc52a0675dddb0088d730dc376a641a107a1e",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=11.674581447875356,48.26879983997078,11.675069013502423,48.26910341662751",
+    "buildingWay": "920169713",
+    "lawnWay": "1377635018",
+    "drivewayWay": "920174459",
+    "footwayWay": "920174460",
+    "license": "ODbL1.0",
+    "attribution": "\u00a9 OpenStreetMap contributors"
+  },
+  "wallCount": 5,
+  "roofTriangles": 3,
+  "wallBaseExtensionMetres": 0.8,
+  "roofFasciaHeightMetres": 0.14,
+  "plinthHeightMetres": 0.22,
+  "cleanupMarginMetres": 2.1,
+  "groundBlendMetres": 2,
+  "drivewayHalfWidthMetres": 2,
+  "footwayHalfWidthMetres": 1,
+  "trunkInsetMetres": 0.3,
+  "materialColours": [
+    [
+      170,
+      172,
+      168,
+      255
+    ],
+    [
+      73,
+      78,
+      77,
+      255
+    ],
+    [
+      126,
+      130,
+      124,
+      255
+    ]
+  ],
+  "fineCollisionMaterials": [
+    4,
+    4,
+    4,
+    4
+  ],
+  "qualification": "BVV LoD2 fixes the five-wall service envelope, bevelled corner, 3.016m measured height and flat roof; DOP20 supplies the roof and ground pixels. OSM fixes the adjoining lawn and access-path centre lines. Fa\u00e7ade finishes, coping/plinth sizes and path widths are estimates without a verified close exterior photo; no speculative openings or interiors. Tree candidates and crowns use DOP20/DOM20, with estimated branch and leaf arrangement. Neighbouring buildings and unmodeled equipment outside the bounded reconstruction remain protected. Native visual and collision acceptance is required."
+}
