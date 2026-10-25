@@ -59,10 +59,10 @@
   "openings": {
     "1": [
       [
-        5.2,
+        1.4,
         0.05,
-        7.3,
-        3.1
+        3.6,
+        3.25
       ],
       [
         20.4,
@@ -87,10 +87,10 @@
     ],
     "6": [
       [
-        3.3,
+        10.6,
         0.05,
-        5.4,
-        3.1
+        12.8,
+        3.25
       ]
     ]
   },
@@ -124,5 +124,45 @@
       5349712.163352477
     ]
   ],
-  "groundRegressionQualification": "Native candidate55 north-path pixels exposed source fragments and sky gaps 11.5\u201313.7m from the north survey wall. Public DOM/DGM samples at these controls differ by at most0.25m and identify ground. The18m replacement connects the surveyed slope to retained land beyond these gaps; existing reconstructed land and adjacent survey volumes remain protected."
+  "groundRegressionQualification": "Native candidate55 north-path pixels exposed source fragments and sky gaps 11.5\u201313.7m from the north survey wall. Public DOM/DGM samples at these controls differ by at most0.25m and identify ground. The18m replacement connects the surveyed slope to retained land beyond these gaps; existing reconstructed land and adjacent survey volumes remain protected.",
+  "southApronMetres": 15,
+  "siteBoundsUTM": [
+    698405,
+    5349650,
+    698505,
+    5349690
+  ],
+  "treeRuntimeId": 1000010500,
+  "canopies": [
+    {
+      "frontStartMetres": 9.05,
+      "frontEndMetres": 17.54,
+      "depthMetres": 2.95,
+      "heightAboveBaseMetres": 3.75
+    },
+    {
+      "frontStartMetres": 48.06,
+      "frontEndMetres": 56.94,
+      "depthMetres": 3.1,
+      "heightAboveBaseMetres": 3.75
+    }
+  ],
+  "canopyQualification": "Two bright elevated rectangular projections match the official photograph\u2019s entrance canopies. Horizontal extents estimated from public DOP20 and DOM20 outside the surveyed south wall; flat top height, thickness and supports are estimates because DOM edges blend into the wall and road. Openings under them remain approximate.",
+  "siteOSM": {
+    "file": "sources/cala-osm.xml",
+    "sha256": "02fa10937a4f3588d609f23e97bdfdc588529d5ae89cde483a54488d2e7cf914",
+    "license": "ODbL1.0",
+    "attribution": "\u00a9 OpenStreetMap contributors",
+    "source": "https://www.openstreetmap.org/way/15598996"
+  },
+  "smallTreeSeedsUTM": [
+    [
+      698424.5,
+      5349670.0
+    ],
+    [
+      698470.9,
+      5349662.8
+    ]
+  ]
 }

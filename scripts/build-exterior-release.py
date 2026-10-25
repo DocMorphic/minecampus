@@ -226,8 +226,13 @@ assert cala_check['status'].startswith('PASS:')
 assert cala_check['manifestSha256']==digest(DATA/'manifest.json')
 assert cala_check['sourceSha256']==cala['sourceSha256']
 assert cala_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-cala.py')
-assert set(cala_check['tileSha256'])==set(cala['groundTiles']+[cala['meshFile'],cala['roofFile']])
+assert set(cala_check['tileSha256'])==set(cala['groundTiles']+cala['site']['treeTiles']+[cala['meshFile'],cala['roofFile']])
 assert all(digest(DATA/name)==value for name,value in cala_check['tileSha256'].items())
+assert digest(ROOT/'scripts/exterior_cala_site.py')==cala['site']['siteGeneratorSha256']
+assert digest(ROOT/'scripts/exterior_cala_trees.py')==cala['site']['smallTreeGeneratorSha256']
+assert digest(SOURCE/cala['site']['osmFile'])==cala['site']['osmSha256']
+assert digest(SOURCE/cala['site']['materialFile'])==cala['site']['materialSha256']
+assert digest(DATA/cala['site']['materialFeaturesFile'])==cala['site']['materialFeaturesSha256']
 riverbank=json.loads((DATA/'manifest.json').read_text())['architecture']['riverbank']
 riverbank_spec=json.loads((SOURCE/riverbank['sourceFile']).read_text())
 assert digest(SOURCE/riverbank['sourceFile'])==riverbank['sourceSha256']
@@ -628,6 +633,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/'+riverbank['coverageFile'],(DATA/riverbank['coverageFile']).read_bytes())
   for source in riverbank_spec['osm']:write(target,'src/minecampus-exterior/'+source['sourceFile'],(SOURCE/source['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+cala['sourceFile'],(SOURCE/cala['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+cala['site']['osmFile'],(SOURCE/cala['site']['osmFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+cala['site']['materialFeaturesFile'],(DATA/cala['site']['materialFeaturesFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+znn_west['sourceFile'],(SOURCE/znn_west['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+znn_west['coverageFile'],(DATA/znn_west['coverageFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+znn_west_spec['osm']['sourceFile'],(SOURCE/znn_west_spec['osm']['sourceFile']).read_bytes())

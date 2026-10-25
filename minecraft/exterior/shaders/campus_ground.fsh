@@ -139,8 +139,9 @@ void main() {
     bool physicsHall=physicsRoof&&physicsRoofNormal.y>.2&&physicsRoofNormal.y<.97
         &&all(greaterThanEqual(worldPosition,vec3(352.68,65.93,-267.59)))
         &&all(lessThanEqual(worldPosition,vec3(374.17,73.14,-241.28)));
+    bool calaGround=abs(MaterialDetail-26.0)<.1;
     bool northGround=abs(MaterialDetail-25.0)<.1;
-    bool physicsIIGround=abs(MaterialDetail-24.0)<.1||northGround;
+    bool physicsIIGround=abs(MaterialDetail-24.0)<.1||northGround||calaGround;
     bool laboratoryGround=abs(MaterialDetail-23.0)<.1;
     bool woodlandGround=abs(MaterialDetail-20.0)<.1;
     bool physicsGround=abs(MaterialDetail-19.0)<.1||woodlandGround||laboratoryGround||physicsIIGround;
@@ -165,7 +166,7 @@ void main() {
         vec3 mapped=surfaceMask.rgb;float soil=1.0-surfaceMask.a;float gravel=0.0;
         if(any(lessThan(surfaceUv,vec2(0)))||any(greaterThan(surfaceUv,vec2(1)))){mapped=vec3(0);soil=0.0;}
         if(physicsGround){
-            vec2 physicsUv=northGround?northGroundUv(worldPosition.xz):physicsIIGround?physicsIISiteUv(worldPosition.xz):laboratoryGround?laboratorySiteUv(worldPosition.xz):woodlandGround?woodlandGroundUv(worldPosition.xz):physicsGroundUv(worldPosition.xz);
+            vec2 physicsUv=calaGround?vec2(worldPosition.x-192.0,-432.0-worldPosition.z)/128.0:northGround?northGroundUv(worldPosition.xz):physicsIIGround?physicsIISiteUv(worldPosition.xz):laboratoryGround?laboratorySiteUv(worldPosition.xz):woodlandGround?woodlandGroundUv(worldPosition.xz):physicsGroundUv(worldPosition.xz);
             if(all(greaterThanEqual(physicsUv,vec2(0)))&&all(lessThanEqual(physicsUv,vec2(1)))){
                 vec4 overlay=texture(Sampler6,physicsUv);
                 float blend=(woodlandGround||laboratoryGround||physicsIIGround)?1.0:physicsGroundBlend(worldPosition.xz),woodland=1.0-overlay.a;
@@ -207,7 +208,7 @@ void main() {
             // Four-metre scanned aggregate detail. Keep broad aerial shade,
             // with bounded highlights so washed-out pixels do not erase grain.
             vec3 asphalt=groundTexture(Sampler7,worldPosition*.25,weights);
-            asphaltColor=asphalt*clamp(aerialLum/.55,.4,1.2);
+            asphaltColor=asphalt*(calaGround?.85:clamp(aerialLum/.55,.4,1.2));
         }
         // The inferred planting bed uses a scanned leaf/soil material. Old
         // construction highlights must not wash this new surface white.

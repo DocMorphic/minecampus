@@ -48,6 +48,7 @@ python3 -m venv .venv-exterior
 .venv-exterior/bin/pip install -r minecraft/exterior/requirements.txt
 .venv-exterior/bin/python scripts/build-exterior.py --download
 .venv-exterior/bin/python scripts/test_exterior_terrain.py
+.venv-exterior/bin/python scripts/test_exterior_ground_extension.py
 .venv-exterior/bin/python scripts/validate-terrain.py
 .venv-exterior/bin/python scripts/validate-ground-surfaces.py
 for site in physics-site physics-library physics-container p1-complex physics-woodland physics-new-laboratory physics-laboratory-site physics-ii pinned-water physics-wsi physics-znn riverbank courtyard-ground north-ground physics-znn-west physics-cala; do

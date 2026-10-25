@@ -66,7 +66,7 @@ def decode(path):
         pixels=np.frombuffer(data,dtype='uint8',count=w*h*4,offset=offset).reshape(h,w,4);offset+=w*h*4
         assert np.isfinite(v).all();parts.append((v,pixels))
     assert offset==len(data);return parts
-parts=decode(out/rec['meshFile']);roof=decode(out/rec['roofFile']);assert len(parts)==5 and len(roof)==1
+parts=decode(out/rec['meshFile']);roof=decode(out/rec['roofFile']);assert len(parts)==6 and len(roof)==1
 assert np.array_equal(parts[4][0],roof[0][0]) and np.array_equal(parts[4][1],roof[0][1])
 source_roofs=[p for k,p in raw if k=='RoofSurface'];roof_points=np.concatenate([world(p) for rings in source_roofs for p in rings]);rv=parts[4][0];assert len(rv)==18
 roof_error=float(cKDTree(roof_points).query(rv[:,:3])[0].max());assert roof_error<1e-4
@@ -141,6 +141,35 @@ for v,pixels in [parts[4],*new_parts]:
         assert abs(left-round(left))<.002 and abs(top-round(top))<.002
         rgb=dop.read([1,2,3],window=rasterio.windows.Window(round(left),round(top),width,height)).transpose(1,2,0);assert np.array_equal(rgb,pixels[:,:,:3])
         assert np.max(abs(np.column_stack([(c-round(left))/width,(r-round(top))/height])-v[:,3:]))<1e-4
-files=[rec['meshFile'],rec['roofFile'],*new_files]
+site=rec['site']
+assert sha(root/'scripts/exterior_cala_site.py')==site['siteGeneratorSha256']
+assert sha(root/'scripts/exterior_cala_trees.py')==site['smallTreeGeneratorSha256']
+assert sha(root/'scripts/exterior_vegetation.py')==site['treeGeneratorSha256']
+assert sha(src/site['osmFile'])==site['osmSha256']
+assert sha(src/site['materialFile'])==site['materialSha256']
+assert sha(out/site['materialFeaturesFile'])==site['materialFeaturesSha256']
+assert len(site['trees'])==site['treeCount']>0
+for tree_record in site['trees']:
+    q=Point(*tree_record['utm'])
+    assert not foot.buffer(1.2).contains(q)
+    assert 3<=tree_record['height']<=26 and tree_record['crownArea']>0
+    with rasterio.open(root/'.cache/campus-dgm-east.tif')as dem:
+        h=float(next(dem.sample([tree_record['utm']]))[0])
+    expected=world(np.array([[*tree_record['utm'],h]]))[0]
+    assert np.linalg.norm(expected[[0,2]]-np.array(tree_record['center'])[[0,2]])<.005
+    assert abs(expected[1]-tree_record['center'][1])<.3
+for control in [c for c in rec['controls']if c['kind']=='estimated-canopy-top']:
+    q=np.array(control['position']);assert control['part']==5
+    assert any(Polygon(t[:,[0,2]]).covers(Point(q[0],q[2]))and abs(t[:,1].mean()-q[1])<.0001 for t in parts[5][0][:,:3].reshape(-1,3,3))
+from PIL import Image
+atlas=np.asarray(Image.open(src/site['materialFile']))
+assert atlas.shape==(2048,2048,4)
+def material_pixel(q):
+    x0,z0,x1,z1=site['materialBoundsMC'];c=int((q[0]-x0)/(x1-x0)*2048);r=int((z1-q[2])/(z1-z0)*2048)
+    assert 0<=c<2048 and 0<=r<2048
+    return atlas[r,c].tolist()
+assert material_pixel(world(np.array([[698476.12,5349667.2,474]]))[0])==[0,0,255,255]
+for tree_record in site['trees']:assert material_pixel(np.array(tree_record['center']))==[255,0,0,255]
+files=[rec['meshFile'],rec['roofFile'],*new_files,*rec['site']['treeTiles']]
 result={'status':'PASS: source envelope and roof, recessed openings, nonoverlapping DGM ground joins and public DOP pixels','manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'validatorSha256':sha(Path(__file__)),'tileSha256':{f:sha(out/f) for f in files},'rawInputs':inputs,'roofVertexErrorMetres':roof_error,'groundAreaSquareMetres':region.area,'groundVertices':len(vertices),'nativeGapControls':len(control_world),'groundHeightErrorMetres':max(errors),'coreRawDGMErrorMetres':max(core_errors),'seamHeightErrorMetres':max(seam_errors),'qualification':'Facade features are approximate. Native terrain, collision and visual acceptance remain required.'}
 (out/'physics-cala-validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

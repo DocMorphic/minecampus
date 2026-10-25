@@ -4,12 +4,44 @@ import struct
 import numpy as np
 import rasterio
 from pyproj import Transformer
-from shapely.geometry import Polygon, Point, box
-from shapely.ops import unary_union, nearest_points
+from shapely.geometry import Polygon, Point, LineString, box
+from shapely.ops import unary_union, nearest_points, split
 from shapely.strtree import STRtree
 from exterior_physics_i import polygons, roof_texture
 from exterior_physics_library import triangles
 from exterior_terrain import ElevationSampler
+
+
+
+def split_narrow_joins(shape, old_triangles, tree):
+    """Carry old mesh height breakpoints across sub-centimetre missing strips.
+
+    Earcut may connect nearly collinear vertices across a one-metre cell. A
+    height kink on the opposite edge then becomes a steep folded sliver. Short
+    transverse cuts pair both sides of a narrow join at each old breakpoint.
+    Cuts terminating inside broad terrain do not split it.
+    """
+    if shape.is_empty:return []
+    cuts={}
+    for index in tree.query(shape.buffer(.03)):
+        _, tri=old_triangles[int(index)]
+        xy=tri[:,[0,2]]
+        for i,p in enumerate(xy):
+            if shape.distance(Point(*p))>.03:continue
+            for j in [(i+1)%3,(i+2)%3]:
+                direction=xy[j]-p;length=np.linalg.norm(direction)
+                if length<.001:continue
+                normal=np.array([-direction[1],direction[0]])/length*.05
+                a,b=p-normal,p+normal
+                key=tuple(np.round(np.r_[a,b],8));cuts[key]=LineString([a,b])
+    pieces=list(polygons(shape))
+    for line in cuts.values():
+        divided=[]
+        for piece in pieces:
+            if not line.crosses(piece):divided.append(piece);continue
+            divided.extend(polygons(split(piece,line)))
+        pieces=divided
+    return pieces
 
 
 def build(ctx, region, prefix, runtime_id, blend_metres=2):
@@ -58,10 +90,21 @@ def build(ctx, region, prefix, runtime_id, blend_metres=2):
                 vertices=[]
                 for zz in range(z,z+20):
                     for xx in range(x,x+20):
-                        for tri in triangles(piece.intersection(box(xx,zz,xx+1,zz+1))):
-                            q=np.array([point(a,b) for a,b in tri])
-                            if np.cross(q[1]-q[0],q[2]-q[0])[1]<0:q=q[::-1]
-                            vertices.extend(q.tolist())
+                        cell=piece.intersection(box(xx,zz,xx+1,zz+1))
+                        for patch in split_narrow_joins(cell,ground,tree):
+                            for tri in triangles(patch):
+                                q=np.array([point(a,b) for a,b in tri])
+                                # Float32 is the stored mesh geometry. Collapsed
+                                # horizontal triangles cannot represent terrain.
+                                normal=np.cross(q[1]-q[0],q[2]-q[0])
+                                horizontal=q[:,[0,2]]
+                                longest=max(np.linalg.norm(horizontal[1]-horizontal[0]),np.linalg.norm(horizontal[2]-horizontal[1]),np.linalg.norm(horizontal[0]-horizontal[2]))
+                                # Less than four float32 coordinate steps across
+                                # an edge is numerical residue, not a land patch.
+                                precision=float(np.max(np.abs(np.spacing(horizontal.astype(np.float32)))))
+                                if abs(normal[1])<max(2e-8,longest*precision*4):continue
+                                if normal[1]<0:q=q[::-1]
+                                vertices.extend(q.tolist())
                 v=np.asarray(vertices);xy=utm(v);textured,pixels=roof_texture(cache,np.column_stack([xy,np.zeros(len(v)),v]));filename=f'{prefix}-{x}-{z}.ect';(out/filename).write_bytes(encode([(textured,pixels)]))
                 tile={'file':filename,'kind':'ground','runtimeId':runtime_id+len(tiles),'bounds':[v.min(0).tolist(),v.max(0).tolist()]};tiles.append(tile);points.extend(v.tolist())
         gl=np.floor(np.array(area.bounds[:2])).astype(int);gh=np.ceil(np.array(area.bounds[2:])).astype(int)
