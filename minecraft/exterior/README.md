@@ -50,6 +50,9 @@ python3 -m venv .venv-exterior
 .venv-exterior/bin/python scripts/test_exterior_terrain.py
 .venv-exterior/bin/python scripts/validate-terrain.py
 .venv-exterior/bin/python scripts/validate-ground-surfaces.py
+for site in physics-site physics-library physics-container p1-complex physics-woodland physics-new-laboratory physics-laboratory-site physics-ii pinned-water physics-wsi physics-znn riverbank courtyard-ground north-ground physics-znn-west; do
+  .venv-exterior/bin/python "scripts/validate-$site.py" || exit 1
+done
 python3 scripts/validate-exterior.py
 python3 scripts/build-exterior-release.py --java-home /absolute/path/to/jdk-21
 ```

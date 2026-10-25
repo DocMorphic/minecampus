@@ -20,7 +20,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
   const channelAt=(x,z)=>service.cfg?.water===false?null:channel?.at(x,z)??null;
   const ground=manifest.tiles.filter(t=>t.kind==='ground'||t.kind==='reconstruction'||t.kind==='vegetation');
   const collisionGround=[...ground,...(manifest.photoFacades?.collisionTiles??[])];
-  const columnGround=new Set([...(manifest.architecture?.physicsISite?.groundTiles??[]),...(manifest.architecture?.physicsLibrary?.groundTiles??[]),...(manifest.architecture?.physicsContainer?.groundTiles??[]),...(manifest.architecture?.p1Complex?.groundTiles??[]),...(manifest.architecture?.physicsWoodland?.groundTiles??[]),...(manifest.architecture?.physicsNewLaboratory?.groundTiles??[]),...(manifest.architecture?.physicsLaboratorySite?.groundTiles??[]),...(manifest.architecture?.physicsII?.groundTiles??[]),...(manifest.architecture?.physicsWSI?.groundTiles??[]),...(manifest.architecture?.physicsZNN?.groundTiles??[]),...(manifest.architecture?.riverbank?.groundTiles??[])]);
+  const columnGround=new Set([...(manifest.architecture?.physicsISite?.groundTiles??[]),...(manifest.architecture?.physicsLibrary?.groundTiles??[]),...(manifest.architecture?.physicsContainer?.groundTiles??[]),...(manifest.architecture?.p1Complex?.groundTiles??[]),...(manifest.architecture?.physicsWoodland?.groundTiles??[]),...(manifest.architecture?.physicsNewLaboratory?.groundTiles??[]),...(manifest.architecture?.physicsLaboratorySite?.groundTiles??[]),...(manifest.architecture?.physicsII?.groundTiles??[]),...(manifest.architecture?.physicsWSI?.groundTiles??[]),...(manifest.architecture?.physicsZNN?.groundTiles??[]),...(manifest.architecture?.riverbank?.groundTiles??[]),...(manifest.architecture?.physicsZNNWest?.groundTiles??[])]);
   const photoCollisionGrid=new Map(),photoCollisionCache=new Map();
   for(const r of manifest.photoFacades?.collisionRetirement??[]){
     const bounds=[Math.min(...r.ring.map(p=>p[0])),Math.min(...r.ring.map(p=>p[1])),Math.max(...r.ring.map(p=>p[0])),Math.max(...r.ring.map(p=>p[1]))];
@@ -181,7 +181,16 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
         // Clip only the covered outdoor portion, preserving outside UVs and
         // surveyed building guards instead of removing the entire triangle.
         const triangle=[0,1,2].map(v=>[input.readFloatLE(at+v*20)+ax,input.readFloatLE(at+v*20+4)+ay,input.readFloatLE(at+v*20+8)+az,input.readFloatLE(at+v*20+12),input.readFloatLE(at+v*20+16)]);
-        const fragments=supplemental.outsideOutdoorFragments(triangle);
+        const exterior=supplemental.outsideOutdoorFragments(triangle);
+        // Complete building envelopes need the same outside-centroid clipping
+        // as outdoor ground. A neighbouring retained triangle may still cross
+        // the rebuilt walls or roof; preserve its outside portion and UVs.
+        const fragments=photo?.completeEnvelopeFragments?exterior.flatMap(t=>{
+          const local=t.map(p=>[p[0],p[1]-shift,p[2],p[3],p[4]]);
+          const clipped=photo.completeEnvelopeFragments(local);
+          if(clipped.length===1&&clipped[0].every((p,i)=>p===local[i]))return [t];
+          return clipped.map(f=>f.map(p=>[p[0],p[1]+shift,p[2],p[3],p[4]]));
+        }):exterior;
         if(fragments.length===1&&fragments[0].every((p,i)=>p===triangle[i])){
           reserve(60);input.copy(output,write,at,at+60);write+=60;kept+=3;
         }else{

@@ -8,14 +8,14 @@ import {attachSurveySurface} from './survey-surface.mjs';
 const origin={lat:48.265,lon:11.671,h0:519.7618173672081};
 test('column-centre collision is restricted to listed Physics ground assets',t=>{
  let meshes;
- const names=['physics.ect','core.ect','building.ect','tree.ect','woodland.ect','laboratory.ect','site.ect','physics-ii.ect','wsi.ect','znn.ect','riverbank.ect'];
- const kinds=['ground','ground','reconstruction','vegetation','ground','ground','ground','ground','ground','ground','ground'];
+ const names=['physics.ect','core.ect','building.ect','tree.ect','woodland.ect','laboratory.ect','site.ect','physics-ii.ect','wsi.ect','znn.ect','riverbank.ect','znn-west.ect'];
+ const kinds=['ground','ground','reconstruction','vegetation','ground','ground','ground','ground','ground','ground','ground','ground'];
  const tiles=names.map((file,i)=>({file,kind:kinds[i],runtimeId:100+i,bounds:[[0,0,0],[16,4,16]]}));
- const {service,dir}=fixture(t,null,{tiles,architecture:{physicsISite:{groundTiles:['physics.ect','building.ect']},physicsWoodland:{groundTiles:['woodland.ect']},physicsNewLaboratory:{groundTiles:['laboratory.ect']},physicsLaboratorySite:{groundTiles:['site.ect']},physicsII:{groundTiles:['physics-ii.ect']},physicsWSI:{groundTiles:['wsi.ect']},physicsZNN:{groundTiles:['znn.ect']},riverbank:{groundTiles:['riverbank.ect']}}},
+ const {service,dir}=fixture(t,null,{tiles,architecture:{physicsISite:{groundTiles:['physics.ect','building.ect']},physicsWoodland:{groundTiles:['woodland.ect']},physicsNewLaboratory:{groundTiles:['laboratory.ect']},physicsLaboratorySite:{groundTiles:['site.ect']},physicsII:{groundTiles:['physics-ii.ect']},physicsWSI:{groundTiles:['wsi.ect']},physicsZNN:{groundTiles:['znn.ect']},riverbank:{groundTiles:['riverbank.ect']},physicsZNNWest:{groundTiles:['znn-west.ect']}}},
    {voxelizeArea:(_frame,assets)=>{meshes=assets;return {vox:new Uint8Array(16*16*8)};}});
  for(const name of names)fs.writeFileSync(path.join(dir,name),tile([[0,1,0],[16,1,0],[0,1,16]]));
  service.campusCollision({...origin,mcToEcef:(x,y,z)=>[x,y,z]},0,0,0,8);
- assert.deepEqual(meshes.map(m=>m.primitives[0].campusHeightfield),[true,false,false,true,true,true,true,true,true,true]);
+ assert.deepEqual(meshes.map(m=>m.primitives[0].campusHeightfield),[true,false,false,true,true,true,true,true,true,true,true]);
 });
 function tile(positions){
  const b=Buffer.alloc(32+16+positions.length*20+4);b.write('ECT1');b.writeInt32LE(1,4);b.writeInt32LE(positions.length,32);b.writeInt32LE(1,36);b.writeInt32LE(1,40);b.fill(255,44,48);
@@ -416,9 +416,12 @@ test('corrected tile cache evicts least recently used bytes and never retains ov
 });
 
 test('bounded complete-envelope cleanup preserves the outside of a source triangle in any save datum',async t=>{
- for(const shift of [0,7]){
-  const points=[[34,2,2],[38,2,2],[34,2,6]],source=tile(points);source.writeDoubleLE(shift,16);
-  points.forEach(([x,y,z],i)=>{source.writeFloatLE((x-34)/4,48+i*20+12);source.writeFloatLE((z-2)/4,48+i*20+16);});
+ for(const shift of [0,7])for(const [points,width,expectedArea]of [
+  [[[34,2,2],[38,2,2],[34,2,6]],4,2],
+  [[[34,2,2],[40,2,2],[40,2,6]],6,32/3] // Outside centroid still crosses the complete envelope.
+ ]){
+  const source=tile(points);source.writeDoubleLE(shift,16);
+  points.forEach(([x,y,z],i)=>{source.writeFloatLE((x-34)/width,48+i*20+12);source.writeFloatLE((z-2)/4,48+i*20+16);});
   const {service,dir}=fixture(t,source,{photoFacades:{file:'photo-facades.json'}},{collectRegionTiles(){throw Error('manual only');}},[{id:7,parent:0,chain:[]}]);
   fs.writeFileSync(path.join(dir,'photo-facades.json'),JSON.stringify({plans:[{id:'bounded',manualRoof:true,completeEnvelope:true,bounds:[[30,0,0],[36,8,8]],retirementBoundary:[{ring:[[30,0],[36,0],[36,8],[30,8]],holes:[]}],walls:[{reconstructed:true}]}]}));
   const frame={...origin,h0:origin.h0-shift};let selected;
@@ -427,10 +430,10 @@ test('bounded complete-envelope cleanup preserves the outside of a source triang
   const b=await service.renderTile(frame,1_200_000_007);assert.deepEqual([...b.subarray(-4)],[12,34,56,255]);
   const count=b.readInt32LE(32),vertices=[];assert.ok(count>=3);
   for(let i=0;i<count;i++){
-   const p=Array.from({length:5},(_,k)=>b.readFloatLE(48+i*20+k*4));assert.ok(p[0]>=36-1e-6);assert.ok(Math.abs(p[1]+b.readDoubleLE(16)-(2+shift))<1e-6);assert.ok(Math.abs(p[3]-(p[0]-34)/4)<1e-6);assert.ok(Math.abs(p[4]-(p[2]-2)/4)<1e-6);vertices.push(p);
+   const p=Array.from({length:5},(_,k)=>b.readFloatLE(48+i*20+k*4));assert.ok(p[0]>=36-1e-6);assert.ok(Math.abs(p[1]+b.readDoubleLE(16)-(2+shift))<1e-6);assert.ok(Math.abs(p[3]-(p[0]-34)/width)<1e-6);assert.ok(Math.abs(p[4]-(p[2]-2)/4)<1e-6);vertices.push(p);
   }
   let area=0;for(let i=0;i<count;i+=3){const [a,c,d]=vertices.slice(i,i+3);area+=Math.abs((c[0]-a[0])*(d[2]-a[2])-(c[2]-a[2])*(d[0]-a[0]))/2;}
-  assert.ok(Math.abs(area-2)<1e-6,'Exactly the2m² outside the rebuilt footprint must survive');
+  assert.ok(Math.abs(area-expectedArea)<1e-5,'Exactly the area outside the rebuilt footprint must survive');
  }
 });
 

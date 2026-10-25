@@ -203,6 +203,20 @@ assert znn_check['sourceSha256']==znn['sourceSha256']
 assert znn_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-znn.py')
 assert set(znn_check['tileSha256'])==set(znn['groundTiles']+znn['treeTiles']+[znn['meshFile'],znn['roofFile']])
 assert all(digest(DATA/name)==value for name,value in znn_check['tileSha256'].items())
+znn_west=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsZNNWest']
+znn_west_spec=json.loads((SOURCE/znn_west['sourceFile']).read_text())
+assert digest(SOURCE/znn_west['sourceFile'])==znn_west['sourceSha256']
+assert digest(ROOT/znn_west['generatorFile'])==znn_west['generatorSha256']
+assert digest(ROOT/'scripts/exterior_foundation_collar.py')==znn_west['collarGeneratorSha256']
+assert digest(SOURCE/znn_west_spec['osm']['sourceFile'])==znn_west_spec['osm']['sha256']
+assert digest(DATA/znn_west['coverageFile'])==znn_west['coverageSha256']
+znn_west_check=json.loads((DATA/'physics-znn-west-validation.json').read_text())
+assert znn_west_check['status'].startswith('PASS:')
+assert znn_west_check['manifestSha256']==digest(DATA/'manifest.json')
+assert znn_west_check['sourceSha256']==znn_west['sourceSha256']
+assert znn_west_check['validatorSha256']==digest(ROOT/'scripts/validate-physics-znn-west.py')
+assert set(znn_west_check['tileSha256'])==set(znn_west['groundTiles']+[znn_west['meshFile'],znn_west['roofFile']])
+assert all(digest(DATA/name)==value for name,value in znn_west_check['tileSha256'].items())
 riverbank=json.loads((DATA/'manifest.json').read_text())['architecture']['riverbank']
 riverbank_spec=json.loads((SOURCE/riverbank['sourceFile']).read_text())
 assert digest(SOURCE/riverbank['sourceFile'])==riverbank['sourceSha256']
@@ -281,6 +295,10 @@ if not compiled.is_file():raise SystemExit('Expected remapped release JAR missin
 manifest=json.loads((DATA/'manifest.json').read_text())
 notices='''Minecampus exterior modifications and provenance
 
+West ZNN service building: BVV LoD2 envelope and DOP20 roof; two tank
+silhouettes estimated from DOM20/DGM1, with approximate finishes and caps.
+OSM service compound by OpenStreetMap contributors, ODbL1.0; see
+physics-znn-west.json and physics-znn-west-osm.xml. Unresolved equipment retained.
 WSI riverbanks: BVV DGM1/DOP20/DOM20 bank terrain and estimated crowns;
 pinned OSM river and wooden footbridge geometry. Native water uses a
 DGM-guided elevation estimate, not surveyed bathymetry. Corridor extent,
@@ -584,6 +602,9 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/'+riverbank['sourceFile'],(SOURCE/riverbank['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/'+riverbank['coverageFile'],(DATA/riverbank['coverageFile']).read_bytes())
   for source in riverbank_spec['osm']:write(target,'src/minecampus-exterior/'+source['sourceFile'],(SOURCE/source['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+znn_west['sourceFile'],(SOURCE/znn_west['sourceFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+znn_west['coverageFile'],(DATA/znn_west['coverageFile']).read_bytes())
+  write(target,'src/minecampus-exterior/'+znn_west_spec['osm']['sourceFile'],(SOURCE/znn_west_spec['osm']['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-znn.json',(SOURCE/znn['sourceFile']).read_bytes())
   write(target,'src/minecampus-exterior/physics-znn-reference.json',(SOURCE/znn_spec['reference']).read_bytes())
   write(target,'src/minecampus-exterior/'+znn['coverageFile'],(DATA/znn['coverageFile']).read_bytes())

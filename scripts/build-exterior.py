@@ -280,6 +280,8 @@ from exterior_pinned_water import build as build_pinned_water
 build_pinned_water(globals())
 from exterior_north_ground import build as build_north_ground
 build_north_ground(globals())
+from exterior_physics_znn_west import build as build_physics_znn_west
+build_physics_znn_west(globals())
 metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}
 for stale in ['galileo-facade-rectified.jpg']:
  if (OUT/stale).exists():(OUT/stale).unlink()

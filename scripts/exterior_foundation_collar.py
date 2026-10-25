@@ -36,6 +36,10 @@ def build(ctx, footprint, runtime_id, filename):
     assert not region.is_empty and region.area<footprint.length*.65
     distances=[]
     def point(x,z,record=False):
+        # Evaluate at the coordinates actually stored in ECT float32 vertices.
+        # Micrometre rounding can otherwise select the other side of a narrow
+        # triangulation tie and introduce an avoidable millimetre height seam.
+        x,z=map(float,np.asarray([x,z],dtype=np.float32))
         location=Point(x,z);index=int(tree.nearest(location));poly,tri=ground[index];near=nearest_points(poly,location)[0]
         weights=np.linalg.solve(np.vstack([tri[:,0],tri[:,2],np.ones(3)]),np.array([near.x,near.y,1]))
         if record:distances.append(location.distance(poly))
