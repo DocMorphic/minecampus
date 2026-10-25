@@ -1,0 +1,2162 @@
+{
+  "status": "PASS: bounded surveyed annex reconstruction, native inspection and save preservation; campus-wide visual acceptance remains pending",
+  "candidate": 99,
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 345875546,
+    "sha256": "77d968a258ce1a9a2ad4ccd956200848744d439a11fe7cd1b1fbdb54bece50a3",
+    "sourcePatchSha256": "9f45737242b2f56e288421ced64b338d0383db2c2287aeb086624e64cf508e94",
+    "rendererSourceFingerprint": "7815d5e8b51fdf19",
+    "bundleSha256": "d18506b283af6b795e3ed3c7e7cd9e2e957137acca381a3473b3a86fc84de66a",
+    "tiles": 479,
+    "bundleUnpackedBytes": 806534581,
+    "bundleUnpackedLimit": 1073741824,
+    "upstreamSourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13"
+  },
+  "playablePreviewReady": true,
+  "publicBinaryReleased": false,
+  "goalComplete": false,
+  "upgradeFromArtifactSha256": "ebff9ca4a8ceda72d0a52f664db7335d55c148933ff22fcaf73bee86625c9135",
+  "sourceBaseCommit": "97c5f05078b6b9ff4e5bd7ad9a0d09d0fdcb70f9",
+  "implementationSourceHashes": {
+    "minecraft/exterior/checks/cyclotron-annex.json": "d2c8139ea19dc92ea7bfa4373938b90f85e01cc4cf00d6998bb499528f11fcc5",
+    "scripts/test-exterior-cyclotron-annex.mjs": "9d27fdd48a7168c841e95663662dedc9aca5b68ffc24e932114b90f173afc2e6",
+    "minecraft/exterior/cyclotron-annex.json": "9856a7fcd8f232e9205d8934bd9d9b22857a77e3a62c748ff2b1594f386702e0",
+    "minecraft/exterior/native/CampusCollision.java": "9302d089740f079e6c689e7c538a953dc304ace440dc6e276ad74cb61ae2f7b0",
+    "minecraft/exterior/patches/realworldmc-exterior.patch": "9f45737242b2f56e288421ced64b338d0383db2c2287aeb086624e64cf508e94",
+    "scripts/build-exterior-release.py": "dc17f7330b38fc3bafb04970f94102968a65efc0790f0449ea7f62965f5e0a2c",
+    "scripts/build-exterior.py": "eb85e1efb532e3bad4400f4f07cd828c467ba9e59860f096b0bb6a9fe1be97ea",
+    "scripts/exterior_cyclotron_annex.py": "03068d1dfcae2210e836ac11ccf2c7af27bf4b81dbb46490b1ec30b6ee5a2201",
+    "scripts/validate-cyclotron-annex.py": "876cec543ac743adca79cfd196c8793d07fe8fd9983a1c41a5bad0a0d30b6c9f",
+    "scripts/validate-galileo-east-grade.py": "f4863f24e727a0db8a7b023a1304986450e2089d0cd4269e3ddc788bddb03c48",
+    "minecraft/exterior/checks/cyclotron-annex-followup.json": "27e9f3cbfe0d9db807360e5c4e84cf76ba7644c824d350803708c2e9f863f47b"
+  },
+  "scope": "Eight exact surveyed annex wall faces, including the raised/setback section, with provisional pale concrete finish and unchanged encoded roof. Bounded cleanup protects neighboring footprints. No openings or interiors invented.",
+  "sourceValidation": {
+    "status": "PASS: isolated component matches all eight survey wall faces and exact encoded roof part",
+    "building": "DEBY_LOD2_5284441",
+    "wallFaces": 8,
+    "wallTriangles": 20,
+    "meshSha256": "273ef27d9db3f33995617dde4f28b5d79ebe2d7767116191b22519897d2106d4",
+    "roofSha256": "00f7a224c65f86db8d419c52315cfbcbcb73e7863116d0624d190c00a5528aff",
+    "existingCollisionFileSha256": "6df597cc52afeca4dd1a62fc1f7b27f1f35fd00cdd23b24eb74e0345be9a569a",
+    "otherPhotoPlansUnchanged": 104,
+    "otherRenderEntriesUnchanged": 478,
+    "fullDataVerified": true,
+    "cleanupAreaSquareMetres": 305.98001598873566,
+    "protectedNeighbourOverlapSquareMetres": 0.0,
+    "manifestSha256": "92ee00ee9c8672f72484f49d9cf32a7aec687a5bce687354dc1fa8730ef7ea6f",
+    "validatorSha256": "876cec543ac743adca79cfd196c8793d07fe8fd9983a1c41a5bad0a0d30b6c9f",
+    "nativeReviewed": false,
+    "installed": false,
+    "remainingChecks": [
+      "Material routing and release integration",
+      "Independent packaged collision-packet comparison",
+      "Matched native walking/aerial inspection and save preservation"
+    ],
+    "qualification": "Survey geometry is authoritative for this reconstruction. Wall albedo is estimated from visible pale surfaces; openings and small surface details remain unresolved. No provider pixels persisted or redistributed. No claim of current as-built facade accuracy."
+  },
+  "dependentSourceChecks": [
+    {
+      "validator": "validate-uyd-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uyd-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mlz-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-canopies.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-west-entrance.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-library.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-container.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-p1-complex.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-woodland.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-new-laboratory.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-laboratory-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-ii.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-pinned-water.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-wsi.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn-west.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-cala.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-lmu.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-courtyard.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-riverbank.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-north-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mensa-terrace.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-landscape.py",
+      "exitCode": 0
+    }
+  ],
+  "gradeValidation": {
+    "status": "PASS: bounded inferred grade, unchanged ramp floors/portals and stable material boundaries",
+    "manifestSha256": "92ee00ee9c8672f72484f49d9cf32a7aec687a5bce687354dc1fa8730ef7ea6f",
+    "validatorSha256": "f4863f24e727a0db8a7b023a1304986450e2089d0cd4269e3ddc788bddb03c48",
+    "sourceSha256": "bb2e96090c385df5ee1776904119d512339e1eb39f12fb0d550077a0109bcf69",
+    "generatorSha256": "1d884fec9b8b884cd596fd9d5ad301117daf10918aa343995c6becf69f0d6c12",
+    "referenceSha256": "7571882257460b9649aa46f435ba38f79d4a34b3fd0a4e34032f3baafacd47c2",
+    "changedMeshes": [
+      "ground-698300-5349200.ect",
+      "ground-698300-5349300.ect",
+      "vegetation-4-2.ect",
+      "galileo-east-ramps.ect"
+    ],
+    "unchangedMeshes": 474,
+    "laterMeshesOutsideGradeCheck": [
+      "DEBY_LOD2_5284441-cyclotron-annex.ect"
+    ],
+    "tileSha256": {
+      "ground-698300-5349200.ect": "768004a38832fbbd0b83e5b7343b0da54ecc846ddfaeef2ec50133f4eb56f311",
+      "ground-698300-5349300.ect": "8092b71a04a8b0aa1b73754a60409a1d691813f95cd1cc1761d9516efccce45d",
+      "vegetation-4-2.ect": "406c8e76fc96c11f269effaa4d992f2b0f9cdbc84bfe588fb5550f8d7617cee4",
+      "galileo-east-ramps.ect": "e7078aee277f260298b9d042db5606af1da2a37b90411530ab98ace82b23535b"
+    },
+    "sourceControlMaximumResidualMetres": 0.1592626801105439,
+    "rasterCentreSamples": 114313,
+    "maximumEncodedSourceErrorMetres": 7.629065294167958e-06,
+    "changedGroundVertexRecords": 10310,
+    "cutEdgeVerticesBeyondGradeCollar": 9,
+    "maximumInterpolationReachBeyondCollarMetres": 0.42350667414557897,
+    "rampFloorsAndPortalBoundariesUnchanged": true,
+    "groundTexturesAndMaterialMaskUnchanged": true,
+    "nativeVisualAcceptance": false
+  },
+  "packagedScopeVerification": {
+    "status": "PASS: all prior mesh bytes, service modules, shaders and textures retained; annex geometry and renderer route added, collision journal advances to v92",
+    "artifactSha256": "77d968a258ce1a9a2ad4ccd956200848744d439a11fe7cd1b1fbdb54bece50a3",
+    "unchangedMeshFiles": 664,
+    "unchangedServiceModules": 24,
+    "unchangedTextures": 25,
+    "unchangedShaders": 10,
+    "changedBundleRecords": [
+      "src/minecampus-exterior/mensa-terrace-validation.json",
+      "src/minecampus-exterior/galileo-east-grade-validation.json",
+      "src/minecampus-exterior/uyd-site-validation.json",
+      "src/minecampus-exterior/uyd-exterior-validation.json",
+      "src/minecampus-exterior/photo-facades.json",
+      "src/minecampus-exterior/manifest.json",
+      "src/minecampus-exterior/mlz-courtyard-ground-validation.json",
+      "src/minecampus-exterior/atom-ei-canopies-validation.json",
+      "src/minecampus-exterior/atom-ei-west-entrance-validation.json",
+      "src/minecampus-exterior/uta-exterior-validation.json",
+      "src/minecampus-exterior/reactor-ground-validation.json",
+      "src/minecampus-exterior/reactor-east-validation.json",
+      "src/minecampus-exterior/uta-south-landscape-validation.json",
+      "src/minecampus-exterior/reactor-site-validation.json",
+      "src/minecampus-exterior/reactor-exterior-validation.json",
+      "src/minecampus-exterior/atom-ei-validation.json"
+    ],
+    "newBundleEntries": [
+      "src/minecampus-exterior/DEBY_LOD2_5284441-cyclotron-annex.ect",
+      "src/minecampus-exterior/cyclotron-annex-reference.json",
+      "src/minecampus-exterior/cyclotron-annex-validation.json",
+      "src/minecampus-exterior/cyclotron-annex.json"
+    ],
+    "collisionComparisonServiceMatchesPackage": true,
+    "rendererSourceFingerprint": "7815d5e8b51fdf19"
+  },
+  "collisionComparison": {
+    "status": "PASS: bounded stone-to-plaster changes and provider-to-air cleanup only; v92 migration required",
+    "packets": 32,
+    "identicalPackets": 26,
+    "changedCodes": 858,
+    "changedProfilePackets": 0,
+    "occupancyChanges": 0,
+    "materialTransitions": {
+      "4->6": 854,
+      "255->0": 4
+    },
+    "transitionExamples": {
+      "4->6": [
+        {
+          "x": 180,
+          "y": 63,
+          "z": -71,
+          "before": 4,
+          "after": 6
+        },
+        {
+          "x": 180,
+          "y": 63,
+          "z": -70,
+          "before": 4,
+          "after": 6
+        },
+        {
+          "x": 180,
+          "y": 63,
+          "z": -69,
+          "before": 4,
+          "after": 6
+        },
+        {
+          "x": 179,
+          "y": 63,
+          "z": -68,
+          "before": 4,
+          "after": 6
+        },
+        {
+          "x": 180,
+          "y": 63,
+          "z": -68,
+          "before": 4,
+          "after": 6
+        },
+        {
+          "x": 181,
+          "y": 64,
+          "z": -77,
+          "before": 4,
+          "after": 6
+        },
+        {
+          "x": 182,
+          "y": 64,
+          "z": -77,
+          "before": 4,
+          "after": 6
+        },
+        {
+          "x": 183,
+          "y": 64,
+          "z": -77,
+          "before": 4,
+          "after": 6
+        }
+      ],
+      "255->0": [
+        {
+          "x": 202,
+          "y": 66,
+          "z": -75,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 202,
+          "y": 67,
+          "z": -75,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 202,
+          "y": 68,
+          "z": -75,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 202,
+          "y": 69,
+          "z": -75,
+          "before": 255,
+          "after": 0
+        }
+      ]
+    },
+    "examples": [
+      {
+        "x": 180,
+        "y": 63,
+        "z": -71,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 63,
+        "z": -70,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 63,
+        "z": -69,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 179,
+        "y": 63,
+        "z": -68,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 63,
+        "z": -68,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 64,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 182,
+        "y": 64,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 183,
+        "y": 64,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 184,
+        "y": 64,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 185,
+        "y": 64,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 64,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 185,
+        "y": 64,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 186,
+        "y": 64,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 187,
+        "y": 64,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 188,
+        "y": 64,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 189,
+        "y": 64,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 190,
+        "y": 64,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 191,
+        "y": 64,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 64,
+        "z": -75,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 191,
+        "y": 64,
+        "z": -75,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 64,
+        "z": -74,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 64,
+        "z": -73,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 64,
+        "z": -73,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 64,
+        "z": -72,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 64,
+        "z": -68,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 64,
+        "z": -67,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 183,
+        "y": 64,
+        "z": -67,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 183,
+        "y": 64,
+        "z": -66,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 184,
+        "y": 64,
+        "z": -66,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 185,
+        "y": 64,
+        "z": -66,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 186,
+        "y": 64,
+        "z": -66,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 188,
+        "y": 64,
+        "z": -66,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 189,
+        "y": 64,
+        "z": -66,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 189,
+        "y": 64,
+        "z": -65,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 190,
+        "y": 64,
+        "z": -65,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 65,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 182,
+        "y": 65,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 183,
+        "y": 65,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 184,
+        "y": 65,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 185,
+        "y": 65,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 65,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 185,
+        "y": 65,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 186,
+        "y": 65,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 187,
+        "y": 65,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 188,
+        "y": 65,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 189,
+        "y": 65,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 190,
+        "y": 65,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 191,
+        "y": 65,
+        "z": -76,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 65,
+        "z": -75,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 191,
+        "y": 65,
+        "z": -75,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 65,
+        "z": -74,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 65,
+        "z": -73,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 65,
+        "z": -73,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 65,
+        "z": -72,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 65,
+        "z": -71,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 65,
+        "z": -70,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 65,
+        "z": -69,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 179,
+        "y": 65,
+        "z": -68,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 180,
+        "y": 65,
+        "z": -68,
+        "before": 4,
+        "after": 6
+      },
+      {
+        "x": 181,
+        "y": 66,
+        "z": -77,
+        "before": 4,
+        "after": 6
+      }
+    ],
+    "rows": [
+      {
+        "cx": 10,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -5,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -4,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -3,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -5,
+        "shift": 0,
+        "identical": false,
+        "differences": 235
+      },
+      {
+        "cx": 11,
+        "cz": -4,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -3,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -5,
+        "shift": 0,
+        "identical": false,
+        "differences": 191
+      },
+      {
+        "cx": 12,
+        "cz": -4,
+        "shift": 0,
+        "identical": false,
+        "differences": 3
+      },
+      {
+        "cx": 12,
+        "cz": -3,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -5,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -4,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -3,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -5,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -4,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -3,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -5,
+        "shift": 2,
+        "identical": false,
+        "differences": 235
+      },
+      {
+        "cx": 11,
+        "cz": -4,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -3,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -5,
+        "shift": 2,
+        "identical": false,
+        "differences": 191
+      },
+      {
+        "cx": 12,
+        "cz": -4,
+        "shift": 2,
+        "identical": false,
+        "differences": 3
+      },
+      {
+        "cx": 12,
+        "cz": -3,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -5,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -4,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -3,
+        "shift": 2,
+        "identical": true
+      }
+    ]
+  },
+  "collisionQualification": "32 complete packets at two datum offsets: 854 stone-to-plaster codes and four provider-controlled-to-air cells. Provider-controlled code 255 is not proof of prior empty space. No known-solid occupancy or fine-profile changes; migration v92 applies only to map-owned blocks and respects recorded user edits.",
+  "native": {
+    "followupExitCode": 0,
+    "mainExitCode": 1,
+    "mainStatus": "FAIL: native walking check: Probe 13 standing Y=65.0, mesh Y=63.89240865282913, onGround=true, horizontal error=0.799157133931061",
+    "followupStatus": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "followupPlan": "checks/cyclotron-annex-followup.json",
+    "followupPlanSha256": "27e9f3cbfe0d9db807360e5c4e84cf76ba7644c824d350803708c2e9f863f47b",
+    "followupResultSha256": "b3fee37d9da37b08d62745ebcc5c1b7cb60cf0bcc730baee47401228de497a93",
+    "followupLogSha256": "380583b47352fcc07733eaed38746d449756042030c41cc81d2042ffc2017e02",
+    "followupCameraChecks": 2,
+    "followupSurfaceProbeResults": [
+      {
+        "label": "Annex surveyed wall 0",
+        "target": [
+          182.86772765186015,
+          70.57323958293635,
+          -72.32498425699691
+        ],
+        "normal": [
+          -0.9844690602529642,
+          -0.0,
+          -0.1755581653032563
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999406,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999406
+      },
+      {
+        "label": "Annex surveyed wall 1",
+        "target": [
+          197.75933199241908,
+          65.33758211725741,
+          -64.16037824001909
+        ],
+        "normal": [
+          0.9846883204758653,
+          -0.0,
+          0.17432415643971844
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall.",
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999686,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999686
+      },
+      {
+        "label": "Annex surveyed wall 2",
+        "target": [
+          198.2355392479927,
+          68.39755339251319,
+          -65.42961074877432
+        ],
+        "normal": [
+          -0.17605764070212604,
+          -0.0,
+          0.9843798591755122
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000033,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000033
+      },
+      {
+        "label": "Annex surveyed wall 3",
+        "target": [
+          199.20594373502794,
+          68.39748505074566,
+          -69.44827537132772
+        ],
+        "normal": [
+          0.9843750233470421,
+          -0.0,
+          0.17608467681916629
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.60000473,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.60000473
+      },
+      {
+        "label": "Annex surveyed wall 4",
+        "target": [
+          190.0602998234871,
+          70.57293115319246,
+          -66.82741549262377
+        ],
+        "normal": [
+          -0.1749954329148494,
+          -0.0,
+          0.9845692451315675
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000048,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000048
+      },
+      {
+        "label": "Annex surveyed wall 5",
+        "target": [
+          188.42129573313863,
+          68.34462553878662,
+          -75.55685407077392
+        ],
+        "normal": [
+          0.17493071056779752,
+          -0.0,
+          -0.9845807465618275
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59996367,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59996367
+      },
+      {
+        "label": "Annex surveyed wall 7",
+        "target": [
+          180.83291368382805,
+          66.0633355098953,
+          -71.69384349907035
+        ],
+        "normal": [
+          -0.9844520686377016,
+          -0.0,
+          -0.17565342170009143
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999675,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999675
+      }
+    ],
+    "protectedBlockInterruption": {
+      "probe": 13,
+      "control": {
+        "label": "Annex west approach standing",
+        "target": [
+          175.0,
+          63.89240865282913,
+          -70.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000026,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.932541138523526,
+        "requireBodyClearance": true,
+        "look": [
+          -90.0,
+          -15.0
+        ],
+        "maxSupportError": 0.125
+      },
+      "serverPosition": "(175.79915713393106, 65.0, -70.0)",
+      "horizontalError": 0.799157133931061,
+      "bodyClear": true,
+      "supportExpectedY": 63.932541138523526,
+      "velocity": "(0.0, -0.0784000015258789, 0.0)",
+      "onGround": true,
+      "flying": false,
+      "collisionAligned": true,
+      "supportBlocks": [
+        {
+          "position": "175, 63, -71",
+          "state": "Block{minecraft:dirt}"
+        },
+        {
+          "position": "175, 64, -71",
+          "state": "Block{minecraft:dirt}"
+        },
+        {
+          "position": "175, 65, -71",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "175, 63, -70",
+          "state": "Block{minecraft:dirt}"
+        },
+        {
+          "position": "175, 64, -70",
+          "state": "Block{minecraft:dirt}"
+        },
+        {
+          "position": "175, 65, -70",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "176, 63, -71",
+          "state": "Block{earthcraft:map_plaster}[campus_height=14]"
+        },
+        {
+          "position": "176, 64, -71",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "176, 65, -71",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "176, 63, -70",
+          "state": "Block{earthcraft:map_plaster}[campus_height=15]"
+        },
+        {
+          "position": "176, 64, -70",
+          "state": "Block{minecraft:air}"
+        },
+        {
+          "position": "176, 65, -70",
+          "state": "Block{minecraft:air}"
+        }
+      ],
+      "capture": "campus-cyclotron-annex-99b-walking-failure.png",
+      "clientPosition": "(175.79915713393106, 65.0, -70.0)"
+    },
+    "plan": "checks/cyclotron-annex-review-99b.json",
+    "planSha256": "ab5620ea76f4b2d98e0551f715a70bb104a94befe7d231a384a4f94c648eeea7",
+    "resultSha256": "ab81b7446d53f0d0cb06eb7bcc3246f89444d5551b7711744806843eb1c99e42",
+    "logSha256": "71d9828280850708061f60a4f7c96360ae816a44d1e63caa9acae4a91b84c4a3",
+    "cameraChecks": 13,
+    "standingChecks": 15,
+    "nightViews": 1,
+    "maximumStandingErrorMetres": 0.05031520620072172,
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "standingResults": [
+      {
+        "label": "Galileo east comparison standing",
+        "target": [
+          145.0,
+          63.93476356257272,
+          -115.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.937420623764524,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          -12.0
+        ],
+        "candidateViewIndex": 0,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.937420623764524,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-0.png",
+        "clientPosition": "(145.0, 63.9375, -115.0)"
+      },
+      {
+        "label": "North inner frontage standing",
+        "target": [
+          135.8,
+          63.99958742427852,
+          -131.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.0011305589552,
+        "requireBodyClearance": true,
+        "look": [
+          0.0,
+          3.0
+        ],
+        "candidateViewIndex": 1,
+        "maxSupportError": 0.125,
+        "standingY": 64.0,
+        "supportExpectedY": 64.0011305589552,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-1.png",
+        "clientPosition": "(135.8, 64.0, -131.0)"
+      },
+      {
+        "label": "Central inner frontage standing",
+        "target": [
+          131.5,
+          63.97347540688412,
+          -115.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.97501972509733,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          3.0
+        ],
+        "candidateViewIndex": 2,
+        "maxSupportError": 0.125,
+        "standingY": 64.0,
+        "supportExpectedY": 63.97501972509733,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-2.png",
+        "clientPosition": "(131.5, 64.0, -115.0)"
+      },
+      {
+        "label": "South inner frontage standing",
+        "target": [
+          126.8,
+          63.92223118482563,
+          -88.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000026,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.92377721917473,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          3.0
+        ],
+        "candidateViewIndex": 3,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.92377721917473,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-3.png",
+        "clientPosition": "(126.8, 63.9375, -88.0)"
+      },
+      {
+        "label": "South outer approach standing",
+        "target": [
+          131.0,
+          63.879609871242906,
+          -75.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000026,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.88115639163096,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          3.0
+        ],
+        "candidateViewIndex": 4,
+        "maxSupportError": 0.125,
+        "standingY": 63.875,
+        "supportExpectedY": 63.88115639163096,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-4.png",
+        "clientPosition": "(131.0, 63.875, -75.0)"
+      },
+      {
+        "label": "North outer frontage standing",
+        "target": [
+          148.5,
+          63.96650296631572,
+          -133.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.970666181178046,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          8.0
+        ],
+        "candidateViewIndex": 5,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.970666181178046,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-5.png",
+        "clientPosition": "(148.5, 63.9375, -133.0)"
+      },
+      {
+        "label": "Central outer frontage standing",
+        "target": [
+          146.0,
+          63.88659902365437,
+          -114.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.91763216944051,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          8.0
+        ],
+        "candidateViewIndex": 6,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.91763216944051,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-6.png",
+        "clientPosition": "(146.0, 63.9375, -114.0)"
+      },
+      {
+        "label": "South outer frontage standing",
+        "target": [
+          141.0,
+          63.89179259189057,
+          -92.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.89394779339557,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          8.0
+        ],
+        "candidateViewIndex": 7,
+        "maxSupportError": 0.125,
+        "standingY": 63.875,
+        "supportExpectedY": 63.89394779339557,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-7.png",
+        "clientPosition": "(141.0, 63.875, -92.0)"
+      },
+      {
+        "label": "North portal surface behind opening standing",
+        "target": [
+          138.6,
+          63.95260386224331,
+          -114.5
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.95414936926983,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          18.0
+        ],
+        "candidateViewIndex": 8,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.95414936926983,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-8.png",
+        "clientPosition": "(138.6, 63.9375, -114.5)"
+      },
+      {
+        "label": "north ramp 0.25 standing",
+        "target": [
+          142.67860037759831,
+          63.33619150665033,
+          -135.27226538153948
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000030022,
+        "part": 1,
+        "dropHeight": 3,
+        "supportHeight": 63.390409604940565,
+        "requireBodyClearance": true,
+        "look": [
+          12.0,
+          15.0
+        ],
+        "candidateViewIndex": 9,
+        "maxSupportError": 0.125,
+        "standingY": 63.375,
+        "supportExpectedY": 63.390409604940565,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-9.png",
+        "clientPosition": "(142.67860037759831, 63.375, -135.27226538153948)"
+      },
+      {
+        "label": "north ramp 0.65 standing",
+        "target": [
+          140.69189735074792,
+          61.92157379760341,
+          -125.8348738850364
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000030022,
+        "part": 1,
+        "dropHeight": 3,
+        "supportHeight": 61.96887114870459,
+        "requireBodyClearance": true,
+        "look": [
+          12.0,
+          15.0
+        ],
+        "candidateViewIndex": 10,
+        "maxSupportError": 0.125,
+        "standingY": 62.0,
+        "supportExpectedY": 61.96887114870459,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-10.png",
+        "clientPosition": "(140.69189735074792, 62.0, -125.8348738850364)"
+      },
+      {
+        "label": "south ramp 0.25 standing",
+        "target": [
+          136.1154656076001,
+          63.71420838064306,
+          -100.3421803129652
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000030022,
+        "part": 1,
+        "dropHeight": 3,
+        "supportHeight": 63.7603137440982,
+        "requireBodyClearance": true,
+        "look": [
+          12.0,
+          15.0
+        ],
+        "candidateViewIndex": 11,
+        "maxSupportError": 0.125,
+        "standingY": 63.75,
+        "supportExpectedY": 63.7603137440982,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-11.png",
+        "clientPosition": "(136.1154656076001, 63.75, -100.3421803129652)"
+      },
+      {
+        "label": "south ramp 0.65 standing",
+        "target": [
+          134.43357101442234,
+          62.42923133161562,
+          -92.52096726521302
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000030022,
+        "part": 1,
+        "dropHeight": 3,
+        "supportHeight": 62.48518434115281,
+        "requireBodyClearance": true,
+        "look": [
+          12.0,
+          15.0
+        ],
+        "candidateViewIndex": 12,
+        "maxSupportError": 0.125,
+        "standingY": 62.4375,
+        "supportExpectedY": 62.48518434115281,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99b-walk-12.png",
+        "clientPosition": "(134.43357101442234, 62.4375, -92.52096726521302)"
+      },
+      {
+        "label": "Annex west approach standing",
+        "target": [
+          176.5,
+          63.944588069511575,
+          -69.5
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000026,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.98781520620072,
+        "requireBodyClearance": true,
+        "look": [
+          -90.0,
+          -15.0
+        ],
+        "maxSupportError": 0.125,
+        "qualification": "Adjacent clear map ground; the original x175,z-70 test location contains protected vanilla dirt through Y64. Dirt is retained and excluded from terrain-height comparison.",
+        "standingY": 63.9375,
+        "supportExpectedY": 63.98781520620072,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99c-walk-0.png",
+        "clientPosition": "(176.5, 63.9375, -69.5)"
+      },
+      {
+        "label": "Annex east approach standing",
+        "target": [
+          207.0,
+          64.01008587202242,
+          -70.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000032,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.03721277366937,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          -15.0
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 64.0625,
+        "supportExpectedY": 64.03721277366937,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-cyclotron-annex-99c-walk-1.png",
+        "clientPosition": "(207.0, 64.0625, -70.0)"
+      }
+    ],
+    "surfaceProbeResults": [
+      {
+        "label": "Annex surveyed wall 0",
+        "target": [
+          182.86772765186015,
+          70.57323958293635,
+          -72.32498425699691
+        ],
+        "normal": [
+          -0.9844690602529642,
+          -0.0,
+          -0.1755581653032563
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999406,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999406
+      },
+      {
+        "label": "Annex surveyed wall 1",
+        "target": [
+          197.75933199241908,
+          65.33758211725741,
+          -64.16037824001909
+        ],
+        "normal": [
+          0.9846883204758653,
+          -0.0,
+          0.17432415643971844
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall.",
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999686,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999686
+      },
+      {
+        "label": "Annex surveyed wall 2",
+        "target": [
+          198.2355392479927,
+          68.39755339251319,
+          -65.42961074877432
+        ],
+        "normal": [
+          -0.17605764070212604,
+          -0.0,
+          0.9843798591755122
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000033,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000033
+      },
+      {
+        "label": "Annex surveyed wall 3",
+        "target": [
+          199.20594373502794,
+          68.39748505074566,
+          -69.44827537132772
+        ],
+        "normal": [
+          0.9843750233470421,
+          -0.0,
+          0.17608467681916629
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.60000473,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.60000473
+      },
+      {
+        "label": "Annex surveyed wall 4",
+        "target": [
+          190.0602998234871,
+          70.57293115319246,
+          -66.82741549262377
+        ],
+        "normal": [
+          -0.1749954329148494,
+          -0.0,
+          0.9845692451315675
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000048,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000048
+      },
+      {
+        "label": "Annex surveyed wall 5",
+        "target": [
+          188.42129573313863,
+          68.34462553878662,
+          -75.55685407077392
+        ],
+        "normal": [
+          0.17493071056779752,
+          -0.0,
+          -0.9845807465618275
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59996367,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59996367
+      },
+      {
+        "label": "Annex surveyed wall 7",
+        "target": [
+          180.83291368382805,
+          66.0633355098953,
+          -71.69384349907035
+        ],
+        "normal": [
+          -0.9844520686377016,
+          -0.0,
+          -0.17565342170009143
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999675,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999675
+      },
+      {
+        "label": "Annex surveyed wall 0",
+        "target": [
+          182.86772765186015,
+          70.57323958293635,
+          -72.32498425699691
+        ],
+        "normal": [
+          -0.9844690602529642,
+          -0.0,
+          -0.1755581653032563
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999406,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999406
+      },
+      {
+        "label": "Annex surveyed wall 1",
+        "target": [
+          197.75933199241908,
+          65.33758211725741,
+          -64.16037824001909
+        ],
+        "normal": [
+          0.9846883204758653,
+          -0.0,
+          0.17432415643971844
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall.",
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999686,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999686
+      },
+      {
+        "label": "Annex surveyed wall 2",
+        "target": [
+          198.2355392479927,
+          68.39755339251319,
+          -65.42961074877432
+        ],
+        "normal": [
+          -0.17605764070212604,
+          -0.0,
+          0.9843798591755122
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000033,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000033
+      },
+      {
+        "label": "Annex surveyed wall 3",
+        "target": [
+          199.20594373502794,
+          68.39748505074566,
+          -69.44827537132772
+        ],
+        "normal": [
+          0.9843750233470421,
+          -0.0,
+          0.17608467681916629
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.60000473,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.60000473
+      },
+      {
+        "label": "Annex surveyed wall 4",
+        "target": [
+          190.0602998234871,
+          70.57293115319246,
+          -66.82741549262377
+        ],
+        "normal": [
+          -0.1749954329148494,
+          -0.0,
+          0.9845692451315675
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000048,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000048
+      },
+      {
+        "label": "Annex surveyed wall 5",
+        "target": [
+          188.42129573313863,
+          68.34462553878662,
+          -75.55685407077392
+        ],
+        "normal": [
+          0.17493071056779752,
+          -0.0,
+          -0.9845807465618275
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59996367,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59996367
+      },
+      {
+        "label": "Annex surveyed wall 7",
+        "target": [
+          180.83291368382805,
+          66.0633355098953,
+          -71.69384349907035
+        ],
+        "normal": [
+          -0.9844520686377016,
+          -0.0,
+          -0.17565342170009143
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999675,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999675
+      }
+    ],
+    "reflectionCaptures": 15
+  },
+  "priorAttempt": {
+    "status": "Failed surface probe; artifact unchanged on retry",
+    "reason": "The mean of six vertices of concave surveyed wall 1 lies outside the wall. Static barycentric checks confirmed the bad test point. It was moved to the centroid of the largest actual survey triangle; all seven probe targets were checked inside their triangles. Native thresholds unchanged.",
+    "resultSha256": "02e44818dbf46510f6b54af3d98bfbb042002f32ed03953b1ca369a829b270ba",
+    "probeCorrection": [
+      {
+        "wall": 0,
+        "originalMeanInside": true,
+        "target": [
+          182.86772765186015,
+          70.57323958293635,
+          -72.32498425699691
+        ]
+      },
+      {
+        "wall": 1,
+        "originalMeanInside": false,
+        "target": [
+          197.75933199241908,
+          65.33758211725741,
+          -64.16037824001909
+        ]
+      },
+      {
+        "wall": 2,
+        "originalMeanInside": true,
+        "target": [
+          198.2355392479927,
+          68.39755339251319,
+          -65.42961074877432
+        ]
+      },
+      {
+        "wall": 3,
+        "originalMeanInside": true,
+        "target": [
+          199.20594373502794,
+          68.39748505074566,
+          -69.44827537132772
+        ]
+      },
+      {
+        "wall": 4,
+        "originalMeanInside": true,
+        "target": [
+          190.0602998234871,
+          70.57293115319246,
+          -66.82741549262377
+        ]
+      },
+      {
+        "wall": 5,
+        "originalMeanInside": true,
+        "target": [
+          188.42129573313863,
+          68.34462553878662,
+          -75.55685407077392
+        ]
+      },
+      {
+        "wall": 7,
+        "originalMeanInside": true,
+        "target": [
+          180.83291368382805,
+          66.0633355098953,
+          -71.69384349907035
+        ]
+      }
+    ]
+  },
+  "preservation": {
+    "installedPreviewSourceUnchanged": 47,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV92AlignedChunks": 124,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "followupPreservation": {
+    "installedPreviewSourceUnchanged": 47,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV92AlignedChunks": 34,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "standingProbeCorrection": "The initial west position landed on protected vanilla dirt through Y64 and moved laterally. The failing screenshot and support-block diagnostics are retained. A focused fresh-copy run checks adjacent clear map ground at x176.5,z-69.5 and the east approach; all bounds are unchanged and no user blocks removed.",
+  "visualReview": {
+    "allCapturesReviewed": true,
+    "reviewedCaptures": 46,
+    "captureSha256": {
+      "campus-cyclotron-annex-99b-0.png": "5406ef5e35afcd4e3f2068f0a2f4890a8dea7186c02a62abd5de8611ca05301e",
+      "campus-cyclotron-annex-99b-1.png": "265a69f9addec800abea5b278c92408c7dde962a80a8c5e65dc1251eb6af4453",
+      "campus-cyclotron-annex-99b-10.png": "d095f377b0db0407d2f89ffcb8d7029c60c3a6cde92022e1905703e09a08b711",
+      "campus-cyclotron-annex-99b-11.png": "3c9e60374fd210f5b0cce2d7073c837f014d361638ff3f65a3c62e04c2a2b4c2",
+      "campus-cyclotron-annex-99b-12.png": "dd538e520b944ba46fd970c5d87ad5eb1ee37e0ca11b06606b0d2e0975958dc5",
+      "campus-cyclotron-annex-99b-2.png": "a41c826aedd3f5e13b96ef0221f866e705a20a558d4582c5f2c6a5eba5c03deb",
+      "campus-cyclotron-annex-99b-3.png": "ad550cd54dca8c3c240d8f2f0f970f9b29b5ab6a7e8aeefc1c39df572d995a1e",
+      "campus-cyclotron-annex-99b-4.png": "a9df679f31c9af62ce10d20f83a21123f2de5831179556795e26eb57a09bf962",
+      "campus-cyclotron-annex-99b-5.png": "2888c0fd921803bb613b8caf548d566d00b875f8af4680a91f6422543f43f0e2",
+      "campus-cyclotron-annex-99b-6.png": "2373b11fe00972f175127b54ee19aebc0989251f7bc528dc50666cc5782a3ce6",
+      "campus-cyclotron-annex-99b-7.png": "d0aedcf22e610a2b00e8785794e79a3db430e09be272d27331c98b966c5dbf9c",
+      "campus-cyclotron-annex-99b-8.png": "30595eea5d20c8776a55f64426736826bada283a8df83840c882f678987bb938",
+      "campus-cyclotron-annex-99b-9.png": "8051963afc5c5664c5e166e71bfb2358791734b4a0131b343748784be3e4f1be",
+      "campus-cyclotron-annex-99b-reflection-0.png": "f803a316dd16ca897f5d0ce99a7f65dae2f4ea46dcd82bfde24972e333a0d42a",
+      "campus-cyclotron-annex-99b-reflection-1.png": "1656552b6fc72d44ba30931465843592d03d8aab316591ea878c8593c690e660",
+      "campus-cyclotron-annex-99b-reflection-10.png": "cb0ced49bfa12da236c07032163702d01d700c46056f27a271d84e899aca5eb3",
+      "campus-cyclotron-annex-99b-reflection-11.png": "66d1056900c3ce8c02120ea379522bf446a4a26e2ff4d27aed10481f73a11ee3",
+      "campus-cyclotron-annex-99b-reflection-12.png": "0573c418981dd3489e5a962380ac364844c1ef98f94d861c570a8f2c86a142cc",
+      "campus-cyclotron-annex-99b-reflection-2.png": "2c5c2000e11060eb7c1dbfc26a0e1c7a38662322e9c1a4b674bfab000cd77012",
+      "campus-cyclotron-annex-99b-reflection-3.png": "aa0e5e2764790e9a4c892c448d05b997d9b190d0a6399d1b213c6bdb585a5fcf",
+      "campus-cyclotron-annex-99b-reflection-4.png": "96a9a8eb1076e8293648abb74e62ac0af59146368575ed01d3744d69627d95fb",
+      "campus-cyclotron-annex-99b-reflection-5.png": "ca2c267ed280e0ed313b435cac6ee18b0683665a4fca4c761f7b184a2f6f1871",
+      "campus-cyclotron-annex-99b-reflection-6.png": "02a39bfa997f730cc2063bacd672aad96cad385a366c18c0d7c12212ab91d234",
+      "campus-cyclotron-annex-99b-reflection-7.png": "6794b89fc59c922dd4dec506b228a8610600caa5818c660b5a95d26b9faab53c",
+      "campus-cyclotron-annex-99b-reflection-8.png": "a0c11e1e2a219e4b7f6e6e9554d1b778599f1c87cf0699239be3c61958c2350f",
+      "campus-cyclotron-annex-99b-reflection-9.png": "eb172fcfd74367932f8f8c688f4a515a673eb066ff2dff069c5090f8fe6f70af",
+      "campus-cyclotron-annex-99b-walk-0.png": "b0075cb65342ace9694e9f6f5c95fecefe40943d83ae2ca902dfcdde2c9d36b0",
+      "campus-cyclotron-annex-99b-walk-1.png": "410849f6191bb62fa78edb40d321e7b9a045c6f2bd938b520dee012f4f7a4c58",
+      "campus-cyclotron-annex-99b-walk-10.png": "0b6e1cb492e9830d381feae97c39fcdcc73e17a644845d7e560676b54845a8d4",
+      "campus-cyclotron-annex-99b-walk-11.png": "d7ccd5358545020a553c54124df6ffacc21bf28a2ed45f7ac2e459f6e1c3ed6f",
+      "campus-cyclotron-annex-99b-walk-12.png": "48c37907b165545fad8780620e3156950de3bd31de0625e7aec47f878b190d70",
+      "campus-cyclotron-annex-99b-walk-2.png": "973e0ff7e9c22a6f1a2269b9ac455e5bd4d894c95d1726a7f940d3adade82cf6",
+      "campus-cyclotron-annex-99b-walk-3.png": "9b71a6237d483ffee4800da71ad49dd952201582b0f315b59cb1161068388fc6",
+      "campus-cyclotron-annex-99b-walk-4.png": "e6098c24df8663caed0a854ca36d27725fe666b97fdead70700826d200d975d3",
+      "campus-cyclotron-annex-99b-walk-5.png": "ddf0e9f39fc4c39a802022d6f02c264f4ae45ce94c549492e0c2ba98a323dd70",
+      "campus-cyclotron-annex-99b-walk-6.png": "8021e68d189879f77e4a723fa41b5ff04f6fabf56d7b3cd9e8791d2abee1442c",
+      "campus-cyclotron-annex-99b-walk-7.png": "b69a409a532e03aadf128aaf2f8987c7ee23b7e03ff100cda1a5c424a3982730",
+      "campus-cyclotron-annex-99b-walk-8.png": "0c251edd567771ca5479112f4ec640b86d8686fab99970ff92f5d6bfbe89ade0",
+      "campus-cyclotron-annex-99b-walk-9.png": "17a7de453eaa95e692be53fa301e4cd00a555955230a2d4cb8d98988ddefeae5",
+      "campus-cyclotron-annex-99b-walking-failure.png": "955dd64540123a85e10cf10134c2102cce361ba64b615540d67b445c049180e0",
+      "campus-cyclotron-annex-99c-0.png": "98ebab667db900ba78f1616c723c5ec442fc162d971cc06c051625015ca1fcc3",
+      "campus-cyclotron-annex-99c-1.png": "4489b3b64a543f3171aa9644c681a162b74833d050b0cdfd33828030fdb83abc",
+      "campus-cyclotron-annex-99c-reflection-0.png": "5640ff83e7fd2cf3b1690748fdd68b2ef1e85744370af0511f52290f3aed9837",
+      "campus-cyclotron-annex-99c-reflection-1.png": "eb172fcfd74367932f8f8c688f4a515a673eb066ff2dff069c5090f8fe6f70af",
+      "campus-cyclotron-annex-99c-walk-0.png": "0cd9d27c40480abf8179018d9f388b19048f8d4d034c661ab257d419e8cfa4bb",
+      "campus-cyclotron-annex-99c-walk-1.png": "134ac076957f4e103972b3464be635afe3f81c02858e74768f1421706d4605a0"
+    },
+    "acceptedScope": "Cleaner surveyed annex envelope and preserved raised/setback roof shape. This is a limited geometry improvement, not complete photorealism.",
+    "remainingLimitations": [
+      "Wall finish is estimated and lacks independently verified fine architectural detail.",
+      "Long cyclotron and courtyard facades remain blurred; ground retains photographic shadows and low-resolution areas.",
+      "Nearby source fragments and vegetation can obscure close views. Existing vanilla dirt remains protected.",
+      "Night lighting and raw reflection-buffer edge artifacts remain approximate.",
+      "Interiors remain outside scope."
+    ]
+  },
+  "previousMaterialReview": "galileo-east-material-development-validation.json",
+  "installation": {
+    "completed": true,
+    "artifactSha256": "77d968a258ce1a9a2ad4ccd956200848744d439a11fe7cd1b1fbdb54bece50a3",
+    "previousArtifactBackedUp": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  }
+}

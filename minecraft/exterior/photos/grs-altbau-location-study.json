@@ -1,0 +1,33 @@
+{
+  "source": "https://nav.tum.de/building/5203",
+  "lat": 48.26518615392031,
+  "lon": 11.67327421963466,
+  "minecraftPosition": [
+    168.85658508337144,
+    63.99773553500509,
+    -20.70366340028322
+  ],
+  "qualification": "Roomfinder label position supports a probable identification; it is not a surveyed envelope or evidence of current facade details. No additional building has been changed based on this note.",
+  "buildingCandidate": "DEBY_LOD2_5284436",
+  "identification": "Probable GRS-Altbau / TUM 5203; the Roomfinder label falls in the central courtyard, about 5.97 m from the surveyed structure. Confirm against additional current site evidence before assigning detailed facade features.",
+  "sourceName": "NavigaTUM, B\u00fcrogeb\u00e4ude (GRS-Altbau)",
+  "retrieved": "2026-10-25",
+  "surveyBoundsMinecraft": [
+    [
+      144.44501760811005,
+      63.74774536051467,
+      -46.474822172215525
+    ],
+    [
+      195.68026607385394,
+      69.38991272991927,
+      4.547963450379903
+    ]
+  ],
+  "nextSteps": [
+    "Find current exterior references for the courtyard building and long cyclotron body.",
+    "Retain survey roofs and all user edits.",
+    "Replace only source-supported wall geometry and estimated details with clearly documented uncertainty."
+  ],
+  "rawPayloadSha256": "3d628950d778d1c1e550fba6ed6de07c2205cc823244227cd3c4862dbb538e38"
+}

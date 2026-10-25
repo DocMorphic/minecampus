@@ -18,6 +18,7 @@ root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--directory', type=Path, required=True)
 parser.add_argument('--baseline', type=Path, required=True)
+parser.add_argument('--full-data', action='store_true', help='Verify every retained mesh file in the complete release data')
 args = parser.parse_args()
 read = lambda p: json.loads(p.read_text())
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
@@ -71,15 +72,25 @@ assert cleanup.difference(footprints[spec['building']].buffer(spec['cleanupMargi
 assert all(p['y0'] == source['bounds'][0][1]-.1 and p['y1'] == source['bounds'][1][1]+spec['roofPaddingMetres']
            for p in current['replacements'][len(before['replacements']):])
 assert sha(out/record['meshFile']) == record['meshSha256']
+retained = {}
+if args.full_data:
+    names = {t['file'] for t in before['tiles']}
+    names.update(p['roofFile'] for p in old_plans['plans'])
+    names.update(p['collisionFile'] for p in old_plans['plans'])
+    for name in sorted(names):
+        assert sha(old/name) == sha(out/name), name
+        retained[name] = sha(out/name)
 result = {'status':'PASS: isolated component matches all eight survey wall faces and exact encoded roof part',
           'building':spec['building'], 'wallFaces':8, 'wallTriangles':count//3,
           'meshSha256':sha(out/record['meshFile']), 'roofSha256':sha(out/source['roofFile']),
           'existingCollisionFileSha256':sha(out/source['collisionFile']),
           'otherPhotoPlansUnchanged':len(old_plans['plans'])-1,
           'otherRenderEntriesUnchanged':len(before['tiles']),
+          'retainedMeshSha256':retained, 'fullDataVerified':args.full_data,
           'cleanupAreaSquareMetres':cleanup.area, 'protectedNeighbourOverlapSquareMetres':cleanup.intersection(protected).area,
-          'nativeReviewed':False, 'releaseIntegrated':False, 'installed':False,
+          'manifestSha256':sha(out/'manifest.json'), 'validatorSha256':sha(Path(__file__)),
+          'nativeReviewed':False, 'installed':False,
           'remainingChecks':['Material routing and release integration','Independent packaged collision-packet comparison','Matched native walking/aerial inspection and save preservation'],
           'qualification':spec['qualification']}
 (out/'cyclotron-annex-validation.json').write_text(json.dumps(result,indent=2)+'\n')
-print(json.dumps({k:v for k,v in result.items() if k not in ['qualification','remainingChecks']},indent=2))
+print(json.dumps({k:v for k,v in result.items() if k not in ['qualification','remainingChecks','retainedMeshSha256']},indent=2))

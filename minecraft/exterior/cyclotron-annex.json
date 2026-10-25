@@ -15,5 +15,5 @@
   "reference": "photos/cyclotron-annex-reference.json",
   "referenceSha256": "4db461de1bf1a8fc9513346ba3f6cfd1101072e31ba9a88d02f8a3f05453fbea",
   "qualification": "Survey geometry is authoritative for this reconstruction. Wall albedo is estimated from visible pale surfaces; openings and small surface details remain unresolved. No provider pixels persisted or redistributed. No claim of current as-built facade accuracy.",
-  "status": "Component draft; not integrated into the release builder or installed. Requires independent geometry, collision equivalence and native visual review."
+  "status": "Integrated development candidate; native appearance and packaged collision review pending."
 }

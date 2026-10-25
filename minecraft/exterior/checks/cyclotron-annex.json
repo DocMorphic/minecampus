@@ -1,0 +1,967 @@
+{
+  "name": "cyclotron-annex-99",
+  "purpose": "Review exact survey annex reconstruction, bounded source cleanup, retained neighboring bodies and v92 collision upgrade in a copy of the installed preview save.",
+  "cameras": [
+    {
+      "label": "West approach to northern low building",
+      "position": "143 64.5 -62 -90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "North face of northern low building",
+      "position": "177 64.5 -83 0 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "South face of northern low building",
+      "position": "177 64.5 -43 180 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "East face of northern low building",
+      "position": "212 64.5 -61 90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "West approach to southern low building",
+      "position": "135 64.5 -20 -90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "South face of southern low building",
+      "position": "169 64.5 14 180 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "East face of southern low building",
+      "position": "208 64.5 -20 90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Low building overview",
+      "position": "128 105 -30 -90 55",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Annex west close",
+      "position": "175 64.3 -70 -90 -15",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ],
+      "probes": [
+        {
+          "label": "Annex surveyed wall 0",
+          "target": [
+            182.86772765186015,
+            70.57323958293635,
+            -72.32498425699691
+          ],
+          "normal": [
+            -0.9844690602529642,
+            -0.0,
+            -0.1755581653032563
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 1",
+          "target": [
+            197.75933199241908,
+            65.33758211725741,
+            -64.16037824001909
+          ],
+          "normal": [
+            0.9846883204758653,
+            -0.0,
+            0.17432415643971844
+          ],
+          "tile": 1000030054,
+          "part": 0,
+          "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall."
+        },
+        {
+          "label": "Annex surveyed wall 2",
+          "target": [
+            198.2355392479927,
+            68.39755339251319,
+            -65.42961074877432
+          ],
+          "normal": [
+            -0.17605764070212604,
+            -0.0,
+            0.9843798591755122
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 3",
+          "target": [
+            199.20594373502794,
+            68.39748505074566,
+            -69.44827537132772
+          ],
+          "normal": [
+            0.9843750233470421,
+            -0.0,
+            0.17608467681916629
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 4",
+          "target": [
+            190.0602998234871,
+            70.57293115319246,
+            -66.82741549262377
+          ],
+          "normal": [
+            -0.1749954329148494,
+            -0.0,
+            0.9845692451315675
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 5",
+          "target": [
+            188.42129573313863,
+            68.34462553878662,
+            -75.55685407077392
+          ],
+          "normal": [
+            0.17493071056779752,
+            -0.0,
+            -0.9845807465618275
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 7",
+          "target": [
+            180.83291368382805,
+            66.0633355098953,
+            -71.69384349907035
+          ],
+          "normal": [
+            -0.9844520686377016,
+            -0.0,
+            -0.17565342170009143
+          ],
+          "tile": 1000030054,
+          "part": 0
+        }
+      ]
+    },
+    {
+      "label": "Annex east close",
+      "position": "207 64.3 -70 90 -15",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Annex roof and raised section",
+      "position": "171 90 -80 -65 47",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Annex west night",
+      "position": "175 64.3 -70 -90 -15",
+      "worldTime": 18000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ],
+      "probes": [
+        {
+          "label": "Annex surveyed wall 0",
+          "target": [
+            182.86772765186015,
+            70.57323958293635,
+            -72.32498425699691
+          ],
+          "normal": [
+            -0.9844690602529642,
+            -0.0,
+            -0.1755581653032563
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 1",
+          "target": [
+            197.75933199241908,
+            65.33758211725741,
+            -64.16037824001909
+          ],
+          "normal": [
+            0.9846883204758653,
+            -0.0,
+            0.17432415643971844
+          ],
+          "tile": 1000030054,
+          "part": 0,
+          "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall."
+        },
+        {
+          "label": "Annex surveyed wall 2",
+          "target": [
+            198.2355392479927,
+            68.39755339251319,
+            -65.42961074877432
+          ],
+          "normal": [
+            -0.17605764070212604,
+            -0.0,
+            0.9843798591755122
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 3",
+          "target": [
+            199.20594373502794,
+            68.39748505074566,
+            -69.44827537132772
+          ],
+          "normal": [
+            0.9843750233470421,
+            -0.0,
+            0.17608467681916629
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 4",
+          "target": [
+            190.0602998234871,
+            70.57293115319246,
+            -66.82741549262377
+          ],
+          "normal": [
+            -0.1749954329148494,
+            -0.0,
+            0.9845692451315675
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 5",
+          "target": [
+            188.42129573313863,
+            68.34462553878662,
+            -75.55685407077392
+          ],
+          "normal": [
+            0.17493071056779752,
+            -0.0,
+            -0.9845807465618275
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 7",
+          "target": [
+            180.83291368382805,
+            66.0633355098953,
+            -71.69384349907035
+          ],
+          "normal": [
+            -0.9844520686377016,
+            -0.0,
+            -0.17565342170009143
+          ],
+          "tile": 1000030054,
+          "part": 0
+        }
+      ]
+    },
+    {
+      "label": "Retained Galileo daylight and reflections",
+      "position": "135.8 64.3 -131.0 0 3",
+      "candidateViewIndex": 1,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "sourceDiagnosticBounds": [
+    [
+      140,
+      62,
+      -85
+    ],
+    [
+      215,
+      75,
+      12
+    ]
+  ],
+  "gravityProbes": [
+    {
+      "label": "Galileo east comparison standing",
+      "target": [
+        145.0,
+        63.93476356257272,
+        -115.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.937420623764524,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        -12.0
+      ],
+      "candidateViewIndex": 0,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "North inner frontage standing",
+      "target": [
+        135.8,
+        63.99958742427852,
+        -131.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.0011305589552,
+      "requireBodyClearance": true,
+      "look": [
+        0.0,
+        3.0
+      ],
+      "candidateViewIndex": 1,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Central inner frontage standing",
+      "target": [
+        131.5,
+        63.97347540688412,
+        -115.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.97501972509733,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        3.0
+      ],
+      "candidateViewIndex": 2,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South inner frontage standing",
+      "target": [
+        126.8,
+        63.92223118482563,
+        -88.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.92377721917473,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        3.0
+      ],
+      "candidateViewIndex": 3,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South outer approach standing",
+      "target": [
+        131.0,
+        63.879609871242906,
+        -75.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.88115639163096,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        3.0
+      ],
+      "candidateViewIndex": 4,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "North outer frontage standing",
+      "target": [
+        148.5,
+        63.96650296631572,
+        -133.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.970666181178046,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        8.0
+      ],
+      "candidateViewIndex": 5,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Central outer frontage standing",
+      "target": [
+        146.0,
+        63.88659902365437,
+        -114.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.91763216944051,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        8.0
+      ],
+      "candidateViewIndex": 6,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South outer frontage standing",
+      "target": [
+        141.0,
+        63.89179259189057,
+        -92.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89394779339557,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        8.0
+      ],
+      "candidateViewIndex": 7,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "North portal surface behind opening standing",
+      "target": [
+        138.6,
+        63.95260386224331,
+        -114.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.95414936926983,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        18.0
+      ],
+      "candidateViewIndex": 8,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "north ramp 0.25 standing",
+      "target": [
+        142.67860037759831,
+        63.33619150665033,
+        -135.27226538153948
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 63.390409604940565,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 9,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "north ramp 0.65 standing",
+      "target": [
+        140.69189735074792,
+        61.92157379760341,
+        -125.8348738850364
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 61.96887114870459,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 10,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "south ramp 0.25 standing",
+      "target": [
+        136.1154656076001,
+        63.71420838064306,
+        -100.3421803129652
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 63.7603137440982,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 11,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "south ramp 0.65 standing",
+      "target": [
+        134.43357101442234,
+        62.42923133161562,
+        -92.52096726521302
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 62.48518434115281,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 12,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Annex west approach standing",
+      "target": [
+        176.5,
+        63.944588069511575,
+        -69.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.98781520620072,
+      "requireBodyClearance": true,
+      "look": [
+        -90.0,
+        -15.0
+      ],
+      "maxSupportError": 0.125,
+      "qualification": "Adjacent clear map ground; the original x175,z-70 test location contains protected vanilla dirt through Y64. Dirt is retained and excluded from terrain-height comparison."
+    },
+    {
+      "label": "Annex east approach standing",
+      "target": [
+        207.0,
+        64.01008587202242,
+        -70.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.03721277366937,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        -15.0
+      ],
+      "maxSupportError": 0.125
+    }
+  ],
+  "baselineArtifactSha256": "ebff9ca4a8ceda72d0a52f664db7335d55c148933ff22fcaf73bee86625c9135",
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610,
+    1000010700,
+    1000010800
+  ],
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "standingSurfacesManifestSha256": "92ee00ee9c8672f72484f49d9cf32a7aec687a5bce687354dc1fa8730ef7ea6f"
+}

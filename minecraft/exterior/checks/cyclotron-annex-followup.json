@@ -1,0 +1,296 @@
+{
+  "name": "cyclotron-annex-99c",
+  "purpose": "Focused completion of annex standing checks after the original west probe landed on preserved vanilla dirt. Prior 13 cameras, 14 wall checks and 13 Galileo standing checks are retained from 99b. Same exact JAR.",
+  "cameras": [
+    {
+      "label": "Annex west close",
+      "position": "176.5 64.3 -69.5 -90 -15",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ],
+      "probes": [
+        {
+          "label": "Annex surveyed wall 0",
+          "target": [
+            182.86772765186015,
+            70.57323958293635,
+            -72.32498425699691
+          ],
+          "normal": [
+            -0.9844690602529642,
+            -0.0,
+            -0.1755581653032563
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 1",
+          "target": [
+            197.75933199241908,
+            65.33758211725741,
+            -64.16037824001909
+          ],
+          "normal": [
+            0.9846883204758653,
+            -0.0,
+            0.17432415643971844
+          ],
+          "tile": 1000030054,
+          "part": 0,
+          "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall."
+        },
+        {
+          "label": "Annex surveyed wall 2",
+          "target": [
+            198.2355392479927,
+            68.39755339251319,
+            -65.42961074877432
+          ],
+          "normal": [
+            -0.17605764070212604,
+            -0.0,
+            0.9843798591755122
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 3",
+          "target": [
+            199.20594373502794,
+            68.39748505074566,
+            -69.44827537132772
+          ],
+          "normal": [
+            0.9843750233470421,
+            -0.0,
+            0.17608467681916629
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 4",
+          "target": [
+            190.0602998234871,
+            70.57293115319246,
+            -66.82741549262377
+          ],
+          "normal": [
+            -0.1749954329148494,
+            -0.0,
+            0.9845692451315675
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 5",
+          "target": [
+            188.42129573313863,
+            68.34462553878662,
+            -75.55685407077392
+          ],
+          "normal": [
+            0.17493071056779752,
+            -0.0,
+            -0.9845807465618275
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 7",
+          "target": [
+            180.83291368382805,
+            66.0633355098953,
+            -71.69384349907035
+          ],
+          "normal": [
+            -0.9844520686377016,
+            -0.0,
+            -0.17565342170009143
+          ],
+          "tile": 1000030054,
+          "part": 0
+        }
+      ]
+    },
+    {
+      "label": "Annex east close",
+      "position": "207 64.3 -70 90 -15",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "sourceDiagnosticBounds": [
+    [
+      140,
+      62,
+      -85
+    ],
+    [
+      215,
+      75,
+      12
+    ]
+  ],
+  "gravityProbes": [
+    {
+      "label": "Annex west approach standing",
+      "target": [
+        176.5,
+        63.944588069511575,
+        -69.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.98781520620072,
+      "requireBodyClearance": true,
+      "look": [
+        -90.0,
+        -15.0
+      ],
+      "maxSupportError": 0.125,
+      "qualification": "Adjacent clear map ground; the original x175,z-70 test location contains protected vanilla dirt through Y64. Dirt is retained and excluded from terrain-height comparison."
+    },
+    {
+      "label": "Annex east approach standing",
+      "target": [
+        207.0,
+        64.01008587202242,
+        -70.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.03721277366937,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        -15.0
+      ],
+      "maxSupportError": 0.125
+    }
+  ],
+  "baselineArtifactSha256": "ebff9ca4a8ceda72d0a52f664db7335d55c148933ff22fcaf73bee86625c9135",
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610,
+    1000010700,
+    1000010800
+  ],
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "standingSurfacesManifestSha256": "92ee00ee9c8672f72484f49d9cf32a7aec687a5bce687354dc1fa8730ef7ea6f"
+}

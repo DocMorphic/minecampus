@@ -1,22 +1,20 @@
 # Exterior Preview 0.5
 
-## Local reviewed upgrade — candidate 97
+## Local reviewed upgrade — candidate 99
 
-The development machine has the reviewed Galileo east frontage material update installed, SHA-256 `ebff9ca4a8ceda72d0a52f664db7335d55c148933ff22fcaf73bee86625c9135`. Approximately 1,361.79 m² of blurred ground now uses detailed asphalt, continuing down both ramp floors and meeting the mapped grass verge. Main and reflected views share the material. All existing map geometry, collision records and textures remain unchanged from candidate 94. Nineteen camera checks, including four night views, and 13 native standing checks passed; all 51 captures were reviewed. Maximum standing error is below 0.048 m. Installation preserved all 121 original-save files, 121 preview-save files and four private settings, with the previous mod backed up. [Material review evidence](galileo-east-material-development-validation.json).
+The development machine has the reviewed cyclotron annex update installed, SHA-256 `77d968a258ce1a9a2ad4ccd956200848744d439a11fe7cd1b1fbdb54bece50a3`. Eight surveyed wall faces replace blurred photographic walls while preserving the raised/setback section and the exact encoded roof. The pale concrete finish remains provisional; no unobserved windows, doors or interiors are added. All 664 existing mesh files, 24 service modules, 25 textures and ten shaders remain byte-identical to candidate 97. [Annex review evidence](cyclotron-annex-development-validation.json).
 
-The finish follows the landscape architect's asphalt description and uses an existing CC0 texture. Exact aggregate appearance is approximate, and the mapped grass boundary needs an explicitly inferred 3.3 m southern continuation. The preceding [terrain repair](galileo-east-grade-development-validation.json) retains its inferred finished grade and fractional ramp collision. Untreated ground still has blurry colours and baked shadows, nearby buildings remain coarse, and facade details remain approximate. The broader realism goal remains open. The preceding candidate 93 campus-wide review is retained [separately](preview-upgrade-93-development-validation.json).
+The main native review passed 13 camera views, 14 wall controls and 13 standing checks before landing on existing dirt at a new test position. A focused follow-up passed two camera views, seven wall controls and both annex standing checks on clear ground. All 15 standing locations passed across these runs; no user blocks were removed. All 46 captures were reviewed. Maximum standing error is 0.05032 m. Installation preserved 121 original-save files, 121 preview-save files and four private settings, with candidate 97 backed up. Collision journal v92 applies the bounded material/cleanup changes while protecting ordinary blocks and recorded edits.
 
-![Reviewed Galileo east asphalt frontage](photos/galileo-east-material-97-frontage.png)
+This is a limited geometry improvement. The neighboring long cyclotron and courtyard walls remain blurry, nearby source fragments can float or obscure close views, and untreated ground retains baked shadows. Existing dirt blocks are preserved. Detailed architectural finish, night lighting and the broader realism goal remain unfinished. The [preceding Galileo asphalt](galileo-east-material-development-validation.json) and [terrain repairs](galileo-east-grade-development-validation.json) remain in place.
 
-![Reviewed asphalt and mapped grass verge](photos/galileo-east-material-97-verge.png)
+![Reviewed annex north and existing dirt blocks](photos/cyclotron-annex-99-north.png)
 
-![Reviewed frontage from above](photos/galileo-east-material-97-aerial.png)
+![Reviewed annex east wall and untreated neighbors](photos/cyclotron-annex-99-east.png)
+
+![Reviewed annex raised and setback roof shape](photos/cyclotron-annex-99-aerial.png)
 
 This local artifact has not been published as a new GitHub binary release. When it is present locally, update the existing preview with `python3 scripts/install-exterior-preview.py --update --reviewed-upgrade`. The installer checks its separate review and exact hash, backs up the old mod, and preserves saves and local settings. Without `--reviewed-upgrade`, it continues to accept the published dev.22 artifact described below.
-
-![Reviewed campus aerial](photos/preview-upgrade-93-aerial.png)
-
-![Reviewed campus walking view](photos/preview-upgrade-93-walking.png)
 
 ## Published development preview — dev.22
 

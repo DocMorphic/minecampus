@@ -24,8 +24,8 @@ controls=reference['controls'];patch=spec['patches'][0]
 xy=np.array([c['utm']for c in controls]);heights=np.array([c['heightDHHN2016']for c in controls]);design=np.column_stack((xy-patch['originUtm'],np.ones(len(xy))));fit=np.linalg.lstsq(design,heights,rcond=None)[0]
 np.testing.assert_allclose(fit,patch['planeCoefficients'],rtol=0,atol=1e-10)
 assert np.max(abs(design@fit-heights))<.17 and np.linalg.norm(fit[:2])<.005
-entries={t['file']:t for t in m['tiles']};previous={t['file']:t for t in old['tiles']};assert set(entries)==set(previous)
-changed=[name for name in entries if sha(out/name)!=sha(before/name)]
+entries={t['file']:t for t in m['tiles']};previous={t['file']:t for t in old['tiles']};assert set(previous)<=set(entries)
+changed=[name for name in previous if sha(out/name)!=sha(before/name)]
 assert set(changed)=={'ground-698300-5349200.ect','ground-698300-5349300.ect','vegetation-4-2.ect','galileo-east-ramps.ect'},changed
 
 def decode(path):
@@ -72,5 +72,5 @@ for (a,ap),(b,bp)in zip(decode(before/'vegetation-4-2.ect'),decode(out/'vegetati
  assert a.shape==b.shape and ap==bp;np.testing.assert_allclose(a,b,rtol=0,atol=.001)
 assert old['groundSurfaces']['maskSha256']==m['groundSurfaces']['maskSha256'],'Unrelated material frame moved'
 assert old['buildings']==m['buildings'],'Surveyed building geometry changed'
-report={'status':'PASS: bounded inferred grade, unchanged ramp floors/portals and stable material boundaries','manifestSha256':sha(out/'manifest.json'),'validatorSha256':sha(Path(__file__)),'sourceSha256':rec['sourceSha256'],'generatorSha256':rec['generatorSha256'],'referenceSha256':rec['referenceSha256'],'changedMeshes':changed,'unchangedMeshes':len(entries)-len(changed),'tileSha256':{n:sha(out/n)for n in changed},'sourceControlMaximumResidualMetres':float(np.max(abs(design@fit-heights))),'rasterCentreSamples':len(errors),'maximumEncodedSourceErrorMetres':max(errors),'changedGroundVertexRecords':changed_vertices,'cutEdgeVerticesBeyondGradeCollar':outside,'maximumInterpolationReachBeyondCollarMetres':maximum_outside,'rampFloorsAndPortalBoundariesUnchanged':True,'groundTexturesAndMaterialMaskUnchanged':True,'nativeVisualAcceptance':False}
+report={'status':'PASS: bounded inferred grade, unchanged ramp floors/portals and stable material boundaries','manifestSha256':sha(out/'manifest.json'),'validatorSha256':sha(Path(__file__)),'sourceSha256':rec['sourceSha256'],'generatorSha256':rec['generatorSha256'],'referenceSha256':rec['referenceSha256'],'changedMeshes':changed,'unchangedMeshes':len(previous)-len(changed),'laterMeshesOutsideGradeCheck':sorted(set(entries)-set(previous)),'tileSha256':{n:sha(out/n)for n in changed},'sourceControlMaximumResidualMetres':float(np.max(abs(design@fit-heights))),'rasterCentreSamples':len(errors),'maximumEncodedSourceErrorMetres':max(errors),'changedGroundVertexRecords':changed_vertices,'cutEdgeVerticesBeyondGradeCollar':outside,'maximumInterpolationReachBeyondCollarMetres':maximum_outside,'rampFloorsAndPortalBoundariesUnchanged':True,'groundTexturesAndMaterialMaskUnchanged':True,'nativeVisualAcceptance':False}
 (out/'galileo-east-grade-validation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
