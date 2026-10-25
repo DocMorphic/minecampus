@@ -1,0 +1,225 @@
+{
+  "qualification": "Ten fixed blue-ground pixels observed in candidate62 native captures. The previous encoded ground has no ray hit at any of these pixels. Positions/projection come from that native report; expected distances come from the source-height continuity repair. Native first-hit verification remains required.",
+  "controls": [
+    {
+      "cameraLabel": "East service body from street",
+      "cameraPosition": "281.8622009638465 63.70608788003418 -450.0268646098056 -3.2008724847516867 0.5490707580719479",
+      "eye": [
+        281.8622009638465,
+        65.32608776559326,
+        -450.0268646098056
+      ],
+      "forward": [
+        0.05583426,
+        -0.009582947,
+        0.9983941
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.72,
+      "v": 0.59,
+      "expectedTile": 1000060950,
+      "expectedPart": 0,
+      "expectedDistance": 11.497428735080268,
+      "distanceTolerance": 0.06
+    },
+    {
+      "cameraLabel": "East service body from street",
+      "cameraPosition": "281.8622009638465 63.70608788003418 -450.0268646098056 -3.2008724847516867 0.5490707580719479",
+      "eye": [
+        281.8622009638465,
+        65.32608776559326,
+        -450.0268646098056
+      ],
+      "forward": [
+        0.05583426,
+        -0.009582947,
+        0.9983941
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.8,
+      "v": 0.65,
+      "expectedTile": 1000060950,
+      "expectedPart": 0,
+      "expectedDistance": 7.972207425614209,
+      "distanceTolerance": 0.06
+    },
+    {
+      "cameraLabel": "East service body from street",
+      "cameraPosition": "281.8622009638465 63.70608788003418 -450.0268646098056 -3.2008724847516867 0.5490707580719479",
+      "eye": [
+        281.8622009638465,
+        65.32608776559326,
+        -450.0268646098056
+      ],
+      "forward": [
+        0.05583426,
+        -0.009582947,
+        0.9983941
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.86,
+      "v": 0.69,
+      "expectedTile": 1000060950,
+      "expectedPart": 0,
+      "expectedDistance": 7.065766299714525,
+      "distanceTolerance": 0.06
+    },
+    {
+      "cameraLabel": "East service body western approach",
+      "cameraPosition": "271.41597736513893 64.080782065584 -437.3827343596357 -99.31640316879226 2.6975141897314985",
+      "eye": [
+        271.41597736513893,
+        65.70078195114309,
+        -437.3827343596357
+      ],
+      "forward": [
+        0.98571604,
+        -0.04706312,
+        -0.161707
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.3,
+      "v": 0.68,
+      "expectedTile": 1000060950,
+      "expectedPart": 0,
+      "expectedDistance": 6.576718757651737,
+      "distanceTolerance": 0.06
+    },
+    {
+      "cameraLabel": "East service body western approach",
+      "cameraPosition": "271.41597736513893 64.080782065584 -437.3827343596357 -99.31640316879226 2.6975141897314985",
+      "eye": [
+        271.41597736513893,
+        65.70078195114309,
+        -437.3827343596357
+      ],
+      "forward": [
+        0.98571604,
+        -0.04706312,
+        -0.161707
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.5,
+      "v": 0.73,
+      "expectedTile": 1000060953,
+      "expectedPart": 0,
+      "expectedDistance": 4.825067201612681,
+      "distanceTolerance": 0.06
+    },
+    {
+      "cameraLabel": "East service body western approach",
+      "cameraPosition": "271.41597736513893 64.080782065584 -437.3827343596357 -99.31640316879226 2.6975141897314985",
+      "eye": [
+        271.41597736513893,
+        65.70078195114309,
+        -437.3827343596357
+      ],
+      "forward": [
+        0.98571604,
+        -0.04706312,
+        -0.161707
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.65,
+      "v": 0.78,
+      "expectedTile": 1000060953,
+      "expectedPart": 0,
+      "expectedDistance": 4.514739358581357,
+      "distanceTolerance": 0.06
+    },
+    {
+      "cameraLabel": "East service body southern approach",
+      "cameraPosition": "280.0973488226333 63.86633783220015 -428.075045832844 -167.70098970026996 1.3634156624120497",
+      "eye": [
+        280.0973488226333,
+        65.48633771775923,
+        -428.075045832844
+      ],
+      "forward": [
+        0.21295309,
+        -0.023793852,
+        -0.9767727
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.27,
+      "v": 0.59,
+      "expectedTile": 1000060953,
+      "expectedPart": 0,
+      "expectedDistance": 11.855387670874656,
+      "distanceTolerance": 0.06
+    },
+    {
+      "cameraLabel": "East service body southern approach",
+      "cameraPosition": "280.0973488226333 63.86633783220015 -428.075045832844 -167.70098970026996 1.3634156624120497",
+      "eye": [
+        280.0973488226333,
+        65.48633771775923,
+        -428.075045832844
+      ],
+      "forward": [
+        0.21295309,
+        -0.023793852,
+        -0.9767727
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.22,
+      "v": 0.62,
+      "expectedTile": 1000060953,
+      "expectedPart": 0,
+      "expectedDistance": 10.039989300785631,
+      "distanceTolerance": 0.06
+    },
+    {
+      "cameraLabel": "East service body southern approach",
+      "cameraPosition": "280.0973488226333 63.86633783220015 -428.075045832844 -167.70098970026996 1.3634156624120497",
+      "eye": [
+        280.0973488226333,
+        65.48633771775923,
+        -428.075045832844
+      ],
+      "forward": [
+        0.21295309,
+        -0.023793852,
+        -0.9767727
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.17,
+      "v": 0.64,
+      "expectedTile": 1000060953,
+      "expectedPart": 0,
+      "expectedDistance": 9.440545386738624,
+      "distanceTolerance": 0.06
+    },
+    {
+      "cameraLabel": "East service body southern approach",
+      "cameraPosition": "280.0973488226333 63.86633783220015 -428.075045832844 -167.70098970026996 1.3634156624120497",
+      "eye": [
+        280.0973488226333,
+        65.48633771775923,
+        -428.075045832844
+      ],
+      "forward": [
+        0.21295309,
+        -0.023793852,
+        -0.9767727
+      ],
+      "fov": 76.99999332427979,
+      "aspect": 1.7777777777777777,
+      "u": 0.06,
+      "v": 0.57,
+      "expectedTile": 1000060950,
+      "expectedPart": 0,
+      "expectedDistance": 16.591442899854165,
+      "distanceTolerance": 0.06
+    }
+  ]
+}

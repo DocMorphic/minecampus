@@ -77,7 +77,13 @@ def build(ctx):
                           'fineCollisionMaterials':spec['fineCollisionMaterials'],'bounds':mesh_bounds})
     roof_file = bid+'-photo-roof.ect'; (out/roof_file).write_bytes(encode([(rv,rp)]))
     collar = raw_foot.buffer(spec['cleanupMarginMetres']).difference(others.buffer(.25))
-    region = collar.union(lawn).union(driveway).union(footway).difference(others.buffer(.25))
+    mapped_region = collar.union(lawn).union(driveway).union(footway)
+    # Centre-lines and a lawn polygon are not a complete outdoor footprint.
+    # Their separate buffers left uncovered strips beside the building and
+    # between existing terrain patches. Continue measured ground across those
+    # strips, bounded to this site and excluding neighbouring survey bodies.
+    region = mapped_region.convex_hull.buffer(spec['groundContinuityMarginMetres'])
+    region = region.intersection(box(*bounds)).difference(others.buffer(.25))
     ground = extend_ground(ctx,region,'physics-lmu-east-ground',spec['groundRuntimeId'],spec['groundBlendMetres'])
     assert spec['groundRuntimeId']+len(ground['groundTiles']) < 1_000_061_000
     with rasterio.open(cache/'campus-dgm-east.tif') as dem, rasterio.open(cache/'campus-dop-east.tif') as dop:
@@ -122,7 +128,8 @@ def build(ctx):
     coverage=out/'lmu-east-coverage.json'
     coverage.write_text(json.dumps({'building':mapping(raw_foot),
         'mappedBuilding':mapping(Polygon(ways[spec['osm']['buildingWay']])),
-        'lawn':mapping(lawn),'region':mapping(region),'retirement':mapping(collar),
+        'lawn':mapping(lawn),'mappedRegion':mapping(mapped_region),
+        'region':mapping(region),'retirement':mapping(collar),
         'protectedNeighbours':mapping(others),'trees':sub['vegetation']['trees']},separators=(',',':'))+'\n')
     meta['architecture']['physicsLMUEast']={'building':bid,'sourceFile':source.name,'sourceSha256':sha(source),
         'generatorFile':'scripts/exterior_physics_lmu_east.py','generatorSha256':sha(Path(__file__)),

@@ -79,7 +79,8 @@ collar=foot.buffer(spec['cleanupMarginMetres']).difference(neighbours.buffer(.25
 expected=collar.union(lawn)
 for way,width in [('drivewayWay','drivewayHalfWidthMetres'),('footwayWay','footwayHalfWidthMetres')]:
     expected=expected.union(LineString(ways[spec['osm'][way]]).buffer(spec[width]))
-expected=expected.difference(neighbours.buffer(.25))
+expected=expected.convex_hull.buffer(spec['groundContinuityMarginMetres'])
+expected=expected.intersection(box(*spec['boundsUTM'])).difference(neighbours.buffer(.25))
 with rasterio.open(root/'.cache/campus-dgm-east.tif') as dem:
     dgm=dem.read(1).astype(float);transform=dem.transform
     def elevation(xy):
@@ -155,6 +156,24 @@ for tile in m['tiles'][:start]:
             if p.area>1e-8:old.append((p,t))
 existing=unary_union([p for p,t in old]);assert region.intersection(existing).area<.005
 missing=expected_mc.buffer(-.01).difference(region.union(existing)).area;assert missing<.02,('mapped ground gap',missing)
+# Regression controls are fixed pixels from the failed native62 views, not
+# points selected from the new region. All ten previously missed the ground.
+fixture=root/'minecraft/exterior/checks/lmu-east-ground-rays.json'
+inputs[str(fixture.relative_to(root))]=sha(fixture)
+gap_controls=read(fixture)['controls'];gap_hits=[]
+e1=tri[:,1]-tri[:,0];e2=tri[:,2]-tri[:,0]
+for c in gap_controls:
+    eye=np.array(c['eye']);forward=np.array(c['forward'])
+    right=np.cross(forward,[0,1,0]);right/=np.linalg.norm(right);up=np.cross(right,forward)
+    scale=math.tan(math.radians(c['fov'])/2)
+    direction=forward+right*(2*c['u']-1)*scale*c['aspect']+up*(1-2*c['v'])*scale
+    direction/=np.linalg.norm(direction)
+    cross=np.cross(direction,e2);det=np.einsum('ij,ij->i',e1,cross);safe=np.where(abs(det)>1e-10,det,1)
+    delta=eye-tri[:,0];u=np.einsum('ij,ij->i',delta,cross)/safe
+    cross2=np.cross(delta,e1);v=cross2@direction/safe;distance=np.einsum('ij,ij->i',e2,cross2)/safe
+    hits=distance[(abs(det)>1e-10)&(u>=0)&(v>=0)&(u+v<=1)&(distance>0)]
+    assert len(hits) and abs(float(hits.min())-c['expectedDistance'])<c['distanceTolerance'],('native gap pixel remains uncovered',c)
+    gap_hits.append({'cameraLabel':c['cameraLabel'],'u':c['u'],'v':c['v'],'distance':float(hits.min())})
 vertices=np.unique(tri.reshape(-1,3),axis=0);en=utm(vertices)[:,:2]
 with rasterio.open(root/'.cache/campus-dgm-east.tif') as dem:
     dgm=dem.read(1).astype(float);transform=dem.transform
@@ -231,6 +250,7 @@ report={'status':'PASS: source envelope, disjoint facade finishes, DOP pixels, m
  'manifestSha256':sha(out/'manifest.json'),'sourceSha256':rec['sourceSha256'],'validatorSha256':sha(Path(__file__)),
  'rawInputs':inputs,'tileSha256':{f:sha(out/f) for f in files},'walls':wall_checks,'roofVertexErrorMetres':roof_error,
  'newGroundAreaSquareMetres':region.area,'uncoveredMappedAreaSquareMetres':missing,'groundVertices':len(vertices),
+ 'nativeGapPixelControls':gap_hits,
  'groundHeightErrorMetres':max(errors),'seamHeightErrorMetres':max(seams),'trees':len(rec['trees']),'leafCards':len(cards),
  'minimumLeafCentreTerrainClearanceMetres':clearance,'roofClearance':roof_clearances,
  'qualification':spec['qualification']}

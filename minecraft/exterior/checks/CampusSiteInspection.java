@@ -152,7 +152,11 @@ public final class CampusSiteInspection {
                         float t=org.joml.Intersectionf.intersectRayTriangle((float)(x+nx*.6-data.anchorX),(float)(y+ny*.6-data.anchorY),(float)(z+nz*.6-data.anchorZ),
                             (float)-nx,(float)-ny,(float)-nz,v[o],v[o+1],v[o+2],v[o+5],v[o+6],v[o+7],v[o+10],v[o+11],v[o+12],1e-6f);
                         if (t>0 && t<firstDistance) { firstDistance=t; firstHit=data.id; }
-                        if (!vegetation && t>0 && t<distance) { distance=t; hit=data.id; part=pi; }
+                        // Ignore incidental canopy cards for wall controls, but
+                        // include the explicitly requested vegetation part when
+                        // the control measures a tree's actual trunk mesh.
+                        boolean requestedPart=data.id==control.get("tile").getAsInt() && pi==control.get("part").getAsInt();
+                        if ((!vegetation || requestedPart) && t>0 && t<distance) { distance=t; hit=data.id; part=pi; }
                     }
                 }
             }
@@ -402,8 +406,14 @@ public final class CampusSiteInspection {
             }
             row.add("reflection",reflection);
         }
-        if(camera.has("screenRays"))row.add("screenRays",screenRays(mc,loaded,displayed,camera.getAsJsonArray("screenRays")));
-        if (camera.has("probes")) row.add("probes", probe(mc, loaded, displayed, camera.getAsJsonArray("probes")));
+        try {
+            if(camera.has("screenRays"))row.add("screenRays",screenRays(mc,loaded,displayed,camera.getAsJsonArray("screenRays")));
+            if(camera.has("probes"))row.add("probes",probe(mc,loaded,displayed,camera.getAsJsonArray("probes")));
+        } catch (AssertionError failure) {
+            row.addProperty("geometryFailure",failure.getMessage());frames.add(row);
+            writeReport("FAIL: inspection geometry control");
+            throw failure;
+        }
         boolean missingWater=false,blockedWater=false;
         if(camera.has("waterColumns")){
             var columns=new JsonArray();

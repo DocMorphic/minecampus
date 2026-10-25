@@ -262,6 +262,7 @@ assert digest(DATA/lmu_east['coverageFile'])==lmu_east['coverageSha256']
 le_check=json.loads((DATA/'lmu-east-validation.json').read_text())
 assert le_check['status'].startswith('PASS:') and le_check['manifestSha256']==digest(DATA/'manifest.json')
 assert le_check['sourceSha256']==lmu_east['sourceSha256'] and le_check['validatorSha256']==digest(ROOT/'scripts/validate-lmu-east.py')
+assert le_check['rawInputs']['minecraft/exterior/checks/lmu-east-ground-rays.json']==digest(SOURCE/'checks/lmu-east-ground-rays.json')
 assert set(le_check['tileSha256'])==set(lmu_east['groundTiles']+lmu_east['treeTiles']+[lmu_east['meshFile'],lmu_east['roofFile'],lmu_east['coverageFile']])
 assert all(digest(DATA/name)==value for name,value in le_check['tileSha256'].items())
 riverbank=json.loads((DATA/'manifest.json').read_text())['architecture']['riverbank']
