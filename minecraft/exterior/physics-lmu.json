@@ -31,8 +31,8 @@
   "upperPostWidthMetres": 0.10,
   "cleanupMarginMetres": 2.1,
   "streetApronFaces": [6],
-  "streetApronMetres": 6,
-  "streetApronQualification": "Native58 showed missing pavement between the north foundation collar and the retained CALA street mesh. The six-metre strip follows the surveyed north wall over public DOP20 pavement and DGM1 heights, overlaps existing land only for subtraction and edge blending, and excludes neighbouring surveyed buildings. It does not widen courtyard ownership.",
+  "streetApronMetres": 7,
+  "streetApronQualification": "Native58 showed missing pavement between the north foundation collar and the retained CALA street mesh. Native59 fixed rays at the remaining western sky gap intersect DGM1 ground 6.07\u20136.59 m from the surveyed wall, beyond the former six-metre strip; DOM20 differs from DGM1 by less than 0.17 m at these controls. The seven-metre strip connects this measured ground while subtracting preceding terrain and protecting neighbouring surveyed buildings. Courtyard ownership is unchanged.",
   "groundRuntimeId": 1000060900,
   "groundBlendMetres": 2,
   "streetGroundRays": {
@@ -111,6 +111,36 @@
           0.31968345351620886
         ],
         "distance": 20.16786988399179
+      },
+      {
+        "u": 0.95,
+        "v": 0.624,
+        "direction": [
+          -0.998115466831381,
+          -0.04924466137769932,
+          0.03661254153661293
+        ],
+        "distance": 31.1425682510907
+      },
+      {
+        "u": 0.97,
+        "v": 0.622,
+        "direction": [
+          -0.9988203251475881,
+          -0.04605922110437563,
+          0.015378758835624897
+        ],
+        "distance": 36.52939870214842
+      },
+      {
+        "u": 0.99,
+        "v": 0.618,
+        "direction": [
+          -0.9991391605799643,
+          -0.04118958794895923,
+          -0.004935143377783667
+        ],
+        "distance": 40.31863129509005
       }
     ],
     "toleranceMetres": 0.03,
