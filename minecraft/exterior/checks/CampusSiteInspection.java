@@ -34,6 +34,15 @@ public final class CampusSiteInspection {
         return cameras().get(0).getAsJsonObject().get("position").getAsString();
     }
 
+    /** Migration does not depend on provider rendering; verify it once local chunks align. */
+    public static void checkMigration(Minecraft mc) throws Exception {
+        cameras();
+        if(plan.has("migration")&&migrationChecks==null){
+            migrationChecks=CampusMigrationCheck.check(mc,plan.getAsJsonObject("migration"));
+            if(migrationChecks!=null)writeReport("RUNNING: saved-world migration verified; native views pending");
+        }
+    }
+
     /** Optional private geometry diagnostic; no textures or provider credentials. */
     private static void recordSourceTriangles(Map<?, ?> loaded, List<?> displayed, String prefix) throws Exception {
         if (!plan.has("diagnosticBounds")) return;

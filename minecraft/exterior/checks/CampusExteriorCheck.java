@@ -377,10 +377,11 @@ public final class CampusExteriorCheck implements ClientModInitializer {
                         server.getCommands().performPrefixedCommand(source, "execute in minecraft:overworld run tp @s " + camera);
                         server.getCommands().performPrefixedCommand(source, "time set noon");
                         server.getCommands().performPrefixedCommand(source, "gamerule doDaylightCycle false");
+                        server.getCommands().performPrefixedCommand(source, "gamerule doWeatherCycle false");
                         server.getCommands().performPrefixedCommand(source, "gamerule doMobSpawning false");
                         server.getCommands().performPrefixedCommand(source, "gamerule doMobLoot false");
                         server.getCommands().performPrefixedCommand(source, "kill @e[type=!minecraft:player]");
-                        server.getCommands().performPrefixedCommand(source, "weather clear");
+                        server.getCommands().performPrefixedCommand(source, "weather clear 1000000");
                         if(stage==38&&Boolean.getBoolean("minecampus.requireGalileoCourt")){
                             // Focused candidate reviews reuse only the isolated QA world.
                             // Force the same migration the user's previous v18 save will receive.
@@ -441,6 +442,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             var lf=MapRenderer.class.getDeclaredField("loaded");lf.setAccessible(true);
             var df=MapRenderer.class.getDeclaredField("displayed");df.setAccessible(true);
             var want=(java.util.List<?>)wf.get(renderer);var loaded=(java.util.Map<?,?>)lf.get(renderer);
+            if(Boolean.getBoolean("minecampus.siteInspection")&&ticks%20==0)CampusSiteInspection.checkMigration(mc);
             boolean ready=!want.isEmpty()&&renderer.pendingTileSelection==0;
             for(Object w:want){var id=w.getClass().getDeclaredField("id");id.setAccessible(true);if(!loaded.containsKey(id.getInt(w)))ready=false;}
             if(((java.util.List<?>)df.get(renderer)).size()!=want.size())ready=false;
