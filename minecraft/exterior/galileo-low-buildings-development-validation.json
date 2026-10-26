@@ -1,0 +1,4277 @@
+{
+  "status": "PASS: reviewed two-building exterior improvement; full campus realism remains unfinished",
+  "candidate": 100,
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 346163497,
+    "sha256": "306a9eeaf57dfadb4f58d01fd697b5ccf8682ba35f23e7d5ef86f8391078e535",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "b7666f60bea67ac9a9cd972dde34bb45e95043415e42f9fab2c55603b8e3fa90",
+    "rendererSourceFingerprint": "f72a9da54b749a23",
+    "bundleSha256": "da465222b642c42b4962301557c513debd3b419a4737a27410f9fa85a02da142",
+    "tiles": 481,
+    "bundleUnpackedBytes": 807161663,
+    "bundleUnpackedLimit": 1073741824
+  },
+  "playablePreviewReady": true,
+  "publicBinaryReleased": false,
+  "goalComplete": false,
+  "upgradeFromArtifactSha256": "77d968a258ce1a9a2ad4ccd956200848744d439a11fe7cd1b1fbdb54bece50a3",
+  "sourceBaseCommit": "5f287c99aa8965ee8f2122997f3f9e022c27c1e8",
+  "implementationSourceHashes": {
+    "scripts/build-exterior.py": "636b6506dd058f5ba28ab3a8c48d207855127ff50ef02dc804313544ac537318",
+    "scripts/build-exterior-release.py": "0aa64112410c651c1184de87e7f0016d89742c32d1939f0153620d3e20efb42a",
+    "scripts/exterior_galileo_low_buildings.py": "ba5615e8a8eacf6f8278a26b74b8165cdb611473633eb922f1f4f8a32f45f52f",
+    "scripts/validate-galileo-low-buildings.py": "d3770693d91b39871b2c104aca33927c7191aedb7dffeb4f40837e5b02f88cc7",
+    "scripts/test-exterior-galileo-low-buildings.mjs": "8c6564c6a9a5b838af81b6110a6dc8d5a4663513f14112ca9fb6db22358a1e3c",
+    "minecraft/exterior/checks/galileo-low-buildings.json": "ce311587cc516b708b139e3bc569f1436674bcb6b9651323a1d797614b7ae5ae",
+    "minecraft/exterior/galileo-low-buildings.json": "740352f6ecc0a748b9e17272b54aa4578e3e3dc4323cc2fbf8c7c0b7c195ef9b",
+    "minecraft/exterior/photos/galileo-low-buildings-reference.json": "91e1e241a4e4cc25e86ccb96851f0092d4d4038a98f599ee12383fce208a64e4",
+    "minecraft/exterior/client/CampusReflections.java": "522ee523288eb4fb6dc2f0068899a46370ee0b45d565d3735f604f5b30c2ae80",
+    "minecraft/exterior/native/CampusCollision.java": "30d03355c0cf1913d95c50379b0fb1cae93c8651c7f6eccad2a04b76cc43b68a",
+    "minecraft/exterior/patches/realworldmc-exterior.patch": "b7666f60bea67ac9a9cd972dde34bb45e95043415e42f9fab2c55603b8e3fa90"
+  },
+  "scope": {
+    "buildings": [
+      "DEBY_LOD2_5284438",
+      "DEBY_LOD2_5284436"
+    ],
+    "windowAndDoorGroups": 59,
+    "runtimeIds": [
+      1000030055,
+      1000030056
+    ],
+    "surveyRoofsAndPriorCollisionFilesUnchanged": true,
+    "courtyardFootprintBasis": "Union of unchanged survey roof triangles preserves the courtyard hole and recovers the east-wing area omitted by the serialized ground-loop bridge."
+  },
+  "sourceValidation": {
+    "status": "PASS: two bounded surveyed exteriors, correctly oriented closed recesses, exact roofs and all prior mesh/collision data retained",
+    "manifestSha256": "44985e12c4ef1289328ba0d2c0e49cba151ca0665f86bfc9e3b90a5ae2786165",
+    "validatorSha256": "d3770693d91b39871b2c104aca33927c7191aedb7dffeb4f40837e5b02f88cc7",
+    "sourceSha256": "740352f6ecc0a748b9e17272b54aa4578e3e3dc4323cc2fbf8c7c0b7c195ef9b",
+    "generatorSha256": "ba5615e8a8eacf6f8278a26b74b8165cdb611473633eb922f1f4f8a32f45f52f",
+    "referenceSha256": "91e1e241a4e4cc25e86ccb96851f0092d4d4038a98f599ee12383fce208a64e4",
+    "retainedMeshSha256": {
+      "DEBY_LOD2_104552957.ect": "de4385c1585adaf2a9fa4945e878ad7d145104fac25c33df3667a8612cab58a8",
+      "DEBY_LOD2_104552964-photo-collision.ect": "be0179e6056b6170438d6d61eb7c6cc54c9071189e1ab50f50b124bf625e8d8d",
+      "DEBY_LOD2_104552964-photo-roof.ect": "05f9d4d3db1e0895fc8ce0a59888e4c16c28033f50e3a5fc52e906492b82f20d",
+      "DEBY_LOD2_104553068-photo-collision.ect": "bc826492506cb6bebe44fc2c60b28a36b755596265d9f1c15b6fac913cbda41c",
+      "DEBY_LOD2_104553068-photo-roof.ect": "295e2892324abd484b53a2e40e5482f71fcad0c3e4e6c175acc167bff94f2ffa",
+      "DEBY_LOD2_104553085-photo-collision.ect": "2918a00b69ee8687567a558efcd4dc56bbc4fe0f436eb76ed992c81209dc2220",
+      "DEBY_LOD2_104553085-photo-roof.ect": "f4d5af6225dab1801140cd296638c843781845f8d59dfb4953a17a0f07ae99bb",
+      "DEBY_LOD2_104553225-grs-connector.ect": "775f4143674574df0497837039c2cc15e3dd78efdeeda86ebf2d5b7ddf2b59c4",
+      "DEBY_LOD2_104553225-photo-collision.ect": "a086c8681721cb93091d751b6a4530333701991035fd56a43943928ab5fd63fa",
+      "DEBY_LOD2_104553225-photo-roof.ect": "a086c8681721cb93091d751b6a4530333701991035fd56a43943928ab5fd63fa",
+      "DEBY_LOD2_104553232-grs-connector.ect": "d9f9d54000437b19c67c2217d7a3e47d846ea79e38b7d8c983388694c4c0c756",
+      "DEBY_LOD2_104553232-photo-collision.ect": "eb53cac6edda7f46264dd46f82782ac3476ce3274e5c82a9f80e39f36961929f",
+      "DEBY_LOD2_104553232-photo-roof.ect": "eb53cac6edda7f46264dd46f82782ac3476ce3274e5c82a9f80e39f36961929f",
+      "DEBY_LOD2_105263801-photo-collision.ect": "4f037be91e1e4eda4a0ef8019a34f93bb4e02f9df597c4385543c6e292287736",
+      "DEBY_LOD2_105263801-photo-roof.ect": "be2fcf17667bccc7eee2fe660eb056d8dbcbbdfc78554b8ec463e06b87576901",
+      "DEBY_LOD2_107614250-photo-collision.ect": "27789373bbba2a9fc3273e69c0c7b7c7380e907e60bf0ea13acf40385a1042b0",
+      "DEBY_LOD2_107614250-photo-roof.ect": "171bc9697a30816f490a47e24843a1f4f2a76eee219f165157faad4581fc573f",
+      "DEBY_LOD2_107614301-photo-collision.ect": "4eadb323d5b60fbb5d72573421c921b887567c8733f0a41a9384d36d53e46f67",
+      "DEBY_LOD2_107614301-photo-roof.ect": "d4dfd0f5960d0f83e422d0540e8c4d65b30ea42a1ed7936cf15319a031167209",
+      "DEBY_LOD2_107614322.ect": "fac97b5a5c47e1afcd0cd43a7f09f44d801133eb051163e83287de71c7663383",
+      "DEBY_LOD2_107614323.ect": "151a7cf91d76289e2c10f90f82e4cd9f70122ccfce71128b2dfe0f845e6f3e6c",
+      "DEBY_LOD2_107629746-photo-collision.ect": "2818fb724b5e11a5a70d8da7f1940f60e82aced830658cd7e6005551b9a7f454",
+      "DEBY_LOD2_107629746-photo-roof.ect": "87056dc8fb6959fbbef28be2d60cfd97398d2204f92c34f2404b2c4422b15fe6",
+      "DEBY_LOD2_107650547-photo-collision.ect": "d0dfb980efdd3e2c9654705bad58063eeb141f8e00ace40f1ddfde58b5cb73ed",
+      "DEBY_LOD2_107650547-photo-roof.ect": "6f15af58968efee3bec465217c4e58ef4088108718014cd90ba78343b10009b9",
+      "DEBY_LOD2_108180780-p1-exterior.ect": "cbf77510de64133996a0451ed6c01bb9c23b0cd8435023aba510edf819c7c51e",
+      "DEBY_LOD2_108180780-photo-roof.ect": "5a8e87f3ff55a75b3b3fbcc41c1dd54d1d564a8a1c5c06554cf7e470c266ac2e",
+      "DEBY_LOD2_108180785-mlz-exterior.ect": "3900de6c132afa431e2ad20f983ce6dbe19cde69ef45d9b9eb5f0223111a83bd",
+      "DEBY_LOD2_108180785-photo-collision.ect": "ec8020b66158798bb230f5d19a24a2ae13f716bbea0892a4b5fd05d7549db6b3",
+      "DEBY_LOD2_108180785-photo-roof.ect": "ec8020b66158798bb230f5d19a24a2ae13f716bbea0892a4b5fd05d7549db6b3",
+      "DEBY_LOD2_108180786-mlz-exterior.ect": "a4e01f623ad4efaa7a8628ccf0384a8549bbd1b38a2bea7321e5fac91fa2376b",
+      "DEBY_LOD2_108180786-photo-collision.ect": "95b0eeea2f0deada0fb05c76259423b208144e41bfa5fea28333e50ae3213c39",
+      "DEBY_LOD2_108180786-photo-roof.ect": "95b0eeea2f0deada0fb05c76259423b208144e41bfa5fea28333e50ae3213c39",
+      "DEBY_LOD2_108180787-mlz-exterior.ect": "2c6c62c383a63c7b87bf52430e52e86d208d146e85238e6e7b7335d489088c04",
+      "DEBY_LOD2_108180787-photo-collision.ect": "0fc2bc1c25921fa52ecf3d1006f3d9f60c4b0430da73fd1b6e6e2d2840a9f98d",
+      "DEBY_LOD2_108180787-photo-roof.ect": "0fc2bc1c25921fa52ecf3d1006f3d9f60c4b0430da73fd1b6e6e2d2840a9f98d",
+      "DEBY_LOD2_108180801-cala.ect": "9dd7364ae6b36a12e5e69df9529db6a821b4af3e9970fff279bc4c6267daf21f",
+      "DEBY_LOD2_108180801-photo-roof.ect": "42e933063fa3f70265020074d10c2482717eff7da3984e1ccee213ea81404b75",
+      "DEBY_LOD2_108180804-photo-collision.ect": "de8fad678330e336f0925aa228c6c0d9984c9ad6d54e9c34b28238c4a54e0019",
+      "DEBY_LOD2_108180804-photo-roof.ect": "9cf633e66772370cbcfc11b16a46082792b45dacfa28938d35ac1d09779a4664",
+      "DEBY_LOD2_108180813-photo-collision.ect": "f33ad5271237aab2c041b06d40dd017ac8a875e19e865ab7f93eac2a1164bd58",
+      "DEBY_LOD2_108180813-photo-roof.ect": "830c5fb88fe8a41b8186f0ee4dd7e1f7155265f72302f08179811fbcc2cdf93e",
+      "DEBY_LOD2_108698294-photo-collision.ect": "0e52a99497f168b9eb0b8096592c23f138ea642aa0330c1c5151195b24985330",
+      "DEBY_LOD2_108698294-photo-roof.ect": "7777c0fe504c0a7783d5e0587f842896b75cc7b1c5e22099deb9fb6fb75c0138",
+      "DEBY_LOD2_108698299-laboratory-exterior.ect": "cd12a596e6635c694f49b1703d988f4f3c45463a4046e81bc052974cf8b1b20b",
+      "DEBY_LOD2_108698299-photo-roof.ect": "69777f1f031c7e0ac9b7f841635bdd292a5ec66c3b23956fdd373a0479c5fbe7",
+      "DEBY_LOD2_108698301-photo-collision.ect": "64cee9d5dc864d08a3fa5f1a6ce6a82221ba8a34ec714d3004caee25309ae3da",
+      "DEBY_LOD2_108698301-photo-roof.ect": "568d7f5236a9ccc326c219aa3763b94b3ed00dee0d0fe00e7ce9086c89dfd9d7",
+      "DEBY_LOD2_108698301-survey-east-wall.ect": "0bc0fc69221fe7e4b552d9da445f0fc4237ca5e58d680ec183a505e93eedb969",
+      "DEBY_LOD2_108698307-photo-collision.ect": "28863c99e07620e87af6d2a58c77c4ed6f58e972e9fbf0007089f9f6c865f692",
+      "DEBY_LOD2_108698307-photo-roof.ect": "d180fdfd0cdfc712fcb5fdb277a84343f1eee44987bfbaf3f5c39b9547336dd5",
+      "DEBY_LOD2_108698310-p1-exterior.ect": "056a49d65c82b997b50f216ed7c3ae781a82eeb85dbc427bc9a4fc5ac04b8c54",
+      "DEBY_LOD2_108698310-photo-roof.ect": "924546d9a34e0c3b49cc4c3bcb38377bed7076432506f3c1e3c51eab02692679",
+      "DEBY_LOD2_108698311-photo-roof.ect": "2a49bb678f17adacc85944e78df9aea784c4875d573b72c218db52388b6d1ff2",
+      "DEBY_LOD2_108698311-physics-container.ect": "6a9832ca539090625cd9912445d9655cd4088b00169457b7c6131ef3322f8961",
+      "DEBY_LOD2_108698313-cos-exterior.ect": "830e6bc2c6b06f6b8268a317d70d780237400dd565d309baf8f064348ddfc932",
+      "DEBY_LOD2_108698313-photo-collision.ect": "8339644b1b608778529fcf4e736c4c6a095433d92470ea18fab7e5fe108e31d0",
+      "DEBY_LOD2_108698313-photo-roof.ect": "8339644b1b608778529fcf4e736c4c6a095433d92470ea18fab7e5fe108e31d0",
+      "DEBY_LOD2_108698314-photo-roof.ect": "aac856a68b07b59b88f23fb4437a5a09c7646eaa857c01c13a79873b0894ac42",
+      "DEBY_LOD2_108698314-physics-ii.ect": "01b7caa74c7df289cc3ec23216ccb4b5bec81ac06eaee0597be74fa21619e37a",
+      "DEBY_LOD2_108698321-photo-collision.ect": "86c5daaa89ae8319fd791dbcd9f766f98b2f2cb1bc32feada9d6d710b3054d7c",
+      "DEBY_LOD2_108698321-photo-roof.ect": "4f4211966e575042e5157532c766c9b533d0627e0cdb398dc11ab28a9ed5a933",
+      "DEBY_LOD2_108698323-photo-collision.ect": "7bc3a7683b4722b34a03df56cb24f6a28cd89e7fa2b79bcca4092e6af95965ad",
+      "DEBY_LOD2_108698323-photo-roof.ect": "45917a57998b21a45791b2cf0f2c2c64e5258b491a97bf2c58e97c126455666b",
+      "DEBY_LOD2_108698333-atom-west-entrance.ect": "f4f9b0e4686c5c035ca4cca3652cf774bc1d51c3dc5c1ea181dd3123c7d6c467",
+      "DEBY_LOD2_108698333-photo-collision.ect": "4641325d68dbc9a90fdb2be95fc6ea189cc314d67dce50a61f5b09c883f8cc44",
+      "DEBY_LOD2_108698333-photo-roof.ect": "004b4ce4ba176cb734249c87c8d258bea18b775f954a3f57f53a2f8f23106bdc",
+      "DEBY_LOD2_108698338-atom-canopy.ect": "8cbefebd5680c78eeac3dc9c4f14fbf0ed008e7a7e2917161615c2f037813110",
+      "DEBY_LOD2_108698338-photo-collision.ect": "77e56b09194a79350fe16bac2681ffd1fd90ad89360a3607161eb507914dbc62",
+      "DEBY_LOD2_108698338-photo-roof.ect": "f8c90fb1bfdb05d2b0d20de577fd3a0235c7cc4ec6ea91afaa38e18136e77620",
+      "DEBY_LOD2_108698339-atom-canopy.ect": "269346548561f1c1f0bc73a2b5f6693567f8f6671ee93ea7c9555e1933332744",
+      "DEBY_LOD2_108698339-photo-collision.ect": "4c40916a0e597427393a80702535a675256a56c69309d99cd8c7ddae5378ab04",
+      "DEBY_LOD2_108698339-photo-roof.ect": "20142bfc1283ca9a8750e1b8b6c2fbcbf9901b0be51e6fe3a907065bbbe82943",
+      "DEBY_LOD2_108698340-atom-canopy.ect": "a285b09b1dd39c43452057ad912d0908a6803e2f294540397597040758591963",
+      "DEBY_LOD2_108698340-photo-collision.ect": "d02d6d22b564c51fb1f1f8c631d8c30a75b0bd8643b9ec556560e194c219b2c1",
+      "DEBY_LOD2_108698340-photo-roof.ect": "3e249557af28af8c8094897dfd1d88e0f72c19f7cda7e27ca8c041ca8014fa03",
+      "DEBY_LOD2_31360854-photo-collision.ect": "9bf9420ec3d219af6adcf5790e875b1ebbdb509fbc7bb44786a909ace3076832",
+      "DEBY_LOD2_31360854-photo-roof.ect": "97605bb9e054209afd320b28f016c77b3ad37e824de14b2cce88b96b79f4e15a",
+      "DEBY_LOD2_31360854-uye-exterior.ect": "ff342ca81c2f0aecf9db31c5e93cf99be192bd54206ac7d6932311f2c11a94d5",
+      "DEBY_LOD2_31360858-photo-collision.ect": "97ecbe47b626ca01b425fbbed0518ed7e37c5021686a9d9cdd98c6e170b4e5db",
+      "DEBY_LOD2_31360858-photo-roof.ect": "caee4c297fedcda75290dac96dd5b4130045a126ea15e6be504452f14eb91d73",
+      "DEBY_LOD2_41731131-photo-roof.ect": "e3dce8eee0a9ec27e029600ecb5b6d6d139b1b2c1c1466798d3b434849757f81",
+      "DEBY_LOD2_41731131-physics-ii.ect": "776d80c4ac9f4e28379516e38a695f0cfb1d4789795586d390c3d823d9d2ed1f",
+      "DEBY_LOD2_41731133-photo-roof.ect": "44c094003f23a1fb48fa2709e51a85b7bba65e0d4f121cadeebeb6246460166d",
+      "DEBY_LOD2_41731133-physics-ii.ect": "006122549b0f3b0b5f60688fbf79529817b035d361ffebc719863775904ea322",
+      "DEBY_LOD2_41731141-photo-collision.ect": "07062f766ff9208c7454b232a2cbd25f8df9adca04177559f3ec9c9fed6ec329",
+      "DEBY_LOD2_41731141-photo-roof.ect": "9286c265652526dc80c82cb3a4411d2dc968bbb3924634664be14e0dd4f08bdb",
+      "DEBY_LOD2_41731337-photo-collision.ect": "02b381b1110cec5d19679d959e2dd1557fa93d5ec2ca7c2f14419adb739320e5",
+      "DEBY_LOD2_41731337-photo-roof.ect": "0a0de7e60e714fb67fcc489a0cf5c0db15231e71ab4fb10fd2ba5068bee81875",
+      "DEBY_LOD2_41731339-photo-collision.ect": "6393f067a0b52917ffbcd2d4020c011eac178d3c49799d67acfc9ec307d3b2a3",
+      "DEBY_LOD2_41731339-photo-roof.ect": "159777e998d52b73d109a31758a80b3ee846634d6074be7cb720a2c7020c53b4",
+      "DEBY_LOD2_41731341-photo-collision.ect": "e82f769161147cc41f25e56f7eefe2de71ee810a2c65d62dc7dd4271561435d5",
+      "DEBY_LOD2_41731341-photo-roof.ect": "a41f7bbeb69979bdf0aef29ecfe60f6f53147546332d0b44e8e8392ecda46b31",
+      "DEBY_LOD2_41731343-photo-collision.ect": "3a96f55afa2888e9d8c1a2e93da1c74ce824c99eb7765aab4e41df6aaab200dc",
+      "DEBY_LOD2_41731343-photo-roof.ect": "0e3ff2b70687d56f59b365cd607126b57ef5590e9220d3d3764fc8790144ce76",
+      "DEBY_LOD2_41731345-photo-collision.ect": "76674e17205585abd6ce0d42c1427150b7666c570d4c0eb3b5b87a0432577e0e",
+      "DEBY_LOD2_41731345-photo-roof.ect": "324bd0e3067c1868b8764f3546f2bfcdeac0d448fbf6cb7b18d15cce692e3682",
+      "DEBY_LOD2_41731347-photo-collision.ect": "ae517266eea15e57114132d2bfe8571e4916bfa88829b64654fbf4d4183cee2a",
+      "DEBY_LOD2_41731347-photo-roof.ect": "58d22bc86e72c1403d414a9ce678f5649ea23daa9e2688f4d3d49ee899e30171",
+      "DEBY_LOD2_41731351-photo-collision.ect": "389eaaae982a01d47d3d63f4a571910b6b75f99e8eba32c10fb8276ab959a04d",
+      "DEBY_LOD2_41731351-photo-roof.ect": "2dfe7c8e3622d08cceae66db280b1d35014524b5a10a0c3d472d04d3606063b5",
+      "DEBY_LOD2_41731353-photo-collision.ect": "051bdece03989b629f8bf479191cf220b72d730a329df0678240670dddda1819",
+      "DEBY_LOD2_41731353-photo-roof.ect": "0a31a4777109404cedf323f79dfd07b59d80a8e3ce63ef5fd7fa8ad154a0de59",
+      "DEBY_LOD2_41731367-photo-collision.ect": "60bc66b88ad36a38a6b3874b90d1b17c3bee95945bf11ca85dccba74d8e64f6d",
+      "DEBY_LOD2_41731367-photo-roof.ect": "6541196c2fea3f9e91838833f3deeb28d6d9ba2d5fa812de8bd15be420d96bc1",
+      "DEBY_LOD2_41731385-photo-roof.ect": "5741303cf93f94a87035e7357a04e9955306998e83c63bcdaddf854cc83ec450",
+      "DEBY_LOD2_41731385-physics-ii.ect": "c8ce67782d07b8147f569c91fc480362b0deb1ccde4cfef1352b14ed30ffeaf3",
+      "DEBY_LOD2_52738490-photo-collision.ect": "2f19a964ef0722170e4c1ddac99a738d93ced9aabd7e47a968a253a962d404ce",
+      "DEBY_LOD2_52738490-photo-roof.ect": "b75df824b1b258e40a2b94809bffca62c1cc7e496d498f0dc6a66efa2d9f186b",
+      "DEBY_LOD2_52738492-photo-collision.ect": "64ccd9f1cabe58a147b684e207c9a8d831c288a9beb62685f6c48539e5217eb0",
+      "DEBY_LOD2_52738492-photo-roof.ect": "64ccd9f1cabe58a147b684e207c9a8d831c288a9beb62685f6c48539e5217eb0",
+      "DEBY_LOD2_52738492-warehouse.ect": "848f8d029ab99c661cba42ddb15467ac2ca24faea09af68bbf5ec99ae08e3b77",
+      "DEBY_LOD2_52738494-photo-collision.ect": "4d527ee972bf54ba3c6a41ca93b191dbe28ca6342d66d1c70175c2dec3c27f54",
+      "DEBY_LOD2_52738494-photo-roof.ect": "face10b5c1a2d179d750984cda0fa441e8fcb0dd88f2af5f2b18634a3ae4439a",
+      "DEBY_LOD2_5284422-photo-collision.ect": "7dc353dc81d3027daace10ded3443114dcbda3f6c13f31bc6052b50bc18cbd31",
+      "DEBY_LOD2_5284422-photo-roof.ect": "17790a63647d5fad434a794a4d332afa5b4d5ab2369460924476556676ad7b30",
+      "DEBY_LOD2_5284422-terrace-front.ect": "a6305883aa8a29432c151e9a16d1b5417bb7848ec2bfef3d4dc6339ecc5716fa",
+      "DEBY_LOD2_5284423-photo-collision.ect": "47a1179895deb7290e7a4b242fe73cc4d0694b49c2e366e645080950d963d4ac",
+      "DEBY_LOD2_5284423-photo-roof.ect": "8f7a47540313a4e925f5a348ce9ffe71840acf047f07f9665e53a625a9fd50e0",
+      "DEBY_LOD2_5284424-photo-collision.ect": "7700572c2dea74cc7fd6d7ccf85a0ce75ea91d7ebae48d5db87cf07230455566",
+      "DEBY_LOD2_5284424-photo-roof.ect": "02d24c293d2ff2a4c36070f57ac2b4fa825f31c3671a6f4bea7f915e65097368",
+      "DEBY_LOD2_5284427-facade.ect": "15cb7dfbd5a3ced97df2459abc68cfeb10cf0f2582293551785550a177233070",
+      "DEBY_LOD2_5284428-facade.ect": "39444b8af7c3b32b1007def9ec9154f027ac1506e050f340ea387e72fe122c46",
+      "DEBY_LOD2_5284429-photo-collision.ect": "1ad922ac0f29139637828ba5be588ddb374208ddbce4bd13456895c04174eeff",
+      "DEBY_LOD2_5284429-photo-roof.ect": "5d4eb1334aed38f4ac10c2ae10cf446d92fcb2dfffc729128a9e399d478d0d60",
+      "DEBY_LOD2_5284430-photo-collision.ect": "bf31de135407fbcac5407f286cab174ca60e7c27c201e2754a5f462aefd5b4ca",
+      "DEBY_LOD2_5284430-photo-roof.ect": "fce1341e83c2b8285634c3fc52c8d49db9099e1a139f4e4ff02dba9707be03df",
+      "DEBY_LOD2_5284433-photo-collision.ect": "20cd645815cf7fb803c6a664e789dee2c86bbadceb7816a528742f73a5a9e860",
+      "DEBY_LOD2_5284433-photo-roof.ect": "8bdea025352501151c5f8321b068789da37eaf2ac1a00979e78171258ae78e04",
+      "DEBY_LOD2_5284435-photo-collision.ect": "050996288e9d12f1cd22b20ca4bbafa86f4e0b9504058aab48e860ced5bb2515",
+      "DEBY_LOD2_5284435-photo-roof.ect": "0f0781f7a7376eae647f0beff9f8bb4e56d35f8b2b1ceccf2fa4b304d6ee040d",
+      "DEBY_LOD2_5284436-photo-collision.ect": "c7666ef2f5cd93a63ffa2bcbb9db49ef47c00a25cec16486c771915a78c15520",
+      "DEBY_LOD2_5284436-photo-roof.ect": "12e2e3328f90f155f58e481292234b170703ffbd927685112e9a5505312933dc",
+      "DEBY_LOD2_5284437-photo-collision.ect": "d8ba05cbf2fe731f2e5185063eaf3eebce1e68ce328533b4e6c9245e7494ac80",
+      "DEBY_LOD2_5284437-photo-roof.ect": "8257636b9f8a358eba4cd9297da3650d1452e7156d3cd00bdc1f331ace91daaf",
+      "DEBY_LOD2_5284438-photo-collision.ect": "186eebd502db31c1fea022918875d7d14454be99201d7399e9e827e4551a2401",
+      "DEBY_LOD2_5284438-photo-roof.ect": "7f5186034929609a90709d5020784b40d432c3fe7c31ad5fb520fb4548cda235",
+      "DEBY_LOD2_5284439-photo-collision.ect": "a7c4ea8db6a5b1287587e58bf5abbcc2d1d48ca23866fdf658bccbef205cb124",
+      "DEBY_LOD2_5284439-photo-roof.ect": "dbc4af75c68c5d19d420f758adc5b453b0899390b307682b1ee95f7288340cf0",
+      "DEBY_LOD2_5284441-cyclotron-annex.ect": "273ef27d9db3f33995617dde4f28b5d79ebe2d7767116191b22519897d2106d4",
+      "DEBY_LOD2_5284441-photo-collision.ect": "6df597cc52afeca4dd1a62fc1f7b27f1f35fd00cdd23b24eb74e0345be9a569a",
+      "DEBY_LOD2_5284441-photo-roof.ect": "00f7a224c65f86db8d419c52315cfbcbcb73e7863116d0624d190c00a5528aff",
+      "DEBY_LOD2_5284442-lmu.ect": "2525ee62ddfeeed9c363835137bda8451d23facad51a5f584b213159cc712eed",
+      "DEBY_LOD2_5284442-photo-roof.ect": "637eef13e3a23be28064f62d86683b3c6a93435e6b30aa15183781594e386d7c",
+      "DEBY_LOD2_5284443-photo-collision.ect": "63c6071cd4b5d46a31d17a016816cfa37447692e5bc067f00c71433291f88c67",
+      "DEBY_LOD2_5284443-photo-roof.ect": "3ad30fa34b1b02d3a6da162a2aad2cead22a1d22cc76a4b74957d1f45a3451b6",
+      "DEBY_LOD2_5284443-uya-exterior.ect": "dca51f3e0667a0a8e3823d9d62279d14f64f803fff45b207a0a6fda61e1239cb",
+      "DEBY_LOD2_5284444-photo-collision.ect": "91a5fec074e420932621290dee0d35308578b193763b57f488fdfc703b123947",
+      "DEBY_LOD2_5284444-photo-roof.ect": "6399e49df2c6d27a9019931f9ec47350e04e97edc76a23b990be643386a04840",
+      "DEBY_LOD2_5284445-photo-collision.ect": "f76d206f809a64af0b2e73243be0210ff2da423a431632fc9b051a50162ba119",
+      "DEBY_LOD2_5284445-photo-roof.ect": "91f640ffc063221b7ae98244003ee33681485b2d546c1d81223b8bb518c2405c",
+      "DEBY_LOD2_5284446-photo-collision.ect": "76841f142ff0c9d2d026b1457b492a325f55667ba3cbd5d634e20430476e3e24",
+      "DEBY_LOD2_5284446-photo-roof.ect": "76841f142ff0c9d2d026b1457b492a325f55667ba3cbd5d634e20430476e3e24",
+      "DEBY_LOD2_5284446-rcm-exterior.ect": "67bc2da8712832254fc10c504adc00b31417e98e9ffaee59306c016c0cd80b04",
+      "DEBY_LOD2_5284449-photo-collision.ect": "da71ddc6a56242f4544b94b3725656b617f28633ad19e1fd86e006e89f6749c3",
+      "DEBY_LOD2_5284449-photo-roof.ect": "92a2ee386e50d5d8620c8da320211295b092ae768cee2f274d69f28f166c2cff",
+      "DEBY_LOD2_5284450-atom-ei.ect": "c7a153cff3ae20927a6e41deccfcc6974151d281fc1b049871c837afd6f5533d",
+      "DEBY_LOD2_5284450-photo-roof.ect": "bf4607359ff84c6e90caee9a2a6f48d010ae0570f1c6ec4bf1e9a8b04d7bc63a",
+      "DEBY_LOD2_5284452-photo-collision.ect": "169bb65899a9c39f652db6292485adc1b5d8c8aca5fbae8394c48270f9d59ba3",
+      "DEBY_LOD2_5284452-photo-roof.ect": "92f3bd2bc73de7e23f956b37e7d51388d866dfc3ac9fd032f9cd03cadf5ceb30",
+      "DEBY_LOD2_5284457-photo-collision.ect": "fb3ae3be8e4deaa16b5fc82a1ec8d846795c6cf82dbd699e94eda10090e75c45",
+      "DEBY_LOD2_5284457-photo-roof.ect": "fb3ae3be8e4deaa16b5fc82a1ec8d846795c6cf82dbd699e94eda10090e75c45",
+      "DEBY_LOD2_5284457-siemensbau-exterior.ect": "26b546197a3043f9c411bbd03e11e7b40fc552f624672d66ca17952539116e8a",
+      "DEBY_LOD2_5284465-photo-collision.ect": "833558477028dfab69924438f01130b04758eb437065dd97974e34c5815f9442",
+      "DEBY_LOD2_5284465-photo-roof.ect": "5f0427a9c2b9634c6de07be90b4fa91951ff047c53f30138e6e902dde0bd266f",
+      "DEBY_LOD2_5284467-photo-collision.ect": "0d0dbd7c325629cb68c8a05f0b69caea2c203e961e2c07772e6f682808304a7c",
+      "DEBY_LOD2_5284467-photo-roof.ect": "1171eefc0fe7fde0519017eb31c1cf19f33c2cda558e8c016641449a173250cd",
+      "DEBY_LOD2_5284468-grs-exterior.ect": "84cbbec7bfa5c97d18cf3847dee22193398e29461aae55e16677bc98563f1008",
+      "DEBY_LOD2_5284468-photo-collision.ect": "d291735b2efccb9ab916638a693617197afe66e196a7ea8c7f98fc565ca32171",
+      "DEBY_LOD2_5284468-photo-roof.ect": "8d63c2de361b40468c0d66f2bf9b373b2d2b51e8d52fce55419a792499a39055",
+      "DEBY_LOD2_5284469-grs-connector.ect": "e4fa5b143973220727d5caa7fc123074f53f0d7b175cef15a16c7fffe585a8ad",
+      "DEBY_LOD2_5284469-photo-collision.ect": "96bd7008ec8bcab6136e90ced7d09e82ac2272706f17f6ee44e5c8811015dcd7",
+      "DEBY_LOD2_5284469-photo-roof.ect": "96bd7008ec8bcab6136e90ced7d09e82ac2272706f17f6ee44e5c8811015dcd7",
+      "DEBY_LOD2_5284470-grs-connector.ect": "b214979e4c87d346b63a59a3e63ac4346d064282b97498581ecd65c4295697d2",
+      "DEBY_LOD2_5284470-photo-collision.ect": "482748fda8db78f133ede6bb38227fe563ce70df347dac6edc4ee3c2597acc4a",
+      "DEBY_LOD2_5284470-photo-roof.ect": "482748fda8db78f133ede6bb38227fe563ce70df347dac6edc4ee3c2597acc4a",
+      "DEBY_LOD2_5284471-grs-main-exterior.ect": "7cf1d387db6a4dcdf0cc20e14535a74a881b861851d42b372f06c37e9362329a",
+      "DEBY_LOD2_5284471-photo-collision.ect": "e9e2868cba446880fb821725067fba8938b749106662a4db1a66440b6b4bb044",
+      "DEBY_LOD2_5284471-photo-roof.ect": "e9e2868cba446880fb821725067fba8938b749106662a4db1a66440b6b4bb044",
+      "DEBY_LOD2_5284472-grs-iii-exterior.ect": "d77f7e5e6545de4623ecb6cfb5b38ade41828bf6dbfce787fad922bac092fe0c",
+      "DEBY_LOD2_5284472-photo-collision.ect": "dd1037ec32bc74362f75e829fe1ae4b7511d9479fc0063c5f7f6d6151231a338",
+      "DEBY_LOD2_5284472-photo-roof.ect": "dd1037ec32bc74362f75e829fe1ae4b7511d9479fc0063c5f7f6d6151231a338",
+      "DEBY_LOD2_5284482-photo-collision.ect": "03726b18625f5a14a087c780f5d65e8ecb5ef8f4e2f9798ed0bfc40f39623765",
+      "DEBY_LOD2_5284482-photo-roof.ect": "f645d19ccccc815003f5f1317455301df99a1e1dbeaf8671b50673f63663a294",
+      "DEBY_LOD2_5284483-photo-collision.ect": "15a1e4ef4cac9d3d746518ed18c85d193a3b4e89b83c587811e5648127dcd286",
+      "DEBY_LOD2_5284483-photo-roof.ect": "bc09b3aef1571cc5066c93de1a7db90a9ea94712e6d87ce927ed83974690a983",
+      "DEBY_LOD2_5284484-photo-collision.ect": "26b94fa068777911fbed3d8ea28f068d475d8ebd248c8a20b19a47477bd864d1",
+      "DEBY_LOD2_5284484-photo-roof.ect": "0be3dd7bbf39c8967786fbd9f4a4d2cb15f330ce2937a2778cf7c558f6039db0",
+      "DEBY_LOD2_5284491-photo-collision.ect": "d4e7071752ee7679f6a4cf65ad0d056c20f92678a7917cb8a9aac12594926441",
+      "DEBY_LOD2_5284491-photo-roof.ect": "4c66061d1e6aa31712888052038b19b047b72eca12ffde92212f43e3f9348b5b",
+      "DEBY_LOD2_5284492-photo-collision.ect": "54da11d68b96ebd1548adc62dae7841da2aad6fe9279723d063e5b44a77002f5",
+      "DEBY_LOD2_5284492-photo-roof.ect": "824c4b13eea50a0b6e98295c4bbfa8dbf4434f1449f57f2e7cd01b746b4da6be",
+      "DEBY_LOD2_5284496-photo-collision.ect": "e31981b9bfc5ca6c673d9e8e9dd36cde36eb2692cd94eeb55f42bbeaa3983c82",
+      "DEBY_LOD2_5284496-photo-roof.ect": "e0903523898ba2e205cef02024825a264b45d4c3ee1850047ed1828b82c097a0",
+      "DEBY_LOD2_5284513-photo-collision.ect": "62d375c2299e622176c670e1f55cfb33ffb30c3d8190f743629dddc375049e2b",
+      "DEBY_LOD2_5284513-photo-roof.ect": "86ae332321e52f3c6665847217426b5612a51175dc4925d66689f501e8414dcb",
+      "DEBY_LOD2_5284514-photo-collision.ect": "30d9272fbf7bbbf90a9894f19dcacc08076a856dff4b124ea914f944d5a8b5d0",
+      "DEBY_LOD2_5284514-photo-roof.ect": "0f5bf3e9326a1bf5a9a1669b2baaa82479fc769d90bedd6f474d1b3b4c0ccab9",
+      "DEBY_LOD2_5284515-photo-collision.ect": "3d8feec94a0e09d1db787913e60cc5613f9f5d74ef444da3440261919c3633bd",
+      "DEBY_LOD2_5284515-photo-roof.ect": "4995fdaa7f78580af634811c195f760361f7a695269ca5734779d6ad6cb1cc4c",
+      "DEBY_LOD2_5284516-photo-collision.ect": "0136e8d8e766b9332a8840bfb810d96e6c4d31c3b3cb550e5ccc282132750f60",
+      "DEBY_LOD2_5284516-photo-roof.ect": "5e43bdfdff9fb386b927b274d1beb180255cd0e0bae4436f5e638b15385e4953",
+      "DEBY_LOD2_5284517-photo-collision.ect": "2fdee98c1a6c360c439920ae878ffc9ec6c41fcd1855b89010a543b6983f944c",
+      "DEBY_LOD2_5284517-photo-roof.ect": "108854906a8062c322d19b0d33ddd80c56c3d373af3c24413f5e0dd8066df0eb",
+      "DEBY_LOD2_5284518-photo-collision.ect": "b863f6b29fbba399e5efd8b317ebe9127dc19e8dd696bcd3caf57a340b417e0e",
+      "DEBY_LOD2_5284518-photo-roof.ect": "05ea0557271960df40b02d3319f1985910b26a1f7c440341a69434ff1319f625",
+      "DEBY_LOD2_5284521.ect": "07e4cdaab09a48fd662584d70ad4279d6815b1223e8bf8ce5916ee7fa36c49d9",
+      "DEBY_LOD2_5284523.ect": "16c19908709ac330394cd511fb442a2316eb5e22f212bde835ea70a411d5122d",
+      "DEBY_LOD2_5284526-photo-collision.ect": "f3259279273430d6d88d570647229fd18ee113a01d67733fc653e5297d2a0564",
+      "DEBY_LOD2_5284526-photo-roof.ect": "ab3e38aab9d254bf77b6368f54eb22cb73f356e6f8e4e848cb8d0475e0ec7078",
+      "DEBY_LOD2_5284527-photo-collision.ect": "ce49534fb24c610e02b7669f21329b7122e6b9762e56058291e923d943967183",
+      "DEBY_LOD2_5284527-photo-roof.ect": "50cff741169350c72112f02e253eee69c8c95484266e358e64d600c73337b2d7",
+      "DEBY_LOD2_5284531-photo-collision.ect": "0b9ac5cd32163618650339a35667812a63d2f14ec65261b380cdcae8df93c448",
+      "DEBY_LOD2_5284531-photo-roof.ect": "d41a0f2f1f14d95ee1e914cd59029ee258968c053dd9dcf949f0d453136555f2",
+      "DEBY_LOD2_5284532-photo-collision.ect": "64c6a3e53545de3f644d8181c276b019c5fbffb5bdb1ec24634919f0c9ec4baf",
+      "DEBY_LOD2_5284532-photo-roof.ect": "a8fae97c32aafe4e84374a63aed2ae2f2f55785f3ebf8996925115e9c99b789b",
+      "DEBY_LOD2_5284533-lmu-east.ect": "58785d76c54898bf68044394983155a9c7267a35d52b3885c7f8603c572909cd",
+      "DEBY_LOD2_5284533-photo-roof.ect": "4fb866aba5edfaf726d279dbb754dfc5264662a1f6d095442e93b4d86e32a92f",
+      "DEBY_LOD2_5323119-photo-roof.ect": "0ea1910e18770598333c88ab143db16a9138d4f49563dc0afe53de9a0a89dd50",
+      "DEBY_LOD2_5323119-physics-ii.ect": "9fc998fae6004086f1aff550d1f074e69a90b12f8d3a9f3d93c9414f22e71660",
+      "DEBY_LOD2_5323120-photo-roof.ect": "a585bf9468123c29e059faa3e51b91f5bd16a801edb24652af000ff3eec81e5e",
+      "DEBY_LOD2_5323120-wsi-exterior.ect": "b131a05defed7f6d7f11e6679f84926f0d2f023e35b7d9e07ea3494f25d4838e",
+      "DEBY_LOD2_5323121-photo-roof.ect": "8923a519ca07354ac58e848a6a0b05e30ab8e6e43169cee9df033ab1207c9ce4",
+      "DEBY_LOD2_5323121-physics-library.ect": "ed0d53b9bdc1e681ffdda78024750c61f41734ad9adb8739aeb8b6b326a808fa",
+      "DEBY_LOD2_5323135-photo-roof.ect": "9c90c6f5805376412983669a818f147104035983765f1bc69411077ef86e62be",
+      "DEBY_LOD2_5323135-reactor.ect": "94647a189825a02f2a1935f2b3b807d4809e1057b400a6c0e60f7935a2a3dbb5",
+      "DEBY_LOD2_5323136-photo-roof.ect": "86e401958ca6cda58bb4aa2169f87cd3bf583a0619ca3b482cdf9bd870680116",
+      "DEBY_LOD2_5323136-physics-i-exterior.ect": "2e3c50f76d99f546aef6ab835a22c9de589d270bf46f3c5c1b83dc08bc5fd7aa",
+      "DEBY_LOD2_5323143-photo-roof.ect": "7dd80550cc9f3b21429fe5e75ba42b7677ccdd7da462b7c44c9ef86d53d3ea2c",
+      "DEBY_LOD2_5323143-znn-west.ect": "3523b8da8346437ce3881d9735b44c26f6afb02a62c8dddaf0eccc0f86d132aa",
+      "DEBY_LOD2_5323191-photo-collision.ect": "e824426c41abae532cf361b325a7db7056221297a270f3a50b864e059b0a265a",
+      "DEBY_LOD2_5323191-photo-roof.ect": "ec47c676764f4c55ad6a38b0769c8366f48b9ef8aa8a2371df83b2f4e2b244be",
+      "DEBY_LOD2_62017-facade.ect": "917ae5bbcb186dc8e849148f6dd32a09e3563f6d51066e3bca9c1db9e53521ef",
+      "DEBY_LOD2_62020-photo-collision.ect": "e2b9ecd408a772bbf591ea0f4d597c0eebf1be44f69423c0109474b267752d0d",
+      "DEBY_LOD2_62020-photo-roof.ect": "1799c8ae5104e81257aecc03dabbd4f4022ee9e482c048b8d461488cea51074f",
+      "DEBY_LOD2_8486665-photo-roof.ect": "84c4d535cfc8c9017d787d03832fd7c33d2939460467e86d9f0e14686f849a7a",
+      "DEBY_LOD2_8486665-znn-exterior.ect": "63bafd95e115bbfe32bc20d7a16366e13f4fa4dff2429699c14bde9e93c0e730",
+      "DEBY_LOD2_8486666-photo-roof.ect": "697550b731a51be810eda9517a5c8062522229f0258609fc8cef7f331cf4639c",
+      "DEBY_LOD2_8486666-reactor-east.ect": "306bea0ecbcef6184b577c910ec302d544a6999016f66daca6461688db9a530d",
+      "DEBY_LOD2_8486669-photo-collision.ect": "c2fe4282d7824e1d0b42f383f33bfa7376d341fa9912892c46f1545a74775806",
+      "DEBY_LOD2_8486669-photo-roof.ect": "7a4b30dd79ea7e579631fc48e7357f23295d0ed98b86131f03866fc8278e4a4b",
+      "DEBY_LOD2_8486669-west-exterior.ect": "f0c4ba0ec299e18df86074ffecbee943123ee5dda836cf2fc25f868ea7f87565",
+      "DEBY_LOD2_8486675-facade.ect": "b7ae1079ef4419211c5ab769b5655185ac721edcba3f61b8fdeb7c1dbf76e8d4",
+      "DEBY_LOD2_8486677-ias.ect": "186c779282743734b133c452f132491510ee5f34072ad60cdeaea7847df7c8c8",
+      "cala-small-street-trees.ect": "fb03c7422b6e75acf4309b69834514a54086a209115d1c04bfa54870cea471dd",
+      "cala-vegetation-0-0.ect": "2208c54c3ca7a7cacfab1a2564f4a2d130beb44a517c969062e1c7a7be0afc0d",
+      "cos-site-furniture.ect": "0956d6dacf2188d982d0d2aa770178ece8f673d647d6accdb47d15e95c7b568b",
+      "galileo-court-handrails.ect": "967a1cc7a15e2407994dac72d455bcf37ff20d40676f6359fd6b2d03879be259",
+      "galileo-east-ramps.ect": "e7078aee277f260298b9d042db5606af1da2a37b90411530ab98ace82b23535b",
+      "galileo-north-court.ect": "ada3db86653607b022d7939389d8ecef6b9af07b0a004cb4516f2f4384162176",
+      "ground-697900-5349000.ect": "34486370d64a3d1e4cdc563386f45088fafef972b28127c6275134ff4270033a",
+      "ground-697900-5349100.ect": "f03eacdfba8b290fae0498f89a6a741ad8d7ddeae315d805332dd74317f97f44",
+      "ground-697900-5349200.ect": "994b912fb4c257dde40caa3646179848230bf118aaec28fd0051bdb88b5d6152",
+      "ground-697900-5349300.ect": "12e401771f8b6e0ca8fd739437091cad0ea11902d361d17c9df79de11fe2540e",
+      "ground-697900-5349400.ect": "3e35e412b0d306498067735b1d30dc84b08288486e477e789e909b33d767ec71",
+      "ground-697900-5349500.ect": "483c9b3fe4fd3efea2ff766f9ca666002a44c99c4b05ceda5fe88a396917c8ab",
+      "ground-698000-5349000.ect": "52dfb22ba5c608caf01479946f80d3bb39fe944c53585a5acaa1c703c9d879ae",
+      "ground-698000-5349100.ect": "5527347f14b824514cf916647de2acec6680542dbe24643a984de0f15c32c2fa",
+      "ground-698000-5349200.ect": "a00eb5c85f1845a78d6970df370003374629aa76e63ad1b9629c678d8570e7a2",
+      "ground-698000-5349300.ect": "2c7c8d2421644459b5cf9f5f99c1834926a188c8dd3460815ba8ba9593cf149c",
+      "ground-698000-5349400.ect": "35c0a8f524f4a9dee64e5c516a37c3dab2aca4d4e771f9f94c5cb8ba8ba7e620",
+      "ground-698000-5349500.ect": "642dc35540f5febaa1bb9ecb2f496a0b906477c50be51cfcf91bcd5c997ea8df",
+      "ground-698100-5349000.ect": "04fb482958f2c1c2e3e61e0dbdc5ff47c55bf347355b02cffd3f8361a988c91f",
+      "ground-698100-5349100.ect": "eab462e92948096b979a3234fe83713dbaaa340206aea8c2d29b779e446b9ce8",
+      "ground-698100-5349200.ect": "b4664a1ae18ee7930b6271c2591738fdd0e63c7aad096104cb9a917563d4635e",
+      "ground-698100-5349300.ect": "098c63a7a6e00a8a5d2256dd2bacfa9e012ad96cf46304517d25525e1918c8ec",
+      "ground-698100-5349400.ect": "888ed1d12859d1324ca3e36b1617e14070e517969fc7f63117169a1c2a0a2dad",
+      "ground-698100-5349500.ect": "af962918d8320ae7b95f8679cf7898dc529cf8079465da1255fe87e42b12b7d3",
+      "ground-698200-5349000.ect": "09dad76ba5b4a5731d2d284a5c234ce2da9dca7f0236ad9bf0dbb6ffcf93f160",
+      "ground-698200-5349100.ect": "26503faade4cd3fd7f439a1c7bc092698863637058b9fc122d717e50bc19f5ab",
+      "ground-698200-5349200.ect": "1b2ccee6d6192163fc53944dadfe78470909d04069b96c7de2385215e76dd271",
+      "ground-698200-5349300.ect": "4bcd553a6321a026b96147e61184eee0b65ececd931982ec52ac2c7816d51d7d",
+      "ground-698200-5349400.ect": "de0328d480a615c333b5e6d2318a30714e7dee4503b992840b1edc60163080bb",
+      "ground-698200-5349500.ect": "167e48afbcaa50fd6c2dff2915a032031bd48b7cc17fca84ed86e01ba56bf5f7",
+      "ground-698300-5349000.ect": "77224319eeda2ff3b03a1422a0c8e990005988faf46ddc08cf99a9ba203666e4",
+      "ground-698300-5349100.ect": "cacb9c48da320f340c26f648e31b21b159a72a23599557af28e45e4398484990",
+      "ground-698300-5349200.ect": "768004a38832fbbd0b83e5b7343b0da54ecc846ddfaeef2ec50133f4eb56f311",
+      "ground-698300-5349300.ect": "8092b71a04a8b0aa1b73754a60409a1d691813f95cd1cc1761d9516efccce45d",
+      "ground-698300-5349400.ect": "b75c22604837d660ed6f1534871079f63e373b0e26d2030d7bd0ee3ab3b669ea",
+      "ground-698300-5349500.ect": "aaabd0f530e0a5ac59de2b0b0b605d4d7febf55d55bcedc5402bde3d5c5d70ed",
+      "ground-698400-5349000.ect": "6dbd1af6d778da7adb390923ad3f7eccc5a9617666b8e06681a07c6601f2f118",
+      "ground-698400-5349100.ect": "16b803fecd007d1394d72b65e829cd1f90aa7305660ff4c4279e51370ff14c08",
+      "ground-698400-5349200.ect": "88c5a27951b1344edca90a9c120e4d008dfdba2a6d618cab49e05a16f74b68b7",
+      "ground-698400-5349300.ect": "7f5ee2c4508e4e5cc39248de9d13465b1b520bef7ebbc585e2f8f8f0eaa620da",
+      "ground-698400-5349400.ect": "c9429af4bdcda9726be2016b38b98a9489dbda67a894f6d348bf1a2ca51234e3",
+      "ground-698400-5349500.ect": "8c8d0878b7d071cf35c20185393080910deb5a3b86b8dd6cbb4b77936b3b40f1",
+      "grs-courtyard-edging.ect": "b829298eb52e24b1dec54a7cb9371da0cff5472f2282d5a292aa696ce824a9aa",
+      "laboratory-site-ground-698550-5349520.ect": "733b07d77ed5d9f18c0a4e92649937a47d99f1aecc7a21983dc78eab4b62220a",
+      "laboratory-site-ground-698550-5349540.ect": "2d439d11461dddebe25d0fd80a6808edcca574e582d9a393a968b68cd30cbd22",
+      "laboratory-site-ground-698550-5349560.ect": "9f2e2e33cc63de18ee0bca8a0814d187695cceb07616322b3fd6eec4294f46ef",
+      "laboratory-site-ground-698570-5349520.ect": "407d259fce33087a66583882d6d27b893a56a248b5be07fce627ca5c2be079ea",
+      "laboratory-site-ground-698570-5349540.ect": "9889ce6b0a4ab6f54adcde7baccc7861c76e7504d963328c9d20e41f89ddc8be",
+      "laboratory-site-ground-698570-5349560.ect": "cc168238e08f1f1c9659ec6670e4684000c2eb33347078141017f3c2a7d2aff5",
+      "laboratory-site-railing.ect": "3ade6c0573d55f1849526ca0158f4451709ca8ea367684b8b04972e3b57897b1",
+      "laboratory-site-vegetation-0-0.ect": "5bcf6a7ed0df3cb57e5c342cd49190d37b214aa96e6b847480c273a4cc570202",
+      "lmu-courtyard-vegetation-0-0.ect": "a53c2ab509001c98f4f3c72641e7efcb73b54684a82191c3335a6d830079fdf9",
+      "lmu-east-vegetation-0-0.ect": "97bee992b824a3b5bfecf3db61e27202a618432197fd36c7ff8e2bc16ec29eed",
+      "p1-garage-ground.ect": "e5c50b552d4c075463402cfb9c6d08fcd73f042e12f38c75e9e0769942ece5ef",
+      "p1-utility-ground.ect": "e48756f7412e6e6e052cb1fa4fcbf782dfa7a15bb8ae93112593210080935146",
+      "physics-cala-ground-200--460.ect": "536e28d77c7ac9f781e450782387863d9593f480922d52596a6d52fb9d9466e0",
+      "physics-cala-ground-200--480.ect": "03b6b160b41951e91776351e6348f6c60abe2a1d5d1069f1f48b8d6ddd4918a9",
+      "physics-cala-ground-200--500.ect": "f55ff07d1ed7f7b959095e5ded1808257e743afdb6120e5d0d5c011228c86c57",
+      "physics-cala-ground-220--460.ect": "71078bce730b8da62b1f2f585e9502c533f2700bd5e5c6ac71d6dadeb4c277cb",
+      "physics-cala-ground-220--480.ect": "b3138830b9b39e8ca1dcda864d5dc28febc4030451166c60911b655e48e9dff6",
+      "physics-cala-ground-220--500.ect": "e1d79708d249f8c62687055a9da406a7b8774687cb7e87c9f2853b9689018ea3",
+      "physics-cala-ground-220--520.ect": "58f584e56f11ed4949227b3606dfd50f85a1db5f775dde497fae114d801cf545",
+      "physics-cala-ground-240--460.ect": "055e1b87f27ffefbec17028b16515ca841ab8451f63b643c8a9906a2554b3057",
+      "physics-cala-ground-240--480.ect": "b98b2c66d005fe939d032b3129d0f82c07fa1977f936baa46064b7455a08117f",
+      "physics-cala-ground-240--500.ect": "8a3f8ad28dcab439371d4b96f28c590b687fb457675e8f91aac36ceb5207a70c",
+      "physics-cala-ground-240--520.ect": "5878a661eaeb103a4e7ca1826048118a0ca7af5d2af3fc8f6a3ca3a166c3e783",
+      "physics-cala-ground-260--460.ect": "369f6aaf48e4f7428481eb00f264cee04e4f42105fec0587d99315fe45a05c12",
+      "physics-cala-ground-260--480.ect": "1bf15b6486ce7643cb3d3cfa5ad8aa43355c23fd6c18d2ecc51c07f5207ba7b4",
+      "physics-cala-ground-260--500.ect": "7d67db95172afcd6a4f8c176cf27598f2f28d15f3d6bf3aed97572412913dc3e",
+      "physics-cala-ground-260--520.ect": "7a3e1956f91f160426fa8231376c6d91575811dcaeb7c44efab152deb9b20373",
+      "physics-cala-ground-280--460.ect": "56d2afc4ccb28618c9e49c27a8476144128dd4384960fa437c3c1b378dec1afe",
+      "physics-cala-ground-280--480.ect": "9ede47dbc8c92461094260ffa55dccb6415cd431a20598d87d2b485a93def243",
+      "physics-cala-ground-280--500.ect": "26fe9366ca35285623db5d216508f4553cd77dcc0de5a87ebab2705204e80277",
+      "physics-container-ground.ect": "23d00e46d17bf4f55ea0211cfc1f5e5217aca2a624fa4554e3fc80867e450909",
+      "physics-ground-698500-5349320.ect": "c92b86ff9598ef07896c9a1e99dbfc5ee6e33d29cdf00ea9f2911061caf538c3",
+      "physics-ground-698500-5349360.ect": "0ec03ac099844c6d430b3c6beaf73318ff75ca799ff6aa0a523778fa7a5c2ea6",
+      "physics-ground-698500-5349400.ect": "7a8f4c80ccefc737332157d59b2cbd258fc5b53ca5d07d841bda2442266c1b9d",
+      "physics-ground-698500-5349440.ect": "97752e07e555e66c4c4c4df59481b3456f917e56227cd33a7fa9d94a942b7318",
+      "physics-ground-698500-5349480.ect": "2e847de720ab7d56d8648d670b3ea7f90e93f5acb71bb6ef14166318b2ad5e34",
+      "physics-ground-698540-5349320.ect": "4b81184fedcf6a77409e8484e23e39aa0b47bdc88b6be02a76c6cb1664ae21ee",
+      "physics-ground-698540-5349360.ect": "1bf8057e2efced089dfc0d6187e5b91d66f1533bd5ee1e7cd5d50db19dbd201d",
+      "physics-ground-698540-5349400.ect": "8470eaab579feee8c7c86ff6138bed45a34fedd5bee2e9c86df9f1256d13dde9",
+      "physics-ground-698540-5349440.ect": "4c685b7e1fd2364d361261b6b7b173bc52eb3ae8959afe1041587bb9d93bccc1",
+      "physics-ground-698540-5349480.ect": "77aadc8b21d4e9ac1b3088848e4e426708bae69b47359ede205838425d2509d2",
+      "physics-ground-698580-5349320.ect": "d40783c2eb77fde211cd7f85727fc58c2068d6b307c3f5637420bd42d432b9dd",
+      "physics-ground-698580-5349360.ect": "a1508a38ca90af602c9220a33a7eea318bad6861cbd272a627f60cfbc4cbd4f3",
+      "physics-ground-698580-5349400.ect": "3e7355a2f02e0334647ef271dff909183fa015011566b4b9c1b06bb8fffe330d",
+      "physics-ground-698580-5349440.ect": "02295cf5af1580f16969a0f7376f0af422ef071d2c287f5d94d7bba7b8d84ae7",
+      "physics-ground-698580-5349480.ect": "555d186f34f846f65192885ee2939d7376459ea864440586aff065100e52e44b",
+      "physics-ground-698620-5349320.ect": "b969624c451ad5acdb51c34f7e6a22f1eec72d446c139134bf503018070769f9",
+      "physics-ground-698620-5349360.ect": "19e16249ffa3f9e280e4f295fc5942ff3cffa89de9b7cf3132dfc6fa801a8bd4",
+      "physics-ground-698620-5349400.ect": "59a7c5777a28cd59325d0e34291707423b1c336a390fab9d23a2396d4a4b2998",
+      "physics-ground-698620-5349440.ect": "b4ef502c9aed8c774e9eb2b49846259d74d46c2aa38f0c175231f216a188d29b",
+      "physics-ground-698620-5349480.ect": "42762f9b26a20dd04036fe73f60ebeb492d301641fd2127ac8d84bc6f57fd34a",
+      "physics-ground-698660-5349320.ect": "818435960a5a450693b8c8c33b2c6463295ce8e0fea203c0ac2db70128afdacc",
+      "physics-ground-698660-5349360.ect": "a2567030578a4dc62b748d19aba20672bbc5da3c12d0b88c70296c18e288371d",
+      "physics-ground-698660-5349400.ect": "75fac1e8d0d7c85f5ea58adb5ae91b6a79bb1486756893f0b433335a87dc44fe",
+      "physics-ground-698660-5349440.ect": "e324bf7b1ee44bd2d859d471b4c7ab0c24d35dd91ba0a2e6e4d18432758e7fad",
+      "physics-ground-698660-5349480.ect": "01d726c978f80a01c9a192d2fe0b9a118d183c881da25627024eaebcae3aa677",
+      "physics-ii-courtyard-planting.ect": "bf2e9e573a0016194d63fc0a7812f4b7da1b339f38a43ea4a2c6b09aa67164ad",
+      "physics-ii-ground-698440-5349600.ect": "028488984e4cacba24db901f556292565ed868863a3402cf9974d206827b4765",
+      "physics-ii-ground-698460-5349600.ect": "099b51a4864019aa528b85bce6b9f9f746bf050ff37c8d27507de9bc79f158c9",
+      "physics-ii-ground-698460-5349620.ect": "e3b77c764d7b8fbf787ac4657ae61c2c482e2442af4d27d4c7cbac3ea9eb8dab",
+      "physics-ii-ground-698480-5349600.ect": "8a7bfdf7014242b246ac692ccd0b87a0e6d9e648842a102b6d0db3b929b5e35a",
+      "physics-ii-ground-698480-5349620.ect": "b703c1523cabd27c3215ebe0368631eea045f7764d09c855f49da64bb1c2c257",
+      "physics-ii-ground-698480-5349640.ect": "ee539adcfb046d4fc47db6177fc632e5a0f5d950f06b252513ae280912c31068",
+      "physics-ii-ground-698500-5349520.ect": "75813614c9a54da439a07caaeccb51b268c58b9b2b8f13a0ec4315fbe88a1f1b",
+      "physics-ii-ground-698500-5349540.ect": "8e214907b6b0d6728ea7e84b3f7a58cf6bdba16835698d88738174509877c234",
+      "physics-ii-ground-698500-5349560.ect": "1ff0b9f2ecede092db0c4dc2c636bd39d87a70d88b3bc50504c475466e1ca433",
+      "physics-ii-ground-698500-5349580.ect": "2a0ada6e900e49ca2fd2289b652ccbedf14926b4d63b7cb63c98a75d11b82568",
+      "physics-ii-ground-698500-5349600.ect": "cf7335c4a9019afa7d4f3122e703d41f2fa4db91cef39c27479008c4e4736683",
+      "physics-ii-ground-698500-5349620.ect": "9f8481e66754616c943318a318c04589e7face3a4c47c8dae932b95e0136ea8e",
+      "physics-ii-ground-698500-5349640.ect": "b826631ec8a3b0eccc929c8bc0d83065494ab7d672f271adfa9d38ab83213c1b",
+      "physics-ii-ground-698520-5349520.ect": "8199361ed00c5ba016f4720db5e116a4958301d2ee34f3c6b87f5f3232f8fe72",
+      "physics-ii-ground-698520-5349540.ect": "afc15f41df65df54d7b82492d372b95ac1cef01e8c30303dc2273d8446466033",
+      "physics-ii-ground-698520-5349560.ect": "bb5e35d3c798f4fff2eb7092094704e34d67beddf80a7112b0f4b1abf4240d5b",
+      "physics-ii-ground-698520-5349580.ect": "69e2e6512b0168c48d38e7708f105a3a031b53d1f0ba859e58948e7e38ac5061",
+      "physics-ii-ground-698520-5349600.ect": "f64cfcc7907a1e08404bb0fc54708b93c113b5da1b4801873434c5c99be1bc01",
+      "physics-ii-ground-698520-5349620.ect": "2e2b8b51a0192bc953507e75aa919269ef45cf7d1a12cfa56f8da4cec8f62257",
+      "physics-ii-ground-698520-5349640.ect": "468215e22e9ffe2dbc4afe719b7cc0ca672a446abf04b28d1aab4044174cf68c",
+      "physics-ii-ground-698540-5349500.ect": "369be8e40562c100eafd0d40ea71d03b6c91703b57ae84179a21e05f7ab61d64",
+      "physics-ii-ground-698540-5349520.ect": "1d8addb8b56645ec5c87057a29f2ca71fdc1862378383286a5c9ca5608d03b0c",
+      "physics-ii-ground-698540-5349540.ect": "0dd68cf45d054689563f6e12ea7ab895b2fdbc3bc1788e931d597802c3d53658",
+      "physics-ii-ground-698540-5349560.ect": "f899c7994df92d7741181e468215cc9c48438bed6301d0ca9ce55fe0487b51b1",
+      "physics-ii-ground-698540-5349580.ect": "bf54bdd6f41d055e68dca3bcd736543d54c3b559d79980c21eaadf10c3bde9f5",
+      "physics-ii-ground-698540-5349600.ect": "a1e162a022f9491129637fab5d912b5300754eb4660b7f6492e61899c55d90dd",
+      "physics-ii-ground-698560-5349520.ect": "f5c1bfbf80f4b453c49915285749279809a9e324baa6501209e2a8b36ee196ad",
+      "physics-ii-ground-698560-5349540.ect": "d1bbfb16f205189fd280fda206a429d6290bd1dd13a039005e4150ceca9c4997",
+      "physics-ii-ground-698560-5349560.ect": "2823392d82be18206266782404a70aa52ce862adfbd1a5c8ed49c7e061432da3",
+      "physics-ii-ground-698560-5349580.ect": "d2ab5db93b17d8d83606f07c39cdd32da60e711842c069a5a654163b006202d5",
+      "physics-ii-ground-698560-5349600.ect": "60d4b0d3202e247ba77c4fbc4cce9d88c20ca1ca81f4ae27e0729dafb8d4adc1",
+      "physics-ii-ground-698580-5349580.ect": "c05e770671ef4a8cc795a71ea2d47a38fb0dd492c6996254f26d5a7792d66949",
+      "physics-ii-ground-698580-5349600.ect": "c607e16d1ff47298670d5ee2e8cbd0f423959c0eadbf459af7b50de35825ca42",
+      "physics-ii-ground-698600-5349580.ect": "94942a665f4e20d6c16e454d31c36df79526add7f827aa7b2ef338d7e86bfc85",
+      "physics-ii-ground-698600-5349600.ect": "63d92f2191f9ca8c1ff6626d6712547c10a292a8155ef42c337b5565bb1e27db",
+      "physics-ii-vegetation-0-0.ect": "eac77025f998f5e71ad554535e98570f36509382a4589e7e0f609dbcecee03f3",
+      "physics-ii-vegetation-0-1.ect": "cc35a310672b7b0f9466afb3337734d76de777ebe68936130e5d1c51f6897ee8",
+      "physics-ii-vegetation-1-0.ect": "7ef657fd4c34fce7805b76ce064bf4fc912c0621731cd9d5f85b34de8270b4ef",
+      "physics-ii-vegetation-1-1.ect": "29406d7d9ffb469ff87435128426f101c4c7baf3cb6ae07b88d65781f0970700",
+      "physics-library-ground.ect": "5855e34340dab51e898bae9153baac0ed903cbbe7d195ab218924dfc97dfa531",
+      "physics-lmu-courtyard-ground-200--420.ect": "b576229afd99dc9003dcf63ea3bf323c44d76b969a34efbcbf9692a7753e603c",
+      "physics-lmu-courtyard-ground-200--440.ect": "e2227c4cd0851234e7e97db8c6aeebb12de196331dabc224274abced202fa888",
+      "physics-lmu-courtyard-ground-220--420.ect": "e80e9589e2127f71f609b364636337e72517114d1758ed8171a138bb1153a649",
+      "physics-lmu-courtyard-ground-220--440.ect": "0a71a5f97b48ad22f46268b711f87b012a9d86395eecdb5017d31091ab1b575f",
+      "physics-lmu-east-ground-260--420.ect": "00334b23d6b88f43b4a264105a09c44d02780e4b1900487fc30926088683e304",
+      "physics-lmu-east-ground-260--440.ect": "ea6d998bf3971f7730505dd64ba0f2ca6c4c0d07b769d565db665a9bbf49882c",
+      "physics-lmu-east-ground-260--460.ect": "42d6c161db5e21340f08d00a64c42dc8cb11eef2f7e99cb0c380c8da622e464c",
+      "physics-lmu-east-ground-280--420.ect": "88ce2d0922fb76b29c4f30e311376153a89bdba05ecab22b9a9826a2d9fda3c9",
+      "physics-lmu-east-ground-280--440.ect": "1bbb5a3642b182be64cfc071f391968bf5f70bf14b16db3c06c0455559d11636",
+      "physics-lmu-east-ground-280--460.ect": "c55ae5ff27d5fc59dcf9117b3bd44c9c0f9c57b1213246e088da790c944b3002",
+      "physics-lmu-east-ground-300--440.ect": "a21796b3979970598a5aaa9d784ac7236cb770eeb37581dea4ca90b74f89c610",
+      "physics-lmu-east-ground-300--460.ect": "cc17d59f4fae244094e1172a85cf79fac64175d3c83bbac01e97dd3d25f886f5",
+      "physics-lmu-ground-160--400.ect": "09752d33bbfdb2a0ccf844b5056e97fb51a2719dd0e8adf51c02e2d055c70479",
+      "physics-lmu-ground-160--420.ect": "cf03fbafdef72167c4e2f475ce6400b6f8f15b09e0c70f762591f531f9d9e61f",
+      "physics-lmu-ground-160--440.ect": "a4d87dd753ce5ce469ceec71a8331e9534fb26770c1341d551bd7a52f2475770",
+      "physics-lmu-ground-160--460.ect": "b6d5cb7a4be72e90c51a66c8187811c1f4f2c896fa705b39da568bfd43cf2645",
+      "physics-lmu-ground-180--400.ect": "586c5890deeb68e05864fc7063e874882085ea65e7b2788500300bc876bb754f",
+      "physics-lmu-ground-180--420.ect": "a4112be02aa8e956afc380c2052788686a96bc02e68b29032c96ba1aa85bff40",
+      "physics-lmu-ground-180--440.ect": "e1c770513c505e2faac8868dc83c46751c0eca7e61da85215ad8d6ec0f0e008e",
+      "physics-lmu-ground-180--460.ect": "25daa32523c53f209b1de11f94fa297a6a2e1d0f6e3365476b7fb107c1d9d2e6",
+      "physics-lmu-ground-180--480.ect": "79a111459dfb3a21bc756c10c640d5895222ec686dfe353873ffb5954e48fe14",
+      "physics-lmu-ground-200--400.ect": "0707df376f486ddebc25ba8e83396ee5ca5e2c5c9295dfa22846a1f3e589c3bb",
+      "physics-lmu-ground-200--420.ect": "3e42b06c371d940e70fe68481f79995deaee894850c22b43edce45068523d7a5",
+      "physics-lmu-ground-200--440.ect": "fda9ecd9c6d7378c691c5878d2b1cf20991868e6540a9d3b751752b358f9f8d5",
+      "physics-lmu-ground-200--460.ect": "f31658889feacf460c91d6c3b35706f828eb60e646806d162b2bb800b7d8ac5f",
+      "physics-lmu-ground-200--480.ect": "daa644cd4e67e0450868b3525c78ad0f38f6986f7bd7949623014499c6af1fd2",
+      "physics-lmu-ground-220--400.ect": "4ebceb1313feaa8d15bf626e2e27c9f1fa458052287de4730df87a7032e3bff5",
+      "physics-lmu-ground-220--420.ect": "a59d6961bd9c16f53254e44a3b773f11a9a260e8b966bf8bc21e10471b86ae2c",
+      "physics-lmu-ground-220--440.ect": "042a0e371e5211c2cebed27f1eea804980a5ca3e65d1f6a6eded81ce18ef1886",
+      "physics-lmu-ground-220--460.ect": "c8c0ad2a1570fb7ba185ce16250cadf9ed002663571a6aa229533f6ad5ca62f5",
+      "physics-lmu-ground-240--400.ect": "06dab3d7ca4f2d79ecae77048c4bb0203387d9b715257c498eaea615c6b95266",
+      "physics-lmu-ground-240--420.ect": "50c94a81c1b186f3538bab7c6b61438288704ec3269374af5f62aa0445461529",
+      "physics-lmu-ground-240--440.ect": "8ffe8e62abdc24d74ed352286498332ae47813c44d33f9d55389ffd8a7757d13",
+      "physics-lmu-ground-240--460.ect": "046563f35006abb70c8f0ab847cdba8e6b5d99cbad0c8c1f385554e69658bfdd",
+      "physics-lmu-ground-260--420.ect": "4b7cc3debde63f507fcdfff75c103dc39af7c95697906142c950a071b192fc07",
+      "physics-lmu-ground-260--440.ect": "791d04458b24eecb2e48727f93e803e4e13207d4f4ff791b104f4468a33fedb6",
+      "physics-lmu-ground-260--460.ect": "ec3cc49da7554e6da4cf2309adc722fd00235fe45843c5b664e24d259d710f87",
+      "physics-new-laboratory-ground.ect": "1cd3b1191a1715b935d3b8c44a2dffcb8e7672970e8774faa50d2847327547ec",
+      "physics-vegetation-0-0.ect": "632b6a335bf649bf5c6b1d0d99a3d98432dc2281abc1a67c5d4189a0e6b4c906",
+      "physics-vegetation-0-1.ect": "50f22b7b8963e635c73ade20b653ebe13f3e01e457984421c66a23d024fa63ee",
+      "physics-vegetation-1-0.ect": "7a2f71e4393a88ae95d2303466566ba4ffecf61a857b3d3f123ebf7908e0ac71",
+      "physics-vegetation-1-1.ect": "e94fab23dd370d910e4f0f65068d99c30a92fe8f97bf2de8e8b46db552941cde",
+      "physics-wsi-ground-698440-5349700.ect": "3b2ab958af6c35802efc7cad6cd5bf34ac7403c1016fe3d955a89735fc848b19",
+      "physics-wsi-ground-698440-5349720.ect": "8df5d44b4e487ad60b3c41e3d694c19d4275c53d8f663f43f3d377678d75b181",
+      "physics-wsi-ground-698460-5349700.ect": "18a6f83e9c5610b56af2330d7f690187cfb067f7cbb89cdaefafbeb152cb432f",
+      "physics-wsi-ground-698460-5349720.ect": "08d73616cfe069ebf0b1ed23c92db1a14ab938ece4289ebb84be4d4bb671127e",
+      "physics-wsi-ground-698480-5349640.ect": "f3fe3354ee4b32d724f6d6fed0f0702612f9e6c07e0622938b3a254d2f4b0864",
+      "physics-wsi-ground-698480-5349660.ect": "8ec40c9cccc450602c7f50b2cc67f0a321fd3d4882ca026c2bd4baa2aa577218",
+      "physics-wsi-ground-698480-5349680.ect": "47fa119524875491ada6a4c26571343068b3a27ebd05adfe9ba7fceaadb92a8a",
+      "physics-wsi-ground-698480-5349700.ect": "820c44ff532d4dfde10511d3cb91ad69035da00260c6da47ce326093d78c71a6",
+      "physics-wsi-ground-698480-5349720.ect": "b4312ecef81b227cde960845c2bef427e62e41fb81582ca3bb130f56af4911ae",
+      "physics-wsi-ground-698500-5349600.ect": "93028413de218105a907900fd9ff5643238cd7b63b22e8be0233dfdf41aec85f",
+      "physics-wsi-ground-698500-5349620.ect": "7362d7aaec9294673cabf88c7f4ce6d7b38b1798f56aede735515014f11292a0",
+      "physics-wsi-ground-698500-5349640.ect": "9e734ceb3894740f383f862870a423221cc05355853c6abaff85549f07cf535f",
+      "physics-wsi-ground-698500-5349660.ect": "d94b89aa6daf07d5aa9fa98f076ec932a732b8d595f6df0ae34a9b7f54249834",
+      "physics-wsi-ground-698500-5349680.ect": "24384412677fca6f190d95f57fc28a583501416f321fb02cbea177bde6f0271e",
+      "physics-wsi-ground-698500-5349700.ect": "dbff33d4a9c5f9b9cf58f563247d1524db18d5d245aa57ff53613a38165c8b19",
+      "physics-wsi-ground-698520-5349600.ect": "4f61d29262842951c1957908a2fdbb1986ddafad245ac72785ab2313a4348fc7",
+      "physics-wsi-ground-698520-5349620.ect": "27e274ca2ed4a962b66cabf1212c183ef933b23103218bd6bd49ce7af3d3244e",
+      "physics-wsi-ground-698520-5349640.ect": "76500b513e1fda6d8df4dee3815dec02287d35c7ae497a221c64ea3dccbc7aae",
+      "physics-wsi-ground-698520-5349660.ect": "b8a3fda181992ee0bc644dc50cc2c59f34b2af2eef4d6b8b810a45334f5472cb",
+      "physics-wsi-ground-698520-5349680.ect": "bd11eef5335289b4b63397d1b441ee3e1444866377c17c434b02df89c0228e12",
+      "physics-wsi-ground-698520-5349700.ect": "94689888f241fd7f6f7c982bb92a306e1d17a73f8d42b97c32658f9f3f1fec8c",
+      "physics-wsi-ground-698540-5349600.ect": "94b951caf095b9929287e7a22b0f63e4e168b0a55eb5da4431f147cccfdecdee",
+      "physics-wsi-ground-698540-5349620.ect": "270e126f53a66f5b958a36e36c0f6cd7d0f3c428cd1e21ab2c02446306fac87e",
+      "physics-wsi-ground-698540-5349640.ect": "8e052ff92f467152d1cedd88b8faa47207b85121fa47697e68fffd2c175bd9e9",
+      "physics-wsi-ground-698540-5349660.ect": "d7b6cc7c4bae5a55994517708f504a09b34591f2b37270bc9909f80b96a3c824",
+      "physics-wsi-ground-698540-5349680.ect": "2e9402b599c2e3836db134d579644dc74673f31b15607003b6098f1cfb8ca3cc",
+      "physics-wsi-ground-698540-5349700.ect": "8d1bccbdeb3c71944948a69d324f9adf7d4fd532c48ae1b20bf6bc233d735c9e",
+      "physics-wsi-ground-698560-5349600.ect": "820952e407db67ffb90438ac84ddf487a90b0bfc3f7dde91475435baccfda0e6",
+      "physics-wsi-ground-698560-5349620.ect": "88cdefc3849a9fdaa0f09d4df6ab361cf8204228be7a6821eda79536db04caac",
+      "physics-wsi-ground-698560-5349640.ect": "2d34b8f1154bac50e72158479ace8f753b6e762c2b1bf33595b108b283e5570e",
+      "physics-wsi-ground-698560-5349660.ect": "8c1e6bb3f90473432dcaff0448bd5c5d78146d5eb47f046723f6a0144c555675",
+      "physics-wsi-ground-698560-5349680.ect": "cf1cb37b2ed947cf3a711f8bf726ed48f953516834e6f4285841786c7ac12d29",
+      "physics-wsi-ground-698560-5349700.ect": "8392cbc159119f9d2c1bab8cda592ebe6c7d9d6692fe29956b00ee76ed3d6a22",
+      "physics-wsi-ground-698580-5349600.ect": "07f618c86931a9f804df00de5bc5f6ac949c25ca83439096566c709a199187be",
+      "physics-wsi-ground-698580-5349620.ect": "b6c642cdb3ad1fb6a647f6c87e77da275a975a0d8104beb5a20d9263330e4cd0",
+      "physics-wsi-ground-698580-5349640.ect": "1bde34b5918c0370bf95e4c7094e059f0577a2976d065f7e9149f32fe867b70b",
+      "physics-wsi-ground-698580-5349660.ect": "02a75db6679926e76dd8248ddb2704d402b028b9aba674bb50b1353743c65bd2",
+      "physics-wsi-ground-698580-5349680.ect": "4c70a56ccb60f8a63f79979e5248c61cbd7cb5b4a5d028cff32aa72095f9cf61",
+      "physics-wsi-ground-698580-5349700.ect": "58685d7399dbd7e74691cf305aaef3e7b4c530ceef3ef53c1cc4dd8f9a362e39",
+      "physics-wsi-ground-698600-5349620.ect": "4b9cc339ce7bfdb390936feb1dc80f24ca3717732cc3d1c6b2bacd7681b93ab7",
+      "physics-wsi-ground-698600-5349640.ect": "a2a384460a51d3fb22cc2299751c14c374e7fd8cd4c0f34a1060085d84e4cd2b",
+      "physics-wsi-ground-698600-5349660.ect": "9f3f8534e7e2e57210d14f02613afbcfcf04c9c3672e9966b63af40d1c7564e9",
+      "physics-wsi-ground-698600-5349680.ect": "27c39b97e90344ed66cf7939303a58d84cffb5c79d31198ee3a1116c23d0784f",
+      "physics-wsi-ground-698600-5349700.ect": "cde23ddefd0fd5b214a297bf19f905610bb1aa4ba9b78505efb7991837414bff",
+      "physics-wsi-ground-698620-5349680.ect": "87222d4122ba8d4a2bf5df299709ee6890707438fa610c07abcde19357003a25",
+      "physics-wsi-ground-698620-5349700.ect": "b3aa19ca57cd5622666d8ef7d1ce97215a776e99a94e82e635431e0538635435",
+      "physics-znn-ground-698580-5349580.ect": "1a592afdbf6678f01d684ee739c238f37a87974136404b53b85cf384c260bd5c",
+      "physics-znn-ground-698580-5349600.ect": "52af8b447da76d0e8727f53eb34808245d6734ef0ded52b0eff399bf6bb0a199",
+      "physics-znn-ground-698580-5349620.ect": "fda20634bf8d882b663698853388501f10d6625ea83ee8a062df132d18b2ac16",
+      "physics-znn-ground-698600-5349560.ect": "13e2dc36b2c21f72deebb2de1c270097e8753fd2d8a5fde8ae50386beb6380fb",
+      "physics-znn-ground-698600-5349580.ect": "048d4e3d857817b341da7330e91d39b146ae155d9c2e735fbd9507aa7ab994c5",
+      "physics-znn-ground-698600-5349600.ect": "bd51991b9115dba47dcc50e7dfabef3d5047588f2337c2d147f1412b7b52d73f",
+      "physics-znn-ground-698600-5349620.ect": "1dcc073e4abd97b1f7de2ef86ef11c55e692b6f8112fe95fd52b511aaf3018c7",
+      "physics-znn-ground-698600-5349640.ect": "4b774e418bf456a6d06cf4b90e79c355fa9dd6d1343ddca9c3ff733aa313c520",
+      "physics-znn-ground-698620-5349560.ect": "cf48295a21fbf400ac98f393b1ea184acf9f71ed366a709f7d91a311db95fe5e",
+      "physics-znn-ground-698620-5349580.ect": "11b382b4c59d81eec0416c0e65ec894c745d990657c1fc5d78a6178107eef2ff",
+      "physics-znn-ground-698620-5349600.ect": "cbbaf14ee481b962bc105850ea4ad7b5cdbe7b581e5e918e88bc8e5bced50d50",
+      "physics-znn-ground-698620-5349620.ect": "173c70fe629ef18bbc2a56da7601460f7b6960376960f7346ac86be14fa7bcb6",
+      "physics-znn-ground-698620-5349640.ect": "5a0deac6d6f1028a5d698ee315eaaa15dec3a6f04db98f825b64296daaae3686",
+      "physics-znn-ground-698640-5349580.ect": "0adbbe2928a3cfa8dd76b9abf65929c7e1f7e5f35c079f699c90bb29649d7011",
+      "physics-znn-ground-698640-5349600.ect": "f7a64e6915c168c1d5ab0f6e2b28952aaaeedeb27b37fe3489a7bf0eef8276de",
+      "physics-znn-ground-698640-5349620.ect": "b79ed249eaf64b70c79394b869eebd709374bf48c99b3aae70a11a3313dc554d",
+      "physics-znn-ground-698640-5349640.ect": "5c2206fdd26ffc1fee90ec0ce05436f9f4b7dd5b57ad9bb4d0c9e51417ef981b",
+      "physics-znn-ground-698660-5349580.ect": "f4c221c013a01b7b9a6118d6cdba520ff004436bbcb602876a90bfd8a1f7d9c0",
+      "physics-znn-ground-698660-5349600.ect": "76ec611ec1e1209743f95d5c62b73cb242de796f411867a5d26d93449abf3129",
+      "physics-znn-west-ground.ect": "fd6a52632f6c941bf226f416cd5fab1161b8c3662995387f0405ddadbe379a8e",
+      "reactor-approach-ground-280--120.ect": "e513b018bbb57d524aa7636fc12249c43d4550e71da3289ef51b0eba8d455d65",
+      "reactor-approach-ground-280--140.ect": "974f8dd24c55d655f8281fe34a7dd4fe25545197560a18936a0c41b737d6883d",
+      "reactor-approach-ground-280--60.ect": "c959e50b992f8a88b4db93f8f767daea956222fae28673c3c2653040f14017d7",
+      "reactor-approach-ground-280--80.ect": "8bb5daa3f3015e6be1c43f1d39e8a4558fec9a61f0430033e30ce17f7c130a42",
+      "reactor-approach-ground-300--120.ect": "0005c29c36d03f39186df95aef612f19d0b34fed4a95f8c8be7045895a3850da",
+      "reactor-approach-ground-300--140.ect": "0d6924c0014e30b82b53b4917dc8af3075a6b3dff654add93d65147fc64eaf8b",
+      "reactor-approach-ground-300--60.ect": "a991452b0fb14113780121073e30deb1908d723522fe9943026ea91d40c6075f",
+      "reactor-approach-ground-300--80.ect": "682475dd0eab0e5b0b90cec3b0223a7d7e34e8bda0b2578f6ecde762606e664c",
+      "reactor-approach-ground-320--120.ect": "9bfd06805b1ea3be3322bfea6e84211e73bc05ee0ad30a024eb96062096ec5a4",
+      "reactor-approach-ground-320--140.ect": "71bdba529388b2e59dd8f7803415982045a49b9d48f6b2bff6a6fee91fff68f3",
+      "reactor-approach-ground-320--40.ect": "afc3d15fe53f7ab3aa099824603a655da94faeed5bd5738cb8a6390cfbb03106",
+      "reactor-approach-ground-320--60.ect": "168b571c15dba1ace1e996c2e8514a8b7dc1dfd6fedecf37de1ab1aba30e7681",
+      "reactor-approach-ground-320--80.ect": "b593e2497af4cff8f42f6f9991d2afcd456604d56a38970d57e8e49514dc10c8",
+      "reactor-approach-ground-340--120.ect": "dcea75e4279af38bd39db40490e89de774b525f8b01bdb95924bf3510a00c374",
+      "reactor-approach-ground-340--140.ect": "f8c96910be7a7c09cc1a39e6889aee743c95595b6385bcb41eeedc7bf49b16d2",
+      "reactor-approach-ground-340--40.ect": "ffff5c7fbdafb2f1252d54a461521de66ebc2bb7ad828d5e1be640facea9c6dc",
+      "reactor-approach-ground-340--60.ect": "d86e00141d0ebf237cde01aa6fd79c5598c9a976988bbeb0ce4942cb3e325c4f",
+      "reactor-approach-ground-360--100.ect": "500f69889a8198d7669d2dbcb091403504e48a8ed7cd99535e5e57072920e464",
+      "reactor-approach-ground-360--120.ect": "b129d9d2b88871e4cff62e7b7024facbf07de307c463010d747791a1306861c4",
+      "reactor-approach-ground-360--140.ect": "924787a5f49833e13c01597e2bc44825b47fd560bdefa1569ab6f699afc25d98",
+      "reactor-approach-ground-360--40.ect": "d42e0c9c21a8133e12851beebdb52500624b81aac779871697cbf48866dddd36",
+      "reactor-approach-ground-360--60.ect": "c6f8015d5e6e1193b65ff3919a7e620ae7a80865e70a3a57ada5f0f945747dcd",
+      "reactor-approach-ground-360--80.ect": "034663dda69971be71a1dc2da6d729a10b7f0207256f48fcf860b51c3e2aa4b3",
+      "reactor-approach-ground-380--100.ect": "a76593a1094c75e948496715a01e4882d9c3cea116f41890a893849f32925a20",
+      "reactor-approach-ground-380--120.ect": "b4b6bd6d883ace6939a7de03c1134c604289ba66992c17007b24027789323a36",
+      "reactor-approach-ground-380--140.ect": "941eb16b670adacb67fd12c4f0e4db41ec8e0d6f993938b3d07ea434de169ab0",
+      "reactor-approach-ground-380--40.ect": "587db23e198ceb001c3bc9f34dac07cff3a205b84af39fd1c72d4f1ea4cd5c6d",
+      "reactor-approach-ground-380--60.ect": "17384f115ffc24bba8aac145795de416ccef40a6b8b6c46fbf494fded3b54226",
+      "reactor-approach-ground-380--80.ect": "4640e4e4f5aa653ee50bbd8c985bae10cfff0677e147e0debd7169a28842922d",
+      "reactor-site-vegetation-0-1.ect": "dc121d4639fe9d8d75f842d55a642d38b94b85f23e7d42f4abedaf804f8a03c7",
+      "riverbank-ground-698440-5349700.ect": "edc7e4681f5fb32347e2cd96a60c659547429ee5bc223badb4b87b5b947ea9fa",
+      "riverbank-ground-698440-5349720.ect": "314a8704e132d76f770e8427732ff56dbb620606fd4f789e4471b7d6b51000b6",
+      "riverbank-ground-698460-5349700.ect": "fb47f623a43f4759fe310d41df73ee38b1ce41ecd9d19e45dc279ccc53f01be2",
+      "riverbank-ground-698460-5349720.ect": "35f5deed990bd7787094535daa26ead9629d9b463fbce51e7dd1a8123142c50f",
+      "riverbank-ground-698460-5349740.ect": "b954f453074b39d216b2d2b284c89ad6b499214e0e0b36a54cd309c734091884",
+      "riverbank-ground-698480-5349700.ect": "f201c9e478db61813af3cce025a1fb2e50d6d2659fca6c43f80fa3f5c00fd527",
+      "riverbank-ground-698480-5349720.ect": "4708d5343efc496b45e3193c5b1ae032500c2c039f9b1ec9a206c3ae9848a7c0",
+      "riverbank-ground-698480-5349740.ect": "76ff0caae6da4a8f351daae7aa7bb2c99b589dd828ce0fa36309fc307f69b74b",
+      "riverbank-ground-698500-5349700.ect": "1bf743824b3ffb65ab53b69dcfe96e2d81018fcf1f2dd9664d79bb8cb751ce94",
+      "riverbank-ground-698500-5349720.ect": "db3270eded2424d7d45517c39dce6a76262cac8730317f8202d110eb66d39b75",
+      "riverbank-ground-698500-5349740.ect": "26c3a12b4df88d59d8abcb1a1e42f8fb5d98f32f064d799b7822d4194866376b",
+      "riverbank-ground-698520-5349700.ect": "3f4358b30e515883cbef1fda61bf4303a9376e41b80078fd898cb8cd0ffb9c03",
+      "riverbank-ground-698520-5349720.ect": "b0ca33a18cced47e9632640e0e1c26796947d2934d2ec53c05ab1c19b0f09c02",
+      "riverbank-ground-698520-5349740.ect": "138f951943c652a231ca928e57a73dbb7503dfc875c18a86004d09357f53be53",
+      "riverbank-ground-698540-5349700.ect": "12b75934e086cb386c4d2b7a8ce46051f4ba9280ae261e6b69de279116955108",
+      "riverbank-ground-698540-5349720.ect": "e535014f688414b815f6a3060d53bf0e3461ca510d5da1bccb6dfa4492fa4533",
+      "riverbank-ground-698540-5349740.ect": "0e1ef0a3e88191ba0ad5fdc5cf85f7e89cd8b7c623957f03c55e5b7526fd683e",
+      "riverbank-ground-698560-5349700.ect": "6f7ed4fd3a31248db831cadc8cf351d22450baf6887f9b1866a9b19ea8a963df",
+      "riverbank-ground-698560-5349720.ect": "0e7a3e520da7f20429ee5ec77021e941da42080ac4f30ac551e8efce21d49c4d",
+      "riverbank-ground-698560-5349740.ect": "6fd040c48d317ac694a164f8814ee05cf14ca07075c84fabc56a2061b118e39e",
+      "riverbank-ground-698580-5349700.ect": "d2ece43010e0439098f5ff8dfacbe42d8074644aa13d8503c3ea9d77193a40aa",
+      "riverbank-ground-698580-5349720.ect": "094e656af7270d734a6046473d2dd833314cff8ec6cf1e76661b5dac21163ab6",
+      "riverbank-ground-698600-5349660.ect": "64f4013c4b3bce25ff305170895bc0e2ee2b6eb0419605bdaf846e5b694d02ad",
+      "riverbank-ground-698600-5349680.ect": "2f401efb2195ae194be37fad392892ca9dd432a6fcb7df1744ba7a28c79ca05d",
+      "riverbank-ground-698600-5349700.ect": "e7517a81af09bf156b4f2b45112e359cdabb41d18ff3c76e5f08afc3883d2455",
+      "riverbank-ground-698600-5349720.ect": "dbb4bf7fb293fd02b2716cf22574cd20ee0dfda9c8c3b77ccc511d6c12321244",
+      "riverbank-ground-698620-5349660.ect": "ddac01ce6e619a79e8c426aa2d44e579eb14687c0bb3cb9ba28cb31e653cb04d",
+      "riverbank-ground-698620-5349680.ect": "1f77d31c920adde9566f0664f1d4e3492c7c18d84cbd5a2944f16bf035823777",
+      "riverbank-ground-698620-5349700.ect": "c83b51333ea382ec7e26cc20de68a29c731ef109fbd35d371b93bb30bb43266c",
+      "riverbank-ground-698620-5349720.ect": "9a2038ed819cf7c9d1616861fccaf1e885840ca120f11e13de80b26ef344efab",
+      "riverbank-ground-698640-5349660.ect": "2a588a493a8eda0e407dd6ed5549d7176891028cc9cbef0cbc4df8e69ba0fd88",
+      "riverbank-ground-698640-5349680.ect": "54073dc3dcf54f92a4adcbd0e7d1b6963c786aeb316bf58faedd246844b63e42",
+      "riverbank-ground-698640-5349700.ect": "9e4366a6cf6c5154294eb75526e30eeaf0edd53d99a4fa8c5a26b87f77948dde",
+      "riverbank-ground-698640-5349720.ect": "43ceccef8b4efefa2b4efec3036edb7e14eaf2a9acac37fd4a9417e64086eacf",
+      "riverbank-ground-698660-5349680.ect": "2c1f4a70ed50a2aa73611642ae68a905253ea81c2bbfa0be0ab42a281e6a93d3",
+      "riverbank-ground-698660-5349700.ect": "f6ea4ac2fd0a2a61bb1346b6514de67d623b2ebd43be3b0d5d1d1202933e7aca",
+      "riverbank-vegetation-0-0.ect": "9e8c5c5c3a764de0a2de4b82d882031e29bf874fe61abd7c18f0623853af7ec1",
+      "riverbank-vegetation-1-0.ect": "a7bcd567e991026d7bd7a8a08ec42e028f8a57dfe2a8ed748653ee6a81025284",
+      "riverbank-vegetation-2-0.ect": "3bc776e883f4a710af4eaf016b54bcddbdbab5e9d694aca15d5eb2658ec6f726",
+      "uta-approach-ground-280--40.ect": "e762375988ca5b4f5d78027c16ae1648c6eb690cf5b152c8c0109934acc3dc22",
+      "uta-approach-ground-280--60.ect": "9a9209cfb99c3d97160d103fff65e8c59dd5a8fa8e27256978db09e6deb5fa8b",
+      "uta-approach-ground-300--40.ect": "ec6ce23294a6a7761b91ce6678ab04e27a3f9ae1ea27f1165fdb6c4480679640",
+      "uta-approach-ground-300--60.ect": "d8c8e54fed1ad19d50e4156b6856a510a60dbdcd6ba3f8b1328f1adb03aadb9d",
+      "uta-approach-ground-320--40.ect": "494f5113ef24b9a0fecabb75769e0f8318245a9733f64780e54ea310f48e7b97",
+      "uta-south-landscape-ground-300--20.ect": "0e7e5c1069071e90ddd7a2ec4b5777908f46628d1f36f85d3c4c60e66129be9d",
+      "uta-south-landscape-ground-300--40.ect": "04391190e3ad21aa52343b8ab2851c7efce367c96d943b89370884874b01e6c0",
+      "uta-south-landscape-ground-320--20.ect": "b2bef37d84b3bb4c9ddeef755af687d0491e115a29c73905abd30258d6c4fb4a",
+      "uta-south-landscape-ground-320--40.ect": "13a55185785d22f10d2fcb31edf49617f6c9eb289095c39b0e187cd4f651a4bb",
+      "uta-south-landscape-ground-340--20.ect": "94687ac916d8c23c8777d46172c5b484dafac66a9908ecbb31ba5c9dc6ba8dbf",
+      "uta-south-landscape-ground-340--40.ect": "b09edea27f27e9753065d953833bece0b817f38fa8d91d03c6c9372e1c41f433",
+      "uta-south-vegetation-0-0.ect": "3b8c94613209703fecbdd9e2cdbeb7047950ca51f0ebe92e1199e56d08a69196",
+      "uyd-approach-ground-280--20.ect": "8a16fad463c4365d6a0a47718b7c2591dc4f7c52b55e0261b1bea376331e53af",
+      "uyd-approach-ground-280--40.ect": "4d908a20033d4532fa5c058c86ff9c1cae09d27f8bae970a1e080fef09979fd1",
+      "uyd-approach-ground-280-0.ect": "44cda38027918bee3a5a13b98590dac03310f33107645a8d9bb055d33801a291",
+      "uyd-approach-ground-300--20.ect": "a12ac3fc3c2ae06caffffd9c59afb6d073e0fc038f7ee02b59e88c0975dd467b",
+      "uyd-approach-ground-300--40.ect": "0fcfa650874f696dd49349b4850968f34f5bcab755bfc002669ca0454cf5b9a6",
+      "uyd-approach-ground-300-0.ect": "e0f25246851fcefd6ebda61f5674200dbb21bc2e8063cd5f7829edeeb3f4f938",
+      "vegetation-0-0.ect": "b565fc33f441a34c27095479c5bd50a95a1bf001744913ab16128327a69a1c0f",
+      "vegetation-0-1.ect": "864128894db318558571dded8b0441de6cc913883c1143443239cd15c54c4c09",
+      "vegetation-0-2.ect": "717939152aff82eb866902db359836be782ce67b2cfbe4e0bb08e4e2ea292159",
+      "vegetation-0-3.ect": "253f8c59151fe944fd70a3918637739725f467f7832d0bbd3876946fab621a33",
+      "vegetation-0-4.ect": "8e6d2edc3ddbe2e3d4c21f63e8ea233d0bca098f61b6122a0362d8a8bfff7fcd",
+      "vegetation-0-5.ect": "97898e1a5dddc152157b8fb5dd44616b5d673ca9cad8c2845278ef840cdaf6f0",
+      "vegetation-1-0.ect": "004aa03c7e688995d2283595ced7e96f17ccbb15d1da7e8aecca549eafef58a6",
+      "vegetation-1-1.ect": "36527fb11ddd0300da14997a2395e7cabd1213db14c767d12471cce96fd326a8",
+      "vegetation-1-2.ect": "be980e67b07dfcc3f6cac57d794462b6c8be8eb57fca3eb9edf83ccb80f0f377",
+      "vegetation-1-3.ect": "87f9c56452ee82df8c6e88c23ef2c3963a2b9b2d80b82856a82270461c505d0a",
+      "vegetation-1-4.ect": "8a55bc974f8a4bdf07590d8c28eab9a233a3fed4c60dbb6fd1206f3e6a0ed527",
+      "vegetation-1-5.ect": "cbf635291225f8f35ac1cf1b150a0542b5db26578322ed81865e2ca16e2899e3",
+      "vegetation-2-0.ect": "08029e281275f6bdc6af99604b26728030c81514f30530fdfe0aed236f22e0a9",
+      "vegetation-2-1.ect": "264fa68bac6bb85ab6755650a0ec6ffee1fdd03b15a670f387c2b335475f6c62",
+      "vegetation-2-2.ect": "e1e8d3b0ecfe501d3147ab27c30477cd7aaef4d9479ffdf95cb92b1ed93576c7",
+      "vegetation-2-3.ect": "469c9d35dc21a60676ce46c6953cbeb9752b147c40ca0a68ecfceeb3b353a8e8",
+      "vegetation-2-4.ect": "38488f2293d7e623cccc6782b6f100b542f0a8f42c3245c7e37a330e36a23126",
+      "vegetation-2-5.ect": "589fdd4766d94ffb75afd60940743dee903e3e20dc3e09ce16e74af3b04391a2",
+      "vegetation-3-0.ect": "e833bb9dea9c944108557c93a7b8e2754fd1b07ede254e161f156f87f44f48d3",
+      "vegetation-3-1.ect": "00906fcd4bdf35ddff27cbafc34e92bd481f7cf1071ff6dcc260f508df81236a",
+      "vegetation-3-2.ect": "44a3b6f2f9f491ed9d0256e9e18a2cf5d90aa9e7bbb2b499acd6789afe3201cb",
+      "vegetation-3-3.ect": "08fe8b520d10c82274027ea431242358288edffa687896f9d1fa4c92a3cf0d77",
+      "vegetation-3-4.ect": "6303a322d91c0b6308e04869c3cb90d49a269f3d4a43120872a669557b648252",
+      "vegetation-3-5.ect": "34c14e0b8b485c8405052f3ce4a7a822a88440c770c60c99097545e914e39dc0",
+      "vegetation-4-0.ect": "27a868495f0135a277303e6d8cc2b99ccd992ee3a7c4ef71bc904c91342f637c",
+      "vegetation-4-1.ect": "393a7a180a98c9b88ec8b3e72ed64a0650b8f6755f5f0708985728cad2c656b8",
+      "vegetation-4-2.ect": "406c8e76fc96c11f269effaa4d992f2b0f9cdbc84bfe588fb5550f8d7617cee4",
+      "vegetation-4-3.ect": "111fb4c1dc2786d44dc483f30b1e6514ad48837035d452e4d9a665dbfff01900",
+      "vegetation-4-4.ect": "c4348cb1b468b57f85c88e3e69086b1582b1326cfff03704deb1e1979a16c1d6",
+      "vegetation-4-5.ect": "faef3768d662edc7583e53a91c79bd72d68e10a2b9b868e462e3c5c333cb0f73",
+      "vegetation-5-0.ect": "85215b2e6d5455ff52c45decec6acba65807c64ff69bc93d40aa9fac46826c0c",
+      "vegetation-5-1.ect": "36c58abe10217ff86b8a267f2ba786f74552fef8dd639c9a9d2726524d83b18f",
+      "vegetation-5-2.ect": "caa5a18427a90d2d2ee1cdcd8c5c7a9960e4d7ccde2864c78b4b0a1754f17565",
+      "vegetation-5-3.ect": "4419c59a78fd9679b344353e291c9e5a27e948717162aaeca14737b61a3a2a61",
+      "vegetation-5-4.ect": "bb92377e564b74da94ebc2f6b71cd000419535f9f7481a8c5d1faf562fc94089",
+      "vegetation-5-5.ect": "6a4725249a5b3e0b96d04a41974cb5d8e9cc3e44a638dc59acda006a0585cfbe",
+      "woodland-ground-698580-5349200.ect": "043bc2bf22b8541b9a1c248d8cf3b34552ee17efb9abeeb7bdd2d987a3ee33cf",
+      "woodland-ground-698580-5349240.ect": "5fb22aa3d96a53e43bb322050a31534df8ba181f9e66e2c9265d5ca3475e031b",
+      "woodland-ground-698580-5349280.ect": "1972fab62b0b5dfdc62591d670811f359a369117a0a16258e3e1c64129a7922b",
+      "woodland-ground-698580-5349320.ect": "103cae54ffc2600be409dee525cf8e40646853b10940b005b571d0d91f1a0baf",
+      "woodland-ground-698580-5349520.ect": "19e93671d156007af1d34471992c82041671ed573d3743fe0878bea02fa74d3a",
+      "woodland-ground-698580-5349560.ect": "5372b5f906b7b65a122c9173da576849327dde77b824b9030c26cc7bba96d1ec",
+      "woodland-ground-698620-5349200.ect": "fa3c55c9f105051fb56a463352b359fcff9f0f4083d5e40003b011c00dc237ce",
+      "woodland-ground-698620-5349240.ect": "1de16fb8b19f5ac76b8919a9d78abd9a15a5b01e79a42923962c9bf6e15424d1",
+      "woodland-ground-698620-5349280.ect": "4efe88c245b6582a842a4e202d35b2ae837d925f5ebc891323e788f5672dc260",
+      "woodland-ground-698620-5349320.ect": "963e395f28f8806dfc05b67fc560e98d60d868fceace55a870d6aae4cfc6805d",
+      "woodland-ground-698620-5349520.ect": "f886a547e50be593625c55ee0e89235180cf1fb8285c0f6cb563ae40b12bd836",
+      "woodland-ground-698620-5349560.ect": "58355c1c228b8aadc30622c853008399785429802c10c281d8a54fb8894f0812",
+      "woodland-ground-698660-5349200.ect": "deb4ce5b3b71b7d2ab4f1564f9947773620b877f54741ec6f45d611ad531234a",
+      "woodland-ground-698660-5349240.ect": "354c254332e819cedf9c6445ebe2cbc7dfb101932017a08fdab0a265f3191dc0",
+      "woodland-ground-698660-5349280.ect": "0b3fb3b9aba8db105a2ead203f9ac9995e067e5b1ca2ff39216913c97cf0c668",
+      "woodland-ground-698660-5349320.ect": "264378d7cb4f5373b3fcf7c812ad7a93bdcfbf4cbf04536b91b96b10d77f4174",
+      "woodland-ground-698660-5349520.ect": "5aad9f66e17a17ac9c9cfa75cf04583861d8fbd965cf5ac554806540dc791ace",
+      "woodland-ground-698660-5349560.ect": "ed620d7e40e8a926683e77174f72f17613ee80a48a56040db3900c8253d80b16",
+      "woodland-ground-698700-5349240.ect": "d1369fc4efc277890e8bf1b00f41af8d8e45dfefca26ca9453a7ff5ef30aa51d",
+      "woodland-ground-698700-5349280.ect": "2462dd8234e3e5c3bdc915b35b6b9295d782e96fb1471812240df977c77acb5d",
+      "woodland-ground-698700-5349320.ect": "013443ccd14beaae71e6332d4ea46b120f28b573cec0e1ec47e928146cb756fc",
+      "woodland-ground-698700-5349360.ect": "86b4a877fe9feb4205533fc3526ea3a38e3806b5f5b82ed267c4ab12ed600057",
+      "woodland-ground-698700-5349400.ect": "257a00b2112ff93952391925489db757a611783af5f23c88272c04ccd5be0952",
+      "woodland-ground-698700-5349440.ect": "f3d3aeb4ea2e47b772cfa05daa31a0899262f8f1787ee17c4f5a82598677d1fb",
+      "woodland-ground-698700-5349480.ect": "11f41c1b8ce5eddf8a9b962533e57b25c84ae335b2310e2757f6c159b925fe3a",
+      "woodland-ground-698700-5349520.ect": "3a40bcaadd69f40c1b61319465dc535fa9da88558e4703c32c51109ff710cf09",
+      "woodland-ground-698700-5349560.ect": "ad30154c58b4235cbdd45e3efed8e80682ff63b2a9cb19c3ea7c3201e6b6b86d",
+      "woodland-ground-698740-5349280.ect": "544d337cca281602c814948360c4537a6bedf25ac47887d55c290400f20b733c",
+      "woodland-ground-698740-5349320.ect": "b7f51c23b0bf9a20c1d7177195e07f4205549b7725bc7d7e09770314dbbb9b7d",
+      "woodland-ground-698740-5349360.ect": "752fc892fb6d8434f38078a3be593800dc8dd36870abb8136bade7b55ea03ad4",
+      "woodland-ground-698740-5349400.ect": "5fc20b392c9a52d28e52cfb3ea4719814f1c9db7d5b0c89bb0a53d4e3bc72a92",
+      "woodland-ground-698740-5349440.ect": "7a74b16a1ddf0005ff14b59e466d5a22739ca808ea6bfd9963f86c908cedbaef",
+      "woodland-ground-698740-5349480.ect": "9b0ebe18d40891a7918c85aefacfa61c641eefff910a0d044c42833cf81afb87",
+      "woodland-ground-698740-5349520.ect": "c15d83022a24b868d862acca4dd2c1ba6e9210649696f090d401b0173728f326",
+      "woodland-ground-698740-5349560.ect": "0bed6aad7ad6616fab1883af07f50d72f8d3f6a335a9e749aa9b1b9cf190782c",
+      "woodland-ground-698780-5349360.ect": "788a829a5860f2080b03faf44c4a745b87812eed6fb47505395b6f81cbb7f0b5",
+      "woodland-ground-698780-5349400.ect": "ec1dd901cdf449e0d685a8dee8ce7a074247b8f9472fa7fb1b2efdf55301fddd",
+      "woodland-ground-698780-5349440.ect": "53422aa9f32b9c575dc156985e591927104f9eb473d43475be09357a1512ad01",
+      "woodland-ground-698780-5349480.ect": "6cc450acbba96fa93148ff586b6becca81982c57bca72777109ce0294e831956",
+      "woodland-ground-698780-5349520.ect": "888365873d309daa0178e982dfbdabe25a53138d484e3460b9695816bf731091",
+      "woodland-ground-698780-5349560.ect": "4bc5d071caf7775c697cfb6daa4c1e37a3851fb645658665ded911a2c57f6645",
+      "woodland-vegetation-0-0.ect": "916b64e2c9f604425cec7040d2b1db412c4ba5fa587bc80812f715ef91b91f44",
+      "woodland-vegetation-0-1.ect": "efb702497ec3670d8fbfc67703c6c239a4e7efa9afb43737d4e07258b1e70c02",
+      "woodland-vegetation-0-3.ect": "af635f2f5e11c7f63f0a914b4d7719b5993e2c34c00aa70e38b4ad4eb71143c5",
+      "woodland-vegetation-1-0.ect": "37cefddfe1bb945de2cb6f290c99435cf214cd404e3d3b22873dca0750e4273b",
+      "woodland-vegetation-1-1.ect": "bd04cf989cd57a92a0a5ce9f82f49af065ba6ea4a471b2da2816e0cb7a6953a9",
+      "woodland-vegetation-1-2.ect": "3d0c7ef435b4157c2ca74b68d07e807fc383ff83516b5d0effd03af35b83f229",
+      "woodland-vegetation-1-3.ect": "23156c14d7fef740716166a31cfbd705e2cfa4dcd25e00595a68725a608587b2",
+      "woodland-vegetation-2-2.ect": "6209025033f3da52ea027871ce91bf446cef48e2d4c83a9da95a806af07b368e",
+      "woodland-vegetation-2-3.ect": "630ca5d957469bc0a5e00aeec4a2d3bdb2b42e11f1c6204fcad85717d9c84875",
+      "wsi-vegetation-0-1.ect": "74f8c9960548591d834dd92d1b88a21d611252914e1a6b54ff70bb62aca1edb8",
+      "wsi-vegetation-1-0.ect": "86693bea1b5d6083c3163405a92801d6cda1390947ffcd88e8726ab8c2c1175e",
+      "wsi-vegetation-1-1.ect": "afdf66bb6543f6b2e58d7203e46a803d6aaba0ade66a449fe9af36efc523db66",
+      "znn-vegetation-0-0.ect": "807ff2c42dde93c6300f36b063a45a319dd0cb1327ee11c614b966e9079ef5da"
+    },
+    "buildings": [
+      {
+        "building": "DEBY_LOD2_5284436",
+        "faces": 8,
+        "openingRays": 47,
+        "roofSha256": "12e2e3328f90f155f58e481292234b170703ffbd927685112e9a5505312933dc",
+        "collisionSha256": "c7666ef2f5cd93a63ffa2bcbb9db49ef47c00a25cec16486c771915a78c15520",
+        "meshSha256": "ef0744d4db606f0595373a1470ce6d1a9f68ef3e68873df658ee3d46cc6d4de9",
+        "cleanupAreaSquareMetres": 2340.3711864291595,
+        "protectedNeighbourOverlapSquareMetres": 0.0
+      },
+      {
+        "building": "DEBY_LOD2_5284438",
+        "faces": 6,
+        "openingRays": 12,
+        "roofSha256": "7f5186034929609a90709d5020784b40d432c3fe7c31ad5fb520fb4548cda235",
+        "collisionSha256": "186eebd502db31c1fea022918875d7d14454be99201d7399e9e827e4551a2401",
+        "meshSha256": "f8bb021ee03bbbabcec7fa078efdff6db763d9fbc93b8bd715526b5d023fb6a4",
+        "cleanupAreaSquareMetres": 952.5038895578175,
+        "protectedNeighbourOverlapSquareMetres": 0.0
+      }
+    ],
+    "nativeReviewed": false,
+    "qualification": "Source-informed architectural approximation, not current as-built documentation. Window counts in obscured spans, mullions, recess depths, colours, sills and door classifications are explicitly estimated. Preserve all original roofs, courtyard holes, collision files and user blocks; no interiors."
+  },
+  "dependentSourceChecks": [
+    {
+      "validator": "validate-uyd-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uyd-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-exterior.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mlz-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-canopies.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-atom-ei-west-entrance.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-library.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-container.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-p1-complex.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-woodland.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-new-laboratory.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-laboratory-site.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-ii.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-pinned-water.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-wsi.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-znn-west.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-cala.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-physics-lmu.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-courtyard.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-lmu-east.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-riverbank.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-courtyard-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-north-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-mensa-terrace.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-reactor-ground.py",
+      "exitCode": 0
+    },
+    {
+      "validator": "validate-uta-landscape.py",
+      "exitCode": 0
+    }
+  ],
+  "packagedScopeVerification": {
+    "status": "PASS: all prior mesh bytes, service modules, shaders and textures retained; two low-building exteriors and reflection routing added, collision journal advances to v93",
+    "artifactSha256": "306a9eeaf57dfadb4f58d01fd697b5ccf8682ba35f23e7d5ef86f8391078e535",
+    "unchangedMeshFiles": 665,
+    "unchangedServiceModules": 24,
+    "unchangedTextures": 25,
+    "unchangedShaders": 10,
+    "changedBundleRecords": [
+      "src/minecampus-exterior/mensa-terrace-validation.json",
+      "src/minecampus-exterior/galileo-east-material-validation.json",
+      "src/minecampus-exterior/galileo-east-grade-validation.json",
+      "src/minecampus-exterior/uyd-site-validation.json",
+      "src/minecampus-exterior/uyd-exterior-validation.json",
+      "src/minecampus-exterior/photo-facades.json",
+      "src/minecampus-exterior/manifest.json",
+      "src/minecampus-exterior/mlz-courtyard-ground-validation.json",
+      "src/minecampus-exterior/atom-ei-canopies-validation.json",
+      "src/minecampus-exterior/atom-ei-west-entrance-validation.json",
+      "src/minecampus-exterior/uta-exterior-validation.json",
+      "src/minecampus-exterior/reactor-ground-validation.json",
+      "src/minecampus-exterior/reactor-east-validation.json",
+      "src/minecampus-exterior/uta-south-landscape-validation.json",
+      "src/minecampus-exterior/reactor-site-validation.json",
+      "src/minecampus-exterior/reactor-exterior-validation.json",
+      "src/minecampus-exterior/atom-ei-validation.json"
+    ],
+    "newBundleEntries": [
+      "src/minecampus-exterior/DEBY_LOD2_5284436-low-building-exterior.ect",
+      "src/minecampus-exterior/DEBY_LOD2_5284438-low-building-exterior.ect",
+      "src/minecampus-exterior/galileo-low-buildings-reference.json",
+      "src/minecampus-exterior/galileo-low-buildings-validation.json",
+      "src/minecampus-exterior/galileo-low-buildings.json"
+    ],
+    "collisionComparisonServiceMatchesPackage": true,
+    "rendererSourceFingerprint": "f72a9da54b749a23"
+  },
+  "collisionComparison": {
+    "status": "PASS: bounded provider-to-air cleanup only; all known solid codes and profiles retained; v93 migration required",
+    "packets": 96,
+    "identicalPackets": 92,
+    "changedCodes": 24,
+    "changedProfilePackets": 0,
+    "occupancyChanges": 0,
+    "materialTransitions": {
+      "255->0": 24
+    },
+    "transitionExamples": {
+      "255->0": [
+        {
+          "x": 149,
+          "y": 66,
+          "z": -58,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 150,
+          "y": 66,
+          "z": -57,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 149,
+          "y": 67,
+          "z": -58,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 150,
+          "y": 67,
+          "z": -57,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 149,
+          "y": 68,
+          "z": -58,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 150,
+          "y": 68,
+          "z": -57,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 198,
+          "y": 66,
+          "z": -41,
+          "before": 255,
+          "after": 0
+        },
+        {
+          "x": 198,
+          "y": 66,
+          "z": -40,
+          "before": 255,
+          "after": 0
+        }
+      ]
+    },
+    "examples": [
+      {
+        "x": 149,
+        "y": 66,
+        "z": -58,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 150,
+        "y": 66,
+        "z": -57,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 149,
+        "y": 67,
+        "z": -58,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 150,
+        "y": 67,
+        "z": -57,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 149,
+        "y": 68,
+        "z": -58,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 150,
+        "y": 68,
+        "z": -57,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 66,
+        "z": -41,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 66,
+        "z": -40,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 67,
+        "z": -41,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 67,
+        "z": -40,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 68,
+        "z": -41,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 68,
+        "z": -40,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 149,
+        "y": 68,
+        "z": -58,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 150,
+        "y": 68,
+        "z": -57,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 149,
+        "y": 69,
+        "z": -58,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 150,
+        "y": 69,
+        "z": -57,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 149,
+        "y": 70,
+        "z": -58,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 150,
+        "y": 70,
+        "z": -57,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 68,
+        "z": -41,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 68,
+        "z": -40,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 69,
+        "z": -41,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 69,
+        "z": -40,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 70,
+        "z": -41,
+        "before": 255,
+        "after": 0
+      },
+      {
+        "x": 198,
+        "y": 70,
+        "z": -40,
+        "before": 255,
+        "after": 0
+      }
+    ],
+    "rows": [
+      {
+        "cx": 8,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -5,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -4,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -3,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -2,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": 0,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": 1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -5,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -4,
+        "shift": 0,
+        "identical": false,
+        "differences": 6
+      },
+      {
+        "cx": 9,
+        "cz": -3,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -2,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": 0,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": 1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -5,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -4,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -3,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -2,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": 0,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": 1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -5,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -4,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -3,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -2,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": 0,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": 1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -5,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -4,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -3,
+        "shift": 0,
+        "identical": false,
+        "differences": 6
+      },
+      {
+        "cx": 12,
+        "cz": -2,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": 0,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": 1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -6,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -5,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -4,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -3,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -2,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": 0,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": 1,
+        "shift": 0,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -5,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -4,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -3,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -2,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": -1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": 0,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 8,
+        "cz": 1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -5,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -4,
+        "shift": 2,
+        "identical": false,
+        "differences": 6
+      },
+      {
+        "cx": 9,
+        "cz": -3,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -2,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": -1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": 0,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 9,
+        "cz": 1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -5,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -4,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -3,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -2,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": -1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": 0,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 10,
+        "cz": 1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -5,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -4,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -3,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -2,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": -1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": 0,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 11,
+        "cz": 1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -5,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -4,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -3,
+        "shift": 2,
+        "identical": false,
+        "differences": 6
+      },
+      {
+        "cx": 12,
+        "cz": -2,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": -1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": 0,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 12,
+        "cz": 1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -6,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -5,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -4,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -3,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -2,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": -1,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": 0,
+        "shift": 2,
+        "identical": true
+      },
+      {
+        "cx": 13,
+        "cz": 1,
+        "shift": 2,
+        "identical": true
+      }
+    ]
+  },
+  "collisionQualification": "Provider code 255 is provider-controlled, not evidence that a cell was previously empty. No known-solid occupancy or profile change was observed in 96 packets at two origin datums.",
+  "native": {
+    "exitCode": 0,
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-306a9eeaf5.jar",
+    "plan": "checks/galileo-low-buildings.json",
+    "planSha256": "ce311587cc516b708b139e3bc569f1436674bcb6b9651323a1d797614b7ae5ae",
+    "resultSha256": "118d7c7e9a3638f567b4750bfcfc74784de30f42c954e582c98f0c2a849805af",
+    "logSha256": "f1a3ca3a20c4f76673488863fc21fe22e9ab79765002151976dbbb910b2528d9",
+    "cameraChecks": 19,
+    "surfaceChecks": 73,
+    "standingChecks": 19,
+    "nightViews": 2,
+    "maximumStandingErrorMetres": 0.05031520620072172,
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "standingResults": [
+      {
+        "label": "Galileo east comparison standing",
+        "target": [
+          145.0,
+          63.93476356257272,
+          -115.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.937420623764524,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          -12.0
+        ],
+        "candidateViewIndex": 0,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.937420623764524,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-0.png",
+        "clientPosition": "(145.0, 63.9375, -115.0)"
+      },
+      {
+        "label": "North inner frontage standing",
+        "target": [
+          135.8,
+          63.99958742427852,
+          -131.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.0011305589552,
+        "requireBodyClearance": true,
+        "look": [
+          0.0,
+          3.0
+        ],
+        "candidateViewIndex": 1,
+        "maxSupportError": 0.125,
+        "standingY": 64.0,
+        "supportExpectedY": 64.0011305589552,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-1.png",
+        "clientPosition": "(135.8, 64.0, -131.0)"
+      },
+      {
+        "label": "Central inner frontage standing",
+        "target": [
+          131.5,
+          63.97347540688412,
+          -115.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.97501972509733,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          3.0
+        ],
+        "candidateViewIndex": 2,
+        "maxSupportError": 0.125,
+        "standingY": 64.0,
+        "supportExpectedY": 63.97501972509733,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-2.png",
+        "clientPosition": "(131.5, 64.0, -115.0)"
+      },
+      {
+        "label": "South inner frontage standing",
+        "target": [
+          126.8,
+          63.92223118482563,
+          -88.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000026,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.92377721917473,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          3.0
+        ],
+        "candidateViewIndex": 3,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.92377721917473,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-3.png",
+        "clientPosition": "(126.8, 63.9375, -88.0)"
+      },
+      {
+        "label": "South outer approach standing",
+        "target": [
+          131.0,
+          63.879609871242906,
+          -75.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000026,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.88115639163096,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          3.0
+        ],
+        "candidateViewIndex": 4,
+        "maxSupportError": 0.125,
+        "standingY": 63.875,
+        "supportExpectedY": 63.88115639163096,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-4.png",
+        "clientPosition": "(131.0, 63.875, -75.0)"
+      },
+      {
+        "label": "North outer frontage standing",
+        "target": [
+          148.5,
+          63.96650296631572,
+          -133.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.970666181178046,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          8.0
+        ],
+        "candidateViewIndex": 5,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.970666181178046,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-5.png",
+        "clientPosition": "(148.5, 63.9375, -133.0)"
+      },
+      {
+        "label": "Central outer frontage standing",
+        "target": [
+          146.0,
+          63.88659902365437,
+          -114.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.91763216944051,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          8.0
+        ],
+        "candidateViewIndex": 6,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.91763216944051,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-6.png",
+        "clientPosition": "(146.0, 63.9375, -114.0)"
+      },
+      {
+        "label": "South outer frontage standing",
+        "target": [
+          141.0,
+          63.89179259189057,
+          -92.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.89394779339557,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          8.0
+        ],
+        "candidateViewIndex": 7,
+        "maxSupportError": 0.125,
+        "standingY": 63.875,
+        "supportExpectedY": 63.89394779339557,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-7.png",
+        "clientPosition": "(141.0, 63.875, -92.0)"
+      },
+      {
+        "label": "North portal surface behind opening standing",
+        "target": [
+          138.6,
+          63.95260386224331,
+          -114.5
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000027,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.95414936926983,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          18.0
+        ],
+        "candidateViewIndex": 8,
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.95414936926983,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-8.png",
+        "clientPosition": "(138.6, 63.9375, -114.5)"
+      },
+      {
+        "label": "north ramp 0.25 standing",
+        "target": [
+          142.67860037759831,
+          63.33619150665033,
+          -135.27226538153948
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000030022,
+        "part": 1,
+        "dropHeight": 3,
+        "supportHeight": 63.390409604940565,
+        "requireBodyClearance": true,
+        "look": [
+          12.0,
+          15.0
+        ],
+        "candidateViewIndex": 9,
+        "maxSupportError": 0.125,
+        "standingY": 63.375,
+        "supportExpectedY": 63.390409604940565,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-9.png",
+        "clientPosition": "(142.67860037759831, 63.375, -135.27226538153948)"
+      },
+      {
+        "label": "north ramp 0.65 standing",
+        "target": [
+          140.69189735074792,
+          61.92157379760341,
+          -125.8348738850364
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000030022,
+        "part": 1,
+        "dropHeight": 3,
+        "supportHeight": 61.96887114870459,
+        "requireBodyClearance": true,
+        "look": [
+          12.0,
+          15.0
+        ],
+        "candidateViewIndex": 10,
+        "maxSupportError": 0.125,
+        "standingY": 62.0,
+        "supportExpectedY": 61.96887114870459,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-10.png",
+        "clientPosition": "(140.69189735074792, 62.0, -125.8348738850364)"
+      },
+      {
+        "label": "south ramp 0.25 standing",
+        "target": [
+          136.1154656076001,
+          63.71420838064306,
+          -100.3421803129652
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000030022,
+        "part": 1,
+        "dropHeight": 3,
+        "supportHeight": 63.7603137440982,
+        "requireBodyClearance": true,
+        "look": [
+          12.0,
+          15.0
+        ],
+        "candidateViewIndex": 11,
+        "maxSupportError": 0.125,
+        "standingY": 63.75,
+        "supportExpectedY": 63.7603137440982,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-11.png",
+        "clientPosition": "(136.1154656076001, 63.75, -100.3421803129652)"
+      },
+      {
+        "label": "south ramp 0.65 standing",
+        "target": [
+          134.43357101442234,
+          62.42923133161562,
+          -92.52096726521302
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000030022,
+        "part": 1,
+        "dropHeight": 3,
+        "supportHeight": 62.48518434115281,
+        "requireBodyClearance": true,
+        "look": [
+          12.0,
+          15.0
+        ],
+        "candidateViewIndex": 12,
+        "maxSupportError": 0.125,
+        "standingY": 62.4375,
+        "supportExpectedY": 62.48518434115281,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-12.png",
+        "clientPosition": "(134.43357101442234, 62.4375, -92.52096726521302)"
+      },
+      {
+        "label": "Annex west approach standing",
+        "target": [
+          176.5,
+          63.944588069511575,
+          -69.5
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000026,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.98781520620072,
+        "requireBodyClearance": true,
+        "look": [
+          -90.0,
+          -15.0
+        ],
+        "maxSupportError": 0.125,
+        "qualification": "Adjacent clear map ground; the original x175,z-70 test location contains protected vanilla dirt through Y64. Dirt is retained and excluded from terrain-height comparison.",
+        "standingY": 63.9375,
+        "supportExpectedY": 63.98781520620072,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-13.png",
+        "clientPosition": "(176.5, 63.9375, -69.5)"
+      },
+      {
+        "label": "Annex east approach standing",
+        "target": [
+          207.0,
+          64.01008587202242,
+          -70.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000032,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.03721277366937,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          -15.0
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 64.0625,
+        "supportExpectedY": 64.03721277366937,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-14.png",
+        "clientPosition": "(207.0, 64.0625, -70.0)"
+      },
+      {
+        "label": "Courtyard west approach",
+        "target": [
+          135.0,
+          64.15143579379748,
+          -20.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000026,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.16829787913761,
+        "requireBodyClearance": true,
+        "look": [
+          -90.0,
+          0
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 64.1875,
+        "supportExpectedY": 64.16829787913761,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-15.png",
+        "clientPosition": "(135.0, 64.1875, -20.0)"
+      },
+      {
+        "label": "Courtyard south approach",
+        "target": [
+          169.0,
+          64.18260872453241,
+          14.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000025,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.21102942851498,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          0
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 64.25,
+        "supportExpectedY": 64.21102942851498,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-16.png",
+        "clientPosition": "(169.0, 64.25, 14.0)"
+      },
+      {
+        "label": "Courtyard east approach",
+        "target": [
+          208.0,
+          63.91520248185147,
+          -40.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000032,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.92642317241263,
+        "requireBodyClearance": true,
+        "look": [
+          90.0,
+          0
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 63.9375,
+        "supportExpectedY": 63.92642317241263,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-17.png",
+        "clientPosition": "(208.0, 63.9375, -40.0)"
+      },
+      {
+        "label": "Cyclotron south lane",
+        "target": [
+          180.0,
+          63.97869973958086,
+          -43.0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000026,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 63.98867780131357,
+        "requireBodyClearance": true,
+        "look": [
+          180.0,
+          0
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 64.0,
+        "supportExpectedY": 63.98867780131357,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-galileo-low-buildings-100-walk-18.png",
+        "clientPosition": "(180.0, 64.0, -43.0)"
+      }
+    ],
+    "surfaceProbeResults": [
+      {
+        "label": "DEBY_LOD2_5284438 face 2 0",
+        "kind": "window",
+        "basis": "Visible south window groups; positions and divisions estimated.",
+        "target": [
+          178.1061391137816,
+          65.92729635711831,
+          -54.46351586479929
+        ],
+        "normal": [
+          -0.17568036522163377,
+          -0.0,
+          0.984447260789319
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.46,
+          0.51
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.59999865,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.59999865
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 2 1",
+        "kind": "window",
+        "basis": "Visible south window groups; positions and divisions estimated.",
+        "target": [
+          174.8087362079689,
+          65.92729635711831,
+          -55.051956678085304
+        ],
+        "normal": [
+          -0.17568036522163377,
+          -0.0,
+          0.984447260789319
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.525,
+          0.58
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.600001,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.600001
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 2 2",
+        "kind": "window",
+        "basis": "Visible south window groups; positions and divisions estimated.",
+        "target": [
+          171.32468785465736,
+          65.92729635711831,
+          -55.673705461934674
+        ],
+        "normal": [
+          -0.17568036522163377,
+          -0.0,
+          0.984447260789319
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.595,
+          0.65
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.5999961,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.5999961
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 2 3",
+        "kind": "window",
+        "basis": "Visible south window groups; positions and divisions estimated.",
+        "target": [
+          167.8406395013458,
+          65.92729635711831,
+          -56.29545424578405
+        ],
+        "normal": [
+          -0.17568036522163377,
+          -0.0,
+          0.984447260789319
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.665,
+          0.72
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.6000018,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.6000018
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 2 4",
+        "kind": "window",
+        "basis": "Visible south window groups; positions and divisions estimated.",
+        "target": [
+          164.35659114803425,
+          65.92729635711831,
+          -56.91720302963342
+        ],
+        "normal": [
+          -0.17568036522163377,
+          -0.0,
+          0.984447260789319
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.735,
+          0.79
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.5999999,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.5999999
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 2 5",
+        "kind": "window",
+        "basis": "Visible south window groups; positions and divisions estimated.",
+        "target": [
+          160.8725427947227,
+          65.92729635711831,
+          -57.53895181348279
+        ],
+        "normal": [
+          -0.17568036522163377,
+          -0.0,
+          0.984447260789319
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.805,
+          0.86
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.600001,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.600001
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 2 6",
+        "kind": "window",
+        "basis": "Visible south window groups; positions and divisions estimated.",
+        "target": [
+          157.26406414307863,
+          65.92729635711831,
+          -58.18290591104107
+        ],
+        "normal": [
+          -0.17568036522163377,
+          -0.0,
+          0.984447260789319
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.875,
+          0.94
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.59999675,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.59999675
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 4 0",
+        "kind": "window",
+        "basis": "Dark north features interpreted as window groups; extent estimated under shadows.",
+        "target": [
+          155.83880705889527,
+          66.1022963571183,
+          -70.7454172684955
+        ],
+        "normal": [
+          0.17511921883829185,
+          -0.0,
+          -0.9845472356334491
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.045,
+          0.2
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.59999806,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.59999806
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 4 1",
+        "kind": "window",
+        "basis": "Dark north features interpreted as window groups; extent estimated under shadows.",
+        "target": [
+          160.9096192652988,
+          66.1022963571183,
+          -69.8434832217357
+        ],
+        "normal": [
+          0.17511921883829185,
+          -0.0,
+          -0.9845472356334491
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.24,
+          0.4
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.5999988,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.5999988
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 4 2",
+        "kind": "window",
+        "basis": "Dark north features interpreted as window groups; extent estimated under shadows.",
+        "target": [
+          166.08832109311518,
+          66.1022963571183,
+          -68.92235908887461
+        ],
+        "normal": [
+          0.17511921883829185,
+          -0.0,
+          -0.9845472356334491
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.44,
+          0.6
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.5999988,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.5999988
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 4 3",
+        "kind": "window",
+        "basis": "Dark north features interpreted as window groups; extent estimated under shadows.",
+        "target": [
+          171.5691138608875,
+          66.1022963571183,
+          -67.94750271492997
+        ],
+        "normal": [
+          0.17511921883829185,
+          -0.0,
+          -0.9845472356334491
+        ],
+        "tile": 1000030055,
+        "part": 1,
+        "alongFraction": [
+          0.65,
+          0.82
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 1,
+        "distance": 0.5999991,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.5999991
+      },
+      {
+        "label": "DEBY_LOD2_5284438 face 5 0",
+        "kind": "door",
+        "basis": "Tall blue-grey east feature interpreted as a closed service door; classification and dimensions provisional.",
+        "target": [
+          202.79150096651625,
+          65.5772963571183,
+          -57.85204543936202
+        ],
+        "normal": [
+          0.9845050416964046,
+          0.0,
+          0.17535627412317079
+        ],
+        "tile": 1000030055,
+        "part": 4,
+        "alongFraction": [
+          0.58,
+          0.77
+        ],
+        "hitTile": 1000030055,
+        "hitPart": 4,
+        "distance": 0.5999956,
+        "firstHitTile": 1000030055,
+        "firstHitDistance": 0.5999956
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 0 0",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          145.08368407647006,
+          66.89774536051468,
+          -5.796565868990073
+        ],
+        "normal": [
+          -0.9845583047653316,
+          -0.0,
+          -0.1750569750613117
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.045,
+          0.135
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.59999895,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.59999895
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 0 1",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          145.9294427147613,
+          66.89774536051468,
+          -10.553295447260355
+        ],
+        "normal": [
+          -0.9845583047653316,
+          -0.0,
+          -0.1750569750613117
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.155,
+          0.245
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999989,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999989
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 0 2",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          146.77520135305258,
+          66.89774536051468,
+          -15.310025025530637
+        ],
+        "normal": [
+          -0.9845583047653316,
+          -0.0,
+          -0.1750569750613117
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.265,
+          0.355
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999989,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999989
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 0 3",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          147.62095999134382,
+          66.89774536051468,
+          -20.066754603800916
+        ],
+        "normal": [
+          -0.9845583047653316,
+          -0.0,
+          -0.1750569750613117
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.375,
+          0.465
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.599999,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.599999
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 0 4",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          148.46671862963507,
+          66.89774536051468,
+          -24.823484182071198
+        ],
+        "normal": [
+          -0.9845583047653316,
+          -0.0,
+          -0.1750569750613117
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.485,
+          0.575
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000115,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000115
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 0 5",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          149.3124772679263,
+          66.89774536051468,
+          -29.580213760341476
+        ],
+        "normal": [
+          -0.9845583047653316,
+          -0.0,
+          -0.1750569750613117
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.595,
+          0.685
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.599999,
+        "firstHitTile": 1000010026,
+        "firstHitDistance": 0.5305755
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 0 6",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          150.15823590621756,
+          66.89774536051468,
+          -34.33694333861176
+        ],
+        "normal": [
+          -0.9845583047653316,
+          -0.0,
+          -0.1750569750613117
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.705,
+          0.795
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999991,
+        "firstHitTile": 1000010026,
+        "firstHitDistance": 0.07606683
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 0 7",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          151.0039945445088,
+          66.89774536051468,
+          -39.09367291688205
+        ],
+        "normal": [
+          -0.9845583047653316,
+          -0.0,
+          -0.1750569750613117
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.815,
+          0.905
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999991,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999991
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 1 0",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          175.8909340882425,
+          66.89774536051468,
+          -12.200117677243922
+        ],
+        "normal": [
+          -0.9844863936699181,
+          -0.0,
+          -0.17546093775766466
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.07,
+          0.24
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999913,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999913
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 1 1",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          176.62159750727537,
+          66.89774536051468,
+          -16.29976631461585
+        ],
+        "normal": [
+          -0.9844863936699181,
+          -0.0,
+          -0.17546093775766466
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.29,
+          0.46
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000063,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000063
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 1 2",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          177.35226092630825,
+          66.89774536051468,
+          -20.399414951987783
+        ],
+        "normal": [
+          -0.9844863936699181,
+          -0.0,
+          -0.17546093775766466
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.51,
+          0.68
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000064,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000064
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 1 3",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          178.08292434534113,
+          66.89774536051468,
+          -24.499063589359714
+        ],
+        "normal": [
+          -0.9844863936699181,
+          -0.0,
+          -0.17546093775766466
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.73,
+          0.9
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000036,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000036
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 2 0",
+        "kind": "window",
+        "basis": "Group bounds estimated from the clearest south-face projection.",
+        "target": [
+          150.2420412866441,
+          66.89774536051468,
+          -2.381285772960211
+        ],
+        "normal": [
+          -0.17611384175461375,
+          0.0,
+          0.9843698058872138
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.115,
+          0.22
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000163,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60000163
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 2 1",
+        "kind": "window",
+        "basis": "Group bounds estimated from the clearest south-face projection.",
+        "target": [
+          155.6081738093125,
+          66.89774536051468,
+          -1.4212296961896227
+        ],
+        "normal": [
+          -0.17611384175461375,
+          0.0,
+          0.9843698058872138
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.24,
+          0.335
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000011,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000011
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 2 2",
+        "kind": "window",
+        "basis": "Group bounds estimated from the clearest south-face projection.",
+        "target": [
+          160.57547215799875,
+          66.89774536051468,
+          -0.5325291386384696
+        ],
+        "normal": [
+          -0.17611384175461375,
+          0.0,
+          0.9843698058872138
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.355,
+          0.445
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000002,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000002
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 2 3",
+        "kind": "window",
+        "basis": "Group bounds estimated from the clearest south-face projection.",
+        "target": [
+          165.36148224578406,
+          66.89774536051468,
+          0.32373709199475814
+        ],
+        "normal": [
+          -0.17611384175461375,
+          0.0,
+          0.9843698058872138
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.465,
+          0.555
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000002,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000002
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 2 4",
+        "kind": "window",
+        "basis": "Group bounds estimated from the clearest south-face projection.",
+        "target": [
+          170.14749233356935,
+          66.89774536051468,
+          1.1800033226279854
+        ],
+        "normal": [
+          -0.17611384175461375,
+          0.0,
+          0.9843698058872138
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.575,
+          0.665
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000003,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000003
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 2 5",
+        "kind": "window",
+        "basis": "Group bounds estimated from the clearest south-face projection.",
+        "target": [
+          175.1510483344358,
+          66.89774536051468,
+          2.075190745562723
+        ],
+        "normal": [
+          -0.17611384175461375,
+          0.0,
+          0.9843698058872138
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.69,
+          0.78
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000003,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000003
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 2 6",
+        "kind": "window",
+        "basis": "Group bounds estimated from the clearest south-face projection.",
+        "target": [
+          180.0095737265815,
+          66.89774536051468,
+          2.944430706963121
+        ],
+        "normal": [
+          -0.17611384175461375,
+          0.0,
+          0.9843698058872138
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.8,
+          0.9
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000145,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60000145
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 2 7",
+        "kind": "window",
+        "basis": "Group bounds estimated from the clearest south-face projection.",
+        "target": [
+          184.72306851000644,
+          66.89774536051468,
+          3.787723206829179
+        ],
+        "normal": [
+          -0.17611384175461375,
+          0.0,
+          0.9843698058872138
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.915,
+          0.975
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000014,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60000014
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 2 8",
+        "kind": "door",
+        "basis": "Dark left-end feature interpreted as a closed entrance; depth and leaf arrangement estimated.",
+        "target": [
+          146.46761969468616,
+          65.77274536051468,
+          -3.0565684593914155
+        ],
+        "normal": [
+          -0.17611384175461375,
+          0.0,
+          0.9843698058872138
+        ],
+        "tile": 1000030056,
+        "part": 4,
+        "alongFraction": [
+          0.035,
+          0.078
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 4,
+        "distance": 0.599999,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.599999
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 3 0",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          154.723970335794,
+          66.89774536051468,
+          -45.83288620982805
+        ],
+        "normal": [
+          0.17569935145816912,
+          -0.0,
+          -0.9844438723955667
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.045,
+          0.135
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000104,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60000104
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 3 1",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          159.513020250977,
+          66.89774536051468,
+          -44.97815696848401
+        ],
+        "normal": [
+          0.17569935145816912,
+          -0.0,
+          -0.9844438723955667
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.155,
+          0.245
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000104,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60000104
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 3 2",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          164.30207016616,
+          66.89774536051468,
+          -44.12342772713996
+        ],
+        "normal": [
+          0.17569935145816912,
+          -0.0,
+          -0.9844438723955667
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.265,
+          0.355
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.59999686,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.59999686
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 3 3",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          169.09112008134304,
+          66.89774536051468,
+          -43.26869848579592
+        ],
+        "normal": [
+          0.17569935145816912,
+          -0.0,
+          -0.9844438723955667
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.375,
+          0.465
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.59999686,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.59999686
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 3 4",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          173.88016999652604,
+          66.89774536051468,
+          -42.41396924445188
+        ],
+        "normal": [
+          0.17569935145816912,
+          -0.0,
+          -0.9844438723955667
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.485,
+          0.575
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000265,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60000265
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 3 5",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          178.66921991170904,
+          66.89774536051468,
+          -41.55924000310784
+        ],
+        "normal": [
+          0.17569935145816912,
+          -0.0,
+          -0.9844438723955667
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.595,
+          0.685
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000056,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60000056
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 3 6",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          183.45826982689204,
+          66.89774536051468,
+          -40.70451076176379
+        ],
+        "normal": [
+          0.17569935145816912,
+          -0.0,
+          -0.9844438723955667
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.705,
+          0.795
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000056,
+        "firstHitTile": 1000010026,
+        "firstHitDistance": 0.25966173
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 3 7",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          188.24731974207506,
+          66.89774536051468,
+          -39.849781520419754
+        ],
+        "normal": [
+          0.17569935145816912,
+          -0.0,
+          -0.9844438723955667
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.815,
+          0.905
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000006,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000006
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 4 0",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          166.52063714417457,
+          66.89774536051468,
+          -31.392482994211335
+        ],
+        "normal": [
+          -0.17577815991950335,
+          0.0,
+          0.9844298037418989
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.09,
+          0.31
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000044,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60000044
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 4 1",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          170.4383036124252,
+          66.89774536051468,
+          -30.69295093986896
+        ],
+        "normal": [
+          -0.17577815991950335,
+          0.0,
+          0.9844298037418989
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.37,
+          0.59
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999993,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999993
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 4 2",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          174.35597008067577,
+          66.89774536051468,
+          -29.993418885526587
+        ],
+        "normal": [
+          -0.17577815991950335,
+          0.0,
+          0.9844298037418989
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.65,
+          0.87
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999993,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999993
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 5 0",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          161.55303664573597,
+          66.89774536051468,
+          -14.76304827745698
+        ],
+        "normal": [
+          0.984563876718287,
+          0.0,
+          0.17502563429811524
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.07,
+          0.24
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.59999555,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.59999555
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 5 1",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          162.28176233326448,
+          66.89774536051468,
+          -18.862316312419363
+        ],
+        "normal": [
+          0.984563876718287,
+          0.0,
+          0.17502563429811524
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.29,
+          0.46
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999956,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999956
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 5 2",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          163.01048802079302,
+          66.89774536051468,
+          -22.96158434738175
+        ],
+        "normal": [
+          0.984563876718287,
+          0.0,
+          0.17502563429811524
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.51,
+          0.68
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999981,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999981
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 5 3",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          163.73921370832153,
+          66.89774536051468,
+          -27.06085238234413
+        ],
+        "normal": [
+          0.984563876718287,
+          0.0,
+          0.17502563429811524
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.73,
+          0.9
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60001063,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60001063
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 6 0",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          163.1439909517999,
+          66.89774536051468,
+          -12.405409127191756
+        ],
+        "normal": [
+          0.17596563979216323,
+          -0.0,
+          -0.9843963092233405
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.09,
+          0.31
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60000086,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.60000086
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 6 1",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          167.05914649573128,
+          66.89774536051468,
+          -11.705555984998176
+        ],
+        "normal": [
+          0.17596563979216323,
+          -0.0,
+          -0.9843963092233405
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.37,
+          0.59
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999993,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999993
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 6 2",
+        "kind": "window",
+        "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+        "target": [
+          170.97430203966266,
+          66.89774536051468,
+          -11.005702842804595
+        ],
+        "normal": [
+          0.17596563979216323,
+          -0.0,
+          -0.9843963092233405
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.65,
+          0.87
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999987,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999987
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 7 0",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          188.24053211905985,
+          66.89774536051468,
+          1.921012300384445
+        ],
+        "normal": [
+          0.9844437038190053,
+          0.0,
+          0.17570029599041276
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.045,
+          0.135
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.59999895,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.59999895
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 7 1",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          189.0897402329791,
+          66.89774536051468,
+          -2.837076331551751
+        ],
+        "normal": [
+          0.9844437038190053,
+          0.0,
+          0.17570029599041276
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.155,
+          0.245
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.59999895,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.59999895
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 7 2",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          189.93894834689831,
+          66.89774536051468,
+          -7.595164963487949
+        ],
+        "normal": [
+          0.9844437038190053,
+          0.0,
+          0.17570029599041276
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.265,
+          0.355
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.599999,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.599999
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 7 3",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          190.78815646081756,
+          66.89774536051468,
+          -12.35325359542414
+        ],
+        "normal": [
+          0.9844437038190053,
+          0.0,
+          0.17570029599041276
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.375,
+          0.465
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.60001403,
+        "firstHitTile": 1000010032,
+        "firstHitDistance": 0.33296722
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 7 4",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          191.6373645747368,
+          66.89774536051468,
+          -17.11134222736034
+        ],
+        "normal": [
+          0.9844437038190053,
+          0.0,
+          0.17570029599041276
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.485,
+          0.575
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999987,
+        "firstHitTile": 1000010032,
+        "firstHitDistance": 0.334525
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 7 5",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          192.48657268865605,
+          66.89774536051468,
+          -21.869430859296536
+        ],
+        "normal": [
+          0.9844437038190053,
+          0.0,
+          0.17570029599041276
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.595,
+          0.685
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.5999987,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.5999987
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 7 6",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          193.33578080257527,
+          66.89774536051468,
+          -26.627519491232732
+        ],
+        "normal": [
+          0.9844437038190053,
+          0.0,
+          0.17570029599041276
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.705,
+          0.795
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.6000016,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.6000016
+      },
+      {
+        "label": "DEBY_LOD2_5284436 face 7 7",
+        "kind": "window",
+        "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+        "target": [
+          194.18498891649452,
+          66.89774536051468,
+          -31.38560812316893
+        ],
+        "normal": [
+          0.9844437038190053,
+          0.0,
+          0.17570029599041276
+        ],
+        "tile": 1000030056,
+        "part": 1,
+        "alongFraction": [
+          0.815,
+          0.905
+        ],
+        "hitTile": 1000030056,
+        "hitPart": 1,
+        "distance": 0.59999907,
+        "firstHitTile": 1000030056,
+        "firstHitDistance": 0.59999907
+      },
+      {
+        "label": "Annex surveyed wall 0",
+        "target": [
+          182.86772765186015,
+          70.57323958293635,
+          -72.32498425699691
+        ],
+        "normal": [
+          -0.9844690602529642,
+          -0.0,
+          -0.1755581653032563
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999406,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999406
+      },
+      {
+        "label": "Annex surveyed wall 1",
+        "target": [
+          197.75933199241908,
+          65.33758211725741,
+          -64.16037824001909
+        ],
+        "normal": [
+          0.9846883204758653,
+          -0.0,
+          0.17432415643971844
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall.",
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999686,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999686
+      },
+      {
+        "label": "Annex surveyed wall 2",
+        "target": [
+          198.2355392479927,
+          68.39755339251319,
+          -65.42961074877432
+        ],
+        "normal": [
+          -0.17605764070212604,
+          -0.0,
+          0.9843798591755122
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000033,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000033
+      },
+      {
+        "label": "Annex surveyed wall 3",
+        "target": [
+          199.20594373502794,
+          68.39748505074566,
+          -69.44827537132772
+        ],
+        "normal": [
+          0.9843750233470421,
+          -0.0,
+          0.17608467681916629
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.60000473,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.60000473
+      },
+      {
+        "label": "Annex surveyed wall 4",
+        "target": [
+          190.0602998234871,
+          70.57293115319246,
+          -66.82741549262377
+        ],
+        "normal": [
+          -0.1749954329148494,
+          -0.0,
+          0.9845692451315675
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000048,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000048
+      },
+      {
+        "label": "Annex surveyed wall 5",
+        "target": [
+          188.42129573313863,
+          68.34462553878662,
+          -75.55685407077392
+        ],
+        "normal": [
+          0.17493071056779752,
+          -0.0,
+          -0.9845807465618275
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59996367,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59996367
+      },
+      {
+        "label": "Annex surveyed wall 7",
+        "target": [
+          180.83291368382805,
+          66.0633355098953,
+          -71.69384349907035
+        ],
+        "normal": [
+          -0.9844520686377016,
+          -0.0,
+          -0.17565342170009143
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999675,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999675
+      },
+      {
+        "label": "Annex surveyed wall 0",
+        "target": [
+          182.86772765186015,
+          70.57323958293635,
+          -72.32498425699691
+        ],
+        "normal": [
+          -0.9844690602529642,
+          -0.0,
+          -0.1755581653032563
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999406,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999406
+      },
+      {
+        "label": "Annex surveyed wall 1",
+        "target": [
+          197.75933199241908,
+          65.33758211725741,
+          -64.16037824001909
+        ],
+        "normal": [
+          0.9846883204758653,
+          -0.0,
+          0.17432415643971844
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall.",
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999686,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999686
+      },
+      {
+        "label": "Annex surveyed wall 2",
+        "target": [
+          198.2355392479927,
+          68.39755339251319,
+          -65.42961074877432
+        ],
+        "normal": [
+          -0.17605764070212604,
+          -0.0,
+          0.9843798591755122
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000033,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000033
+      },
+      {
+        "label": "Annex surveyed wall 3",
+        "target": [
+          199.20594373502794,
+          68.39748505074566,
+          -69.44827537132772
+        ],
+        "normal": [
+          0.9843750233470421,
+          -0.0,
+          0.17608467681916629
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.60000473,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.60000473
+      },
+      {
+        "label": "Annex surveyed wall 4",
+        "target": [
+          190.0602998234871,
+          70.57293115319246,
+          -66.82741549262377
+        ],
+        "normal": [
+          -0.1749954329148494,
+          -0.0,
+          0.9845692451315675
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.6000048,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.6000048
+      },
+      {
+        "label": "Annex surveyed wall 5",
+        "target": [
+          188.42129573313863,
+          68.34462553878662,
+          -75.55685407077392
+        ],
+        "normal": [
+          0.17493071056779752,
+          -0.0,
+          -0.9845807465618275
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59996367,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59996367
+      },
+      {
+        "label": "Annex surveyed wall 7",
+        "target": [
+          180.83291368382805,
+          66.0633355098953,
+          -71.69384349907035
+        ],
+        "normal": [
+          -0.9844520686377016,
+          -0.0,
+          -0.17565342170009143
+        ],
+        "tile": 1000030054,
+        "part": 0,
+        "hitTile": 1000030054,
+        "hitPart": 0,
+        "distance": 0.59999675,
+        "firstHitTile": 1000030054,
+        "firstHitDistance": 0.59999675
+      }
+    ],
+    "reflectionCaptures": 19,
+    "walkingCaptureQualification": "Standing/body checks run after the final night camera and their captures are at night; daytime ground-level appearance is covered by the camera pass."
+  },
+  "preservation": {
+    "installedPreviewSourceUnchanged": 47,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV93AlignedChunks": 124,
+    "inventoryAndExperienceUnchanged": true,
+    "originalSavesUnchanged": 121,
+    "previewSavesUnchanged": 121,
+    "previewSettingsUnchanged": 4
+  },
+  "visualReview": {
+    "allCapturesReviewed": true,
+    "reviewedCaptures": 57,
+    "captureSha256": {
+      "campus-galileo-low-buildings-100-0.png": "1dc41602467e3834f4550ee840f9d2b98100ae32cdbd0a5947d7a4044c525e3c",
+      "campus-galileo-low-buildings-100-1.png": "2024e95c5b642498cc6c2894eab98bf88de2dc626b738481692547c3259e67a3",
+      "campus-galileo-low-buildings-100-10.png": "e8f1f7bb5e26666e64c52d25b4a11e2d0153777b5cd6e1da64569afa759ee965",
+      "campus-galileo-low-buildings-100-11.png": "7b7344322bb6258f0be5b39480c424fbb96d4460aa44886c515f879a2f325f51",
+      "campus-galileo-low-buildings-100-12.png": "a2504b5a9d660e1a4803907407b424c4363bdfea8096039d8ec9225775e4a2e9",
+      "campus-galileo-low-buildings-100-13.png": "efe151201dac539a38943dcc1536b0887db542103ee9a514a49603836ee63141",
+      "campus-galileo-low-buildings-100-14.png": "4126fcf9ac970d22bfaa068827a1f97f96d46f210a23f518e1cd6830e094362b",
+      "campus-galileo-low-buildings-100-15.png": "b92c4d5797928bc657a0103b2ed0bcc447a64b907a8867b9a6fa5edec2a2e7c5",
+      "campus-galileo-low-buildings-100-16.png": "1751eb2d762a82de9b50ccd0cb7e1bebad26074a564b1b879f58ec04d66d2673",
+      "campus-galileo-low-buildings-100-17.png": "27350758b972cfb0d82f3863fc6e7db558ee90dab98f00d7d0b8f9d1ce0ed373",
+      "campus-galileo-low-buildings-100-18.png": "e679a11929c03345e539d93b1096e5685cfb4d2de67a07778c328b62c402832d",
+      "campus-galileo-low-buildings-100-2.png": "a75c3381feacad1d35149fec4251b8e391d7d9718fc9230c2b328e28658e6ceb",
+      "campus-galileo-low-buildings-100-3.png": "594a786ed14f8fb3a35863e505d63fd9d428a9b5e5215e4482e928a08d88035a",
+      "campus-galileo-low-buildings-100-4.png": "0cba2c8863f6cd0258c3bb41049f9f332b89b67c38a01ccc5fa8bb5efcd34d8c",
+      "campus-galileo-low-buildings-100-5.png": "856d3337c8096da9b7d13d816d303f1c875da3313ee80c4a43ef842efdb36bb9",
+      "campus-galileo-low-buildings-100-6.png": "ee05c812c31eec07227b1530ccd230a8f4593e8c3e81b82958fec312c6d0a70a",
+      "campus-galileo-low-buildings-100-7.png": "1c3a26e04aa950d54e52678b0c92b6cc21aeed7a7d970c5260e45c5608001534",
+      "campus-galileo-low-buildings-100-8.png": "bc738fca66c52954028595156c72b1258893cc20ae582f7d958733bc5dafd9a1",
+      "campus-galileo-low-buildings-100-9.png": "43b575b57c498d3da6cc76ae883d2fb99a264cfa6954dfc433eb172db8001468",
+      "campus-galileo-low-buildings-100-reflection-0.png": "cb03df357b7ba2f82e43f413f101435b4cf82bddee19ede93a14137a48dd2d8f",
+      "campus-galileo-low-buildings-100-reflection-1.png": "1656552b6fc72d44ba30931465843592d03d8aab316591ea878c8593c690e660",
+      "campus-galileo-low-buildings-100-reflection-10.png": "7aec0508588041822474c128763f1f310a53cb18382dfd198ebd8194c721880f",
+      "campus-galileo-low-buildings-100-reflection-11.png": "d44231bf9bd592dcaca82216b1426a9360becb4ffefd9a4687c59f36a0e6b9e0",
+      "campus-galileo-low-buildings-100-reflection-12.png": "4a7338fd6314b014e04df3651a635b63fcd16b90cc9943f59c3bb784f2057c0c",
+      "campus-galileo-low-buildings-100-reflection-13.png": "6206dea172cbacbfcbcca5543dc467f48f9b0a6b0fb4f30343ff3b62b1e13470",
+      "campus-galileo-low-buildings-100-reflection-14.png": "873505e0f79d60bbf416b0e9cc9417ea241b7236eda98ac6500eae58f5590499",
+      "campus-galileo-low-buildings-100-reflection-15.png": "93755c2cede10db1231638e6c6dab9a6b2589c3e1b34e6dcbf00952191087787",
+      "campus-galileo-low-buildings-100-reflection-16.png": "77fb9437c14c58a16055e3ff6693303ff8f5d387deca33a4a2efa40edebecdee",
+      "campus-galileo-low-buildings-100-reflection-17.png": "f477f5167b31b777cfa6480b173d5d0bce35552b7299e440ad6ac456e5ebe07d",
+      "campus-galileo-low-buildings-100-reflection-18.png": "6d6a498ae7094479c9d67bff155dbe920bb93bf6fc49e146d75b577f0b034cc9",
+      "campus-galileo-low-buildings-100-reflection-2.png": "a9a144e4b1c51f3dddd33c143e42d8a4b087f4a02c1e5aeafb7d8ec888f38aae",
+      "campus-galileo-low-buildings-100-reflection-3.png": "47e38247faa853d858bd1f484bb8668b4e0a55acc9a3712bcc0110c8b46844ba",
+      "campus-galileo-low-buildings-100-reflection-4.png": "f4f21c55e2e4475803f06123741b8d134108a78163bce52264d0e8b65515f909",
+      "campus-galileo-low-buildings-100-reflection-5.png": "cdb1c5e6fdf54d1060e0f941081a3c38287d8475cc6000e967a5dee1df8d9033",
+      "campus-galileo-low-buildings-100-reflection-6.png": "1ecf38467b3c384a8406cb07ab9af4a9361d34115c3a7e9827598f7609c02660",
+      "campus-galileo-low-buildings-100-reflection-7.png": "6794b89fc59c922dd4dec506b228a8610600caa5818c660b5a95d26b9faab53c",
+      "campus-galileo-low-buildings-100-reflection-8.png": "70437dc48bff6e9f91891a7494a8c23539cd0bb5775d1539a253b12e0ee270e6",
+      "campus-galileo-low-buildings-100-reflection-9.png": "fe4d0278dc8437253c5fc3d0b3b491699b9be4ec169ff25452751cc676f5f40b",
+      "campus-galileo-low-buildings-100-walk-0.png": "1d38cb396063381135de13b7eb1656f93b87d8ccd964a4a8673e4f078d5de9ff",
+      "campus-galileo-low-buildings-100-walk-1.png": "b7ccb0365ae7d60f8ef4a9a5f73a0c61a0d54a5b5d9d99b39be616fb026246e9",
+      "campus-galileo-low-buildings-100-walk-10.png": "183a487445a643e1b2074ed732e1840e7a82e57dfd47f760817089f29a5ca280",
+      "campus-galileo-low-buildings-100-walk-11.png": "2f359013b819c51b7cb0d2db893cc601407833398efde565356f7c82e9b21201",
+      "campus-galileo-low-buildings-100-walk-12.png": "b0b43f19ccef254bacb7726f22a44ada46f4eccdd2daeb047f6398f4dc23d655",
+      "campus-galileo-low-buildings-100-walk-13.png": "120dabe775daf7a02fe1fd15161efc3418f5b4c916d3394c95a3f9bd13612fbb",
+      "campus-galileo-low-buildings-100-walk-14.png": "c4c5bbc8eb160f6e7010ca25ba7e1b74b8f3f9818efce722a2436735f010d273",
+      "campus-galileo-low-buildings-100-walk-15.png": "cab387016e62ad3fbb1133c043da3d397272f1a1524fbca7e70ecebd867fb1fd",
+      "campus-galileo-low-buildings-100-walk-16.png": "e311e9b48720ac4f6ca83cb29a05a7998f6e6a694ec8c26a1a0ca55df7c2c293",
+      "campus-galileo-low-buildings-100-walk-17.png": "34ac6a23c6ed8b8edb15d56af28f817b4805aa8f0decb8b4e747f2ae318e70a8",
+      "campus-galileo-low-buildings-100-walk-18.png": "9f6b741e1ea7f0a6016fc74a1467c24de4b9a41990bc483d2c1b4a2421071f38",
+      "campus-galileo-low-buildings-100-walk-2.png": "5a50c7218d778edf85d5b5e07b1d425b93f2bffba90a1f15e5f580498b6996e5",
+      "campus-galileo-low-buildings-100-walk-3.png": "c039f21a78125d696722f6eef4c3b0e3413ef526aab30fc214450e15c68f977e",
+      "campus-galileo-low-buildings-100-walk-4.png": "8430e87cabaaabbca043edc907f3cf45719650d81a3e2b82b8822a7db7262e48",
+      "campus-galileo-low-buildings-100-walk-5.png": "711c73de48a9b8d3f316e7e4550efe9157c76025673857449acf3ab51a770188",
+      "campus-galileo-low-buildings-100-walk-6.png": "322b9f348b3b1be4b724751bc254b7a86e16a8c1ee53e8338da7e3282dbcf469",
+      "campus-galileo-low-buildings-100-walk-7.png": "00ea832d1e0c927f745f8dc65fb51c9e42ce53a9c0bcbd42391b6181e5e22bc9",
+      "campus-galileo-low-buildings-100-walk-8.png": "06118a61362b8ac858787f1682305509d0468d6793bd6341db86ec2a49ef9efd",
+      "campus-galileo-low-buildings-100-walk-9.png": "9f5de4150ebe858472c211966b79c3d3007cf7e519b67cc015f4376c76298745"
+    },
+    "acceptedScope": "Distinct surveyed low-building envelopes with recessed glazing, pale frames and blue lower panels, replacing smeared photographic walls. Roofs and courtyard opening retained.",
+    "remainingLimitations": [
+      "Opening positions, subdivisions, colours and recess dimensions are inferred from source projections, not measured facade detail.",
+      "Floating source chimney near x=200,z=-67 and stray courtyard triangles remain visible.",
+      "Courtyard ground, roof imagery and nearby untreated buildings retain coarse photographic detail and baked shadows.",
+      "Existing ordinary dirt structures remain protected and obscure some views.",
+      "Night lighting and reflection-buffer edges remain approximate; interiors are outside scope."
+    ]
+  },
+  "installation": {
+    "completed": true,
+    "artifactSha256": "306a9eeaf57dfadb4f58d01fd697b5ccf8682ba35f23e7d5ef86f8391078e535",
+    "previousArtifactSha256": "77d968a258ce1a9a2ad4ccd956200848744d439a11fe7cd1b1fbdb54bece50a3",
+    "updateSaveFilesVerified": 121,
+    "updateSavesAndSettingsUnchanged": true,
+    "installationRecordSha256": "f0a0895f321a176b609cb11c5c392ac8f188156d3faaed761dc968160cfad3e9",
+    "rollbackPolicy": "Two most recent verified mod backups retained; saves and settings excluded from pruning."
+  }
+}

@@ -433,11 +433,22 @@ for name,value in terrace_check['rawInputs'].items():assert digest(ROOT/'.cache'
 annex=json.loads((DATA/'manifest.json').read_text())['architecture']['cyclotronAnnex']
 for path,key in [(SOURCE/annex['sourceFile'],'sourceSha256'),(ROOT/annex['generatorFile'],'generatorSha256'),(SOURCE/annex['referenceFile'],'referenceSha256'),(DATA/annex['meshFile'],'meshSha256'),(DATA/annex['roofFile'],'roofSha256'),(DATA/annex['collisionFile'],'collisionSha256')]:assert digest(path)==annex[key]
 annex_check=json.loads((DATA/'cyclotron-annex-validation.json').read_text())
-assert annex_check['status'].startswith('PASS:') and annex_check['manifestSha256']==digest(DATA/'manifest.json')
+# The annex is unchanged; its retained byte checks remain valid. The new
+# low-building scope gate below verifies the complete current manifest.
+assert annex_check['status'].startswith('PASS:')
 assert annex_check['validatorSha256']==digest(ROOT/'scripts/validate-cyclotron-annex.py')
 assert annex_check['fullDataVerified'] and len(annex_check['retainedMeshSha256'])>=len(json.loads((DATA/'manifest.json').read_text())['tiles'])-1
 for name,value in annex_check['retainedMeshSha256'].items():assert digest(DATA/name)==value
 assert annex_check['meshSha256']==annex['meshSha256'] and annex_check['protectedNeighbourOverlapSquareMetres']<1e-7
+low=json.loads((DATA/'manifest.json').read_text())['architecture']['galileoLowBuildings']
+low_check=json.loads((DATA/'galileo-low-buildings-validation.json').read_text())
+assert low_check['status'].startswith('PASS:') and low_check['manifestSha256']==digest(DATA/'manifest.json')
+assert low_check['validatorSha256']==digest(ROOT/'scripts/validate-galileo-low-buildings.py')
+for path,key in [(SOURCE/low['sourceFile'],'sourceSha256'),(ROOT/low['generatorFile'],'generatorSha256'),(SOURCE/low['referenceFile'],'referenceSha256')]:assert digest(path)==low[key]==low_check[key]
+for building in low['buildings']:
+ for filekey,hashkey in [('meshFile','meshSha256'),('roofFile','roofSha256'),('collisionFile','collisionSha256')]:assert digest(DATA/building[filekey])==building[hashkey]
+assert len(low_check['retainedMeshSha256'])>=len(json.loads((DATA/'manifest.json').read_text())['tiles'])-2
+for name,value in low_check['retainedMeshSha256'].items():assert digest(DATA/name)==value
 subprocess.run(['python3',str(ROOT/'scripts/validate-galileo-east-material.py')],check=True)
 subprocess.run(['python3',str(ROOT/'scripts/validate-foliage-rendering.py'),'--directory',str(DATA)],env={**os.environ,'JAVA_HOME':args.java_home},check=True)
 upstream=json.loads((SOURCE/'upstream.json').read_text());spec=upstream['release'];CACHE.mkdir(parents=True,exist_ok=True)
@@ -853,6 +864,9 @@ with zipfile.ZipFile(release) as original:
   for key in ['coverageFile','materialDerivedFile']:write(target,'src/minecampus-exterior/'+woodland[key],(DATA/woodland[key]).read_bytes())
   write(target,'src/minecampus-exterior/p1-complex.json',(SOURCE/'p1-complex.json').read_bytes())
   write(target,'src/minecampus-exterior/p1-complex-reference.json',(SOURCE/'photos/p1-complex-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/galileo-low-buildings.json',(SOURCE/'galileo-low-buildings.json').read_bytes())
+  write(target,'src/minecampus-exterior/galileo-low-buildings-reference.json',(SOURCE/'photos/galileo-low-buildings-reference.json').read_bytes())
+  write(target,'src/minecampus-exterior/galileo-low-buildings-validation.json',(DATA/'galileo-low-buildings-validation.json').read_bytes())
   write(target,'src/minecampus-exterior/cyclotron-annex.json',(SOURCE/'cyclotron-annex.json').read_bytes())
   write(target,'src/minecampus-exterior/cyclotron-annex-reference.json',(SOURCE/'photos/cyclotron-annex-reference.json').read_bytes())
   write(target,'src/minecampus-exterior/cyclotron-annex-validation.json',(DATA/'cyclotron-annex-validation.json').read_bytes())

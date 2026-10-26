@@ -51,7 +51,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -422,17 +444,83 @@
+@@ -422,17 +444,84 @@
  		RenderSystem.depthMask(true);
  		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
@@ -111,6 +111,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +                if(campus && CampusCanopyGlass.isCanopy(t.data.id))tileShader.safeGetUniform("MaterialDetail").set(30f);
 +                if(campus && t.data.id==1_000_030_051)tileShader.safeGetUniform("MaterialDetail").set(i==0?32f:(i==1?31f:(i==3?6f:(i==5?0f:(i==6?13f:30f)))));
 +                if(campus && t.data.id==1_000_030_052)tileShader.safeGetUniform("MaterialDetail").set(i==0?33f:(i==1||i==5?30f:(i==2?13f:(i==3?6f:0f))));
++                if(campus && (t.data.id==1_000_030_055||t.data.id==1_000_030_056))tileShader.safeGetUniform("MaterialDetail").set(i==0?7f:(i==1?6f:(i==5?0f:16f)));
 +                if(campus && t.data.id==1_000_030_054)tileShader.safeGetUniform("MaterialDetail").set(i==0?7f:0f);
 +                if(campus && t.data.id==1_000_030_050)tileShader.safeGetUniform("MaterialDetail").set(i==3?7f:30f);
 +                if(campus && t.data.id==1_000_030_046)
@@ -136,7 +137,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  		}
 +        if(campusPass)CampusCanopyGlass.render(tiles,cam,frustum,view,proj,campusGroundShader);
  		VertexBuffer.unbind();
-@@ -455,6 +535,7 @@
+@@ -455,6 +536,7 @@
  	private void markDirty(java.util.function.Predicate<MapTile> test) {
  		RenderSystem.recordRenderCall(() -> {
  			for (MapTile t : loaded.values()) if (test.test(t)) t.dirty = true;

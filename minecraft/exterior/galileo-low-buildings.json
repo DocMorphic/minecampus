@@ -1,0 +1,1456 @@
+{
+  "status": "Development candidate; packaged native review pending.",
+  "reference": "photos/galileo-low-buildings-reference.json",
+  "referenceSha256": "91e1e241a4e4cc25e86ccb96851f0092d4d4038a98f599ee12383fce208a64e4",
+  "qualification": "Source-informed architectural approximation, not current as-built documentation. Window counts in obscured spans, mullions, recess depths, colours, sills and door classifications are explicitly estimated. Preserve all original roofs, courtyard holes, collision files and user blocks; no interiors.",
+  "recessMetres": 0.18,
+  "frameMetres": 0.085,
+  "fasciaMetres": 0.2,
+  "cleanupMarginMetres": 2.75,
+  "neighbourGuardMetres": 0.25,
+  "roofPaddingMetres": 0.5,
+  "colours": [
+    [
+      205,
+      205,
+      195,
+      255
+    ],
+    [
+      43,
+      61,
+      70,
+      255
+    ],
+    [
+      210,
+      216,
+      211,
+      255
+    ],
+    [
+      126,
+      164,
+      181,
+      255
+    ],
+    [
+      143,
+      106,
+      96,
+      255
+    ],
+    [
+      68,
+      79,
+      82,
+      255
+    ]
+  ],
+  "buildings": [
+    {
+      "id": "DEBY_LOD2_5284438",
+      "runtimeId": 1000030055,
+      "baseY": 63.7772963571183,
+      "roofSha256": "7f5186034929609a90709d5020784b40d432c3fe7c31ad5fb520fb4548cda235",
+      "surveyWallsSha256": "248d36adb01b776e879d8b208522fd5eb332cae67e0a06ee0b43915f44256fd0",
+      "faces": {
+        "0": {
+          "basis": "Opaque west end, heavily obscured by vegetation; no reliable opening layout.",
+          "openings": [],
+          "panels": []
+        },
+        "1": {
+          "basis": "Reddish opaque end visible in source projection; material type unresolved.",
+          "openings": [],
+          "panels": [
+            {
+              "alongFraction": [
+                0,
+                1
+              ],
+              "heightAboveBase": [
+                0,
+                4.1
+              ],
+              "part": 4
+            }
+          ]
+        },
+        "2": {
+          "basis": "Observed window rhythm on western half; tree-covered eastern half is not populated with invented windows.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.46,
+                0.51
+              ],
+              "heightAboveBase": [
+                1.0,
+                3.3
+              ],
+              "kind": "window",
+              "divisions": 2,
+              "basis": "Visible south window groups; positions and divisions estimated."
+            },
+            {
+              "alongFraction": [
+                0.525,
+                0.58
+              ],
+              "heightAboveBase": [
+                1.0,
+                3.3
+              ],
+              "kind": "window",
+              "divisions": 2,
+              "basis": "Visible south window groups; positions and divisions estimated."
+            },
+            {
+              "alongFraction": [
+                0.595,
+                0.65
+              ],
+              "heightAboveBase": [
+                1.0,
+                3.3
+              ],
+              "kind": "window",
+              "divisions": 2,
+              "basis": "Visible south window groups; positions and divisions estimated."
+            },
+            {
+              "alongFraction": [
+                0.665,
+                0.72
+              ],
+              "heightAboveBase": [
+                1.0,
+                3.3
+              ],
+              "kind": "window",
+              "divisions": 2,
+              "basis": "Visible south window groups; positions and divisions estimated."
+            },
+            {
+              "alongFraction": [
+                0.735,
+                0.79
+              ],
+              "heightAboveBase": [
+                1.0,
+                3.3
+              ],
+              "kind": "window",
+              "divisions": 2,
+              "basis": "Visible south window groups; positions and divisions estimated."
+            },
+            {
+              "alongFraction": [
+                0.805,
+                0.86
+              ],
+              "heightAboveBase": [
+                1.0,
+                3.3
+              ],
+              "kind": "window",
+              "divisions": 2,
+              "basis": "Visible south window groups; positions and divisions estimated."
+            },
+            {
+              "alongFraction": [
+                0.875,
+                0.94
+              ],
+              "heightAboveBase": [
+                1.0,
+                3.3
+              ],
+              "kind": "window",
+              "divisions": 2,
+              "basis": "Visible south window groups; positions and divisions estimated."
+            }
+          ],
+          "panels": [
+            {
+              "alongFraction": [
+                0,
+                0.12
+              ],
+              "heightAboveBase": [
+                0,
+                4.1
+              ],
+              "part": 4
+            }
+          ]
+        },
+        "3": {
+          "basis": "Shared lower wall against surveyed annex; no added openings.",
+          "openings": [],
+          "panels": []
+        },
+        "4": {
+          "basis": "Survey envelope; obscured fine detail remains approximate.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.045,
+                0.2
+              ],
+              "heightAboveBase": [
+                1.15,
+                3.5
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Dark north features interpreted as window groups; extent estimated under shadows."
+            },
+            {
+              "alongFraction": [
+                0.24,
+                0.4
+              ],
+              "heightAboveBase": [
+                1.15,
+                3.5
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Dark north features interpreted as window groups; extent estimated under shadows."
+            },
+            {
+              "alongFraction": [
+                0.44,
+                0.6
+              ],
+              "heightAboveBase": [
+                1.15,
+                3.5
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Dark north features interpreted as window groups; extent estimated under shadows."
+            },
+            {
+              "alongFraction": [
+                0.65,
+                0.82
+              ],
+              "heightAboveBase": [
+                1.15,
+                3.5
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Dark north features interpreted as window groups; extent estimated under shadows."
+            }
+          ],
+          "panels": []
+        },
+        "5": {
+          "basis": "Survey envelope; obscured fine detail remains approximate.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.58,
+                0.77
+              ],
+              "heightAboveBase": [
+                0.25,
+                3.35
+              ],
+              "kind": "door",
+              "divisions": 2,
+              "basis": "Tall blue-grey east feature interpreted as a closed service door; classification and dimensions provisional."
+            }
+          ],
+          "panels": []
+        }
+      }
+    },
+    {
+      "id": "DEBY_LOD2_5284436",
+      "runtimeId": 1000030056,
+      "baseY": 63.74774536051467,
+      "roofSha256": "12e2e3328f90f155f58e481292234b170703ffbd927685112e9a5505312933dc",
+      "surveyWallsSha256": "5701a951fae85dba99bcfc6da737ba1ed14f680d2c691c60f087b266801637ef",
+      "faces": {
+        "0": {
+          "basis": "Pale frame and blue lower panels observed; precise window count, spacing and framing estimated.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.045,
+                0.135
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.155,
+                0.245
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.265,
+                0.355
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.375,
+                0.465
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.485,
+                0.575
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.595,
+                0.685
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.705,
+                0.795
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.815,
+                0.905
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            }
+          ],
+          "panels": [
+            {
+              "alongFraction": [
+                0.045,
+                0.135
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.155,
+                0.245
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.265,
+                0.355
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.375,
+                0.465
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.485,
+                0.575
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.595,
+                0.685
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.705,
+                0.795
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.815,
+                0.905
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            }
+          ]
+        },
+        "1": {
+          "basis": "Pale frame and blue lower panels observed; precise window count, spacing and framing estimated.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.07,
+                0.24
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.29,
+                0.46
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.51,
+                0.68
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.73,
+                0.9
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            }
+          ],
+          "panels": [
+            {
+              "alongFraction": [
+                0.07,
+                0.24
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.29,
+                0.46
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.51,
+                0.68
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.73,
+                0.9
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            }
+          ]
+        },
+        "2": {
+          "basis": "Pale frame and blue lower panels observed; precise window count, spacing and framing estimated.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.115,
+                0.22
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Group bounds estimated from the clearest south-face projection."
+            },
+            {
+              "alongFraction": [
+                0.24,
+                0.335
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Group bounds estimated from the clearest south-face projection."
+            },
+            {
+              "alongFraction": [
+                0.355,
+                0.445
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Group bounds estimated from the clearest south-face projection."
+            },
+            {
+              "alongFraction": [
+                0.465,
+                0.555
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Group bounds estimated from the clearest south-face projection."
+            },
+            {
+              "alongFraction": [
+                0.575,
+                0.665
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Group bounds estimated from the clearest south-face projection."
+            },
+            {
+              "alongFraction": [
+                0.69,
+                0.78
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Group bounds estimated from the clearest south-face projection."
+            },
+            {
+              "alongFraction": [
+                0.8,
+                0.9
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Group bounds estimated from the clearest south-face projection."
+            },
+            {
+              "alongFraction": [
+                0.915,
+                0.975
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Group bounds estimated from the clearest south-face projection."
+            },
+            {
+              "alongFraction": [
+                0.035,
+                0.078
+              ],
+              "heightAboveBase": [
+                0.4,
+                3.65
+              ],
+              "kind": "door",
+              "divisions": 2,
+              "basis": "Dark left-end feature interpreted as a closed entrance; depth and leaf arrangement estimated."
+            }
+          ],
+          "panels": [
+            {
+              "alongFraction": [
+                0.115,
+                0.22
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.24,
+                0.335
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.355,
+                0.445
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.465,
+                0.555
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.575,
+                0.665
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.69,
+                0.78
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.8,
+                0.9
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.915,
+                0.975
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            }
+          ]
+        },
+        "3": {
+          "basis": "Pale frame and blue lower panels observed; precise window count, spacing and framing estimated.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.045,
+                0.135
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.155,
+                0.245
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.265,
+                0.355
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.375,
+                0.465
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.485,
+                0.575
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.595,
+                0.685
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.705,
+                0.795
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.815,
+                0.905
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            }
+          ],
+          "panels": [
+            {
+              "alongFraction": [
+                0.045,
+                0.135
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.155,
+                0.245
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.265,
+                0.355
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.375,
+                0.465
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.485,
+                0.575
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.595,
+                0.685
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.705,
+                0.795
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.815,
+                0.905
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            }
+          ]
+        },
+        "4": {
+          "basis": "Pale frame and blue lower panels observed; precise window count, spacing and framing estimated.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.09,
+                0.31
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.37,
+                0.59
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.65,
+                0.87
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            }
+          ],
+          "panels": [
+            {
+              "alongFraction": [
+                0.09,
+                0.31
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.37,
+                0.59
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.65,
+                0.87
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            }
+          ]
+        },
+        "5": {
+          "basis": "Pale frame and blue lower panels observed; precise window count, spacing and framing estimated.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.07,
+                0.24
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.29,
+                0.46
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.51,
+                0.68
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.73,
+                0.9
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            }
+          ],
+          "panels": [
+            {
+              "alongFraction": [
+                0.07,
+                0.24
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.29,
+                0.46
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.51,
+                0.68
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.73,
+                0.9
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            }
+          ]
+        },
+        "6": {
+          "basis": "Pale frame and blue lower panels observed; precise window count, spacing and framing estimated.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.09,
+                0.31
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.37,
+                0.59
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            },
+            {
+              "alongFraction": [
+                0.65,
+                0.87
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Partly visible courtyard window rhythm; individual bounds estimated."
+            }
+          ],
+          "panels": [
+            {
+              "alongFraction": [
+                0.09,
+                0.31
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.37,
+                0.59
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.65,
+                0.87
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            }
+          ]
+        },
+        "7": {
+          "basis": "Pale frame and blue lower panels observed; precise window count, spacing and framing estimated.",
+          "openings": [
+            {
+              "alongFraction": [
+                0.045,
+                0.135
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.155,
+                0.245
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.265,
+                0.355
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.375,
+                0.465
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.485,
+                0.575
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.595,
+                0.685
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.705,
+                0.795
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            },
+            {
+              "alongFraction": [
+                0.815,
+                0.905
+              ],
+              "heightAboveBase": [
+                2.05,
+                4.25
+              ],
+              "kind": "window",
+              "divisions": 3,
+              "basis": "Estimated continuation of visible window groups through tree-obscured spans."
+            }
+          ],
+          "panels": [
+            {
+              "alongFraction": [
+                0.045,
+                0.135
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.155,
+                0.245
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.265,
+                0.355
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.375,
+                0.465
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.485,
+                0.575
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.595,
+                0.685
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.705,
+                0.795
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            },
+            {
+              "alongFraction": [
+                0.815,
+                0.905
+              ],
+              "heightAboveBase": [
+                0.7,
+                2.05
+              ],
+              "part": 3
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2438 @@
+{
+  "name": "galileo-low-buildings-100",
+  "purpose": "Review both surveyed low-building exteriors, recessed window groups, courtyard hole, bounded fragment cleanup, reflection routing, and native walking while preserving user blocks.",
+  "cameras": [
+    {
+      "label": "West approach to northern low building",
+      "position": "143 64.5 -62 -90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "North face of northern low building",
+      "position": "177 64.5 -83 0 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "South face of northern low building",
+      "position": "177 64.5 -43 180 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "East face of northern low building",
+      "position": "212 64.5 -61 90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "West approach to southern low building",
+      "position": "135 64.5 -20 -90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ],
+      "probes": [
+        {
+          "label": "DEBY_LOD2_5284438 face 2 0",
+          "kind": "window",
+          "basis": "Visible south window groups; positions and divisions estimated.",
+          "target": [
+            178.1061391137816,
+            65.92729635711831,
+            -54.46351586479929
+          ],
+          "normal": [
+            -0.17568036522163377,
+            -0.0,
+            0.984447260789319
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.46,
+            0.51
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 2 1",
+          "kind": "window",
+          "basis": "Visible south window groups; positions and divisions estimated.",
+          "target": [
+            174.8087362079689,
+            65.92729635711831,
+            -55.051956678085304
+          ],
+          "normal": [
+            -0.17568036522163377,
+            -0.0,
+            0.984447260789319
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.525,
+            0.58
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 2 2",
+          "kind": "window",
+          "basis": "Visible south window groups; positions and divisions estimated.",
+          "target": [
+            171.32468785465736,
+            65.92729635711831,
+            -55.673705461934674
+          ],
+          "normal": [
+            -0.17568036522163377,
+            -0.0,
+            0.984447260789319
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.595,
+            0.65
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 2 3",
+          "kind": "window",
+          "basis": "Visible south window groups; positions and divisions estimated.",
+          "target": [
+            167.8406395013458,
+            65.92729635711831,
+            -56.29545424578405
+          ],
+          "normal": [
+            -0.17568036522163377,
+            -0.0,
+            0.984447260789319
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.665,
+            0.72
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 2 4",
+          "kind": "window",
+          "basis": "Visible south window groups; positions and divisions estimated.",
+          "target": [
+            164.35659114803425,
+            65.92729635711831,
+            -56.91720302963342
+          ],
+          "normal": [
+            -0.17568036522163377,
+            -0.0,
+            0.984447260789319
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.735,
+            0.79
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 2 5",
+          "kind": "window",
+          "basis": "Visible south window groups; positions and divisions estimated.",
+          "target": [
+            160.8725427947227,
+            65.92729635711831,
+            -57.53895181348279
+          ],
+          "normal": [
+            -0.17568036522163377,
+            -0.0,
+            0.984447260789319
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.805,
+            0.86
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 2 6",
+          "kind": "window",
+          "basis": "Visible south window groups; positions and divisions estimated.",
+          "target": [
+            157.26406414307863,
+            65.92729635711831,
+            -58.18290591104107
+          ],
+          "normal": [
+            -0.17568036522163377,
+            -0.0,
+            0.984447260789319
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.875,
+            0.94
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 4 0",
+          "kind": "window",
+          "basis": "Dark north features interpreted as window groups; extent estimated under shadows.",
+          "target": [
+            155.83880705889527,
+            66.1022963571183,
+            -70.7454172684955
+          ],
+          "normal": [
+            0.17511921883829185,
+            -0.0,
+            -0.9845472356334491
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.045,
+            0.2
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 4 1",
+          "kind": "window",
+          "basis": "Dark north features interpreted as window groups; extent estimated under shadows.",
+          "target": [
+            160.9096192652988,
+            66.1022963571183,
+            -69.8434832217357
+          ],
+          "normal": [
+            0.17511921883829185,
+            -0.0,
+            -0.9845472356334491
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.24,
+            0.4
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 4 2",
+          "kind": "window",
+          "basis": "Dark north features interpreted as window groups; extent estimated under shadows.",
+          "target": [
+            166.08832109311518,
+            66.1022963571183,
+            -68.92235908887461
+          ],
+          "normal": [
+            0.17511921883829185,
+            -0.0,
+            -0.9845472356334491
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.44,
+            0.6
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 4 3",
+          "kind": "window",
+          "basis": "Dark north features interpreted as window groups; extent estimated under shadows.",
+          "target": [
+            171.5691138608875,
+            66.1022963571183,
+            -67.94750271492997
+          ],
+          "normal": [
+            0.17511921883829185,
+            -0.0,
+            -0.9845472356334491
+          ],
+          "tile": 1000030055,
+          "part": 1,
+          "alongFraction": [
+            0.65,
+            0.82
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284438 face 5 0",
+          "kind": "door",
+          "basis": "Tall blue-grey east feature interpreted as a closed service door; classification and dimensions provisional.",
+          "target": [
+            202.79150096651625,
+            65.5772963571183,
+            -57.85204543936202
+          ],
+          "normal": [
+            0.9845050416964046,
+            0.0,
+            0.17535627412317079
+          ],
+          "tile": 1000030055,
+          "part": 4,
+          "alongFraction": [
+            0.58,
+            0.77
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 0 0",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            145.08368407647006,
+            66.89774536051468,
+            -5.796565868990073
+          ],
+          "normal": [
+            -0.9845583047653316,
+            -0.0,
+            -0.1750569750613117
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.045,
+            0.135
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 0 1",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            145.9294427147613,
+            66.89774536051468,
+            -10.553295447260355
+          ],
+          "normal": [
+            -0.9845583047653316,
+            -0.0,
+            -0.1750569750613117
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.155,
+            0.245
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 0 2",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            146.77520135305258,
+            66.89774536051468,
+            -15.310025025530637
+          ],
+          "normal": [
+            -0.9845583047653316,
+            -0.0,
+            -0.1750569750613117
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.265,
+            0.355
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 0 3",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            147.62095999134382,
+            66.89774536051468,
+            -20.066754603800916
+          ],
+          "normal": [
+            -0.9845583047653316,
+            -0.0,
+            -0.1750569750613117
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.375,
+            0.465
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 0 4",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            148.46671862963507,
+            66.89774536051468,
+            -24.823484182071198
+          ],
+          "normal": [
+            -0.9845583047653316,
+            -0.0,
+            -0.1750569750613117
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.485,
+            0.575
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 0 5",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            149.3124772679263,
+            66.89774536051468,
+            -29.580213760341476
+          ],
+          "normal": [
+            -0.9845583047653316,
+            -0.0,
+            -0.1750569750613117
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.595,
+            0.685
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 0 6",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            150.15823590621756,
+            66.89774536051468,
+            -34.33694333861176
+          ],
+          "normal": [
+            -0.9845583047653316,
+            -0.0,
+            -0.1750569750613117
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.705,
+            0.795
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 0 7",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            151.0039945445088,
+            66.89774536051468,
+            -39.09367291688205
+          ],
+          "normal": [
+            -0.9845583047653316,
+            -0.0,
+            -0.1750569750613117
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.815,
+            0.905
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 1 0",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            175.8909340882425,
+            66.89774536051468,
+            -12.200117677243922
+          ],
+          "normal": [
+            -0.9844863936699181,
+            -0.0,
+            -0.17546093775766466
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.07,
+            0.24
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 1 1",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            176.62159750727537,
+            66.89774536051468,
+            -16.29976631461585
+          ],
+          "normal": [
+            -0.9844863936699181,
+            -0.0,
+            -0.17546093775766466
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.29,
+            0.46
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 1 2",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            177.35226092630825,
+            66.89774536051468,
+            -20.399414951987783
+          ],
+          "normal": [
+            -0.9844863936699181,
+            -0.0,
+            -0.17546093775766466
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.51,
+            0.68
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 1 3",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            178.08292434534113,
+            66.89774536051468,
+            -24.499063589359714
+          ],
+          "normal": [
+            -0.9844863936699181,
+            -0.0,
+            -0.17546093775766466
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.73,
+            0.9
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 2 0",
+          "kind": "window",
+          "basis": "Group bounds estimated from the clearest south-face projection.",
+          "target": [
+            150.2420412866441,
+            66.89774536051468,
+            -2.381285772960211
+          ],
+          "normal": [
+            -0.17611384175461375,
+            0.0,
+            0.9843698058872138
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.115,
+            0.22
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 2 1",
+          "kind": "window",
+          "basis": "Group bounds estimated from the clearest south-face projection.",
+          "target": [
+            155.6081738093125,
+            66.89774536051468,
+            -1.4212296961896227
+          ],
+          "normal": [
+            -0.17611384175461375,
+            0.0,
+            0.9843698058872138
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.24,
+            0.335
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 2 2",
+          "kind": "window",
+          "basis": "Group bounds estimated from the clearest south-face projection.",
+          "target": [
+            160.57547215799875,
+            66.89774536051468,
+            -0.5325291386384696
+          ],
+          "normal": [
+            -0.17611384175461375,
+            0.0,
+            0.9843698058872138
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.355,
+            0.445
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 2 3",
+          "kind": "window",
+          "basis": "Group bounds estimated from the clearest south-face projection.",
+          "target": [
+            165.36148224578406,
+            66.89774536051468,
+            0.32373709199475814
+          ],
+          "normal": [
+            -0.17611384175461375,
+            0.0,
+            0.9843698058872138
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.465,
+            0.555
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 2 4",
+          "kind": "window",
+          "basis": "Group bounds estimated from the clearest south-face projection.",
+          "target": [
+            170.14749233356935,
+            66.89774536051468,
+            1.1800033226279854
+          ],
+          "normal": [
+            -0.17611384175461375,
+            0.0,
+            0.9843698058872138
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.575,
+            0.665
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 2 5",
+          "kind": "window",
+          "basis": "Group bounds estimated from the clearest south-face projection.",
+          "target": [
+            175.1510483344358,
+            66.89774536051468,
+            2.075190745562723
+          ],
+          "normal": [
+            -0.17611384175461375,
+            0.0,
+            0.9843698058872138
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.69,
+            0.78
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 2 6",
+          "kind": "window",
+          "basis": "Group bounds estimated from the clearest south-face projection.",
+          "target": [
+            180.0095737265815,
+            66.89774536051468,
+            2.944430706963121
+          ],
+          "normal": [
+            -0.17611384175461375,
+            0.0,
+            0.9843698058872138
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.8,
+            0.9
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 2 7",
+          "kind": "window",
+          "basis": "Group bounds estimated from the clearest south-face projection.",
+          "target": [
+            184.72306851000644,
+            66.89774536051468,
+            3.787723206829179
+          ],
+          "normal": [
+            -0.17611384175461375,
+            0.0,
+            0.9843698058872138
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.915,
+            0.975
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 2 8",
+          "kind": "door",
+          "basis": "Dark left-end feature interpreted as a closed entrance; depth and leaf arrangement estimated.",
+          "target": [
+            146.46761969468616,
+            65.77274536051468,
+            -3.0565684593914155
+          ],
+          "normal": [
+            -0.17611384175461375,
+            0.0,
+            0.9843698058872138
+          ],
+          "tile": 1000030056,
+          "part": 4,
+          "alongFraction": [
+            0.035,
+            0.078
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 3 0",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            154.723970335794,
+            66.89774536051468,
+            -45.83288620982805
+          ],
+          "normal": [
+            0.17569935145816912,
+            -0.0,
+            -0.9844438723955667
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.045,
+            0.135
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 3 1",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            159.513020250977,
+            66.89774536051468,
+            -44.97815696848401
+          ],
+          "normal": [
+            0.17569935145816912,
+            -0.0,
+            -0.9844438723955667
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.155,
+            0.245
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 3 2",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            164.30207016616,
+            66.89774536051468,
+            -44.12342772713996
+          ],
+          "normal": [
+            0.17569935145816912,
+            -0.0,
+            -0.9844438723955667
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.265,
+            0.355
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 3 3",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            169.09112008134304,
+            66.89774536051468,
+            -43.26869848579592
+          ],
+          "normal": [
+            0.17569935145816912,
+            -0.0,
+            -0.9844438723955667
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.375,
+            0.465
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 3 4",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            173.88016999652604,
+            66.89774536051468,
+            -42.41396924445188
+          ],
+          "normal": [
+            0.17569935145816912,
+            -0.0,
+            -0.9844438723955667
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.485,
+            0.575
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 3 5",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            178.66921991170904,
+            66.89774536051468,
+            -41.55924000310784
+          ],
+          "normal": [
+            0.17569935145816912,
+            -0.0,
+            -0.9844438723955667
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.595,
+            0.685
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 3 6",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            183.45826982689204,
+            66.89774536051468,
+            -40.70451076176379
+          ],
+          "normal": [
+            0.17569935145816912,
+            -0.0,
+            -0.9844438723955667
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.705,
+            0.795
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 3 7",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            188.24731974207506,
+            66.89774536051468,
+            -39.849781520419754
+          ],
+          "normal": [
+            0.17569935145816912,
+            -0.0,
+            -0.9844438723955667
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.815,
+            0.905
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 4 0",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            166.52063714417457,
+            66.89774536051468,
+            -31.392482994211335
+          ],
+          "normal": [
+            -0.17577815991950335,
+            0.0,
+            0.9844298037418989
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.09,
+            0.31
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 4 1",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            170.4383036124252,
+            66.89774536051468,
+            -30.69295093986896
+          ],
+          "normal": [
+            -0.17577815991950335,
+            0.0,
+            0.9844298037418989
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.37,
+            0.59
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 4 2",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            174.35597008067577,
+            66.89774536051468,
+            -29.993418885526587
+          ],
+          "normal": [
+            -0.17577815991950335,
+            0.0,
+            0.9844298037418989
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.65,
+            0.87
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 5 0",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            161.55303664573597,
+            66.89774536051468,
+            -14.76304827745698
+          ],
+          "normal": [
+            0.984563876718287,
+            0.0,
+            0.17502563429811524
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.07,
+            0.24
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 5 1",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            162.28176233326448,
+            66.89774536051468,
+            -18.862316312419363
+          ],
+          "normal": [
+            0.984563876718287,
+            0.0,
+            0.17502563429811524
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.29,
+            0.46
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 5 2",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            163.01048802079302,
+            66.89774536051468,
+            -22.96158434738175
+          ],
+          "normal": [
+            0.984563876718287,
+            0.0,
+            0.17502563429811524
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.51,
+            0.68
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 5 3",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            163.73921370832153,
+            66.89774536051468,
+            -27.06085238234413
+          ],
+          "normal": [
+            0.984563876718287,
+            0.0,
+            0.17502563429811524
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.73,
+            0.9
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 6 0",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            163.1439909517999,
+            66.89774536051468,
+            -12.405409127191756
+          ],
+          "normal": [
+            0.17596563979216323,
+            -0.0,
+            -0.9843963092233405
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.09,
+            0.31
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 6 1",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            167.05914649573128,
+            66.89774536051468,
+            -11.705555984998176
+          ],
+          "normal": [
+            0.17596563979216323,
+            -0.0,
+            -0.9843963092233405
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.37,
+            0.59
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 6 2",
+          "kind": "window",
+          "basis": "Partly visible courtyard window rhythm; individual bounds estimated.",
+          "target": [
+            170.97430203966266,
+            66.89774536051468,
+            -11.005702842804595
+          ],
+          "normal": [
+            0.17596563979216323,
+            -0.0,
+            -0.9843963092233405
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.65,
+            0.87
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 7 0",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            188.24053211905985,
+            66.89774536051468,
+            1.921012300384445
+          ],
+          "normal": [
+            0.9844437038190053,
+            0.0,
+            0.17570029599041276
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.045,
+            0.135
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 7 1",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            189.0897402329791,
+            66.89774536051468,
+            -2.837076331551751
+          ],
+          "normal": [
+            0.9844437038190053,
+            0.0,
+            0.17570029599041276
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.155,
+            0.245
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 7 2",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            189.93894834689831,
+            66.89774536051468,
+            -7.595164963487949
+          ],
+          "normal": [
+            0.9844437038190053,
+            0.0,
+            0.17570029599041276
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.265,
+            0.355
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 7 3",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            190.78815646081756,
+            66.89774536051468,
+            -12.35325359542414
+          ],
+          "normal": [
+            0.9844437038190053,
+            0.0,
+            0.17570029599041276
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.375,
+            0.465
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 7 4",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            191.6373645747368,
+            66.89774536051468,
+            -17.11134222736034
+          ],
+          "normal": [
+            0.9844437038190053,
+            0.0,
+            0.17570029599041276
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.485,
+            0.575
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 7 5",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            192.48657268865605,
+            66.89774536051468,
+            -21.869430859296536
+          ],
+          "normal": [
+            0.9844437038190053,
+            0.0,
+            0.17570029599041276
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.595,
+            0.685
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 7 6",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            193.33578080257527,
+            66.89774536051468,
+            -26.627519491232732
+          ],
+          "normal": [
+            0.9844437038190053,
+            0.0,
+            0.17570029599041276
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.705,
+            0.795
+          ]
+        },
+        {
+          "label": "DEBY_LOD2_5284436 face 7 7",
+          "kind": "window",
+          "basis": "Estimated continuation of visible window groups through tree-obscured spans.",
+          "target": [
+            194.18498891649452,
+            66.89774536051468,
+            -31.38560812316893
+          ],
+          "normal": [
+            0.9844437038190053,
+            0.0,
+            0.17570029599041276
+          ],
+          "tile": 1000030056,
+          "part": 1,
+          "alongFraction": [
+            0.815,
+            0.905
+          ]
+        }
+      ]
+    },
+    {
+      "label": "South face of southern low building",
+      "position": "169 64.5 14 180 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "East face of southern low building",
+      "position": "208 64.5 -20 90 0",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Low building overview",
+      "position": "128 105 -30 -90 55",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Annex west close",
+      "position": "175 64.3 -70 -90 -15",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ],
+      "probes": [
+        {
+          "label": "Annex surveyed wall 0",
+          "target": [
+            182.86772765186015,
+            70.57323958293635,
+            -72.32498425699691
+          ],
+          "normal": [
+            -0.9844690602529642,
+            -0.0,
+            -0.1755581653032563
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 1",
+          "target": [
+            197.75933199241908,
+            65.33758211725741,
+            -64.16037824001909
+          ],
+          "normal": [
+            0.9846883204758653,
+            -0.0,
+            0.17432415643971844
+          ],
+          "tile": 1000030054,
+          "part": 0,
+          "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall."
+        },
+        {
+          "label": "Annex surveyed wall 2",
+          "target": [
+            198.2355392479927,
+            68.39755339251319,
+            -65.42961074877432
+          ],
+          "normal": [
+            -0.17605764070212604,
+            -0.0,
+            0.9843798591755122
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 3",
+          "target": [
+            199.20594373502794,
+            68.39748505074566,
+            -69.44827537132772
+          ],
+          "normal": [
+            0.9843750233470421,
+            -0.0,
+            0.17608467681916629
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 4",
+          "target": [
+            190.0602998234871,
+            70.57293115319246,
+            -66.82741549262377
+          ],
+          "normal": [
+            -0.1749954329148494,
+            -0.0,
+            0.9845692451315675
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 5",
+          "target": [
+            188.42129573313863,
+            68.34462553878662,
+            -75.55685407077392
+          ],
+          "normal": [
+            0.17493071056779752,
+            -0.0,
+            -0.9845807465618275
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 7",
+          "target": [
+            180.83291368382805,
+            66.0633355098953,
+            -71.69384349907035
+          ],
+          "normal": [
+            -0.9844520686377016,
+            -0.0,
+            -0.17565342170009143
+          ],
+          "tile": 1000030054,
+          "part": 0
+        }
+      ]
+    },
+    {
+      "label": "Annex east close",
+      "position": "207 64.3 -70 90 -15",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Annex roof and raised section",
+      "position": "171 90 -80 -65 47",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Annex west night",
+      "position": "175 64.3 -70 -90 -15",
+      "worldTime": 18000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ],
+      "probes": [
+        {
+          "label": "Annex surveyed wall 0",
+          "target": [
+            182.86772765186015,
+            70.57323958293635,
+            -72.32498425699691
+          ],
+          "normal": [
+            -0.9844690602529642,
+            -0.0,
+            -0.1755581653032563
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 1",
+          "target": [
+            197.75933199241908,
+            65.33758211725741,
+            -64.16037824001909
+          ],
+          "normal": [
+            0.9846883204758653,
+            -0.0,
+            0.17432415643971844
+          ],
+          "tile": 1000030054,
+          "part": 0,
+          "qualification": "Centroid of the largest survey triangle; polygon vertex mean lay outside this concave stepped wall."
+        },
+        {
+          "label": "Annex surveyed wall 2",
+          "target": [
+            198.2355392479927,
+            68.39755339251319,
+            -65.42961074877432
+          ],
+          "normal": [
+            -0.17605764070212604,
+            -0.0,
+            0.9843798591755122
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 3",
+          "target": [
+            199.20594373502794,
+            68.39748505074566,
+            -69.44827537132772
+          ],
+          "normal": [
+            0.9843750233470421,
+            -0.0,
+            0.17608467681916629
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 4",
+          "target": [
+            190.0602998234871,
+            70.57293115319246,
+            -66.82741549262377
+          ],
+          "normal": [
+            -0.1749954329148494,
+            -0.0,
+            0.9845692451315675
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 5",
+          "target": [
+            188.42129573313863,
+            68.34462553878662,
+            -75.55685407077392
+          ],
+          "normal": [
+            0.17493071056779752,
+            -0.0,
+            -0.9845807465618275
+          ],
+          "tile": 1000030054,
+          "part": 0
+        },
+        {
+          "label": "Annex surveyed wall 7",
+          "target": [
+            180.83291368382805,
+            66.0633355098953,
+            -71.69384349907035
+          ],
+          "normal": [
+            -0.9844520686377016,
+            -0.0,
+            -0.17565342170009143
+          ],
+          "tile": 1000030054,
+          "part": 0
+        }
+      ]
+    },
+    {
+      "label": "Retained Galileo daylight and reflections",
+      "position": "135.8 64.3 -131.0 0 3",
+      "candidateViewIndex": 1,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "GRS courtyard looking east",
+      "position": "170 65.5 -21 -90 0",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "GRS courtyard looking west",
+      "position": "170 65.5 -21 90 0",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "GRS courtyard looking north",
+      "position": "170 65.5 -21 180 0",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "GRS south windows and blue panels",
+      "position": "169 64.5 8 180 -5",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Cyclotron south windows close",
+      "position": "171 64.5 -51 180 -5",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "GRS south night",
+      "position": "169 64.5 8 180 -5",
+      "worldTime": 18000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "sourceDiagnosticBounds": [
+    [
+      140,
+      62,
+      -85
+    ],
+    [
+      215,
+      75,
+      12
+    ]
+  ],
+  "gravityProbes": [
+    {
+      "label": "Galileo east comparison standing",
+      "target": [
+        145.0,
+        63.93476356257272,
+        -115.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.937420623764524,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        -12.0
+      ],
+      "candidateViewIndex": 0,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "North inner frontage standing",
+      "target": [
+        135.8,
+        63.99958742427852,
+        -131.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.0011305589552,
+      "requireBodyClearance": true,
+      "look": [
+        0.0,
+        3.0
+      ],
+      "candidateViewIndex": 1,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Central inner frontage standing",
+      "target": [
+        131.5,
+        63.97347540688412,
+        -115.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.97501972509733,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        3.0
+      ],
+      "candidateViewIndex": 2,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South inner frontage standing",
+      "target": [
+        126.8,
+        63.92223118482563,
+        -88.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.92377721917473,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        3.0
+      ],
+      "candidateViewIndex": 3,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South outer approach standing",
+      "target": [
+        131.0,
+        63.879609871242906,
+        -75.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.88115639163096,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        3.0
+      ],
+      "candidateViewIndex": 4,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "North outer frontage standing",
+      "target": [
+        148.5,
+        63.96650296631572,
+        -133.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.970666181178046,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        8.0
+      ],
+      "candidateViewIndex": 5,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Central outer frontage standing",
+      "target": [
+        146.0,
+        63.88659902365437,
+        -114.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.91763216944051,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        8.0
+      ],
+      "candidateViewIndex": 6,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South outer frontage standing",
+      "target": [
+        141.0,
+        63.89179259189057,
+        -92.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.89394779339557,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        8.0
+      ],
+      "candidateViewIndex": 7,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "North portal surface behind opening standing",
+      "target": [
+        138.6,
+        63.95260386224331,
+        -114.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.95414936926983,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        18.0
+      ],
+      "candidateViewIndex": 8,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "north ramp 0.25 standing",
+      "target": [
+        142.67860037759831,
+        63.33619150665033,
+        -135.27226538153948
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 63.390409604940565,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 9,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "north ramp 0.65 standing",
+      "target": [
+        140.69189735074792,
+        61.92157379760341,
+        -125.8348738850364
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 61.96887114870459,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 10,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "south ramp 0.25 standing",
+      "target": [
+        136.1154656076001,
+        63.71420838064306,
+        -100.3421803129652
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 63.7603137440982,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 11,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "south ramp 0.65 standing",
+      "target": [
+        134.43357101442234,
+        62.42923133161562,
+        -92.52096726521302
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000030022,
+      "part": 1,
+      "dropHeight": 3,
+      "supportHeight": 62.48518434115281,
+      "requireBodyClearance": true,
+      "look": [
+        12.0,
+        15.0
+      ],
+      "candidateViewIndex": 12,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Annex west approach standing",
+      "target": [
+        176.5,
+        63.944588069511575,
+        -69.5
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.98781520620072,
+      "requireBodyClearance": true,
+      "look": [
+        -90.0,
+        -15.0
+      ],
+      "maxSupportError": 0.125,
+      "qualification": "Adjacent clear map ground; the original x175,z-70 test location contains protected vanilla dirt through Y64. Dirt is retained and excluded from terrain-height comparison."
+    },
+    {
+      "label": "Annex east approach standing",
+      "target": [
+        207.0,
+        64.01008587202242,
+        -70.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.03721277366937,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        -15.0
+      ],
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Courtyard west approach",
+      "target": [
+        135.0,
+        64.15143579379748,
+        -20.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.16829787913761,
+      "requireBodyClearance": true,
+      "look": [
+        -90.0,
+        0
+      ],
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Courtyard south approach",
+      "target": [
+        169.0,
+        64.18260872453241,
+        14.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000025,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.21102942851498,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        0
+      ],
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Courtyard east approach",
+      "target": [
+        208.0,
+        63.91520248185147,
+        -40.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000032,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.92642317241263,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        0
+      ],
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Cyclotron south lane",
+      "target": [
+        180.0,
+        63.97869973958086,
+        -43.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.98867780131357,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        0
+      ],
+      "maxSupportError": 0.125
+    }
+  ],
+  "baselineArtifactSha256": "77d968a258ce1a9a2ad4ccd956200848744d439a11fe7cd1b1fbdb54bece50a3",
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610,
+    1000010700,
+    1000010800
+  ],
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "standingSurfacesManifestSha256": "44985e12c4ef1289328ba0d2c0e49cba151ca0665f86bfc9e3b90a5ae2786165"
+}

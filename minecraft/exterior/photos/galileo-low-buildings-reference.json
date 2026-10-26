@@ -1,0 +1,39 @@
+{
+  "sources": [
+    {
+      "url": "https://nav.tum.de/building/5203",
+      "use": "5203 GRS-Altbau identity and Roomfinder position, supported by the location study."
+    },
+    {
+      "url": "https://www.hr6.tum.de/hr6/kontakt/anfahrt/",
+      "use": "Current TUM occupancy/address confirmation; no exterior dimensions inferred from room listings."
+    },
+    {
+      "url": "https://nav.tum.de/building/5202",
+      "use": "5202 cyclotron identity."
+    },
+    {
+      "file": "photos/galileo-low-buildings-study.json",
+      "sha256": "fdc50905271dd7e0d01c1cd6a5992a17db32bdfcb1b0c12daa1821632f6ff5d0",
+      "use": "Matched native baseline, source projection metrics and separate surveyed bodies."
+    },
+    {
+      "file": "photos/grs-altbau-location-study.json",
+      "sha256": "da7e7e0ed09b5affde021dcb5c28d4cfe0781834ecb9b558cc44df844c59f937",
+      "use": "Coordinate association of the courtyard building with 5203."
+    },
+    {
+      "file": "sources.json",
+      "sha256": "a771138ebe11b835fd3e3ab205a2d7bb36da6b8750701145eb2167b26d82f24d",
+      "use": "BVV survey geometry and DOP20 roof imagery."
+    }
+  ],
+  "observations": [
+    "The courtyard exterior has dark window groups above pale blue infill, separated by pale structural strips and topped by a pale fascia. Recesses, individual frames and sills are visible as broad features; exact dimensions are estimated.",
+    "Courtyard face 2 is the clearest: irregularly spaced window groups and a dark entrance-like feature near its left end. Other outer and courtyard faces are partly obscured by vegetation.",
+    "The main cyclotron south face shows window groups along its western half and a reddish opaque eastern end. Its north wall is partly shared with the annex; that shared wall receives no invented openings.",
+    "Main cyclotron east and north views are strongly shadowed. Door/window classifications there are provisional.",
+    "No provider image pixels are stored or redistributed. Transient images were inspected in memory; only measured survey geometry and manually recorded feature estimates are bundled."
+  ],
+  "qualification": "Source-informed architectural approximation, not current as-built documentation. Window counts in obscured spans, mullions, recess depths, colours, sills and door classifications are explicitly estimated. Preserve all original roofs, courtyard holes, collision files and user blocks; no interiors."
+}

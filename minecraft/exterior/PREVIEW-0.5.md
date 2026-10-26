@@ -1,20 +1,20 @@
 # Exterior Preview 0.5
 
-## Local reviewed upgrade — candidate 99
+## Local reviewed upgrade — candidate 100
 
-The development machine has the reviewed cyclotron annex update installed, SHA-256 `77d968a258ce1a9a2ad4ccd956200848744d439a11fe7cd1b1fbdb54bece50a3`. Eight surveyed wall faces replace blurred photographic walls while preserving the raised/setback section and the exact encoded roof. The pale concrete finish remains provisional; no unobserved windows, doors or interiors are added. All 664 existing mesh files, 24 service modules, 25 textures and ten shaders remain byte-identical to candidate 97. [Annex review evidence](cyclotron-annex-development-validation.json).
+The development machine has the reviewed cyclotron and GRS-Altbau courtyard exterior update installed, SHA-256 `306a9eeaf57dfadb4f58d01fd697b5ccf8682ba35f23e7d5ef86f8391078e535`. Two surveyed buildings now have 59 recessed window/door groups, pale frames and blue lower panels. Roof geometry and the courtyard opening are retained. The opening layout and fine finishes are estimates from source projections. [Review evidence](galileo-low-buildings-development-validation.json).
 
-The main native review passed 13 camera views, 14 wall controls and 13 standing checks before landing on existing dirt at a new test position. A focused follow-up passed two camera views, seven wall controls and both annex standing checks on clear ground. All 15 standing locations passed across these runs; no user blocks were removed. All 46 captures were reviewed. Maximum standing error is 0.05032 m. Installation preserved 121 original-save files, 121 preview-save files and four private settings, with candidate 97 backed up. Collision journal v92 applies the bounded material/cleanup changes while protecting ordinary blocks and recorded edits.
+The exact package passed 19 native camera views, 73 surface controls and 19 standing/body-clearance checks, with a maximum standing error of 0.05032 m. All 57 captures were reviewed, including aerial, courtyard and two night views. Installation preserved 121 original-save files, 121 preview-save files and four private settings; candidate 99 is retained as a rollback. Previous edit journals and inventory/experience were also verified in the test copy.
 
-This is a limited geometry improvement. The neighboring long cyclotron and courtyard walls remain blurry, nearby source fragments can float or obscure close views, and untreated ground retains baked shadows. Existing dirt blocks are preserved. Detailed architectural finish, night lighting and the broader realism goal remain unfinished. The [preceding Galileo asphalt](galileo-east-material-development-validation.json) and [terrain repairs](galileo-east-grade-development-validation.json) remain in place.
+![Courtyard building south facade in actual Minecraft](photos/galileo-low-buildings-100-south.jpg)
 
-![Reviewed annex north and existing dirt blocks](photos/cyclotron-annex-99-north.png)
+![Surveyed roofs and courtyard opening](photos/galileo-low-buildings-100-aerial.jpg)
 
-![Reviewed annex east wall and untreated neighbors](photos/cyclotron-annex-99-east.png)
+The wider realism goal remains unfinished. A floating chimney fragment and stray courtyard triangles remain, nearby buildings and courtyard ground are coarse, and photographic shadows remain baked into some surfaces. Existing ordinary dirt blocks are preserved. Night lighting and fine facade detail need further work; interiors are outside scope.
 
-![Reviewed annex raised and setback roof shape](photos/cyclotron-annex-99-aerial.png)
+![Remaining courtyard scan artifacts and preserved ordinary blocks](photos/galileo-low-buildings-100-courtyard-limit.jpg)
 
-This local artifact has not been published as a new GitHub binary release. When it is present locally, update the existing preview with `python3 scripts/install-exterior-preview.py --update --reviewed-upgrade`. The installer checks its separate review and exact hash, backs up the old mod, and preserves saves and local settings. Without `--reviewed-upgrade`, it continues to accept the published dev.22 artifact described below.
+Launch **Minecampus — Exterior Preview 0.5** to play the locally installed build. This artifact has not been published as a new binary release. If the reviewed JAR is present locally, `python3 scripts/install-exterior-preview.py --update --reviewed-upgrade` verifies and installs it while preserving saves/settings and retaining two recent verified mod backups. The default public dev.22 installation below remains separate.
 
 ## Published development preview — dev.22
 
