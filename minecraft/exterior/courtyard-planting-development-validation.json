@@ -1,0 +1,389 @@
+{
+  "status": "PASS: bounded courtyard plant clearance reviewed in packaged Minecraft; full campus realism remains unfinished",
+  "candidate": 106,
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 348309259,
+    "sha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "bd9d7241d692f6282e0bbe0c6fb513312b2097d5366eb41aea63967f583cf737",
+    "rendererSourceFingerprint": "683788080fc1dede",
+    "bundleSha256": "a70f00c872ff6c05ffc5e850f88c3d236cd28b4aabc9c9c6adf3bbd8dce60a4f",
+    "tiles": 483,
+    "bundleUnpackedBytes": 813538747,
+    "bundleUnpackedLimit": 1073741824
+  },
+  "playablePreviewReady": true,
+  "publicBinaryReleased": false,
+  "goalComplete": false,
+  "upgradeFromArtifactSha256": "68098000f192ab8f20deb0cc7a8b3acc0ae5444fe2b0af403caf6784427db67b",
+  "sourceBaseCommit": "75c36ab1fdcfcfc2fbb8c292dfc0d732636984f5",
+  "implementationSourceHashes": {
+    "scripts/exterior_low_building_site.py": "a84802235429f79b31a9f1725c430b1e657278242faf8333d441401a30c99c2f",
+    "scripts/validate-low-building-site.py": "68baa305c0551e1ce9e168d34e6e261ecdf49895ba00600093eb3b7abc7889be",
+    "scripts/validate-retained-grade.py": "e3b382cae5fb407eaa049be888220247edb3ebd4f141a7324f846c8b9e287313",
+    "scripts/build-exterior-release.py": "e6e16aed096d02afee91a668f1b513c062e35929bb426c22193e1ba4e8a51e5f",
+    "minecraft/exterior/low-building-site.json": "b54874f4bded67f243b40315fb760f16a92787d5c62dcd96e5e5428ed6a1ccdd",
+    "minecraft/exterior/low-building-paving.json": "b93eda1cfaee6fc7d87a4e317096e6d901d68b94aa42d57a6d62f3933f92bec7",
+    "minecraft/exterior/checks/courtyard-planting.json": "5667a601881f09ae3718078cf18309514ed392378a770bf43d862825a0c97eaa",
+    "minecraft/exterior/checks/courtyard-planting-route.json": "b99c6ead982408378ad26a85169efbd7ce04212375b335652ac241ce8b35d4dc"
+  },
+  "scope": {
+    "building": "DEBY_LOD2_5284436",
+    "sourceCellsRetained": 608,
+    "sourceDetectedAreaSquareMetres": 152,
+    "clearanceHeightMetres": 2.1,
+    "clearanceMarginMetres": 0.05,
+    "removedLeafCards": 976,
+    "removedStemCards": 14,
+    "remainingLeafCards": 7565,
+    "remainingStemCards": 122,
+    "qualification": "Inferred walking space above the DOP20-interpreted paved route. DOM canopy observations do not establish low branches beneath canopy. Species, card shapes and path continuations beneath canopy remain inferred. No collision or ordinary Minecraft block change."
+  },
+  "sourceValidation": {
+    "dependentChecks": [
+      {
+        "validator": "validate-uyd-site.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-uyd-exterior.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-exterior.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-uta-exterior.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-reactor-exterior.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-reactor-site.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-reactor-east.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-site.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-mlz-courtyard-ground.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-atom-ei.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-atom-ei-canopies.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-atom-ei-west-entrance.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-library.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-container.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-p1-complex.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-woodland.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-new-laboratory.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-laboratory-site.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-ii.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-pinned-water.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-wsi.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-znn.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-znn-west.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-cala.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-physics-lmu.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-lmu-courtyard.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-lmu-east.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-riverbank.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-courtyard-ground.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-north-ground.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-mensa-terrace.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-reactor-ground.py",
+        "exitCode": 0
+      },
+      {
+        "validator": "validate-uta-landscape.py",
+        "exitCode": 0
+      }
+    ],
+    "siteValidationSha256": "422a6720c8ecf3e6ecfed0050a1830d98fc264422d3c0d57247ec666e9b8b171",
+    "pavingClearance": {
+      "minimumRetainedCardHeightMetres": 2.1137867400996697,
+      "overheadCardsRetained": 97,
+      "removedLeafCards": 976,
+      "removedStemCards": 14,
+      "sourceSha256": "b93eda1cfaee6fc7d87a4e317096e6d901d68b94aa42d57a6d62f3933f92bec7"
+    },
+    "retainedGradeEvidence": {
+      "method": "Original grade proof plus exact retained geometry; only decorative courtyard planting differs",
+      "baselineArtifactSha256": "68098000f192ab8f20deb0cc7a8b3acc0ae5444fe2b0af403caf6784427db67b",
+      "baselineManifestSha256": "0e87119cc960dad5a70a34bf467cda552e1b06a6fc9fb60ab79de013d6f574ba",
+      "originalGradeReportSha256": "e08f429b8a1042d1677abb7384874a9f8caeb361540c021f9dccab039206142b",
+      "retainedMeshFiles": 668,
+      "excludedDecorativeMesh": "low-building-courtyard-shrubs.ect",
+      "checkerFile": "scripts/validate-retained-grade.py",
+      "checkerSha256": "e3b382cae5fb407eaa049be888220247edb3ebd4f141a7324f846c8b9e287313"
+    }
+  },
+  "packagedScope": {
+    "artifactSha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
+    "nativeClassesShadersAndTexturesIdentical": true,
+    "serviceModulesIdentical": true,
+    "unchangedMeshFiles": 668,
+    "changedBundleRecords": [
+      "src/minecampus-exterior/mensa-terrace-validation.json",
+      "src/minecampus-exterior/low-building-site.json",
+      "src/minecampus-exterior/low-building-site-validation.json",
+      "src/minecampus-exterior/galileo-east-grade-validation.json",
+      "src/minecampus-exterior/uyd-site-validation.json",
+      "src/minecampus-exterior/uyd-exterior-validation.json",
+      "src/minecampus-exterior/manifest.json",
+      "src/minecampus-exterior/mlz-courtyard-ground-validation.json",
+      "src/minecampus-exterior/atom-ei-canopies-validation.json",
+      "src/minecampus-exterior/atom-ei-west-entrance-validation.json",
+      "src/minecampus-exterior/uta-exterior-validation.json",
+      "src/minecampus-exterior/reactor-ground-validation.json",
+      "src/minecampus-exterior/reactor-east-validation.json",
+      "src/minecampus-exterior/uta-south-landscape-validation.json",
+      "src/minecampus-exterior/reactor-site-validation.json",
+      "src/minecampus-exterior/reactor-exterior-validation.json",
+      "src/minecampus-exterior/atom-ei-validation.json",
+      "src/minecampus-exterior/low-building-courtyard-shrubs.ect"
+    ],
+    "nonValidationChanges": [
+      "src/minecampus-exterior/low-building-site.json",
+      "src/minecampus-exterior/manifest.json",
+      "src/minecampus-exterior/low-building-courtyard-shrubs.ect"
+    ]
+  },
+  "geometryScope": {
+    "changedMeshes": [
+      "low-building-courtyard-shrubs.ect"
+    ],
+    "unchangedMeshes": 672,
+    "parts": [
+      {
+        "part": 0,
+        "before": 136,
+        "after": 122,
+        "removed": 14,
+        "retainedCardsByteIdentical": true,
+        "textureIdentical": true
+      },
+      {
+        "part": 1,
+        "before": 8541,
+        "after": 7565,
+        "removed": 976,
+        "retainedCardsByteIdentical": true,
+        "textureIdentical": true
+      }
+    ],
+    "sourceSamplesUnchanged": 608,
+    "stackTerrainAndRetirementUnchanged": true
+  },
+  "collisionValidation": {
+    "status": "PASS: all 96 complete collision packets are identical at both datums",
+    "packets": 96,
+    "identicalPackets": 96,
+    "changedCodes": 0,
+    "changedProfilePackets": 0,
+    "occupancyChanges": 0,
+    "materialTransitions": {},
+    "transitionExamples": {},
+    "examples": []
+  },
+  "nativeValidation": {
+    "runs": [
+      {
+        "purpose": "Current main review",
+        "resultSha256": "e6af8bf4463ea33995bec87846d5d2282f4a01766d2a583a438f8ffec0bfe97d",
+        "cameraViews": 10,
+        "standingBodyChecks": 5,
+        "maximumSupportErrorMetres": 0.08488954662455228,
+        "fpsByCamera": [
+          71,
+          57,
+          74,
+          48,
+          111,
+          92,
+          52,
+          47,
+          73,
+          60
+        ]
+      },
+      {
+        "purpose": "Current measured route",
+        "resultSha256": "1ef4c9678ab621afc26f44dc570c40b1e54135f562f94f73e1b679403d450841",
+        "cameraViews": 2,
+        "standingBodyChecks": 2,
+        "maximumSupportErrorMetres": 0.00363649143037037,
+        "fpsByCamera": [
+          52,
+          47
+        ]
+      },
+      {
+        "purpose": "Accepted105 measured-route baseline",
+        "resultSha256": "1928c05c70a63c4b8e90d7a913bae4bdf7522bbdc3830ff9a52dbf5a4bb1fe1b",
+        "cameraViews": 2,
+        "standingBodyChecks": 2,
+        "maximumSupportErrorMetres": 0.00363649143037037,
+        "fpsByCamera": [
+          53,
+          47
+        ]
+      }
+    ],
+    "currentCameraViews": 12,
+    "currentStandingBodyChecks": 7,
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "routePoints": [
+      {
+        "label": "East walk source-confirmed interior point",
+        "position": [
+          173.4,
+          64.62221200192566,
+          -20.3
+        ],
+        "distanceInsidePavingMetres": 0.5653439011239894,
+        "groundTile": "ground-698300-5349200.ect",
+        "groundTileSha256": "768004a38832fbbd0b83e5b7343b0da54ecc846ddfaeef2ec50133f4eb56f311"
+      },
+      {
+        "label": "South patio source-confirmed interior point",
+        "position": [
+          169.5,
+          65.05886350856963,
+          -15.9
+        ],
+        "distanceInsidePavingMetres": 0.37461689099150963,
+        "groundTile": "ground-698300-5349200.ect",
+        "groundTileSha256": "768004a38832fbbd0b83e5b7343b0da54ecc846ddfaeef2ec50133f4eb56f311"
+      }
+    ],
+    "matchedRoutePlayerPositions": true,
+    "note": "The main plan retains inherited baseline metadata from earlier surface studies. Actual artifact identity is established by the tested renderer filename, frozen artifacts and explicit baseline runner override, not that inherited field."
+  },
+  "visualReview": {
+    "candidateCapturesReviewed": 31,
+    "matchedBaselineCapturesReviewed": 6,
+    "acceptedAsBoundedImprovement": true,
+    "fullCampusAcceptance": false,
+    "findings": [
+      "Low foliage no longer encroaches on the inferred paved walking envelope; retained planting and higher canopy remain visible.",
+      "The full 31 current captures include daylight, night, aerial, retained Galileo, diagnostic reflection and standing views. Two measured route views were compared against accepted105 at identical player positions.",
+      "Initial edge controls include points outside paving; the corrected east and south route points lie 0.565m and 0.375m inside the interpreted boundary. The south camera looks across the central bed, not along the entire path.",
+      "Bright photographic ground patches, baked planting shadows, approximate facades and unlit night conditions remain.",
+      "Reflection buffers largely show facades and sky; these captures do not prove reflected-paving or foliage fidelity."
+    ]
+  },
+  "preservation": {
+    "userFilesUnchanged": 606,
+    "testInventoriesAndExperienceUnchanged": true,
+    "priorAlignmentJournalsUnchanged": true,
+    "worlds": [
+      {
+        "name": "campus-check-courtyard-planting-106",
+        "v94AlignedChunks": 78
+      },
+      {
+        "name": "campus-check-courtyard-planting-baseline-106",
+        "v94AlignedChunks": 34
+      }
+    ]
+  },
+  "images": [
+    {
+      "path": "minecraft/exterior/photos/courtyard-planting-106-route-0.jpg",
+      "sha256": "4e2d4b79138c4d49955f4ab89404c8159dcc85f5d0e9c8e3267a7aa3705794e0"
+    },
+    {
+      "path": "minecraft/exterior/photos/courtyard-planting-106-route-1.jpg",
+      "sha256": "09ddf2a1da7c85cc2d52279bc4b4e5027b4ddd3e0b74c3c2dd2ea521f2476e67"
+    }
+  ],
+  "installation": {
+    "completed": true,
+    "installedArtifactSha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
+    "unchangedExistingUserFilesExcludingModMetadataAndRollbackStorage": 598,
+    "previewSaveFilesVerifiedByInstaller": 121,
+    "settingsUnchanged": true,
+    "previousModRetained": true
+  }
+}

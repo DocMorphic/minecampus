@@ -27,5 +27,7 @@
     181,
     255
   ],
-  "qualification": "BVV DOM20 identifies a tall compact surface beside the cyclotron; its footprint centroid and top height anchor an inferred cylindrical stack. Exact diameter, circular shape and metal finish are approximations. Courtyard roof boundaries, DGM1 terrain and DOP20/DOM20 foliage guide a bounded outdoor reconstruction; botanical form and fine paving remain inferred. No interiors or ordinary player-block removal."
+  "qualification": "BVV DOM20 identifies a tall compact surface beside the cyclotron; its footprint centroid and top height anchor an inferred cylindrical stack. Exact diameter, circular shape and metal finish are approximations. Courtyard roof boundaries, DGM1 terrain and DOP20/DOM20 foliage guide a bounded outdoor reconstruction; botanical form and fine paving remain inferred. No interiors or ordinary player-block removal.",
+  "pavingPlantClearanceMetres": 2.1,
+  "pavingPlantClearanceMarginMetres": 0.05
 }

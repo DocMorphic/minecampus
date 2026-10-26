@@ -115,6 +115,10 @@ for path,key in [(SOURCE/east_grade['sourceFile'],'sourceSha256'),(ROOT/east_gra
 east_grade_check=json.loads((DATA/'galileo-east-grade-validation.json').read_text())
 assert east_grade_check['status'].startswith('PASS:') and east_grade_check['manifestSha256']==digest(DATA/'manifest.json')
 assert east_grade_check['validatorSha256']==digest(ROOT/'scripts/validate-galileo-east-grade.py')
+if 'retainedEvidence' in east_grade_check:
+ retained_grade=east_grade_check['retainedEvidence']
+ assert retained_grade['checkerFile']=='scripts/validate-retained-grade.py'
+ assert retained_grade['checkerSha256']==digest(ROOT/retained_grade['checkerFile'])
 for name,value in east_grade_check['tileSha256'].items():assert digest(DATA/name)==value
 
 uyd_site=json.loads((DATA/'manifest.json').read_text())['architecture']['uydSite']

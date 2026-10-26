@@ -226,6 +226,20 @@ def build_shrubs(ctx,spec,record):
     leaf.putalpha(Image.open(cache/'tree-source/textures/jacaranda_tree_leaves_alpha_1k.png').convert('L').resize(leaf.size))
     bark=Image.open(cache/'tree-source/textures/jacaranda_tree_trunk_diff_1k.jpg').resize((512,512)).convert('RGBA')
     wood=[];leaves=[];rng=np.random.default_rng(1015203);controls=[]
+    # An overhead canopy return does not establish vegetation down to the
+    # paving. Keep the inferred walking envelope clear while retaining crowns.
+    paving_source=root/'minecraft/exterior/low-building-paving.json'
+    paving_spec=json.loads(paving_source.read_text())
+    paving=unary_union([Polygon(p['polygonMC']) for p in paving_spec['regions']])
+    clearance=spec['pavingPlantClearanceMetres']
+    clearance_region=paving.buffer(spec['pavingPlantClearanceMarginMetres'])
+    removed_leaves=0;removed_stems=0
+
+    def blocks_path(points,floor):
+        if min(p[1] for p in points)>=floor[1]+clearance:return False
+        footprint=Polygon(np.asarray(points)[:,[0,2]]).buffer(.00001)
+        return footprint.intersects(clearance_region)
+
     for row,col in np.argwhere(mask):
         en=np.array([bounds[0]+(col+.5)*resolution,bounds[3]-(row+.5)*resolution])
         floor,top=mc(np.array([[*en,dem[row,col]],[*en,dom[row,col]]]))
@@ -237,6 +251,8 @@ def build_shrubs(ctx,spec,record):
             for axis in [0,2]:
                 delta=np.zeros(3);delta[axis]=.022
                 points=[floor-delta,floor+delta,tip+delta,tip-delta]
+                if blocks_path(points,floor):
+                    removed_stems+=1;continue
                 for k in [0,1,2,0,2,3]:wood.append([*points[k],*[ (0,1),(1,1),(1,0),(0,0)][k]])
         # Multi-directional sprigs form a low thicket instead of repeated
         # upright sapling silhouettes. Only the source canopy envelope is
@@ -256,6 +272,8 @@ def build_shrubs(ctx,spec,record):
                     centre+axis*half_width+cross*half_height,centre-axis*half_width+cross*half_height]
             if max(p[1]for p in points)>top[1]+.15 or min(p[1]for p in points)<floor[1]+.025:continue
             if not all(any(Polygon(s['ring']).covers(Point(p[0],p[2]))for s in record['courtyardSourceRetirement'])for p in points):continue
+            if blocks_path(points,floor):
+                removed_leaves+=1;continue
             for k in [0,1,2,0,2,3]:leaves.append([*points[k],*[(0,.53),(1,.53),(1,0),(0,0)][k]])
     assert wood and leaves and controls
     name='low-building-courtyard-shrubs.ect'
@@ -266,4 +284,9 @@ def build_shrubs(ctx,spec,record):
     record['shrubs']={'meshFile':name,'meshSha256':hashlib.sha256((out/name).read_bytes()).hexdigest(),'runtimeId':rid,
                       'detectedAreaSquareMetres':float(mask.sum())*.25,'sampleResolutionMetres':resolution,'samples':controls,
                       'leafCards':len(leaves)//6,'qualification':'DOP foliage colour and DOM height locate low plants; species, stems and leaf cards are reconstructed. Visual shrubs have no solid leaf collision.'}
+    record['shrubs']['pavingClearance']={
+        'sourceFile':paving_source.name,'sourceSha256':hashlib.sha256(paving_source.read_bytes()).hexdigest(),
+        'heightMetres':clearance,'marginMetres':spec['pavingPlantClearanceMarginMetres'],
+        'removedLeafCards':removed_leaves,'removedStemCards':removed_stems,
+        'qualification':'Inferred walking-height clearance over the interpreted paved route. DOM locates canopy, not ground-level stems beneath it. Higher canopy and all ordinary Minecraft blocks are retained.'}
     print('Courtyard low plants:',len(controls),'source cells;',len(leaves)//6,'leaf cards',flush=True)

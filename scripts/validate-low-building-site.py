@@ -4,6 +4,7 @@ import argparse,hashlib,json,struct
 from pathlib import Path
 import numpy as np
 import rasterio
+from scipy.spatial import cKDTree
 from rasterio.windows import from_bounds
 from rasterio.features import shapes
 from shapely.geometry import Polygon,Point,shape,box
@@ -80,5 +81,23 @@ assert all(mc_court.buffer(1e-4).covers(Point(p[[0,2]]))for p in np.concatenate(
 assert shrubs['detectedAreaSquareMetres']<=court.area
 assert all(.6<p['topMC'][1]-p['baseMC'][1]<4.6 for p in shrubs['samples'])
 shrub_tile=next(t for t in m['tiles']if t['file']==shrubs['meshFile']);assert shrub_tile['collisionParts']==[] and shrub_tile['kind']=='vegetation'
+clearance=shrubs['pavingClearance']
+assert clearance['sourceSha256']==sha(root/'minecraft/exterior'/clearance['sourceFile'])
+paving_spec=read(root/'minecraft/exterior'/clearance['sourceFile'])
+paving=unary_union([Polygon(region['polygonMC'])for region in paving_spec['regions']])
+assert clearance['heightMetres']==s['pavingPlantClearanceMetres']
+assert clearance['marginMetres']==s['pavingPlantClearanceMarginMetres']
+base_points=np.array([p['baseMC']for p in shrubs['samples']]);base_tree=cKDTree(base_points[:,[0,2]])
+overhead=[]
+for part in plants:
+ for card in part.reshape(-1,6,3):
+  footprint=Polygon(card[[0,1,2,5]][:,[0,2]]).buffer(.00001)
+  if not footprint.intersects(paving):continue
+  index=base_tree.query(card.mean(0)[[0,2]])[1]
+  height=float(card[:,1].min()-base_points[index,1])
+  assert height>=clearance['heightMetres']-.01,('Vegetation intrudes into paved walking space',height)
+  overhead.append(height)
+assert overhead,'Retain measured overhead planting instead of clearing the whole crown'
 result={'status':'PASS: retained ground and prior meshes; source-anchored stack and bounded low vegetation; native review pending','manifestSha256':sha(a.directory/'manifest.json'),'validatorSha256':sha(Path(__file__)),'sourceSha256':record['sourceSha256'],'generatorSha256':record['generatorSha256'],'retainedMeshSha256':prior,'retainedMeshCount':len(prior),'missingCourtyardGroundSquareMetres':missing,'courtyardAreaSquareMetres':mc_court.area,'stackHeightMetres':float(tip[1]-base[1]),'plantCells':len(shrubs['samples']),'plantAreaSquareMetres':shrubs['detectedAreaSquareMetres'],'leafCards':shrubs['leafCards'],'nativeReviewed':False}
+result['pavingClearance']={'minimumRetainedCardHeightMetres':min(overhead),'overheadCardsRetained':len(overhead),'removedLeafCards':clearance['removedLeafCards'],'removedStemCards':clearance['removedStemCards'],'sourceSha256':clearance['sourceSha256']}
 (a.directory/'low-building-site-validation.json').write_text(json.dumps(result,indent=2)+'\n');print({k:v for k,v in result.items()if k!='retainedMeshSha256'})

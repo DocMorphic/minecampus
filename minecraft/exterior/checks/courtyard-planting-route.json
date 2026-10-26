@@ -1,0 +1,140 @@
+{
+  "purpose": "Matched walking-height viewpoints inside the interpreted paved route; higher canopy retained",
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "captureWalking": true,
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610,
+    1000010700,
+    1000010800,
+    1000010950,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802
+  ],
+  "cameras": [
+    {
+      "label": "East walk at measured walking height",
+      "position": "173.4 64.62221200192566 -20.3 180 12",
+      "worldTime": 6000,
+      "reflections": true
+    },
+    {
+      "label": "South patio at measured walking height",
+      "position": "169.5 65.05886350856963 -15.9 180 12",
+      "worldTime": 6000,
+      "reflections": true
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "East walk source-confirmed interior point",
+      "target": [
+        173.4,
+        64.62221200192566,
+        -20.3
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.62221200192566,
+      "requireBodyClearance": true,
+      "look": [
+        180,
+        12
+      ],
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "South patio source-confirmed interior point",
+      "target": [
+        169.5,
+        65.05886350856963,
+        -15.9
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 65.05886350856963,
+      "requireBodyClearance": true,
+      "look": [
+        180,
+        12
+      ],
+      "maxSupportError": 0.125
+    }
+  ],
+  "name": "courtyard-planting-route-after-106"
+}
