@@ -55,6 +55,7 @@ for site in physics-site physics-library physics-container p1-complex physics-wo
   .venv-exterior/bin/python "scripts/validate-$site.py" || exit 1
 done
 python3 scripts/validate-exterior.py
+.venv-exterior/bin/python scripts/validate-low-building-paving.py
 python3 scripts/build-exterior-release.py --java-home /absolute/path/to/jdk-21
 ```
 

@@ -1,0 +1,375 @@
+{
+  "name": "low-building-paving-105",
+  "purpose": "Bounded DOP20 paving material, daylight/night/aerial/reflection and unchanged walking geometry",
+  "cameras": [
+    {
+      "label": "Courtyard low planting at eye height",
+      "position": "169.0 64.2 -27.0 -30 2",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Low-building courtyard looking west",
+      "position": "170 65.5 -21 90 0",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Low-building courtyard looking east",
+      "position": "170 65.5 -21 -90 0",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Low-building courtyard looking north",
+      "position": "170 65.5 -21 180 0",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Low building overview",
+      "position": "128 105 -30 -90 55",
+      "worldTime": 6000,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.5,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Retained Galileo daylight and reflections",
+      "position": "135.8 64.3 -131.0 0 3",
+      "candidateViewIndex": 1,
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.25,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.5,
+          "blockSamples": true
+        },
+        {
+          "u": 0.75,
+          "v": 0.55,
+          "blockSamples": true
+        },
+        {
+          "u": 0.5,
+          "v": 0.8,
+          "blockSamples": true
+        }
+      ]
+    },
+    {
+      "label": "Courtyard paving at night",
+      "position": "169.0 64.2 -27.0 -30 2",
+      "worldTime": 18000,
+      "reflections": true
+    },
+    {
+      "label": "North patio grain and joint scale",
+      "position": "173 66.7 -23 140 20",
+      "worldTime": 6000,
+      "reflections": true,
+      "screenRays": [
+        {
+          "u": 0.5,
+          "v": 0.6,
+          "blockSamples": true
+        }
+      ]
+    }
+  ],
+  "sourceDiagnosticBounds": [
+    [
+      158,
+      62,
+      -88
+    ],
+    [
+      207,
+      92,
+      8
+    ]
+  ],
+  "gravityProbes": [
+    {
+      "label": "Galileo east comparison standing",
+      "target": [
+        145.0,
+        63.93476356257272,
+        -115.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000027,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 63.937420623764524,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        -12.0
+      ],
+      "candidateViewIndex": 0,
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Courtyard planting west",
+      "target": [
+        168.0,
+        64.70931846641298,
+        -19.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.99178436553746,
+      "requireBodyClearance": true,
+      "look": [
+        90.0,
+        0
+      ],
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Courtyard south path",
+      "target": [
+        171.0,
+        65.0778495283442,
+        -14.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 65.08716881211453,
+      "requireBodyClearance": true,
+      "look": [
+        0.0,
+        0
+      ],
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Courtyard east path",
+      "target": [
+        174.0,
+        64.67669434808691,
+        -20.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.72761045337545,
+      "requireBodyClearance": true,
+      "look": [
+        -90.0,
+        0
+      ],
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Courtyard north path",
+      "target": [
+        169.0,
+        65.06635650602955,
+        -27.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000026,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 65.07370598681273,
+      "requireBodyClearance": true,
+      "look": [
+        180.0,
+        0
+      ],
+      "maxSupportError": 0.125
+    }
+  ],
+  "baselineArtifactSha256": "306a9eeaf57dfadb4f58d01fd697b5ccf8682ba35f23e7d5ef86f8391078e535",
+  "vegetationTileIds": [
+    1000010000,
+    1000010001,
+    1000010002,
+    1000010003,
+    1000010004,
+    1000010005,
+    1000010006,
+    1000010007,
+    1000010008,
+    1000010009,
+    1000010010,
+    1000010011,
+    1000010012,
+    1000010013,
+    1000010014,
+    1000010015,
+    1000010016,
+    1000010017,
+    1000010018,
+    1000010019,
+    1000010020,
+    1000010021,
+    1000010022,
+    1000010023,
+    1000010024,
+    1000010025,
+    1000010026,
+    1000010027,
+    1000010028,
+    1000010029,
+    1000010030,
+    1000010031,
+    1000010032,
+    1000010033,
+    1000010034,
+    1000010035,
+    1000010100,
+    1000010101,
+    1000010102,
+    1000010103,
+    1000010200,
+    1000010201,
+    1000010202,
+    1000010203,
+    1000010204,
+    1000010205,
+    1000010206,
+    1000010207,
+    1000010208,
+    1000010300,
+    1000010400,
+    1000010401,
+    1000010402,
+    1000010403,
+    1000010450,
+    1000010500,
+    1000010501,
+    1000010600,
+    1000010610,
+    1000010700,
+    1000010800,
+    1000010950,
+    1000040600,
+    1000040601,
+    1000040602,
+    1000040700,
+    1000040800,
+    1000040801,
+    1000040802
+  ],
+  "captureWalking": true,
+  "reflectionEvidence": true,
+  "checkFractionalSupports": true,
+  "standingSurfacesManifestSha256": "0e87119cc960dad5a70a34bf467cda552e1b06a6fc9fb60ab79de013d6f574ba",
+  "lightmapEvidence": false
+}

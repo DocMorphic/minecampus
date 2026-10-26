@@ -1,0 +1,140 @@
+{
+  "status": "PASS: bounded courtyard paving reviewed in packaged Minecraft; full campus realism remains unfinished",
+  "candidate": 105,
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 348353700,
+    "sha256": "68098000f192ab8f20deb0cc7a8b3acc0ae5444fe2b0af403caf6784427db67b",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "bd9d7241d692f6282e0bbe0c6fb513312b2097d5366eb41aea63967f583cf737",
+    "rendererSourceFingerprint": "683788080fc1dede",
+    "bundleSha256": "df7e6e9c41b5fb813dc0e29cefd2327695adcaefc3f1f2a25d93010e66ac21e1",
+    "tiles": 483,
+    "bundleUnpackedBytes": 813656094,
+    "bundleUnpackedLimit": 1073741824
+  },
+  "playablePreviewReady": true,
+  "publicBinaryReleased": false,
+  "goalComplete": false,
+  "upgradeFromArtifactSha256": "18084f8231ba5a52e7aaeb5ee70a070a002e216ca92ba45ba5c8346e1ca7b793",
+  "sourceBaseCommit": "e58e6a1c8e8ba33ef142ca3e93e4d1031f7ffe4e",
+  "implementationSourceHashes": {
+    "scripts/build-exterior-release.py": "be9b07b9775dab523581fa99ad6abc4cac3a054801619ae552eeda8fee18e6c9",
+    "scripts/build-low-building-paving.py": "baeed67cb1dc6799328bcf55e0e5cefbeae4799c8abf56cc5af66f0a118cc76c",
+    "scripts/validate-low-building-paving.py": "1062fa803b1310319b695c05a44fe90b53f9ac7d376db17afd360573096255c9",
+    "minecraft/exterior/low-building-paving.json": "b93eda1cfaee6fc7d87a4e317096e6d901d68b94aa42d57a6d62f3933f92bec7",
+    "minecraft/exterior/checks/low-building-paving.json": "9d212b1a95724c117658d707bfe6a65216c59ff49e70901d11393c9443cc6b1b",
+    "minecraft/exterior/shaders/campus_ground.fsh": "445541ec158abff70ad80ae119c6d710c5900c808551346924840dbd9f6d02d1",
+    "minecraft/exterior/shaders/campus_reflection.fsh": "a23b4ecc480c2d5e5e57eb9d2361a18202db59a4ab6313ec8364c6dfda150609"
+  },
+  "scope": {
+    "building": "DEBY_LOD2_5284436",
+    "pavingAreaSquareMetres": 53.51044036167095,
+    "sourceSpecification": "low-building-paving.json",
+    "sourceIllustration": "photos/low-building-paving-source.jpg",
+    "qualification": "Patio edges and visible eastern walk interpreted from pinned BVV DOP20. Short path continuations beneath canopy connect the visible ends and are inferred; exact current boundaries remain uncertain. One-metre slab pattern, joints and neutral grey finish are approximations, not surveyed detail. Existing terrain, collision, foliage and player blocks remain unchanged."
+  },
+  "sourceValidation": {
+    "status": "PASS: pinned aerial, shared material, projection and building exclusions",
+    "areaSquareMetres": 53.51044036167095,
+    "buildingOverlapSquareMetres": 0.0,
+    "sourceSha256": "b93eda1cfaee6fc7d87a4e317096e6d901d68b94aa42d57a6d62f3933f92bec7",
+    "generatorSha256": "baeed67cb1dc6799328bcf55e0e5cefbeae4799c8abf56cc5af66f0a118cc76c",
+    "validatorSha256": "1062fa803b1310319b695c05a44fe90b53f9ac7d376db17afd360573096255c9",
+    "shaderHashes": {
+      "campus_ground.fsh": "445541ec158abff70ad80ae119c6d710c5900c808551346924840dbd9f6d02d1",
+      "campus_reflection.fsh": "a23b4ecc480c2d5e5e57eb9d2361a18202db59a4ab6313ec8364c6dfda150609"
+    },
+    "nativeVisualAcceptance": false
+  },
+  "packagedScope": {
+    "artifactSha256": "68098000f192ab8f20deb0cc7a8b3acc0ae5444fe2b0af403caf6784427db67b",
+    "changedJarEntries": [
+      "assets/realworldmc/shaders/core/campus_ground.fsh",
+      "assets/realworldmc/shaders/core/campus_reflection.fsh",
+      "realworldmc-service.zip",
+      "realworldmc-service.sha256"
+    ],
+    "changedBundleEntries": [
+      "src/minecampus-exterior/galileo-east-material-validation.json"
+    ],
+    "identicalMeshFiles": 669,
+    "identicalServiceModules": 26,
+    "nativeClassesIdentical": true,
+    "texturesIdentical": true
+  },
+  "nativeValidation": {
+    "resultSha256": "cd4e1e2e83f0b348484485c0cac4c3c40d11d3c3c13adbc4aca3c22b1dcca1ba",
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "cameraViews": 8,
+    "standingBodyChecks": 5,
+    "maximumSupportErrorMetres": 0.08488954662455228,
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "fpsByCamera": [
+      71,
+      55,
+      73,
+      45,
+      114,
+      106,
+      73,
+      59
+    ]
+  },
+  "visualReview": {
+    "capturesReviewed": 21,
+    "mainViews": 8,
+    "diagnosticReflections": 8,
+    "walkingCaptures": 5,
+    "fullFrameReviewed": [
+      0,
+      7
+    ],
+    "acceptedAsBoundedImprovement": true,
+    "fullCampusAcceptance": false,
+    "findings": [
+      "Paving grain and joints remain readable at walking height.",
+      "Patio and eastern walk are connected; the first candidate rim and isolated patch are substantially reduced.",
+      "Surrounding baked planting shadows and some edge highlights remain outside the interpreted paving.",
+      "No geometric or walking regression; night remains intentionally unlit and is not a night-lighting improvement.",
+      "Reflection shader compiles and shares the same generated material; recorded buffers largely show facades, so they do not establish reflected-paving visual fidelity."
+    ]
+  },
+  "preservation": {
+    "userFilesUnchanged": 606,
+    "testInventoryAndExperienceUnchanged": true,
+    "priorAlignmentJournalsUnchanged": true,
+    "activeV94AlignedChunks": 78
+  },
+  "images": [
+    {
+      "path": "minecraft/exterior/photos/low-building-paving-105-courtyard.jpg",
+      "sha256": "00421ba5945e7d41adf6185fd68b1c6a247131ccef81098291556e08e83fba10"
+    },
+    {
+      "path": "minecraft/exterior/photos/low-building-paving-105-close.jpg",
+      "sha256": "11ab1bfe35d976092c772098320509dd23157a9ad84883d75c91edae06c46305"
+    },
+    {
+      "path": "minecraft/exterior/photos/low-building-paving-105-night.jpg",
+      "sha256": "85e4d9764bb396682c610a15824d94b53fd68a61b68054cf30f7791e5512ad6b"
+    }
+  ],
+  "previousRejectedCandidate": {
+    "candidate": 104,
+    "artifactSha256": "d9133957f43874eb691cebc329e72f5005b4a9e986e7f1fd08bed6493c39d6d8",
+    "reason": "Pale aerial rim around sharply truncated patio; disconnected eastern patch and canopy-obscured southern source boundary. Ground geometry and walking remain sound."
+  },
+  "installation": {
+    "completed": true,
+    "installedArtifactSha256": "68098000f192ab8f20deb0cc7a8b3acc0ae5444fe2b0af403caf6784427db67b",
+    "unchangedExistingUserFilesExcludingModMetadataAndRollbackStorage": 598,
+    "previewSaveFilesVerifiedByInstaller": 121,
+    "settingsUnchanged": true,
+    "previousModRetained": true
+  }
+}

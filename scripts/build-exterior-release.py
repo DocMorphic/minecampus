@@ -3,7 +3,7 @@
 Requires JDK 21 and a completed scripts/build-exterior.py + validation run.
 Never reads provider configuration or saved worlds.
 """
-import argparse,hashlib,io,json,os,re,shutil,subprocess,urllib.request,zipfile
+import argparse,hashlib,io,json,os,re,shutil,subprocess,sys,urllib.request,zipfile
 from pathlib import Path
 from exterior_ground_provenance import ground_generator_matches
 from exterior_voxel_patch import patch_voxel
@@ -11,6 +11,13 @@ ROOT=Path(__file__).resolve().parents[1];SOURCE=ROOT/'minecraft/exterior';CACHE=
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--java-home',default=os.environ.get('JAVA_HOME'));args=parser.parse_args()
 if not args.java_home:raise SystemExit('Supply --java-home with a JDK 21 installation.')
 subprocess.run(['python3',str(ROOT/'scripts/validate-exterior.py')],check=True)
+subprocess.run([sys.executable,str(ROOT/'scripts/build-low-building-paving.py'),'--check'],check=True)
+courtyard_check=json.loads((DATA/'low-building-paving-validation.json').read_text())
+assert courtyard_check['status'].startswith('PASS:')
+for path,key in [(SOURCE/'low-building-paving.json','sourceSha256'),(ROOT/'scripts/build-low-building-paving.py','generatorSha256'),(ROOT/'scripts/validate-low-building-paving.py','validatorSha256')]:
+ assert hashlib.sha256(path.read_bytes()).hexdigest()==courtyard_check[key]
+for name,value in courtyard_check['shaderHashes'].items():
+ assert hashlib.sha256((SOURCE/'shaders'/name).read_bytes()).hexdigest()==value
 site_record=DATA/'physics-site-validation.json'
 if not site_record.exists():raise SystemExit('Run scripts/validate-physics-site.py with the geodata Python environment before packaging.')
 site_check=json.loads(site_record.read_text());site=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsISite']
