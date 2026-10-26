@@ -1,0 +1,320 @@
+{
+  "status": "PASS: central asphalt material reviewed in packaged Minecraft; campus detail remains approximate",
+  "candidate": 110,
+  "artifact": {
+    "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "size": 348432417,
+    "sha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
+    "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
+    "sourcePatchSha256": "bd9d7241d692f6282e0bbe0c6fb513312b2097d5366eb41aea63967f583cf737",
+    "rendererSourceFingerprint": "b5d2c4aae4d5f243",
+    "bundleSha256": "f336432cd7508b0d9d253008896ada061f5225173704e858095ed0f9658573a8",
+    "tiles": 483,
+    "bundleUnpackedBytes": 813569633,
+    "bundleUnpackedLimit": 1073741824
+  },
+  "playablePreviewReady": true,
+  "publicBinaryReleased": false,
+  "goalComplete": true,
+  "upgradeFromArtifactSha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
+  "sourceBaseCommit": "8bfeb0234f726cfa5dd0d2ba491bd2d0271422df",
+  "implementationSourceHashes": {
+    "scripts/build-promenade-material.py": "b2acb224f3139a6168b33bc7dc96764b72755e50e6b3aadfe357c38260615f0c",
+    "scripts/validate-promenade-material.py": "dae881db31b12f1f22928c20a6b9f332afcd8f8d84adda2d6e554e9b1e5c4b6a",
+    "scripts/build-exterior-release.py": "0be99e92d0ca807ae15b36edda0f4a87279647d3151479bc9e9a7dc5fe10dc7c",
+    "minecraft/exterior/promenade-material.json": "71edc5b264a9b0fcc39f3cab8525c90576d07d6a17409378ec5214c68db9cf95",
+    "minecraft/exterior/shaders/campus_ground.fsh": "45240492915a5bb12b07a7a14b8de9dee860d09fc61d63884373942e761388c3",
+    "minecraft/exterior/shaders/campus_reflection.fsh": "72c693a617aaba28bfa13f4b44241185b749fd6efc3f13fa4e33d2dbac3b4a51",
+    "minecraft/exterior/client/CampusMaterials.java": "a90f10bff1cf3593a148a7eea45463b48eac1aae51a9830db8def171bf761cb6",
+    "minecraft/exterior/shaders/campus_ground.json": "88034364a0154d1cfe9e3a75a4460e9f9f7d99433e4a7e5fdc9c402dca9c00a7",
+    "minecraft/exterior/shaders/campus_reflection.json": "795090caacec94749780edb8381b30e8b7aacc63c89059fd7e5f7739b374a17e",
+    "minecraft/exterior/assets/textures/campus/promenade_surfaces.png": "12dea6a69fc942c89ecc5e347cb77a59fa4bc978ed0e24d611eedfdfcbb84d19",
+    "minecraft/exterior/checks/promenade-material.json": "c876fd87d47e9d9ec76dd0bb1d24921cb907efb941ee20754a24301a82149ca7"
+  },
+  "sourceValidation": {
+    "status": "PASS: existing rendered asphalt atlas coverage, pinned sources and shared albedo",
+    "coverageMethod": "existing-atlas-blue-channel",
+    "contextPolygons": 20,
+    "ways": 12,
+    "areaSquareMetres": 4318.078940189868,
+    "buildingOverlapSquareMetres": 22.159413856682676,
+    "maskAreaSquareMetres": 5941.432130582685,
+    "maskPixelSizeMetres": [
+      0.05433444585868372,
+      0.157162067841441
+    ],
+    "maskSha256": "12dea6a69fc942c89ecc5e347cb77a59fa4bc978ed0e24d611eedfdfcbb84d19",
+    "bindingSha256": "a90f10bff1cf3593a148a7eea45463b48eac1aae51a9830db8def171bf761cb6",
+    "shaderDefinitionHashes": {
+      "campus_ground.json": "88034364a0154d1cfe9e3a75a4460e9f9f7d99433e4a7e5fdc9c402dca9c00a7",
+      "campus_reflection.json": "795090caacec94749780edb8381b30e8b7aacc63c89059fd7e5f7739b374a17e"
+    },
+    "sourceSha256": "71edc5b264a9b0fcc39f3cab8525c90576d07d6a17409378ec5214c68db9cf95",
+    "generatorSha256": "b2acb224f3139a6168b33bc7dc96764b72755e50e6b3aadfe357c38260615f0c",
+    "validatorSha256": "dae881db31b12f1f22928c20a6b9f332afcd8f8d84adda2d6e554e9b1e5c4b6a",
+    "manifestSha256": "db5703ccaa311a984cd8917f3a8c708b2a94fc021310d19a000e4228769018fb",
+    "shaderHashes": {
+      "campus_ground.fsh": "45240492915a5bb12b07a7a14b8de9dee860d09fc61d63884373942e761388c3",
+      "campus_reflection.fsh": "72c693a617aaba28bfa13f4b44241185b749fd6efc3f13fa4e33d2dbac3b4a51"
+    },
+    "nativeVisualAcceptance": false
+  },
+  "packageScope": {
+    "artifactSha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
+    "baselineArtifactSha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
+    "changedJarEntries": [
+      "assets/realworldmc/shaders/core/campus_ground.fsh",
+      "assets/realworldmc/shaders/core/campus_ground.json",
+      "assets/realworldmc/shaders/core/campus_reflection.fsh",
+      "assets/realworldmc/shaders/core/campus_reflection.json",
+      "dev/realworldmc/client/CampusMaterials.class",
+      "realworldmc-service.sha256",
+      "realworldmc-service.zip"
+    ],
+    "addedJarEntries": [
+      "assets/realworldmc/textures/campus/promenade_surfaces.png"
+    ],
+    "addedBundleEntries": [
+      "src/minecampus-exterior/promenade-material-validation.json",
+      "src/minecampus-exterior/promenade-material.json"
+    ],
+    "changedBundleEntries": [
+      "src/minecampus-exterior/galileo-east-material-validation.json"
+    ],
+    "identicalMeshFiles": 669,
+    "identicalServiceModules": 37,
+    "collisionCodeIdentical": true,
+    "allNativeClassesExceptMaterialBindingIdentical": true,
+    "existingTexturesIdentical": true,
+    "manifestIdentical": true
+  },
+  "native": {
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-9d0da8e9f1.jar",
+    "frames": [
+      {
+        "label": "final ground",
+        "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+        "worldTime": 6000,
+        "baselineView": 0,
+        "capture": "campus-promenade-material-110-0.png",
+        "playerPosition": "(39.961711, 65.797294, -62.90048)",
+        "triangles": 4778331,
+        "fps": 47,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "route north",
+        "position": "50 65 -190 0 0",
+        "worldTime": 6000,
+        "baselineView": 4,
+        "capture": "campus-promenade-material-110-1.png",
+        "playerPosition": "(50.5, 65.0, -189.5)",
+        "triangles": 4151190,
+        "fps": 86,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "crosspath south",
+        "position": "35 65 24 -100 12",
+        "worldTime": 6000,
+        "baselineView": 15,
+        "capture": "campus-promenade-material-110-2.png",
+        "playerPosition": "(35.5, 65.0, 24.5)",
+        "triangles": 4744641,
+        "fps": 39,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "Asphalt aggregate at walking height 32458178",
+        "position": "63.73921678885924 64.78402047196452 -26.84872374950693 180 28",
+        "worldTime": 6000,
+        "capture": "campus-promenade-material-110-3.png",
+        "playerPosition": "(63.73921678885924, 64.78402047196452, -26.84872374950693)",
+        "triangles": 4849117,
+        "fps": 58,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "Main crossing morning",
+        "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+        "worldTime": 1000,
+        "capture": "campus-promenade-material-110-4.png",
+        "playerPosition": "(39.961711, 65.797294, -62.90048)",
+        "triangles": 4778331,
+        "fps": 47,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "Main crossing night",
+        "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+        "worldTime": 18000,
+        "capture": "campus-promenade-material-110-5.png",
+        "playerPosition": "(39.961711, 65.797294, -62.90048)",
+        "triangles": 4778331,
+        "fps": 47,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "final aerial",
+        "position": "-60 120 120 -153.435 20.44",
+        "worldTime": 6000,
+        "baselineView": 1,
+        "capture": "campus-promenade-material-110-6.png",
+        "playerPosition": "(-59.5, 120.0, 120.5)",
+        "triangles": 4569987,
+        "fps": 44,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      }
+    ],
+    "gravity": [
+      {
+        "label": "Mapped asphalt way 32458178 standing",
+        "target": [
+          63.73921678885924,
+          64.78402047196452,
+          -26.84872374950693
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000020,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.78402047196452,
+        "requireBodyClearance": true,
+        "look": [
+          180,
+          22
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 64.8125,
+        "supportExpectedY": 64.78402047196452,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-promenade-material-110-walk-0.png",
+        "clientPosition": "(63.73921678885924, 64.8125, -26.84872374950693)"
+      },
+      {
+        "label": "Mapped asphalt way 403912530 standing",
+        "target": [
+          41.771992593011944,
+          64.81192414671447,
+          -64.14755101407883
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000020,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.81192414671447,
+        "requireBodyClearance": true,
+        "look": [
+          -90,
+          22
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 64.8125,
+        "supportExpectedY": 64.81192414671447,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-promenade-material-110-walk-1.png",
+        "clientPosition": "(41.771992593011944, 64.8125, -64.14755101407883)"
+      }
+    ],
+    "fractionalSupportChecks": {
+      "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
+      "states": 144,
+      "legacyDefaults": 9
+    },
+    "captures": [
+      {
+        "file": "campus-promenade-material-110-0.png",
+        "sha256": "36e079af951e1e8e59fb163d1bb8a54131ef3b195a43b18e8986c33df6b8d22a"
+      },
+      {
+        "file": "campus-promenade-material-110-1.png",
+        "sha256": "52e1a7abd752a4cadb345ce7c6ae3d61e3b9ddec8039b44fb80f3799f558f7f4"
+      },
+      {
+        "file": "campus-promenade-material-110-2.png",
+        "sha256": "8710b76f2ab1c058b1aa49d2b1d1341c0468a29ca129e6097ca0ec92ee2a4f0b"
+      },
+      {
+        "file": "campus-promenade-material-110-3.png",
+        "sha256": "0b4110cafd1f204c5fe250c1417df8f7f5fbbe85ede2d1c820ea0695075076d1"
+      },
+      {
+        "file": "campus-promenade-material-110-4.png",
+        "sha256": "fb2d824df1ede3cf2316c6f36c540b21d7e5c18d000fccf27589b9595128ea5e"
+      },
+      {
+        "file": "campus-promenade-material-110-5.png",
+        "sha256": "bd19f54378bb38eb4aa4d0b7cd1cdd8fd4515badf12e4c8870d0d772b79c96b6"
+      },
+      {
+        "file": "campus-promenade-material-110-6.png",
+        "sha256": "27f9f5427a618b463a14c1f9da05d5804b2152bbf59f13d11fcaad1e2bfedd43"
+      },
+      {
+        "file": "campus-promenade-material-110-walk-0.png",
+        "sha256": "8dca1c066690bf37ced57bc7ce6bc6a699a9475fc09c015805b7e8ad5919f6db"
+      },
+      {
+        "file": "campus-promenade-material-110-walk-1.png",
+        "sha256": "4e2de65b9eb85606b1b691151c429f78e4ca8e9ee23519a566d85f7c82367a7b"
+      }
+    ],
+    "checkerSha256": "adfd7377980e268d9e1de6cce07b672ca765b8abed594368dc2b1351b1127e2c",
+    "logSha256": "992ca0b9435e7a9795f9e9b2eafb552b2d5e3f9ba30bc2eb6950d3846fa0c530"
+  },
+  "preservation": {
+    "preInstallFiles": 606,
+    "allUnchanged": true,
+    "postInstallProtectedFiles": 600,
+    "allPostInstallProtectedFilesUnchanged": true,
+    "installerSaveFilesVerified": 121,
+    "settingsPreserved": true
+  },
+  "visualReview": {
+    "accepted": true,
+    "capturesReviewed": 9,
+    "scope": "Seven representative cameras and two ground-support views; not an exhaustive campus audit. Main asphalt is cleaner and aligned to the original displayed ground map.",
+    "remaining": [
+      "Bright photographic margins outside classified asphalt remain.",
+      "Facade details and vegetation are approximations.",
+      "Night remains dark without a campus-wide artificial lighting scheme."
+    ],
+    "failedDrafts": {
+      "108": "Invalid GLSL signed coordinate expression; never installed.",
+      "109": "Native functional checks passed, but separate polygon projection visibly misaligned with rendered atlas; never installed."
+    },
+    "comparison": "photos/promenade-110-comparison.jpg",
+    "preview": "photos/promenade-110.jpg"
+  },
+  "installed": true,
+  "goalAcceptance": "Completed the practical main-route exterior pass under the user clarification of 26 October: prioritize visible improvements and speed, accept approximate corners and facade details. Not a claim of complete photorealism or surveyed interiors."
+}

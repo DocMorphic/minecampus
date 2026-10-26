@@ -56,6 +56,10 @@ for site in physics-site physics-library physics-container p1-complex physics-wo
 done
 python3 scripts/validate-exterior.py
 .venv-exterior/bin/python scripts/validate-low-building-paving.py
+.venv-exterior/bin/python scripts/build-promenade-material.py
+.venv-exterior/bin/python scripts/validate-promenade-material.py
+# Regeneration updates shared shader hashes, so refresh the paving check.
+.venv-exterior/bin/python scripts/validate-low-building-paving.py
 python3 scripts/build-exterior-release.py --java-home /absolute/path/to/jdk-21
 ```
 
@@ -125,3 +129,8 @@ Candidate72 passes13 native camera checks and12 standing/body checks, with all25
 The UTA development (`DEBY_LOD2_5323191`) adds its six survey wall planes and four roof triangles beyond the original photographic-envelope boundary. Each wall must independently meet the existing 80% observed-coverage and 2 m fill-distance limits. Unsupported faces keep their source mesh; cleanup excludes neighbouring survey footprints. The roof uses fractional heightfield collision. Provider pixels remain transient. This is a development comparison, not a completed detailed building or an installed preview.
 
 After building the exterior data, run `.cache/geodata-venv/bin/python scripts/validate-uta-exterior.py` and `node scripts/test-exterior-uta-retirement.mjs`. The validator optionally accepts `--baseline /path/to/prior/exterior` to verify prior render/collision files and photographic plans. `node scripts/test-exterior-uta.mjs /path/to/extracted/service dist-minecraft/exterior` checks the packaged collision implementation at two save datums. The native plan is `checks/uta-exterior.json`; results and remaining limitations are in [UTA development evidence](uta-development-validation.json).
+
+
+### Promenade asphalt
+
+The clean asphalt layer reuses the blue channel of the existing rendered ground-material atlas inside the central promenade region. This keeps the visible path alignment and replaces baked aerial brightness with scanned aggregate. The same compact coverage map and albedo are used by the main and reflection passes; terrain, collision and ordinary blocks are unchanged. Source OSM corridors remain provenance context, while atlas clipping and bilinear resampling determine the rendered coverage. Regenerate and validate with `build-promenade-material.py` and `validate-promenade-material.py` in the geodata environment. Native review status is recorded in `promenade-material-development-validation.json` when accepted.

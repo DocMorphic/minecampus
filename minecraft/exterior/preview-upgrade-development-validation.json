@@ -1,389 +1,320 @@
 {
-  "status": "PASS: bounded courtyard plant clearance reviewed in packaged Minecraft; full campus realism remains unfinished",
-  "candidate": 106,
+  "status": "PASS: central asphalt material reviewed in packaged Minecraft; campus detail remains approximate",
+  "candidate": 110,
   "artifact": {
     "file": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
-    "size": 348309259,
-    "sha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
+    "size": 348432417,
+    "sha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
     "sourceCommit": "6f18d1f3ba5a02dadee4b14bcb96578bf3941d13",
     "sourcePatchSha256": "bd9d7241d692f6282e0bbe0c6fb513312b2097d5366eb41aea63967f583cf737",
-    "rendererSourceFingerprint": "683788080fc1dede",
-    "bundleSha256": "a70f00c872ff6c05ffc5e850f88c3d236cd28b4aabc9c9c6adf3bbd8dce60a4f",
+    "rendererSourceFingerprint": "b5d2c4aae4d5f243",
+    "bundleSha256": "f336432cd7508b0d9d253008896ada061f5225173704e858095ed0f9658573a8",
     "tiles": 483,
-    "bundleUnpackedBytes": 813538747,
+    "bundleUnpackedBytes": 813569633,
     "bundleUnpackedLimit": 1073741824
   },
   "playablePreviewReady": true,
   "publicBinaryReleased": false,
-  "goalComplete": false,
-  "upgradeFromArtifactSha256": "68098000f192ab8f20deb0cc7a8b3acc0ae5444fe2b0af403caf6784427db67b",
-  "sourceBaseCommit": "75c36ab1fdcfcfc2fbb8c292dfc0d732636984f5",
+  "goalComplete": true,
+  "upgradeFromArtifactSha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
+  "sourceBaseCommit": "8bfeb0234f726cfa5dd0d2ba491bd2d0271422df",
   "implementationSourceHashes": {
-    "scripts/exterior_low_building_site.py": "a84802235429f79b31a9f1725c430b1e657278242faf8333d441401a30c99c2f",
-    "scripts/validate-low-building-site.py": "68baa305c0551e1ce9e168d34e6e261ecdf49895ba00600093eb3b7abc7889be",
-    "scripts/validate-retained-grade.py": "e3b382cae5fb407eaa049be888220247edb3ebd4f141a7324f846c8b9e287313",
-    "scripts/build-exterior-release.py": "e6e16aed096d02afee91a668f1b513c062e35929bb426c22193e1ba4e8a51e5f",
-    "minecraft/exterior/low-building-site.json": "b54874f4bded67f243b40315fb760f16a92787d5c62dcd96e5e5428ed6a1ccdd",
-    "minecraft/exterior/low-building-paving.json": "b93eda1cfaee6fc7d87a4e317096e6d901d68b94aa42d57a6d62f3933f92bec7",
-    "minecraft/exterior/checks/courtyard-planting.json": "5667a601881f09ae3718078cf18309514ed392378a770bf43d862825a0c97eaa",
-    "minecraft/exterior/checks/courtyard-planting-route.json": "b99c6ead982408378ad26a85169efbd7ce04212375b335652ac241ce8b35d4dc"
-  },
-  "scope": {
-    "building": "DEBY_LOD2_5284436",
-    "sourceCellsRetained": 608,
-    "sourceDetectedAreaSquareMetres": 152,
-    "clearanceHeightMetres": 2.1,
-    "clearanceMarginMetres": 0.05,
-    "removedLeafCards": 976,
-    "removedStemCards": 14,
-    "remainingLeafCards": 7565,
-    "remainingStemCards": 122,
-    "qualification": "Inferred walking space above the DOP20-interpreted paved route. DOM canopy observations do not establish low branches beneath canopy. Species, card shapes and path continuations beneath canopy remain inferred. No collision or ordinary Minecraft block change."
+    "scripts/build-promenade-material.py": "b2acb224f3139a6168b33bc7dc96764b72755e50e6b3aadfe357c38260615f0c",
+    "scripts/validate-promenade-material.py": "dae881db31b12f1f22928c20a6b9f332afcd8f8d84adda2d6e554e9b1e5c4b6a",
+    "scripts/build-exterior-release.py": "0be99e92d0ca807ae15b36edda0f4a87279647d3151479bc9e9a7dc5fe10dc7c",
+    "minecraft/exterior/promenade-material.json": "71edc5b264a9b0fcc39f3cab8525c90576d07d6a17409378ec5214c68db9cf95",
+    "minecraft/exterior/shaders/campus_ground.fsh": "45240492915a5bb12b07a7a14b8de9dee860d09fc61d63884373942e761388c3",
+    "minecraft/exterior/shaders/campus_reflection.fsh": "72c693a617aaba28bfa13f4b44241185b749fd6efc3f13fa4e33d2dbac3b4a51",
+    "minecraft/exterior/client/CampusMaterials.java": "a90f10bff1cf3593a148a7eea45463b48eac1aae51a9830db8def171bf761cb6",
+    "minecraft/exterior/shaders/campus_ground.json": "88034364a0154d1cfe9e3a75a4460e9f9f7d99433e4a7e5fdc9c402dca9c00a7",
+    "minecraft/exterior/shaders/campus_reflection.json": "795090caacec94749780edb8381b30e8b7aacc63c89059fd7e5f7739b374a17e",
+    "minecraft/exterior/assets/textures/campus/promenade_surfaces.png": "12dea6a69fc942c89ecc5e347cb77a59fa4bc978ed0e24d611eedfdfcbb84d19",
+    "minecraft/exterior/checks/promenade-material.json": "c876fd87d47e9d9ec76dd0bb1d24921cb907efb941ee20754a24301a82149ca7"
   },
   "sourceValidation": {
-    "dependentChecks": [
-      {
-        "validator": "validate-uyd-site.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-uyd-exterior.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-exterior.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-uta-exterior.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-reactor-exterior.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-reactor-site.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-reactor-east.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-site.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-mlz-courtyard-ground.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-atom-ei.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-atom-ei-canopies.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-atom-ei-west-entrance.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-library.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-container.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-p1-complex.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-woodland.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-new-laboratory.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-laboratory-site.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-ii.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-pinned-water.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-wsi.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-znn.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-znn-west.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-cala.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-physics-lmu.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-lmu-courtyard.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-lmu-east.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-riverbank.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-courtyard-ground.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-north-ground.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-mensa-terrace.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-reactor-ground.py",
-        "exitCode": 0
-      },
-      {
-        "validator": "validate-uta-landscape.py",
-        "exitCode": 0
-      }
+    "status": "PASS: existing rendered asphalt atlas coverage, pinned sources and shared albedo",
+    "coverageMethod": "existing-atlas-blue-channel",
+    "contextPolygons": 20,
+    "ways": 12,
+    "areaSquareMetres": 4318.078940189868,
+    "buildingOverlapSquareMetres": 22.159413856682676,
+    "maskAreaSquareMetres": 5941.432130582685,
+    "maskPixelSizeMetres": [
+      0.05433444585868372,
+      0.157162067841441
     ],
-    "siteValidationSha256": "422a6720c8ecf3e6ecfed0050a1830d98fc264422d3c0d57247ec666e9b8b171",
-    "pavingClearance": {
-      "minimumRetainedCardHeightMetres": 2.1137867400996697,
-      "overheadCardsRetained": 97,
-      "removedLeafCards": 976,
-      "removedStemCards": 14,
-      "sourceSha256": "b93eda1cfaee6fc7d87a4e317096e6d901d68b94aa42d57a6d62f3933f92bec7"
+    "maskSha256": "12dea6a69fc942c89ecc5e347cb77a59fa4bc978ed0e24d611eedfdfcbb84d19",
+    "bindingSha256": "a90f10bff1cf3593a148a7eea45463b48eac1aae51a9830db8def171bf761cb6",
+    "shaderDefinitionHashes": {
+      "campus_ground.json": "88034364a0154d1cfe9e3a75a4460e9f9f7d99433e4a7e5fdc9c402dca9c00a7",
+      "campus_reflection.json": "795090caacec94749780edb8381b30e8b7aacc63c89059fd7e5f7739b374a17e"
     },
-    "retainedGradeEvidence": {
-      "method": "Original grade proof plus exact retained geometry; only decorative courtyard planting differs",
-      "baselineArtifactSha256": "68098000f192ab8f20deb0cc7a8b3acc0ae5444fe2b0af403caf6784427db67b",
-      "baselineManifestSha256": "0e87119cc960dad5a70a34bf467cda552e1b06a6fc9fb60ab79de013d6f574ba",
-      "originalGradeReportSha256": "e08f429b8a1042d1677abb7384874a9f8caeb361540c021f9dccab039206142b",
-      "retainedMeshFiles": 668,
-      "excludedDecorativeMesh": "low-building-courtyard-shrubs.ect",
-      "checkerFile": "scripts/validate-retained-grade.py",
-      "checkerSha256": "e3b382cae5fb407eaa049be888220247edb3ebd4f141a7324f846c8b9e287313"
-    }
+    "sourceSha256": "71edc5b264a9b0fcc39f3cab8525c90576d07d6a17409378ec5214c68db9cf95",
+    "generatorSha256": "b2acb224f3139a6168b33bc7dc96764b72755e50e6b3aadfe357c38260615f0c",
+    "validatorSha256": "dae881db31b12f1f22928c20a6b9f332afcd8f8d84adda2d6e554e9b1e5c4b6a",
+    "manifestSha256": "db5703ccaa311a984cd8917f3a8c708b2a94fc021310d19a000e4228769018fb",
+    "shaderHashes": {
+      "campus_ground.fsh": "45240492915a5bb12b07a7a14b8de9dee860d09fc61d63884373942e761388c3",
+      "campus_reflection.fsh": "72c693a617aaba28bfa13f4b44241185b749fd6efc3f13fa4e33d2dbac3b4a51"
+    },
+    "nativeVisualAcceptance": false
   },
-  "packagedScope": {
-    "artifactSha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
-    "nativeClassesShadersAndTexturesIdentical": true,
-    "serviceModulesIdentical": true,
-    "unchangedMeshFiles": 668,
-    "changedBundleRecords": [
-      "src/minecampus-exterior/mensa-terrace-validation.json",
-      "src/minecampus-exterior/low-building-site.json",
-      "src/minecampus-exterior/low-building-site-validation.json",
-      "src/minecampus-exterior/galileo-east-grade-validation.json",
-      "src/minecampus-exterior/uyd-site-validation.json",
-      "src/minecampus-exterior/uyd-exterior-validation.json",
-      "src/minecampus-exterior/manifest.json",
-      "src/minecampus-exterior/mlz-courtyard-ground-validation.json",
-      "src/minecampus-exterior/atom-ei-canopies-validation.json",
-      "src/minecampus-exterior/atom-ei-west-entrance-validation.json",
-      "src/minecampus-exterior/uta-exterior-validation.json",
-      "src/minecampus-exterior/reactor-ground-validation.json",
-      "src/minecampus-exterior/reactor-east-validation.json",
-      "src/minecampus-exterior/uta-south-landscape-validation.json",
-      "src/minecampus-exterior/reactor-site-validation.json",
-      "src/minecampus-exterior/reactor-exterior-validation.json",
-      "src/minecampus-exterior/atom-ei-validation.json",
-      "src/minecampus-exterior/low-building-courtyard-shrubs.ect"
+  "packageScope": {
+    "artifactSha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
+    "baselineArtifactSha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
+    "changedJarEntries": [
+      "assets/realworldmc/shaders/core/campus_ground.fsh",
+      "assets/realworldmc/shaders/core/campus_ground.json",
+      "assets/realworldmc/shaders/core/campus_reflection.fsh",
+      "assets/realworldmc/shaders/core/campus_reflection.json",
+      "dev/realworldmc/client/CampusMaterials.class",
+      "realworldmc-service.sha256",
+      "realworldmc-service.zip"
     ],
-    "nonValidationChanges": [
-      "src/minecampus-exterior/low-building-site.json",
-      "src/minecampus-exterior/manifest.json",
-      "src/minecampus-exterior/low-building-courtyard-shrubs.ect"
-    ]
+    "addedJarEntries": [
+      "assets/realworldmc/textures/campus/promenade_surfaces.png"
+    ],
+    "addedBundleEntries": [
+      "src/minecampus-exterior/promenade-material-validation.json",
+      "src/minecampus-exterior/promenade-material.json"
+    ],
+    "changedBundleEntries": [
+      "src/minecampus-exterior/galileo-east-material-validation.json"
+    ],
+    "identicalMeshFiles": 669,
+    "identicalServiceModules": 37,
+    "collisionCodeIdentical": true,
+    "allNativeClassesExceptMaterialBindingIdentical": true,
+    "existingTexturesIdentical": true,
+    "manifestIdentical": true
   },
-  "geometryScope": {
-    "changedMeshes": [
-      "low-building-courtyard-shrubs.ect"
-    ],
-    "unchangedMeshes": 672,
-    "parts": [
+  "native": {
+    "status": "PASS: inspection cameras, surface controls and native gravity completed; visual assessment required",
+    "rendererJar": "RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1-37f46004-9d0da8e9f1.jar",
+    "frames": [
       {
+        "label": "final ground",
+        "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+        "worldTime": 6000,
+        "baselineView": 0,
+        "capture": "campus-promenade-material-110-0.png",
+        "playerPosition": "(39.961711, 65.797294, -62.90048)",
+        "triangles": 4778331,
+        "fps": 47,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "route north",
+        "position": "50 65 -190 0 0",
+        "worldTime": 6000,
+        "baselineView": 4,
+        "capture": "campus-promenade-material-110-1.png",
+        "playerPosition": "(50.5, 65.0, -189.5)",
+        "triangles": 4151190,
+        "fps": 86,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "crosspath south",
+        "position": "35 65 24 -100 12",
+        "worldTime": 6000,
+        "baselineView": 15,
+        "capture": "campus-promenade-material-110-2.png",
+        "playerPosition": "(35.5, 65.0, 24.5)",
+        "triangles": 4744641,
+        "fps": 39,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "Asphalt aggregate at walking height 32458178",
+        "position": "63.73921678885924 64.78402047196452 -26.84872374950693 180 28",
+        "worldTime": 6000,
+        "capture": "campus-promenade-material-110-3.png",
+        "playerPosition": "(63.73921678885924, 64.78402047196452, -26.84872374950693)",
+        "triangles": 4849117,
+        "fps": 58,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "Main crossing morning",
+        "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+        "worldTime": 1000,
+        "capture": "campus-promenade-material-110-4.png",
+        "playerPosition": "(39.961711, 65.797294, -62.90048)",
+        "triangles": 4778331,
+        "fps": 47,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "Main crossing night",
+        "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+        "worldTime": 18000,
+        "capture": "campus-promenade-material-110-5.png",
+        "playerPosition": "(39.961711, 65.797294, -62.90048)",
+        "triangles": 4778331,
+        "fps": 47,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      },
+      {
+        "label": "final aerial",
+        "position": "-60 120 120 -153.435 20.44",
+        "worldTime": 6000,
+        "baselineView": 1,
+        "capture": "campus-promenade-material-110-6.png",
+        "playerPosition": "(-59.5, 120.0, 120.5)",
+        "triangles": 4569987,
+        "fps": 44,
+        "actualGuiScale": 6.0,
+        "guiWidth": 427,
+        "guiHeight": 240
+      }
+    ],
+    "gravity": [
+      {
+        "label": "Mapped asphalt way 32458178 standing",
+        "target": [
+          63.73921678885924,
+          64.78402047196452,
+          -26.84872374950693
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000020,
         "part": 0,
-        "before": 136,
-        "after": 122,
-        "removed": 14,
-        "retainedCardsByteIdentical": true,
-        "textureIdentical": true
+        "dropHeight": 3,
+        "supportHeight": 64.78402047196452,
+        "requireBodyClearance": true,
+        "look": [
+          180,
+          22
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 64.8125,
+        "supportExpectedY": 64.78402047196452,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-promenade-material-110-walk-0.png",
+        "clientPosition": "(63.73921678885924, 64.8125, -26.84872374950693)"
       },
       {
-        "part": 1,
-        "before": 8541,
-        "after": 7565,
-        "removed": 976,
-        "retainedCardsByteIdentical": true,
-        "textureIdentical": true
+        "label": "Mapped asphalt way 403912530 standing",
+        "target": [
+          41.771992593011944,
+          64.81192414671447,
+          -64.14755101407883
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "tile": 1000000020,
+        "part": 0,
+        "dropHeight": 3,
+        "supportHeight": 64.81192414671447,
+        "requireBodyClearance": true,
+        "look": [
+          -90,
+          22
+        ],
+        "maxSupportError": 0.125,
+        "standingY": 64.8125,
+        "supportExpectedY": 64.81192414671447,
+        "onGround": true,
+        "horizontalError": 0.0,
+        "bodyClear": true,
+        "alignmentWaitTicks": 20,
+        "capture": "campus-promenade-material-110-walk-1.png",
+        "clientPosition": "(41.771992593011944, 64.8125, -64.14755101407883)"
       }
     ],
-    "sourceSamplesUnchanged": 608,
-    "stackTerrainAndRetirementUnchanged": true
-  },
-  "collisionValidation": {
-    "status": "PASS: all 96 complete collision packets are identical at both datums",
-    "packets": 96,
-    "identicalPackets": 96,
-    "changedCodes": 0,
-    "changedProfilePackets": 0,
-    "occupancyChanges": 0,
-    "materialTransitions": {},
-    "transitionExamples": {},
-    "examples": []
-  },
-  "nativeValidation": {
-    "runs": [
-      {
-        "purpose": "Current main review",
-        "resultSha256": "e6af8bf4463ea33995bec87846d5d2282f4a01766d2a583a438f8ffec0bfe97d",
-        "cameraViews": 10,
-        "standingBodyChecks": 5,
-        "maximumSupportErrorMetres": 0.08488954662455228,
-        "fpsByCamera": [
-          71,
-          57,
-          74,
-          48,
-          111,
-          92,
-          52,
-          47,
-          73,
-          60
-        ]
-      },
-      {
-        "purpose": "Current measured route",
-        "resultSha256": "1ef4c9678ab621afc26f44dc570c40b1e54135f562f94f73e1b679403d450841",
-        "cameraViews": 2,
-        "standingBodyChecks": 2,
-        "maximumSupportErrorMetres": 0.00363649143037037,
-        "fpsByCamera": [
-          52,
-          47
-        ]
-      },
-      {
-        "purpose": "Accepted105 measured-route baseline",
-        "resultSha256": "1928c05c70a63c4b8e90d7a913bae4bdf7522bbdc3830ff9a52dbf5a4bb1fe1b",
-        "cameraViews": 2,
-        "standingBodyChecks": 2,
-        "maximumSupportErrorMetres": 0.00363649143037037,
-        "fpsByCamera": [
-          53,
-          47
-        ]
-      }
-    ],
-    "currentCameraViews": 12,
-    "currentStandingBodyChecks": 7,
     "fractionalSupportChecks": {
       "status": "PASS: native shape, saved-state, network-ID and cut-material checks",
       "states": 144,
       "legacyDefaults": 9
     },
-    "routePoints": [
+    "captures": [
       {
-        "label": "East walk source-confirmed interior point",
-        "position": [
-          173.4,
-          64.62221200192566,
-          -20.3
-        ],
-        "distanceInsidePavingMetres": 0.5653439011239894,
-        "groundTile": "ground-698300-5349200.ect",
-        "groundTileSha256": "768004a38832fbbd0b83e5b7343b0da54ecc846ddfaeef2ec50133f4eb56f311"
+        "file": "campus-promenade-material-110-0.png",
+        "sha256": "36e079af951e1e8e59fb163d1bb8a54131ef3b195a43b18e8986c33df6b8d22a"
       },
       {
-        "label": "South patio source-confirmed interior point",
-        "position": [
-          169.5,
-          65.05886350856963,
-          -15.9
-        ],
-        "distanceInsidePavingMetres": 0.37461689099150963,
-        "groundTile": "ground-698300-5349200.ect",
-        "groundTileSha256": "768004a38832fbbd0b83e5b7343b0da54ecc846ddfaeef2ec50133f4eb56f311"
+        "file": "campus-promenade-material-110-1.png",
+        "sha256": "52e1a7abd752a4cadb345ce7c6ae3d61e3b9ddec8039b44fb80f3799f558f7f4"
+      },
+      {
+        "file": "campus-promenade-material-110-2.png",
+        "sha256": "8710b76f2ab1c058b1aa49d2b1d1341c0468a29ca129e6097ca0ec92ee2a4f0b"
+      },
+      {
+        "file": "campus-promenade-material-110-3.png",
+        "sha256": "0b4110cafd1f204c5fe250c1417df8f7f5fbbe85ede2d1c820ea0695075076d1"
+      },
+      {
+        "file": "campus-promenade-material-110-4.png",
+        "sha256": "fb2d824df1ede3cf2316c6f36c540b21d7e5c18d000fccf27589b9595128ea5e"
+      },
+      {
+        "file": "campus-promenade-material-110-5.png",
+        "sha256": "bd19f54378bb38eb4aa4d0b7cd1cdd8fd4515badf12e4c8870d0d772b79c96b6"
+      },
+      {
+        "file": "campus-promenade-material-110-6.png",
+        "sha256": "27f9f5427a618b463a14c1f9da05d5804b2152bbf59f13d11fcaad1e2bfedd43"
+      },
+      {
+        "file": "campus-promenade-material-110-walk-0.png",
+        "sha256": "8dca1c066690bf37ced57bc7ce6bc6a699a9475fc09c015805b7e8ad5919f6db"
+      },
+      {
+        "file": "campus-promenade-material-110-walk-1.png",
+        "sha256": "4e2de65b9eb85606b1b691151c429f78e4ca8e9ee23519a566d85f7c82367a7b"
       }
     ],
-    "matchedRoutePlayerPositions": true,
-    "note": "The main plan retains inherited baseline metadata from earlier surface studies. Actual artifact identity is established by the tested renderer filename, frozen artifacts and explicit baseline runner override, not that inherited field."
-  },
-  "visualReview": {
-    "candidateCapturesReviewed": 31,
-    "matchedBaselineCapturesReviewed": 6,
-    "acceptedAsBoundedImprovement": true,
-    "fullCampusAcceptance": false,
-    "findings": [
-      "Low foliage no longer encroaches on the inferred paved walking envelope; retained planting and higher canopy remain visible.",
-      "The full 31 current captures include daylight, night, aerial, retained Galileo, diagnostic reflection and standing views. Two measured route views were compared against accepted105 at identical player positions.",
-      "Initial edge controls include points outside paving; the corrected east and south route points lie 0.565m and 0.375m inside the interpreted boundary. The south camera looks across the central bed, not along the entire path.",
-      "Bright photographic ground patches, baked planting shadows, approximate facades and unlit night conditions remain.",
-      "Reflection buffers largely show facades and sky; these captures do not prove reflected-paving or foliage fidelity."
-    ]
+    "checkerSha256": "adfd7377980e268d9e1de6cce07b672ca765b8abed594368dc2b1351b1127e2c",
+    "logSha256": "992ca0b9435e7a9795f9e9b2eafb552b2d5e3f9ba30bc2eb6950d3846fa0c530"
   },
   "preservation": {
-    "userFilesUnchanged": 606,
-    "testInventoriesAndExperienceUnchanged": true,
-    "priorAlignmentJournalsUnchanged": true,
-    "worlds": [
-      {
-        "name": "campus-check-courtyard-planting-106",
-        "v94AlignedChunks": 78
-      },
-      {
-        "name": "campus-check-courtyard-planting-baseline-106",
-        "v94AlignedChunks": 34
-      }
-    ]
+    "preInstallFiles": 606,
+    "allUnchanged": true,
+    "postInstallProtectedFiles": 600,
+    "allPostInstallProtectedFilesUnchanged": true,
+    "installerSaveFilesVerified": 121,
+    "settingsPreserved": true
   },
-  "images": [
-    {
-      "path": "minecraft/exterior/photos/courtyard-planting-106-route-0.jpg",
-      "sha256": "4e2d4b79138c4d49955f4ab89404c8159dcc85f5d0e9c8e3267a7aa3705794e0"
+  "visualReview": {
+    "accepted": true,
+    "capturesReviewed": 9,
+    "scope": "Seven representative cameras and two ground-support views; not an exhaustive campus audit. Main asphalt is cleaner and aligned to the original displayed ground map.",
+    "remaining": [
+      "Bright photographic margins outside classified asphalt remain.",
+      "Facade details and vegetation are approximations.",
+      "Night remains dark without a campus-wide artificial lighting scheme."
+    ],
+    "failedDrafts": {
+      "108": "Invalid GLSL signed coordinate expression; never installed.",
+      "109": "Native functional checks passed, but separate polygon projection visibly misaligned with rendered atlas; never installed."
     },
-    {
-      "path": "minecraft/exterior/photos/courtyard-planting-106-route-1.jpg",
-      "sha256": "09ddf2a1da7c85cc2d52279bc4b4e5027b4ddd3e0b74c3c2dd2ea521f2476e67"
-    }
-  ],
-  "installation": {
-    "completed": true,
-    "installedArtifactSha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
-    "unchangedExistingUserFilesExcludingModMetadataAndRollbackStorage": 598,
-    "previewSaveFilesVerifiedByInstaller": 121,
-    "settingsUnchanged": true,
-    "previousModRetained": true
-  }
+    "comparison": "photos/promenade-110-comparison.jpg",
+    "preview": "photos/promenade-110.jpg"
+  },
+  "installed": true,
+  "goalAcceptance": "Completed the practical main-route exterior pass under the user clarification of 26 October: prioritize visible improvements and speed, accept approximate corners and facade details. Not a claim of complete photorealism or surveyed interiors."
 }

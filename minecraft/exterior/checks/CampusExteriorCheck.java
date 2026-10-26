@@ -108,7 +108,8 @@ public final class CampusExteriorCheck implements ClientModInitializer {
             roofStarted=true;roofVerified=true;roofTicks=120;
         }
         ClientLifecycleEvents.CLIENT_STARTED.register(mc -> {
-            org.lwjgl.glfw.GLFW.glfwHideWindow(mc.getWindow().getWindow());
+            if (!Boolean.getBoolean("minecampus.visibleCheck"))
+                org.lwjgl.glfw.GLFW.glfwHideWindow(mc.getWindow().getWindow());
             if(!Path.of("").toAbsolutePath().getFileName().toString().equals("run-campus-check"))throw new AssertionError("QA must run only in its isolated directory");
             if(!WORLD.matches("campus-check(-[a-z0-9]+)*"))throw new AssertionError("QA save must have an explicit campus-check name");
             EarthConfig.get().setupComplete = true;
@@ -125,6 +126,7 @@ public final class CampusExteriorCheck implements ClientModInitializer {
 
     private void tick(Minecraft mc) {
         try {
+            if (mc.screen instanceof net.minecraft.client.gui.screens.PauseScreen) mc.setScreen(null);
             if (++total > 17000) throw new AssertionError("Native campus client capture timed out");
             if (failure != null) throw new AssertionError("Integrated server check failed", failure);
             if (!opened && mc.getOverlay()==null) {

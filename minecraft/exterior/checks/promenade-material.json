@@ -1,0 +1,96 @@
+{
+  "name": "promenade-material-110",
+  "purpose": "Quick representative material review following user preference for visible improvements over every architectural detail.",
+  "cameras": [
+    {
+      "label": "final ground",
+      "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+      "worldTime": 6000,
+      "baselineView": 0
+    },
+    {
+      "label": "route north",
+      "position": "50 65 -190 0 0",
+      "worldTime": 6000,
+      "baselineView": 4
+    },
+    {
+      "label": "crosspath south",
+      "position": "35 65 24 -100 12",
+      "worldTime": 6000,
+      "baselineView": 15
+    },
+    {
+      "label": "Asphalt aggregate at walking height 32458178",
+      "position": "63.73921678885924 64.78402047196452 -26.84872374950693 180 28",
+      "worldTime": 6000
+    },
+    {
+      "label": "Main crossing morning",
+      "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+      "worldTime": 1000
+    },
+    {
+      "label": "Main crossing night",
+      "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+      "worldTime": 18000
+    },
+    {
+      "label": "final aerial",
+      "position": "-60 120 120 -153.435 20.44",
+      "worldTime": 6000,
+      "baselineView": 1
+    }
+  ],
+  "gravityProbes": [
+    {
+      "label": "Mapped asphalt way 32458178 standing",
+      "target": [
+        63.73921678885924,
+        64.78402047196452,
+        -26.84872374950693
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000020,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.78402047196452,
+      "requireBodyClearance": true,
+      "look": [
+        180,
+        22
+      ],
+      "maxSupportError": 0.125
+    },
+    {
+      "label": "Mapped asphalt way 403912530 standing",
+      "target": [
+        41.771992593011944,
+        64.81192414671447,
+        -64.14755101407883
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tile": 1000000020,
+      "part": 0,
+      "dropHeight": 3,
+      "supportHeight": 64.81192414671447,
+      "requireBodyClearance": true,
+      "look": [
+        -90,
+        22
+      ],
+      "maxSupportError": 0.125
+    }
+  ],
+  "captureWalking": true,
+  "reflectionEvidence": false,
+  "checkFractionalSupports": true
+}

@@ -1,6 +1,10 @@
-# Walking-height quality goal — unfinished
+# Campus exterior — practical quality pass complete
+
+Current status, 26 October: candidate 110 is installed and completes the practical main-route pass under the user’s request to prioritize speed over exact corners and details. The main buildings, terrain and paths are recognizable and playable in actual Minecraft. Bright photographic margins, approximate facades and sparse night lighting remain accepted limitations; interiors remain excluded. Earlier entries below retain the stricter historical assessments. See [current native review](promenade-material-development-validation.json) and [main promenade comparison](photos/promenade-110-comparison.jpg).
 
 The target is a consistently convincing central Garching exterior in actual Minecraft, assessed from walking routes and aerial views. Passing compilation, a TNT test or one attractive aerial screenshot is insufficient to declare that goal complete.
+
+User clarification, 26 October: work faster and prioritize obvious visual improvements along the main routes. Every corner and architectural detail need not be accurate. Treat minor facade repetition, inferred finishes and peripheral detail as acceptable approximations; focus remaining work on conspicuous visual defects and usable gameplay. Use short representative checks rather than repeatedly auditing the entire campus after each local change.
 
 ## Playable preview
 
@@ -940,3 +944,11 @@ The retained-grade checker binds original accepted-package evidence to exact unc
 A fresh run of all 24 retained central viewpoints completed on the installed artifact, including two aerial views. All captures were reviewed, with 606 user-installation files checksum-verified unchanged. These are fixed-camera visual controls, not proof of continuous route traversal. The campus layout and main silhouettes are recognizable, but the review still fails full visual-quality acceptance. Promenade paths carry conspicuous bright borders and old image shadows; the GRS north forecourt and strips around MLZ retain pale/cyan photographic artifacts. Galileo, GRS and MLZ facades remain too uniform, and canopy silhouettes repeat. Ordinary Minecraft dirt blocks remain protected and are not classified as disposable render artifacts. [Current review and per-view priorities](central-exterior-review-development-validation.json).
 
 The next material experiment should address the main promenade and crossing paths. Existing OSM/DOP20 geometry provides a reproducible domain: main asphalt way 32458178 covers approximately 2,011.44 m². The current asphalt shader retains aerial luminance, including baked shadows/highlights. Test clean scanned aggregate within the existing interpreted boundaries first, then investigate residual boundary mismatch separately; do not move edges or alter geometry to hide a material problem. Use matched walking-height views plus near/far and oblique-light controls. The new baseline is stored as compact JPEGs with five full PNGs for targeted follow-up, without another full source/build copy. The overall realism goal remains active.
+
+## Promenade finish — candidate 110
+
+The existing rendered ground-atlas asphalt channel now supplies clean scanned aggregate in the central promenade region. Reusing that atlas avoids the separate polygon projection mismatch exposed by the rejected draft 109. The coverage texture is about 132 KiB; both main and reflection passes use the same coverage and albedo. No terrain, collision, service module, existing texture or ordinary block changes. A GLSL signed-coordinate syntax error in draft 108 was also corrected before installation.
+
+The packaged run passed seven representative cameras (day, morning, night, close ground and aerial) and two standing/body-clearance probes. All nine images were reviewed; maximum support residual was 0.028480 m, and recorded camera FPS ranged from 39 to 86. The isolated harness can show its window for diagnostics and dismisses an incidental pause menu during its controlled capture run. The installer verified all 121 save files and local settings; 606 installation files were unchanged before upgrade, with protected files verified again after the intentional mod/metadata/rollback changes.
+
+The current and previous usable artifacts and installer rollbacks are retained. Obsolete generated builds, extracted bundles and rejected binaries were removed; project disk use is about 25.5 GiB, compared with 41.4 GiB before cleanup. This closes the main-route improvement pass at the requested practical level. Finer facade matching, remaining photographic margins and a richer artificial night-lighting scheme are optional follow-up work.

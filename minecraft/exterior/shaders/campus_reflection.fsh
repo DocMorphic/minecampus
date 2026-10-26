@@ -33,6 +33,20 @@ vec3 galileoEastAlbedo(vec3 position) {
     return textureGrad(Sampler7,uv,dFdx(uv),dFdy(uv)).rgb*0.8500;
 }
 // END GENERATED GALILEO EAST MATERIAL
+// BEGIN GENERATED PROMENADE MATERIAL
+// Existing rendered ground-atlas asphalt coverage; finish is inferred.
+uniform sampler2D PromenadeTexture;
+float promenadeCoverage(vec3 position) {
+    if(position.y<58.0000||position.y>70.0000)return 0.0;
+    vec2 uv=vec2((position.x-(-12.530499966))/111.276945119,(130.370071596-position.z)/321.867914939);
+    if(any(lessThan(uv,vec2(0)))||any(greaterThan(uv,vec2(1))))return 0.0;
+    return texture(PromenadeTexture,uv).r;
+}
+vec3 promenadeAlbedo(vec3 position) {
+    vec2 uv=position.xz/4.0000;
+    return textureGrad(Sampler7,uv,dFdx(uv),dFdy(uv)).rgb*0.8500;
+}
+// END GENERATED PROMENADE MATERIAL
 // BEGIN GENERATED LOW BUILDING PAVING
 // DOP20 patio/path interpretation; hidden edges, slab size and finish are inferred.
 float courtyardPatch0(vec2 p) {
@@ -152,6 +166,8 @@ void main(){
     if(SurveyedGround>.5) {
         float courtyardCoverage=courtyardPavingCoverage(worldPosition);
         if(courtyardCoverage>0.0)color.rgb=mix(color.rgb,courtyardPavingAlbedo(worldPosition),courtyardCoverage);
+        float promenade=promenadeCoverage(worldPosition);
+        if(promenade>0.0)color.rgb=mix(color.rgb,promenadeAlbedo(worldPosition),promenade);
         float coverage=galileoEastCoverage(worldPosition);
         if(coverage>0.0)color.rgb=mix(color.rgb,galileoEastAlbedo(worldPosition),coverage);
     }

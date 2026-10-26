@@ -18,6 +18,18 @@ for path,key in [(SOURCE/'low-building-paving.json','sourceSha256'),(ROOT/'scrip
  assert hashlib.sha256(path.read_bytes()).hexdigest()==courtyard_check[key]
 for name,value in courtyard_check['shaderHashes'].items():
  assert hashlib.sha256((SOURCE/'shaders'/name).read_bytes()).hexdigest()==value
+subprocess.run([sys.executable,str(ROOT/'scripts/build-promenade-material.py'),'--check'],check=True)
+promenade_check=json.loads((DATA/'promenade-material-validation.json').read_text())
+assert promenade_check['status'].startswith('PASS:')
+assert promenade_check['manifestSha256']==hashlib.sha256((DATA/'manifest.json').read_bytes()).hexdigest()
+for path,key in [(SOURCE/'promenade-material.json','sourceSha256'),(ROOT/'scripts/build-promenade-material.py','generatorSha256'),(ROOT/'scripts/validate-promenade-material.py','validatorSha256')]:
+ assert hashlib.sha256(path.read_bytes()).hexdigest()==promenade_check[key]
+for name,value in promenade_check['shaderHashes'].items():
+ assert hashlib.sha256((SOURCE/'shaders'/name).read_bytes()).hexdigest()==value
+assert promenade_check['bindingSha256']==hashlib.sha256((SOURCE/'client/CampusMaterials.java').read_bytes()).hexdigest()
+assert promenade_check['maskSha256']==hashlib.sha256((SOURCE/'assets/textures/campus/promenade_surfaces.png').read_bytes()).hexdigest()
+for name,value in promenade_check['shaderDefinitionHashes'].items():
+ assert hashlib.sha256((SOURCE/'shaders'/name).read_bytes()).hexdigest()==value
 site_record=DATA/'physics-site-validation.json'
 if not site_record.exists():raise SystemExit('Run scripts/validate-physics-site.py with the geodata Python environment before packaging.')
 site_check=json.loads(site_record.read_text());site=json.loads((DATA/'manifest.json').read_text())['architecture']['physicsISite']
@@ -982,6 +994,8 @@ with zipfile.ZipFile(release) as original:
   write(target,'src/minecampus-exterior/crosspaths.json',(SOURCE/'crosspaths.json').read_bytes())
   write(target,'src/minecampus-exterior/crosspath-surfaces.geojson',(DATA/'crosspath-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/promenade-paths.json',(SOURCE/'promenade-paths.json').read_bytes())
+  write(target,'src/minecampus-exterior/promenade-material.json',(SOURCE/'promenade-material.json').read_bytes())
+  write(target,'src/minecampus-exterior/promenade-material-validation.json',(DATA/'promenade-material-validation.json').read_bytes())
   write(target,'src/minecampus-exterior/promenade-surfaces.geojson',(DATA/'promenade-surfaces.geojson').read_bytes())
   write(target,'src/minecampus-exterior/path-surfaces.geojson',(DATA/'path-surfaces.geojson').read_bytes())
   for asset in manifest['tiles']:

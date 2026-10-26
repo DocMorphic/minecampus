@@ -245,6 +245,14 @@
       "values": [
         13
       ]
+    },
+    {
+      "name": "PromenadeTexture",
+      "type": "int",
+      "count": 1,
+      "values": [
+        14
+      ]
     }
   ]
 }
