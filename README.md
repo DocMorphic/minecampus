@@ -44,6 +44,8 @@ The Three.js browser game remains in this repo as an earlier, independent protot
 
 ## Sources and assets
 
+[Managing development disk usage](docs/DEVELOPMENT-STORAGE.md).
+
 [Research and architecture](RESEARCH.md) · [Third-party notices](THIRD_PARTY.md) · [Native pack source](minecraft/)
 
 The public repository does not bundle Minecraft's proprietary game assets. The official launcher obtains those for your authenticated game installation. The Minecampus add-on is MIT; RealWorldMC and Fabric API are Apache-2.0; map content has separate provider terms.

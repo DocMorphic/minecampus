@@ -31,6 +31,36 @@ def snapshot(folder):
     return {str(p.relative_to(folder)): digest(p) for p in folder.rglob('*') if p.is_file()}
 
 
+def prune_artifact_backups(destination, previous_sha, keep=2):
+    """Retain recent verified mod rollbacks; never prune worlds or unknown files."""
+    backups = destination / 'artifact-backups'
+    if backups.is_symlink():
+        return
+    owned = []
+    for folder in backups.iterdir():
+        if folder.is_symlink() or not folder.is_dir():
+            continue
+        files = list(folder.iterdir())
+        jars = list(folder.glob('*.jar'))
+        record = folder / 'preview-installation.json'
+        if len(files) != 2 or len(jars) != 1 or any(p.is_symlink() for p in files) or not record.is_file():
+            continue
+        try:
+            recorded = json.loads(record.read_text())['artifactSha256']
+        except (OSError, ValueError, KeyError, TypeError):
+            continue
+        if recorded == folder.name and jars[0].is_file() and digest(jars[0]) == recorded:
+            owned.append(folder)
+    retained = {previous_sha}
+    for folder in sorted(owned, key=lambda p: p.stat().st_mtime_ns, reverse=True):
+        if len(retained) >= keep:
+            break
+        retained.add(folder.name)
+    for folder in owned:
+        if folder.name not in retained:
+            shutil.rmtree(folder)
+
+
 def verify_artifact(jar, reviewed_upgrade=False):
     report = ('preview-upgrade-development-validation.json' if reviewed_upgrade
               else 'rcm-technikum-development-validation.json')
@@ -113,6 +143,11 @@ def update(destination, jar, reviewed_upgrade=False):
         except OSError:
             shutil.copy2(backup / old.name, old)
             raise
+        # Only prune after the new artifact and installation record succeeded.
+        try:
+            prune_artifact_backups(destination, report['previousArtifactSha256'])
+        except OSError as error:
+            print(f'Preview updated; could not prune old mod backups: {error}')
     print(f'Updated Exterior Preview; verified {len(before)} unchanged save files and preserved local settings.')
     print('Launch Minecampus — Exterior Preview 0.5. The previous mod is retained in artifact-backups.')
 

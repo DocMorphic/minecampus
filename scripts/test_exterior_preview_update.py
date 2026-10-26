@@ -1,6 +1,8 @@
 """Preview updates must preserve progress and refuse unowned/open installations."""
 import importlib.util
+import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -66,6 +68,45 @@ class PreviewUpdate(unittest.TestCase):
             self.assertEqual(self.old.read_bytes(), self.old_bytes)
         finally:
             child.communicate('\n', timeout=10)
+
+
+class BackupRetention(unittest.TestCase):
+    def test_keeps_previous_and_newest_and_preserves_unknown_data(self):
+        with tempfile.TemporaryDirectory() as folder:
+            instance = Path(folder)
+            backups = instance / 'artifact-backups'
+            backups.mkdir()
+            versions = []
+            for index in range(5):
+                content = f'old mod {index}'.encode()
+                checksum = hashlib.sha256(content).hexdigest()
+                target = backups / checksum
+                target.mkdir()
+                (target / 'mod.jar').write_bytes(content)
+                (target / 'preview-installation.json').write_text(json.dumps({'artifactSha256': checksum}))
+                os.utime(target, (1000 + index, 1000 + index))
+                versions.append(target)
+            # Even an older immediate rollback must survive; newest is kept too.
+            unknown = backups / 'user-backup'
+            unknown.mkdir()
+            (unknown / 'notes.txt').write_text('retain')
+            (versions[2] / 'mod.jar').write_bytes(b'user-modified backup')
+            (versions[3] / 'extra.txt').write_text('retain extra file')
+            preview.prune_artifact_backups(instance, versions[0].name)
+            self.assertTrue(versions[0].exists())
+            self.assertFalse(versions[1].exists())
+            self.assertTrue(versions[4].exists())
+            self.assertEqual((versions[2] / 'mod.jar').read_bytes(), b'user-modified backup')
+            self.assertEqual((versions[3] / 'extra.txt').read_text(), 'retain extra file')
+            self.assertEqual((unknown / 'notes.txt').read_text(), 'retain')
+
+    def test_failed_update_does_not_prune_backups(self):
+        with tempfile.TemporaryDirectory() as folder:
+            with patch.object(preview, 'verify_artifact', side_effect=RuntimeError('unreviewed')):
+                with patch.object(preview, 'prune_artifact_backups') as prune:
+                    with self.assertRaisesRegex(RuntimeError, 'unreviewed'):
+                        preview.update(Path(folder), Path(folder) / 'mod.jar')
+                    prune.assert_not_called()
 
 
 class PreviewArtifactReview(unittest.TestCase):
