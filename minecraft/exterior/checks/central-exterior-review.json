@@ -1,0 +1,130 @@
+{
+  "name": "central-exterior-review-106",
+  "purpose": "Current-artifact visual triage of all 24 retained central-campus viewpoints; fixed cameras do not establish route traversal or new full-campus acceptance.",
+  "cameras": [
+    {
+      "label": "final ground",
+      "position": "39.961711 65.797294 -62.90048 -103.360657 4.800037",
+      "worldTime": 6000
+    },
+    {
+      "label": "final aerial",
+      "position": "-60 120 120 -153.435 20.44",
+      "worldTime": 6000
+    },
+    {
+      "label": "route west",
+      "position": "35 65 -40 90 0",
+      "worldTime": 6000
+    },
+    {
+      "label": "route south",
+      "position": "35 65 100 180 0",
+      "worldTime": 6000
+    },
+    {
+      "label": "route north",
+      "position": "50 65 -190 0 0",
+      "worldTime": 6000
+    },
+    {
+      "label": "ias",
+      "position": "65 65 -157 -166 -8",
+      "worldTime": 6000
+    },
+    {
+      "label": "former mensa",
+      "position": "0 64.25 -216 180 -5",
+      "worldTime": 6000
+    },
+    {
+      "label": "mensa terrace",
+      "position": "0 68 -238 180 0",
+      "worldTime": 6000
+    },
+    {
+      "label": "cos southwest",
+      "position": "128 65 -267 -140 -13",
+      "worldTime": 6000
+    },
+    {
+      "label": "cos forecourt",
+      "position": "162 64 -270 -171 14",
+      "worldTime": 6000
+    },
+    {
+      "label": "grs north",
+      "position": "214 64 -342 -15 -10",
+      "worldTime": 6000
+    },
+    {
+      "label": "grs main west",
+      "position": "225 64 -280 -90 -7",
+      "worldTime": 6000
+    },
+    {
+      "label": "grs iii west",
+      "position": "222 64 -240 -90 -7",
+      "worldTime": 6000
+    },
+    {
+      "label": "grs courtyard path",
+      "position": "262 64 -255 90 20",
+      "worldTime": 6000
+    },
+    {
+      "label": "promenade lawn path",
+      "position": "60 66 -100 180 10",
+      "worldTime": 6000
+    },
+    {
+      "label": "crosspath south",
+      "position": "35 65 24 -100 12",
+      "worldTime": 6000
+    },
+    {
+      "label": "galileo court floor",
+      "position": "105 60.5 -153 170 -6",
+      "worldTime": 6000
+    },
+    {
+      "label": "galileo west",
+      "position": "72 65 -125 -90 -14",
+      "worldTime": 6000
+    },
+    {
+      "label": "galileo east",
+      "position": "145 65 -115 90 -12",
+      "worldTime": 6000
+    },
+    {
+      "label": "galileo aerial",
+      "position": "25 110 -180 -37 27",
+      "worldTime": 6000
+    },
+    {
+      "label": "galileo ramp north",
+      "position": "144 64.4 -142 10 22",
+      "worldTime": 6000
+    },
+    {
+      "label": "mlz north",
+      "position": "185 65 -157 0 -12",
+      "worldTime": 6000
+    },
+    {
+      "label": "mlz courtyard",
+      "position": "153 65 -110 -100 -8",
+      "worldTime": 6000
+    },
+    {
+      "label": "mlz east",
+      "position": "219 66 -108 90 -12",
+      "worldTime": 6000
+    }
+  ],
+  "gravityProbes": [],
+  "reflectionEvidence": false,
+  "captureWalking": false,
+  "checkFractionalSupports": false
+}

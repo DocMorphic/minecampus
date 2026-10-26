@@ -1,0 +1,301 @@
+{
+  "status": "Native capture PASS; full visual-quality acceptance FAIL / unfinished",
+  "candidate": 106,
+  "artifactSha256": "2c2f70342f59eb1b8f9c51b577ef019076b728eeb17773177f0cae342d1259bb",
+  "planSha256": "2664215ec17e0f3a24846b54ea072c5a19b6fb9662126cd2bedc561dd5344937",
+  "resultSha256": "22b79e56ea1f1c79febab00e28c45d3591a9ac1e6c490207dd7155f5e36ae56d",
+  "cameraViews": 24,
+  "capturesReviewed": 24,
+  "scope": "All 24 retained central-campus viewpoints on current installed artifact: promenade, MW, IAS, former Mensa, COS, GRS, Galileo and MLZ. Two are aerial. Other views are fixed cameras, not proof of continuous route traversal.",
+  "functionalAcceptance": "No new geometry or code was tested here; standing/gameplay checks remain attributable to their prior exact-artifact reports.",
+  "userInstallationFilesVerifiedUnchanged": 606,
+  "goalComplete": false,
+  "fullCampusAcceptance": false,
+  "views": [
+    {
+      "view": 0,
+      "label": "final ground",
+      "position": "(39.961711, 65.797294, -62.90048)",
+      "capture": "view-00.jpg",
+      "rawSha256": "389c805da0eab18dba4b045d0af220736f53dea60179d1b0d17c8671c85d9ed1",
+      "sha256": "59e8f55bce841df584c8b50b01cc2eb77a40c3a9e3c898ad140a46ca5b501529",
+      "fps": 39,
+      "finding": "P1: pale path edges and baked source shadow beside Galileo; facade material remains uniform"
+    },
+    {
+      "view": 1,
+      "label": "final aerial",
+      "position": "(-59.5, 120.0, 120.5)",
+      "capture": "view-01.jpg",
+      "rawSha256": "e815959b9bd6947bafdee29e4a02fe0bef559fc8ba8268e3bb2c4444640fe6b8",
+      "sha256": "c6419c96fa406dba418752ba4daa7928e8c17d70abd91edad8349ad9dc26b999",
+      "fps": 45,
+      "finding": "Aerial control: campus layout recognizable; roof/source detail and detached background artifacts remain"
+    },
+    {
+      "view": 2,
+      "label": "route west",
+      "position": "(35.5, 65.0, -39.5)",
+      "capture": "view-02.jpg",
+      "rawSha256": "f86a80a43018f75a88e4e8bb100820b1d40220ce33efd826c7a829f9b75bed73",
+      "sha256": "5cb65dbfe994a7beca22e60d1c418f2e1d43da1815218aa2faaedefb7f3dd208",
+      "fps": 112,
+      "finding": "P2: simplified MW auditorium and pale central surface"
+    },
+    {
+      "view": 3,
+      "label": "route south",
+      "position": "(35.5, 65.0, 100.5)",
+      "capture": "view-03.jpg",
+      "rawSha256": "d4d1a860a645c8e3f34d5089357dce067e73cd18b7f23269239f0b8ebfe3e392",
+      "sha256": "0d4cdcabbc3e0691fe8d219e957c9aa8da0c96e7eb51a25561d3a8867962ea3d",
+      "fps": 58,
+      "finding": "P1: promenade asphalt retains photographic brightness and shade"
+    },
+    {
+      "view": 4,
+      "label": "route north",
+      "position": "(50.5, 65.0, -189.5)",
+      "capture": "view-04.jpg",
+      "rawSha256": "05ff283610381c86ecc13f90381cd24a61470aae074f31a7bb78653ac11a6f05",
+      "sha256": "4c5ca0e2e6a8197ed97dab18211bd4a08a35f015f0de605670ff2c055175a448",
+      "fps": 84,
+      "finding": "P1: long promenade surface lacks consistent aggregate tone"
+    },
+    {
+      "view": 5,
+      "label": "ias",
+      "position": "(65.5, 65.0, -156.5)",
+      "capture": "view-05.jpg",
+      "rawSha256": "52d35457b2d285d62e2e4768c98646e1c9515023b8f7c7a7aba84418349aed93",
+      "sha256": "56ff2f74170ca6783c031af67d24124c95cc3fceba941903a2ca23ca104731cf",
+      "fps": 63,
+      "finding": "P1: crossed promenade paths remain pale/blurred; IAS detail still approximate"
+    },
+    {
+      "view": 6,
+      "label": "former mensa",
+      "position": "(0.5, 64.25, -215.5)",
+      "capture": "view-06.jpg",
+      "rawSha256": "1e23bcc3f5085339d6fa740e86c23d88225c354837aced586a1e0eb7c5486b0e",
+      "sha256": "1d579b223cee93ae41c768ef604af7ff10ef86da1cf26ce9d47ac695b94137f0",
+      "fps": 70,
+      "finding": "P2: repeated canopy silhouettes and retained ordinary dirt blocks near former Mensa"
+    },
+    {
+      "view": 7,
+      "label": "mensa terrace",
+      "position": "(0.5, 68.0, -237.5)",
+      "capture": "view-07.jpg",
+      "rawSha256": "564d3ce6316f6559a4619c7c934ff4b143d62190f5942dbe847c717fd0ca3b60",
+      "sha256": "6227e913eb89812851532082deade2e5e06c4df1b37e562cd3b37ca98b032680",
+      "fps": 75,
+      "finding": "Retained improvement: terrace grain and recessed glazing readable; fine architectural detail approximate"
+    },
+    {
+      "view": 8,
+      "label": "cos southwest",
+      "position": "(128.5, 65.0, -266.5)",
+      "capture": "view-08.jpg",
+      "rawSha256": "4016d5163f443282dcd73e7792421aad0d28677f9d326db835f1e62bcbe016be",
+      "sha256": "6064749624f2bbc99c10231d27304a897d9ed13042de0e3414e179f02251b8ef",
+      "fps": 52,
+      "finding": "P1: COS approach retains blurred photographic shadow/highlights"
+    },
+    {
+      "view": 9,
+      "label": "cos forecourt",
+      "position": "(162.5, 64.0, -269.5)",
+      "capture": "view-09.jpg",
+      "rawSha256": "f6414f2d71514bb088791a0e4af741f71b4e736c59871e4a9d9bed07b446ff67",
+      "sha256": "cb2e9daa83ce5299e5184e38d3cd5540e1069067d61f1c9659da0d8d0e837489",
+      "fps": 80,
+      "finding": "Retained improvement: COS frontage paving readable; transition to other pavement remains visible"
+    },
+    {
+      "view": 10,
+      "label": "grs north",
+      "position": "(214.5, 64.0, -341.5)",
+      "capture": "view-10.jpg",
+      "rawSha256": "3064befe3af71634dd225b2909d426fff5ea70f2ca941fe4bee6ad8f828dd1db",
+      "sha256": "8e126a4319f6e4a926eb77cd167d0f13a554a49c80db8567b59863e69fc4a40a",
+      "fps": 60,
+      "finding": "P1: GRS north forecourt has conspicuous pale/blue photographic patches and baked canopy shadows"
+    },
+    {
+      "view": 11,
+      "label": "grs main west",
+      "position": "(225.5, 64.0, -279.5)",
+      "capture": "view-11.jpg",
+      "rawSha256": "836c6541c72eda1c7e176840fd7bc4ddcb27d6bc5bbb706b5dae340a6ef1d439",
+      "sha256": "db9da9fab113fe1efc32fac53d596be02dce0332b06f88568ad358f92b8d77dc",
+      "fps": 101,
+      "finding": "P2: broad flat GRS glazing and repetitive canopy; ordinary blocks retained"
+    },
+    {
+      "view": 12,
+      "label": "grs iii west",
+      "position": "(222.5, 64.0, -239.5)",
+      "capture": "view-12.jpg",
+      "rawSha256": "af92bc3ba2df1710bb02daaf2fd77072aec8bf2690e376a4bc441b798db2b1ec",
+      "sha256": "4dc3dd1a40609a85e1de6f01abb3fa10da97adb115b25bd7b78dfcbfe4002683",
+      "fps": 98,
+      "finding": "P2: coarse GRS III appearance and repetitive canopy; ordinary blocks retained"
+    },
+    {
+      "view": 13,
+      "label": "grs courtyard path",
+      "position": "(262.5, 64.0, -254.5)",
+      "capture": "view-13.jpg",
+      "rawSha256": "68406ae7a64924dc35493c4f540344afb6137180347696d8935850e79e5acf01",
+      "sha256": "24e49977918befd416cf215c1b31e4d420e9479869fcf69976dc1a9077d82bf7",
+      "fps": 82,
+      "finding": "P2: corridor ground retains blurred pale/cyan patches beyond reconstructed path"
+    },
+    {
+      "view": 14,
+      "label": "promenade lawn path",
+      "position": "(60.5, 66.0, -99.5)",
+      "capture": "view-14.jpg",
+      "rawSha256": "c6a967289e9f1f15fb4369eb36106b63ac7c26ef495d283621bb0f71cfe1ba38",
+      "sha256": "f43fc4d37ad5f94b4d1a524d3b9e430324b63d691147c116359facb5aad6d394",
+      "fps": 65,
+      "finding": "P1: central path carries baked bright borders; shader material still inherits aerial luminance"
+    },
+    {
+      "view": 15,
+      "label": "crosspath south",
+      "position": "(35.5, 65.0, 24.5)",
+      "capture": "view-15.jpg",
+      "rawSha256": "98744bb9b7a14e04f7dfa959f5abf735953b51fcbeb07bb6fe26f09d786ef6ed",
+      "sha256": "e5458835c01f04a20f14702ab003c711bf7f6b5baa2ef5987d245f49b8682b0c",
+      "fps": 39,
+      "finding": "P1: bright/cyan ground edge patches at main crossing beside Galileo"
+    },
+    {
+      "view": 16,
+      "label": "galileo court floor",
+      "position": "(105.5, 60.5, -152.5)",
+      "capture": "view-16.jpg",
+      "rawSha256": "52713cba5db0c138234c5b2d10532fbafe4f3158f1d71d5f5a70788d507ce01c",
+      "sha256": "f384542f765b07ecbcbc47dc200dcfb471b89fa32a8e9f40ef6692d2c60fffed",
+      "fps": 64,
+      "finding": "P2: recessed Galileo court walls remain visually bare; ordinary blocks retained"
+    },
+    {
+      "view": 17,
+      "label": "galileo west",
+      "position": "(72.5, 65.0, -124.5)",
+      "capture": "view-17.jpg",
+      "rawSha256": "76d0f588bc6254bf11af74f270bc60c097fbc34c3c47c1af568eb3dccfb13dbb",
+      "sha256": "91835a642bad0b15b8b42c092578e31bfc918ae34f7b389feb8e6b61fd3e9358",
+      "fps": 51,
+      "finding": "P2: Galileo facade silhouette clear, large opaque panels and glass remain overly uniform"
+    },
+    {
+      "view": 18,
+      "label": "galileo east",
+      "position": "(145.5, 65.0, -114.5)",
+      "capture": "view-18.jpg",
+      "rawSha256": "39ffc40b01b3f8ee07af8160981fd5df74e13810b02b8a846b80aef1cef9b54a",
+      "sha256": "2b25d6fe0d43116e8fd63df29880c6c981cf4f2dc98c01920276a643537021f0",
+      "fps": 73,
+      "finding": "Retained improvement: east frontage surface clearer; facade still approximate"
+    },
+    {
+      "view": 19,
+      "label": "galileo aerial",
+      "position": "(25.5, 110.0, -179.5)",
+      "capture": "view-19.jpg",
+      "rawSha256": "8243d6ce1ed7cf136febf39e7c84b3bff07b43fd49e9e858524373e3734d81cc",
+      "sha256": "0a2edfe04506014818844de48af60b925fdb97da31f9c37bd04e65e8295d29db",
+      "fps": 55,
+      "finding": "Aerial control: recognizable layout; unresolved roof/source artifacts visible"
+    },
+    {
+      "view": 20,
+      "label": "galileo ramp north",
+      "position": "(144.5, 64.4, -141.5)",
+      "capture": "view-20.jpg",
+      "rawSha256": "f123671f0dfe1e6fc95e680a10e45334896dec2f72f0a4e3aef6f99e05ba8351",
+      "sha256": "a8f55ed63861826974fc200e7385d53371cfc9c5991ea7e409357e07ad16d8ba",
+      "fps": 100,
+      "finding": "Retained improvement: north ramp visually continuous, but this fixed view is not a traversal check"
+    },
+    {
+      "view": 21,
+      "label": "mlz north",
+      "position": "(185.5, 65.0, -156.5)",
+      "capture": "view-21.jpg",
+      "rawSha256": "1201ce2d7507593262d3bff37aedacf0ba1c65fb888e6cd6a42e59b3525135c6",
+      "sha256": "f68ff28fd07359f977ef6eafc47215c3133226bf5679eca6dadb8d37b425377f",
+      "fps": 82,
+      "finding": "P2: MLZ facade has simplified flat bands; ground below trees remains dark/blurred"
+    },
+    {
+      "view": 22,
+      "label": "mlz courtyard",
+      "position": "(153.5, 65.0, -109.5)",
+      "capture": "view-22.jpg",
+      "rawSha256": "a8bcc2603623e0cfa3625b0acd3e4fc23814fe904e742f9a07a5c19ed712e6f4",
+      "sha256": "d359114165d6eb32294c60491cc646ccdfaff5b96db7dbf32b2dffdcc57ca7e5",
+      "fps": 62,
+      "finding": "P2: MLZ alley surface has broad tonal mottling and facades remain simplified"
+    },
+    {
+      "view": 23,
+      "label": "mlz east",
+      "position": "(219.5, 66.0, -107.5)",
+      "capture": "view-23.jpg",
+      "rawSha256": "9f6553a03bb16a0231b37fca324f53190d3b356275bc5f4d881681fa1fe72ccd",
+      "sha256": "dc61db875aef2022786d8313075452c3081d5309cbd896715a99af9e2a5aa28c",
+      "fps": 79,
+      "finding": "P1: residual pale/cyan ground strip beside MLZ east; ordinary blocks retained"
+    }
+  ],
+  "nextPriority": {
+    "area": "Central promenade asphalt and crossing paths",
+    "evidenceViews": [
+      0,
+      3,
+      4,
+      5,
+      14,
+      15
+    ],
+    "diagnosis": "Mapped asphalt albedo still multiplies source aerial luminance, retaining old shadows and pale highlights. Source/mask boundary mismatch may also contribute and must be tested separately.",
+    "sources": [
+      "promenade-paths.json",
+      "crosspaths.json",
+      "dist-minecraft/exterior/promenade-surfaces.geojson",
+      "dist-minecraft/exterior/crosspath-surfaces.geojson"
+    ],
+    "firstCandidateDomain": {
+      "osmWay": 32458178,
+      "areaSquareMetres": 2011.44,
+      "boundaryVerticesIncludingClosure": 78,
+      "sourceQualification": "OSM records asphalt and path alignment; widths and offsets are existing DOP20 interpretations, not measured kerbs. Preserve current bounds initially."
+    },
+    "nextWork": "Compare clean scanned asphalt within source-defined path boundaries against this baseline in matching ground views, near/far and oblique sunlight, while preserving geometry and ordinary blocks. Then correct remaining GRS/MLZ ground patches and assess facade depth/detail.",
+    "limits": "This diagnosis is not visual acceptance of an unbuilt replacement."
+  },
+  "images": [
+    {
+      "path": "minecraft/exterior/photos/central-exterior-review-106-0.jpg",
+      "sha256": "f3c15ca9f649d9675a77ffde2c8285afda4cb9fda7a30a1667eee610541d4780"
+    },
+    {
+      "path": "minecraft/exterior/photos/central-exterior-review-106-1.jpg",
+      "sha256": "fb66d6584227efc7dd91f5881b20102d2fcaa12153b673bfa23c7b2b527653ad"
+    },
+    {
+      "path": "minecraft/exterior/photos/central-exterior-review-106-2.jpg",
+      "sha256": "c3a1bc2c457d2d607be0587d827420cec329a0882250e3d45fc6fc282a9ea923"
+    },
+    {
+      "path": "minecraft/exterior/photos/central-exterior-review-106-3.jpg",
+      "sha256": "ee075d6fea81f192dda9bfc8545a0554afbf7df24150a7f54c19eb1bb32c14fb"
+    }
+  ],
+  "storage": "JPEG evidence plus hashes of original captures; retain five full PNG baselines for the next material pass. Reuse existing QA world and artifact; no new whole-repository snapshot."
+}
