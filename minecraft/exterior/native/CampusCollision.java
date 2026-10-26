@@ -13,6 +13,8 @@ import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.saveddata.SavedData;
 import java.time.Duration;
 import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Executors;
 
@@ -22,19 +24,23 @@ import java.util.concurrent.Executors;
 public final class CampusCollision {
     private static final int MIN_Y=48, HEIGHT=96;
     private static final Set<Long> inFlight=new HashSet<>();
+    private record LightingResync(ServerLevel level,LevelChunk chunk,int afterTick){}
+    private static final Map<Long,LightingResync> lightingResync=new HashMap<>();
     private static final ThreadLocal<Boolean> updating=ThreadLocal.withInitial(()->false);
     private static final java.util.concurrent.ExecutorService IO=Executors.newFixedThreadPool(2,r->{var t=new Thread(r,"Minecampus collision alignment");t.setDaemon(true);return t;});
     private static int epoch;
     public static long changedBlocks;
+    public static long lightingResyncPackets;
     private static boolean unavailable;
     private CampusCollision(){}
     public static boolean applying(){return updating.get();}
     public static void register(){
         ServerTickEvents.END_SERVER_TICK.register(CampusCollision::tick);
-        ServerLifecycleEvents.SERVER_STOPPED.register(server->{epoch++;inFlight.clear();unavailable=false;changedBlocks=0;});
+        ServerLifecycleEvents.SERVER_STOPPED.register(server->{epoch++;inFlight.clear();lightingResync.clear();unavailable=false;changedBlocks=0;lightingResyncPackets=0;});
     }
-    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v93");}
+    private static Storage storage(ServerLevel level){return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(Storage::new,Storage::load,null),"minecampus_exterior_collision_v94");}
     private static void tick(MinecraftServer server){
+        flushLighting(server);
         if(unavailable||server.getTickCount()%10!=0)return;
         var level=server.overworld();
         if(!(level.getChunkSource().getGenerator() instanceof EarthChunkGenerator))return;
@@ -90,6 +96,33 @@ public final class CampusCollision {
         }finally{updating.set(false);}
         var saved=storage(level);saved.done.add(base.toLong());saved.setDirty();changedBlocks+=changes;
         RealWorldMC.LOGGER.info("Campus collision aligned chunk {}, {}: {} proxy blocks; player edits preserved",base.x,base.z,changes);
+        if(changes>0)resyncLighting(level,chunk);
+    }
+    /** Bulk proxy changes can leave client light data behind the server. Send
+     * the authoritative light after queued work and block broadcasts finish.
+     * This changes no blocks and does not force-load neighbouring chunks. */
+    private static void resyncLighting(ServerLevel level,LevelChunk chunk){
+        int generation=epoch;var pos=chunk.getPos();var source=level.getChunkSource();
+        source.getLightEngine().waitForPendingTasks(pos.x,pos.z).thenRun(()->level.getServer().execute(()->{
+            if(generation!=epoch||source.getChunkNow(pos.x,pos.z)!=chunk)return;
+            // Adjacent sections also receive light from the changed boundary.
+            // Coalesce nearby migrations and leave a tick for block broadcasts.
+            for(int dx=-1;dx<=1;dx++)for(int dz=-1;dz<=1;dz++){
+                var neighbour=source.getChunkNow(pos.x+dx,pos.z+dz);
+                if(neighbour!=null)lightingResync.put(neighbour.getPos().toLong(),new LightingResync(level,neighbour,level.getServer().getTickCount()+20));
+            }
+        })).exceptionally(error->{RealWorldMC.LOGGER.warn("Campus lighting synchronization failed",error);return null;});
+    }
+    private static void flushLighting(MinecraftServer server){
+        var iterator=lightingResync.values().iterator();
+        while(iterator.hasNext()){
+            var pending=iterator.next();if(server.getTickCount()<pending.afterTick())continue;
+            iterator.remove();var source=pending.level().getChunkSource();var pos=pending.chunk().getPos();
+            if(source.getChunkNow(pos.x,pos.z)!=pending.chunk())continue;
+            var players=source.chunkMap.getPlayers(pos,false);if(players.isEmpty())continue;
+            var packet=new net.minecraft.network.protocol.game.ClientboundLightUpdatePacket(pos,source.getLightEngine(),null,null);
+            for(var player:players){player.connection.send(packet);lightingResyncPackets++;}
+        }
     }
     public static boolean aligned(ServerLevel level,int cx,int cz){return storage(level).done.contains(net.minecraft.world.level.ChunkPos.asLong(cx,cz));}
     public static final class Storage extends SavedData {

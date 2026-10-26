@@ -155,6 +155,8 @@ public final class CampusSiteInspection {
             var p = control.getAsJsonArray("target"); var n = control.getAsJsonArray("normal");
             double x=p.get(0).getAsDouble(), y=p.get(1).getAsDouble(), z=p.get(2).getAsDouble();
             double nx=n.get(0).getAsDouble(), ny=n.get(1).getAsDouble(), nz=n.get(2).getAsDouble();
+            double offset=control.has("rayStartOffsetMetres")?control.get("rayStartOffsetMetres").getAsDouble():.6;
+            if(!Double.isFinite(offset)||offset<=.025||offset>.6)throw new AssertionError("Invalid local surface probe offset");
             float distance=1000, firstDistance=1000; int hit=-1, part=-1, firstHit=-1;
             for (var value : loaded.values()) {
                 var data=((MapTile)value).data;
@@ -163,7 +165,7 @@ public final class CampusSiteInspection {
                 for (int pi=0; pi<data.parts.length; pi++) {
                     var v=data.parts[pi].vertices;
                     for (int o=0; o<v.length; o+=15) {
-                        float t=org.joml.Intersectionf.intersectRayTriangle((float)(x+nx*.6-data.anchorX),(float)(y+ny*.6-data.anchorY),(float)(z+nz*.6-data.anchorZ),
+                        float t=org.joml.Intersectionf.intersectRayTriangle((float)(x+nx*offset-data.anchorX),(float)(y+ny*offset-data.anchorY),(float)(z+nz*offset-data.anchorZ),
                             (float)-nx,(float)-ny,(float)-nz,v[o],v[o+1],v[o+2],v[o+5],v[o+6],v[o+7],v[o+10],v[o+11],v[o+12],1e-6f);
                         if (t>0 && t<firstDistance) { firstDistance=t; firstHit=data.id; }
                         // Ignore incidental canopy cards for wall controls, but
@@ -174,9 +176,9 @@ public final class CampusSiteInspection {
                     }
                 }
             }
-            if (hit!=control.get("tile").getAsInt() || part!=control.get("part").getAsInt() || Math.abs(distance-.6)>.025)
+            if (hit!=control.get("tile").getAsInt() || part!=control.get("part").getAsInt() || Math.abs(distance-offset)>.025)
                 throw new AssertionError("Inspection surface missing/obstructed at "+x+","+y+","+z+": "+hit+"/"+part+" distance "+distance);
-            var row=control.deepCopy(); row.addProperty("hitTile",hit); row.addProperty("hitPart",part); row.addProperty("distance",distance);
+            var row=control.deepCopy(); row.addProperty("hitTile",hit); row.addProperty("hitPart",part); row.addProperty("distance",distance); row.addProperty("rayStartOffsetMetres",offset);
             row.addProperty("firstHitTile",firstHit); row.addProperty("firstHitDistance",firstDistance);
             if (control.has("collider") && control.get("collider").getAsBoolean()) {
                 var from=new net.minecraft.world.phys.Vec3(x+nx*1.6,y+ny*1.6,z+nz*1.6);
@@ -352,6 +354,7 @@ public final class CampusSiteInspection {
         if(fractionalSupportChecks==null&&plan.has("checkFractionalSupports")&&plan.get("checkFractionalSupports").getAsBoolean())fractionalSupportChecks=CampusFractionalSupportChecks.verify(mc);
         if(ticks==0&&phase<cameras.size()){
             var view=cameras.get(phase).getAsJsonObject();
+            if(view.has("rebuildTerrain")&&view.get("rebuildTerrain").getAsBoolean())mc.levelRenderer.allChanged();
             if(view.has("guiScale")){
                 int scale=view.get("guiScale").getAsInt();
                 if(scale<0||scale>8)throw new AssertionError("Invalid inspection GUI scale");
@@ -394,6 +397,53 @@ public final class CampusSiteInspection {
                 throw new AssertionError("Transparent canopy pass not active in required camera");
         }
         row.addProperty("fps",mc.getFps());
+        if(plan.has("lightmapEvidence")&&plan.get("lightmapEvidence").getAsBoolean()){
+            var evidence=new JsonObject();
+            var textures=new JsonArray();
+            for(int unit=0;unit<12;unit++)textures.add(com.mojang.blaze3d.systems.RenderSystem.getShaderTexture(unit));
+            evidence.add("shaderTextures",textures);
+            var light=mc.gameRenderer.lightTexture();
+            var textureField=light.getClass().getDeclaredField("lightTexture");textureField.setAccessible(true);
+            var texture=(net.minecraft.client.renderer.texture.DynamicTexture)textureField.get(light);
+            evidence.addProperty("lightmapTexture",texture.getId());
+            var pixels=texture.getPixels();var corners=new JsonArray();
+            for(int y:new int[]{0,15})for(int x:new int[]{0,15})corners.add(Integer.toUnsignedLong(pixels.getPixelRGBA(x,y)));
+            evidence.add("lightmapCornersRGBA",corners);
+            int active=org.lwjgl.opengl.GL11.glGetInteger(org.lwjgl.opengl.GL13.GL_ACTIVE_TEXTURE);
+            int binding=org.lwjgl.opengl.GL11.glGetInteger(org.lwjgl.opengl.GL11.GL_TEXTURE_BINDING_2D);
+            var gpu=org.lwjgl.system.MemoryUtil.memAlloc(16*16*4);
+            try{
+                com.mojang.blaze3d.platform.GlStateManager._bindTexture(texture.getId());
+                org.lwjgl.opengl.GL11.glGetTexImage(org.lwjgl.opengl.GL11.GL_TEXTURE_2D,0,org.lwjgl.opengl.GL11.GL_RGBA,org.lwjgl.opengl.GL11.GL_UNSIGNED_BYTE,gpu);
+                var gpuCorners=new JsonArray();
+                for(int y:new int[]{0,15})for(int x:new int[]{0,15}){
+                    var rgba=new JsonArray();for(int k=0;k<4;k++)rgba.add(gpu.get((y*16+x)*4+k)&255);gpuCorners.add(rgba);
+                }
+                evidence.add("gpuLightmapCorners",gpuCorners);
+                evidence.addProperty("minFilter",org.lwjgl.opengl.GL11.glGetTexParameteri(org.lwjgl.opengl.GL11.GL_TEXTURE_2D,org.lwjgl.opengl.GL11.GL_TEXTURE_MIN_FILTER));
+                evidence.addProperty("maxLevel",org.lwjgl.opengl.GL11.glGetTexParameteri(org.lwjgl.opengl.GL11.GL_TEXTURE_2D,org.lwjgl.opengl.GL12.GL_TEXTURE_MAX_LEVEL));
+            }finally{
+                com.mojang.blaze3d.platform.GlStateManager._activeTexture(active);
+                com.mojang.blaze3d.platform.GlStateManager._bindTexture(binding);
+                org.lwjgl.system.MemoryUtil.memFree(gpu);
+            }
+            var points=camera.has("lightSamples")?camera.getAsJsonArray("lightSamples"):plan.getAsJsonArray("lightSamples");
+            if(points!=null){
+                var samples=lightSamples(mc.level,points);
+                var server=mc.getSingleplayerServer();
+                var authoritative=server.submit(()->lightSamples(server.overworld(),points)).get(10,java.util.concurrent.TimeUnit.SECONDS);
+                evidence.add("samples",samples);evidence.add("serverSamples",authoritative);
+                int mismatches=0;for(int i=0;i<samples.size();i++)if(!samples.get(i).equals(authoritative.get(i)))mismatches++;
+                evidence.addProperty("serverClientMismatches",mismatches);
+                try{evidence.addProperty("resyncPackets",dev.realworldmc.CampusCollision.class.getField("lightingResyncPackets").getLong(null));}
+                catch(NoSuchFieldException ignored){} // Baseline artifact predates synchronization.
+                if(plan.has("requireLightMatch")&&plan.get("requireLightMatch").getAsBoolean()&&mismatches>0){
+                    row.add("lightmap",evidence);frames.add(row);writeReport("FAIL: client lighting differs from server");
+                    throw new AssertionError("Client lighting differs from server at "+mismatches+" sampled blocks");
+                }
+            }
+            row.add("lightmap",evidence);
+        }
         row.addProperty("actualGuiScale",mc.getWindow().getGuiScale());
         row.addProperty("guiWidth",mc.getWindow().getGuiScaledWidth());
         row.addProperty("guiHeight",mc.getWindow().getGuiScaledHeight());
@@ -480,5 +530,17 @@ public final class CampusSiteInspection {
             var player = mc.getSingleplayerServer().getPlayerList().getPlayer(uuid);
             mc.getSingleplayerServer().getCommands().performPrefixedCommand(player.createCommandSourceStack().withPermission(4), "tp @s " + next);
         });
+    }
+
+    private static JsonArray lightSamples(net.minecraft.world.level.Level level,JsonArray points){
+        var samples=new JsonArray();
+        for(var value:points){
+            var xyz=value.getAsJsonArray();var pos=new net.minecraft.core.BlockPos(xyz.get(0).getAsInt(),xyz.get(1).getAsInt(),xyz.get(2).getAsInt());
+            if(!level.hasChunkAt(pos))throw new AssertionError("Lighting probe chunk is not loaded: "+pos);
+            var sample=new JsonObject();sample.add("position",xyz);sample.addProperty("state",level.getBlockState(pos).toString());
+            sample.addProperty("sky",level.getBrightness(net.minecraft.world.level.LightLayer.SKY,pos));
+            sample.addProperty("block",level.getBrightness(net.minecraft.world.level.LightLayer.BLOCK,pos));samples.add(sample);
+        }
+        return samples;
     }
 }

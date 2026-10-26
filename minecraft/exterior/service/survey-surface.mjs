@@ -14,7 +14,7 @@ import {encodeCollisionPacket} from './collision-packet.mjs';
 export function attachSurveySurface(service, directory, {voxelizeArea,collectRegionTiles,mcPositions,sampleColor,correctedTileCacheBytes=128*1024*1024}={}) {
   const manifest=JSON.parse(fs.readFileSync(path.join(directory,'manifest.json'),'utf8'));
   const supplemental=supplementalSurfaces(manifest.supplementalSurfaces);
-  const retireSource=prepareSourceRetirement([...(service.cfg?.water===false?[]:manifest.architecture?.riverbank?.sourceRetirement??[]),...(manifest.architecture?.reactorSite?.sourceRetirement??[]),...(manifest.architecture?.reactorEast?.sourceRetirement??[]),...(manifest.architecture?.utaLandscape?.sourceRetirement??[])]);
+  const retireSource=prepareSourceRetirement([...(service.cfg?.water===false?[]:manifest.architecture?.riverbank?.sourceRetirement??[]),...(manifest.architecture?.reactorSite?.sourceRetirement??[]),...(manifest.architecture?.reactorEast?.sourceRetirement??[]),...(manifest.architecture?.utaLandscape?.sourceRetirement??[]),...(manifest.architecture?.lowBuildingSite?.sourceRetirement??[])]);
   const riverSurvey=manifest.architecture?.riverbank?.waterGround;
   const channel=riverSurvey?supplementalSurfaces([{rings:riverSurvey.rings,terrainGuide:riverSurvey.terrainGuide}]):null;
   const channelCeiling=Math.max(-Infinity,...(manifest.architecture?.riverbank?.sourceRetirement??[]).map(r=>r.y1));
@@ -334,7 +334,7 @@ export function attachSurveySurface(service, directory, {voxelizeArea,collectReg
       if(!assets.length&&!channel)return result;
       // Trees cannot participate in terrain inference: a low branch otherwise
       // becomes a column of dirt filling the air below the visible wood.
-      const branchAssets=assets.filter(t=>t.kind==='vegetation');
+      const branchAssets=assets.filter(t=>t.kind==='vegetation'&&(!t.collisionParts||t.collisionParts.includes(0)));
       const fineAssets=assets.filter(t=>t.kind==='reconstruction'&&t.fineCollisionMaterials);
       const solidAssets=assets.filter(t=>t.kind!=='vegetation'&&!t.fineCollisionMaterials);
       const fine=solidShapes(fineAssets.flatMap(t=>solidParts(t,shift)),{x0,z0,minY,height:span});

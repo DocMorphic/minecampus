@@ -1,0 +1,851 @@
+{
+  "status": "PASS: first-load courtyard darkness fixed by synchronizing authoritative lighting after proxy migration",
+  "candidate": 103,
+  "artifactSha256": "18084f8231ba5a52e7aaeb5ee70a070a002e216ca92ba45ba5c8346e1ca7b793",
+  "nativeSourceSha256": "9b2697c098d97b65f2261740b562510f70adc152513cbb89a208da89f994390a",
+  "baseline": {
+    "candidate": 102,
+    "artifactSha256": "9b7ed5b005ac5bfbf3a7b2529f60f36bc55ee2b795efe648e97ee62c95bd6058",
+    "resultSha256": "273dc34a0869c5facec0bd51a2664f1018542cad5aa134e8836a641448657f93",
+    "captureSha256": "20d4bcb32d4aed066a09b0659fa851d992ffce44d7f7a4a57d2a81a9bf5cfb96",
+    "sampledPositions": 510,
+    "mismatchedPositions": 72,
+    "comparison": "Client brightness captured at runtime versus authoritative sky/block light in the saved migrated server chunks. Same voxel states retained across reload.",
+    "mismatches": [
+      {
+        "position": [
+          162,
+          65,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          162,
+          66,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          162,
+          66,
+          -15
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          162,
+          67,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          162,
+          67,
+          -15
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          162,
+          67,
+          -14
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          162,
+          68,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          162,
+          68,
+          -15
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          162,
+          68,
+          -14
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          65,
+          -21
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          65,
+          -20
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          65,
+          -19
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          65,
+          -18
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          65,
+          -17
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          65,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          66,
+          -21
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          66,
+          -20
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          66,
+          -19
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          66,
+          -18
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          66,
+          -17
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          66,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          66,
+          -15
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          67,
+          -21
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          67,
+          -20
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          67,
+          -19
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          67,
+          -18
+        ],
+        "clientSky": 14,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          67,
+          -17
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          67,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          67,
+          -15
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          67,
+          -14
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          68,
+          -21
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          68,
+          -20
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          68,
+          -19
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          68,
+          -18
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          163,
+          68,
+          -14
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -27
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -26
+        ],
+        "clientSky": 14,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -25
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -24
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -23
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -22
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -21
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -20
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -19
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -18
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -17
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          65,
+          -15
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -27
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -26
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -25
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -24
+        ],
+        "clientSky": 14,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -22
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -21
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -20
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -19
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -18
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -17
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          66,
+          -15
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          67,
+          -27
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          67,
+          -26
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          67,
+          -25
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          67,
+          -24
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          67,
+          -16
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          67,
+          -15
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          67,
+          -14
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          68,
+          -27
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          68,
+          -26
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          68,
+          -25
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          68,
+          -15
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      },
+      {
+        "position": [
+          164,
+          68,
+          -14
+        ],
+        "clientSky": 0,
+        "savedServerSky": 15,
+        "clientBlock": 0,
+        "savedServerBlock": 0
+      }
+    ]
+  },
+  "fixed": {
+    "resultSha256": "334eb8a6069c86b88131c0f92e61ef047bc8a53718b5ceed992497507da223f5",
+    "captureSha256": "76213abcad7d24f9ffb3ae38d04110491381802751562a4082ac91753f2144f9",
+    "sampledPositions": 510,
+    "liveServerClientMismatches": 0,
+    "firstLoad": true,
+    "worldReloadRequired": false,
+    "terrainRebuildRequired": false,
+    "gpuLightmapCorners": [
+      [
+        25,
+        25,
+        25,
+        255
+      ],
+      [
+        252,
+        252,
+        252,
+        255
+      ],
+      [
+        251,
+        251,
+        251,
+        255
+      ],
+      [
+        252,
+        252,
+        252,
+        255
+      ]
+    ]
+  },
+  "visualReview": "Before: near-black placed dirt behind the courtyard shrubs. After: native dirt texture visible on first migration, matching the previously reloaded world. Both captures inspected at full-frame resolution.",
+  "negativeDiagnostics": {
+    "reflectionsOffAndOn": "Short tests on migrated copies both render normally; reflection toggle is not the fix.",
+    "terrainRebuild": "Fresh migration remains dark before and after allChanged().",
+    "reloadedWorld": "72 light samples change to match saved server state; CPU/GPU lightmap texture corners and block states remain unchanged."
+  },
+  "scope": "Resends light only to tracking players after queued light work and block updates; no voxel, inventory, shader or texture edits."
+}

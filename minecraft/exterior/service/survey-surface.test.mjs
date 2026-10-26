@@ -543,6 +543,24 @@ test('fine tree packets exclude terrain inference and preserve fractional suppor
  const foreign=service.campusCollisionPacket({...frame,lat:49},0,0,0,8);assert.ok(foreign.subarray(0,cells).every(v=>v===255));assert.equal(foreign.readUInt32LE(cells+4),0);
 });
 
+test('non-solid courtyard vegetation never adds branch collision while ordinary trees still do',t=>{
+ for(const collisionParts of [undefined,[],[0]]){
+  const spec={file:'shrub.ect',kind:'vegetation',runtimeId:501,bounds:[[2,0,3],[3,5,4]],...(collisionParts===undefined?{}:{collisionParts})};
+  const {service,dir}=fixture(t,null,{tiles:[{file:'ground.ect',kind:'ground',runtimeId:500,bounds:[[0,0,0],[16,1,16]]},spec]},
+   {voxelizeArea:()=>({vox:new Uint8Array(2048)})});
+  fs.writeFileSync(path.join(dir,'ground.ect'),tile([[0,0,0],[16,0,0],[0,0,16]]));
+  fs.writeFileSync(path.join(dir,'shrub.ect'),tile([[2.1,.5,3.1],[2.2,5,3.1],[2.3,.5,3.3]]));
+  const packet=service.campusCollisionPacket({...origin,mcToEcef:(...p)=>p},0,0,0,8);
+  if(collisionParts?.length===0){
+   assert.ok(packet.subarray(0,2048).every(v=>v!==8),'Non-solid planting must not create invisible branch obstacles');
+   assert.equal(packet.readUInt32LE(2052),0,'No branch profiles are appended');
+  }else{
+   assert.equal(packet[(2*16+3)*16+2],8,'Existing solid trunks retain collision');
+   assert.ok(packet.readUInt32LE(2052)>0);
+  }
+ }
+});
+
 test('fine reconstructed solids preserve terrain and nearby structures without filling corner cells',t=>{
  for(const shift of [0,2]){
   const specs=[{file:'base.ect',kind:'ground',runtimeId:600,bounds:[[0,0,0],[16,1,16]]},{file:'solid.ect',kind:'reconstruction',runtimeId:601,bounds:[[2,0,3],[2.25,5,3.25]],fineCollisionMaterials:[4]}];

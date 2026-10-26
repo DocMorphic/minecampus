@@ -323,6 +323,8 @@ from exterior_cyclotron_annex import build as build_cyclotron_annex
 build_cyclotron_annex(globals())
 from exterior_galileo_low_buildings import build as build_galileo_low_buildings
 build_galileo_low_buildings(globals())
+from exterior_low_building_site import build as build_low_building_site
+build_low_building_site(globals())
 metadata['architecture']['galileoFacade']={'sourceFile':'photos/galileo-facade-reference.json','sourceSha256':hashlib.sha256(facade_source.read_bytes()).hexdigest(),'reconstruction':facade_spec['reconstruction'],'walls':facade_records}
 for stale in ['galileo-facade-rectified.jpg']:
  if (OUT/stale).exists():(OUT/stale).unlink()

@@ -51,7 +51,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
  				if (myEpoch != epoch) return;
  				List<Want> list = new ArrayList<>();
  				for (JsonElement e : res.getAsJsonArray("tiles")) {
-@@ -422,17 +444,84 @@
+@@ -422,17 +444,85 @@
  		RenderSystem.depthMask(true);
  		RenderSystem.disableBlend();
  		RenderSystem.disableCull();
@@ -92,6 +92,7 @@ diff --git a/mod/src/client/java/dev/realworldmc/client/MapRenderer.java b/mod/s
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==0?5f:4f);
 +                if(campus && t.data.id>=1_000_030_000 && t.data.id<1_000_040_000)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1?6f:(i==0||i==2?7f:9f));
++                if(campus && t.data.id==1_000_030_057)tileShader.safeGetUniform("MaterialDetail").set(16f);
 +                if(campus && t.data.id==1_000_030_004)
 +                    tileShader.safeGetUniform("MaterialDetail").set(i==1||i==4?6f:(i==0||i==2?3f:9f));
 +                if(campus && t.data.id==1_000_030_006)

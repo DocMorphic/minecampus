@@ -1,0 +1,52 @@
+{
+  "scope": "Cyclotron stack and courtyard of DEBY_LOD2_5284436; outdoor geometry only",
+  "primaryElevationSource": {
+    "cachePath": "32698_5349_20_DOM.tif",
+    "url": "https://download1.bayernwolke.de/a/dom20/DOM/32698_5349_20_DOM.tif",
+    "sha256": "a16ad045851ad19fdcae31cee1b035e5b79f2d2015f4cba3edddf9816b1ca874",
+    "size": 37212439,
+    "license": "CC BY 4.0",
+    "attribution": "\u00a9 Bayerische Vermessungsverwaltung"
+  },
+  "stack": {
+    "centreUTM": [
+      698411.0368421053,
+      5349276.984210525
+    ],
+    "baseMC": [
+      199.51030461092,
+      63.92769199873888,
+      -66.6451518529256
+    ],
+    "topMC": [
+      199.51109664174749,
+      89.29748345012878,
+      -66.64541721553437
+    ],
+    "topDHHN2016": 499.55999755859375,
+    "radiusMetres": 0.7,
+    "meshSha256": "f942c947ecfea10986caa23f0b485820aec890f20818ed4eaa49c8b572ad3387"
+  },
+  "courtyard": {
+    "areaSquareMetres": 268.9183460020209,
+    "boundaryBasis": "Union of BVV RoofSurface polygons, retaining the enclosed courtyard hole.",
+    "existingGroundRetained": true,
+    "detectedPlantAreaSquareMetres": 152.0,
+    "leafCards": 8541,
+    "foliageAssets": "Existing CC0 Poly Haven Jacaranda textures; species and botanical form are artistic approximations, not identification.",
+    "formQualification": "Revised after native rejection of repetitive sapling silhouettes: varied sprig orientation and shorter stems within the unchanged elevation envelope; candidate103 reviewed and installed as an incremental exterior improvement. Species and arrangement remain approximate."
+  },
+  "interpretationLimits": [
+    "The compact elevated DOM region anchors stack centre and top; cylindrical form, radius and metal finish are inferred.",
+    "DOP20 colour and DOM20 minus DGM1 elevation guide low vegetation, not a botanical survey.",
+    "The source images contain baked shadows and cannot establish fine current paving or facade detail.",
+    "Provider scan fragments are retired only inside bounded outdoor volumes, with neighbouring surveyed buildings excluded.",
+    "No ordinary Minecraft player blocks or interiors are altered."
+  ],
+  "sourceBindings": {
+    "specification": "low-building-site.json",
+    "sources": "sources.json",
+    "foliageSources": "vegetation-sources.json",
+    "manifestSha256": "0e87119cc960dad5a70a34bf467cda552e1b06a6fc9fb60ab79de013d6f574ba"
+  }
+}
