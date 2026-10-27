@@ -1,0 +1,12 @@
+{
+  "project": "e4mc",
+  "projectUrl": "https://modrinth.com/mod/e4mc",
+  "version": "6.2.3-fabric",
+  "versionId": "8wsUJ306",
+  "minecraft": "1.21.1",
+  "loader": "fabric",
+  "path": "mods/e4mc-fabric-6.2.3.jar",
+  "url": "https://cdn.modrinth.com/data/qANg5Jrr/versions/8wsUJ306/e4mc-fabric-6.2.3.jar",
+  "size": 663705,
+  "sha512": "de52773df77c5653500b139781173386e4e779bcfae79a91c93e4c3cd31ba412c3b1110360701efa6433733a6f6cf7738c11cbdafc88fccad786ef7412eabf1a"
+}

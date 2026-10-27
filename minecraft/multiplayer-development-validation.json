@@ -1,0 +1,26 @@
+{
+  "file": "Minecampus-0.5.0-multiplayer-preview.mrpack",
+  "sha256": "222214bd846b881de080dfe3f3f4c9c3c94eb4dacc40cebabe257fc4e469f054",
+  "size": 348515940,
+  "rendererSha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
+  "addonSha256": "5c11a76ce836b505874c928993f2e3278b8afe1724155b606588480523417833",
+  "fabricApiSha256": "79ac44b40780acbd884b34c50be1e39af682847e5f5cb3b1fddeeaa768dce800",
+  "allowlistedEntries": [
+    "modrinth.index.json",
+    "overrides/mods/RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar",
+    "overrides/mods/minecampus-0.4.0.jar",
+    "overrides/config/realworldmc.json",
+    "overrides/MINECAMPUS-MULTIPLAYER.md",
+    "overrides/configure-node.py"
+  ],
+  "archiveIntegrityVerified": true,
+  "privateInstanceRead": false,
+  "twoPlayerRemoteTestPassed": false,
+  "hostModsMatchPack": true,
+  "hostE4mcInstalled": true,
+  "hostE4mcVersion": "6.2.3-fabric",
+  "hostE4mcRuntimeTestPassed": false,
+  "tunnelOpened": false,
+  "nodeHelperChecks": "Preserves other settings and backup; refuses Node <22 without modifying configuration.",
+  "releaseTag": "exterior-0.5.0-campus110-multiplayer"
+}
