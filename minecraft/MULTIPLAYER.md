@@ -17,14 +17,27 @@ shared destruction and combat still need a real remote-player check.
 5. Send that address to your friends. Keep the world and Minecraft running.
    Closing the world ends the session; use the address shown for each session.
 
-## Friends — one-time installation
+## Friends on Windows — easiest setup
+
+Download **[Minecampus Friends for Windows](https://github.com/DocMorphic/minecampus/releases/download/friends-0.5.0-1/Minecampus-Friends-Windows-0.5.0-friends-1.zip)** (about 399 MB). This bundle is for Windows 10/11 on Intel/AMD 64-bit PCs.
+
+1. Right-click the ZIP → **Extract All**, then open **Play Minecampus.cmd** from the extracted folder.
+2. Sign in with the Microsoft account that owns Java Edition. If the first sign-in leaves you in Prism, double-click **Minecampus – Join a friend**.
+3. Complete the in-game map setup with your own eligible Cesium/Google access, then **Multiplayer → Direct Connection → paste the host's address → Join Server**.
+
+Prism, the matching mods and Windows Node runtime are included. Java, Minecraft and Fabric download automatically on first launch; no pack import or manual runtime installation is needed. Keep the extracted folder together: it contains the private settings after first use. Share the original public ZIP, not your used folder. This uses the unmodified official Prism Launcher in a separate data directory and does not change existing Minecraft installations.
+
+The archive and public input checksums have been verified. **Windows launch and an actual remote two-player session remain untested.** If Windows blocks the downloaded bundle, use the standard Prism import route below; do not disable Windows protection. macOS/Linux and Windows ARM should use the standard route.
+
+## Friends on Mac/Linux, or using an existing launcher
 
 1. Download `Minecampus-0.5.0-multiplayer-preview.mrpack` from this repository's
    `exterior-0.5.0-campus110-multiplayer` prerelease. Do not use the older 0.4 pack.
 2. In **Prism Launcher**, choose **Add Instance → Import** and select the file.
    Alternatively import the `.mrpack` in the Modrinth App.
 3. Sign in with your own Microsoft account that owns Minecraft Java Edition.
-   The launcher needs Java 21 for this Minecraft version.
+   In Prism, **Settings → Java**, enable **Autodetect Java version** and
+   **Auto-download Mojang Java** so it downloads Java 21 automatically.
 4. On macOS/Linux, install Node.js 22 or newer; the renderer detects common
    installation locations automatically. If it reports that Node is missing,
    open the instance's Minecraft folder in Terminal and run
@@ -61,6 +74,9 @@ Sources: [e4mc](https://modrinth.com/mod/e4mc),
 [Node.js](https://nodejs.org/en/download).
 
 Rebuild the shareable pack with `python3 scripts/build-multiplayer-pack.py`.
+Rebuild the Windows portable bundle with `python3 scripts/build-friends-launcher.py`.
+Its public dependencies are pinned in `minecraft/friends-launcher.json`; it
+preserves the existing reviewed renderer and includes no game/account files.
 The host-only dependency and its published checksum are pinned in
 `minecraft/remote-hosting.json`. Opening the world to the internet remains a
 manual in-game action.

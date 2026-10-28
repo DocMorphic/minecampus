@@ -1,0 +1,21 @@
+{
+  "version": "0.5.0-friends-1",
+  "pack": {
+    "path": "Minecampus-0.5.0-multiplayer-preview.mrpack",
+    "url": "https://github.com/DocMorphic/minecampus/releases/download/exterior-0.5.0-campus110-multiplayer/Minecampus-0.5.0-multiplayer-preview.mrpack",
+    "size": 348515940,
+    "sha256": "222214bd846b881de080dfe3f3f4c9c3c94eb4dacc40cebabe257fc4e469f054"
+  },
+  "prism": {
+    "path": "PrismLauncher-Windows-MinGW-w64-Portable-11.1.1.zip",
+    "url": "https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-Windows-MinGW-w64-Portable-11.1.1.zip",
+    "size": 43687692,
+    "sha256": "05841d0b3bfc0a8212658457cc6035e1c29cd7ffae919464e874e384cbe8d062"
+  },
+  "prismSource": {
+    "path": "PrismLauncher-11.1.1.tar.gz",
+    "url": "https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-11.1.1.tar.gz",
+    "size": 4127770,
+    "sha256": "9ea53f93714cd2a59dc0f38153690a59a3f06f439934d1410ec364cc7f363eb5"
+  }
+}

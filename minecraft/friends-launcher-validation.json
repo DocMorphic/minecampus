@@ -1,0 +1,25 @@
+{
+  "file": "Minecampus-Friends-Windows-0.5.0-friends-1.zip",
+  "size": 398935809,
+  "sha256": "9182ce6cc486399a9dd55e74183f91f9dc4cc632f402ba16b6a910f322e6334e",
+  "archiveIntegrityVerified": true,
+  "allPublicInputHashesVerified": true,
+  "rendererSha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
+  "upstreamPrismVersion": "11.1.1",
+  "windowsNodeBundled": true,
+  "automaticJavaDownloadEnabled": true,
+  "privateInstanceRead": false,
+  "windowsLaunchTestPassed": false,
+  "twoPlayerRemoteTestPassed": false,
+  "entryCount": 89,
+  "unsafeArchivePathsRejected": true,
+  "corruptDownloadPreservesExistingFile": true,
+  "prismComponentMetadataVerified": [
+    "org.lwjgl3/3.3.3",
+    "net.minecraft/1.21.1",
+    "net.fabricmc.intermediary/1.21.1",
+    "net.fabricmc.fabric-loader/0.19.5"
+  ],
+  "releaseTag": "friends-0.5.0-1",
+  "prismSourceArchiveVerified": true
+}

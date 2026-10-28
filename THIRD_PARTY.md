@@ -1,3 +1,7 @@
+## Portable friend launcher
+
+The Windows friend bundle includes the unmodified official Prism Launcher 11.1.1 MinGW portable release, GPL-3.0-only. Its matching upstream source archive (including license texts) is included under `licenses/`. [Upstream release and source](https://github.com/PrismLauncher/PrismLauncher/releases/tag/11.1.1). All files from the upstream portable ZIP are preserved byte-for-byte, including bundled libraries under their respective licenses. Minecampus is not endorsed by Prism Launcher. The bundle does not contain Minecraft game binaries, Java, account data or map credentials; Prism obtains game/runtime dependencies during authenticated setup. The Minecampus packaging script and start command are MIT. Download hashes are pinned in `minecraft/friends-launcher.json`.
+
 ## Native Minecraft pack (0.2.0)
 
 

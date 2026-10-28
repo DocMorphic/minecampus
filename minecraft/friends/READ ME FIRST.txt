@@ -1,0 +1,41 @@
+MINECAMPUS — PLAY WITH A FRIEND
+Windows 10/11, 64-bit Intel/AMD. Internet and Minecraft Java ownership required.
+
+1. Right-click the downloaded ZIP > Extract All. Keep the extracted folder.
+2. Open "Play Minecampus.cmd" inside it.
+3. Sign in to Microsoft in Prism's official account window. If Minecraft does
+   not open after the first sign-in, double-click Minecampus in Prism.
+4. At the campus setup screen, enter your own Cesium ion token or Google Map
+   Tiles access, test and save it. This is needed once, using the same map
+   setup as the host. Map provider quotas/charges are separate from this pack.
+5. In Minecraft: Multiplayer > Direct Connection > paste your friend's
+   address > Join Server. Your friend must have their campus world open.
+
+NEXT TIME: open Play Minecampus and join using the current host address.
+
+Java, Minecraft and Fabric download automatically on first launch. The campus
+mods and Node runtime are included. No separate mod manager, pack import,
+Node install, Terminal commands or administrator installation is needed.
+Initial downloads can take several minutes. Allow several GB of free space.
+
+Keep the whole extracted folder together. Login, map settings and progress
+are saved there. Download the public ZIP again if you want to share it;
+do not send your used folder, which will contain your account and map settings.
+
+This package uses the official, unmodified Prism Launcher. It is a community
+Minecampus bundle, not an official Mojang/Microsoft or Prism distribution.
+Prism and Microsoft handle Minecraft sign-in; Minecampus asks for no password.
+Windows may show a downloaded-app warning. Do not disable Windows protection;
+if it blocks this bundle, use the standard Prism import route below.
+
+If campus scenery is blank, check the map setup. If connection fails, ask the
+host for the current address and check they restarted Exterior Preview 0.5.
+First try with one friend and check you both see the campus and shared blocks.
+The archive has been checked; Windows launch and remote two-player play still
+need an actual Windows/friend check. Start with ordinary Creative flight.
+
+Help and the Mac/Linux alternative:
+https://github.com/DocMorphic/minecampus/blob/main/minecraft/MULTIPLAYER.md
+
+This launcher bundle is for Windows x64. It is not a Mac/Linux or Windows ARM
+installer. It leaves other Minecraft and Prism installations untouched.
