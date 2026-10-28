@@ -2,7 +2,7 @@
 
 **Actual Minecraft Java at TUM Garching.**
 
-Joining a friend's campus? Use the [Windows extract-and-play download or Mac/Linux setup](minecraft/MULTIPLAYER.md).
+Joining a friend's campus? Get the [ready-to-use download for Windows, Mac or Linux](minecraft/MULTIPLAYER.md).
 
 The native version uses **Minecraft Java 1.21.1, Fabric, and [RealWorldMC](https://github.com/Teddy563/realworldmc)** to combine the real game with streamed, textured real-world terrain. Minecraft supplies its own Steve/player skins, models, blocks, inventory, crafting, combat, food, mobs, TNT and sound assets.
 

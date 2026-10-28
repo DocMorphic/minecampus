@@ -1,0 +1,43 @@
+MINECAMPUS — @PLATFORM@
+
+1. Extract the entire ZIP, then open @SCRIPT@ from the extracted folder.
+   Mac: double-click it. If macOS blocks downloaded software, use the normal
+   Privacy & Security > Open Anyway flow only for this trusted download;
+   do not disable Gatekeeper. The bundled Prism app may also need approval.
+   Linux: right-click it > Run as a Program (wording varies by file manager).
+   If it opens as text, open a terminal in this folder and run:
+     bash "Play Minecampus.sh"
+2. Sign in to your Microsoft account that owns Minecraft Java Edition.
+   If first sign-in leaves you in Prism, double-click Minecampus.
+3. Complete your map access once in Minecraft, then Multiplayer > Direct
+   Connection > paste your host's current e4mc address > Join Server.
+
+The launcher, campus mods and Node runtime are included. Java, Minecraft
+and Fabric download automatically. No separate pack import or Node install.
+Allow several GB free for the extracted bundle, downloads and map cache.
+
+You still need your own eligible Cesium ion token or Google Map Tiles access.
+Map provider quotas/charges are separate from this free connection method.
+Your host keeps their campus world open. Everyone uses the same address,
+regardless of operating system. Start with ordinary Creative flight.
+
+Mac requires macOS Monterey (12) or newer; both Intel and Apple Silicon are
+included. Linux-x64 is for ordinary Intel/AMD PCs; Linux-ARM64 is for ARM.
+Use a modern glibc desktop distribution (for example Ubuntu 24.04+).
+Graphics drivers, a desktop session and Minecraft-compatible OpenGL are
+required. AppImage extraction mode avoids needing FUSE. Alpine/musl, 32-bit
+systems and headless machines are not supported by these bundles.
+
+Keep the extracted folder together and always start with @SCRIPT@.
+It uses its own data folder, leaving other Minecraft installations alone.
+Download the original public ZIP to share: your used folder will contain
+private account/map settings. Your Minecraft password goes through official
+Prism/Microsoft sign-in, not through Minecampus.
+
+The archive inputs, matching campus mods and executable permissions are
+checked. Full game launch on every OS and a remote multi-player session
+are not yet verified. Test one friend first before inviting the whole group.
+
+Help: https://github.com/DocMorphic/minecampus/blob/main/minecraft/MULTIPLAYER.md
+Official Prism source/licenses and Node licenses are included under licenses/
+and runtime/. This community bundle is not endorsed by Prism or Mojang.

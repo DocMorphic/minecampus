@@ -1,0 +1,101 @@
+{
+  "releaseTag": "friends-0.5.0-2",
+  "packages": {
+    "Windows": {
+      "file": "Minecampus-Friends-Windows-0.5.0-friends-2.zip",
+      "platform": "Windows",
+      "size": 398936063,
+      "sha256": "612ef1c2d8025cd247add0851a6e5357d7fd2f2f97c37aad9de6e2d3a333e3ae",
+      "archiveIntegrityVerified": true,
+      "allPublicInputHashesVerified": true,
+      "rendererSha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
+      "upstreamPrismVersion": "11.1.1",
+      "windowsNodeBundled": true,
+      "automaticJavaDownloadEnabled": true,
+      "privateInstanceRead": false,
+      "twoPlayerRemoteTestPassed": false,
+      "additionalBundledNodeRuntimes": [],
+      "entryCount": 89,
+      "fullGameLaunchTestPassed": false
+    },
+    "Mac": {
+      "file": "Minecampus-Friends-Mac-0.5.0-friends-2.zip",
+      "platform": "Mac",
+      "size": 474018032,
+      "sha256": "50f10d49326892e8d58735e90764d71772862a88875559480c1d88c6fac563d8",
+      "archiveIntegrityVerified": true,
+      "allPublicInputHashesVerified": true,
+      "rendererSha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
+      "upstreamPrismVersion": "11.1.1",
+      "windowsNodeBundled": true,
+      "automaticJavaDownloadEnabled": true,
+      "privateInstanceRead": false,
+      "twoPlayerRemoteTestPassed": false,
+      "additionalBundledNodeRuntimes": [
+        "darwin-arm64",
+        "darwin-x64"
+      ],
+      "entryCount": 2547,
+      "fullGameLaunchTestPassed": false
+    },
+    "Linux-x64": {
+      "file": "Minecampus-Friends-Linux-x64-0.5.0-friends-2.zip",
+      "platform": "Linux-x64",
+      "size": 506098879,
+      "sha256": "a7ca07f058f76bfff96fe8f3f89a59ae093bae914b0305e118a8cd44b620b964",
+      "archiveIntegrityVerified": true,
+      "allPublicInputHashesVerified": true,
+      "rendererSha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
+      "upstreamPrismVersion": "11.1.1",
+      "windowsNodeBundled": true,
+      "automaticJavaDownloadEnabled": true,
+      "privateInstanceRead": false,
+      "twoPlayerRemoteTestPassed": false,
+      "additionalBundledNodeRuntimes": [
+        "linux-x64"
+      ],
+      "entryCount": 18,
+      "fullGameLaunchTestPassed": false
+    },
+    "Linux-ARM64": {
+      "file": "Minecampus-Friends-Linux-ARM64-0.5.0-friends-2.zip",
+      "platform": "Linux-ARM64",
+      "size": 504068083,
+      "sha256": "8e0a9201951311d116c029bf8fb0f92674f2e2ec58334dbbb16867c9db443d31",
+      "archiveIntegrityVerified": true,
+      "allPublicInputHashesVerified": true,
+      "rendererSha256": "9d0da8e9f11f8acc3309e98ee6d207fda84e001776ba08661bf2162fabc0c105",
+      "upstreamPrismVersion": "11.1.1",
+      "windowsNodeBundled": true,
+      "automaticJavaDownloadEnabled": true,
+      "privateInstanceRead": false,
+      "twoPlayerRemoteTestPassed": false,
+      "additionalBundledNodeRuntimes": [
+        "linux-arm64"
+      ],
+      "entryCount": 18,
+      "fullGameLaunchTestPassed": false
+    }
+  },
+  "setupTestsPassed": 5,
+  "testedRouting": [
+    "Darwin arm64",
+    "Darwin x86_64",
+    "Linux x86_64",
+    "Linux aarch64"
+  ],
+  "testsUseMockLaunchers": true,
+  "macNativeSmoke": {
+    "macosAppSignatureVerified": true,
+    "verificationCommand": "codesign --verify --deep --strict",
+    "bundledNodeVersion": "v22.23.4",
+    "prismVersion": "11.1.1",
+    "realStartScriptReachedMicrosoftSignIn": true,
+    "selectedBundledNode": true,
+    "privateHostInstanceRead": false,
+    "gameLaunched": false
+  },
+  "windowsNativeLaunchTestPassed": false,
+  "linuxNativeLaunchTestPassed": false,
+  "mixedOsRemoteSessionTestPassed": false
+}

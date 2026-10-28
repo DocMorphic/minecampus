@@ -1,5 +1,5 @@
 {
-  "version": "0.5.0-friends-1",
+  "version": "0.5.0-friends-2",
   "pack": {
     "path": "Minecampus-0.5.0-multiplayer-preview.mrpack",
     "url": "https://github.com/DocMorphic/minecampus/releases/download/exterior-0.5.0-campus110-multiplayer/Minecampus-0.5.0-multiplayer-preview.mrpack",
@@ -17,5 +17,61 @@
     "url": "https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-11.1.1.tar.gz",
     "size": 4127770,
     "sha256": "9ea53f93714cd2a59dc0f38153690a59a3f06f439934d1410ec364cc7f363eb5"
+  },
+  "platforms": {
+    "Mac": {
+      "prism": {
+        "path": "PrismLauncher-macOS-11.1.1.zip",
+        "url": "https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-macOS-11.1.1.zip",
+        "size": 43614882,
+        "sha256": "15126a7df57acb4f37fe581dad68cb03c7bb60b70eb82345f8bb3246235600c6"
+      },
+      "node": {
+        "darwin-arm64": {
+          "path": "node-v22.23.4-darwin-arm64.tar.gz",
+          "url": "https://nodejs.org/dist/v22.23.4/node-v22.23.4-darwin-arm64.tar.gz",
+          "size": 49996369,
+          "sha256": "c9e1dbc748b33ed2d14f42445191ecaf14c56259c7a9a26d0042c49ec2b66428"
+        },
+        "darwin-x64": {
+          "path": "node-v22.23.4-darwin-x64.tar.gz",
+          "url": "https://nodejs.org/dist/v22.23.4/node-v22.23.4-darwin-x64.tar.gz",
+          "size": 51190214,
+          "sha256": "efcc2b0db6f94bf53eddb038fe2b370277a042bd29e4f19b8f8e23598795b819"
+        }
+      }
+    },
+    "Linux-x64": {
+      "prism": {
+        "path": "PrismLauncher-Linux-x86_64.AppImage",
+        "url": "https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-Linux-x86_64.AppImage",
+        "size": 107577656,
+        "sha256": "bb81038c56a09e944659e4b808dbfbc52d52d5e3a3ffe32216689a3ca1508d3d"
+      },
+      "node": {
+        "linux-x64": {
+          "path": "node-v22.23.4-linux-x64.tar.gz",
+          "url": "https://nodejs.org/dist/v22.23.4/node-v22.23.4-linux-x64.tar.gz",
+          "size": 56807066,
+          "sha256": "b8492284c76a54baf58d61668dd0e41ee0fc98adabf9503d30f05d08f55b4406"
+        }
+      }
+    },
+    "Linux-ARM64": {
+      "prism": {
+        "path": "PrismLauncher-Linux-aarch64.AppImage",
+        "url": "https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-Linux-aarch64.AppImage",
+        "size": 105722064,
+        "sha256": "88fce57f75405092dac69e21968537083aa2881dbca0bfb3b0d85d9c05f8085b"
+      },
+      "node": {
+        "linux-arm64": {
+          "path": "node-v22.23.4-linux-arm64.tar.gz",
+          "url": "https://nodejs.org/dist/v22.23.4/node-v22.23.4-linux-arm64.tar.gz",
+          "size": 56697252,
+          "sha256": "f7a1e486dbc8b286847815b477d4fb5e9fb963ed4489c3e1588853d685f589f9"
+        }
+      }
+    }
   }
 }

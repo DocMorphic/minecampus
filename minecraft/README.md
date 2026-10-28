@@ -54,7 +54,7 @@ API requests can incur charges. Budget alerts are notifications, not a hard spen
 
 ## Multiplayer and visual limits
 
-For remote friends, use the [Windows extract-and-play bundle or matching Mac/Linux pack](MULTIPLAYER.md). Windows friends do not need to import a pack or manually install Java/Node. The host dependency is pinned and the shareable archives exclude saves and credentials. Windows launcher execution and two-player rendering/shared edits remain unverified until a remote friend tests them.
+For remote friends, use the [ready-to-use Windows, Mac or Linux bundle](MULTIPLAYER.md). These bundles include the matching mods and Node; Prism downloads Java automatically. The host dependency is pinned and the shareable archives exclude saves and credentials. Full game launch on every platform and remote rendering/shared edits remain unverified until friends test them.
 
 
 If the scenery looks coarse, save your world, then run `python3 scripts/minecraft.py quality` and fully quit/relaunch Minecraft. This prioritizes the local campus: a 2-pixel screen-error target, a 1 km map radius, a 1,200-tile budget and a 1440-pixel selection viewport. It preserves provider credentials and existing collision terrain, and backs up the old service config privately. It may use more GPU memory and download more nearby detail; monitor your free streaming allowance. This is a tuning option, not a promise of better source imagery. Stay still briefly while detail streams; pausing the world can also pause the view-selection updates.

@@ -17,19 +17,30 @@ shared destruction and combat still need a real remote-player check.
 5. Send that address to your friends. Keep the world and Minecraft running.
    Closing the world ends the session; use the address shown for each session.
 
-## Friends on Windows — easiest setup
+## Friends on Windows, Mac or Linux — easiest setup
 
-Download **[Minecampus Friends for Windows](https://github.com/DocMorphic/minecampus/releases/download/friends-0.5.0-1/Minecampus-Friends-Windows-0.5.0-friends-1.zip)** (about 399 MB). This bundle is for Windows 10/11 on Intel/AMD 64-bit PCs.
+Share **[this download page](https://github.com/DocMorphic/minecampus/releases/tag/friends-0.5.0-2)** with the whole group. Everyone picks the ZIP for their computer. All packages use the exact same reviewed campus renderer and can attempt to join the same host address.
 
-1. Right-click the ZIP → **Extract All**, then open **Play Minecampus.cmd** from the extracted folder.
+| Computer | Download | Open after extracting |
+| --- | --- | --- |
+| Windows 10/11, Intel/AMD 64-bit | [Windows ZIP](https://github.com/DocMorphic/minecampus/releases/download/friends-0.5.0-2/Minecampus-Friends-Windows-0.5.0-friends-2.zip) | `Play Minecampus.cmd` |
+| Mac, Apple Silicon or Intel, macOS 12+ | [Mac ZIP](https://github.com/DocMorphic/minecampus/releases/download/friends-0.5.0-2/Minecampus-Friends-Mac-0.5.0-friends-2.zip) | `Play Minecampus.command` |
+| Linux, ordinary Intel/AMD 64-bit PC | [Linux x64 ZIP](https://github.com/DocMorphic/minecampus/releases/download/friends-0.5.0-2/Minecampus-Friends-Linux-x64-0.5.0-friends-2.zip) | `Play Minecampus.sh` |
+| Linux, ARM64 machine | [Linux ARM64 ZIP](https://github.com/DocMorphic/minecampus/releases/download/friends-0.5.0-2/Minecampus-Friends-Linux-ARM64-0.5.0-friends-2.zip) | `Play Minecampus.sh` |
+
+1. **Extract the entire ZIP**, then open the Play file above from the extracted folder. On Linux, use **Run as a Program**; if the file manager opens it as text, open a terminal in that folder and run `bash "Play Minecampus.sh"`.
 2. Sign in with the Microsoft account that owns Java Edition. If the first sign-in leaves you in Prism, double-click **Minecampus – Join a friend**.
 3. Complete the in-game map setup with your own eligible Cesium/Google access, then **Multiplayer → Direct Connection → paste the host's address → Join Server**.
 
-Prism, the matching mods and Windows Node runtime are included. Java, Minecraft and Fabric download automatically on first launch; no pack import or manual runtime installation is needed. Keep the extracted folder together: it contains the private settings after first use. Share the original public ZIP, not your used folder. This uses the unmodified official Prism Launcher in a separate data directory and does not change existing Minecraft installations.
+Prism, the matching mods and Node runtime are included. Java, Minecraft and Fabric download automatically on first launch; no pack import or manual runtime installation is needed. The Mac bundle chooses Intel or Apple Silicon automatically. Linux uses the official AppImage in extraction mode, avoiding a FUSE install; it needs a modern glibc desktop distribution and working graphics drivers. Alpine/musl and 32-bit systems are unsupported. Windows ARM is not included.
 
-The archive and public input checksums have been verified. **Windows launch and an actual remote two-player session remain untested.** If Windows blocks the downloaded bundle, use the standard Prism import route below; do not disable Windows protection. macOS/Linux and Windows ARM should use the standard route.
+Keep the extracted folder together and start using its Play file. It contains private settings after first use. Share the original public ZIP, not your used folder. The unmodified official Prism Launcher uses a separate data directory and does not change existing Minecraft installations.
 
-## Friends on Mac/Linux, or using an existing launcher
+The archives, public input hashes, runtime selection, permissions and settings preservation are checked. **Full game launch on every platform and an actual remote multi-player session remain untested.** If macOS prompts about downloaded software, use its normal **Privacy & Security → Open Anyway** approval for the trusted download; do not disable Gatekeeper. If Windows blocks the bundle, use the standard Prism import route below; do not disable Windows protection.
+
+Everyone joins the **same current e4mc address**. Test one guest first, then add people gradually: the host's CPU, memory and upload connection limit the practical group size. No capacity claim has been measured for this campus.
+
+## Alternative — use an existing launcher
 
 1. Download `Minecampus-0.5.0-multiplayer-preview.mrpack` from this repository's
    `exterior-0.5.0-campus110-multiplayer` prerelease. Do not use the older 0.4 pack.
@@ -74,7 +85,8 @@ Sources: [e4mc](https://modrinth.com/mod/e4mc),
 [Node.js](https://nodejs.org/en/download).
 
 Rebuild the shareable pack with `python3 scripts/build-multiplayer-pack.py`.
-Rebuild the Windows portable bundle with `python3 scripts/build-friends-launcher.py`.
+Rebuild a portable bundle with `python3 scripts/build-friends-launcher.py --platform Windows`
+(or `Mac`, `Linux-x64`, `Linux-ARM64`).
 Its public dependencies are pinned in `minecraft/friends-launcher.json`; it
 preserves the existing reviewed renderer and includes no game/account files.
 The host-only dependency and its published checksum are pinned in

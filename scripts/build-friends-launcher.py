@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Build an isolated Windows portable launcher from pinned public inputs only.
+"""Build isolated friend launchers from pinned public inputs only.
 
 Does not inspect installed launchers, accounts, saves, or .minecampus. Keeps the
 reviewed renderer unchanged. Minecraft/Java are downloaded by official Prism
 at first launch, after the friend supplies their own Microsoft account.
 """
+import argparse
 import hashlib
 import io
 import json
 from pathlib import Path, PurePosixPath
 import tempfile
+import tarfile
 import urllib.request
 import zipfile
 
@@ -17,7 +19,6 @@ import minecraft
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCK = json.loads((ROOT / 'minecraft/friends-launcher.json').read_text())
-PREFIX = 'Minecampus-Friends-Windows/'
 
 
 def stream_checksum(stream):
@@ -57,28 +58,54 @@ def safe_name(name):
     return name
 
 
-def build():
+def build(platform='Windows'):
     output = ROOT / 'dist-minecraft'
     cache = ROOT / '.cache/native-downloads'
     pack = fetch(LOCK['pack'], output)
-    prism = fetch(LOCK['prism'], cache)
+    platform_spec = LOCK if platform == 'Windows' else LOCK['platforms'][platform]
+    prism = fetch(platform_spec['prism'], cache)
     prism_source = fetch(LOCK['prismSource'], cache)
     hashes = {}
-    target = output / f"Minecampus-Friends-Windows-{LOCK['version']}.zip"
+    version = LOCK['version']
+    prefix = f'Minecampus-Friends-{platform}/'
+    target = output / f"Minecampus-Friends-{platform}-{version}.zip"
     pending = target.with_suffix('.pending')
     with zipfile.ZipFile(pending, 'w', allowZip64=True) as archive:
-        def put(name, data):
-            name = PREFIX + safe_name(name)
+        def put(name, data, mode=0o100644, mac_metadata=False):
+            name = ('__MACOSX/' if mac_metadata else '') + prefix + safe_name(name)
             if name in hashes:
                 raise RuntimeError('Duplicate archive member: ' + name)
-            minecraft.zip_bytes(archive, name, data)
+            member = zipfile.ZipInfo(name, date_time=(2026, 10, 28, 0, 0, 0))
+            member.create_system = 3
+            member.external_attr = mode << 16
+            member.compress_type = zipfile.ZIP_DEFLATED
+            archive.writestr(member, data)
             hashes[name] = hashlib.sha256(data).hexdigest()
 
         # Preserve the entire upstream portable distribution, byte-for-byte.
-        with zipfile.ZipFile(prism) as original:
-            for member in original.infolist():
-                if not member.is_dir():
-                    put('launcher/' + safe_name(member.filename), original.read(member))
+        if platform.startswith('Linux'):
+            put('launcher/PrismLauncher.AppImage', prism.read_bytes(), 0o100755)
+        else:
+            with zipfile.ZipFile(prism) as original:
+                for member in original.infolist():
+                    if not member.is_dir():
+                        # App framework links and executable bits must survive repacking.
+                        mode = member.external_attr >> 16 if member.create_system == 3 else 0o100644
+                        # AppleDouble entries carry signatures for non-Mach-O files.
+                        # They must stay under the ZIP-root __MACOSX tree, mirroring
+                        # the new location, so Archive Utility/ditto restore them.
+                        metadata = platform == 'Mac' and member.filename.startswith('__MACOSX/')
+                        name = member.filename.removeprefix('__MACOSX/') if metadata else member.filename
+                        put('launcher/' + safe_name(name), original.read(member), mode or 0o100644, metadata)
+        for runtime, spec in platform_spec.get('node', {}).items():
+            node_archive = fetch(spec, cache)
+            node_root = spec['path'].removesuffix('.tar.gz')
+            with tarfile.open(node_archive) as original:
+                for name in ['bin/node', 'LICENSE']:
+                    member = original.getmember(node_root + '/' + name)
+                    assert member.isfile(), member.name
+                    put('runtime/' + runtime + '/' + name, original.extractfile(member).read(),
+                        0o100755 if name == 'bin/node' else 0o100644)
         put('licenses/PrismLauncher-11.1.1-source.tar.gz', prism_source.read_bytes())
         put('licenses/Minecampus-LICENSE.txt', (ROOT / 'minecraft/LICENSE').read_bytes())
         put('licenses/THIRD_PARTY.md', (ROOT / 'THIRD_PARTY.md').read_bytes())
@@ -124,9 +151,17 @@ def build():
             '[General]\nLanguage=en_US\nAutomaticJavaSwitch=true\nAutomaticJavaDownload=true\n'
             'UserAskedAboutAutomaticJavaDownload=true\nApplicationTheme=system\nIconTheme=pe_colored\n'
             'MinMemAlloc=512\nMaxMemAlloc=4096\n').encode())
-        for name in ['Play Minecampus.cmd', 'READ ME FIRST.txt']:
-            data = (ROOT / 'minecraft/friends' / name).read_text().replace('\n', '\r\n').encode()
-            put(name, data)
+        if platform == 'Windows':
+            for name in ['Play Minecampus.cmd', 'READ ME FIRST.txt']:
+                data = (ROOT / 'minecraft/friends' / name).read_text().replace('\n', '\r\n').encode()
+                put(name, data)
+        else:
+            script = 'Play Minecampus.command' if platform == 'Mac' else 'Play Minecampus.sh'
+            put(script, (ROOT / 'minecraft/friends' / script).read_bytes(), 0o100755)
+            put('configure-runtime.cjs', (ROOT / 'minecraft/friends/configure-runtime.cjs').read_bytes())
+            instructions = (ROOT / 'minecraft/friends/READ-ME-UNIX.txt').read_text()
+            instructions = instructions.replace('@PLATFORM@', platform).replace('@SCRIPT@', script)
+            put('READ ME FIRST.txt', instructions.encode())
 
     # Validate every archived input, not just the final ZIP's CRC table.
     with zipfile.ZipFile(pending) as archive:
@@ -136,11 +171,20 @@ def build():
             with archive.open(name) as stream:
                 if stream_checksum(stream) != expected_hash:
                     raise RuntimeError('Archive content mismatch: ' + name)
-        assert archive.read(PREFIX + 'launcher/prismlauncher.exe')[:2] == b'MZ'
-        assert archive.read(PREFIX + 'launcher/portable.txt') is not None
-        config = json.loads(archive.read(PREFIX + game + 'config/realworldmc.json'))
+        if platform == 'Windows':
+            assert archive.read(prefix + 'launcher/prismlauncher.exe')[:2] == b'MZ'
+            assert archive.read(prefix + 'launcher/portable.txt') is not None
+        elif platform.startswith('Linux'):
+            assert archive.read(prefix + 'launcher/PrismLauncher.AppImage')[:4] == b'\x7fELF'
+        else:
+            assert archive.getinfo(prefix + 'launcher/Prism Launcher.app/Contents/MacOS/prismlauncher').external_attr >> 16 & 0o111
+        if platform != 'Windows':
+            assert archive.getinfo(prefix + script).external_attr >> 16 & 0o111
+            for runtime in platform_spec['node']:
+                assert archive.getinfo(prefix + 'runtime/' + runtime + '/bin/node').external_attr >> 16 & 0o111
+        config = json.loads(archive.read(prefix + game + 'config/realworldmc.json'))
         assert config['setupComplete'] is False and config['nodeExecutable'] == 'node'
-        renderer = archive.read(PREFIX + game + 'mods/RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar')
+        renderer = archive.read(prefix + game + 'mods/RealWorldMC-Minecampus-Exterior-0.5.0-dev-mc1.21.1.jar')
         review = json.loads((ROOT / 'minecraft/exterior/preview-upgrade-development-validation.json').read_text())
         assert hashlib.sha256(renderer).hexdigest() == review['artifact']['sha256']
         # The renderer's bundled service must include Node for Windows x64.
@@ -153,17 +197,20 @@ def build():
     final_hash = checksum(target)
     target.with_suffix('.zip.sha256').write_text(f'{final_hash}  {target.name}\n')
     report = {
-        'file': target.name, 'size': target.stat().st_size, 'sha256': final_hash,
+        'file': target.name, 'platform': platform, 'size': target.stat().st_size, 'sha256': final_hash,
         'archiveIntegrityVerified': True, 'allPublicInputHashesVerified': True,
         'rendererSha256': review['artifact']['sha256'],
         'upstreamPrismVersion': '11.1.1', 'windowsNodeBundled': True,
         'automaticJavaDownloadEnabled': True, 'privateInstanceRead': False,
-        'windowsLaunchTestPassed': False, 'twoPlayerRemoteTestPassed': False,
+        'fullGameLaunchTestPassed': False, 'twoPlayerRemoteTestPassed': False,
+        'additionalBundledNodeRuntimes': list(platform_spec.get('node', {})),
         'entryCount': len(hashes),
     }
-    (output / 'friends-launcher-validation.json').write_text(json.dumps(report, indent=2) + '\n')
+    (output / f'friends-launcher-{platform}-validation.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report, indent=2))
 
 
 if __name__ == '__main__':
-    build()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--platform', choices=['Windows', *LOCK.get('platforms', {})], default='Windows')
+    build(parser.parse_args().platform)
