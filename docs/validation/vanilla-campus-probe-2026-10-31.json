@@ -1,0 +1,106 @@
+{
+  "sourceCommit": "940ed38dd0ca87739aa7fadd7ff5924aaf4227de",
+  "converterSha256": "ec8b8ba7a871970b8ba2de59fbc68f0564aecf302534cbdd465b7969ba4e87e3",
+  "patchedConverterSha256": "4af5d527f4a9a27515135e934265974435e643a806762d376c27e94359e77484",
+  "targetMinecraftVersion": "1.21.1",
+  "sourceBounds": [
+    [
+      156.3521270751953,
+      63.97575378417969,
+      -238.44212341308594
+    ],
+    [
+      170.31858825683594,
+      67.10655975341797,
+      -227.02813720703125
+    ]
+  ],
+  "origin": [
+    163.33535766601562,
+    63.97575378417969,
+    -232.7351303100586
+  ],
+  "inputSha256": {
+    "DEBY_LOD2_52738492-warehouse.ect": "848f8d029ab99c661cba42ddb15467ac2ca24faea09af68bbf5ec99ae08e3b77",
+    "DEBY_LOD2_52738492-photo-roof.ect": "64ccd9f1cabe58a147b684e207c9a8d831c288a9beb62685f6c48539e5217eb0"
+  },
+  "parts": [
+    {
+      "source": "DEBY_LOD2_52738492-warehouse.ect",
+      "triangles": 218,
+      "textureSize": [
+        2048,
+        4096
+      ],
+      "model": "minecampus_probe:warehouse_0"
+    },
+    {
+      "source": "DEBY_LOD2_52738492-warehouse.ect",
+      "triangles": 72,
+      "textureSize": [
+        128,
+        256
+      ],
+      "model": "minecampus_probe:warehouse_1"
+    },
+    {
+      "source": "DEBY_LOD2_52738492-warehouse.ect",
+      "triangles": 2,
+      "textureSize": [
+        128,
+        256
+      ],
+      "model": "minecampus_probe:warehouse_2"
+    },
+    {
+      "source": "DEBY_LOD2_52738492-warehouse.ect",
+      "triangles": 108,
+      "textureSize": [
+        128,
+        256
+      ],
+      "model": "minecampus_probe:warehouse_3"
+    },
+    {
+      "source": "DEBY_LOD2_52738492-photo-roof.ect",
+      "triangles": 3,
+      "textureSize": [
+        128,
+        128
+      ],
+      "model": "minecampus_probe:warehouse_4"
+    }
+  ],
+  "resourcepack": {
+    "file": "Minecampus-vanilla-probe-resourcepack.zip",
+    "size": 8369620,
+    "sha256": "9db6564a4c6e2b1a75cd0afc17163154f6e59c5f3382e672850913d5d7b683ae",
+    "sha1": "519a63490ec446428f544f8521aad9fa7377b481"
+  },
+  "datapack": {
+    "file": "Minecampus-vanilla-probe-datapack.zip",
+    "size": 822,
+    "sha256": "f7d90686b82d3d49102e7ec3d1f7f70506b1542c323acedfbdcc8cb26ed07aaa",
+    "sha1": "2572385341212e9b581ec4c4b8b412faedba008d"
+  },
+  "exportPassed": true,
+  "fullCampusConverted": false,
+  "vanillaClientRenderingVerified": false,
+  "serverPackDownloadVerified": false,
+  "collisionAndDestructionImplemented": false,
+  "remoteMultiplayerVerified": false,
+  "runtimeCheck": {
+    "date": "2026-10-31",
+    "client": "official unmodified Java 1.21.1",
+    "resourcePackLoaded": true,
+    "textureAtlasLoaded": true,
+    "atlas": "4096x4096, mip level 4",
+    "visualInspection": "unverified: desktop tool could not bind to Java window",
+    "warnings": [
+      "rendertype_entity_translucent: unused GameTime uniform",
+      "rendertype_entity_translucent_emissive: unused Sampler2 sampler",
+      "two missing vanilla sound events"
+    ],
+    "worldEntryVerified": false
+  }
+}

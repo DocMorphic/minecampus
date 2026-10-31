@@ -4,6 +4,8 @@
 
 Joining a friend's campus? Get the [ready-to-use download for Windows, Mac or Linux](minecraft/MULTIPLAYER.md).
 
+[Research: realistic meshes with vanilla clients and server-delivered resource packs](docs/VANILLA-CAMPUS-RESEARCH.md) — experimental conversion probe, not yet a playable server.
+
 The native version uses **Minecraft Java 1.21.1, Fabric, and [RealWorldMC](https://github.com/Teddy563/realworldmc)** to combine the real game with streamed, textured real-world terrain. Minecraft supplies its own Steve/player skins, models, blocks, inventory, crafting, combat, food, mobs, TNT and sound assets.
 
 ## Install and play

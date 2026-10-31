@@ -1,5 +1,9 @@
 # Play Minecampus with remote friends
 
+Want guests to join with stock Minecraft and just a server address? See the
+[vanilla resource-pack research and prototype](../docs/VANILLA-CAMPUS-RESEARCH.md).
+That route is under investigation; the download instructions below still use Fabric.
+
 This preview contains the reviewed campus renderer, Minecraft Java 1.21.1,
 Fabric 0.19.5, Fabric API and the Minecampus starter add-on. The campus renderer
 is exactly the same build installed in Exterior Preview 0.5 (candidate 110).
