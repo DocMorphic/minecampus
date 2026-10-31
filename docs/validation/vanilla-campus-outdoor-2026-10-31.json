@@ -1,0 +1,63 @@
+{
+  "scene": "Garching outdoor Atom-Ei / MLZ sector",
+  "version": "1.21.1",
+  "boundsMC": [
+    145,
+    420,
+    -165,
+    10
+  ],
+  "sourceCommit": "940ed38dd0ca87739aa7fadd7ff5924aaf4227de",
+  "upstreamConverterSha256": "ec8b8ba7a871970b8ba2de59fbc68f0564aecf302534cbdd465b7969ba4e87e3",
+  "interiorsIncluded": false,
+  "fullCampusConverted": false,
+  "vegetationIncluded": false,
+  "buildingCollisionImplemented": false,
+  "destructionImplemented": false,
+  "triangles": 185849,
+  "displayEntities": 183,
+  "terrainCollisionColumns": 38505,
+  "terrainCollisionStrips": 1011,
+  "encodedTexturePixels": 18866688,
+  "resourcepack": {
+    "file": "Minecampus-outdoor-resourcepack.zip",
+    "size": 15736568,
+    "sha256": "44e31c9031984aa255b72e6d46658616aa68ea5ef50c9994d819ed919b30ad20",
+    "sha1": "8d22238d5c46f08b0ad4d937ac71079344917100"
+  },
+  "datapack": {
+    "file": "Minecampus-outdoor-datapack.zip",
+    "size": 11645,
+    "sha256": "4bbbdc85f03540b3ede2ee210194870c2ed9e066625cfcb10b69fe26fe3f87d8",
+    "sha1": "64f179451960a1e782e26b9bc4fcb4ea1bff02e9"
+  },
+  "inputFileCount": 105,
+  "date": "2026-10-31",
+  "runtime": {
+    "unmodifiedJavaClients": 2,
+    "version": "1.21.1",
+    "platform": "macOS ARM64, Apple M1 Max",
+    "sameMachineLoopbackOnly": true,
+    "freshClientPackPromptVerified": true,
+    "automaticPackDownloadVerified": true,
+    "simultaneousPlayersVerified": true,
+    "visualRenderingVerified": true,
+    "cachedReconnectVerified": true,
+    "shortOutdoorWalkingRouteVerified": true,
+    "remoteJoinVerified": false,
+    "windowsLinuxVerified": false,
+    "atlasSize": [
+      8192,
+      4096
+    ],
+    "observedAerialFps": 37,
+    "fpsIsBenchmark": false,
+    "resolution": [
+      2560,
+      1600
+    ],
+    "renderDistanceChunks": 10
+  },
+  "retiredIsolatedDemoWorldsDeleted": true,
+  "publicServerAvailable": false
+}
